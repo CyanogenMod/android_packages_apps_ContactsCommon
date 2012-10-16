@@ -34,5 +34,6 @@ LOCAL_AAPT_FLAGS := \
 LOCAL_STATIC_JAVA_LIBRARIES += com.android.contacts.common.test com.android.phone.shared
 
 LOCAL_PACKAGE_NAME := ContactsCommonTests
+LOCAL_INSTRUMENTATION_FOR := com.android.contacts.common
 
 include $(BUILD_PACKAGE)
