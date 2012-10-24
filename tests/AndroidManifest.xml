@@ -23,7 +23,7 @@
     </application>
 
     <instrumentation android:name="android.test.InstrumentationTestRunner"
-        android:targetPackage="com.android.contacts.common.unittest"
+        android:targetPackage="com.android.contacts.common"
         android:label="Contacts common unit tests">
     </instrumentation>
 
