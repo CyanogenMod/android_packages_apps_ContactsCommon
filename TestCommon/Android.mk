@@ -22,7 +22,7 @@ LOCAL_SRC_FILES := $(call all-java-files-under, src)
 # vm as the packages to be tested. Otherwise you will get error
 # "Class ref in pre-verified class resolved to unexpected implementation"
 # when running the unit tests.
-LOCAL_JAVA_LIBRARIES := guava
+LOCAL_JAVA_LIBRARIES := guava android.test.runner
 
 LOCAL_MODULE := com.android.contacts.common.test
 include $(BUILD_STATIC_JAVA_LIBRARY)
