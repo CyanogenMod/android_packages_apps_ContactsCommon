@@ -1,5 +1,7 @@
 /*
  * Copyright (C) 2010 The Android Open Source Project
+ * Copyright (c) 2013, The Linux Foundation. All rights reserved.
+ * Not a Contribution.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +31,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract.Contacts;
+import android.telephony.MSimTelephonyManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -55,9 +58,12 @@ import java.util.List;
 public class ImportExportDialogFragment extends DialogFragment
         implements SelectAccountDialogFragment.Listener {
     public static final String TAG = "ImportExportDialogFragment";
+    private static final String SIM_INDEX = "sim_index";
 
     private static final String KEY_RES_ID = "resourceId";
     private static final String ARG_CONTACTS_ARE_AVAILABLE = "CONTACTS_ARE_AVAILABLE";
+    private static int SIM_ID_INVALID = -1;
+    private static int mSelectedSim = SIM_ID_INVALID;
 
     private final String[] LOOKUP_PROJECTION = new String[] {
             Contacts.LOOKUP_KEY
@@ -98,7 +104,20 @@ public class ImportExportDialogFragment extends DialogFragment
             }
         };
 
-        if (TelephonyManager.getDefault().hasIccCard()
+        boolean hasIccCard = false;
+
+        if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+            for (int i = 0; i < MSimTelephonyManager.getDefault().getPhoneCount(); i++) {
+                hasIccCard = MSimTelephonyManager.getDefault().hasIccCard(i);
+                if (hasIccCard) {
+                    break;
+                }
+            }
+        } else {
+            hasIccCard = TelephonyManager.getDefault().hasIccCard();
+        }
+
+        if (hasIccCard
                 && res.getBoolean(R.bool.config_allow_sim_import)) {
             adapter.add(R.string.manage_sim_contacts);
             adapter.add(R.string.export_to_sim);
@@ -144,10 +163,14 @@ public class ImportExportDialogFragment extends DialogFragment
                     }
                     case R.string.export_to_sim: {
                         dismissDialog = true;
-                        Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setClassName("com.android.phone",
+                        if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+                            displaySIMSelection();
+                        } else {
+                            Intent intent = new Intent(Intent.ACTION_VIEW);
+                            intent.setClassName("com.android.phone",
                                 "com.android.phone.ExportContactsToSim");
-                        startActivity(intent);
+                            startActivity(intent);
+                        }
                         break;
                     }
                     default: {
@@ -249,5 +272,58 @@ public class ImportExportDialogFragment extends DialogFragment
     public void onAccountSelectorCancelled() {
         // See onAccountChosen() -- at this point the dialog is still showing.  Close it.
         dismiss();
+    }
+
+    private  void displaySIMSelection() {
+        Log.d(TAG, "displayMyDialog");
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle(R.string.select_sim);
+        mSelectedSim = SIM_ID_INVALID;
+        int numPhones = MSimTelephonyManager.getDefault().getPhoneCount();
+        CharSequence[] subList = new CharSequence[numPhones];
+        int i;
+        for (i = 1; i <= numPhones; i++) {
+            subList[i-1] = "SIM" + i;
+        }
+        builder.setSingleChoiceItems(subList, -1,
+                new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface arg0, int arg1) {
+                Log.d(TAG, "onClicked Dialog on arg1 = " + arg1);
+                mSelectedSim = arg1;
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.ok),
+                new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Log.d(TAG, "onClicked OK");
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setClassName("com.android.phone",
+                    "com.android.phone.ExportContactsToSim");
+                intent.putExtra(SIM_INDEX, mSelectedSim);
+                if (mSelectedSim != SIM_ID_INVALID) {
+                    ((AlertDialog)dialog).getContext().startActivity(intent);
+                }
+            }
+        });
+        dialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.cancel),
+                new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Log.d(TAG, "onClicked Cancel");
+            }
+        });
+
+        dialog.setOnDismissListener(new OnDismissListener () {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                Log.d(TAG, "onDismiss");
+                Log.d(TAG, "Selected SUB = " + mSelectedSim);
+            }
+        });
+        dialog.show();
     }
 }
