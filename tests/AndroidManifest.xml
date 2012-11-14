@@ -20,6 +20,18 @@
 
     <application>
         <uses-library android:name="android.test.runner" />
+
+        <service android:name="com.android.contacts.common.tests.testauth.TestSyncService$Basic" android:exported="true">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/test_basic_syncadapter"/>
+            <meta-data
+                android:name="android.provider.CONTACTS_STRUCTURE"
+                android:resource="@xml/test_basic_contacts"/>
+        </service>
     </application>
 
     <instrumentation android:name="android.test.InstrumentationTestRunner"
