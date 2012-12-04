@@ -22,6 +22,7 @@ LOCAL_RESOURCE_DIR := $(addprefix $(LOCAL_PATH)/, res)
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
     com.android.phone.shared \
+    com.android.vcard \
     guava \
     android-common \
     android-support-v13 \
