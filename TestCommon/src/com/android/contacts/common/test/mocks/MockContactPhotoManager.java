@@ -63,4 +63,8 @@ public class MockContactPhotoManager extends ContactPhotoManager {
     @Override
     public void preloadPhotosInBackground() {
     }
+
+    @Override
+    public void clear() {
+    }
 }
