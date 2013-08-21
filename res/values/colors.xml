@@ -38,4 +38,7 @@
 
     <color name="textColorIconOverlay">#fff</color>
     <color name="textColorIconOverlayShadow">#000</color>
+
+    <!-- New Colors for Theme Chooser to be compatible -->
+    <color name="contact_tile_name_text">#ffffffff</color>
 </resources>
