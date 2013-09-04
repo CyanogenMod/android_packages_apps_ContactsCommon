@@ -27,6 +27,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
+import android.preference.PreferenceManager;
+import android.content.SharedPreferences;
 
 import com.android.contacts.common.ContactPhotoManager;
 import com.android.contacts.common.ContactPresenceIconUtil;
@@ -291,11 +293,21 @@ public class ContactTileAdapter extends BaseAdapter {
         return contact;
     }
 
+    private boolean hideFrequents() {
+        return PreferenceManager
+            .getDefaultSharedPreferences(mContext)
+            .getBoolean("hideFrequents", true);
+    }
+
     /**
      * Returns the number of frequents that will be displayed in the list.
      */
     public int getNumFrequents() {
-        return mNumFrequents;
+        if (hideFrequents()) {
+            return 0;
+        } else {
+            return mNumFrequents;
+        }
     }
 
     @Override
@@ -303,6 +315,8 @@ public class ContactTileAdapter extends BaseAdapter {
         if (mContactCursor == null || mContactCursor.isClosed()) {
             return 0;
         }
+
+        boolean hiddenFrequents = hideFrequents();
 
         switch (mDisplayType) {
             case STARRED_ONLY:
@@ -312,15 +326,23 @@ public class ContactTileAdapter extends BaseAdapter {
                 // Takes numbers of rows the Starred Contacts Occupy
                 int starredRowCount = getRowCount(mDividerPosition);
 
-                // Compute the frequent row count which is 1 plus the number of frequents
-                // (to account for the divider) or 0 if there are no frequents.
-                int frequentRowCount = mNumFrequents == 0 ? 0 : mNumFrequents + 1;
+                if (hiddenFrequents) {
+                    return starredRowCount;
+                } else {
+                    // Compute the frequent row count which is 1 plus the number of frequents
+                    // (to account for the divider) or 0 if there are no frequents.
+                    int frequentRowCount = mNumFrequents == 0 ? 0 : mNumFrequents + 1;
 
-                // Return the number of starred plus frequent rows
-                return starredRowCount + frequentRowCount;
+                    // Return the number of starred plus frequent rows
+                    return starredRowCount + frequentRowCount;
+                }
             case FREQUENT_ONLY:
-                // Number of frequent contacts
-                return mContactCursor.getCount();
+                if (hiddenFrequents) {
+                    return 0;
+                } else {
+                    // Number of frequent contacts
+                    return mContactCursor.getCount();
+                }
             default:
                 throw new IllegalArgumentException("Unrecognized DisplayType " + mDisplayType);
         }
