@@ -23,6 +23,7 @@ import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -131,12 +132,18 @@ public class ImportExportDialogFragment extends DialogFragment
             }
             if (subInfoRecords != null) {
                 if (subInfoRecords.size() == 1) {
-                    adapter.add(new AdapterEntry(getString(R.string.import_from_sim),
-                            R.string.import_from_sim, subInfoRecords.get(0).getSubscriptionId()));
+                    adapter.add(new AdapterEntry(getString(R.string.manage_sim_contacts),
+                            R.string.manage_sim_contacts,
+                            subInfoRecords.get(0).getSubscriptionId()));
+                    adapter.add(new AdapterEntry(getString(R.string.export_to_sim),
+                            R.string.export_to_sim,
+                            subInfoRecords.get(0).getSubscriptionId()));
                 } else {
                     for (SubscriptionInfo record : subInfoRecords) {
-                        adapter.add(new AdapterEntry(getSubDescription(record),
-                                R.string.import_from_sim, record.getSubscriptionId()));
+                        adapter.add(new AdapterEntry(getSubDescription(record, true),
+                                R.string.manage_sim_contacts, record.getSubscriptionId()));
+                        adapter.add(new AdapterEntry(getSubDescription(record, false),
+                                R.string.export_to_sim, record.getSubscriptionId()));
                     }
                 }
             }
@@ -161,7 +168,7 @@ public class ImportExportDialogFragment extends DialogFragment
                 boolean dismissDialog;
                 final int resId = adapter.getItem(which).mChoiceResourceId;
                 switch (resId) {
-                    case R.string.import_from_sim:
+                    case R.string.manage_sim_contacts:
                     case R.string.import_from_vcf_file: {
                         dismissDialog = handleImportRequest(resId,
                                 adapter.getItem(which).mSubscriptionId);
@@ -178,6 +185,15 @@ public class ImportExportDialogFragment extends DialogFragment
                     case R.string.share_visible_contacts: {
                         dismissDialog = true;
                         doShareVisibleContacts();
+                        break;
+                    }
+                    case R.string.export_to_sim: {
+                        dismissDialog = true;
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setClassName("com.android.phone",
+                                "com.android.phone.ExportContactsToSim");
+                        intent.putExtra("subscription_id", adapter.getItem(which).mSubscriptionId);
+                        startActivity(intent);
                         break;
                     }
                     default: {
@@ -292,16 +308,17 @@ public class ImportExportDialogFragment extends DialogFragment
         dismiss();
     }
 
-    private CharSequence getSubDescription(SubscriptionInfo record) {
+    private CharSequence getSubDescription(SubscriptionInfo record, boolean isImport) {
         CharSequence name = record.getDisplayName();
         if (TextUtils.isEmpty(record.getNumber())) {
             // Don't include the phone number in the description, since we don't know the number.
-            return getString(R.string.import_from_sim_summary_no_number, name);
+            return isImport ? getString(R.string.import_from_sim_summary_no_number, name) :
+                    getString(R.string.export_to_sim_summary_no_number, name);
         }
-        return TextUtils.expandTemplate(
-                getString(R.string.import_from_sim_summary),
-                name,
-                PhoneNumberUtils.createTtsSpannable(record.getNumber()));
+        return isImport ? TextUtils.expandTemplate(getString(R.string.import_from_sim_summary)
+                , name, PhoneNumberUtils.createTtsSpannable(record.getNumber())) :
+                TextUtils.expandTemplate(getString(R.string.export_to_sim_summary)
+                , name, PhoneNumberUtils.createTtsSpannable(record.getNumber()));
     }
 
     private static class AdapterEntry {
