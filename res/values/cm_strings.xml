@@ -18,4 +18,11 @@
     <!-- Virtual local storage account name -->
     <string name="local_storage_account" product="tablet">Local tablet account</string>
     <string name="local_storage_account" product="default">Local phone account</string>
+
+    <!-- Action string for managing SIM contacts -->
+    <string name="manage_sim_contacts"> Manage SIM card contacts</string>
+
+    <!-- Action that exports all contacts to SIM -->
+    <string name="export_to_sim">Export to SIM card</string>
+
 </resources>

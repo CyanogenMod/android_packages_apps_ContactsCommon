@@ -152,7 +152,7 @@ public class AccountSelectionUtil {
 
     public static void doImport(Context context, int resId, AccountWithDataSet account) {
         switch (resId) {
-            case R.string.import_from_sim: {
+            case R.string.manage_sim_contacts: {
                 doImportFromSim(context, account);
                 break;
             }
