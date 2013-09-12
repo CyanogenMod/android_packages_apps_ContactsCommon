@@ -100,6 +100,13 @@ public class ImportVCardActivity extends Activity {
     /* package */ final static int VCARD_VERSION_V21 = 1;
     /* package */ final static int VCARD_VERSION_V30 = 2;
 
+    // Constant of connect status.
+    private final static int STATUS_DEFAULT = 0;
+    // When connection bind success.
+    private final static int STATUS_CONNECT = 1;
+    // When connection unbind.
+    private final static int STATUS_DISCONNECT = 2;
+
     private static final String SECURE_DIRECTORY_NAME = ".android_secure";
 
     /**
@@ -108,6 +115,9 @@ public class ImportVCardActivity extends Activity {
     private static final int FAILURE_NOTIFICATION_ID = 1;
 
     final static String CACHED_URIS = "cached_uris";
+
+    // Connect status,default value is STATUS_DEFAULT.
+    private int mConnectStatus = STATUS_DEFAULT;
 
     private AccountSelectionUtil.AccountSelectedListener mAccountSelectionListener;
 
@@ -193,6 +203,8 @@ public class ImportVCardActivity extends Activity {
 
         @Override
         public void onServiceConnected(ComponentName name, IBinder binder) {
+            // when service connect set mConnectStatus as STATUS_CONNECT.
+            mConnectStatus = STATUS_CONNECT;
             mService = ((VCardService.MyBinder) binder).getService();
             Log.i(LOG_TAG,
                     String.format("Connected to VCardService. Kick a vCard cache thread (uri: %s)",
@@ -368,7 +380,10 @@ public class ImportVCardActivity extends Activity {
             } finally {
                 Log.i(LOG_TAG, "Finished caching vCard.");
                 mWakeLock.release();
-                unbindService(mConnection);
+                // only STATUS_CONNECT we here need to unbind service.
+                if (STATUS_CONNECT == mConnectStatus) {
+                    unbindService(mConnection);
+                }
                 mProgressDialogForCachingVCard.dismiss();
                 mProgressDialogForCachingVCard = null;
                 finish();
@@ -985,6 +1000,13 @@ public class ImportVCardActivity extends Activity {
         startService(intent);
         bindService(new Intent(this, VCardService.class),
                 mConnection, Context.BIND_AUTO_CREATE);
+    }
+
+    // when this activity destroy we should set mConnectStatus as STATUS_DISCONNECT.
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mConnectStatus = STATUS_DISCONNECT;
     }
 
     @Override
