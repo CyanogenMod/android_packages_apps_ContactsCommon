@@ -415,8 +415,11 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
 
     <string name="dialog_new_contact_account">Create contact under account</string>
 
-    <!-- Action string for selecting SIM for importing contacts -->
-    <string name="import_from_sim">Import from SIM card</string>
+    <!-- Action string for managing SIM contacts -->
+    <string name="manage_sim_contacts"> Manage SIM card contacts</string>
+
+    <!-- Action that exports all contacts to SIM -->
+    <string name="export_to_sim">Export to SIM card</string>
 
     <!-- Action string for selecting (USB) storage for importing contacts [CHAR LIMIT=30] -->
     <string name="import_from_sdcard" product="default">Import from storage</string>
@@ -719,5 +722,10 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
               This is especially valuable for views without textual representation like ImageView.
     -->
     <string name="description_dial_phone_number">Dial phone <xliff:g id="name">%1$s</xliff:g></string>
+    <string name="Import_All">Import Contacts From All SIMs</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="select_sim">Select SIM</string>
 
 </resources>
