@@ -60,6 +60,7 @@ import com.android.vcard.exception.VCardVersionException;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
@@ -75,6 +76,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * The class letting users to import vCard. This includes the UI part for letting them select
@@ -418,6 +421,22 @@ public class ImportVCardActivity extends Activity {
                 buffer.flip();
                 while (buffer.hasRemaining()) {
                     outputChannel.write(buffer);
+                }
+            } catch (FileNotFoundException e) {
+                // A URI reference includes a URI and a fragment, the component of the URI
+                // following a '#'. The '#' is regarded as separator, and everything between
+                // the scheme separator ':'and the fragment separator '#' will be encoded.
+                // So the URI that get encoded is error when the fileName of vCard contain '#',
+                // and throw FileNotFoundException.
+
+                // Parse fileName from source uri,if file exists,prompt as file xxx import failt,
+                // if fileName is null,just prompt as I/O error.
+                String sourceFileName = parseNameFromUri(sourceUri);
+                if (null != sourceFileName) {
+                    showFailureNotification(getString(
+                       R.string.fail_reason_import_vcard, sourceFileName));
+                } else {
+                    showFailureNotification(R.string.fail_reason_io_error);
                 }
             } finally {
                 if (inputChannel != null) {
@@ -1034,13 +1053,17 @@ public class ImportVCardActivity extends Activity {
         }
     }
 
-    /* package */ void showFailureNotification(int reasonId) {
+    void showFailureNotification(int reasonId) {
+          showFailureNotification(getString(reasonId));
+    }
+
+    void showFailureNotification(String reason) {
         final NotificationManager notificationManager =
                 (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
         final Notification notification =
                 NotificationImportExportListener.constructImportFailureNotification(
                         ImportVCardActivity.this,
-                        getString(reasonId));
+                        reason);
         notificationManager.notify(NotificationImportExportListener.FAILURE_NOTIFICATION_TAG,
                 FAILURE_NOTIFICATION_ID, notification);
         mHandler.post(new Runnable() {
@@ -1050,5 +1073,33 @@ public class ImportVCardActivity extends Activity {
                         getString(R.string.vcard_import_failed), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+   /**
+    * For getting vCard name from uri.
+    *
+    * @param uri the uri that vcard need to copy
+    * @return uri vcard file name.
+    */
+    private String parseNameFromUri(Uri uri) {
+
+        if (null == uri) {
+            return null;
+        }
+
+        String mUri = String.valueOf(uri);
+
+        // The regex expression for uri filter
+        String uriRegex ="^file:\\/\\/\\/[\\w+\\/]+\\w+.vcf$";
+        Pattern uriPattern = Pattern.compile(uriRegex);
+        Matcher uriMatcher = uriPattern.matcher(mUri);
+
+        // judgement is valid vCard file url or not
+        if (!uriMatcher.matches()) {
+            return null;
+        }
+
+        // get the vCard name.
+        return mUri.substring(mUri.lastIndexOf("/") + 1);
     }
 }
