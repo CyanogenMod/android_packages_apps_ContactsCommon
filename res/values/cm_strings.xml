@@ -32,4 +32,7 @@
     <string name="select_sim">Select SIM</string>
     <string name="account_sim">SIM Card</string>
     <string name="name_for_sim">Name</string>
+
+    <!--The failed reason shown when importting some a vCard file -->
+    <string name="fail_reason_import_vcard">I/O error,couldn\'t import vCard <xliff:g id="name">%s</xliff:g></string>
 </resources>
