@@ -27,6 +27,9 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     android-common \
     android-support-v13 \
     android-support-v4 \
+    google-common \
+    libphonenumber \
+    libgeocoding
 
 LOCAL_PACKAGE_NAME := com.android.contacts.common
 
@@ -35,5 +38,14 @@ LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
 include $(BUILD_PACKAGE)
 
-# Use the folloing include to make our test apk.
+include $(CLEAR_VARS)
+
+# Open-source libphonenumber libraries as found in code.google.com/p/libphonenumber
+LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES := \
+   libphonenumber:libs/libphonenumber-5.8.jar \
+   libgeocoding:libs/geocoder-2.9.jar
+
+include $(BUILD_MULTI_PREBUILT)
+
+# Use the following include to make our test apk.
 include $(call all-makefiles-under,$(LOCAL_PATH))
