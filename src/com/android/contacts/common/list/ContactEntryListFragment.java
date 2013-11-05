@@ -243,6 +243,7 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
     @Override
     public void onCreate(Bundle savedState) {
         super.onCreate(savedState);
+        mAdapter = createListAdapter();
         mContactsPrefs = new ContactsPreferences(mContext);
         restoreSavedState(savedState);
     }
@@ -319,7 +320,7 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
                     ContactEntryListAdapter.LOCAL_INVISIBLE_DIRECTORY_ENABLED);
             return loader;
         } else {
-            CursorLoader loader = createCursorLoader();
+            CursorLoader loader = createCursorLoader(mContext);
             long directoryId = args != null && args.containsKey(DIRECTORY_ID_ARG_KEY)
                     ? args.getLong(DIRECTORY_ID_ARG_KEY)
                     : Directory.DEFAULT;
@@ -328,8 +329,8 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
         }
     }
 
-    public CursorLoader createCursorLoader() {
-        return new CursorLoader(mContext, null, null, null, null, null);
+    public CursorLoader createCursorLoader(Context context) {
+        return new CursorLoader(context, null, null, null, null, null);
     }
 
     private void startLoadingDirectoryPartition(int partitionIndex) {
@@ -626,6 +627,10 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
         }
     }
 
+    public int getDirectoryLoaderId() {
+        return DIRECTORY_LOADER_ID;
+    }
+
     public int getDirectorySearchMode() {
         return mDirectorySearchMode;
     }
@@ -687,8 +692,6 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         onCreateView(inflater, container);
-
-        mAdapter = createListAdapter();
 
         boolean searchMode = isSearchMode();
         mAdapter.setSearchMode(searchMode);

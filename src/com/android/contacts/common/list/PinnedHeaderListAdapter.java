@@ -58,7 +58,7 @@ public abstract class PinnedHeaderListAdapter extends CompositeCursorAdapter
     }
 
     protected boolean isPinnedPartitionHeaderVisible(int partition) {
-        return mPinnedPartitionHeadersEnabled && hasHeader(partition)
+        return getPinnedPartitionHeadersEnabled() && hasHeader(partition)
                 && !isPartitionEmpty(partition);
     }
 
@@ -92,7 +92,7 @@ public abstract class PinnedHeaderListAdapter extends CompositeCursorAdapter
 
     @Override
     public void configurePinnedHeaders(PinnedHeaderListView listView) {
-        if (!mPinnedPartitionHeadersEnabled) {
+        if (!getPinnedPartitionHeadersEnabled()) {
             return;
         }
 
@@ -148,11 +148,8 @@ public abstract class PinnedHeaderListAdapter extends CompositeCursorAdapter
 
                 int height = listView.getPinnedHeaderHeight(i);
                 bottomHeaderHeight += height;
-                // Animate the header only if the partition is completely invisible below
-                // the bottom of the view
-                int firstPositionForPartition = getPositionForPartition(i);
-                boolean animate = position < firstPositionForPartition;
-                listView.setHeaderPinnedAtBottom(i, listHeight - bottomHeaderHeight, animate);
+
+                listView.setHeaderPinnedAtBottom(i, listHeight - bottomHeaderHeight, false);
                 maxBottomHeader = i;
             }
         }

@@ -90,8 +90,8 @@ public abstract class ContactEntryListAdapter extends IndexerListAdapter {
 
     public ContactEntryListAdapter(Context context) {
         super(context);
-        addPartitions();
         setDefaultFilterHeaderText(R.string.local_search_label);
+        addPartitions();
     }
 
     protected void setDefaultFilterHeaderText(int resourceId) {
@@ -134,6 +134,7 @@ public abstract class ContactEntryListAdapter extends IndexerListAdapter {
         partition.setDirectoryType(getContext().getString(R.string.contactsList));
         partition.setPriorityDirectory(true);
         partition.setPhotoSupported(true);
+        partition.setLabel(mDefaultFilterHeaderText.toString());
         return partition;
     }
 
@@ -159,7 +160,7 @@ public abstract class ContactEntryListAdapter extends IndexerListAdapter {
         }
     }
 
-    private int getPartitionByDirectoryId(long id) {
+    protected int getPartitionByDirectoryId(long id) {
         int count = getPartitionCount();
         for (int i = 0; i < count; i++) {
             Partition partition = getPartition(i);
@@ -170,6 +171,20 @@ public abstract class ContactEntryListAdapter extends IndexerListAdapter {
             }
         }
         return -1;
+    }
+
+    protected DirectoryPartition getDirectoryById(long id) {
+        int count = getPartitionCount();
+        for (int i = 0; i < count; i++) {
+            Partition partition = getPartition(i);
+            if (partition instanceof DirectoryPartition) {
+                final DirectoryPartition directoryPartition = (DirectoryPartition) partition;
+                if (directoryPartition.getDirectoryId() == id) {
+                    return directoryPartition;
+                }
+            }
+        }
+        return null;
     }
 
     public abstract String getContactDisplayName(int position);
@@ -245,6 +260,11 @@ public abstract class ContactEntryListAdapter extends IndexerListAdapter {
 
     public int getDirectoryResultLimit() {
         return mDirectoryResultLimit;
+    }
+
+    public int getDirectoryResultLimit(DirectoryPartition directoryPartition) {
+        final int limit = directoryPartition.getResultLimit();
+        return limit == DirectoryPartition.RESULT_LIMIT_DEFAULT ? mDirectoryResultLimit : limit;
     }
 
     public void setDirectoryResultLimit(int limit) {
@@ -363,6 +383,11 @@ public abstract class ContactEntryListAdapter extends IndexerListAdapter {
             if (getPartitionByDirectoryId(id) == -1) {
                 DirectoryPartition partition = new DirectoryPartition(false, true);
                 partition.setDirectoryId(id);
+                if (isRemoteDirectory(id)) {
+                    partition.setLabel(mContext.getString(R.string.directory_search_label));
+                } else {
+                    partition.setLabel(mDefaultFilterHeaderText.toString());
+                }
                 partition.setDirectoryType(cursor.getString(directoryTypeColumnIndex));
                 partition.setDisplayName(cursor.getString(displayNameColumnIndex));
                 int photoSupport = cursor.getInt(photoSupportColumnIndex);
@@ -531,32 +556,23 @@ public abstract class ContactEntryListAdapter extends IndexerListAdapter {
         long directoryId = directoryPartition.getDirectoryId();
         TextView labelTextView = (TextView)view.findViewById(R.id.label);
         TextView displayNameTextView = (TextView)view.findViewById(R.id.display_name);
-        if (directoryId == Directory.DEFAULT || directoryId == Directory.LOCAL_INVISIBLE) {
-            labelTextView.setText(mDefaultFilterHeaderText);
+        labelTextView.setText(directoryPartition.getLabel());
+        if (!isRemoteDirectory(directoryId)) {
             displayNameTextView.setText(null);
         } else {
-            labelTextView.setText(R.string.directory_search_label);
             String directoryName = directoryPartition.getDisplayName();
             String displayName = !TextUtils.isEmpty(directoryName)
                     ? directoryName
                     : directoryPartition.getDirectoryType();
             displayNameTextView.setText(displayName);
         }
+    }
 
-        TextView countText = (TextView)view.findViewById(R.id.count);
-        if (directoryPartition.isLoading()) {
-            countText.setText(R.string.search_results_searching);
-        } else {
-            int count = cursor == null ? 0 : cursor.getCount();
-            if (directoryId != Directory.DEFAULT && directoryId != Directory.LOCAL_INVISIBLE
-                    && count >= getDirectoryResultLimit()) {
-                countText.setText(mContext.getString(
-                        R.string.foundTooManyContacts, getDirectoryResultLimit()));
-            } else {
-                countText.setText(getQuantityText(
-                        count, R.string.listFoundAllContactsZero, R.plurals.searchFoundContacts));
-            }
-        }
+    // Default implementation simply returns number of rows in the cursor.
+    // Broken out into its own routine so can be overridden by child classes
+    // for eg number of unique contacts for a phone list.
+    protected int getResultCount(Cursor cursor) {
+        return cursor == null ? 0 : cursor.getCount();
     }
 
     /**
@@ -666,5 +682,10 @@ public abstract class ContactEntryListAdapter extends IndexerListAdapter {
 
     public String getContactsCount() {
         return mContactsCount;
+    }
+
+    public static boolean isRemoteDirectory(long directoryId) {
+        return directoryId != Directory.DEFAULT
+                && directoryId != Directory.LOCAL_INVISIBLE;
     }
 }

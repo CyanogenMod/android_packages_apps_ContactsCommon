@@ -17,7 +17,15 @@
 package com.android.contacts.common;
 
 import android.content.Context;
+import android.location.Country;
 import android.location.CountryDetector;
+
+import com.android.i18n.phonenumbers.NumberParseException;
+import com.android.i18n.phonenumbers.PhoneNumberUtil;
+import com.android.i18n.phonenumbers.Phonenumber;
+import com.android.i18n.phonenumbers.geocoding.PhoneNumberOfflineGeocoder;
+
+import java.util.Locale;
 
 /**
  * Static methods related to Geo.
@@ -28,9 +36,31 @@ public class GeoUtil {
      * @return The ISO 3166-1 two letters country code of the country the user
      *         is in.
      */
-    public static final String getCurrentCountryIso(Context context) {
-        CountryDetector detector =
+    public static String getCurrentCountryIso(Context context) {
+        final CountryDetector detector =
                 (CountryDetector) context.getSystemService(Context.COUNTRY_DETECTOR);
-        return detector.detectCountry().getCountryIso();
+        if (detector != null) {
+            final Country country = detector.detectCountry();
+            if (country != null) {
+                return country.getCountryIso();
+            }
+        }
+        // Fallback to Locale if have issues with CountryDetector
+        return Locale.getDefault().getCountry();
+    }
+
+    public static String getGeocodedLocationFor(Context context,  String phoneNumber) {
+        final PhoneNumberOfflineGeocoder geocoder = PhoneNumberOfflineGeocoder.getInstance();
+        final PhoneNumberUtil phoneNumberUtil = PhoneNumberUtil.getInstance();
+        final CountryDetector countryDetector =
+                (CountryDetector) context.getSystemService(Context.COUNTRY_DETECTOR);
+        try {
+            final Phonenumber.PhoneNumber structuredPhoneNumber =
+                    phoneNumberUtil.parse(phoneNumber, getCurrentCountryIso(context));
+            final Locale locale = context.getResources().getConfiguration().locale;
+            return geocoder.getDescriptionForNumber(structuredPhoneNumber, locale);
+        } catch (NumberParseException e) {
+            return null;
+        }
     }
 }

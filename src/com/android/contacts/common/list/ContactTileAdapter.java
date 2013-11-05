@@ -258,6 +258,7 @@ public class ContactTileAdapter extends BaseAdapter {
         contact.photoUri = (photoUri != null ? Uri.parse(photoUri) : null);
         contact.lookupKey = ContentUris.withAppendedId(
                 Uri.withAppendedPath(Contacts.CONTENT_LOOKUP_URI, lookupKey), id);
+        contact.isFavorite = cursor.getInt(mStarredIndex) > 0;
 
         // Set phone number and label
         if (mDisplayType == DisplayType.STREQUENT_PHONE_ONLY) {
@@ -650,19 +651,6 @@ public class ContactTileAdapter extends BaseAdapter {
             }
             setMeasuredDimension(width, imageSize + getChildAt(0).getPaddingBottom());
         }
-    }
-
-    /**
-     * Class to hold contact information
-     */
-    public static class ContactEntry {
-        public String name;
-        public String status;
-        public String phoneLabel;
-        public String phoneNumber;
-        public Uri photoUri;
-        public Uri lookupKey;
-        public Drawable presenceIcon;
     }
 
     protected static class ViewTypes {

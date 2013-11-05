@@ -48,8 +48,6 @@
             android:paddingRight="47dip"
             android:paddingStart="8dip"
             android:paddingEnd="47dip"
-            android:drawableRight="@drawable/ic_divider_dashed_holo_dark"
-            android:drawableEnd="@drawable/ic_divider_dashed_holo_dark"
             android:textAlignment="viewStart" />
 
         <View

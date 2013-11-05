@@ -92,9 +92,9 @@
     <string name="full_name" msgid="885420216812981202">"Imię i nazwisko"</string>
     <string name="name_given" msgid="1560204576305608571">"Imię"</string>
     <string name="name_family" msgid="1267097554034721002">"Nazwisko"</string>
-    <string name="name_prefix" msgid="8219879405071462309">"Przedrostek"</string>
+    <string name="name_prefix" msgid="8219879405071462309">"Tytuł przed nazwiskiem"</string>
     <string name="name_middle" msgid="3951610314424632183">"Drugie imię"</string>
-    <string name="name_suffix" msgid="5436984808550075931">"Przyrostek"</string>
+    <string name="name_suffix" msgid="5436984808550075931">"Tytuł po nazwisku"</string>
     <string name="name_phonetic" msgid="2249169131785620210">"Nazwisko (fonetycznie)"</string>
     <string name="name_phonetic_given" msgid="993707744185923412">"Imię (fonetycznie)"</string>
     <string name="name_phonetic_middle" msgid="5970174427249235577">"Drugie imię (fonetycznie)"</string>
@@ -105,7 +105,7 @@
     <string name="imLabelsGroup" msgid="8733603247535725786">"Komunikator"</string>
     <string name="organizationLabelsGroup" msgid="961008074745871784">"Organizacja"</string>
     <string name="relationLabelsGroup" msgid="3585294036166325520">"Relacja"</string>
-    <string name="eventLabelsGroup" msgid="536444452517449685">"Wydarzenia"</string>
+    <string name="eventLabelsGroup" msgid="5633007096910029346">"Specjalne daty"</string>
     <string name="sms" msgid="8086289395154598654">"SMS"</string>
     <string name="postal_address" msgid="7692926530081579786">"Adres"</string>
     <string name="ghostData_company" msgid="22470841482615409">"Firma"</string>
@@ -187,7 +187,7 @@
     <string name="composer_has_no_exportable_contact" product="default" msgid="7063040740576745307">"Brak kontaktów do eksportu. Jeśli masz w telefonie kontakty, być może dostawcy danych nie zezwalają na ich eksport z telefonu."</string>
     <string name="composer_not_initialized" msgid="6514403866246950877">"Obiekt tworzenia danych vCard nie uruchomił się poprawnie."</string>
     <string name="exporting_contact_failed_title" msgid="6059039606302373945">"Eksport nieudany"</string>
-    <string name="exporting_contact_failed_message" msgid="3922498776695333328">"Dane kontaktów nie zostały wyeksportowane."\n"Przyczyna: „<xliff:g id="FAIL_REASON">%s</xliff:g>”"</string>
+    <string name="exporting_contact_failed_message" msgid="3922498776695333328">"Dane kontaktów nie zostały wyeksportowane.\nPrzyczyna: „<xliff:g id="FAIL_REASON">%s</xliff:g>”"</string>
     <string name="no_sdcard_message" product="nosdcard" msgid="5131553549320038333">"Nie znaleziono nośnika."</string>
     <string name="no_sdcard_message" product="default" msgid="3246805937562594626">"Nie znaleziono karty SD."</string>
     <string name="confirm_export_message" msgid="7234189779260525384">"Lista kontaktów zostanie wyeksportowana do pliku <xliff:g id="VCARD_FILENAME">%s</xliff:g>."</string>

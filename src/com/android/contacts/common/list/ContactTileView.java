@@ -18,6 +18,7 @@ package com.android.contacts.common.list;
 import android.content.Context;
 import android.graphics.Rect;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -66,12 +67,7 @@ public abstract class ContactTileView extends FrameLayout {
         mHorizontalDivider = findViewById(R.id.contact_tile_horizontal_divider);
 
         OnClickListener listener = createClickListener();
-
-        if(mPushState != null) {
-            mPushState.setOnClickListener(listener);
-        } else {
-            setOnClickListener(listener);
-        }
+        setOnClickListener(listener);
     }
 
     protected OnClickListener createClickListener() {
@@ -92,12 +88,12 @@ public abstract class ContactTileView extends FrameLayout {
 
     /**
      * Populates the data members to be displayed from the
-     * fields in {@link com.android.contacts.common.list.ContactTileAdapter.ContactEntry}
+     * fields in {@link com.android.contacts.common.list.ContactEntry}
      */
-    public void loadFromContact(ContactTileAdapter.ContactEntry entry) {
+    public void loadFromContact(ContactEntry entry) {
 
         if (entry != null) {
-            mName.setText(entry.name);
+            mName.setText(getNameForView(entry.name));
             mLookupUri = entry.lookupKey;
 
             if (mStatus != null) {
@@ -112,7 +108,12 @@ public abstract class ContactTileView extends FrameLayout {
             }
 
             if (mPhoneLabel != null) {
-                mPhoneLabel.setText(entry.phoneLabel);
+                if (TextUtils.isEmpty(entry.phoneLabel)) {
+                    mPhoneLabel.setVisibility(View.GONE);
+                } else {
+                    mPhoneLabel.setVisibility(View.VISIBLE);
+                    mPhoneLabel.setText(entry.phoneLabel);
+                }
             }
 
             if (mPhoneNumber != null) {
@@ -163,6 +164,14 @@ public abstract class ContactTileView extends FrameLayout {
 
     protected QuickContactBadge getQuickContact() {
         return mQuickContact;
+    }
+
+    /**
+     * Returns the string that should actually be displayed as the contact's name. Subclasses
+     * can override this to return formatted versions of the name - i.e. first name only.
+     */
+    protected String getNameForView(String name) {
+        return name;
     }
 
     /**

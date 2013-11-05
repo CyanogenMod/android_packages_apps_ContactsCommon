@@ -105,7 +105,7 @@
     <string name="imLabelsGroup" msgid="8733603247535725786">"IM"</string>
     <string name="organizationLabelsGroup" msgid="961008074745871784">"Kuruluş"</string>
     <string name="relationLabelsGroup" msgid="3585294036166325520">"İlişki"</string>
-    <string name="eventLabelsGroup" msgid="536444452517449685">"Etkinlikler"</string>
+    <string name="eventLabelsGroup" msgid="5633007096910029346">"Özel tarihler"</string>
     <string name="sms" msgid="8086289395154598654">"Kısa mesaj"</string>
     <string name="postal_address" msgid="7692926530081579786">"Adres"</string>
     <string name="ghostData_company" msgid="22470841482615409">"Şirket"</string>
@@ -187,7 +187,7 @@
     <string name="composer_has_no_exportable_contact" product="default" msgid="7063040740576745307">"Dışa aktarılabilecek kişi yok. Telefonunuzda kişileriniz varsa, bazı veri sağlayıcıları kişilerin telefondan dışa aktarılmasına izin vermeyebilir."</string>
     <string name="composer_not_initialized" msgid="6514403866246950877">"vCard oluşturucu düzgün başlamadı."</string>
     <string name="exporting_contact_failed_title" msgid="6059039606302373945">"Dışa aktarılamadı"</string>
-    <string name="exporting_contact_failed_message" msgid="3922498776695333328">"Kişi verileri dışa aktarılamadı."\n"Nedeni: \"<xliff:g id="FAIL_REASON">%s</xliff:g>\""</string>
+    <string name="exporting_contact_failed_message" msgid="3922498776695333328">"Kişi verileri dışa aktarılamadı.\nNedeni: \"<xliff:g id="FAIL_REASON">%s</xliff:g>\""</string>
     <string name="no_sdcard_message" product="nosdcard" msgid="5131553549320038333">"Depolama birimi bulunamadı."</string>
     <string name="no_sdcard_message" product="default" msgid="3246805937562594626">"SD kart bulunamadı."</string>
     <string name="confirm_export_message" msgid="7234189779260525384">"Kişi listeniz şu dosyaya aktarılacak: <xliff:g id="VCARD_FILENAME">%s</xliff:g>."</string>

@@ -34,7 +34,7 @@
     <string name="call_other_fax" msgid="2536328553125487877">"拨打传真号码"</string>
     <string name="call_radio" msgid="9055749313292712021">"拨打无线通讯电话号码"</string>
     <string name="call_telex" msgid="2909886619224843563">"拨打电报号码"</string>
-    <string name="call_tty_tdd" msgid="6704940636171078852">"拨打 TTY/TDD 电话号码"</string>
+    <string name="call_tty_tdd" msgid="6704940636171078852">"拨打 TTY/TDD 号码"</string>
     <string name="call_work_mobile" msgid="4408630608955148641">"拨打公司手机号码"</string>
     <string name="call_work_pager" msgid="3036932765279753793">"拨打公司寻呼机号码"</string>
     <string name="call_assistant" msgid="5188990854852312696">"拨打<xliff:g id="ASSISTANT">%s</xliff:g>的电话号码"</string>
@@ -55,7 +55,7 @@
     <string name="sms_other_fax" msgid="8649822154879781466">"向传真号码发短信"</string>
     <string name="sms_radio" msgid="8750339218480745940">"向无线通讯电话号码发短信"</string>
     <string name="sms_telex" msgid="5469333785775443999">"向电报号码发短信"</string>
-    <string name="sms_tty_tdd" msgid="5057886576150816002">"向 TTY/TDD 电话号码发短信"</string>
+    <string name="sms_tty_tdd" msgid="5057886576150816002">"向 TTY/TDD 号码发短信"</string>
     <string name="sms_work_mobile" msgid="8426872094268475047">"向公司手机发短信"</string>
     <string name="sms_work_pager" msgid="499303540738557836">"向公司寻呼机号码发短信"</string>
     <string name="sms_assistant" msgid="2677586547377136683">"向<xliff:g id="ASSISTANT">%s</xliff:g>发短信"</string>
@@ -105,7 +105,7 @@
     <string name="imLabelsGroup" msgid="8733603247535725786">"即时通讯"</string>
     <string name="organizationLabelsGroup" msgid="961008074745871784">"公司或组织"</string>
     <string name="relationLabelsGroup" msgid="3585294036166325520">"关系"</string>
-    <string name="eventLabelsGroup" msgid="536444452517449685">"活动"</string>
+    <string name="eventLabelsGroup" msgid="5633007096910029346">"特殊日期"</string>
     <string name="sms" msgid="8086289395154598654">"发送短信"</string>
     <string name="postal_address" msgid="7692926530081579786">"地址"</string>
     <string name="ghostData_company" msgid="22470841482615409">"公司"</string>
@@ -187,7 +187,7 @@
     <string name="composer_has_no_exportable_contact" product="default" msgid="7063040740576745307">"没有可导出的联系人。如果您手机上确实存有联系人信息，则可能是某些数据源不允许您从手机中导出联系人信息。"</string>
     <string name="composer_not_initialized" msgid="6514403866246950877">"vCard 制作程序未正确启动。"</string>
     <string name="exporting_contact_failed_title" msgid="6059039606302373945">"无法导出"</string>
-    <string name="exporting_contact_failed_message" msgid="3922498776695333328">"未导出联系人数据。"\n"原因：“<xliff:g id="FAIL_REASON">%s</xliff:g>”"</string>
+    <string name="exporting_contact_failed_message" msgid="3922498776695333328">"未导出联系人数据。\n原因：“<xliff:g id="FAIL_REASON">%s</xliff:g>”"</string>
     <string name="no_sdcard_message" product="nosdcard" msgid="5131553549320038333">"找不到任何存储设备。"</string>
     <string name="no_sdcard_message" product="default" msgid="3246805937562594626">"找不到 SD 卡。"</string>
     <string name="confirm_export_message" msgid="7234189779260525384">"系统会将您的联系人列表导出到以下文件：<xliff:g id="VCARD_FILENAME">%s</xliff:g>。"</string>

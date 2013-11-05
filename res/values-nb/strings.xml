@@ -105,7 +105,7 @@
     <string name="imLabelsGroup" msgid="8733603247535725786">"IM"</string>
     <string name="organizationLabelsGroup" msgid="961008074745871784">"Organisasjon"</string>
     <string name="relationLabelsGroup" msgid="3585294036166325520">"Tilknytning"</string>
-    <string name="eventLabelsGroup" msgid="536444452517449685">"Aktiviteter"</string>
+    <string name="eventLabelsGroup" msgid="5633007096910029346">"Spesielle datoer"</string>
     <string name="sms" msgid="8086289395154598654">"Tekstmelding"</string>
     <string name="postal_address" msgid="7692926530081579786">"Adresse"</string>
     <string name="ghostData_company" msgid="22470841482615409">"Firma"</string>
@@ -187,7 +187,7 @@
     <string name="composer_has_no_exportable_contact" product="default" msgid="7063040740576745307">"Du har ingen kontakter som kan eksporteres. Hvis du har kontakter på telefonen, kan det hende at dataleverandøren din ikke tillater at kontaktene eksporteres fra telefonen."</string>
     <string name="composer_not_initialized" msgid="6514403866246950877">"vCard-oppretteren startet ikke som den skulle."</string>
     <string name="exporting_contact_failed_title" msgid="6059039606302373945">"Eksporten mislyktes"</string>
-    <string name="exporting_contact_failed_message" msgid="3922498776695333328">"Kontaktdataene ble ikke eksportert."\n"Årsak: <xliff:g id="FAIL_REASON">%s</xliff:g>"</string>
+    <string name="exporting_contact_failed_message" msgid="3922498776695333328">"Kontaktdataene ble ikke eksportert.\nÅrsak: <xliff:g id="FAIL_REASON">%s</xliff:g>"</string>
     <string name="no_sdcard_message" product="nosdcard" msgid="5131553549320038333">"Finner ikke lagringsplass."</string>
     <string name="no_sdcard_message" product="default" msgid="3246805937562594626">"Finner ikke SD-kort."</string>
     <string name="confirm_export_message" msgid="7234189779260525384">"Kontaktlisten din blir eksportert til: <xliff:g id="VCARD_FILENAME">%s</xliff:g>."</string>

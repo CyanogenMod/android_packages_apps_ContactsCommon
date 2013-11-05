@@ -16,20 +16,29 @@
 
 package com.android.contacts.common.format;
 
+import android.graphics.Typeface;
 import android.text.SpannableString;
+import android.text.style.CharacterStyle;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
 import android.widget.TextView;
+
+import com.google.common.base.Preconditions;
 
 /**
  * Highlights the text in a text field.
  */
-public class PrefixHighlighter {
-    private final int mPrefixHighlightColor;
+public class TextHighlighter {
+    private final String TAG = TextHighlighter.class.getSimpleName();
+    private final static boolean DEBUG = false;
 
-    private ForegroundColorSpan mPrefixColorSpan;
+    private int mTextStyle;
 
-    public PrefixHighlighter(int prefixHighlightColor) {
-        mPrefixHighlightColor = prefixHighlightColor;
+    private CharacterStyle mTextStyleSpan;
+
+    public TextHighlighter(int textStyle) {
+        mTextStyle = textStyle;
+        mTextStyleSpan = getStyleSpan();
     }
 
     /**
@@ -39,8 +48,23 @@ public class PrefixHighlighter {
      * @param text the string to use as the text
      * @param prefix the prefix to look for
      */
-    public void setText(TextView view, String text, String prefix) {
-        view.setText(apply(text, prefix));
+    public void setPrefixText(TextView view, String text, String prefix) {
+        view.setText(applyPrefixHighlight(text, prefix));
+    }
+
+    private CharacterStyle getStyleSpan() {
+        return new StyleSpan(mTextStyle);
+    }
+
+    /**
+     * Applies highlight span to the text.
+     * @param text Text sequence to be highlighted.
+     * @param start Start position of the highlight sequence.
+     * @param end End position of the highlight sequence.
+     */
+    public void applyMaskingHighlight(SpannableString text, int start, int end) {
+        /** Sets text color of the masked locations to be highlighted. */
+        text.setSpan(getStyleSpan(), start, end, 0);
     }
 
     /**
@@ -49,7 +73,7 @@ public class PrefixHighlighter {
      * @param text the text to which to apply the highlight
      * @param prefix the prefix to look for
      */
-    public CharSequence apply(CharSequence text, String prefix) {
+    public CharSequence applyPrefixHighlight(CharSequence text, String prefix) {
         if (prefix == null) {
             return text;
         }
@@ -64,12 +88,8 @@ public class PrefixHighlighter {
 
         int index = FormatUtils.indexOfWordPrefix(text, trimmedPrefix);
         if (index != -1) {
-            if (mPrefixColorSpan == null) {
-                mPrefixColorSpan = new ForegroundColorSpan(mPrefixHighlightColor);
-            }
-
-            SpannableString result = new SpannableString(text);
-            result.setSpan(mPrefixColorSpan, index, index + trimmedPrefix.length(), 0 /* flags */);
+            final SpannableString result = new SpannableString(text);
+            result.setSpan(mTextStyleSpan, index, index + trimmedPrefix.length(), 0 /* flags */);
             return result;
         } else {
             return text;

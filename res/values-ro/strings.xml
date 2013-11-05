@@ -105,7 +105,7 @@
     <string name="imLabelsGroup" msgid="8733603247535725786">"IM"</string>
     <string name="organizationLabelsGroup" msgid="961008074745871784">"Organizaţie"</string>
     <string name="relationLabelsGroup" msgid="3585294036166325520">"Relaţie"</string>
-    <string name="eventLabelsGroup" msgid="536444452517449685">"Evenimente"</string>
+    <string name="eventLabelsGroup" msgid="5633007096910029346">"Date speciale"</string>
     <string name="sms" msgid="8086289395154598654">"Mesaj text"</string>
     <string name="postal_address" msgid="7692926530081579786">"Adresă poştală"</string>
     <string name="ghostData_company" msgid="22470841482615409">"Companie"</string>
@@ -126,7 +126,7 @@
     <string name="postal_city" msgid="3173008531169519309">"Oraş"</string>
     <string name="postal_region" msgid="1695206048198921115">"Stat"</string>
     <string name="postal_postcode" msgid="6542806670034753265">"Cod poştal"</string>
-    <string name="postal_country" msgid="3988452247038791892">"Ţară"</string>
+    <string name="postal_country" msgid="3988452247038791892">"Țară"</string>
     <string name="map_home" msgid="1221397355014741634">"Vizualizaţi adresa de domiciliu"</string>
     <string name="map_work" msgid="9015981646907637207">"Vizualizaţi adresa de serviciu"</string>
     <string name="map_other" msgid="55098598855607997">"Vizualizaţi adresa poştală"</string>
@@ -187,7 +187,7 @@
     <string name="composer_has_no_exportable_contact" product="default" msgid="7063040740576745307">"Nu există persoane de contact care să poată fi exportate. Dacă aveți persoane de contact pe telefon, este posibil ca exportul acestora de pe telefon să fie interzis de unii furnizori de date."</string>
     <string name="composer_not_initialized" msgid="6514403866246950877">"Compozitorul vCard nu a pornit în mod corespunzător."</string>
     <string name="exporting_contact_failed_title" msgid="6059039606302373945">"Nu s-a putut exporta"</string>
-    <string name="exporting_contact_failed_message" msgid="3922498776695333328">"Datele persoanelor de contact nu au fost exportate."\n"Motivul: „<xliff:g id="FAIL_REASON">%s</xliff:g>”"</string>
+    <string name="exporting_contact_failed_message" msgid="3922498776695333328">"Datele persoanelor de contact nu au fost exportate.\nMotivul: „<xliff:g id="FAIL_REASON">%s</xliff:g>”"</string>
     <string name="no_sdcard_message" product="nosdcard" msgid="5131553549320038333">"Nu s-a găsit o stocare."</string>
     <string name="no_sdcard_message" product="default" msgid="3246805937562594626">"Nu s-a găsit un card SD."</string>
     <string name="confirm_export_message" msgid="7234189779260525384">"Lista cu persoane de contact va fi exportată în fișierul: <xliff:g id="VCARD_FILENAME">%s</xliff:g>."</string>

@@ -105,7 +105,7 @@
     <string name="imLabelsGroup" msgid="8733603247535725786">"Xat"</string>
     <string name="organizationLabelsGroup" msgid="961008074745871784">"Organització"</string>
     <string name="relationLabelsGroup" msgid="3585294036166325520">"Relació"</string>
-    <string name="eventLabelsGroup" msgid="536444452517449685">"Esdeveniments"</string>
+    <string name="eventLabelsGroup" msgid="5633007096910029346">"Dates especials"</string>
     <string name="sms" msgid="8086289395154598654">"Missatge de text"</string>
     <string name="postal_address" msgid="7692926530081579786">"Adreça"</string>
     <string name="ghostData_company" msgid="22470841482615409">"Empresa"</string>
@@ -187,7 +187,7 @@
     <string name="composer_has_no_exportable_contact" product="default" msgid="7063040740576745307">"No hi ha cap contacte que es pugui exportar. Si en tens algun al telèfon, és possible que hi hagi proveïdors de dades que no permetin que els contactes s\'exportin des del telèfon."</string>
     <string name="composer_not_initialized" msgid="6514403866246950877">"No s\'ha iniciat correctament el creador de vCard."</string>
     <string name="exporting_contact_failed_title" msgid="6059039606302373945">"Error en exportar"</string>
-    <string name="exporting_contact_failed_message" msgid="3922498776695333328">"No s\'han exportat les dades de contacte."\n"Motiu: \"<xliff:g id="FAIL_REASON">%s</xliff:g>\""</string>
+    <string name="exporting_contact_failed_message" msgid="3922498776695333328">"No s\'han exportat les dades de contacte.\nMotiu: \"<xliff:g id="FAIL_REASON">%s</xliff:g>\""</string>
     <string name="no_sdcard_message" product="nosdcard" msgid="5131553549320038333">"No s\'ha trobat emmagatzematge."</string>
     <string name="no_sdcard_message" product="default" msgid="3246805937562594626">"No s\'ha trobat cap targeta SD."</string>
     <string name="confirm_export_message" msgid="7234189779260525384">"El llistat de contactes s\'exportarà al fitxer: <xliff:g id="VCARD_FILENAME">%s</xliff:g>."</string>
@@ -221,7 +221,7 @@
     <string name="progress_notifier_message" msgid="359931715339778107">"S\'està important <xliff:g id="CURRENT_NUMBER">%s</xliff:g>/<xliff:g id="TOTAL_NUMBER">%s</xliff:g>: <xliff:g id="NAME">%s</xliff:g>"</string>
     <string name="export_to_sdcard" product="default" msgid="3665618085563543169">"Exporta a l\'emmagatzematge"</string>
     <string name="share_visible_contacts" msgid="2150662668080757107">"Comparteix els contactes visibles"</string>
-    <string name="dialog_import_export" msgid="1125776851100740858">"Importació/exportació de contactes"</string>
+    <string name="dialog_import_export" msgid="1125776851100740858">"Importa/exporta contactes"</string>
     <string name="dialog_import" msgid="5177004290082451296">"Importa contactes"</string>
     <string name="share_error" msgid="665756457151793108">"No es pot compartir aquest contacte."</string>
     <string name="menu_search" msgid="7464453023659824700">"Cerca"</string>

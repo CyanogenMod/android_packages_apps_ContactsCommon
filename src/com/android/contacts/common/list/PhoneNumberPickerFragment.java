@@ -15,6 +15,7 @@
  */
 package com.android.contacts.common.list;
 
+import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
@@ -79,14 +80,23 @@ public class PhoneNumberPickerFragment extends ContactEntryListFragment<ContactE
         setQuickContactEnabled(false);
         setPhotoLoaderEnabled(true);
         setSectionHeaderDisplayEnabled(true);
-        setDirectorySearchMode(DirectoryListLoader.SEARCH_MODE_DATA_SHORTCUT);
+        setDirectorySearchMode(DirectoryListLoader.SEARCH_MODE_NONE);
 
         // Show nothing instead of letting caller Activity show something.
         setHasOptionsMenu(true);
     }
 
+    public void setDirectorySearchEnabled(boolean flag) {
+        setDirectorySearchMode(flag ? DirectoryListLoader.SEARCH_MODE_DEFAULT
+                : DirectoryListLoader.SEARCH_MODE_NONE);
+    }
+
     public void setOnPhoneNumberPickerActionListener(OnPhoneNumberPickerActionListener listener) {
         this.mListener = listener;
+    }
+
+    public OnPhoneNumberPickerActionListener getOnPhoneNumberPickerListener() {
+        return mListener;
     }
 
     @Override
@@ -178,8 +188,24 @@ public class PhoneNumberPickerFragment extends ContactEntryListFragment<ContactE
         if (phoneUri != null) {
             pickPhoneNumber(phoneUri);
         } else {
-            Log.w(TAG, "Item at " + position + " was clicked before adapter is ready. Ignoring");
+            final String number = getPhoneNumber(position);
+            if (number != null) {
+                cacheContactInfo(position);
+                mListener.onCallNumberDirectly(number);
+            } else {
+                Log.w(TAG, "Item at " + position + " was clicked before"
+                        + " adapter is ready. Ignoring");
+            }
         }
+    }
+
+    protected void cacheContactInfo(int position) {
+        // Not implemented. Hook for child classes
+    }
+
+    protected String getPhoneNumber(int position) {
+        final PhoneNumberListAdapter adapter = (PhoneNumberListAdapter) getAdapter();
+        return adapter.getPhoneNumber(position);
     }
 
     protected Uri getPhoneUri(int position) {
@@ -198,7 +224,7 @@ public class PhoneNumberPickerFragment extends ContactEntryListFragment<ContactE
         super.onLoadFinished(loader, data);
 
         // disable scroll bar if there is no data
-        setVisibleScrollbarEnabled(data.getCount() > 0);
+        setVisibleScrollbarEnabled(data != null && data.getCount() > 0);
     }
 
     public void setUseCallableUri(boolean useCallableUri) {
