@@ -24,5 +24,7 @@ LOCAL_SRC_FILES := $(call all-java-files-under, src)
 # when running the unit tests.
 LOCAL_JAVA_LIBRARIES := guava android.test.runner
 
+LOCAL_INSTRUMENTATION_FOR := com.android.contacts.common
+
 LOCAL_MODULE := com.android.contacts.common.test
 include $(BUILD_STATIC_JAVA_LIBRARY)
