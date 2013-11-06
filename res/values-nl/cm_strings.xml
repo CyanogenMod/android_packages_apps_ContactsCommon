@@ -15,6 +15,7 @@
      limitations under the License.
  -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- CAF strings -->
     <string name="manage_sim_contacts">Contacten beheren op simkaart</string>
     <string name="export_to_sim">Exporteren naar simkaart</string>
     <string name="Import_All">Contacten importeren van alle simkaarten</string>
