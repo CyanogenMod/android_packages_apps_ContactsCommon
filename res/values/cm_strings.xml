@@ -30,4 +30,6 @@
     <string name="cancel">Cancel</string>
 
     <string name="select_sim">Select SIM</string>
+    <string name="account_sim">SIM Card</string>
+    <string name="name_for_sim">Name</string>
 </resources>
