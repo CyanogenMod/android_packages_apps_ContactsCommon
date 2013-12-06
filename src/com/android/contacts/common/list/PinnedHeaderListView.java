@@ -112,11 +112,11 @@ public class PinnedHeaderListView extends AutoScrollListView
     private int mHeaderWidth;
 
     public PinnedHeaderListView(Context context) {
-        this(context, null, com.android.internal.R.attr.listViewStyle);
+        this(context, null, android.R.attr.listViewStyle);
     }
 
     public PinnedHeaderListView(Context context, AttributeSet attrs) {
-        this(context, attrs, com.android.internal.R.attr.listViewStyle);
+        this(context, attrs, android.R.attr.listViewStyle);
     }
 
     public PinnedHeaderListView(Context context, AttributeSet attrs, int defStyle) {
@@ -414,9 +414,14 @@ public class PinnedHeaderListView extends AutoScrollListView
 
         if (mScrollState == SCROLL_STATE_IDLE) {
             final int y = (int)ev.getY();
+            final int x = (int)ev.getX();
             for (int i = mSize; --i >= 0;) {
                 PinnedHeader header = mHeaders[i];
-                if (header.visible && header.y <= y && header.y + header.height > y) {
+                // For RTL layouts, this also takes into account that the scrollbar is on the left
+                // side.
+                final int padding = getPaddingLeft();
+                if (header.visible && header.y <= y && header.y + header.height > y &&
+                        x >= padding && padding + mHeaderWidth >= x) {
                     mHeaderTouched = true;
                     if (mScrollToSectionOnHeaderTouch &&
                             ev.getAction() == MotionEvent.ACTION_DOWN) {
