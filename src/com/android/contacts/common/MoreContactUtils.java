@@ -215,4 +215,20 @@ public class MoreContactUtils {
         intent.setData(lookupUri);
         return intent;
     }
+
+    public static int getSubscription(String accountType, String accountName) {
+        int subscription = -1;
+        if (accountType == null || accountName == null)
+            return subscription;
+        if (accountType.equals(SimContactsConstants.ACCOUNT_TYPE_SIM)) {
+            if (accountName.equals(SimContactsConstants.SIM_NAME)
+                    || accountName.equals(SimContactsConstants.SIM_NAME_1)) {
+                subscription = SimContactsConstants.SUB_1;
+            } else if (accountName.equals(SimContactsConstants.SIM_NAME_2)) {
+                subscription = SimContactsConstants.SUB_2;
+            }
+        }
+        return subscription;
+    }
+
 }

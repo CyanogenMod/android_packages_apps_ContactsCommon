@@ -38,6 +38,9 @@ import android.os.Message;
 import android.os.RemoteException;
 import android.os.SystemClock;
 import android.provider.ContactsContract;
+import android.provider.Settings;
+import android.telephony.MSimTelephonyManager;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.TimingLogger;
@@ -51,7 +54,10 @@ import com.android.contacts.common.model.account.ExchangeAccountType;
 import com.android.contacts.common.model.account.ExternalAccountType;
 import com.android.contacts.common.model.account.FallbackAccountType;
 import com.android.contacts.common.model.account.GoogleAccountType;
+import com.android.contacts.common.model.account.PhoneAccountType;
+import com.android.contacts.common.model.account.SimAccountType;
 import com.android.contacts.common.model.dataitem.DataKind;
+import com.android.contacts.common.SimContactsConstants;
 import com.android.contacts.common.test.NeededForTesting;
 import com.android.contacts.common.util.Constants;
 import com.google.common.annotations.VisibleForTesting;
@@ -79,6 +85,13 @@ public abstract class AccountTypeManager {
 
     private static final Object mInitializationLock = new Object();
     private static AccountTypeManager mAccountTypeManager;
+
+    public static final int FLAG_ALL_ACCOUNTS = 0;
+    public static final int FLAG_ALL_ACCOUNTS_WITHOUT_SIM = 1;
+    /**
+     * without sim and phone accounts
+     */
+    public static final int FLAG_ALL_ACCOUNTS_WITHOUT_LOCAL = 2;
 
     /**
      * Requests the singleton instance of {@link AccountTypeManager} with data bound from
@@ -113,6 +126,8 @@ public abstract class AccountTypeManager {
      * contact writable accounts (if contactWritableOnly is true).
      */
     // TODO: Consider splitting this into getContactWritableAccounts() and getAllAccounts()
+    public abstract List<AccountWithDataSet> getAccounts(boolean contactWritableOnly, int flag);
+
     public abstract List<AccountWithDataSet> getAccounts(boolean contactWritableOnly);
 
     /**
@@ -419,6 +434,10 @@ class AccountTypeManagerImpl extends AccountTypeManager
                 accountType = new GoogleAccountType(mContext, auth.packageName);
             } else if (ExchangeAccountType.isExchangeType(type)) {
                 accountType = new ExchangeAccountType(mContext, auth.packageName, type);
+                } else if (SimAccountType.ACCOUNT_TYPE.equals(type)) {
+                    accountType = new SimAccountType(mContext, auth.packageName);
+                } else if (PhoneAccountType.ACCOUNT_TYPE.equals(type)) {
+                    accountType = new PhoneAccountType(mContext, auth.packageName);
             } else {
                 // TODO: use syncadapter package instead, since it provides resources
                 Log.d(TAG, "Registering external account type=" + type
@@ -565,13 +584,78 @@ class AccountTypeManagerImpl extends AccountTypeManager
         return null;
     }
 
+    @Override
+    public List<AccountWithDataSet> getAccounts(boolean contactWritableOnly) {
+        return getAccounts(contactWritableOnly, FLAG_ALL_ACCOUNTS);
+    }
+
     /**
      * Return list of all known, contact writable {@link AccountWithDataSet}'s.
      */
     @Override
-    public List<AccountWithDataSet> getAccounts(boolean contactWritableOnly) {
+    public List<AccountWithDataSet> getAccounts(boolean contactWritableOnly,
+            int flag) {
         ensureAccountsLoaded();
+        boolean isAirMode = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.AIRPLANE_MODE_ON, 0) == 1;
+        switch (flag) {
+            case FLAG_ALL_ACCOUNTS:
+                return trimAccountByType(
+                        contactWritableOnly ? mContactWritableAccounts : mAccounts,
+                        isAirMode ? SimAccountType.ACCOUNT_TYPE : null);
+            case FLAG_ALL_ACCOUNTS_WITHOUT_LOCAL:
+                return trimAccountByType(
+                        contactWritableOnly ? mContactWritableAccounts : mAccounts,
+                        SimAccountType.ACCOUNT_TYPE, PhoneAccountType.ACCOUNT_TYPE);
+            case FLAG_ALL_ACCOUNTS_WITHOUT_SIM:
+                return trimAccountByType(
+                        contactWritableOnly ? mContactWritableAccounts : mAccounts,
+                        SimAccountType.ACCOUNT_TYPE);
+        }
         return contactWritableOnly ? mContactWritableAccounts : mAccounts;
+    }
+
+    private boolean isSimStateUnknown(Account account) {
+        int subscription = SimContactsConstants.SUB_INVALID;
+        subscription = MoreContactUtils.getSubscription(account.type, account.name);
+
+        if (subscription > SimContactsConstants.SUB_INVALID
+                && MSimTelephonyManager.getDefault().getSimState(subscription)
+                    == TelephonyManager.SIM_STATE_UNKNOWN) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean isSimAccountInvalid(Account account) {
+        if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+            if (account.name.equals(SimContactsConstants.SIM_NAME))
+                return true;
+        }
+        return false;
+    }
+    private List<AccountWithDataSet> trimAccountByType(final List<AccountWithDataSet> list,
+            String... trimAccountTypes) {
+        List<AccountWithDataSet> tempList = Lists.newArrayList();
+        outer: for (AccountWithDataSet accountWithDataSet : list) {
+            if (trimAccountTypes != null && trimAccountTypes.length > 0) {
+                for (String type : trimAccountTypes) {
+                    if (type != null && type.equals(accountWithDataSet.type)) {
+                        continue outer;
+                    }
+                }
+            }
+
+            if (isSimStateUnknown(accountWithDataSet)) {
+                continue outer;
+            }
+            if (isSimAccountInvalid(accountWithDataSet)) {
+                continue outer;
+            }
+            tempList.add(accountWithDataSet);
+        }
+        return tempList;
     }
 
     /**
