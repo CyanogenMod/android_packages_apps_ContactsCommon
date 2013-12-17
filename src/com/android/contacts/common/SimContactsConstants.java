@@ -60,6 +60,7 @@ public interface SimContactsConstants {
         "com.android.sim.INTENT_EXPORT_COMPLETE";
     public static final int SUB_1 = MSimConstants.SUB1;
     public static final int SUB_2 = MSimConstants.SUB2;
+    public static final int SUB_INVALID = -1;
     public static final int SIM_STATE_READY = 1;
     public static final int SIM_STATE_NOT_READY = 2;
 
