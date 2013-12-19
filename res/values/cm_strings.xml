@@ -35,4 +35,6 @@
 
     <!--The failed reason shown when importting some a vCard file -->
     <string name="fail_reason_import_vcard">I/O error,couldn\'t import vCard <xliff:g id="name">%s</xliff:g></string>
+
+    <string name="label_groups">Group</string>
 </resources>

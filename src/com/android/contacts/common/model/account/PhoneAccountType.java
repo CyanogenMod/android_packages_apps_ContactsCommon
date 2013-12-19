@@ -73,11 +73,10 @@ public class PhoneAccountType extends BaseAccountType{
             addDataKindNote(context);
             addDataKindWebsite(context);
             //addDataKindGroupMembership(context);
-            //addDataKindLocalGroups(context);
-            if (!SystemProperties.getBoolean("persist.env.phone.hidevoip", false)) {
+            addDataKindLocalGroups(context);
+            if (!context.getResources().getBoolean(R.bool.hide_voip)) {
                 addDataKindSipAddress(context);
             }
-
             mIsInitialized = true;
         } catch (DefinitionException e) {
             Log.e(TAG, "Problem building account type", e);

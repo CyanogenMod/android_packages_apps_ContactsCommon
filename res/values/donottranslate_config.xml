@@ -84,4 +84,6 @@
     <!-- Flag indicating whether Contacts app is allowed to share contacts with devices outside -->
     <bool name="config_allow_share_visible_contacts">true</bool>
 
+    <!-- Flag indicating whether or not display Internet call when edit contacts-->
+    <bool name="hide_voip">false</bool>
 </resources>
