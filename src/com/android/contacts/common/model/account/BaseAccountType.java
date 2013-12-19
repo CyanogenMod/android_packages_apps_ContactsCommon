@@ -24,6 +24,7 @@ import android.provider.ContactsContract.CommonDataKinds.Email;
 import android.provider.ContactsContract.CommonDataKinds.Event;
 import android.provider.ContactsContract.CommonDataKinds.GroupMembership;
 import android.provider.ContactsContract.CommonDataKinds.Im;
+import android.provider.ContactsContract.CommonDataKinds.LocalGroup;
 import android.provider.ContactsContract.CommonDataKinds.Nickname;
 import android.provider.ContactsContract.CommonDataKinds.Note;
 import android.provider.ContactsContract.CommonDataKinds.Organization;
@@ -79,12 +80,15 @@ public abstract class BaseAccountType extends AccountType {
                                                              // basic format as email addresses
     protected static final int FLAGS_RELATION = EditorInfo.TYPE_CLASS_TEXT
             | EditorInfo.TYPE_TEXT_FLAG_CAP_WORDS | EditorInfo.TYPE_TEXT_VARIATION_PERSON_NAME;
+    protected static final int FLAGS_LOCAL_GROUPS = EditorInfo.TYPE_CLASS_TEXT
+            | EditorInfo.TYPE_TEXT_FLAG_CAP_WORDS;
 
     // Specify the maximum number of lines that can be used to display various field types.  If no
     // value is specified for a particular type, we use the default value from {@link DataKind}.
     protected static final int MAX_LINES_FOR_POSTAL_ADDRESS = 10;
     protected static final int MAX_LINES_FOR_GROUP = 10;
     protected static final int MAX_LINES_FOR_NOTE = 100;
+    protected static final int LOCAL_GROUP_HEIGHT = 110;
 
     private interface Tag {
         static final String DATA_KIND = "DataKind";
@@ -441,6 +445,19 @@ public abstract class BaseAccountType extends AccountType {
         kind.fieldList.add(new EditField(GroupMembership.GROUP_ROW_ID, -1, -1));
 
         kind.maxLinesForDisplay = MAX_LINES_FOR_GROUP;
+
+        return kind;
+    }
+
+    protected DataKind addDataKindLocalGroups(Context context) throws DefinitionException {
+        DataKind kind = addKind(new DataKind(LocalGroup.CONTENT_ITEM_TYPE,
+                R.string.label_groups, LOCAL_GROUP_HEIGHT, true));
+        kind.typeOverallMax = 1;
+        kind.actionHeader = new SimpleInflater(R.string.label_groups);
+        kind.actionBody = new SimpleInflater(LocalGroup.GROUP);
+        kind.fieldList = Lists.newArrayList();
+        kind.fieldList.add(new EditField(LocalGroup.GROUP, R.string.label_groups,
+                FLAGS_LOCAL_GROUPS));
 
         return kind;
     }
