@@ -43,6 +43,7 @@ public interface SimContactsConstants {
     public static final String SUB = MSimConstants.SUBSCRIPTION_KEY;
     public static final String ACCOUNT_TYPE = "account_type";
     public static final String ACCOUNT_NAME = "account_name";
+    public static final String ACCOUNT_DATA = "data_set";
     public static final String STR_TAG = "tag";
     public static final String STR_NUMBER = "number";
     public static final String STR_EMAILS = "emails";
