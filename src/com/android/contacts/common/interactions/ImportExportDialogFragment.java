@@ -96,6 +96,7 @@ public class ImportExportDialogFragment extends DialogFragment
     private static final String ARG_CONTACTS_ARE_AVAILABLE = "CONTACTS_ARE_AVAILABLE";
     private static int mSelectedSim = SimContactsConstants.SUB_INVALID;
 
+    public static final int SUBACTIVITY_EXPORT_CONTACTS = 100;
     private final String[] LOOKUP_PROJECTION = new String[] {
             Contacts.LOOKUP_KEY
     };
@@ -241,10 +242,10 @@ public class ImportExportDialogFragment extends DialogFragment
                     }
                     case R.string.export_to_sdcard: {
                         dismissDialog = true;
-                        Intent exportIntent = new Intent(getActivity(), ExportVCardActivity.class);
-                        exportIntent.putExtra(VCardCommonArguments.ARG_CALLING_ACTIVITY,
-                                callingActivity);
-                        getActivity().startActivity(exportIntent);
+                        Intent exportIntent = new Intent(ACTION_MULTI_PICK,
+                                Contacts.CONTENT_URI);
+                        getActivity().startActivityForResult(exportIntent,
+                                SUBACTIVITY_EXPORT_CONTACTS);
                         break;
                     }
                     case R.string.share_visible_contacts: {
