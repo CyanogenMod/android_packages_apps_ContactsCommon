@@ -71,8 +71,10 @@ public class ContactsSectionIndexer implements SectionIndexer {
     }
 
     public int getPositionForSection(int section) {
-        if (section < 0 || section >= mSections.length) {
+        if (section < 0 || section > mSections.length) {
             return -1;
+        } else if (section == mSections.length) {
+            return mCount;
         }
 
         return mPositions[section];
