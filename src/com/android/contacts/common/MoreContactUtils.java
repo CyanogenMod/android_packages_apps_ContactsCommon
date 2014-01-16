@@ -652,4 +652,32 @@ public class MoreContactUtils {
         return getEmailCount(subscription) > 0 ? true : false;
     }
 
+    /** get disabled SIM card's name */
+    public static String getDisabledSimFilter() {
+        int count = MSimTelephonyManager.getDefault().getPhoneCount();
+        StringBuilder simFilter = new StringBuilder("");
+
+        for (int i = 0; i < count; i++) {
+            if (!MSimTelephonyManager.getDefault().hasIccCard(i)) {
+                continue;
+            }
+            if (TelephonyManager.SIM_STATE_UNKNOWN == MSimTelephonyManager
+                    .getDefault().getSimState(i)) {
+                simFilter.append(getSimAccountName(i) + ',');
+            }
+        }
+
+        return simFilter.toString();
+    }
+
+    /**
+     * Get SIM card account name
+     */
+    public static String getSimAccountName(int subscription) {
+        if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+            return SimContactsConstants.SIM_NAME + (subscription + 1);
+        } else {
+            return SimContactsConstants.SIM_NAME;
+        }
+    }
 }

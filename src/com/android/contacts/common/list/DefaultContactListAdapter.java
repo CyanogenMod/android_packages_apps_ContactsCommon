@@ -33,6 +33,8 @@ import android.view.View;
 
 import com.android.contacts.common.model.account.SimAccountType;
 import com.android.contacts.common.preference.ContactsPreferences;
+import com.android.contacts.common.MoreContactUtils;
+import com.android.contacts.common.SimContactsConstants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -108,6 +110,13 @@ public class DefaultContactListAdapter extends ContactListAdapter {
             if (filter.filterType == ContactListFilter.FILTER_TYPE_ALL_WITHOUT_SIM) {
                 appendUriQueryParameterWithoutSim(loader, RawContacts.ACCOUNT_TYPE,
                         SimAccountType.ACCOUNT_TYPE);
+            } else {
+                // Do not show contacts when SIM card is disabled
+                String disabledSimFilter = MoreContactUtils.getDisabledSimFilter();
+                if (!TextUtils.isEmpty(disabledSimFilter)) {
+                    appendUriQueryParameterWithoutSim(
+                            loader, RawContacts.ACCOUNT_NAME, disabledSimFilter);
+                }
             }
 
         } else {
@@ -170,6 +179,11 @@ public class DefaultContactListAdapter extends ContactListAdapter {
         StringBuilder selection = new StringBuilder();
         List<String> selectionArgs = new ArrayList<String>();
 
+        String disabledSimFilter = MoreContactUtils.getDisabledSimFilter();
+        if (!TextUtils.isEmpty(disabledSimFilter)) {
+            appendUriQueryParameterWithoutSim(
+                    loader, RawContacts.ACCOUNT_NAME, disabledSimFilter);
+        }
         switch (filter.filterType) {
             case ContactListFilter.FILTER_TYPE_ALL_ACCOUNTS: {
                 // We have already added directory=0 to the URI, which takes care of this

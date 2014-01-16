@@ -112,7 +112,7 @@ public class ImportExportDialogFragment extends DialogFragment
     public static final int SUBACTIVITY_MULTI_PICK_CONTACT = 7;
 
     //decide whether pick phone or contacts
-    private static final String IS_CONTACT = "IS_CONTACT";
+    private static final String IS_CONTACT = "is_contact";
 
     // multi-pick contacts which contains email address
     private static final String ACTION_MULTI_PICK_EMAIL =
@@ -244,6 +244,7 @@ public class ImportExportDialogFragment extends DialogFragment
                         dismissDialog = true;
                         Intent exportIntent = new Intent(ACTION_MULTI_PICK,
                                 Contacts.CONTENT_URI);
+                        exportIntent.putExtra(IS_CONTACT,true);
                         getActivity().startActivityForResult(exportIntent,
                                 SUBACTIVITY_EXPORT_CONTACTS);
                         break;
