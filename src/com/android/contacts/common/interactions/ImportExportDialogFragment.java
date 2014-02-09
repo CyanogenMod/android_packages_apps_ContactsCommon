@@ -198,14 +198,13 @@ public class ImportExportDialogFragment extends DialogFragment
      * @return {@code true} if the dialog show be closed.  {@code false} otherwise.
      */
     private boolean handleImportRequest(int resId) {
-        // There are three possibilities:
-        // - more than one accounts -> ask the user
-        // - just one account -> use the account without asking the user
+        // There are two possibilities:
+        // - one or more than one accounts -> ask the user (user can select phone-local also)
         // - no account -> use phone-local storage without asking the user
         final AccountTypeManager accountTypes = AccountTypeManager.getInstance(getActivity());
         final List<AccountWithDataSet> accountList = accountTypes.getAccounts(true);
         final int size = accountList.size();
-        if (size > 1) {
+        if (size > 0) {
             // Send over to the account selector
             final Bundle args = new Bundle();
             args.putInt(KEY_RES_ID, resId);
@@ -220,8 +219,7 @@ public class ImportExportDialogFragment extends DialogFragment
             return false;
         }
 
-        AccountSelectionUtil.doImport(getActivity(), resId,
-                (size == 1 ? accountList.get(0) : null));
+        AccountSelectionUtil.doImport(getActivity(), resId, null);
         return true; // Close the dialog.
     }
 
