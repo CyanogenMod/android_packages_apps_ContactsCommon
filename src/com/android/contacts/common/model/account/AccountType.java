@@ -59,6 +59,12 @@ public abstract class AccountType {
     private static final String TAG = "AccountType";
 
     /**
+     * Local phone-storage account
+     * @hide
+     */
+    public static final String LOCAL_ACCOUNT = "phone-local";
+
+    /**
      * The {@link RawContacts#ACCOUNT_TYPE} these constraints apply to.
      */
     public String accountType = null;
