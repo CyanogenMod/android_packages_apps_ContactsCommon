@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.telephony.PhoneNumberUtils;
 
+import com.android.internal.telephony.MSimConstants;
 import com.android.phone.common.PhoneConstants;
 
 /**
@@ -78,6 +79,12 @@ public class CallUtil {
         intent.setComponent(CALL_INTENT_DESTINATION);
 
         return intent;
+    }
+
+    public static Intent getSlotIntent(String number, int subscription) {
+        Intent slotIntent = getCallIntent(number);
+        slotIntent.putExtra(MSimConstants.SUBSCRIPTION_KEY, subscription);
+        return slotIntent;
     }
 
     /**

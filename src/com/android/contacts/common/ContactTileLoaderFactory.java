@@ -23,6 +23,7 @@ import android.net.Uri;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.Contacts;
+import android.provider.ContactsContract.RawContacts;
 import android.text.TextUtils;
 
 import com.android.contacts.common.list.DefaultContactListAdapter;

@@ -87,4 +87,15 @@
     <dimen name="tile_letter_font_size_small">20dp</dimen>
     <dimen name="tile_divider_width">1dp</dimen>
     <item name="letter_to_tile_ratio" type="dimen">67%</item>
+
+    <!-- Dimensions for dsds button style -->
+    <dimen name="dsds_btnstyle_layout_width">48dip</dimen>
+    <dimen name="dsds_btnstyle_layout_height">48dip</dimen>
+    <dimen name="dsds_btnstyle_sub_icon_margin_top">10dip</dimen>
+    <dimen name="dsds_btnstyle_sub_icon_margin_right">8dip</dimen>
+
+    <!-- Dimensions for dsds divider -->
+    <dimen name="dsds_vertical_divider_vertical_margin">16dip</dimen>
+    <dimen name="dsds_vertical_divider_width">1dip</dimen>
+    <dimen name="dsds_vertical_divider_height">-1dip</dimen>
 </resources>
