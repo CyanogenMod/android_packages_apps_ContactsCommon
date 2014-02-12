@@ -93,4 +93,12 @@
     <string name="copy_done">Copy done！</string>
     <string name="copy_failure">Copy Failed！</string>
     <string name="card_no_space">Card has no space ,some record copy failed</string>
+
+    <!-- Menu item used to initiate ip call -->
+    <string name="ip_call_by_slot">IP Call by <xliff:g id="subName">%s</xliff:g></string>
+    <string name="no_ip_number">No IP number</string>
+    <string name="no_ip_number_on_sim_card">No IP number on SIM card</string>
+    <string name="set_ip_number">Set IP Number</string>
+    <string name="ipcall_dialog_title">IP call setting</string>
+    <string name="ipcall_dialog_edit_hint">Please input the IP prefix</string>
 </resources>

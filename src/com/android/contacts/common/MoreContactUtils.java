@@ -20,10 +20,12 @@ import android.accounts.Account;
 import com.android.i18n.phonenumbers.NumberParseException;
 import com.android.i18n.phonenumbers.PhoneNumberUtil;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.ContentProviderOperation;
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.OperationApplicationException;
 import android.database.Cursor;
@@ -37,17 +39,22 @@ import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.CommonDataKinds.StructuredName;
 import android.provider.ContactsContract.Data;
 import android.provider.ContactsContract.RawContacts;
+import android.provider.Settings;
 import android.telephony.MSimTelephonyManager;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.contacts.common.model.account.AccountType;
 import com.android.contacts.common.model.account.SimAccountType;
 import com.android.internal.telephony.IIccPhoneBook;
+import com.android.internal.telephony.MSimConstants;
 import com.android.internal.telephony.msim.IIccPhoneBookMSim;
 
 import java.util.ArrayList;
@@ -70,9 +77,12 @@ public class MoreContactUtils {
     private static final int ANR_POS = 3;
     private static final String PHONEBOOK_MSIM = "simphonebook_msim";
     private static final String PHONEBOOK = "simphonebook";
-    public static final String[] MULTI_SIM_NAME = {
-            "perferred_name_sub1", "preferred_name_sub2"
-    };
+    public static final String[] MULTI_SIM_NAME = { "perferred_name_sub1",
+            "preferred_name_sub2" };
+
+    public static final String[] IPCALL_PREFIX = { "ipcall_prefix_sub1",
+            "ipcall_prefix_sub2" };
+
     /**
      * Returns true if two data with mimetypes which represent values in contact entries are
      * considered equal for collapsing in the GUI. For caller-id, use
@@ -650,6 +660,114 @@ public class MoreContactUtils {
      */
     public static boolean canSaveEmail(int subscription) {
         return getEmailCount(subscription) > 0 ? true : false;
+    }
+
+    /**
+     * Check one SIM card is enabled
+     */
+    public static boolean isMultiSimEnable(int slotId) {
+        MSimTelephonyManager mSimTelManager = getMSimTelephonyManager();
+        if (mSimTelManager.isMultiSimEnabled()) {
+            if (TelephonyManager.SIM_STATE_READY != mSimTelManager
+                    .getSimState(slotId)) {
+                return false;
+            }
+            return true;
+        } else {
+            if (slotId == MSimConstants.SUB1)
+                return true;
+            return false;
+        }
+    }
+
+    public static int getEnabledSimCount() {
+        MSimTelephonyManager mSimTelManager = getMSimTelephonyManager();
+        int mPhoneCount = mSimTelManager.getPhoneCount();
+        int enabledSimCount = 0;
+        for (int i = 0; i < mPhoneCount; i++) {
+            if (TelephonyManager.SIM_STATE_READY == mSimTelManager.getSimState(i)) {
+                enabledSimCount++;
+            }
+        }
+        return enabledSimCount;
+    }
+
+    private static MSimTelephonyManager getMSimTelephonyManager() {
+        return MSimTelephonyManager.getDefault();
+    }
+
+    /**
+     * Get SIM card SPN name, e.g. China Union
+     */
+    public static String getSimSpnName(int subscription) {
+        MSimTelephonyManager mSimTelManager = getMSimTelephonyManager();
+        String simSpnName = "";
+        simSpnName = mSimTelManager.getSimOperatorName(subscription);
+        if (TextUtils.isEmpty(simSpnName)) {
+            // if could not get the operator name, use account name instead of
+            simSpnName = getSimAccountName(subscription);
+        }
+        return simSpnName;
+    }
+
+    /**
+     * Check IP call number existing
+     */
+    public static boolean isIPNumberExist(Context mContext, int subscription) {
+        if (mContext == null) {
+            return false;
+        }
+        String ipCallPrefix = Settings.System.getString(mContext.getContentResolver(),
+                IPCALL_PREFIX[subscription]);
+        if (TextUtils.isEmpty(ipCallPrefix)) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Display IP call setting dialog
+     */
+    public static void showNoIPNumberDialog(final Context mContext, final int subscription) {
+        try {
+            new AlertDialog.Builder(mContext)
+                    .setTitle(R.string.no_ip_number)
+                    .setMessage(R.string.no_ip_number_on_sim_card)
+                    .setPositiveButton(R.string.set_ip_number,
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    setIPNumber(mContext, subscription);
+                                }
+                            }).setNegativeButton(android.R.string.cancel, null).show();
+        } catch (Exception e) {
+        }
+    }
+
+    /**
+     * Setting IP Call number
+     */
+    public static void setIPNumber(final Context mContext, final int subscription) {
+        try {
+            LayoutInflater mInflater = LayoutInflater.from(mContext);
+            View v = mInflater.inflate(R.layout.ip_prefix_dialog, null);
+            final EditText edit = (EditText) v.findViewById(R.id.ip_prefix_dialog_edit);
+            String ip_prefix = Settings.System.getString(mContext.getContentResolver(),
+                    IPCALL_PREFIX[subscription]);
+            edit.setText(ip_prefix);
+
+            new AlertDialog.Builder(mContext).setTitle(R.string.ipcall_dialog_title)
+                    .setIcon(android.R.drawable.ic_dialog_info).setView(v)
+                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            String ip_prefix = edit.getText().toString();
+                            Settings.System.putString(mContext.getContentResolver(),
+                                    IPCALL_PREFIX[subscription], ip_prefix);
+                        }
+                    }).setNegativeButton(android.R.string.cancel, null).show();
+        } catch (Exception e) {
+        }
     }
 
     /** get disabled SIM card's name */

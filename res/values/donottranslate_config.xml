@@ -86,4 +86,7 @@
 
     <!-- Flag indicating whether or not display Internet call when edit contacts-->
     <bool name="hide_voip">false</bool>
+
+    <!-- Flag indicating btn style,true means two btn,false means one btn-->
+    <bool name="btn_style">true</bool>
 </resources>
