@@ -28,6 +28,7 @@ import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.Directory;
 import android.provider.ContactsContract.RawContacts;
 import android.provider.ContactsContract.SearchSnippetColumns;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.View;
 
@@ -48,6 +49,8 @@ public class DefaultContactListAdapter extends ContactListAdapter {
     public static final char SNIPPET_END_MATCH = '\u0001';
     public static final String SNIPPET_ELLIPSIS = "\u2026";
     public static final int SNIPPET_MAX_TOKENS = 5;
+    public static final int AIRPLANE_MODE_ON_VALUE = 1;
+    public static final int AIRPLANE_MODE_OFF_VALUE = 0;
     public static final String WITHOUT_SIM_FLAG = "no_sim";
 
     public static final String SNIPPET_ARGS = SNIPPET_START_MATCH + "," + SNIPPET_END_MATCH + ","
@@ -107,7 +110,13 @@ public class DefaultContactListAdapter extends ContactListAdapter {
                 loader.setProjection(getProjection(true));
             }
 
-            if (filter.filterType == ContactListFilter.FILTER_TYPE_ALL_WITHOUT_SIM) {
+            // Do not show contacts in SIM card when airplane mode is on
+            boolean isAirMode = Settings.System.getInt(
+                    getContext().getContentResolver(),Settings.Global.AIRPLANE_MODE_ON,
+                            AIRPLANE_MODE_OFF_VALUE) == AIRPLANE_MODE_ON_VALUE;
+
+            if ((null != filter && filter.filterType ==
+                    ContactListFilter.FILTER_TYPE_ALL_WITHOUT_SIM) || isAirMode) {
                 appendUriQueryParameterWithoutSim(loader, RawContacts.ACCOUNT_TYPE,
                         SimAccountType.ACCOUNT_TYPE);
             } else {
@@ -179,10 +188,16 @@ public class DefaultContactListAdapter extends ContactListAdapter {
         StringBuilder selection = new StringBuilder();
         List<String> selectionArgs = new ArrayList<String>();
 
+        boolean isAirMode = Settings.System.getInt(
+                getContext().getContentResolver(),Settings.Global.AIRPLANE_MODE_ON,
+                AIRPLANE_MODE_OFF_VALUE) == AIRPLANE_MODE_ON_VALUE;
         String disabledSimFilter = MoreContactUtils.getDisabledSimFilter();
-        if (!TextUtils.isEmpty(disabledSimFilter)) {
-            appendUriQueryParameterWithoutSim(
-                    loader, RawContacts.ACCOUNT_NAME, disabledSimFilter);
+        if (isAirMode) {
+            appendUriQueryParameterWithoutSim(loader, RawContacts.ACCOUNT_TYPE,
+                    SimAccountType.ACCOUNT_TYPE);
+        } else if (!TextUtils.isEmpty(disabledSimFilter)) {
+            appendUriQueryParameterWithoutSim(loader, RawContacts.ACCOUNT_NAME,
+                    disabledSimFilter);
         }
         switch (filter.filterType) {
             case ContactListFilter.FILTER_TYPE_ALL_ACCOUNTS: {
