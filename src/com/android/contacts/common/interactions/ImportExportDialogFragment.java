@@ -671,7 +671,12 @@ public class ImportExportDialogFragment extends DialogFragment
 
             boolean canSaveAnr = MoreContactUtils.canSaveAnr(subscription);
             boolean canSaveEmail = MoreContactUtils.canSaveEmail(subscription);
+            int emptyAnr = MoreContactUtils.getSpareAnrCount(subscription);
+            int emptyEmail = MoreContactUtils
+                    .getSpareEmailCount(subscription);
+            int emptyNumber = freeSimCount + emptyAnr;
 
+            Log.d(TAG, "freeSimCount = " + freeSimCount);
             String emails = null;
             if (type == TYPE_SELECT) {
                 if (contactList != null) {
@@ -697,7 +702,7 @@ public class ImportExportDialogFragment extends DialogFragment
                                 String mimeType = c.getString(1);
                                 if (Phone.CONTENT_ITEM_TYPE.equals(mimeType)) {
                                     String number = c.getString(2);
-                                    if (!TextUtils.isEmpty(number)) {
+                                    if (!TextUtils.isEmpty(number) && emptyNumber-- >0) {
                                         arrayNumber.add(number);
                                     }
                                 } else if (StructuredName.CONTENT_ITEM_TYPE.equals(mimeType)) {
@@ -706,7 +711,7 @@ public class ImportExportDialogFragment extends DialogFragment
                                 if (canSaveEmail) {
                                     if (Email.CONTENT_ITEM_TYPE.equals(mimeType)) {
                                         String email = c.getString(2);
-                                        if (!TextUtils.isEmpty(email)) {
+                                        if (!TextUtils.isEmpty(email) && emptyEmail-- > 0) {
                                             arrayEmail.add(email);
                                         }
                                     }
@@ -732,7 +737,10 @@ public class ImportExportDialogFragment extends DialogFragment
                                 (arrayNumber.size() / phoneCountInOneSimContact + 1)
                                 : (arrayNumber.size() / phoneCountInOneSimContact);
                         int groupEmailCount = arrayEmail.size();
-
+                        //recalute the group when spare anr is not enough
+                        if (canSaveAnr && emptyAnr <= groupNumCount) {
+                            groupNumCount = arrayNumber.size() - emptyAnr;
+                        }
                         int groupCount = Math.max(groupEmailCount,
                                 Math.max(nameCount, groupNumCount));
 
@@ -745,7 +753,7 @@ public class ImportExportDialogFragment extends DialogFragment
                                 String num = arrayNumber.size() > 0 ? arrayNumber.remove(0) : null;
                                 String anrNum = null;
                                 String email = null;
-                                if (canSaveAnr) {
+                                if (canSaveAnr && emptyAnr-- >0) {
                                     anrNum = arrayNumber.size() > 0 ? arrayNumber.remove(0) : null;
                                 }
                                 if (canSaveEmail) {
