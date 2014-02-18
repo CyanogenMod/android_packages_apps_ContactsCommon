@@ -80,8 +80,8 @@ public class MoreContactUtils {
     public static final String[] MULTI_SIM_NAME = { "perferred_name_sub1",
             "preferred_name_sub2" };
 
-    public static final String[] IPCALL_PREFIX = { "ipcall_prefix_sub1",
-            "ipcall_prefix_sub2" };
+    public static final String[] IPCALL_PREFIX = { "ip_call_prefix_sub1",
+            "ip_call_prefix_sub2" };
 
     /**
      * Returns true if two data with mimetypes which represent values in contact entries are
