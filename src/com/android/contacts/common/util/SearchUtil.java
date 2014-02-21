@@ -106,7 +106,7 @@ public class SearchUtil {
             i += Character.charCount(codePoint);
         }
 
-        for (int i = 0; i < value.length(); i = findNextTokenStart(value, i)) {
+        for (int i = 0; i < value.length(); i++) {
             int numMatch = 0;
             for (int j = i; j < value.length() && numMatch < substringLength; ++numMatch) {
                 int valueCp = Character.toLowerCase(value.codePointAt(j));
