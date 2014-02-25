@@ -192,10 +192,13 @@ public class DefaultContactListAdapter extends ContactListAdapter {
                 getContext().getContentResolver(),Settings.Global.AIRPLANE_MODE_ON,
                 AIRPLANE_MODE_OFF_VALUE) == AIRPLANE_MODE_ON_VALUE;
         String disabledSimFilter = MoreContactUtils.getDisabledSimFilter();
+        // In the case that the filter type is "account type", we should not append without sim
+        // parameter to the query uri.
+        boolean isNeedSimFilter = !(filter.filterType == ContactListFilter.FILTER_TYPE_ACCOUNT);
         if (isAirMode) {
             appendUriQueryParameterWithoutSim(loader, RawContacts.ACCOUNT_TYPE,
                     SimAccountType.ACCOUNT_TYPE);
-        } else if (!TextUtils.isEmpty(disabledSimFilter)) {
+        } else if (isNeedSimFilter && !TextUtils.isEmpty(disabledSimFilter)) {
             appendUriQueryParameterWithoutSim(loader, RawContacts.ACCOUNT_NAME,
                     disabledSimFilter);
         }
