@@ -226,7 +226,7 @@ public class SimContactsOperation {
             mValues.put(SimContactsConstants.STR_NUMBER,number);
 
             int sub = getSimSubscription(contactId);
-            /* wait for anr and email ready
+
             if (MoreContactUtils.canSaveAnr(sub)) {
                 String anrs = getContactPhoneNumber(rawContactId,
                         Phone.CONTENT_ITEM_TYPE, String.valueOf(Phone.TYPE_HOME),
@@ -238,7 +238,7 @@ public class SimContactsOperation {
                 String emails = getContactItems(rawContactId,
                         Email.CONTENT_ITEM_TYPE, ContactsContract.CommonDataKinds.Email.DATA);
                 mValues.put(SimContactsConstants.STR_EMAILS, emails);
-            } */
+            }
         } 
         return mValues;
     }
