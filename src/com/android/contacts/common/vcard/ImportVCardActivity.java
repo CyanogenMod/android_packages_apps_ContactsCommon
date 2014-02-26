@@ -48,6 +48,7 @@ import android.widget.Toast;
 import com.android.contacts.common.R;
 import com.android.contacts.common.model.AccountTypeManager;
 import com.android.contacts.common.model.account.AccountWithDataSet;
+import com.android.contacts.common.MoreContactUtils;
 import com.android.contacts.common.util.AccountSelectionUtil;
 import com.android.vcard.VCardEntryCounter;
 import com.android.vcard.VCardParser;
@@ -137,6 +138,7 @@ public class ImportVCardActivity extends Activity {
     /* package */ VCardImportExportListener mListener;
 
     private String mErrorMessage;
+    private int mSelectedStorage = VCardService.INTERNAL_PATH;
 
     private Handler mHandler = new Handler();
 
@@ -918,7 +920,52 @@ public class ImportVCardActivity extends Activity {
             importVCard(uri);
         } else {
             Log.i(LOG_TAG, "Start vCard without Uri. The user will select vCard manually.");
+            checkStorage();
+        }
+    }
+
+    private void checkStorage() {
+        boolean sdExist = MoreContactUtils.sdCardExist(this);
+        boolean inExist = Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
+        if (sdExist && inExist) {
+            CharSequence[] storage_list = new CharSequence[2];
+            storage_list[VCardService.INTERNAL_PATH] = Environment.getExternalStorageDirectory()
+                    .getPath();
+            storage_list[VCardService.EXTERNAL_PATH] = MoreContactUtils.getSDPath(this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(R.string.select_path);
+            builder.setSingleChoiceItems(storage_list, -1, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Log.d(LOG_TAG, "onClicked Dialog on which = " + which);
+                    mSelectedStorage = which;
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.ok),
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            doScanExternalStorageAndImportVCard();
+                        }
+                    });
+            dialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.cancel),
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            mSelectedStorage = VCardService.INVALID_PATH;
+                        }
+                    });
+            dialog.show();
+        } else if (inExist) {
+            mSelectedStorage = VCardService.INTERNAL_PATH;
             doScanExternalStorageAndImportVCard();
+        } else if (sdExist) {
+            mSelectedStorage = VCardService.EXTERNAL_PATH;
+            doScanExternalStorageAndImportVCard();
+        } else {
+            mSelectedStorage = VCardService.INVALID_PATH;
         }
     }
 
@@ -1016,6 +1063,7 @@ public class ImportVCardActivity extends Activity {
         Log.i(LOG_TAG, "Bind to VCardService.");
         // We don't want the service finishes itself just after this connection.
         Intent intent = new Intent(this, VCardService.class);
+        intent.putExtra(VCardService.STORAGE_PATH,mSelectedStorage);
         startService(intent);
         bindService(new Intent(this, VCardService.class),
                 mConnection, Context.BIND_AUTO_CREATE);
@@ -1044,7 +1092,21 @@ public class ImportVCardActivity extends Activity {
      */
     private void doScanExternalStorageAndImportVCard() {
         // TODO: should use getExternalStorageState().
-        final File file = Environment.getExternalStorageDirectory();
+        Log.i(LOG_TAG,"Import Vcard from path:"+ mSelectedStorage);
+        if(mSelectedStorage == VCardService.INVALID_PATH)
+            return;
+        File file;
+        switch(mSelectedStorage) {
+            case VCardService.INTERNAL_PATH:
+               file = Environment.getExternalStorageDirectory();
+               break;
+            case VCardService.EXTERNAL_PATH:
+               file = new File(MoreContactUtils.getSDPath(this));
+               break;
+            default:
+               file = Environment.getExternalStorageDirectory();
+                break;
+            }
         if (!file.exists() || !file.isDirectory() || !file.canRead()) {
             showDialog(R.id.dialog_sdcard_not_found);
         } else {
