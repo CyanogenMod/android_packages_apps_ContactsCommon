@@ -81,7 +81,7 @@ public class MoreContactUtils {
     private static final String PHONEBOOK_MSIM = "simphonebook_msim";
     private static final String PHONEBOOK = "simphonebook";
     public static final String[] MULTI_SIM_NAME = { "perferred_name_sub1",
-            "preferred_name_sub2" };
+            "perferred_name_sub2" };
 
     public static final String[] IPCALL_PREFIX = { "ip_call_prefix_sub1",
             "ip_call_prefix_sub2" };
