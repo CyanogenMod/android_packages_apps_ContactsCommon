@@ -20,11 +20,17 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.AsyncTaskLoader;
+import android.content.ContentProviderOperation;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.database.Cursor;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -172,10 +178,115 @@ public class AccountFilterActivity extends Activity implements AdapterView.OnIte
                     CustomContactListFilterActivity.class);
             startActivityForResult(intent, SUBACTIVITY_CUSTOMIZE_FILTER);
         } else {
+            updateAccountVisibleByContactListFilter(filter);
             final Intent intent = new Intent();
             intent.putExtra(KEY_EXTRA_CONTACT_LIST_FILTER, filter);
             setResult(Activity.RESULT_OK, intent);
             finish();
+        }
+    }
+
+    private void updateAccountVisibleByContactListFilter(final ContactListFilter filter) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ContentResolver resolver = getContentResolver();
+                if (filter.filterType == ContactListFilter.FILTER_TYPE_ACCOUNT) {
+                    updateAccountVisible(resolver, filter.accountName, filter.accountType,
+                            filter.dataSet);
+                } else if (filter.filterType == ContactListFilter.FILTER_TYPE_ALL_ACCOUNTS) {
+                    final ContentValues values = new ContentValues();
+                    values.put(ContactsContract.Settings.UNGROUPED_VISIBLE, 1);
+                    try {
+                        resolver.update(ContactsContract.Settings.CONTENT_URI, values, null, null);
+                    } catch (Exception e) {
+                        Log.e(TAG, "e=" + e.toString());
+                    }
+                }
+            }
+        }).start();
+
+    }
+
+    /**
+     * Updating the account is visible When an account exists.
+     *
+     * @param resolver
+     * @param accountName
+     * @param accountType
+     * @param accountDataSet
+     */
+    private static void updateAccountVisible(ContentResolver resolver, String accountName,
+            String accountType, String accountDataSet) {
+        final Uri settingsUri = ContactsContract.Settings.CONTENT_URI.buildUpon()
+                .appendQueryParameter(ContactsContract.Settings.ACCOUNT_NAME, accountName)
+                .appendQueryParameter(ContactsContract.Settings.ACCOUNT_TYPE, accountType)
+                .appendQueryParameter(ContactsContract.Settings.DATA_SET, accountDataSet).build();
+        final Cursor cursor = resolver.query(settingsUri, new String[] {
+                ContactsContract.Settings.SHOULD_SYNC, ContactsContract.Settings.UNGROUPED_VISIBLE
+        }, null, null, null);
+
+        if (null != cursor) {
+            final ContentValues values = new ContentValues();
+            final ArrayList<ContentProviderOperation> operationList
+                    = new ArrayList<ContentProviderOperation>();
+
+            if (0 == cursor.getCount()) {
+                // this account has values in setting table.
+                values.put(ContactsContract.Settings.ACCOUNT_NAME, accountName);
+                values.put(ContactsContract.Settings.ACCOUNT_TYPE, accountType);
+                values.put(ContactsContract.Settings.DATA_SET, accountDataSet);
+                values.put(ContactsContract.Settings.UNGROUPED_VISIBLE, 1);
+                final ContentProviderOperation.Builder builder = ContentProviderOperation
+                        .newInsert(ContactsContract.Settings.CONTENT_URI);
+                builder.withValues(values);
+                operationList.add(builder.build());
+            } else {
+                // this account has values in setting table.
+                values.put(ContactsContract.Settings.UNGROUPED_VISIBLE, 1);
+                final ContentProviderOperation.Builder builder = ContentProviderOperation
+                        .newUpdate(ContactsContract.Settings.CONTENT_URI);
+                builder.withValues(values);
+                builder.withSelection(ContactsContract.Settings.ACCOUNT_NAME + " =? AND "
+                        + ContactsContract.Settings.ACCOUNT_TYPE + " =? AND "
+                        + ContactsContract.Settings.DATA_SET + " =?", new String[] {
+                        accountName, accountName, accountDataSet
+                });
+                operationList.add(builder.build());
+            }
+
+            // update other account's visible to false
+            final ContentValues otherValues = new ContentValues();
+            otherValues.put(ContactsContract.Settings.UNGROUPED_VISIBLE, 0);
+            final ContentProviderOperation.Builder otherBuilder = ContentProviderOperation
+                    .newUpdate(ContactsContract.Settings.CONTENT_URI);
+            otherBuilder.withValues(otherValues);
+
+            String selection = ContactsContract.Settings.ACCOUNT_NAME
+                    + (accountName == null ? " IS NULL" : " <>?") + " AND "
+                    + ContactsContract.Settings.ACCOUNT_TYPE
+                    + (accountType == null ? " IS NULL" : " <>?") + " AND "
+                    + ContactsContract.Settings.DATA_SET
+                    + (accountDataSet == null ? " IS NULL" : " <>?");
+
+            ArrayList<String> args = new ArrayList<String>(3);
+            if (accountName != null)
+                args.add(accountName);
+            if (accountType != null)
+                args.add(accountType);
+            if (accountDataSet != null)
+                args.add(accountDataSet);
+            String[] selectionArgs = (String[]) args.toArray(new String[args.size()]);
+
+            otherBuilder.withSelection(selection, selectionArgs);
+            operationList.add(otherBuilder.build());
+
+            try {
+                resolver.applyBatch(ContactsContract.AUTHORITY, operationList);
+            } catch (Exception e) {
+                Log.e(TAG, "e=" + e.toString());
+            }
+            cursor.close();
         }
     }
 
