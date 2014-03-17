@@ -57,7 +57,7 @@ public class SimAccountType extends BaseAccountType{
 
     public SimAccountType(Context context, String resPackageName) {
         this.accountType = ACCOUNT_TYPE;
-        this.resourcePackageName = resPackageName;
+        this.resourcePackageName = null;
         this.syncAdapterPackageName = resPackageName;
         this.titleRes = R.string.account_sim;
         this.iconRes = R.drawable.ic_launcher_contacts;
