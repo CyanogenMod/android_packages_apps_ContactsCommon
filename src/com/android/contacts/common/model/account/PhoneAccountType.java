@@ -74,7 +74,8 @@ public class PhoneAccountType extends BaseAccountType{
             addDataKindWebsite(context);
             //addDataKindGroupMembership(context);
             addDataKindLocalGroups(context);
-            if (!context.getResources().getBoolean(R.bool.hide_voip)) {
+            if (context.getResources().getBoolean(
+                    com.android.internal.R.bool.config_built_in_sip_phone)) {
                 addDataKindSipAddress(context);
             }
             mIsInitialized = true;
