@@ -826,4 +826,36 @@ public class MoreContactUtils {
             return SimContactsConstants.SIM_NAME;
         }
     }
+
+    /**
+     * Get SIM card subscription from account name
+     */
+    public static int getSubFromAccountName(String accountName) {
+        MSimTelephonyManager stm = getMSimTelephonyManager();
+        if (stm.isMultiSimEnabled()) {
+            int phonecount = stm.getPhoneCount();
+            for (int i = 0; i < phonecount; i++) {
+                if (getSimAccountName(i).equals(accountName)) {
+                    return i;
+                }
+            }
+        }
+        return MSimConstants.DEFAULT_SUBSCRIPTION;
+    }
+
+    /**
+     * Get SIM card aliases name, which defined in Settings
+     */
+    public static String getMultiSimAliasesName(Context context, int subscription) {
+        if (context == null) {
+            return null;
+        }
+        String name = "";
+        name = Settings.System.getString(context.getContentResolver(),
+                MULTI_SIM_NAME[subscription]);
+        if (TextUtils.isEmpty(name)) {
+            name = getSimAccountName(subscription);
+        }
+        return name;
+    }
 }

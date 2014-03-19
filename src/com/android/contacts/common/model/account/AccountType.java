@@ -32,6 +32,7 @@ import android.util.Log;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 
+import com.android.contacts.common.MoreContactUtils;
 import com.android.contacts.common.R;
 import com.android.contacts.common.model.dataitem.DataKind;
 import com.google.common.annotations.VisibleForTesting;
@@ -320,6 +321,14 @@ public abstract class AccountType {
             }
         }
         return label;
+    }
+
+    public CharSequence getDisplayLabel(Context context, String accountName) {
+        if ((SimAccountType.ACCOUNT_TYPE).equals(accountType)) {
+            int sub = MoreContactUtils.getSubFromAccountName(accountName);
+            return MoreContactUtils.getMultiSimAliasesName(context, sub);
+        }
+        return getDisplayLabel(context);
     }
 
     /**
