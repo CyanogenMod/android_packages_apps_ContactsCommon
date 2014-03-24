@@ -38,6 +38,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.provider.OpenableColumns;
+import android.provider.Telephony.Mms.Part;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -324,18 +325,24 @@ public class ImportVCardActivity extends Activity {
 
                         String displayName = null;
                         Cursor cursor = null;
+                        String projection = null;
                         // Try to get a display name from the given Uri. If it fails, we just
                         // pick up the last part of the Uri.
+                        if (sourceUri.getAuthority().startsWith("mms")) {
+                            // to deal with the vcard received from mms.
+                            projection = Part.NAME;
+                        } else {
+                            projection = OpenableColumns.DISPLAY_NAME;
+                        }
                         try {
-                            cursor = resolver.query(sourceUri,
-                                    new String[] { OpenableColumns.DISPLAY_NAME },
+                            cursor = resolver.query(sourceUri, new String[] { projection },
                                     null, null, null);
                             if (cursor != null && cursor.getCount() > 0 && cursor.moveToFirst()) {
                                 if (cursor.getCount() > 1) {
                                     Log.w(LOG_TAG, "Unexpected multiple rows: "
                                             + cursor.getCount());
                                 }
-                                int index = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+                                int index = cursor.getColumnIndex(projection);
                                 if (index >= 0) {
                                     displayName = cursor.getString(index);
                                 }
