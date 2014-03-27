@@ -950,6 +950,12 @@ public class ImportVCardActivity extends Activity {
             });
 
             AlertDialog dialog = builder.create();
+            dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+                    finish();
+                }
+            });
             dialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(android.R.string.ok),
                     new DialogInterface.OnClickListener() {
                         @Override
