@@ -718,7 +718,6 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
         mAdapter.setSearchMode(searchMode);
         mAdapter.configureDefaultPartition(false, searchMode);
         mAdapter.setPhotoLoader(mPhotoManager);
-        mListView.setAdapter(mAdapter);
 
         if (!isSearchMode()) {
             mListView.setFocusableInTouchMode(true);
@@ -738,6 +737,7 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
                     "'android.R.id.list'");
         }
 
+        mListView.setAdapter(mAdapter);
         View emptyView = mView.findViewById(android.R.id.empty);
         if (emptyView != null) {
             mListView.setEmptyView(emptyView);
