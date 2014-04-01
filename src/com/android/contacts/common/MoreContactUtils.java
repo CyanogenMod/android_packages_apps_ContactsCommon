@@ -668,11 +668,13 @@ public class MoreContactUtils {
     /**
      * Check one SIM card is enabled
      */
-    public static boolean isMultiSimEnable(int slotId) {
+    public static boolean isMultiSimEnable(Context context, int slotId) {
         MSimTelephonyManager mSimTelManager = getMSimTelephonyManager();
         if (mSimTelManager.isMultiSimEnabled()) {
-            if (TelephonyManager.SIM_STATE_READY != mSimTelManager
-                    .getSimState(slotId)) {
+            if (Settings.System.getInt(context.getContentResolver(),
+                    Settings.System.AIRPLANE_MODE_ON, 0) != 0
+                    || TelephonyManager.SIM_STATE_READY != mSimTelManager
+                            .getSimState(slotId)) {
                 return false;
             }
             return true;
