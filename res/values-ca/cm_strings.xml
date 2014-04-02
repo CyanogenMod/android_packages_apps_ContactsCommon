@@ -16,6 +16,6 @@
      limitations under the License.
 -->
 <resources>
-  <string name="local_storage_account" product="tablet">Τοπικός λογαριασμός tablet</string>
-  <string name="local_storage_account" product="default">Τοπικός λογαριασμός τηλεφώνου</string>
+  <string name="local_storage_account" product="tablet">Compte local de la tauleta</string>
+  <string name="local_storage_account" product="default">Compte local del telèfon</string>
 </resources>
