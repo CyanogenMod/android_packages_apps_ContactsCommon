@@ -111,9 +111,7 @@ public class DefaultContactListAdapter extends ContactListAdapter {
             }
 
             // Do not show contacts in SIM card when airplane mode is on
-            boolean isAirMode = Settings.System.getInt(
-                    getContext().getContentResolver(),Settings.Global.AIRPLANE_MODE_ON,
-                            AIRPLANE_MODE_OFF_VALUE) == AIRPLANE_MODE_ON_VALUE;
+            boolean isAirMode = MoreContactUtils.isAPMOnAndSIMPowerDown(getContext());
 
             if ((null != filter && filter.filterType ==
                     ContactListFilter.FILTER_TYPE_ALL_WITHOUT_SIM) || isAirMode) {
@@ -188,9 +186,7 @@ public class DefaultContactListAdapter extends ContactListAdapter {
         StringBuilder selection = new StringBuilder();
         List<String> selectionArgs = new ArrayList<String>();
 
-        boolean isAirMode = Settings.System.getInt(
-                getContext().getContentResolver(),Settings.Global.AIRPLANE_MODE_ON,
-                AIRPLANE_MODE_OFF_VALUE) == AIRPLANE_MODE_ON_VALUE;
+        boolean isAirMode = MoreContactUtils.isAPMOnAndSIMPowerDown(getContext());
         String disabledSimFilter = MoreContactUtils.getDisabledSimFilter();
 
         switch (filter.filterType) {
