@@ -772,8 +772,8 @@ public class ImportExportDialogFragment extends DialogFragment
                                         mToastHandler.sendEmptyMessage(TOAST_SIM_CARD_FULL);
                                         break;
                                     } else {
-                                        isAirplaneMode = (System.getInt(mPeople.getContentResolver(),
-                                                Settings.Global.AIRPLANE_MODE_ON, 0) != 0);
+                                        isAirplaneMode = MoreContactUtils
+                                                .isAPMOnAndSIMPowerDown(mPeople);
                                         if (isAirplaneMode) {
                                             mToastHandler.sendEmptyMessage(TOAST_EXPORT_FAILED);
                                             break;

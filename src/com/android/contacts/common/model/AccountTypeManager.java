@@ -596,8 +596,7 @@ class AccountTypeManagerImpl extends AccountTypeManager
     public List<AccountWithDataSet> getAccounts(boolean contactWritableOnly,
             int flag) {
         ensureAccountsLoaded();
-        boolean isAirMode = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.AIRPLANE_MODE_ON, 0) == 1;
+        boolean isAirMode = MoreContactUtils.isAPMOnAndSIMPowerDown(mContext);
         switch (flag) {
             case FLAG_ALL_ACCOUNTS:
                 return trimAccountByType(
