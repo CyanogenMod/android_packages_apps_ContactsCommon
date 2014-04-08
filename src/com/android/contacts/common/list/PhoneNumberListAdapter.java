@@ -183,9 +183,8 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
             // Do not show contacts in disabled SIM card
             String disabledSimFilter = MoreContactUtils.getDisabledSimFilter();
             if (!TextUtils.isEmpty(disabledSimFilter)) {
-                builder.appendQueryParameter(RawContacts.ACCOUNT_NAME, disabledSimFilter);
-                builder.appendQueryParameter(DefaultContactListAdapter
-                        .WITHOUT_SIM_FLAG, "true");
+                String disabledSimName = getDisabledSimNumber(disabledSimFilter);
+                loader.setSelection(RawContacts.ACCOUNT_NAME+ "<>" + disabledSimName);
             }
             loader.setUri(builder.build());
 
@@ -539,5 +538,22 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
                         String.valueOf(directoryId))
                 .encodedFragment(cursor.getString(lookUpKeyColumn))
                 .build();
+    }
+
+    private String getDisabledSimNumber(String disabledSimFilter){
+        String[] disabledSimArray = disabledSimFilter.split(",");//it will never be null
+        String disabledSimName = "";
+        for (int i = 0; i < disabledSimArray.length; i++) {
+            if (i < disabledSimArray.length -1) {
+                //If disabledSimArray[i] is not the last one of the array,
+                //add "or" after every member of the array.
+                disabledSimName = disabledSimName + "'" + disabledSimArray[i] + "'" + "or";
+            } else {
+                //If disabledSimArray[i] is the last one of the array,
+                //should not add anything after it.
+                disabledSimName = disabledSimName + "'" + disabledSimArray[i] + "'";
+            }
+        }
+        return disabledSimName;
     }
 }
