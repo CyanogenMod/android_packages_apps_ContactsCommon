@@ -16,6 +16,6 @@
      limitations under the License.
 -->
 <resources>
-  <string name="local_storage_account" product="tablet">Conta local de tablet</string>
-  <string name="local_storage_account" product="default">Conta local de telefone</string>
+  <string name="local_storage_account" product="tablet">本地平板电脑帐户</string>
+  <string name="local_storage_account" product="default">本地手机帐户</string>
 </resources>
