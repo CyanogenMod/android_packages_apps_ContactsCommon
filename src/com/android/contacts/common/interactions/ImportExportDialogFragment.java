@@ -722,7 +722,8 @@ public class ImportExportDialogFragment extends DialogFragment
                             c.close();
                         }
 
-                        if (0 == arrayNumber.size() && 0 == arrayEmail.size()) {
+                        if (freeSimCount > 0 && 0 == arrayNumber.size()
+                                && 0 == arrayEmail.size()) {
                             mToastHandler.sendMessage(mToastHandler.obtainMessage(
                                     TOAST_EXPORT_NO_PHONE_OR_EMAIL, name));
                             continue;
