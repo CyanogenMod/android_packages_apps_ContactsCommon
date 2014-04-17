@@ -822,7 +822,7 @@ public class MoreContactUtils {
         StorageVolume[] volumes = mStorageManager.getVolumeList();
         for (int i = 0; i < volumes.length; i++) {
             if (volumes[i].isRemovable() && volumes[i].allowMassStorage()
-                    && !volumes[i].isPrimary()) {
+                    && volumes[i].getDescription(context).contains("SD")) {
                 sd = volumes[i].getPath();
             }
         }
