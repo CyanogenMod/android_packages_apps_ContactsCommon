@@ -127,7 +127,7 @@ public class NotificationImportExportListener implements VCardImportExportListen
         }
         final Notification notification =
                 NotificationImportExportListener.constructFinishNotification(mContext,
-                description, null, intent);
+                        VCardService.TYPE_IMPORT, description, null, intent);
         mNotificationManager.notify(NotificationImportExportListener.DEFAULT_NOTIFICATION_TAG,
                 jobId, notification);
     }
@@ -254,10 +254,12 @@ public class NotificationImportExportListener implements VCardImportExportListen
      * @param intent Intent to be launched when the Notification is clicked. Can be null.
      */
     /* package */ static Notification constructFinishNotification(
-            Context context, String title, String description, Intent intent) {
+            Context context, int type, String title, String description, Intent intent) {
         return new Notification.Builder(context)
                 .setAutoCancel(true)
-                .setSmallIcon(android.R.drawable.stat_sys_download_done)
+                .setSmallIcon(type == VCardService.TYPE_IMPORT
+                        ? android.R.drawable.stat_sys_download_done
+                        : android.R.drawable.stat_sys_upload_done)
                 .setContentTitle(title)
                 .setContentText(description)
                 .setContentIntent(PendingIntent.getActivity(context, 0,
