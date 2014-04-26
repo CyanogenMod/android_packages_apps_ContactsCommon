@@ -864,8 +864,11 @@ public class MoreContactUtils {
             return null;
         }
         String name = "";
-        name = Settings.System.getString(context.getContentResolver(),
-                MULTI_SIM_NAME[subscription]);
+        MSimTelephonyManager stm = getMSimTelephonyManager();
+        if (stm.isMultiSimEnabled()) {
+            name = Settings.System.getString(context.getContentResolver(),
+                    MULTI_SIM_NAME[subscription]);
+        }
         if (TextUtils.isEmpty(name)) {
             name = getSimAccountName(subscription);
         }
