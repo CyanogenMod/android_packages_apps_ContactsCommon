@@ -631,6 +631,10 @@ class AccountTypeManagerImpl extends AccountTypeManager
         if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
             if (account.name.equals(SimContactsConstants.SIM_NAME))
                 return true;
+        } else {
+            if (!account.name.equals(SimContactsConstants.SIM_NAME)) {
+                return true;
+            }
         }
         return false;
     }
