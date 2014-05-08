@@ -304,16 +304,14 @@ public class ImportExportDialogFragment extends DialogFragment
             mAdapter.add(R.string.import_from_sdcard);
         }
 
-        boolean hasContact = hasContacts();
-
-        if (hasIccCard && hasContact) {
+        if (hasIccCard) {
             mAdapter.add(R.string.export_to_sim);
         }
         if (res.getBoolean(R.bool.config_allow_export_to_sdcard)) {
             // If contacts are available and there is at least one contact in
             // database, show "Export to SD card" menu item. Otherwise hide it
             // because it makes no sense.
-            if (contactsAreAvailable && hasContact) {
+            if (contactsAreAvailable) {
                 mAdapter.add(R.string.export_to_sdcard);
             }
         }
@@ -322,24 +320,6 @@ public class ImportExportDialogFragment extends DialogFragment
                 mAdapter.add(R.string.share_visible_contacts);
             }
         }
-    }
-
-    // Judge if there is contacts in database, if has return true, otherwise
-    // return false.
-    private boolean hasContacts() {
-        boolean hasContacts = false;
-        if (null != mActiv) {
-            Cursor cursor = mActiv.getContentResolver().query(Contacts.CONTENT_URI, new String[] {
-                Contacts._ID }, null, null, null);
-            if (null != cursor) {
-                try {
-                    hasContacts = cursor.getCount() > 0;
-                } finally {
-                    cursor.close();
-                }
-            }
-        }
-        return hasContacts;
     }
 
     private void doShareVisibleContacts() {
