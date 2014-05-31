@@ -33,6 +33,7 @@ import android.os.Messenger;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.android.contacts.common.MoreContactUtils;
 import com.android.contacts.common.R;
 
 import java.io.File;
@@ -171,6 +172,11 @@ public class ExportVCardActivity extends Activity implements ServiceConnection,
                 .getString(VCardCommonArguments.ARG_CALLING_ACTIVITY);
         Intent intent = new Intent(this, VCardService.class);
         intent.putExtra(VCardCommonArguments.ARG_CALLING_ACTIVITY, callingActivity);
+        if (MoreContactUtils.sdCardExist(this)) {
+            intent.putExtra(VCardService.STORAGE_PATH,VCardService.EXTERNAL_PATH);
+        } else {
+            intent.putExtra(VCardService.STORAGE_PATH,VCardService.INTERNAL_PATH);
+        }
 
         if (startService(intent) == null) {
             Log.e(LOG_TAG, "Failed to start vCard service");
