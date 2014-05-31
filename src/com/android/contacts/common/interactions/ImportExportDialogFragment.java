@@ -97,6 +97,12 @@ public class ImportExportDialogFragment extends DialogFragment
     private static int mSelectedSim = SimContactsConstants.SUB_INVALID;
 
     public static final int SUBACTIVITY_EXPORT_CONTACTS = 100;
+
+    // This values must be consistent with ImportExportDialogFragment.SUBACTIVITY_EXPORT_CONTACTS.
+    // This values is set 101,That is avoid to conflict with other new subactivity.
+    public static final int SUBACTIVITY_SHARE_VISILBLE_CONTACTS = 101;
+    public static final int MAX_COUNT_ALLOW_SHARE_CONTACT = 2000;
+
     private final String[] LOOKUP_PROJECTION = new String[] {
             Contacts.LOOKUP_KEY
     };
@@ -323,36 +329,14 @@ public class ImportExportDialogFragment extends DialogFragment
     }
 
     private void doShareVisibleContacts() {
-        // TODO move the query into a loader and do this in a background thread
-        final Cursor cursor = getActivity().getContentResolver().query(Contacts.CONTENT_URI,
-                LOOKUP_PROJECTION, Contacts.IN_VISIBLE_GROUP + "!=0", null, null);
-        if (cursor != null) {
-            try {
-                if (!cursor.moveToFirst()) {
-                    Toast.makeText(getActivity(), R.string.share_error, Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                StringBuilder uriListBuilder = new StringBuilder();
-                int index = 0;
-                do {
-                    if (index != 0)
-                        uriListBuilder.append(':');
-                    uriListBuilder.append(cursor.getString(0));
-                    index++;
-                } while (cursor.moveToNext());
-                Uri uri = Uri.withAppendedPath(
-                        Contacts.CONTENT_MULTI_VCARD_URI,
-                        Uri.encode(uriListBuilder.toString()));
-
-                final Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType(Contacts.CONTENT_VCARD_TYPE);
-                intent.putExtra(Intent.EXTRA_STREAM, uri);
-                getActivity().startActivity(intent);
-            } finally {
-                cursor.close();
-            }
-        }
+        Intent intent = new Intent(ACTION_MULTI_PICK);
+        intent.setType(Contacts.CONTENT_TYPE);
+        ContactListFilter filter = new ContactListFilter(
+                ContactListFilter.FILTER_TYPE_CUSTOM, null, null, null, null);
+        intent.putExtra(AccountFilterActivity.KEY_EXTRA_CONTACT_LIST_FILTER,
+                filter);
+        intent.putExtra(IS_CONTACT,true);
+        getActivity().startActivityForResult(intent, SUBACTIVITY_SHARE_VISILBLE_CONTACTS);
     }
 
     /**
