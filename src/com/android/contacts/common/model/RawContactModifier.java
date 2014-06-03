@@ -305,7 +305,7 @@ public class RawContactModifier {
     public static EditType getBestValidType(RawContactDelta state, DataKind kind,
             boolean includeSecondary, int exactValue) {
         // Shortcut when no types
-        if (kind.typeColumn == null) return null;
+        if (kind == null || kind.typeColumn == null) return null;
 
         // Find type counts and valid primary types, bail if none
         final SparseIntArray typeCount = getTypeFrequencies(state, kind);
@@ -347,6 +347,8 @@ public class RawContactModifier {
      * {@link #getBestValidType(RawContactDelta, DataKind, boolean, int)}.
      */
     public static ValuesDelta insertChild(RawContactDelta state, DataKind kind) {
+        // Bail early if invalid kind
+        if (kind == null) return null;
         // First try finding a valid primary
         EditType bestType = getBestValidType(state, kind, false, Integer.MIN_VALUE);
         if (bestType == null) {
@@ -633,16 +635,18 @@ public class RawContactModifier {
                                 StructuredName.SUFFIX,
                         }, null, null, null);
 
-                try {
-                    if (cursor.moveToFirst()) {
-                        child.put(StructuredName.PREFIX, cursor.getString(0));
-                        child.put(StructuredName.GIVEN_NAME, cursor.getString(1));
-                        child.put(StructuredName.MIDDLE_NAME, cursor.getString(2));
-                        child.put(StructuredName.FAMILY_NAME, cursor.getString(3));
-                        child.put(StructuredName.SUFFIX, cursor.getString(4));
+                if (cursor != null) {
+                    try {
+                        if (cursor.moveToFirst()) {
+                            child.put(StructuredName.PREFIX, cursor.getString(0));
+                            child.put(StructuredName.GIVEN_NAME, cursor.getString(1));
+                            child.put(StructuredName.MIDDLE_NAME, cursor.getString(2));
+                            child.put(StructuredName.FAMILY_NAME, cursor.getString(3));
+                            child.put(StructuredName.SUFFIX, cursor.getString(4));
+                        }
+                    } finally {
+                        cursor.close();
                     }
-                } finally {
-                    cursor.close();
                 }
             }
         }
