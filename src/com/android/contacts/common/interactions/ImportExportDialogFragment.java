@@ -149,6 +149,8 @@ public class ImportExportDialogFragment extends DialogFragment
     private static final int TOAST_EXPORT_CANCELED = 4;
     // only for not have phone number or email address
     private static final int TOAST_EXPORT_NO_PHONE_OR_EMAIL = 5;
+    // only for sim contacts haven't been loaded completely
+    private static final int TOAST_SIM_CARD_NOT_LOAD_COMPLETE = 6;
     private static final boolean DEBUG = false;
     private static boolean isMenuItemClicked = false;
     private SimContactsOperation mSimContactsOperation;
@@ -605,6 +607,7 @@ public class ImportExportDialogFragment extends DialogFragment
             Account account = new Account(accountName,accountType);
             boolean isAirplaneMode = false;
             boolean isSimCardFull = false;
+            boolean isSimCardLoaded = true;
             // GoogleSource.createMyContactsIfNotExist(account, getActivity());
             // in case export is stopped, record the count of inserted successfully
             int insertCount = 0;
@@ -645,7 +648,7 @@ public class ImportExportDialogFragment extends DialogFragment
             if (type == TYPE_SELECT) {
                 if (contactList != null) {
                     Iterator<String[]> iterator = contactList.iterator();
-                    while (iterator.hasNext() && !canceled && !isAirplaneMode) {
+                    while (iterator.hasNext() && !canceled && !isAirplaneMode && isSimCardLoaded) {
                         String[] contactInfo = iterator.next();
                         String name = "";
                         ArrayList<String> arrayNumber = new ArrayList<String>();
@@ -756,8 +759,14 @@ public class ImportExportDialogFragment extends DialogFragment
                                     freeSimCount--;
                                 }
                             } else {
-                                isSimCardFull = true;
-                                mToastHandler.sendEmptyMessage(TOAST_SIM_CARD_FULL);
+                                if (MoreContactUtils.getAdnCount(subscription) == 0) {
+                                    isSimCardLoaded = false;
+                                    mToastHandler.sendEmptyMessage(
+                                            TOAST_SIM_CARD_NOT_LOAD_COMPLETE);
+                                } else {
+                                    isSimCardFull = true;
+                                    mToastHandler.sendEmptyMessage(TOAST_SIM_CARD_FULL);
+                                }
                                 break;
                             }
                         }
@@ -855,6 +864,10 @@ public class ImportExportDialogFragment extends DialogFragment
                         String name = (String) msg.obj;
                         Toast.makeText(mPeople,
                                 mPeople.getString(R.string.export_no_phone_or_email, name),
+                                Toast.LENGTH_SHORT).show();
+                        break;
+                    case TOAST_SIM_CARD_NOT_LOAD_COMPLETE:
+                        Toast.makeText(mPeople, R.string.sim_contacts_not_load,
                                 Toast.LENGTH_SHORT).show();
                         break;
                 }

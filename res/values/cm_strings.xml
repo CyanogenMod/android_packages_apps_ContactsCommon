@@ -108,4 +108,6 @@
     <!-- Storage path -->
     <string name="sd_card">SD card</string>
     <string name="phone_storage">Phone storage</string>
+
+    <string name="sim_contacts_not_load">Error, SIM contacts have not been loaded completely.</string>
 </resources>
