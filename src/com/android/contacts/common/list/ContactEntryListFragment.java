@@ -424,7 +424,11 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
     }
 
     public void onLoaderReset(Loader<Cursor> loader) {
-        mAdapter.changeCursor(loader.getId(), null);
+        if (loader.getId() >= 0) {
+            mAdapter.changeCursor(loader.getId(), null);
+        } else {
+            mAdapter.changeCursor(null);
+        }
     }
 
     protected void onPartitionLoaded(int partitionIndex, Cursor data) {
