@@ -16,6 +16,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="local_storage_account" product="tablet">Локални налог таблета</string>
-  <string name="local_storage_account" product="default">Локални налог телефона</string>
+  <string name="local_storage_account" product="tablet">Kohalik tahvli konto</string>
+  <string name="local_storage_account" product="default">Kohalik telefoni konto</string>
 </resources>
