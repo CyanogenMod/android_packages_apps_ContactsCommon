@@ -17,11 +17,18 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE_TAGS := optional
 
-LOCAL_SRC_FILES := $(call all-java-files-under, src)
-LOCAL_RESOURCE_DIR := $(addprefix $(LOCAL_PATH)/, res)
+phone_common_dir := ../PhoneCommon
+src_dirs := src $(phone_common_dir)/src
+res_dirs := res $(phone_common_dir)/res
+
+LOCAL_SRC_FILES := $(call all-java-files-under, $(src_dirs))
+LOCAL_RESOURCE_DIR := $(addprefix $(LOCAL_PATH)/, $(res_dirs))
+
+LOCAL_AAPT_FLAGS := \
+    --auto-add-overlay \
+    --extra-packages com.android.phone.common
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
-    com.android.phone.shared \
     com.android.vcard \
     guava \
     android-common \
