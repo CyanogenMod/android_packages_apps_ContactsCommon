@@ -241,4 +241,5 @@
   <string name="description_dial_phone_number">Marcar teléfonu <xliff:g id="NAME">%1$s</xliff:g></string>
   <string name="contact_status_update_attribution">per aciu de <xliff:g id="source" example="Google Talk">%1$s</xliff:g></string>
   <string name="contact_status_update_attribution_with_date"><xliff:g id="date" example="3 hours ago">%1$s</xliff:g> per aciu de <xliff:g id="source" example="Google Talk">%2$s</xliff:g></string>
+  <string name="letter_tile_letter_font_family">sans-serif-thin</string>
 </resources>

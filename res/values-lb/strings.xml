@@ -27,6 +27,8 @@
   <string name="status_away">Fort</string>
   <string name="status_busy">Beschäftegt</string>
   <string name="contactsList">Kontakter</string>
+  <string name="local_invisible_directory">Aner</string>
+  <string name="local_search_label">All Kontakter</string>
   <string name="user_profile_contacts_list_header" msgid="9154761216179882405">Ech</string>
   <string name="listFoundAllContactsZero">Keng Kontakter</string>
   <string name="missing_name">(Keen Numm)</string>
@@ -37,13 +39,20 @@
   <string name="emailLabelsGroup">E-Mail</string>
   <string name="postalLabelsGroup">Adress</string>
   <string name="postal_address">Adress</string>
+  <string name="ghostData_title">Titel</string>
+  <string name="label_notes">Notten</string>
   <string name="groupsLabel">Gruppen</string>
   <string name="email_other">E-Mail</string>
   <string name="email">E-Mail</string>
   <string name="postal_city">Stad</string>
+  <string name="postal_region">Staat</string>
   <string name="postal_country">Land</string>
   <string name="map_other">Adress ukucken</string>
+  <string name="description_minus_button">läschen</string>
+  <string name="list_filter_all_accounts">All Kontakter</string>
   <string name="list_filter_single">Kontakt</string>
+  <string name="display_all_contacts">All Kontakter</string>
   <string name="menu_done">Fäerdeg</string>
   <string name="menu_doNotSave">Ofbriechen</string>
+  <string name="menu_search">Sichen</string>
 </resources>
