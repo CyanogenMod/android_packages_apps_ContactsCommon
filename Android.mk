@@ -48,7 +48,7 @@ include $(CLEAR_VARS)
 
 # Open-source libphonenumber libraries as found in code.google.com/p/libphonenumber
 LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES := \
-   libphonenumber:libs/libphonenumber-5.8.jar \
+   libphonenumber:libs/libphonenumber-6.2.jar \
    libgeocoding:libs/geocoder-2.9.jar
 
 include $(BUILD_MULTI_PREBUILT)
