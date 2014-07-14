@@ -107,6 +107,8 @@ public class SimAccountType extends BaseAccountType{
 
         kind.typeOverallMax = 1;
         kind.typeColumn = Email.TYPE;
+        kind.typeList = Lists.newArrayList();
+        kind.typeList.add(buildEmailType(Email.TYPE_MOBILE));
         kind.fieldList = Lists.newArrayList();
         kind.fieldList.add(new EditField(Email.ADDRESS, R.string.emailLabelsGroup, FLAGS_EMAIL));
         return kind;
