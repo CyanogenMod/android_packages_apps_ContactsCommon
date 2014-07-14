@@ -697,14 +697,23 @@ public class ImportExportDialogFragment extends DialogFragment
                         }
 
                         int phoneCountInOneSimContact = 1;
+                        int emailCountInOneSimContact = 0;
                         if (canSaveAnr) {
-                            phoneCountInOneSimContact = 2;
+                            int num = MoreContactUtils.getOneSimAnrCount(subscription);
+                            phoneCountInOneSimContact = num > 1 ? (num + 1) : 2;
+                        }
+                        if (canSaveEmail) {
+                            emailCountInOneSimContact = MoreContactUtils
+                                    .getOneSimEmailCount(subscription);
                         }
                         int nameCount = (name != null && !name.equals("")) ? 1 : 0;
                         int groupNumCount = (arrayNumber.size() % phoneCountInOneSimContact) != 0 ?
                                 (arrayNumber.size() / phoneCountInOneSimContact + 1)
                                 : (arrayNumber.size() / phoneCountInOneSimContact);
-                        int groupEmailCount = arrayEmail.size();
+                        int groupEmailCount = emailCountInOneSimContact == 0 ? 0
+                                : ((arrayEmail.size() % emailCountInOneSimContact) != 0 ? (
+                                        arrayEmail.size() / emailCountInOneSimContact + 1)
+                                        : (arrayEmail.size() / emailCountInOneSimContact));
                         //recalute the group when spare anr is not enough
                         if (canSaveAnr && emptyAnr <= groupNumCount) {
                             groupNumCount = arrayNumber.size() - emptyAnr;
@@ -719,17 +728,39 @@ public class ImportExportDialogFragment extends DialogFragment
                         for (int i = 0; i < groupCount; i++) {
                             if (freeSimCount > 0) {
                                 String num = arrayNumber.size() > 0 ? arrayNumber.remove(0) : null;
-                                String anrNum = null;
-                                String email = null;
-                                if (canSaveAnr && emptyAnr-- >0) {
-                                    anrNum = arrayNumber.size() > 0 ? arrayNumber.remove(0) : null;
+                                StringBuilder anrNum = new StringBuilder();
+                                StringBuilder email = new StringBuilder();
+                                if (canSaveAnr && emptyAnr-- > 0) {
+                                    for (int j = 1; j < phoneCountInOneSimContact; j++) {
+                                        if (arrayNumber.size() > 0 && emptyAnr-- > 0 ) {
+                                            String s = arrayNumber.remove(0);
+                                            if (s.length() > MoreContactUtils
+                                                    .MAX_LENGTH_NUMBER_IN_SIM) {
+                                                s = s.substring(0,
+                                                        MoreContactUtils.MAX_LENGTH_NUMBER_IN_SIM);
+                                            }
+                                            anrNum.append(s);
+                                            anrNum.append(",");
+                                        }
+                                    }
                                 }
                                 if (canSaveEmail) {
-                                    email = arrayEmail.size() > 0 ? arrayEmail.remove(0) : null;
+                                    for (int j = 0; j < emailCountInOneSimContact; j++) {
+                                        if (arrayEmail.size() > 0) {
+                                            String s = arrayEmail.remove(0);
+                                            if (s.length() > MoreContactUtils
+                                                    .MAX_LENGTH_EMAIL_IN_SIM) {
+                                                s = s.substring(0,
+                                                        MoreContactUtils.MAX_LENGTH_EMAIL_IN_SIM);
+                                            }
+                                            email.append(s);
+                                            email.append(",");
+                                        }
+                                    }
                                 }
 
-                                result = MoreContactUtils.insertToCard(mPeople, name, num, email,
-                                        anrNum, subscription);
+                                result = MoreContactUtils.insertToCard(mPeople, name, num,
+                                        email.toString(), anrNum.toString(), subscription);
 
                                 if (null == result) {
                                     // add toast handler when sim card is full

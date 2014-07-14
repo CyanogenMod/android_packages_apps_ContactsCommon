@@ -88,7 +88,6 @@ public class SimContactsOperation {
         this.mResolver = context.getContentResolver();
     }
 
-
     public Uri insert(ContentValues values, int subscription) {
 
         Uri uri = getContentUri(subscription);
@@ -278,7 +277,7 @@ public class SimContactsOperation {
 
     private static String getContactItems(long rawContactId, String selectionArg,
                                                 String columnName) {
-        String retval = null;
+        StringBuilder retval = new StringBuilder();
         Uri baseUri = ContentUris.withAppendedId(RawContacts.CONTENT_URI, rawContactId);
         Uri dataUri = Uri.withAppendedPath(baseUri, RawContacts.Data.CONTENT_DIRECTORY);
 
@@ -295,7 +294,10 @@ public class SimContactsOperation {
             c.moveToPosition(-1);
 
             while (c.moveToNext()) {
-                retval = c.getString(c.getColumnIndex(columnName));
+                if (!TextUtils.isEmpty(retval.toString())) {
+                    retval.append(",");
+                }
+                retval.append(c.getString(c.getColumnIndex(columnName)));
             }
 
             c.close();
@@ -307,13 +309,13 @@ public class SimContactsOperation {
             }
         }
 
-        return retval;
+        return retval.toString();
     }
 
     private static
     String getContactPhoneNumber(long rawContactId, String selectionArg1,
                             String selectionArg2, String columnName) {
-        String retval = null;
+        StringBuilder retval = new StringBuilder();
         Uri baseUri = ContentUris.withAppendedId(RawContacts.CONTENT_URI, rawContactId);
         Uri dataUri = Uri.withAppendedPath(baseUri, RawContacts.Data.CONTENT_DIRECTORY);
 
@@ -331,10 +333,12 @@ public class SimContactsOperation {
             c.moveToPosition(-1);
 
             while (c.moveToNext()) {
-                retval = c.getString(c.getColumnIndex(columnName));
+                if (!TextUtils.isEmpty(retval.toString())) {
+                    retval.append(",");
+                }
+                retval.append(c.getString(c.getColumnIndex(columnName)));
             }
 
-            c.close();
         } catch (Exception e) {
             Log.e(TAG, e.getMessage());
         } finally {
@@ -343,7 +347,7 @@ public class SimContactsOperation {
             }
         }
 
-        return retval;
+        return retval.toString();
     }
 
 

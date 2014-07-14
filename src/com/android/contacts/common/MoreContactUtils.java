@@ -73,8 +73,8 @@ public class MoreContactUtils {
     private static final String TAG = "MoreContactUtils";
     private static final int MAX_LENGTH_NAME_IN_SIM = 14;
     private static final int MAX_LENGTH_NAME_WITH_CHINESE_IN_SIM = 6;
-    private static final int MAX_LENGTH_NUMBER_IN_SIM = 20;
-    private static final int MAX_LENGTH_EMAIL_IN_SIM = 40;
+    public static final int MAX_LENGTH_NUMBER_IN_SIM = 20;
+    public static final int MAX_LENGTH_EMAIL_IN_SIM = 40;
     private static final int NAME_POS = 0;
     private static final int NUMBER_POS = 1;
     private static final int EMAIL_POS = 2;
@@ -392,17 +392,10 @@ public class MoreContactUtils {
             mValues.put(SimContactsConstants.STR_NUMBER, number);
         }
         if (!TextUtils.isEmpty(emails)) {
-            if (emails.length() > MAX_LENGTH_EMAIL_IN_SIM) {
-                emails = emails.substring(0, MAX_LENGTH_EMAIL_IN_SIM);
-            }
             mValues.put(SimContactsConstants.STR_EMAILS, emails);
         }
         if (!TextUtils.isEmpty(anrNumber)) {
             anrNumber = anrNumber.replaceAll("[^0123456789PWN\\,\\;\\*\\#\\+]", "");
-            if (anrNumber.length() > MAX_LENGTH_NUMBER_IN_SIM) {
-                anrNumber = anrNumber.substring(0, MAX_LENGTH_NUMBER_IN_SIM);
-            }
-
             mValues.put(SimContactsConstants.STR_ANRS, anrNumber);
         }
 
@@ -503,6 +496,29 @@ public class MoreContactUtils {
             Log.d(TAG, "getAnrCount(" + sub + ") = " + anrCount);
         }
         return anrCount;
+    }
+
+    public static int getOneSimAnrCount(int sub) {
+        int count = 0;
+        int anrCount = getAnrCount(sub);
+        int adnCount = getAdnCount(sub);
+        if (adnCount > 0) {
+            count = anrCount % adnCount != 0 ? (anrCount / adnCount + 1)
+                    : (anrCount / adnCount);
+        }
+        return count;
+    }
+
+    public static int getOneSimEmailCount(int sub) {
+        int count = 0;
+        int emailCount = getEmailCount(sub);
+        int adnCount = getAdnCount(sub);
+        if (adnCount > 0) {
+            count = emailCount % adnCount != 0 ? (emailCount
+                    / adnCount + 1)
+                    : (emailCount / adnCount);
+        }
+        return count;
     }
 
     public static int getEmailCount(int sub) {
