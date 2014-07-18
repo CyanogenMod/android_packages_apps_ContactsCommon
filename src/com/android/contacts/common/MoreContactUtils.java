@@ -860,7 +860,7 @@ public class MoreContactUtils {
      * Get SIM card aliases name, which defined in Settings
      */
     public static String getMultiSimAliasesName(Context context, int subscription) {
-        if (context == null) {
+        if (context == null || subscription < 0) {
             return null;
         }
         String name = "";
