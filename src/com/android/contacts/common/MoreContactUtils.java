@@ -16,6 +16,8 @@
 
 package com.android.contacts.common;
 
+import android.accounts.Account;
+
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 
@@ -23,13 +25,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.net.Uri;
+import android.os.RemoteException;
+import android.os.ServiceManager;
+import android.os.SystemProperties;
 import android.provider.ContactsContract;
+import android.provider.Settings;
+import android.telephony.SubscriptionManager;
 import android.telephony.PhoneNumberUtils;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
 import com.android.contacts.common.model.account.AccountType;
+import com.android.internal.telephony.IIccPhoneBook;
 
 /**
  * Shared static contact utility methods.
@@ -231,5 +240,163 @@ public class MoreContactUtils {
         // Data is the lookup URI.
         intent.setData(lookupUri);
         return intent;
+    }
+
+    /** get disabled SIM card's name */
+    public static String getDisabledSimFilter() {
+        int count = TelephonyManager.getDefault().getPhoneCount();
+        StringBuilder simFilter = new StringBuilder("");
+
+        for (int i = 0; i < count; i++) {
+            if (!TelephonyManager.getDefault().hasIccCard(i)) {
+                continue;
+            }
+            if (TelephonyManager.SIM_STATE_UNKNOWN == TelephonyManager
+                    .getDefault().getSimState(i)) {
+                simFilter.append(getSimAccountName(i) + ',');
+            }
+        }
+
+        return simFilter.toString();
+    }
+
+    public static boolean isAPMOnAndSIMPowerDown(Context context) {
+        if (context == null) {
+            return false;
+        }
+        boolean isAirPlaneMode = Settings.System.getInt(context.getContentResolver(),
+                Settings.System.AIRPLANE_MODE_ON, 0) == 1;
+        boolean isSIMPowerDown = SystemProperties.getInt(
+                "persist.radio.apm_sim_not_pwdn", 0) == 0;
+        return isAirPlaneMode && isSIMPowerDown;
+    }
+
+    /**
+     * Get SIM card account name
+     */
+    public static String getSimAccountName(int subscription) {
+        if (TelephonyManager.getDefault().isMultiSimEnabled()) {
+            return SimContactsConstants.SIM_NAME + (subscription + 1);
+        } else {
+            return SimContactsConstants.SIM_NAME;
+        }
+    }
+
+    public static int getSubscription(String accountType, String accountName) {
+        int subscription = SimContactsConstants.SUB_INVALID;
+        if (accountType == null || accountName == null)
+            return subscription;
+        if (accountType.equals(SimContactsConstants.ACCOUNT_TYPE_SIM)) {
+            if (accountName.equals(SimContactsConstants.SIM_NAME)
+                    || accountName.equals(SimContactsConstants.SIM_NAME_1)) {
+                subscription = SimContactsConstants.SUB_1;
+            } else if (accountName.equals(SimContactsConstants.SIM_NAME_2)) {
+                subscription = SimContactsConstants.SUB_2;
+            }
+        }
+        return subscription;
+    }
+
+    public static int getAnrCount(int slot) {
+        int anrCount = 0;
+        long[] subId = SubscriptionManager.getSubId(slot);
+        try {
+            IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(
+                ServiceManager.getService("simphonebook"));
+
+            if (iccIpb != null) {
+                if (subId != null
+                        && TelephonyManager.getDefault().isMultiSimEnabled()) {
+                    anrCount = iccIpb.getAnrCountUsingSubId(subId[0]);
+                } else {
+                    anrCount = iccIpb.getAnrCount();
+                }
+            }
+        } catch (RemoteException ex) {
+            // ignore it
+        }
+
+        return anrCount;
+    }
+
+    public static int getAdnCount(int slot) {
+        int adnCount = 0;
+        long[] subId = SubscriptionManager.getSubId(slot);
+                try {
+            IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(
+                ServiceManager.getService("simphonebook"));
+
+            if (iccIpb != null) {
+                if (subId != null
+                        && TelephonyManager.getDefault().isMultiSimEnabled()) {
+                    adnCount = iccIpb.getAdnCountUsingSubId(subId[0]);
+                } else {
+                    adnCount = iccIpb.getAdnCount();
+                }
+            }
+        } catch (RemoteException ex) {
+            // ignore it
+        }
+
+        return adnCount;
+    }
+
+    public static int getEmailCount(int slot) {
+        int emailCount = 0;
+        long[] subId = SubscriptionManager.getSubId(slot);
+                try {
+            IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(
+                ServiceManager.getService("simphonebook"));
+
+            if (iccIpb != null) {
+                if (subId != null
+                        && TelephonyManager.getDefault().isMultiSimEnabled()) {
+                    emailCount = iccIpb.getEmailCountUsingSubId(subId[0]);
+                } else {
+                    emailCount = iccIpb.getEmailCount();
+                }
+            }
+        } catch (RemoteException ex) {
+            // ignore it
+        }
+
+        return emailCount;
+    }
+
+    /**
+     * Returns the subscription's card can save anr or not.
+     */
+    public static boolean canSaveAnr(int slot) {
+        return getAnrCount(slot) > 0 ? true : false;
+    }
+
+    /**
+     * Returns the subscription's card can save email or not.
+     */
+    public static boolean canSaveEmail(int slot) {
+        return getEmailCount(slot) > 0 ? true : false;
+    }
+
+    public static int getOneSimAnrCount(int slot) {
+        int count = 0;
+        int anrCount = getAnrCount(slot);
+        int adnCount = getAdnCount(slot);
+        if (adnCount > 0) {
+            count = anrCount % adnCount != 0 ? (anrCount / adnCount + 1)
+                    : (anrCount / adnCount);
+        }
+        return count;
+    }
+
+    public static int getOneSimEmailCount(int slot) {
+        int count = 0;
+        int emailCount = getEmailCount(slot);
+        int adnCount = getAdnCount(slot);
+        if (adnCount > 0) {
+            count = emailCount % adnCount != 0 ? (emailCount
+                    / adnCount + 1)
+                    : (emailCount / adnCount);
+        }
+        return count;
     }
 }

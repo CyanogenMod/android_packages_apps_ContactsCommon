@@ -28,6 +28,8 @@ import android.provider.ContactsContract.CommonDataKinds.SipAddress;
 import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.Data;
 import android.provider.ContactsContract.Directory;
+import android.provider.ContactsContract.RawContacts;
+import android.text.TextUtils;
 import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 import android.util.Log;
@@ -41,6 +43,9 @@ import com.android.contacts.common.extensions.ExtendedPhoneDirectoriesManager;
 import com.android.contacts.common.extensions.ExtensionsFactory;
 import com.android.contacts.common.preference.ContactsPreferences;
 import com.android.contacts.common.util.Constants;
+import com.android.contacts.common.SimContactsConstants;
+import com.android.contacts.common.MoreContactUtils;
+import com.android.contacts.common.model.account.SimAccountType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -193,6 +198,13 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
 
             // Remove duplicates when it is possible.
             builder.appendQueryParameter(ContactsContract.REMOVE_DUPLICATE_ENTRIES, "true");
+
+            // Do not show contacts in disabled SIM card
+            String disabledSimFilter = MoreContactUtils.getDisabledSimFilter();
+            if (!TextUtils.isEmpty(disabledSimFilter)) {
+                String disabledSimName = getDisabledSimName(disabledSimFilter);
+                loader.setSelection(RawContacts.ACCOUNT_NAME+ "<>" + disabledSimName);
+            }
             loader.setUri(builder.build());
 
             // TODO a projection that includes the search snippet
@@ -540,5 +552,22 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
                         String.valueOf(directoryId))
                 .encodedFragment(cursor.getString(lookUpKeyColumn))
                 .build();
+    }
+
+    private String getDisabledSimName(String disabledSimFilter){
+        String[] disabledSimArray = disabledSimFilter.split(",");//it will never be null
+        String disabledSimName = "";
+        for (int i = 0; i < disabledSimArray.length; i++) {
+            if (i < disabledSimArray.length -1) {
+                //If disabledSimArray[i] is not the last one of the array,
+                //add "or" after every member of the array.
+                disabledSimName = disabledSimName + "'" + disabledSimArray[i] + "'" + "or";
+            } else {
+                //If disabledSimArray[i] is the last one of the array,
+                //should not add anything after it.
+                disabledSimName = disabledSimName + "'" + disabledSimArray[i] + "'";
+            }
+        }
+        return disabledSimName;
     }
 }
