@@ -16,6 +16,8 @@
 
 package com.android.contacts.common;
 
+import android.accounts.Account;
+
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 
@@ -23,13 +25,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.net.Uri;
+import android.os.SystemProperties;
 import android.provider.ContactsContract;
+import android.provider.Settings;
+import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
 import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
 import com.android.contacts.common.model.account.AccountType;
+import com.android.internal.telephony.PhoneConstants;
 
 /**
  * Shared static contact utility methods.
@@ -239,5 +246,99 @@ public class MoreContactUtils {
         // Data is the lookup URI.
         intent.setData(lookupUri);
         return intent;
+    }
+
+    /** get disabled SIM card's name */
+    public static String getDisabledSimFilter() {
+        int count = TelephonyManager.getDefault().getPhoneCount();
+        StringBuilder simFilter = new StringBuilder("");
+
+        for (int i = 0; i < count; i++) {
+            if (!TelephonyManager.getDefault().hasIccCard(i)) {
+                continue;
+            }
+            if (TelephonyManager.SIM_STATE_UNKNOWN == TelephonyManager
+                    .getDefault().getSimState(i)) {
+                simFilter.append(getSimAccountName(i) + ',');
+            }
+        }
+
+        return simFilter.toString();
+    }
+
+    public static boolean isAPMOnAndSIMPowerDown(Context context) {
+        if (context == null) {
+            return false;
+        }
+        boolean isAirPlaneMode = Settings.System.getInt(context.getContentResolver(),
+                Settings.System.AIRPLANE_MODE_ON, 0) == 1;
+        boolean isSIMPowerDown = SystemProperties.getInt(
+                "persist.radio.apm_sim_not_pwdn", 0) == 0;
+        return isAirPlaneMode && isSIMPowerDown;
+    }
+
+    /**
+     * Get SIM card account name
+     */
+    public static String getSimAccountName(int subscription) {
+        if (TelephonyManager.getDefault().isMultiSimEnabled()) {
+            return SimContactsConstants.SIM_NAME + (subscription + 1);
+        } else {
+            return SimContactsConstants.SIM_NAME;
+        }
+    }
+
+    public static int getSubscription(String accountType, String accountName) {
+        int subscription = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+        if (accountType == null || accountName == null)
+            return subscription;
+        if (accountType.equals(SimContactsConstants.ACCOUNT_TYPE_SIM)) {
+            if (accountName.equals(SimContactsConstants.SIM_NAME)
+                    || accountName.equals(SimContactsConstants.SIM_NAME_1)) {
+                subscription = PhoneConstants.SUB1;
+            } else if (accountName.equals(SimContactsConstants.SIM_NAME_2)) {
+                subscription = PhoneConstants.SUB2;
+            }
+        }
+        return subscription;
+    }
+
+    /**
+     * Returns the subscription's card can save anr or not.
+     */
+    public static boolean canSaveAnr(int subscription) {
+        return false;
+        //return getAnrCount(subscription) > 0 ? true : false;
+    }
+
+    /**
+     * Returns the subscription's card can save email or not.
+     */
+    public static boolean canSaveEmail(int subscription) {
+        return false;
+        //return getEmailCount(subscription) > 0 ? true : false;
+    }
+
+    public static int getOneSimAnrCount(int sub) {
+        int count = 0;
+        /*int anrCount = getAnrCount(sub);
+        int adnCount = getAdnCount(sub);
+        if (adnCount > 0) {
+            count = anrCount % adnCount != 0 ? (anrCount / adnCount + 1)
+                    : (anrCount / adnCount);
+        }*/
+        return count;
+    }
+
+    public static int getOneSimEmailCount(int sub) {
+        int count = 0;
+        /*int emailCount = getEmailCount(sub);
+        int adnCount = getAdnCount(sub);
+        if (adnCount > 0) {
+            count = emailCount % adnCount != 0 ? (emailCount
+                    / adnCount + 1)
+                    : (emailCount / adnCount);
+        }*/
+        return count;
     }
 }

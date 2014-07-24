@@ -38,6 +38,8 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.telephony.TelephonyManager;
+import android.telephony.SubscriptionManager;
 import android.util.Log;
 import android.util.TimingLogger;
 
@@ -51,7 +53,10 @@ import com.android.contacts.common.model.account.ExternalAccountType;
 import com.android.contacts.common.model.account.FallbackAccountType;
 import com.android.contacts.common.model.account.GoogleAccountType;
 import com.android.contacts.common.model.account.SamsungAccountType;
+import com.android.contacts.common.model.account.PhoneAccountType;
+import com.android.contacts.common.model.account.SimAccountType;
 import com.android.contacts.common.model.dataitem.DataKind;
+import com.android.contacts.common.SimContactsConstants;
 import com.android.contacts.common.testing.NeededForTesting;
 import com.android.contacts.common.util.Constants;
 import com.google.common.annotations.VisibleForTesting;
@@ -79,6 +84,13 @@ public abstract class AccountTypeManager {
 
     private static final Object mInitializationLock = new Object();
     private static AccountTypeManager mAccountTypeManager;
+
+    public static final int FLAG_ALL_ACCOUNTS = 0;
+    public static final int FLAG_ALL_ACCOUNTS_WITHOUT_SIM = 1;
+    /**
+     * without sim and phone accounts
+     */
+    public static final int FLAG_ALL_ACCOUNTS_WITHOUT_LOCAL = 2;
 
     /**
      * Requests the singleton instance of {@link AccountTypeManager} with data bound from
@@ -113,6 +125,8 @@ public abstract class AccountTypeManager {
      * contact writable accounts (if contactWritableOnly is true).
      */
     // TODO: Consider splitting this into getContactWritableAccounts() and getAllAccounts()
+    public abstract List<AccountWithDataSet> getAccounts(boolean contactWritableOnly, int flag);
+
     public abstract List<AccountWithDataSet> getAccounts(boolean contactWritableOnly);
 
     /**
@@ -417,6 +431,10 @@ class AccountTypeManagerImpl extends AccountTypeManager
             } else if (SamsungAccountType.isSamsungAccountType(mContext, type,
                     auth.packageName)) {
                 accountType = new SamsungAccountType(mContext, auth.packageName, type);
+                } else if (SimAccountType.ACCOUNT_TYPE.equals(type)) {
+                    accountType = new SimAccountType(mContext, auth.packageName);
+                } else if (PhoneAccountType.ACCOUNT_TYPE.equals(type)) {
+                    accountType = new PhoneAccountType(mContext, auth.packageName);
             } else {
                 Log.d(TAG, "Registering external account type=" + type
                         + ", packageName=" + auth.packageName);
@@ -562,13 +580,84 @@ class AccountTypeManagerImpl extends AccountTypeManager
         return null;
     }
 
+    @Override
+    public List<AccountWithDataSet> getAccounts(boolean contactWritableOnly) {
+        return getAccounts(contactWritableOnly, FLAG_ALL_ACCOUNTS);
+    }
+
     /**
      * Return list of all known, contact writable {@link AccountWithDataSet}'s.
      */
     @Override
-    public List<AccountWithDataSet> getAccounts(boolean contactWritableOnly) {
+    public List<AccountWithDataSet> getAccounts(boolean contactWritableOnly,
+            int flag) {
         ensureAccountsLoaded();
+        boolean isAirMode = MoreContactUtils.isAPMOnAndSIMPowerDown(mContext);
+        switch (flag) {
+            case FLAG_ALL_ACCOUNTS:
+                return trimAccountByType(
+                        contactWritableOnly ? mContactWritableAccounts : mAccounts,
+                        isAirMode ? SimAccountType.ACCOUNT_TYPE : null);
+            case FLAG_ALL_ACCOUNTS_WITHOUT_LOCAL:
+                return trimAccountByType(
+                        contactWritableOnly ? mContactWritableAccounts : mAccounts,
+                        SimAccountType.ACCOUNT_TYPE, PhoneAccountType.ACCOUNT_TYPE);
+            case FLAG_ALL_ACCOUNTS_WITHOUT_SIM:
+                return trimAccountByType(
+                        contactWritableOnly ? mContactWritableAccounts : mAccounts,
+                        SimAccountType.ACCOUNT_TYPE);
+        }
         return contactWritableOnly ? mContactWritableAccounts : mAccounts;
+    }
+
+    private boolean isSimStateUnknown(AccountWithDataSet account) {
+        int subscription = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+        subscription = MoreContactUtils.getSubscription(account.type, account.name);
+
+        if (subscription > SubscriptionManager.INVALID_SUBSCRIPTION_ID
+                && TelephonyManager.from(mContext).getSimState(subscription)
+                    == TelephonyManager.SIM_STATE_UNKNOWN) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean isSimAccountInvalid(AccountWithDataSet account) {
+        if ((SimContactsConstants.ACCOUNT_TYPE_SIM).equals(account.type)) {
+            if (TelephonyManager.from(mContext).isMultiSimEnabled()) {
+                if (account.name.equals(SimContactsConstants.SIM_NAME))
+                    return true;
+            } else {
+                if (!account.name.equals(SimContactsConstants.SIM_NAME)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private List<AccountWithDataSet> trimAccountByType(final List<AccountWithDataSet> list,
+            String... trimAccountTypes) {
+        List<AccountWithDataSet> tempList = Lists.newArrayList();
+        outer: for (AccountWithDataSet accountWithDataSet : list) {
+            if (trimAccountTypes != null && trimAccountTypes.length > 0) {
+                for (String type : trimAccountTypes) {
+                    if (type != null && type.equals(accountWithDataSet.type)) {
+                        continue outer;
+                    }
+                }
+            }
+
+            if (isSimStateUnknown(accountWithDataSet)) {
+                continue outer;
+            }
+            if (isSimAccountInvalid(accountWithDataSet)) {
+                continue outer;
+            }
+            tempList.add(accountWithDataSet);
+        }
+        return tempList;
     }
 
     /**

@@ -16,17 +16,22 @@
 
 package com.android.contacts.common.model.account;
 
+import android.accounts.AccountManager;
+import android.accounts.AuthenticatorDescription;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.CommonDataKinds.StructuredPostal;
 import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.RawContacts;
+import android.util.Log;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 
+import com.android.contacts.common.MoreContactUtils;
 import com.android.contacts.common.R;
 import com.android.contacts.common.model.dataitem.DataKind;
 import com.google.common.annotations.VisibleForTesting;
@@ -39,6 +44,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Internal structure that represents constraints and styles for a specific data
@@ -95,6 +101,11 @@ public abstract class AccountType {
     private HashMap<String, DataKind> mMimeKinds = Maps.newHashMap();
 
     protected boolean mIsInitialized;
+
+    private Map<String, AuthenticatorDescription> mTypeToAuthDescription
+            = new HashMap<String, AuthenticatorDescription>();
+
+    private AuthenticatorDescription[] mAuthDescs;
 
     protected static class DefinitionException extends Exception {
         public DefinitionException(String message) {
@@ -196,12 +207,6 @@ public abstract class AccountType {
     public String getViewGroupActivity() {
         return null;
     }
-
-    public CharSequence getDisplayLabel(Context context) {
-        // Note this resource is defined in the sync adapter package, not resourcePackageName.
-        return getResourceText(context, syncAdapterPackageName, titleRes, accountType);
-    }
-
     /**
      * @return resource ID for the "invite contact" action label, or -1 if not defined.
      */
@@ -276,15 +281,47 @@ public abstract class AccountType {
         }
     }
 
-    public Drawable getDisplayIcon(Context context) {
-        if (this.titleRes != -1 && this.syncAdapterPackageName != null) {
-            final PackageManager pm = context.getPackageManager();
-            return pm.getDrawable(this.syncAdapterPackageName, this.iconRes, null);
-        } else if (this.titleRes != -1) {
-            return context.getResources().getDrawable(this.iconRes);
-        } else {
-            return null;
+    public void updateAuthDescriptions(Context context) {
+        mAuthDescs = AccountManager.get(context).getAuthenticatorTypes();
+        for (int i = 0; i < mAuthDescs.length; i++) {
+            mTypeToAuthDescription.put(mAuthDescs[i].type, mAuthDescs[i]);
         }
+    }
+    public CharSequence getDisplayLabel(Context context) {
+        CharSequence label = null;
+        updateAuthDescriptions(context);
+        if (mTypeToAuthDescription.containsKey(accountType)) {
+            try {
+                AuthenticatorDescription desc = mTypeToAuthDescription.get(accountType);
+                Context authContext = context.createPackageContext(desc.packageName, 0);
+                label = authContext.getResources().getText(desc.labelId);
+            } catch (PackageManager.NameNotFoundException e) {
+                Log.w(TAG, "No label name for account type " + accountType);
+            } catch (Resources.NotFoundException e) {
+                Log.w(TAG, "No label icon for account type " + accountType);
+            }
+        }
+        return label;
+    }
+
+    public Drawable getDisplayIcon(Context context) {
+        Drawable icon = null;
+        updateAuthDescriptions(context);
+        if (mTypeToAuthDescription.containsKey(accountType)) {
+            try {
+                AuthenticatorDescription desc = mTypeToAuthDescription
+                        .get(accountType);
+                Context authContext = context.createPackageContext(
+                        desc.packageName, 0);
+                icon = authContext.getResources().getDrawable(desc.iconId);
+            } catch (PackageManager.NameNotFoundException e) {
+            } catch (Resources.NotFoundException e) {
+            }
+        }
+        if (icon == null) {
+            icon = context.getPackageManager().getDefaultActivityIcon();
+        }
+        return icon;
     }
 
     /**
