@@ -17,12 +17,23 @@
   -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="toast_text_copied">Text kopéiert</string>
+  <string name="call_custom"><xliff:g id="custom">%s</xliff:g> uruffen</string>
   <string name="call_home">Doheem uruffen</string>
   <string name="call_mobile">Handy uruffen</string>
   <string name="call_work">Aarbecht uruffen</string>
+  <string name="call_fax_work">Fax op der Aarbecht uruffen</string>
+  <string name="call_fax_home">Fax doheem uruffen</string>
+  <string name="call_pager">Pager uruffen</string>
   <string name="call_other">Uruffen</string>
   <string name="call_car">Auto uruffen</string>
+  <string name="call_isdn">ISDN uruffen</string>
+  <string name="call_main">Haaptnummer uruffen</string>
+  <string name="call_other_fax">Fax uruffen</string>
+  <string name="call_radio">Radio uruffen</string>
   <string name="call_telex">Telex uruffen</string>
+  <string name="call_tty_tdd">TTY/TDD uruffen</string>
+  <string name="call_assistant"><xliff:g id="assistant">%s</xliff:g> uruffen</string>
+  <string name="call_mms">MMS uruffen</string>
   <string name="status_available">Disponibel</string>
   <string name="status_away">Fort</string>
   <string name="status_busy">Beschäftegt</string>
@@ -36,11 +47,13 @@
   <string name="description_view_contact_detail" msgid="2795575601596468581">Kontakt ukucken</string>
   <string name="nameLabelsGroup">Numm</string>
   <string name="full_name">Numm</string>
+  <string name="phoneLabelsGroup">Telefon</string>
   <string name="emailLabelsGroup">E-Mail</string>
   <string name="postalLabelsGroup">Adress</string>
   <string name="postal_address">Adress</string>
   <string name="ghostData_title">Titel</string>
   <string name="label_notes">Notten</string>
+  <string name="websiteLabelsGroup">Websäit</string>
   <string name="groupsLabel">Gruppen</string>
   <string name="email_other">E-Mail</string>
   <string name="email">E-Mail</string>
