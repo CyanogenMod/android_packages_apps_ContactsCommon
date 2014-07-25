@@ -235,7 +235,8 @@ public class ContactListItemView extends ViewGroup
         super(context);
         mContext = context;
 
-        mTextHighlighter = new TextHighlighter(Typeface.BOLD);
+        mTextHighlighter = new TextHighlighter(Typeface.BOLD,
+                context.getResources().getColor(R.color.text_highlight_color));
     }
 
     public ContactListItemView(Context context, AttributeSet attrs) {
@@ -302,7 +303,8 @@ public class ContactListItemView extends ViewGroup
                 a.getDimensionPixelOffset(
                         R.styleable.ContactListItemView_list_item_padding_bottom, 0));
 
-        mTextHighlighter = new TextHighlighter(Typeface.BOLD);
+        mTextHighlighter = new TextHighlighter(Typeface.BOLD,
+                context.getResources().getColor(R.color.text_highlight_color));
 
         a.recycle();
 

@@ -66,4 +66,6 @@
     <color name="letter_tile_default_color">#cccccc</color>
 
     <color name="letter_tile_font_color">#ffffff</color>
+
+    <color name="text_highlight_color">#3B77E7</color>
 </resources>
