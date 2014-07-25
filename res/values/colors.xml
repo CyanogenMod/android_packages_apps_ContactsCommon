@@ -118,6 +118,8 @@
 
     <color name="letter_tile_font_color">#ffffff</color>
 
+    <color name="text_highlight_color">#3B77E7</color>
+
     <!-- Background color of action bars. Ensure this stays in sync with packages/Telephony
          actionbar_background_color. -->
     <color name="actionbar_background_color">#0fc6dc</color>
