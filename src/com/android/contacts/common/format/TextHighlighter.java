@@ -16,14 +16,11 @@
 
 package com.android.contacts.common.format;
 
-import android.graphics.Typeface;
 import android.text.SpannableString;
 import android.text.style.CharacterStyle;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.widget.TextView;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Highlights the text in a text field.
@@ -33,12 +30,20 @@ public class TextHighlighter {
     private final static boolean DEBUG = false;
 
     private int mTextStyle;
+    private int mHighlightColor;
 
     private CharacterStyle mTextStyleSpan;
+    private CharacterStyle mTextColorStyleSpan;
 
     public TextHighlighter(int textStyle) {
+        this(textStyle, -1);
+    }
+
+    public TextHighlighter(int textStyle, int highlightColor) {
         mTextStyle = textStyle;
+        mHighlightColor = highlightColor;
         mTextStyleSpan = getStyleSpan();
+        mTextColorStyleSpan = getColorStyleSpan();
     }
 
     /**
@@ -56,6 +61,13 @@ public class TextHighlighter {
         return new StyleSpan(mTextStyle);
     }
 
+    private CharacterStyle getColorStyleSpan() {
+        if (mHighlightColor != -1) {
+            return new ForegroundColorSpan(mHighlightColor);
+        }
+        return null;
+    }
+
     /**
      * Applies highlight span to the text.
      * @param text Text sequence to be highlighted.
@@ -65,6 +77,9 @@ public class TextHighlighter {
     public void applyMaskingHighlight(SpannableString text, int start, int end) {
         /** Sets text color of the masked locations to be highlighted. */
         text.setSpan(getStyleSpan(), start, end, 0);
+        if (mTextColorStyleSpan != null) {
+            text.setSpan(getColorStyleSpan(), start, end, 0);
+        }
     }
 
     /**
@@ -90,6 +105,9 @@ public class TextHighlighter {
         if (index != -1) {
             final SpannableString result = new SpannableString(text);
             result.setSpan(mTextStyleSpan, index, index + trimmedPrefix.length(), 0 /* flags */);
+            if (mTextColorStyleSpan != null) {
+                result.setSpan(mTextColorStyleSpan, index, index + trimmedPrefix.length(), 0 /* flags */);
+            }
             return result;
         } else {
             return text;
