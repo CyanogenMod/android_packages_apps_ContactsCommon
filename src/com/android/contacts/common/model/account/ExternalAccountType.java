@@ -222,6 +222,11 @@ public class ExternalAccountType extends BaseAccountType {
         return mHasEditSchema;
     }
 
+    @Override
+    public boolean isGroupMembershipEditable() {
+        return true;
+    }
+
     /**
      * Whether this account type has the android.provider.CONTACTS_STRUCTURE metadata xml.
      */
