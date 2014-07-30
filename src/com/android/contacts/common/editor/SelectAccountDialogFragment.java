@@ -65,7 +65,7 @@ public final class SelectAccountDialogFragment extends DialogFragment {
         final SelectAccountDialogFragment instance = new SelectAccountDialogFragment();
         instance.setArguments(args);
         instance.setTargetFragment(targetFragment, 0);
-        instance.show(fragmentManager, null);
+        instance.show(fragmentManager, SelectAccountDialogFragment.TAG);
     }
 
     @Override
