@@ -40,6 +40,8 @@
     <item type="id" name="cliv_phoneticname_textview"/>
     <item type="id" name="cliv_label_textview"/>
     <item type="id" name="cliv_data_view"/>
+    <!-- For ContactDeletionInteraction -->
+    <item type="id" name="dialog_delete_contact_confirmation"/>
     
     <!-- For tag ids used by ContactPhotoManager to tag views with contact details -->
     <item type="id" name="tag_display_name"/>

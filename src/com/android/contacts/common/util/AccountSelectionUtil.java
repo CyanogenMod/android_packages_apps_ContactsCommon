@@ -34,11 +34,13 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.android.contacts.common.R;
+import com.android.contacts.common.SimContactsConstants;
 import com.android.contacts.common.model.AccountTypeManager;
 import com.android.contacts.common.model.account.AccountType;
 import com.android.contacts.common.model.account.AccountWithDataSet;
 import com.android.contacts.common.vcard.ImportVCardActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -56,6 +58,8 @@ public class AccountSelectionUtil {
     private static int IMPORT_FROM_ALL = 8;
 
     public static Uri mPath;
+    // QRD enhancement: import subscription selected by user
+    private static int mImportSub = SimContactsConstants.SUB_INVALID;
 
     public static class AccountSelectedListener
             implements DialogInterface.OnClickListener {
@@ -88,6 +92,10 @@ public class AccountSelectionUtil {
         void setAccountList(List<AccountWithDataSet> accountList) {
             mAccountList = accountList;
         }
+    }
+
+    public static void setImportSubscription(int subscription) {
+        mImportSub = subscription;
     }
 
     public static Dialog getSelectAccountDialog(Context context, int resId) {
@@ -206,15 +214,17 @@ public class AccountSelectionUtil {
     }
 
     public static void doImportFromSim(Context context, AccountWithDataSet account) {
-        Intent importIntent = new Intent(Intent.ACTION_VIEW);
-        importIntent.setType("vnd.android.cursor.item/sim-contact");
+        Intent importIntent = new Intent(SimContactsConstants.ACTION_MULTI_PICK_SIM);
         if (account != null) {
-            importIntent.putExtra("account_name", account.name);
-            importIntent.putExtra("account_type", account.type);
-            importIntent.putExtra("data_set", account.dataSet);
+            importIntent.putExtra(SimContactsConstants.ACCOUNT_NAME, account.name);
+            importIntent.putExtra(SimContactsConstants.ACCOUNT_TYPE, account.type);
+            importIntent.putExtra(SimContactsConstants.ACCOUNT_DATA, account.dataSet);
         }
-        importIntent.setClassName("com.android.phone", "com.android.phone.SimContacts");
-        importIntent.putExtra(SIM_INDEX, TelephonyManager.getDefault().getDefaultSim());
+        if (TelephonyManager.getDefault().isMultiSimEnabled()) {
+            importIntent.putExtra(SimContactsConstants.SUB, mImportSub);
+        } else {
+            importIntent.putExtra(SimContactsConstants.SUB,SimContactsConstants.SUB_1);
+        }
         context.startActivity(importIntent);
     }
 
