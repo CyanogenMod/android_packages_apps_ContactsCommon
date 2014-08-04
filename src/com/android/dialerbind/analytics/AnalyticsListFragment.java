@@ -22,4 +22,8 @@ public abstract class AnalyticsListFragment extends ListFragment implements Anal
     @Override
     public void sendHitEvent(String categoryId, String actionId, String labelId) {
     }
+
+    @Override
+    public void sendScreenView() {
+    }
 }

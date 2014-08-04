@@ -22,4 +22,8 @@ public abstract class AnalyticsActivity extends Activity implements AnalyticsInt
     @Override
     public void sendHitEvent(String categoryId, String actionId, String labelId) {
     }
+
+    @Override
+    public void sendScreenView() {
+    }
 }

@@ -22,4 +22,8 @@ public abstract class AnalyticsFragment extends Fragment implements AnalyticsInt
     @Override
     public void sendHitEvent(String categoryId, String actionId, String labelId) {
     }
+
+    @Override
+    public void sendScreenView() {
+    }
 }
