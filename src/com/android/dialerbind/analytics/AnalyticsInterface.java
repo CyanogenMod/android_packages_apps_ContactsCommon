@@ -18,4 +18,6 @@ package com.android.dialerbind.analytics;
 
 public interface AnalyticsInterface {
     void sendHitEvent(String categoryId, String actionId, String labelId);
+
+    void sendScreenView();
 }
