@@ -23,4 +23,8 @@ public abstract class AnalyticsPreferenceActivity extends PreferenceActivity
     @Override
     public void sendHitEvent(String categoryId, String actionId, String labelId) {
     }
+
+    @Override
+    public void sendScreenView() {
+    }
 }
