@@ -97,6 +97,8 @@ public class ImportExportDialogFragment extends AnalyticsDialogFragment
 
     private static final boolean DEBUG = true;
 
+    public static final int SUBACTIVITY_EXPORT_CONTACTS = 100;
+
     // This values must be consistent with ImportExportDialogFragment.SUBACTIVITY_EXPORT_CONTACTS.
     // This values is set 101,That is avoid to conflict with other new subactivity.
     public static final int SUBACTIVITY_SHARE_VISILBLE_CONTACTS = 101;
@@ -218,10 +220,11 @@ public class ImportExportDialogFragment extends AnalyticsDialogFragment
                         break;
                     }
                     case R.string.export_to_sdcard: {
-                        Intent exportIntent = new Intent(getActivity(), ExportVCardActivity.class);
-                        exportIntent.putExtra(VCardCommonArguments.ARG_CALLING_ACTIVITY,
-                                callingActivity);
-                        getActivity().startActivity(exportIntent);
+                    Intent exportIntent = new Intent(SimContactsConstants.ACTION_MULTI_PICK,
+                            Contacts.CONTENT_URI);
+                    exportIntent.putExtra(SimContactsConstants.IS_CONTACT, true);
+                    getActivity().startActivityForResult(exportIntent,
+                            SUBACTIVITY_EXPORT_CONTACTS);
                         break;
                     }
                     case R.string.share_visible_contacts: {
