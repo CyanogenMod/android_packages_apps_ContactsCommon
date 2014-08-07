@@ -32,6 +32,7 @@
   <string name="call_radio">Radio uruffen</string>
   <string name="call_telex">Telex uruffen</string>
   <string name="call_tty_tdd">TTY/TDD uruffen</string>
+  <string name="call_work_mobile">Aarbechtshandy uruffen</string>
   <string name="call_assistant"><xliff:g id="assistant">%s</xliff:g> uruffen</string>
   <string name="call_mms">MMS uruffen</string>
   <string name="status_available">Disponibel</string>
@@ -67,5 +68,6 @@
   <string name="display_all_contacts">All Kontakter</string>
   <string name="menu_done">Fäerdeg</string>
   <string name="menu_doNotSave">Ofbriechen</string>
+  <string name="fail_reason_unknown">Onbekannte Feeler.</string>
   <string name="menu_search">Sichen</string>
 </resources>
