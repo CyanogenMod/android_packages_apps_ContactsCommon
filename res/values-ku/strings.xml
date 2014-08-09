@@ -16,7 +16,7 @@
   ~ limitations under the License
   -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="toast_text_copied">دەق لەبەریگرا</string>
+  <string name="toast_text_copied">دەق لەبەریگیرا</string>
   <string name="call_custom">په‌یوه‌ندی
          <xliff:g id="custom">%s</xliff:g>
     </string>
