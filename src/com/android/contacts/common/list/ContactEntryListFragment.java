@@ -424,9 +424,6 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
     }
 
     public void onLoaderReset(Loader<Cursor> loader) {
-        if (mAdapter != null) {
-            mAdapter.clearPartitions();
-        }
     }
 
     protected void onPartitionLoaded(int partitionIndex, Cursor data) {
