@@ -100,7 +100,7 @@ public class ImportExportDialogFragment extends DialogFragment
 
     // This values must be consistent with ImportExportDialogFragment.SUBACTIVITY_EXPORT_CONTACTS.
     // This values is set 101,That is avoid to conflict with other new subactivity.
-    public static final int SUBACTIVITY_SHARE_VISILBLE_CONTACTS = 101;
+    public static final int SUBACTIVITY_SHARE_VISIBLE_CONTACTS = 101;
     public static final int MAX_COUNT_ALLOW_SHARE_CONTACT = 2000;
 
     private final String[] LOOKUP_PROJECTION = new String[] {
@@ -338,7 +338,7 @@ public class ImportExportDialogFragment extends DialogFragment
         intent.putExtra(AccountFilterActivity.KEY_EXTRA_CONTACT_LIST_FILTER,
                 filter);
         intent.putExtra(IS_CONTACT,true);
-        getActivity().startActivityForResult(intent, SUBACTIVITY_SHARE_VISILBLE_CONTACTS);
+        getActivity().startActivityForResult(intent, SUBACTIVITY_SHARE_VISIBLE_CONTACTS);
     }
 
     /**
