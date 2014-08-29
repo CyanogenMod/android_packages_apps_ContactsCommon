@@ -34,6 +34,7 @@ import android.widget.EditText;
 
 import com.android.contacts.common.MoreContactUtils;
 import com.android.contacts.common.R;
+import com.android.contacts.common.SimContactsConstants;
 import com.android.contacts.common.model.dataitem.DataKind;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
@@ -327,6 +328,8 @@ public abstract class AccountType {
         if ((SimAccountType.ACCOUNT_TYPE).equals(accountType)) {
             int sub = MoreContactUtils.getSubFromAccountName(accountName);
             return MoreContactUtils.getMultiSimAliasesName(context, sub);
+        } else if (SimContactsConstants.PHONE_NAME.equals(accountName)) {
+            return context.getResources().getString(R.string.account_phone);
         }
         return getDisplayLabel(context);
     }

@@ -26,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.contacts.common.R;
+import com.android.contacts.common.SimContactsConstants;
 import com.android.contacts.common.model.AccountTypeManager;
 import com.android.contacts.common.model.account.AccountType;
 import com.android.contacts.common.model.account.AccountWithDataSet;
@@ -69,23 +70,22 @@ public final class AccountsListAdapter extends BaseAdapter {
         mAccountTypes = AccountTypeManager.getInstance(context);
         mAccounts = getAccounts(accountListFilter);
 
-        // Add a virtual local storage account to allow user to store its contacts in the phone
-        String localAccountName = context.getString(R.string.local_storage_account);
-        mAccounts.add(0, new AccountWithDataSet(localAccountName, AccountType.LOCAL_ACCOUNT, null));
-
         if (currentAccount != null
-                && !mAccounts.isEmpty()
-                && !mAccounts.get(0).equals(currentAccount)
-                && mAccounts.remove(currentAccount)) {
+                && !mAccounts.contains(currentAccount)) {
             mAccounts.add(0, currentAccount);
         }
+        if (!mAccounts.contains(AccountWithDataSet.LOCAL_PHONE_ACCOUNT)) {
+            // Add a virtual local storage account to allow user to store its contacts in the phone
+            mAccounts.add(0, AccountWithDataSet.LOCAL_PHONE_ACCOUNT);
+        }
+
         mInflater = LayoutInflater.from(context);
     }
 
     private List<AccountWithDataSet> getAccounts(AccountListFilter accountListFilter) {
         if (accountListFilter == AccountListFilter.ACCOUNTS_GROUP_WRITABLE) {
             return new ArrayList<AccountWithDataSet>(mAccountTypes.getAccounts(true,
-                    AccountTypeManager.FLAG_ALL_ACCOUNTS_WITHOUT_LOCAL));
+                    AccountTypeManager.FLAG_ALL_ACCOUNTS));
         }
         final List<AccountWithDataSet> writableAccountList = mAccountTypes
                 .getAccounts(accountListFilter == AccountListFilter.ACCOUNTS_CONTACT_WRITABLE
