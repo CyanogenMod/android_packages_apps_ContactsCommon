@@ -26,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.contacts.common.R;
+import com.android.contacts.common.SimContactsConstants;
 import com.android.contacts.common.model.AccountTypeManager;
 import com.android.contacts.common.model.account.AccountType;
 import com.android.contacts.common.model.account.AccountWithDataSet;
@@ -69,16 +70,18 @@ public final class AccountsListAdapter extends BaseAdapter {
         mAccountTypes = AccountTypeManager.getInstance(context);
         mAccounts = getAccounts(accountListFilter);
 
-        // Add a virtual local storage account to allow user to store its contacts in the phone
-        String localAccountName = context.getString(R.string.local_storage_account);
-        mAccounts.add(0, new AccountWithDataSet(localAccountName, AccountType.LOCAL_ACCOUNT, null));
-
         if (currentAccount != null
                 && !mAccounts.isEmpty()
                 && !mAccounts.get(0).equals(currentAccount)
                 && mAccounts.remove(currentAccount)) {
             mAccounts.add(0, currentAccount);
         }
+        if (!AccountWithDataSet.LOCAL_PHONE_ACCOUNT.equals(mAccounts.get(0))) {
+            // Add a virtual local storage account to allow user to store its contacts in the phone
+            mAccounts.add(0, new AccountWithDataSet(SimContactsConstants.PHONE_NAME,
+                    SimContactsConstants.ACCOUNT_TYPE_PHONE, null));
+        }
+
         mInflater = LayoutInflater.from(context);
     }
 
