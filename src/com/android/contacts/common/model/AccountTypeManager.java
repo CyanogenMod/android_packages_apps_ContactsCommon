@@ -599,9 +599,12 @@ class AccountTypeManagerImpl extends AccountTypeManager
         boolean isAirMode = MoreContactUtils.isAPMOnAndSIMPowerDown(mContext);
         switch (flag) {
             case FLAG_ALL_ACCOUNTS:
-                return trimAccountByType(
-                        contactWritableOnly ? mContactWritableAccounts : mAccounts,
-                        isAirMode ? SimAccountType.ACCOUNT_TYPE : null);
+                if (isAirMode) {
+                    return trimAccountByType(contactWritableOnly ? mContactWritableAccounts : mAccounts,
+                            SimAccountType.ACCOUNT_TYPE);
+                } else {
+                    return contactWritableOnly ? mContactWritableAccounts : mAccounts;
+                }
             case FLAG_ALL_ACCOUNTS_WITHOUT_LOCAL:
                 return trimAccountByType(
                         contactWritableOnly ? mContactWritableAccounts : mAccounts,
