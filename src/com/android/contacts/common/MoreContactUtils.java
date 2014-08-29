@@ -1,5 +1,9 @@
 /*
+ * Copyright (C) 2013-2014, The Linux Foundation. All Rights Reserved.
+ * Not a Contribution.
+ *
  * Copyright (C) 2012 The Android Open Source Project
+ *
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,11 +25,14 @@ import android.accounts.Account;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.ContentProviderOperation;
 import android.content.ContentProviderResult;
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.OperationApplicationException;
@@ -44,10 +51,13 @@ import android.provider.ContactsContract.RawContacts;
 import android.provider.Settings;
 import android.telephony.SubscriptionManager;
 import android.telephony.PhoneNumberUtils;
+import android.telecomm.PhoneAccountHandle;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.android.contacts.common.model.account.AccountType;
@@ -304,7 +314,7 @@ public class MoreContactUtils {
             return false;
         }
         boolean isAirPlaneMode = Settings.System.getInt(context.getContentResolver(),
-                Settings.System.AIRPLANE_MODE_ON, 0) == 1;
+                Settings.Global.AIRPLANE_MODE_ON, 0) == 1;
         boolean isSIMPowerDown = SystemProperties.getInt(
                 "persist.radio.apm_sim_not_pwdn", 0) == 0;
         return isAirPlaneMode && isSIMPowerDown;
@@ -733,4 +743,79 @@ public class MoreContactUtils {
         }
     }
 
+    /**
+     * Display IP call setting dialog
+     */
+    public static void showNoIPNumberDialog(final Context mContext, final int subscription) {
+        try {
+            new AlertDialog.Builder(mContext)
+                    .setTitle(R.string.no_ip_number)
+                    .setMessage(R.string.no_ip_number_on_sim_card)
+                    .setPositiveButton(R.string.set_ip_number,
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    setIPNumber(mContext, subscription);
+                                }
+                            }).setNegativeButton(android.R.string.cancel, null).show();
+        } catch (Exception e) {
+        }
+    }
+
+    /**
+     * Setting IP Call number
+     */
+    public static void setIPNumber(final Context mContext, final int subscription) {
+        try {
+            LayoutInflater mInflater = LayoutInflater.from(mContext);
+            View v = mInflater.inflate(R.layout.ip_prefix_dialog, null);
+            final EditText edit = (EditText) v.findViewById(R.id.ip_prefix_dialog_edit);
+            String ip_prefix = Settings.System.getString(mContext.getContentResolver(),
+                    IPCALL_PREFIX[subscription]);
+            edit.setText(ip_prefix);
+
+            new AlertDialog.Builder(mContext).setTitle(R.string.ipcall_dialog_title)
+                    .setIcon(android.R.drawable.ic_dialog_info).setView(v)
+                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            String ip_prefix = edit.getText().toString();
+                            Settings.System.putString(mContext.getContentResolver(),
+                                    IPCALL_PREFIX[subscription], ip_prefix);
+                        }
+                    }).setNegativeButton(android.R.string.cancel, null).show();
+        } catch (Exception e) {
+        }
+    }
+
+    /**
+     * Check one SIM card is enabled
+     */
+    public static boolean isMultiSimEnable(Context context, int slotId) {
+            if (Settings.System.getInt(context.getContentResolver(),
+                    Settings.Global.AIRPLANE_MODE_ON, 0) != 0
+                || TelephonyManager.SIM_STATE_READY != TelephonyManager
+                        .getDefault()
+                            .getSimState(slotId)) {
+                return false;
+            }
+            return true;
+    }
+
+    /**
+     * Get IP Call prefix
+     */
+    public static String getIPCallPrefix(Context context, int slot) {
+        String ipCallPrefix = "";
+        ipCallPrefix = Settings.System.getString(context.getContentResolver(),
+                IPCALL_PREFIX[slot]);
+        return ipCallPrefix;
+    }
+
+    public static PhoneAccountHandle getAccount(int slot) {
+        ComponentName serviceName = new ComponentName("com.android.phone",
+                "com.android.services.telephony.TelephonyConnectionService");
+        long[] subId = SubscriptionManager.getSubId(slot);
+        return new PhoneAccountHandle(serviceName, String.valueOf(subId[0]));
+    }
 }

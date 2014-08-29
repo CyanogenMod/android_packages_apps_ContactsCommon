@@ -821,6 +821,14 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
          want their contacts to be displayed. [CHAR LIMIT=128] -->
     <string name="settings_contact_display_options_description">Configure how your contacts are displayed and sorted.</string>
 
+    <!-- Menu item used to initiate ip call -->
+    <string name="ip_call_by_slot">IP Call by <xliff:g id="subName">%s</xliff:g></string>
+    <string name="set_ip_number">Set IP Number</string>
+    <string name="no_ip_number">No IP number</string>
+    <string name="no_ip_number_on_sim_card">No IP number on SIM card</string>
+    <string name="ipcall_dialog_title">IP call setting</string>
+    <string name="ipcall_dialog_edit_hint">Please input the IP prefix</string>
+
     <string name="Import_All">Import Contacts From All SIMs</string>
 
     <string name="select_sim">Select SIM</string>
