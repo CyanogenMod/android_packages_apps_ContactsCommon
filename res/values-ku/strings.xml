@@ -16,7 +16,7 @@
   ~ limitations under the License
   -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="toast_text_copied">دەق لەبەریگیرا</string>
+  <string name="toast_text_copied">ده‌ق له‌به‌ری گیرایه‌وه‌</string>
   <string name="call_custom">په‌یوه‌ندی
          <xliff:g id="custom">%s</xliff:g>
     </string>
@@ -83,7 +83,7 @@
   <string name="user_profile_contacts_list_header" msgid="9154761216179882405">من</string>
   <string name="search_results_searching">گەڕان\u2026</string>
   <string name="foundTooManyContacts">زیاتر له‌ <xliff:g id="count">%d</xliff:g> دۆزرایه‌وه‌.</string>
-  <string name="listFoundAllContactsZero">ناو نیە</string>
+  <string name="listFoundAllContactsZero">ناو نییە</string>
   <string name="description_quick_contact_for">په‌یوه‌ندی خێرا بۆ  <xliff:g id="name">%1$s</xliff:g></string>
   <string name="missing_name">(ناوی نییه‌)</string>
   <string name="favoritesFrequentCalled">زۆرترین پەیوەندیکردن</string>
@@ -96,7 +96,7 @@
   <string name="nameLabelsGroup">ناو</string>
   <string name="nicknameLabelsGroup">نازناو</string>
   <string name="full_name">ناو</string>
-  <string name="name_given">ناو پێدراو</string>
+  <string name="name_given">ناوی دراو</string>
   <string name="name_family">ناوی خێزان</string>
   <string name="name_prefix">ناوی پێشگر</string>
   <string name="name_middle">ناوی ناوه‌ند</string>
@@ -109,7 +109,7 @@
   <string name="emailLabelsGroup">پۆست</string>
   <string name="postalLabelsGroup">ناونیشان</string>
   <string name="imLabelsGroup">IM</string>
-  <string name="organizationLabelsGroup">ڕێکخراو</string>
+  <string name="organizationLabelsGroup">ڕێکخستن</string>
   <string name="relationLabelsGroup">په‌یوه‌ندی کۆمه‌ڵایه‌تی</string>
   <string name="eventLabelsGroup">ڕۆژه‌ تایبه‌ته‌کان</string>
   <string name="sms">نامه‌ی ده‌قی</string>
@@ -119,7 +119,7 @@
   <string name="label_notes">تێبینییه‌کان</string>
   <string name="label_sip_address">په‌یوه‌ندی ئینته‌رنێتی</string>
   <string name="websiteLabelsGroup">ماڵپەڕ</string>
-  <string name="groupsLabel">گرووپەکان</string>
+  <string name="groupsLabel">کۆمه‌ڵه‌کان</string>
   <string name="email_home">پۆستی ئه‌لیکترۆنی ماڵه‌وه‌</string>
   <string name="email_mobile">پۆستی ئه‌لیکترۆنی مۆبایل</string>
   <string name="email_work">پۆستی ئه‌لیکترۆنی سه‌ر کار</string>
@@ -149,7 +149,7 @@
   <string name="description_minus_button">سڕینەوە</string>
   <string name="expand_collapse_name_fields_description">فراوانکردن یان ته‌سک کردنه‌وه‌ی بۆشایی ناوه‌کان</string>
   <string name="list_filter_all_accounts">هەموو ناوەکان</string>
-  <string name="list_filter_all_starred">پەیوەستبوون</string>
+  <string name="list_filter_all_starred">ئه‌ستێره‌دار</string>
   <string name="list_filter_customize">خواستی خۆت</string>
   <string name="list_filter_single">ناوەکان</string>
   <string name="display_ungrouped">هه‌موو په‌یوه‌ندییه‌کانی تر</string>
@@ -159,7 +159,7 @@
   <string name="display_more_groups">گروپی زیاتر\u2026</string>
   <string name="display_warn_remove_ungrouped">سڕینه‌وه‌ی  \"<xliff:g id="group" example="Starred">%s</xliff:g>\" له‌ گواستنه‌وه‌ و هه‌روه‌ها سڕینه‌وه‌ی هه‌ر نا گروپێکی په‌یوه‌ندی له‌ گواستنه‌وه‌.</string>
   <string name="savingDisplayGroups">پاشه‌که‌وتکردنی نیشاندانی ڕێکخستن\u2026</string>
-  <string name="menu_done">ئه‌نجامدرا</string>
+  <string name="menu_done">ئه‌نجام درا</string>
   <string name="menu_doNotSave">هەڵوەشاندنەوە</string>
   <string name="listAllContactsInAccount">په‌یوه‌ندی له‌  <xliff:g id="name" example="abc@gmail.com">%s</xliff:g></string>
   <string name="listCustomView">په‌یوه‌ندی له‌ بینینی خوازراو</string>
@@ -235,8 +235,8 @@
   <string name="activity_title_contacts_filter">په‌یوه‌ندی شایه‌ن نیشاندان</string>
   <string name="custom_list_filter">شایه‌نی بینینی خوازراو</string>
   <string name="hint_findContacts">دۆزینه‌وه‌ی په‌یوه‌ندی</string>
-  <string name="contactsFavoritesLabel">په‌سه‌ندکراوه‌کان</string>
-  <string name="listTotalAllContactsZero">ناو نیە.</string>
+  <string name="contactsFavoritesLabel">دڵخوازه‌کان</string>
+  <string name="listTotalAllContactsZero">ناو نییە.</string>
   <string name="listTotalAllContactsZeroCustom">هیچ په‌یوه‌ندییه‌کی دیار نییه‌.</string>
   <string name="listTotalAllContactsZeroStarred">هیچ دڵخوازێک نییه‌.</string>
   <string name="listTotalAllContactsZeroGroup">هیچ په‌یوه‌ندییه‌ک نییه‌ له‌ <xliff:g id="name" example="Friends">%s</xliff:g></string>
