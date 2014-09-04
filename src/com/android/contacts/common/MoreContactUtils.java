@@ -302,9 +302,6 @@ public class MoreContactUtils {
         StringBuilder simFilter = new StringBuilder("");
 
         for (int i = 0; i < count; i++) {
-            if (!TelephonyManager.getDefault().hasIccCard(i)) {
-                continue;
-            }
             if (TelephonyManager.SIM_STATE_UNKNOWN == TelephonyManager
                     .getDefault().getSimState(i)) {
                 simFilter.append(getSimAccountName(i) + ',');

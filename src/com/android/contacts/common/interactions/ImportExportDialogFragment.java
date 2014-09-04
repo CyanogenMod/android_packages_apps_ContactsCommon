@@ -143,7 +143,7 @@ public class ImportExportDialogFragment extends AnalyticsDialogFragment
     }
     private static ExportToSimThread mExportThread = null;
     public ExportToSimThread createExportToSimThread(int subscription,
-        ArrayList<String[]> contactList, Activity mAactivity){
+            ArrayList<String[]> contactList, Activity mActivity) {
         if (mExportThread == null)
             mExportThread = new ExportToSimThread(subscription, contactList,  mActivity);
         return mExportThread;
