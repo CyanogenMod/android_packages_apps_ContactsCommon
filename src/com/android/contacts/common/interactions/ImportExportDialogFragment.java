@@ -419,7 +419,7 @@ public class ImportExportDialogFragment extends DialogFragment
                 });
 
         AlertDialog dialog = builder.create();
-        dialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.ok),
+        dialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(android.R.string.ok),
                 new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -433,7 +433,7 @@ public class ImportExportDialogFragment extends DialogFragment
                 }
             }
         });
-        dialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.cancel),
+        dialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(android.R.string.cancel),
                 new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -847,7 +847,7 @@ public class ImportExportDialogFragment extends DialogFragment
 
             // add a cancel button to let user cancel explicitly.
             mExportProgressDlg.setButton(DialogInterface.BUTTON_NEGATIVE,
-                    mPeople.getString(R.string.progressdialog_cancel),
+                    mPeople.getString(android.R.string.cancel),
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -898,7 +898,7 @@ public class ImportExportDialogFragment extends DialogFragment
                                 Toast.LENGTH_SHORT).show();
                         break;
                     case TOAST_SIM_CARD_NOT_LOAD_COMPLETE:
-                        Toast.makeText(mPeople, R.string.sim_contacts_not_load,
+                        Toast.makeText(mPeople, R.string.sim_contacts_not_loaded,
                                 Toast.LENGTH_SHORT).show();
                         break;
                 }
@@ -926,7 +926,7 @@ public class ImportExportDialogFragment extends DialogFragment
 
             // add a cancel button to let user cancel explicitly.
             mExportProgressDlg.setButton(DialogInterface.BUTTON_NEGATIVE,
-                mPeople.getString(R.string.progressdialog_cancel),
+                mPeople.getString(android.R.string.cancel),
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
