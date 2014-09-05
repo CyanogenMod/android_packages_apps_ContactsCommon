@@ -346,10 +346,10 @@ public class ImportExportDialogFragment extends AnalyticsDialogFragment
             // Send over to the account selector
             final Bundle args = new Bundle();
             args.putInt(KEY_RES_ID, resId);
-            SelectAccountDialogFragment.show(
-                    getFragmentManager(), this,
-                    R.string.dialog_new_contact_account,
-                    AccountListFilter.ACCOUNTS_CONTACT_WRITABLE_WITHOUT_SIM, args);
+            SelectAccountDialogFragment.show(mActivity.getFragmentManager(),
+                    this, R.string.dialog_new_contact_account,
+                    AccountListFilter.ACCOUNTS_CONTACT_WRITABLE_WITHOUT_SIM,
+                    args);
 
             // In this case, because this DialogFragment is used as a target fragment to
             // SelectAccountDialogFragment, we can't close it yet.  We close the dialog when
