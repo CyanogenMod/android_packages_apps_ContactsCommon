@@ -304,9 +304,10 @@ public class AccountSelectionUtil {
         });
 
         AlertDialog dialog = builder.create();
-        dialog.setButton(DialogInterface.BUTTON_POSITIVE, context.getString(R.string.ok),
-                simSelListner);
-        dialog.setButton(DialogInterface.BUTTON_NEGATIVE, context.getString(R.string.cancel),
+        dialog.setButton(DialogInterface.BUTTON_POSITIVE,
+                context.getString(android.R.string.ok), simSelListner);
+        dialog.setButton(DialogInterface.BUTTON_NEGATIVE,
+                context.getString(android.R.string.cancel),
                 new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

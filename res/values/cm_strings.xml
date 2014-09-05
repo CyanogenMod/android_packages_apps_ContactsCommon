@@ -20,47 +20,40 @@
     <string name="local_storage_account" product="default">Local phone account</string>
 
     <!-- Action string for managing SIM contacts -->
-    <string name="manage_sim_contacts"> Manage SIM card contacts</string>
+    <string name="manage_sim_contacts">Manage SIM card contacts</string>
 
     <!-- Action that exports all contacts to SIM -->
     <string name="export_to_sim">Export to SIM card</string>
 
-    <string name="Import_All">Import Contacts From All SIMs</string>
-    <string name="ok">OK</string>
-    <string name="cancel">Cancel</string>
-
     <string name="select_sim">Select SIM</string>
-    <string name="account_sim">SIM Card</string>
+    <string name="account_sim">SIM card</string>
     <string name="name_for_sim">Name</string>
 
-    <!--The failed reason shown when importting some a vCard file -->
-    <string name="fail_reason_import_vcard">I/O error,couldn\'t import vCard <xliff:g id="name">%s</xliff:g></string>
+    <!--The failure reason shown when importing vCards -->
+    <string name="fail_reason_import_vcard">The vCard \'<xliff:g id="name">%s</xliff:g>\' could not be imported due to an I/O error</string>
 
     <string name="label_groups">Group</string>
 
     <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
-    <string name="share_failed">Too many contacts, share failed</string>
+    <string name="contact_share_failed_toast">No more than <xliff:g id="count">%d</xliff:g> contacts can be shared</string>
 
-    <string name="exporting">Exporting</string>
+    <string name="exporting">Exporting\u2026</string>
 
     <!-- Message while reading multiple vCard files "(current number) of (total number) files"
           The order of "current number" and "total number" cannot be changed -->
     <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> of <xliff:g id="total_number">%2$s</xliff:g> files</string>
 
-    <string name="progressdialog_cancel">Cancel</string>
-
     <string name="export_failed">Export failed</string>
 
-    <string name="sim_card_full">Error, Sim Card is full.</string>
+    <string name="sim_card_full">The SIM card is full</string>
 
     <string name="export_finished">Export finished</string>
 
-    <string name="tag_too_long">Error, Contact name is too long.</string>
+    <string name="tag_too_long">The contact name is too long</string>
 
-    <string name="export_cancelled">Export is canceled, <xliff:g id="insertCount">%s</xliff:g>items are exported</string>
+    <string name="export_cancelled">The export was canceled, <xliff:g id="insertCount">%s</xliff:g>items were exported</string>
 
-    <string name="export_no_phone_or_email">Export failed, <xliff:g id="name">%s</xliff:g>has not phone number or
-         email address</string>
+    <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> does not have a phone number or email address</string>
 
     <string name="import_from_sim_select">Choose card to import</string>
 
@@ -87,27 +80,25 @@
     <!-- Warning dialog contents after users selects to delete a contact with multiple Writable sources. -->
     <string name="multipleContactDeleteConfirmation">Deleting this contact will delete information
          from multiple accounts.</string>
-    <!-- The slot common name -->
-    <string name="slot_name">SIM</string>
 
-    <string name="copy_done">Copy done！</string>
-    <string name="copy_failure">Copy Failed！</string>
-    <string name="card_no_space">Card has no space ,some record copy failed</string>
+    <string name="copy_done">The contact was copied successfully</string>
+    <string name="copy_failure">Copying the contact failed</string>
+    <string name="card_no_space">Copying the contact failed, the SIM card is full</string>
 
     <!-- Menu item used to initiate ip call -->
-    <string name="ip_call_by_slot">IP Call by <xliff:g id="subName">%s</xliff:g></string>
+    <string name="ip_call_by_slot">IP call by <xliff:g id="subName">%s</xliff:g></string>
     <string name="no_ip_number">No IP number</string>
     <string name="no_ip_number_on_sim_card">No IP number on SIM card</string>
-    <string name="set_ip_number">Set IP Number</string>
-    <string name="ipcall_dialog_title">IP call setting</string>
+    <string name="set_ip_number">Set IP number</string>
+    <string name="ipcall_dialog_title">IP call settings</string>
     <string name="ipcall_dialog_edit_hint">Please input the IP prefix</string>
 
     <!-- vCard import path -->
-    <string name="select_path">Select Path</string>
+    <string name="select_path">Select path</string>
 
     <!-- Storage path -->
     <string name="sd_card">SD card</string>
     <string name="phone_storage">Phone storage</string>
 
-    <string name="sim_contacts_not_load">Error, SIM contacts have not been loaded completely.</string>
+    <string name="sim_contacts_not_loaded">The SIM contacts could not be loaded completely</string>
 </resources>
