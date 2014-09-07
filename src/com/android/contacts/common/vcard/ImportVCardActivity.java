@@ -1101,13 +1101,18 @@ public class ImportVCardActivity extends Activity {
         File file;
         switch(mSelectedStorage) {
             case VCardService.INTERNAL_PATH:
-               file = Environment.getExternalStorageDirectory();
-               break;
+                file = Environment.getExternalStorageDirectory();
+                break;
             case VCardService.EXTERNAL_PATH:
-               file = new File(MoreContactUtils.getSDPath(this));
-               break;
+                final String sdcardPath = MoreContactUtils.getSDPath(this);
+                if (sdcardPath != null) {
+                    file = new File(sdcardPath);
+                } else {
+                    file = Environment.getExternalStorageDirectory();
+                }
+                break;
             default:
-               file = Environment.getExternalStorageDirectory();
+                file = Environment.getExternalStorageDirectory();
                 break;
             }
         if (!file.exists() || !file.isDirectory() || !file.canRead()) {
