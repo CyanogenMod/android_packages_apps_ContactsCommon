@@ -156,7 +156,12 @@ public class VCardService extends Service {
 
     private void initExporterParams() {
         if (mStorage == EXTERNAL_PATH) {
-            mTargetDirectory = new File(MoreContactUtils.getSDPath(this));
+            String targetDirectory = MoreContactUtils.getSDPath(this);
+            if (targetDirectory != null) {
+                mTargetDirectory = new File(targetDirectory);
+            } else {
+                mTargetDirectory = Environment.getExternalStorageDirectory();
+            }
         } else {
             mTargetDirectory = Environment.getExternalStorageDirectory();
         }
