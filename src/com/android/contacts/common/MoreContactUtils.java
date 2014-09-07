@@ -832,12 +832,13 @@ public class MoreContactUtils {
     }
 
     public static String getSDPath(Context context) {
+        final String sdcardDesc = context.getString(com.android.internal.R.string.storage_sd_card);
         StorageManager mStorageManager = (StorageManager) context
                 .getSystemService(Context.STORAGE_SERVICE);
         StorageVolume[] volumes = mStorageManager.getVolumeList();
         for (int i = 0; i < volumes.length; i++) {
             if (volumes[i].isRemovable() && volumes[i].allowMassStorage()
-                    && volumes[i].getDescription(context).contains("SD")) {
+                    && volumes[i].getDescription(context).equals(sdcardDesc)) {
                 return volumes[i].getPath();
             }
         }
