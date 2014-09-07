@@ -1067,7 +1067,12 @@ public class ImportVCardActivity extends Activity {
                 file = Environment.getExternalStorageDirectory();
                 break;
             case VCardService.EXTERNAL_PATH:
-                file = new File(MoreContactUtils.getSDPath(this));
+                final String sdcardPath = MoreContactUtils.getSDPath(this);
+                if (sdcardPath != null) {
+                    file = new File(sdcardPath);
+                } else {
+                    file = Environment.getExternalStorageDirectory();
+                }
                 break;
             default:
                 file = Environment.getExternalStorageDirectory();
