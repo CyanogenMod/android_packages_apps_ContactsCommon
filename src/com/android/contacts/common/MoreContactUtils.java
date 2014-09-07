@@ -334,18 +334,16 @@ public class MoreContactUtils {
     }
 
     public static String getSDPath(Context context) {
-        String sd = null;
         StorageManager mStorageManager = (StorageManager) context
                 .getSystemService(Context.STORAGE_SERVICE);
         StorageVolume[] volumes = mStorageManager.getVolumeList();
         for (int i = 0; i < volumes.length; i++) {
             if (volumes[i].isRemovable() && volumes[i].allowMassStorage()
-                    && !volumes[i].isPrimary()
                     && volumes[i].getDescription(context).contains("SD")) {
-                sd = volumes[i].getPath();
+                return volumes[i].getPath();
             }
         }
-        return sd;
+        return null;
     }
 
     public static boolean isAPMOnAndSIMPowerDown(Context context) {
