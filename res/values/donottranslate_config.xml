@@ -84,4 +84,12 @@
     <!-- Flag indicating whether Contacts app is allowed to share contacts with devices outside -->
     <bool name="config_allow_share_visible_contacts">true</bool>
 
+    <!-- configuration for set CG option -->
+    <bool name="config_set_CG_option">false</bool>
+
+    <!-- configuration for set search call logs in SmartDial -->
+    <bool name="config_smart_search">false</bool>
+
+    <!-- configuration for set operator show in dialpad or calllog -->
+    <bool name="config_show_operator">false</bool>
 </resources>
