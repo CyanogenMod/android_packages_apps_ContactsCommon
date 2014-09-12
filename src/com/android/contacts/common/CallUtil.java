@@ -153,7 +153,6 @@ public class CallUtil {
         }
 
         // TODO: Check telecommManager for value instead.
-        // return telecommMgr.isVideoEnabled();
-        return false;
+        return true;
     }
 }
