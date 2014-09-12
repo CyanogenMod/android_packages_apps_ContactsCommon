@@ -309,6 +309,10 @@ public class MoreContactUtils {
         return simFilter.toString();
     }
 
+    public static boolean isShowOperator(Context context) {
+        return context.getResources().getBoolean(R.bool.config_show_operator);
+    }
+
     public static boolean isAPMOnAndSIMPowerDown(Context context) {
         if (context == null) {
             return false;
@@ -818,4 +822,19 @@ public class MoreContactUtils {
         long[] subId = SubscriptionManager.getSubId(slot);
         return new PhoneAccountHandle(serviceName, String.valueOf(subId[0]));
     }
+
+    public static boolean shouldSearchCallLogsInSmartDial(Context context) {
+        return context.getResources().getBoolean(R.bool.config_smart_search);
+    }
+
+    public static boolean isCAndGOption(Context context) {
+        return context.getResources().getBoolean(R.bool.config_set_CG_option);
+    }
+
+    public static boolean isCAndGState(Context context) {
+        int SelectSmartfrenState = Settings.Global.getInt(context.getContentResolver(),
+                "smartfren_voice_sms_selection", 1);
+        return SelectSmartfrenState == 1 ? true : false;
+    }
+
 }
