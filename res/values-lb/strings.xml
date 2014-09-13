@@ -43,14 +43,22 @@
   <string name="local_search_label">All Kontakter</string>
   <string name="user_profile_contacts_list_header" msgid="9154761216179882405">Ech</string>
   <string name="listFoundAllContactsZero">Keng Kontakter</string>
+  <plurals name="searchFoundContacts">
+    <item quantity="one">1 fonnt</item>
+    <item quantity="other"><xliff:g id="count">%d</xliff:g> fonnt</item>
+  </plurals>
   <string name="missing_name">(Keen Numm)</string>
   <string name="favoritesFrequentCalled">Dacks ugeruff</string>
+  <string name="favoritesFrequentContacted">Dacks kontaktéiert</string>
   <string name="description_view_contact_detail" msgid="2795575601596468581">Kontakt ukucken</string>
   <string name="nameLabelsGroup">Numm</string>
+  <string name="nicknameLabelsGroup">Spëtznumm</string>
   <string name="full_name">Numm</string>
   <string name="phoneLabelsGroup">Telefon</string>
   <string name="emailLabelsGroup">E-Mail</string>
   <string name="postalLabelsGroup">Adress</string>
+  <string name="imLabelsGroup">IM</string>
+  <string name="organizationLabelsGroup">Organisatioun</string>
   <string name="postal_address">Adress</string>
   <string name="ghostData_title">Titel</string>
   <string name="label_notes">Notten</string>
@@ -64,10 +72,14 @@
   <string name="map_other">Adress ukucken</string>
   <string name="description_minus_button">läschen</string>
   <string name="list_filter_all_accounts">All Kontakter</string>
+  <string name="list_filter_all_starred">Markéiert</string>
+  <string name="list_filter_customize">Personaliséieren</string>
   <string name="list_filter_single">Kontakt</string>
   <string name="display_all_contacts">All Kontakter</string>
   <string name="menu_done">Fäerdeg</string>
   <string name="menu_doNotSave">Ofbriechen</string>
   <string name="fail_reason_unknown">Onbekannte Feeler.</string>
   <string name="menu_search">Sichen</string>
+  <string name="contactsFavoritesLabel">Favoritten</string>
+  <string name="listTotalAllContactsZero">Keng Kontakter.</string>
 </resources>
