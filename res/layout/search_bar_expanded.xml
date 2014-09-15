@@ -37,7 +37,7 @@
         android:layout_width="0dp"
         android:layout_height="@dimen/search_box_icon_size"
         android:layout_weight="1"
-        android:layout_marginLeft="@dimen/search_box_text_left_margin"
+        android:layout_marginStart="@dimen/search_box_text_left_margin"
         android:textSize="@dimen/search_text_size"
         android:fontFamily="@string/search_font_family"
         android:textColor="@color/searchbox_text_color"

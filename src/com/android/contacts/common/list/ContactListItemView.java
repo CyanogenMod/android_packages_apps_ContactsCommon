@@ -135,7 +135,7 @@ public class ContactListItemView extends ViewGroup
         final int layoutDirection = TextUtils.getLayoutDirectionFromLocale(locale);
         switch (layoutDirection) {
             case View.LAYOUT_DIRECTION_RTL:
-                return (opposite ? PhotoPosition.LEFT : PhotoPosition.RIGHT);
+                return (PhotoPosition.RIGHT);
             case View.LAYOUT_DIRECTION_LTR:
             default:
                 return (opposite ? PhotoPosition.RIGHT : PhotoPosition.LEFT);
