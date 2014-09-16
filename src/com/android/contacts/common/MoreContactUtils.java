@@ -281,7 +281,7 @@ public class MoreContactUtils {
     }
 
     public static void insertToPhone(String[] values, final ContentResolver resolver,int sub) {
-        Account account = getAcount(sub);
+        Account account = getAccount(sub);
         final String name = values[NAME_POS];
         final String phoneNumber = values[NUMBER_POS];
         final String emailAddresses = values[EMAIL_POS];
@@ -415,7 +415,7 @@ public class MoreContactUtils {
         return result;
     }
 
-    public static Account getAcount(int sub) {
+    private static Account getAccount(int sub) {
         Account account = null;
         if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
             if (sub == SimContactsConstants.SUB_1) {
@@ -439,7 +439,7 @@ public class MoreContactUtils {
     }
 
     public static int getSimFreeCount(Context context, int sub) {
-        String accountName = getAcount(sub).name;
+        String accountName = getAccount(sub).name;
         int count = 0;
 
         if (context == null) {
@@ -878,15 +878,16 @@ public class MoreContactUtils {
         if (context == null || subscription < 0) {
             return null;
         }
-        String name = "";
         MSimTelephonyManager stm = getMSimTelephonyManager();
         if (stm.isMultiSimEnabled()) {
-            name = Settings.System.getString(context.getContentResolver(),
+            String name = Settings.System.getString(context.getContentResolver(),
                     MULTI_SIM_NAME[subscription]);
+            if (!TextUtils.isEmpty(name)) {
+                return name;
+            }
+            return context.getString(R.string.account_sim) + " " + (subscription + 1);
         }
-        if (TextUtils.isEmpty(name)) {
-            name = getSimAccountName(subscription);
-        }
-        return name;
+
+        return context.getString(R.string.account_sim);
     }
 }
