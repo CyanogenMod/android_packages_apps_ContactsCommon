@@ -66,6 +66,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -434,10 +435,10 @@ class AccountTypeManagerImpl extends AccountTypeManager
                 accountType = new GoogleAccountType(mContext, auth.packageName);
             } else if (ExchangeAccountType.isExchangeType(type)) {
                 accountType = new ExchangeAccountType(mContext, auth.packageName, type);
-                } else if (SimAccountType.ACCOUNT_TYPE.equals(type)) {
-                    accountType = new SimAccountType(mContext, auth.packageName);
-                } else if (PhoneAccountType.ACCOUNT_TYPE.equals(type)) {
-                    accountType = new PhoneAccountType(mContext, auth.packageName);
+            } else if (SimAccountType.ACCOUNT_TYPE.equals(type)) {
+                accountType = new SimAccountType(mContext, auth.packageName);
+            } else if (PhoneAccountType.ACCOUNT_TYPE.equals(type)) {
+                accountType = new PhoneAccountType(mContext, auth.packageName);
             } else {
                 // TODO: use syncadapter package instead, since it provides resources
                 Log.d(TAG, "Registering external account type=" + type
@@ -602,9 +603,8 @@ class AccountTypeManagerImpl extends AccountTypeManager
                 if (isAirMode) {
                     return trimAccountByType(contactWritableOnly ? mContactWritableAccounts : mAccounts,
                             SimAccountType.ACCOUNT_TYPE);
-                } else {
-                    return contactWritableOnly ? mContactWritableAccounts : mAccounts;
                 }
+                break;
             case FLAG_ALL_ACCOUNTS_WITHOUT_LOCAL:
                 return trimAccountByType(
                         contactWritableOnly ? mContactWritableAccounts : mAccounts,
@@ -614,7 +614,8 @@ class AccountTypeManagerImpl extends AccountTypeManager
                         contactWritableOnly ? mContactWritableAccounts : mAccounts,
                         SimAccountType.ACCOUNT_TYPE);
         }
-        return contactWritableOnly ? mContactWritableAccounts : mAccounts;
+        List<AccountWithDataSet> list = contactWritableOnly ? mContactWritableAccounts : mAccounts;
+        return new ArrayList<AccountWithDataSet>(list);
     }
 
     private boolean isSimStateUnknown(Account account) {
