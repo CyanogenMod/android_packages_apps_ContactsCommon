@@ -885,9 +885,9 @@ public class ImportExportDialogFragment extends DialogFragment
 
                      // add toast handler when export is canceled
                     case TOAST_EXPORT_CANCELED:
-                        int exportCount = msg.arg1;
-                        Toast.makeText(mPeople,mPeople.getString(R.string.export_cancelled,
-                            String.valueOf(exportCount)), Toast.LENGTH_SHORT).show();
+                        String text = mPeople.getResources().getQuantityString(
+                                R.plurals.export_cancelled, msg.arg1, msg.arg1);
+                        Toast.makeText(mPeople, text, Toast.LENGTH_SHORT).show();
                         break;
 
                     // add toast handler when no phone or email

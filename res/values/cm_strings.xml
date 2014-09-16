@@ -51,7 +51,10 @@
 
     <string name="tag_too_long">The contact name is too long</string>
 
-    <string name="export_cancelled">The export was canceled, <xliff:g id="insertCount">%s</xliff:g>items were exported</string>
+    <plurals name="export_cancelled">
+        <item quantity="one">Export was canceled, %d item was exported</item>
+        <item quantity="other">Export was canceled, %d items were exported</item>
+    </plurals>
 
     <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> does not have a phone number or email address</string>
 
