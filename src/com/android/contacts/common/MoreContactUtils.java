@@ -95,8 +95,8 @@ public class MoreContactUtils {
             "perferred_name_sub2" };
 
     public static final String PREFERRED_SIM_ICON_INDEX = "preferred_sim_icon_index";
-    public static final String[] IPCALL_PREFIX = { "ip_call_prefix_sub1",
-            "ip_call_prefix_sub2" };
+    public static final String[] IPCALL_PREFIX = { "ipcall_prefix1",
+            "ipcall_prefix2" };
     public final static int[] IC_SIM_PICTURE = {
         R.drawable.ic_contact_picture_sim_1,
         R.drawable.ic_contact_picture_sim_2,
