@@ -19,6 +19,9 @@
     <string name="local_storage_account" product="tablet">Local tablet account</string>
     <string name="local_storage_account" product="default">Local phone account</string>
 
+    <!-- Action string for managing SIM contacts -->
+    <string name="manage_sim_contacts">Manage SIM card contacts</string>
+
     <!-- Action that exports all contacts to SIM -->
     <string name="export_to_sim">Export to SIM card</string>
 
@@ -30,6 +33,9 @@
     <string name="fail_reason_import_vcard">The vCard \'<xliff:g id="name">%s</xliff:g>\' could not be imported due to an I/O error</string>
 
     <string name="label_groups">Group</string>
+
+    <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
+    <string name="contact_share_failed_toast">No more than <xliff:g id="count">%d</xliff:g> contacts can be shared</string>
 
     <string name="exporting">Exporting\u2026</string>
 
@@ -74,7 +80,12 @@
     <!-- Warning dialog contents after users selects to delete a contact with multiple Writable sources. -->
     <string name="multipleContactDeleteConfirmation">Deleting this contact will delete information from multiple accounts.</string>
 
+    <string name="copy_done">The contact was copied successfully</string>
+    <string name="copy_failure">Copying the contact failed</string>
+    <string name="card_no_space">Copying the contact failed, the SIM card is full</string>
+
     <!-- Menu item used to initiate ip call -->
+    <string name="ip_call_by_slot">IP call by <xliff:g id="subName">%s</xliff:g></string>
     <string name="no_ip_number">No IP number</string>
     <string name="no_ip_number_on_sim_card">No IP number on SIM card</string>
     <string name="set_ip_number">Set IP number</string>
