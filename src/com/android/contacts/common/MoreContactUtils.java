@@ -36,6 +36,7 @@ import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.OperationApplicationException;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Rect;
 import android.net.Uri;
@@ -311,6 +312,10 @@ public class MoreContactUtils {
 
     public static boolean isShowOperator(Context context) {
         return context.getResources().getBoolean(R.bool.config_show_operator);
+    }
+
+    public static boolean isShowOperator(Resources resources) {
+        return resources.getBoolean(R.bool.config_show_operator);
     }
 
     public static boolean isAPMOnAndSIMPowerDown(Context context) {
@@ -744,6 +749,30 @@ public class MoreContactUtils {
                 return -1;
             }
             return Integer.parseInt(indexs[slot]);
+        }
+    }
+
+    /**
+     * Get Network SPN name, e.g. China Unicom
+     */
+    public static String getNetworkSpnName(Context context, int subscription) {
+        TelephonyManager tm = (TelephonyManager)
+                context.getSystemService(Context.TELEPHONY_SERVICE);
+        String netSpnName = "";
+        netSpnName = tm.getNetworkOperatorName(subscription);
+        if (TextUtils.isEmpty(netSpnName)) {
+            // if could not get the operator name, use account name instead of
+            netSpnName = getSimAccountName(subscription);
+        }
+        return toUpperCaseFirstOne(netSpnName);
+    }
+
+    public static String toUpperCaseFirstOne(String s) {
+        if (Character.isUpperCase(s.charAt(0))) {
+            return s;
+        } else {
+            return (new StringBuilder()).append(Character.toUpperCase(s.charAt(0)))
+                    .append(s.substring(1)).toString();
         }
     }
 
