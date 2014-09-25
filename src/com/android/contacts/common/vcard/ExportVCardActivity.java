@@ -33,6 +33,7 @@ import android.os.Messenger;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.android.contacts.common.MoreContactUtils;
 import com.android.contacts.common.R;
 
 import java.io.File;
@@ -119,6 +120,8 @@ public class ExportVCardActivity extends Activity implements ServiceConnection,
     // String for storing error reason temporarily.
     private String mErrorReason;
 
+    private int mSelectedStorage = VCardService.INTERNAL_PATH;
+
     private class ExportConfirmationListener implements DialogInterface.OnClickListener {
         private final Uri mDestinationUri;
 
@@ -150,27 +153,15 @@ public class ExportVCardActivity extends Activity implements ServiceConnection,
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
 
-        // Check directory is available.
-        if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            Log.w(LOG_TAG, "External storage is in state " + Environment.getExternalStorageState() +
-                    ". Cancelling export");
-            showDialog(R.id.dialog_sdcard_not_found);
-            return;
-        }
+        checkStorage();
+    }
 
-        final File targetDirectory = Environment.getExternalStorageDirectory();
-        if (!(targetDirectory.exists() &&
-                targetDirectory.isDirectory() &&
-                targetDirectory.canRead()) &&
-                !targetDirectory.mkdirs()) {
-            showDialog(R.id.dialog_sdcard_not_found);
-            return;
-        }
-
+    private void runExportContacts() {
         final String callingActivity = getIntent().getExtras()
                 .getString(VCardCommonArguments.ARG_CALLING_ACTIVITY);
         Intent intent = new Intent(this, VCardService.class);
         intent.putExtra(VCardCommonArguments.ARG_CALLING_ACTIVITY, callingActivity);
+        intent.putExtra(VCardService.STORAGE_PATH, mSelectedStorage);
 
         if (startService(intent) == null) {
             Log.e(LOG_TAG, "Failed to start vCard service");
@@ -188,6 +179,69 @@ public class ExportVCardActivity extends Activity implements ServiceConnection,
         Intent selExportIntent = getIntent();
         if(selExportIntent != null) {
             selExport = selExportIntent.getStringExtra("SelExport");
+        }
+    }
+
+    private void checkStorage() {
+        boolean sdExist = MoreContactUtils.sdCardExist(this);
+        boolean inExist = Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
+        if (sdExist && inExist) {
+            CharSequence[] storage_list = new CharSequence[2];
+            storage_list[VCardService.INTERNAL_PATH] = Environment.getExternalStorageDirectory()
+                    .getPath();
+            storage_list[VCardService.EXTERNAL_PATH] = MoreContactUtils.getSDPath(this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(R.string.select_path);
+            builder.setSingleChoiceItems(storage_list, 0, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Log.d(LOG_TAG, "onClicked Dialog on which = " + which);
+                    mSelectedStorage = which;
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(android.R.string.ok),
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            runExportContacts();
+                        }
+                    });
+            dialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(android.R.string.cancel),
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            mSelectedStorage = VCardService.INVALID_PATH;
+                        }
+                    });
+            dialog.show();
+        } else if (inExist) {
+            mSelectedStorage = VCardService.INTERNAL_PATH;
+
+            // Check directory is available.
+            if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+                Log.w(LOG_TAG, "External storage is in state "
+                        + Environment.getExternalStorageState() + ". Cancelling export");
+                showDialog(R.id.dialog_sdcard_not_found);
+                return;
+            }
+
+            final File targetDirectory = Environment.getExternalStorageDirectory();
+            if (!(targetDirectory.exists() &&
+                    targetDirectory.isDirectory() &&
+                    targetDirectory.canRead()) &&
+                    !targetDirectory.mkdirs()) {
+                showDialog(R.id.dialog_sdcard_not_found);
+                return;
+            }
+
+            runExportContacts();
+        } else if (sdExist) {
+            mSelectedStorage = VCardService.EXTERNAL_PATH;
+            runExportContacts();
+        } else {
+            mSelectedStorage = VCardService.INVALID_PATH;
         }
     }
 

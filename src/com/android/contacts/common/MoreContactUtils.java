@@ -43,6 +43,10 @@ import android.net.Uri;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemProperties;
+import android.os.RemoteException;
+import android.os.ServiceManager;
+import android.os.storage.StorageManager;
+import android.os.storage.StorageVolume;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Email;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
@@ -316,6 +320,32 @@ public class MoreContactUtils {
 
     public static boolean isShowOperator(Resources resources) {
         return resources.getBoolean(R.bool.config_show_operator);
+    }
+
+    public static boolean sdCardExist(Context context) {
+        boolean ret = false;
+        StorageManager mStorageManager = (StorageManager) context
+                .getSystemService(Context.STORAGE_SERVICE);
+        if (mStorageManager.getVolumeState(getSDPath(context)).equals(
+                android.os.Environment.MEDIA_MOUNTED)) {
+            ret = true;
+        }
+        return ret;
+    }
+
+    public static String getSDPath(Context context) {
+        String sd = null;
+        StorageManager mStorageManager = (StorageManager) context
+                .getSystemService(Context.STORAGE_SERVICE);
+        StorageVolume[] volumes = mStorageManager.getVolumeList();
+        for (int i = 0; i < volumes.length; i++) {
+            if (volumes[i].isRemovable() && volumes[i].allowMassStorage()
+                    && !volumes[i].isPrimary()
+                    && volumes[i].getDescription(context).contains("SD")) {
+                sd = volumes[i].getPath();
+            }
+        }
+        return sd;
     }
 
     public static boolean isAPMOnAndSIMPowerDown(Context context) {
