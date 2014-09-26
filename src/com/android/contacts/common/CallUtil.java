@@ -27,6 +27,8 @@ import android.telecom.VideoProfile;
 import com.android.contacts.common.util.PhoneNumberHelper;
 import com.android.phone.common.PhoneConstants;
 
+import java.util.List;
+
 /**
  * Utilities related to calls.
  */
@@ -145,14 +147,24 @@ public class CallUtil {
         return Uri.fromParts(PhoneAccount.SCHEME_TEL, number, null);
      }
 
+    private static boolean hasCapability(PhoneAccount phoneAccount, int capability) {
+        return (phoneAccount != null) &&
+                ((phoneAccount.getCapabilities() & capability) == capability);
+    }
+
     public static boolean isVideoEnabled(Context context) {
         TelecomManager telecommMgr = (TelecomManager)
                 context.getSystemService(Context.TELECOM_SERVICE);
         if (telecommMgr == null) {
             return false;
         }
-
-        // TODO: Check telecommManager for value instead.
-        return true;
+        List<PhoneAccountHandle> phoneAccountHandles = telecommMgr.getCallCapablePhoneAccounts();
+        for (PhoneAccountHandle handle : phoneAccountHandles) {
+            final PhoneAccount phoneAccount = telecommMgr.getPhoneAccount(handle);
+            if (hasCapability(phoneAccount, PhoneAccount.CAPABILITY_VIDEO_CALLING)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
