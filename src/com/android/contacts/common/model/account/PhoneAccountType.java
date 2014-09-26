@@ -73,7 +73,7 @@ public class PhoneAccountType extends BaseAccountType{
             addDataKindPhoto(context);
             addDataKindNote(context);
             addDataKindWebsite(context);
-            //addDataKindGroupMembership(context);
+            addDataKindGroupMembership(context);
             if (context.getResources().getBoolean(
                     com.android.internal.R.bool.config_built_in_sip_phone)) {
                 addDataKindSipAddress(context);
