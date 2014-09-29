@@ -18,4 +18,44 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">Локальная учётная запись планшета</string>
   <string name="local_storage_account" product="default">Локальная учётная запись телефона</string>
+  <string name="export_to_sim">Экспорт на SIM-карту</string>
+  <string name="select_sim">Выберите SIM-карту</string>
+  <string name="account_sim">SIM-карта</string>
+  <string name="name_for_sim">Название</string>
+  <string name="fail_reason_import_vcard">Не удалось импортировать файл «<xliff:g id="name">%s</xliff:g>» из-за ошибки ввода-вывода</string>
+  <string name="label_groups">Группа</string>
+  <string name="contact_share_failed_toast">Можно отправить не более <xliff:g id="count">%d</xliff:g> контактов</string>
+  <string name="exporting">Экспорт\u2026</string>
+  <string name="reading_vcard_files">Обработка: <xliff:g id="current_number">%1$s</xliff:g> из <xliff:g id="total_number">%2$s</xliff:g></string>
+  <string name="export_failed">Не удалось выполнить экспорт</string>
+  <string name="sim_card_full">SIM-карта заполнена</string>
+  <string name="export_finished">Экспорт завершён</string>
+  <string name="tag_too_long">Слишком длинное имя контакта</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">Процесс отменён, экспортирован %d элемент</item>
+    <item quantity="few">Процесс отменён, экспортировано %d элемента</item>
+    <item quantity="other">Процесс отменён, экспортировано %d элементов</item>
+  </plurals>
+  <string name="export_no_phone_or_email">У контакта «<xliff:g id="name">%s</xliff:g>» нет номера телефона или адреса электронной почты</string>
+  <string name="import_from_sim_select">Выберите карту для импорта</string>
+  <string name="no_sdcard_title" product="nosdcard">Внешний накопитель недоступен</string>
+  <string name="no_sdcard_title" product="default">SD-карта не подключена</string>
+  <string name="deleteConfirmation_title">Удалить контакт?</string>
+  <string name="deleteConfirmation">Этот контакт будет удалён.</string>
+  <string name="readOnlyContactDeleteConfirmation">Этот контакт содержит информацию из различных аккаунтов. Информация из аккаунтов, доступных только для чтения, будет скрыта в ваших списках контактов, но не удалена.</string>
+  <string name="readOnlyContactWarning">Невозможно удалить контакты из аккаунта, доступного только для чтения, однако их можно скрыть в списках контактов.</string>
+  <string name="multipleContactDeleteConfirmation">Удаление этого контакта приведет к потере данных из нескольких аккаунтов.</string>
+  <string name="copy_done">Контакт успешно скопирован</string>
+  <string name="copy_failure">Копирование контакта не удалось</string>
+  <string name="card_no_space">Копирование контакта не удалось, SIM-карта заполнена</string>
+  <string name="ip_call_by_slot">IP-вызов через <xliff:g id="subName">%s</xliff:g></string>
+  <string name="no_ip_number">Нет IP-номера</string>
+  <string name="no_ip_number_on_sim_card">На SIM-карте нет IP-номера</string>
+  <string name="set_ip_number">Задать IP-номер</string>
+  <string name="ipcall_dialog_title">Настройки IP-телефонии</string>
+  <string name="ipcall_dialog_edit_hint">Введите IP-префикс</string>
+  <string name="select_path">Выберите путь</string>
+  <string name="sd_card">SD-карта</string>
+  <string name="phone_storage">Память телефона</string>
+  <string name="sim_contacts_not_loaded">Не удалось загрузить телефонную книгу SIM-карты</string>
 </resources>

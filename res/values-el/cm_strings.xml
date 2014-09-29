@@ -18,4 +18,43 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">Τοπικός λογαριασμός tablet</string>
   <string name="local_storage_account" product="default">Τοπικός λογαριασμός τηλεφώνου</string>
+  <string name="export_to_sim">Εξαγωγή στην κάρτα SIM</string>
+  <string name="select_sim">Επιλέξτε SIM</string>
+  <string name="account_sim">Κάρτα SIM</string>
+  <string name="name_for_sim">Όνομα</string>
+  <string name="fail_reason_import_vcard">Δεν ήταν δυνατή η εισαγωγή της vCard \'<xliff:g id="name">%s</xliff:g>\' εξαιτίας σφάλματος εισόδου/εξόδου</string>
+  <string name="label_groups">Ομάδα</string>
+  <string name="contact_share_failed_toast">Δεν είναι δυνατή η κοινή χρήση περισσότερων από <xliff:g id="count">%d</xliff:g> επαφών</string>
+  <string name="exporting">Εξαγωγή\u2026</string>
+  <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> από <xliff:g id="total_number">%2$s</xliff:g> αρχεία</string>
+  <string name="export_failed">Η εξαγωγή απέτυχε</string>
+  <string name="sim_card_full">Η κάρτα SIM είναι γεμάτη</string>
+  <string name="export_finished">Η εξαγωγή ολοκληρώθηκε</string>
+  <string name="tag_too_long">Το όνομα της επαφής είναι πολύ μεγάλο</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">Η εξαγωγή ακυρώθηκε, %d επαφή εξήχθη</item>
+    <item quantity="other">Η εξαγωγή ακυρώθηκε, %d επαφές εξήχθηκαν</item>
+  </plurals>
+  <string name="export_no_phone_or_email">Η επαφή <xliff:g id="name">%s</xliff:g> δεν έχει τηλεφωνικό αριθμό ή ηλεκτρονική διεύθυνση</string>
+  <string name="import_from_sim_select">Επιλέξτε κάρτα για εισαγωγή</string>
+  <string name="no_sdcard_title" product="nosdcard">Ο αποθ. χώρος δεν είναι διαθέσιμος</string>
+  <string name="no_sdcard_title" product="default">Δεν υπάρχει κάρτα SD</string>
+  <string name="deleteConfirmation_title">Διαγραφή επαφής;</string>
+  <string name="deleteConfirmation">Αυτή η επαφή θα διαγραφεί.</string>
+  <string name="readOnlyContactDeleteConfirmation">Αυτή η επαφή περιέχει πληροφορίες από πολλούς λογαριασμούς. Θα γίνει απόκρυψη και όχι διαγραφή των πληροφοριών που προέρχονται από λογαριασμούς μόνο για ανάγνωση στις λίστες επαφών σας.</string>
+  <string name="readOnlyContactWarning">Δεν μπορείτε να διαγράψετε επαφές από λογαριασμούς οι οποίοι προορίζονται μόνο για ανάγνωση, αλλά μπορείτε να τις αποκρύψετε στις λίστες επαφών σας.</string>
+  <string name="multipleContactDeleteConfirmation">Εάν διαγράψετε αυτήν την επαφή, θα γίνει διαγραφή των πληροφοριών από πολλούς λογαριασμούς.</string>
+  <string name="copy_done">Η επαφή αντιγράφηκε με επιτυχία</string>
+  <string name="copy_failure">Η αντιγραφή της επαφής απέτυχε</string>
+  <string name="card_no_space">Η αντιγραφή της επαφής απέτυχε, η κάρτα SIM είναι γεμάτη</string>
+  <string name="ip_call_by_slot">Κλήση IP από <xliff:g id="subName">%s</xliff:g></string>
+  <string name="no_ip_number">Κανένας αριθμός IP</string>
+  <string name="no_ip_number_on_sim_card">Κανένας αριθμός IP στην κάρτα SIM</string>
+  <string name="set_ip_number">Ορισμός αριθμού IP</string>
+  <string name="ipcall_dialog_title">Ρυθμίσεις κλήσεων IP</string>
+  <string name="ipcall_dialog_edit_hint">Παρακαλώ εισάγετε το πρόθεμα της IP</string>
+  <string name="select_path">Επιλέξτε διαδρομή</string>
+  <string name="sd_card">Κάρτα SD</string>
+  <string name="phone_storage">Αποθ. χώρος τηλεφώνου</string>
+  <string name="sim_contacts_not_loaded">Δεν ήταν δυνατή η πλήρης φόρτωση των επαφών SIM</string>
 </resources>

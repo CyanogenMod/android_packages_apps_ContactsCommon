@@ -18,4 +18,31 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">Vietinė planšetinio kompiuterio paskyra</string>
   <string name="local_storage_account" product="default">Vietinė telefono paskyra</string>
+  <string name="export_to_sim">Eksportuoti į SIM kortelę</string>
+  <string name="select_sim">Pasirinkti SIM</string>
+  <string name="account_sim">SIM kortelė</string>
+  <string name="name_for_sim">Pavadinimas</string>
+  <string name="fail_reason_import_vcard">vCard „<xliff:g id="name">%s</xliff:g>“ negalėjo būti importuoti dėl I / O klaidos</string>
+  <string name="label_groups">Grupė</string>
+  <string name="exporting">Eksportuojama\u2026</string>
+  <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> iš <xliff:g id="total_number">%2$s</xliff:g> failų</string>
+  <string name="export_failed">Eksportavimas nepavyko</string>
+  <string name="sim_card_full">SIM kortelė pilna</string>
+  <string name="export_finished">Eksportavimas baigtas</string>
+  <string name="tag_too_long">Kontakto vardas per ilgas</string>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> neturi telefono numerio arba el. pašto</string>
+  <string name="import_from_sim_select">Pasirinkite kortelę importuoti</string>
+  <string name="no_sdcard_title" product="nosdcard">Saugykla nepasiekiama</string>
+  <string name="no_sdcard_title" product="default">Nėras SD kortelės</string>
+  <string name="deleteConfirmation_title">Ištrinti kontaktą?</string>
+  <string name="deleteConfirmation">Šis kontaktas bus ištrintas.</string>
+  <string name="no_ip_number">Nėra IP numerio</string>
+  <string name="no_ip_number_on_sim_card">IP numerio SIM kortelėje nėra</string>
+  <string name="set_ip_number">Nustatyti IP numerį</string>
+  <string name="ipcall_dialog_title">IP skambučio nustatymai</string>
+  <string name="ipcall_dialog_edit_hint">Prašome įvesti IP priešdėlį</string>
+  <string name="select_path">Pasirinkti kelią</string>
+  <string name="sd_card">SD kortelė</string>
+  <string name="phone_storage">Telefono saugykla</string>
+  <string name="sim_contacts_not_loaded">SIM kontaktas negalėjo būti įkeltas pilnai</string>
 </resources>

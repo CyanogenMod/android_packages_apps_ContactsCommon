@@ -18,4 +18,42 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">บัญชีภายในแท็บเล็ต</string>
   <string name="local_storage_account" product="default">บัญชีภายในโทรศัพท์</string>
+  <string name="export_to_sim">ส่งออกไปยังซิมการ์ด</string>
+  <string name="select_sim">เลือกซิมการ์ด</string>
+  <string name="account_sim">ซิมการ์ด</string>
+  <string name="name_for_sim">ชื่อ</string>
+  <string name="fail_reason_import_vcard">ไม่สามารถนำเข้า vCard \'<xliff:g id="name">%s</xliff:g>\' ได้เนื่องจากข้อผิดพลาด I/O</string>
+  <string name="label_groups">กลุ่ม</string>
+  <string name="contact_share_failed_toast">ไม่สามารถแบ่งปันรายชื่อได้เกิน <xliff:g id="count">%d</xliff:g> ชื่อ</string>
+  <string name="exporting">กำลังส่งออก\u2026</string>
+  <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> จาก <xliff:g id="total_number">%2$s</xliff:g> ไฟล์</string>
+  <string name="export_failed">ส่งออกล้มเหลว</string>
+  <string name="sim_card_full">ซิมการ์ดเต็ม</string>
+  <string name="export_finished">ส่งออกเสร็จสมบูรณ์</string>
+  <string name="tag_too_long">ชื่อผู้ติดต่อยาวเกินไป</string>
+  <plurals name="export_cancelled">
+    <item quantity="other">การส่งออกถูกยกเลิก, %d รายชื่อส่งออกแล้ว</item>
+  </plurals>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> ไม่มีหมายเลขโทรศัพท์หรืออีเมล</string>
+  <string name="import_from_sim_select">เลือกบัตรที่จะนำเข้า</string>
+  <string name="no_sdcard_title" product="nosdcard">ไม่มีที่เก็บข้อมูล</string>
+  <string name="no_sdcard_title" product="default">ไม่มี SD card</string>
+  <string name="deleteConfirmation_title">ลบ​ราย​ชื่อ?</string>
+  <string name="deleteConfirmation">ราย​ชื่อ​นี้​จะ​ถูกลบ​ออก</string>
+  <string name="readOnlyContactDeleteConfirmation">ราย​ชื่อ​นี้​มี​ข้อมูล​จาก​หลาย​บัญชี​ผู้​ใช้ ข้อมูล​จาก​บัญชี​ผู้​ใช้​แบบ​อ่านอย่าง​เดียว​จะ​ถูก​ซ่อน​ใน​ราย​ชื่อ​ผู้​ติดต่อ​ของ​คุณ​และ​ไม่​ถูก​ลบ</string>
+  <string name="readOnlyContactWarning">คุณ​ไม่​สามารถ​ลบ​ราย​ชื่อ​ออก​จาก​บัญชี​ผู้​ใช้​แบบ​อ่านอย่าง​เดียว แต่​คุณ​สามารถ​ซ่อน​ไว้​ใน​ราย​ชื่อ</string>
+  <string name="multipleContactDeleteConfirmation">การ​ลบ​ราย​ชื่อ​นี้​จะ​ลบ​ข้อมูล​ออก​จาก​หลาย​บัญชี​ผู้​ใช้</string>
+  <string name="copy_done">รายชื่อผู้ติดต่อถูกค้ดลอกเรียบร้อยแล้ว</string>
+  <string name="copy_failure">คัดลอกรายชื่อล้มเหลว</string>
+  <string name="card_no_space">คัดลอกรายชื่อล้มเหลว, ซิมการ์ดเต็ม</string>
+  <string name="ip_call_by_slot">โทรผ่าน IP โดย <xliff:g id="subName">%s</xliff:g></string>
+  <string name="no_ip_number">ไม่มีหมายเลข IP</string>
+  <string name="no_ip_number_on_sim_card">ไม่มีหมายเลข IP ในซิมการ์ด</string>
+  <string name="set_ip_number">กำหนดหมายเลข IP</string>
+  <string name="ipcall_dialog_title">ตั้งค่าการโทรผ่าน IP</string>
+  <string name="ipcall_dialog_edit_hint">กรุณากรอกเลขนำหน้า IP</string>
+  <string name="select_path">เลือกเส้นทาง</string>
+  <string name="sd_card">SD card</string>
+  <string name="phone_storage">ภายในโทรศัพท์</string>
+  <string name="sim_contacts_not_loaded">รายชื่อในซิมการ์ดไม่สามารถโหลดได้ครบถ้วน</string>
 </resources>

@@ -16,6 +16,46 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="local_storage_account" product="tablet">Lokálny účet tabletu</string>
-  <string name="local_storage_account" product="default">Lokálny účet telefónu</string>
+  <string name="local_storage_account" product="tablet">Miestny účet tabletu</string>
+  <string name="local_storage_account" product="default">Miestny účet telefónu</string>
+  <string name="export_to_sim">Exportovať na kartu SIM</string>
+  <string name="select_sim">Vyberte SIM</string>
+  <string name="account_sim">Karta SIM</string>
+  <string name="name_for_sim">Názov</string>
+  <string name="fail_reason_import_vcard">vCard \'<xliff:g id="name">%s</xliff:g>\' nemohla byť importovaný kvôli vstupno-výstupnej chybe</string>
+  <string name="label_groups">Skupina</string>
+  <string name="contact_share_failed_toast">Nie viac ako <xliff:g id="count">%d</xliff:g> kontaktov môže byť zdieľaných</string>
+  <string name="exporting">Exportovanie\u2026</string>
+  <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> z <xliff:g id="total_number">%2$s</xliff:g> súborov</string>
+  <string name="export_failed">Export zlyhal</string>
+  <string name="sim_card_full">Karta SIM je plná</string>
+  <string name="export_finished">Export sa dokončil</string>
+  <string name="tag_too_long">Meno kontaktu je príliš dlhé</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">Export bol zrušený, %d položka bola exportovaná</item>
+    <item quantity="few">Export bol zrušený, %d položky boli exportované</item>
+    <item quantity="other">Export bol zrušený, %d položiek bolo exportovaných</item>
+  </plurals>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> nemá svoje telefónne číslo alebo e-mailovú adresu</string>
+  <string name="import_from_sim_select">Vyberte kartu na importovanie</string>
+  <string name="no_sdcard_title" product="nosdcard">Nedostupné úložisko</string>
+  <string name="no_sdcard_title" product="default">Žiadna karta SD</string>
+  <string name="deleteConfirmation_title">Vymazať kontakt?</string>
+  <string name="deleteConfirmation">Tento kontakt sa odstráni.</string>
+  <string name="readOnlyContactDeleteConfirmation">Tento kontakt obsahuje informácie z viacerých účtov. Informácie z účtov len na čítanie budú v kontaktoch skryté, nie vymazané.</string>
+  <string name="readOnlyContactWarning">Nemôžete vymazať kontakty z účtov len na čítanie, ale môžete ich skryť vo vašom zozname kontaktov.</string>
+  <string name="multipleContactDeleteConfirmation">Vymazaním tohto kontaktu sa odstránia informácie z viacerých účtov.</string>
+  <string name="copy_done">Kontakt bol úspešne skopírovaný</string>
+  <string name="copy_failure">Kopírovanie kontaktu zlyhalo</string>
+  <string name="card_no_space">Kopírovanie kontaktu zlyhalo, karta SIM je plná</string>
+  <string name="ip_call_by_slot">IP hovor cez <xliff:g id="subName">%s</xliff:g></string>
+  <string name="no_ip_number">Žiadne IP číslo</string>
+  <string name="no_ip_number_on_sim_card">Žiadne IP číslo na karte SIM</string>
+  <string name="set_ip_number">Nastaviť IP číslo</string>
+  <string name="ipcall_dialog_title">Nastavenia IP hovorov</string>
+  <string name="ipcall_dialog_edit_hint">Prosím, zadajte predčíslie IP</string>
+  <string name="select_path">Vyberte umiestnenie</string>
+  <string name="sd_card">Karta SD</string>
+  <string name="phone_storage">Telefónne úložisko</string>
+  <string name="sim_contacts_not_loaded">Kontakty na SIM sa nepodarilo úplne načítať</string>
 </resources>

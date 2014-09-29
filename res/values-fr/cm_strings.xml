@@ -18,4 +18,20 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">Compte local de la tablette</string>
   <string name="local_storage_account" product="default">Compte local du téléphone</string>
+  <string name="export_to_sim">Exporter vers la carte SIM</string>
+  <string name="name_for_sim">Nom</string>
+  <string name="fail_reason_import_vcard">La vCard \'<xliff:g id="name">%s</xliff:g>\' n\'a pas pu être importée en raison d\'une erreur d\'entrée/sortie</string>
+  <string name="export_finished">L\'export est terminé</string>
+  <string name="tag_too_long">Le nom du contact est trop long</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">L\'exportation a été annulée, %d élément a été exporté</item>
+    <item quantity="other">L\'exportation a été annulée, %d éléments ont été exportés</item>
+  </plurals>
+  <string name="import_from_sim_select">Choisissez la carte à importer</string>
+  <string name="no_sdcard_title" product="nosdcard">Stockage non disponible</string>
+  <string name="no_sdcard_title" product="default">Aucune carte SD</string>
+  <string name="deleteConfirmation_title">Supprimer le contact ?</string>
+  <string name="deleteConfirmation">Ce contact sera supprimé.</string>
+  <string name="sd_card">Carte SD</string>
+  <string name="phone_storage">Stockage du téléphone</string>
 </resources>

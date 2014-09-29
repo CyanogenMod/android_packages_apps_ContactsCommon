@@ -18,4 +18,43 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">ස්ථානීය ටැබ්ලට් ගිණුම</string>
   <string name="local_storage_account" product="default">ස්ථානීය දුරකථන ගිණුම</string>
+  <string name="export_to_sim">සිම් කාඩ්පතට නිර්යාත කරන්න</string>
+  <string name="select_sim">සිම්පත තෝරන්න</string>
+  <string name="account_sim">සිම් කාඩ්පත</string>
+  <string name="name_for_sim">නම</string>
+  <string name="fail_reason_import_vcard">I/O දෝෂයක් නිසා vCard \'<xliff:g id="name">%s</xliff:g>\' ආයාත කල නොහැකි විය</string>
+  <string name="label_groups">කාණ්ඩය</string>
+  <string name="contact_share_failed_toast">සම්බන්ධතා <xliff:g id="count">%d</xliff:g> ට වඩා බෙදාහදාගත නොහැක</string>
+  <string name="exporting">නිර්යාත කරමින්\u2026</string>
+  <string name="reading_vcard_files">ගොනු <xliff:g id="total_number">%2$s</xliff:g> න් <xliff:g id="current_number">%1$s</xliff:g></string>
+  <string name="export_failed">නිර්යාතය අසමත්විය</string>
+  <string name="sim_card_full">සිම් පත පිරී ඇත</string>
+  <string name="export_finished">නිර්යාතය නිමාවුනි</string>
+  <string name="tag_too_long">සම්බන්ධතාවේ නම දිග වැඩිය</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">නිර්යාත කිරීම අවලංගු කෙරුණි, අයිතම %d ක් නිර්යාත කෙරුණි</item>
+    <item quantity="other">නිර්යාත කිරීම අවලංගු කෙරුණි, අයිතම %d ක් නිර්යාත කෙරුණි</item>
+  </plurals>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> සතුව දුරකථන අංකයක් හෝ ඊ-තැපැල් ලිපිනයක් නොමැත</string>
+  <string name="import_from_sim_select">ආයාත කිරීමට කාඩ්පත තෝරන්න</string>
+  <string name="no_sdcard_title" product="nosdcard">ආචයනය ලබාගත නොහැක</string>
+  <string name="no_sdcard_title" product="default">SD කාඩ්පතක් නොමැත</string>
+  <string name="deleteConfirmation_title">සම්බන්ධතාව මකන්නද?</string>
+  <string name="deleteConfirmation">මෙම සම්බන්ධතාව මකා දැමෙනු ඇත.</string>
+  <string name="readOnlyContactDeleteConfirmation">මෙම සම්බන්ධතාවයෙහි ගිණුම් කීපයක තොරතුරු අඩංගුවේ. කියවීම-පමණයි ගිණුම් වල තොරතුරු ඔබගේ සම්බන්ධතා ලැයිස්තුව තුල සැඟවෙනු ඇත, මකානොදැමේ.</string>
+  <string name="readOnlyContactWarning">කියවීම-පමණයි ගිණුම් මගින් ඔබට සම්බන්ධතා මකාදැමිය නොහැක, නමුත් ඔබට ඒවා ඔබගේ සම්බන්ධතා ලැයිස්තු තුල සැඟවිය හැක.</string>
+  <string name="multipleContactDeleteConfirmation">මෙම සම්බන්ධතාව මකාදැමීම මගින් ගිණුම් කීපයක තොරතුරු මකාදැමෙනු ඇත.</string>
+  <string name="copy_done">සම්බන්ධතාව සාර්ථක ලෙස පිටපත් කෙරුණි</string>
+  <string name="copy_failure">සම්බන්ධතාව පිටපත් කිරීම අසමත්විය</string>
+  <string name="card_no_space">සම්බන්ධතාව පිටපත් කිරීම අසමත්විය, සිම් පත පිරී ඇත</string>
+  <string name="ip_call_by_slot"><xliff:g id="subName">%s</xliff:g> වෙතින් IP ඇමතුමක්</string>
+  <string name="no_ip_number">IP අංකයක් නැත</string>
+  <string name="no_ip_number_on_sim_card">සිම් පතෙහි IP අංකයක් නැත</string>
+  <string name="set_ip_number">IP අංකය සකසන්න</string>
+  <string name="ipcall_dialog_title">IP ඇමතුම් සැකසීම්</string>
+  <string name="ipcall_dialog_edit_hint">කරුණාකර IP උපසර්ගය ආදානය කරන්න</string>
+  <string name="select_path">මාර්ගය තෝරන්න</string>
+  <string name="sd_card">SD කාඩ්පත</string>
+  <string name="phone_storage">දුරකථනයේ ආචයනය</string>
+  <string name="sim_contacts_not_loaded">සිම් පතේ සම්බන්ධතා මුළුමනින් පූරණයට අසමත්විය</string>
 </resources>

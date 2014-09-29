@@ -18,4 +18,45 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">Локални налог таблета</string>
   <string name="local_storage_account" product="default">Локални налог телефона</string>
+  <string name="export_to_sim">Извези на SIM картицу</string>
+  <string name="select_sim">Изабери SIM</string>
+  <string name="account_sim">SIM картица</string>
+  <string name="name_for_sim">Име</string>
+  <string name="fail_reason_import_vcard">vКартица \'<xliff:g id="name">%s</xliff:g>\' не може бити увежена због I/O грешке</string>
+  <string name="label_groups">Група</string>
+  <string name="contact_share_failed_toast">Не више од <xliff:g id="count">%d</xliff:g> контаката може бити дељено</string>
+  <string name="exporting">Извоз\u2026</string>
+  <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> од <xliff:g id="total_number">%2$s</xliff:g> фајлова</string>
+  <string name="export_failed">Извоз није успео</string>
+  <string name="sim_card_full">SIM картица је пуна</string>
+  <string name="export_finished">Извоз завршен</string>
+  <string name="tag_too_long">Име контакта је предугачко</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">Извоз је отказан. %d ставка је извежена</item>
+    <item quantity="few">Извоз је отказан. %d ставке су извежене</item>
+    <item quantity="many">Извоз је отказан. %d ставки је извежено</item>
+    <item quantity="other">Извоз је отказан. %d ставки је извежено</item>
+  </plurals>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> нема број телефона или адресу е-поште</string>
+  <string name="import_from_sim_select">Изабери картицу за увоз</string>
+  <string name="no_sdcard_title" product="nosdcard">Складиште недоступно</string>
+  <string name="no_sdcard_title" product="default">Нема SD картице</string>
+  <string name="deleteConfirmation_title">Избриши контакт?</string>
+  <string name="deleteConfirmation">Овај контакт ће бити избрисан.</string>
+  <string name="readOnlyContactDeleteConfirmation">Овај контакт садржи информације из више налога. Информације из налога који су само за читање ће бити сакривене у твојим листама контаката, не избрисане.</string>
+  <string name="readOnlyContactWarning">Не можеш да избришеш контакте из налога који су само за читање, али можеш да их сакријеш у твојој листи контаката.</string>
+  <string name="multipleContactDeleteConfirmation">Брисање овог контакта ће избрисати информације из више налога.</string>
+  <string name="copy_done">Контакт је успешно копиран</string>
+  <string name="copy_failure">Копирање контакта није успело</string>
+  <string name="card_no_space">Копирање контакта није успело, SIM картица је пуна</string>
+  <string name="ip_call_by_slot">IP позив <xliff:g id="subName">%s</xliff:g></string>
+  <string name="no_ip_number">Нема IP броја</string>
+  <string name="no_ip_number_on_sim_card">Нема IP броја на SIM картици</string>
+  <string name="set_ip_number">Постави IP број</string>
+  <string name="ipcall_dialog_title">Подешавања IP позива</string>
+  <string name="ipcall_dialog_edit_hint">Унеси IP префикс</string>
+  <string name="select_path">Изабери путању</string>
+  <string name="sd_card">SD картица</string>
+  <string name="phone_storage">Телефонско складиште</string>
+  <string name="sim_contacts_not_loaded">SIM контакти не могу бити потпуно учитани</string>
 </resources>

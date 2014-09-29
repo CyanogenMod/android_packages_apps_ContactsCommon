@@ -18,4 +18,29 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">Lokales Tablet-Konto</string>
   <string name="local_storage_account" product="default">Lokales Telefon-Konto</string>
+  <string name="select_sim">SIM-Karte wählen</string>
+  <string name="account_sim">SIM-Karte</string>
+  <string name="name_for_sim">Name</string>
+  <string name="fail_reason_import_vcard">Die vCard \"<xliff:g id="name">%s</xliff:g>\" konnte aufgrund eines E/A-Fehlers nicht importiert werden</string>
+  <string name="label_groups">Gruppe</string>
+  <string name="contact_share_failed_toast">Es können nicht mehr als <xliff:g id="count">%d</xliff:g> Kontakte geteilt werden</string>
+  <string name="export_failed">Exportieren fehlgeschlagen</string>
+  <string name="sim_card_full">Die SIM-Karte ist voll</string>
+  <string name="export_finished">Export abgeschlossen</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">Exportieren abgebrochen, %d Element wurde exportiert</item>
+    <item quantity="other">Exportieren abgebrochen, %d Elemente wurden exportiert</item>
+  </plurals>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> hat keine Telefonnummer oder E-Mail-Adresse</string>
+  <string name="import_from_sim_select">SIM-Karte zum Importieren wählen</string>
+  <string name="no_sdcard_title" product="nosdcard">Speicher nicht verfügbar</string>
+  <string name="no_sdcard_title" product="default">Keine SD-Karte</string>
+  <string name="deleteConfirmation_title">Kontakt löschen?</string>
+  <string name="deleteConfirmation">Dieser Kontakt wird gelöscht.</string>
+  <string name="readOnlyContactDeleteConfirmation">Dieser Kontakt enthält Daten aus mehreren Konten. Daten aus schreibgeschützten Konten werden in Ihren Kontaktlisten versteckt, jedoch nicht gelöscht.</string>
+  <string name="readOnlyContactWarning">Kontakte aus schreibgeschützten Konten können in den Kontaktlisten nur versteckt, jedoch nicht gelöscht werden.</string>
+  <string name="select_path">Pfad auswählen</string>
+  <string name="sd_card">SD-Karte</string>
+  <string name="phone_storage">Telefonspeicher</string>
+  <string name="sim_contacts_not_loaded">SIM-Kontakte konnten nicht vollständig geladen werden</string>
 </resources>

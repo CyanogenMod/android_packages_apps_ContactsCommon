@@ -18,4 +18,42 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">タブレットのローカルアカウント</string>
   <string name="local_storage_account" product="default">携帯電話のローカルアカウント</string>
+  <string name="export_to_sim">SIMカードにエクスポート</string>
+  <string name="select_sim">SIMを選択</string>
+  <string name="account_sim">SIMカード</string>
+  <string name="name_for_sim">名前</string>
+  <string name="fail_reason_import_vcard">I/Oエラーにより、vCard「<xliff:g id="name">%s</xliff:g>」をインポートできませんでした</string>
+  <string name="label_groups">グループ</string>
+  <string name="contact_share_failed_toast"><xliff:g id="count">%d</xliff:g>件以上の連絡先は共有できません</string>
+  <string name="exporting">エクスポート中\u2026</string>
+  <string name="reading_vcard_files"><xliff:g id="total_number">%2$s</xliff:g>個のうち<xliff:g id="current_number">%1$s</xliff:g>個のファイル</string>
+  <string name="export_failed">エクスポートできませんでした</string>
+  <string name="sim_card_full">SIMカードがいっぱいです</string>
+  <string name="export_finished">エクスポートが完了しました</string>
+  <string name="tag_too_long">連絡先の名前が長すぎます</string>
+  <plurals name="export_cancelled">
+    <item quantity="other">エクスポートはキャンセルされました、%d項目がエクスポートされました</item>
+  </plurals>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g>には電話番号またはメールアドレスがありません</string>
+  <string name="import_from_sim_select">インポートするカードを選択</string>
+  <string name="no_sdcard_title" product="nosdcard">ストレージが利用できません</string>
+  <string name="no_sdcard_title" product="default">SDカードがありません</string>
+  <string name="deleteConfirmation_title">連絡先を削除しますか？</string>
+  <string name="deleteConfirmation">この連絡先は削除されます。</string>
+  <string name="readOnlyContactDeleteConfirmation">この連絡先は複数のアカウントからの情報を含んでいます。読み取り専用アカウントからの情報は連絡先リストに表示されなくなりますが、削除されるわけではありません。</string>
+  <string name="readOnlyContactWarning">読み取り専用アカウントからの連絡先は削除できませんが、連絡先リストに表示させないようにすることはできます。</string>
+  <string name="multipleContactDeleteConfirmation">この連絡先を削除すると複数のアカウントからの情報が削除されます。</string>
+  <string name="copy_done">連絡先のコピーが完了しました</string>
+  <string name="copy_failure">連絡先をコピーできませんでした</string>
+  <string name="card_no_space">連絡先をコピーできませんでした、SIMカードがいっぱいです</string>
+  <string name="ip_call_by_slot"><xliff:g id="subName">%s</xliff:g>のIP電話</string>
+  <string name="no_ip_number">IP番号がありません</string>
+  <string name="no_ip_number_on_sim_card">SIMカードにIP番号がありません</string>
+  <string name="set_ip_number">IP番号を設定</string>
+  <string name="ipcall_dialog_title">IP電話の設定</string>
+  <string name="ipcall_dialog_edit_hint">IP電話のプレフィックスを入力してください</string>
+  <string name="select_path">パスを選択</string>
+  <string name="sd_card">SDカード</string>
+  <string name="phone_storage">携帯電話のストレージ</string>
+  <string name="sim_contacts_not_loaded">SIMの連絡先を完全には読み込めませんでした</string>
 </resources>

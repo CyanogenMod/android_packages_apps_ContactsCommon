@@ -18,4 +18,44 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">Lokální účet tabletu</string>
   <string name="local_storage_account" product="default">Lokální účet telefonu</string>
+  <string name="export_to_sim">Exportovat na SIM kartu</string>
+  <string name="select_sim">Vybrat SIM kartu</string>
+  <string name="account_sim">SIM karta</string>
+  <string name="name_for_sim">Název</string>
+  <string name="fail_reason_import_vcard">Vizitka vCard „<xliff:g id="name">%s</xliff:g>“ nelze naimportovat</string>
+  <string name="label_groups">Skupina</string>
+  <string name="contact_share_failed_toast">Nelze sdílet více než <xliff:g id="count">%d</xliff:g> kontaktů</string>
+  <string name="exporting">Export\u2026</string>
+  <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> z <xliff:g id="total_number">%2$s</xliff:g> souborů</string>
+  <string name="export_failed">Export se nezdařil</string>
+  <string name="sim_card_full">SIM karta je plná</string>
+  <string name="export_finished">Export dokončen</string>
+  <string name="tag_too_long">Jméno kontaktu je příliš dlouhé</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">Export byl zrušen, byl exportován %d kontakt</item>
+    <item quantity="few">Export byl zrušen, byl exportovány %d kontakty</item>
+    <item quantity="other">Export byl zrušen, bylo exportováno %d kontaktů</item>
+  </plurals>
+  <string name="export_no_phone_or_email">Kontakt „<xliff:g id="name">%s</xliff:g>“ neobsahuje telefonní číslo nebo e-mailovou adresu</string>
+  <string name="import_from_sim_select">Vyberte kartu pro import</string>
+  <string name="no_sdcard_title" product="nosdcard">Úložiště nedostupné</string>
+  <string name="no_sdcard_title" product="default">Žádná SD karta</string>
+  <string name="deleteConfirmation_title">Odstranit kontakt?</string>
+  <string name="deleteConfirmation">Tento kontakt bude odstraněn.</string>
+  <string name="readOnlyContactDeleteConfirmation">Tento kontakt obsahuje data z více účtů. Data z účtu, který je pouze pro čtení, budou skryta, ale nedojde k jejich smazání.</string>
+  <string name="readOnlyContactWarning">Nelze odstranit kontakty z účtů, které jsou pouze pro čtení. Můžete je však na seznamu kontaktů skrýt.</string>
+  <string name="multipleContactDeleteConfirmation">Odstraněním tohoto kontaktu dojde k odstranění dat z více účtů.</string>
+  <string name="copy_done">Kontakt byl úspěšně zkopírován</string>
+  <string name="copy_failure">Kopírování kontaktu selhalo</string>
+  <string name="card_no_space">Kopírování kontaktu selhalo, SIM karta je plná</string>
+  <string name="ip_call_by_slot">IP hovor od „<xliff:g id="subName">%s</xliff:g>“</string>
+  <string name="no_ip_number">Žádné IP číslo</string>
+  <string name="no_ip_number_on_sim_card">Žádné IP číslo na SIM kartě</string>
+  <string name="set_ip_number">Nastavit IP čislo</string>
+  <string name="ipcall_dialog_title">Nastavení IP volání</string>
+  <string name="ipcall_dialog_edit_hint">Zadejte prefix pro IP</string>
+  <string name="select_path">Vyberte cestu</string>
+  <string name="sd_card">SD karta</string>
+  <string name="phone_storage">Úložiště telefonu</string>
+  <string name="sim_contacts_not_loaded">Kontakty SIM nelze všechny načíst</string>
 </resources>

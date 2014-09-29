@@ -18,4 +18,43 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">Paikallinen tablet-tili</string>
   <string name="local_storage_account" product="default">Paikallinen puhelin-tili</string>
+  <string name="export_to_sim">Vie SIM-kortille</string>
+  <string name="select_sim">Valitse SIM</string>
+  <string name="account_sim">SIM-kortti</string>
+  <string name="name_for_sim">Nimi</string>
+  <string name="fail_reason_import_vcard">VCard-tiedostoa \'<xliff:g id="name">%s</xliff:g>\' ei voitu tuoda I/O virheen vuoksi</string>
+  <string name="label_groups">Ryhmä</string>
+  <string name="contact_share_failed_toast">Enintään <xliff:g id="count">%d</xliff:g> yhteystietoa voidaan jakaa</string>
+  <string name="exporting">Viedään\u2026</string>
+  <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g>/<xliff:g id="total_number">%2$s</xliff:g> tiedostoa</string>
+  <string name="export_failed">Vienti epäonnistui</string>
+  <string name="sim_card_full">SIM-kortti on täynnä</string>
+  <string name="export_finished">Vienti valmis</string>
+  <string name="tag_too_long">Yhteystiedon nimi on liian pitkä</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">Vienti peruttiin, %d kohde vietiin</item>
+    <item quantity="other">Vienti peruttiin, %d kohdetta vietiin</item>
+  </plurals>
+  <string name="export_no_phone_or_email">Yhteystiedolla <xliff:g id="name">%s</xliff:g> ei ole puhelinnumeroa tai sähköpostiosoitetta</string>
+  <string name="import_from_sim_select">Valitse kortti josta tuodaan</string>
+  <string name="no_sdcard_title" product="nosdcard">Tallennustila ei saatavilla</string>
+  <string name="no_sdcard_title" product="default">Ei SD-korttia</string>
+  <string name="deleteConfirmation_title">Poista yhteystieto?</string>
+  <string name="deleteConfirmation">Tämä yhteystieto poistetaan.</string>
+  <string name="readOnlyContactDeleteConfirmation">Tämä yhteystieto sisältää tietoja useilta tileiltä. Tiedot vain luku-tileiltä piilotetaan yhteystiedoista, muttei voida poistaa.</string>
+  <string name="readOnlyContactWarning">Et voi poistaa yhteystietoja vain luku-tileiltä, mutta voit piilottaa ne yhteystiedoistasi.</string>
+  <string name="multipleContactDeleteConfirmation">Poistamalla tämän yhteystiedon, poistat tietoja useilta tileiltä.</string>
+  <string name="copy_done">Yhteystieton kopioiminen onnistui</string>
+  <string name="copy_failure">Yhteystiedon kopioiminen epäonnistui</string>
+  <string name="card_no_space">Yhteystiedon kopioiminen epäonnistui, SIM-kortti on täynnä</string>
+  <string name="ip_call_by_slot">IP puhelu <xliff:g id="subName">%s</xliff:g></string>
+  <string name="no_ip_number">Ei IP-numeroa</string>
+  <string name="no_ip_number_on_sim_card">Ei IP-numeroa SIM-kortilla</string>
+  <string name="set_ip_number">Aseta IP-numero</string>
+  <string name="ipcall_dialog_title">IP-puheluasetukset</string>
+  <string name="ipcall_dialog_edit_hint">Anna IP:n etuliite</string>
+  <string name="select_path">Valitse polku</string>
+  <string name="sd_card">SD-kortti</string>
+  <string name="phone_storage">Puhelimen muisti</string>
+  <string name="sim_contacts_not_loaded">SIM-kortin yhteystietoja ei voitu ladata kokonaan</string>
 </resources>

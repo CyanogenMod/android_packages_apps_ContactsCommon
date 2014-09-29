@@ -18,4 +18,43 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">Account locale tablet</string>
   <string name="local_storage_account" product="default">Account locale telefono</string>
+  <string name="export_to_sim">Esporta nella SIM</string>
+  <string name="select_sim">Seleziona SIM</string>
+  <string name="account_sim">SIM</string>
+  <string name="name_for_sim">Nome</string>
+  <string name="fail_reason_import_vcard">La vCard \'<xliff:g id="name">%s</xliff:g>\' non può essere importata a causa di un errore I/O</string>
+  <string name="label_groups">Gruppo</string>
+  <string name="contact_share_failed_toast">Non possono essere condivisi più di <xliff:g id="count">%d</xliff:g> contatti</string>
+  <string name="exporting">Esportando\u2026</string>
+  <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> di <xliff:g id="total_number">%2$s</xliff:g> file</string>
+  <string name="export_failed">Esportazione fallita</string>
+  <string name="sim_card_full">La SIM è piena</string>
+  <string name="export_finished">Esportazione completata</string>
+  <string name="tag_too_long">Il nome del contatto è troppo lungo</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">Importazione annullata, %d elemento è stato eliminato</item>
+    <item quantity="other">Importazione annullata, %d elementi sono stati eliminati</item>
+  </plurals>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> non ha un numero di telefono o un indirizzo email</string>
+  <string name="import_from_sim_select">Scegli la scheda da importare</string>
+  <string name="no_sdcard_title" product="nosdcard">Memoria non disponibile</string>
+  <string name="no_sdcard_title" product="default">Nessuna scheda SD</string>
+  <string name="deleteConfirmation_title">Eliminare il contatto?</string>
+  <string name="deleteConfirmation">Questo contatto sarà eliminato.</string>
+  <string name="readOnlyContactDeleteConfirmation">Questo contatto contiene le informazioni da diversi account. Le informazioni dall\'account di sola lettura saranno nascoste dalla tua lista di contatti, non eliminate.</string>
+  <string name="readOnlyContactWarning">Non puoi eliminare contatti da account di sola lettura, puoi solo nasconderli dalla lista dei contatti.</string>
+  <string name="multipleContactDeleteConfirmation">Eliminando questo contatto eliminerai informazioni da più account.</string>
+  <string name="copy_done">Il contatto è stato copiato con successo</string>
+  <string name="copy_failure">Copia del contatto fallita</string>
+  <string name="card_no_space">Copia del contatto fallita, la SIM è piena</string>
+  <string name="ip_call_by_slot">Chiamata IP da <xliff:g id="subName">%s</xliff:g></string>
+  <string name="no_ip_number">Nessun numero IP</string>
+  <string name="no_ip_number_on_sim_card">Nessun numero IP sulla SIM</string>
+  <string name="set_ip_number">Imposta numero IP</string>
+  <string name="ipcall_dialog_title">Impostazioni chiamata IP</string>
+  <string name="ipcall_dialog_edit_hint">Inserisci il prefisso IP</string>
+  <string name="select_path">Seleziona percorso</string>
+  <string name="sd_card">Scheda SD</string>
+  <string name="phone_storage">Memoria del telefono</string>
+  <string name="sim_contacts_not_loaded">I contatti della SIM non possono essere caricati completamente</string>
 </resources>

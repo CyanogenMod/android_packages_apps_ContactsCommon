@@ -18,4 +18,43 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">Lokal tabletkonto</string>
   <string name="local_storage_account" product="default">Lokal telefonkonto</string>
+  <string name="export_to_sim">Eksportér til SIM-kortet</string>
+  <string name="select_sim">Vælg SIM</string>
+  <string name="account_sim">SIM-kort</string>
+  <string name="name_for_sim">Navn</string>
+  <string name="fail_reason_import_vcard">VCard-filen \'<xliff:g id="name">%s</xliff:g>\' kunne ikke importeres på grund af en I/O-fejl</string>
+  <string name="label_groups">Gruppe</string>
+  <string name="contact_share_failed_toast">Ikke flere end <xliff:g id="count">%d</xliff:g> kontakter kan deles</string>
+  <string name="exporting">Eksporterer\u2026</string>
+  <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> af <xliff:g id="total_number">%2$s</xliff:g> filer</string>
+  <string name="export_failed">Eksport mislykkedes</string>
+  <string name="sim_card_full">SIM-kortet er fuldt</string>
+  <string name="export_finished">Eksport afsluttet</string>
+  <string name="tag_too_long">Kontaktpersonens navn er for langt</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">Eksport blev annulleret, %d vare blev eksporteret</item>
+    <item quantity="other">Eksport blev annulleret, %d varer blev eksporteret</item>
+  </plurals>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> har ikke et telefonnummer eller en e-mail adresse</string>
+  <string name="import_from_sim_select">Vælg det kort, der skal importeres</string>
+  <string name="no_sdcard_title" product="nosdcard">Lager ikke tilgængelig</string>
+  <string name="no_sdcard_title" product="default">Intet SD-kort</string>
+  <string name="deleteConfirmation_title">Slet kontaktperson?</string>
+  <string name="deleteConfirmation">Denne kontaktperson vil blive slettet.</string>
+  <string name="readOnlyContactDeleteConfirmation">Denne kontakt indeholder oplysninger fra flere konti. Oplysninger fra skrivebeskyttet konti vil være skjult i dine kontaktlister, ikke slettet.</string>
+  <string name="readOnlyContactWarning">Du kan ikke slette kontaktpersoner fra skrivebeskyttet konti, men du kan skjule dem i din kontaktliste.</string>
+  <string name="multipleContactDeleteConfirmation">Hvis du sletter denne kontakt vil du også slette oplysninger fra flere konti.</string>
+  <string name="copy_done">Kontaktpersonen blev korrekt kopieret</string>
+  <string name="copy_failure">Kopiering af kontaktpersonen mislykkedes</string>
+  <string name="card_no_space">Kopiering af kontaktpersonen mislykkedes, SIM-kortet er fyldt</string>
+  <string name="ip_call_by_slot">IP-opkald fra <xliff:g id="subName">%s</xliff:g></string>
+  <string name="no_ip_number">Intet IP-nummer</string>
+  <string name="no_ip_number_on_sim_card">Intet IP-nummer på SIM-kortet</string>
+  <string name="set_ip_number">Angiv IP-nummer</string>
+  <string name="ipcall_dialog_title">IP-opkaldsindstillinger</string>
+  <string name="ipcall_dialog_edit_hint">Indtast IP-præfiks</string>
+  <string name="select_path">Vælg sti</string>
+  <string name="sd_card">SD-kort</string>
+  <string name="phone_storage">Telefonhukommelse</string>
+  <string name="sim_contacts_not_loaded">SIM-kontakter kunne ikke indlæses helt</string>
 </resources>
