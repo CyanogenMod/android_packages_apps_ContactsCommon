@@ -82,7 +82,7 @@
     <string name="card_no_space">Copying the contact failed, the SIM card is full</string>
 
     <!-- Menu item used to initiate ip call -->
-    <string name="ip_call_by_slot">IP call by <xliff:g id="subName">%s</xliff:g></string>
+    <string name="ip_call_by_slot">IP call with <xliff:g id="subName">%s</xliff:g></string>
     <string name="no_ip_number">No IP number</string>
     <string name="no_ip_number_on_sim_card">No IP number on SIM card</string>
     <string name="set_ip_number">Set IP number</string>
