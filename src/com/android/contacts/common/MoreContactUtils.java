@@ -52,7 +52,7 @@ import android.provider.ContactsContract.RawContacts;
 import android.provider.Settings;
 import android.telephony.SubscriptionManager;
 import android.telephony.PhoneNumberUtils;
-import android.telecomm.PhoneAccountHandle;
+import android.telecom.PhoneAccountHandle;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
