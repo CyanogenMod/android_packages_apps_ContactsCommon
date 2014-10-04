@@ -22,7 +22,7 @@
   <string name="select_sim">Vyberte SIM</string>
   <string name="account_sim">Karta SIM</string>
   <string name="name_for_sim">Názov</string>
-  <string name="fail_reason_import_vcard">vCard \'<xliff:g id="name">%s</xliff:g>\' nemohla byť importovaný kvôli vstupno-výstupnej chybe</string>
+  <string name="fail_reason_import_vcard">vCard \'<xliff:g id="name">%s</xliff:g>\' nemohla byť importovaná kvôli vstupno-výstupnej chybe</string>
   <string name="label_groups">Skupina</string>
   <string name="contact_share_failed_toast">Nie viac ako <xliff:g id="count">%d</xliff:g> kontaktov môže byť zdieľaných</string>
   <string name="exporting">Exportovanie\u2026</string>

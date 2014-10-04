@@ -47,7 +47,7 @@
   <string name="copy_done">Η επαφή αντιγράφηκε με επιτυχία</string>
   <string name="copy_failure">Η αντιγραφή της επαφής απέτυχε</string>
   <string name="card_no_space">Η αντιγραφή της επαφής απέτυχε, η κάρτα SIM είναι γεμάτη</string>
-  <string name="ip_call_by_slot">Κλήση IP από <xliff:g id="subName">%s</xliff:g></string>
+  <string name="ip_call_by_slot">Κλήση IP με <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Κανένας αριθμός IP</string>
   <string name="no_ip_number_on_sim_card">Κανένας αριθμός IP στην κάρτα SIM</string>
   <string name="set_ip_number">Ορισμός αριθμού IP</string>

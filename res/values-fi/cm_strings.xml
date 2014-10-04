@@ -47,7 +47,7 @@
   <string name="copy_done">Yhteystieton kopioiminen onnistui</string>
   <string name="copy_failure">Yhteystiedon kopioiminen epäonnistui</string>
   <string name="card_no_space">Yhteystiedon kopioiminen epäonnistui, SIM-kortti on täynnä</string>
-  <string name="ip_call_by_slot">IP puhelu <xliff:g id="subName">%s</xliff:g></string>
+  <string name="ip_call_by_slot">IP-puhelu <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Ei IP-numeroa</string>
   <string name="no_ip_number_on_sim_card">Ei IP-numeroa SIM-kortilla</string>
   <string name="set_ip_number">Aseta IP-numero</string>

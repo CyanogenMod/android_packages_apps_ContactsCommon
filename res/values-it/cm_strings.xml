@@ -47,7 +47,7 @@
   <string name="copy_done">Il contatto è stato copiato con successo</string>
   <string name="copy_failure">Copia del contatto fallita</string>
   <string name="card_no_space">Copia del contatto fallita, la SIM è piena</string>
-  <string name="ip_call_by_slot">Chiamata IP da <xliff:g id="subName">%s</xliff:g></string>
+  <string name="ip_call_by_slot">Chiamata IP con <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Nessun numero IP</string>
   <string name="no_ip_number_on_sim_card">Nessun numero IP sulla SIM</string>
   <string name="set_ip_number">Imposta numero IP</string>
@@ -55,6 +55,6 @@
   <string name="ipcall_dialog_edit_hint">Inserisci il prefisso IP</string>
   <string name="select_path">Seleziona percorso</string>
   <string name="sd_card">Scheda SD</string>
-  <string name="phone_storage">Memoria del telefono</string>
+  <string name="phone_storage">Memoria telefono</string>
   <string name="sim_contacts_not_loaded">I contatti della SIM non possono essere caricati completamente</string>
 </resources>

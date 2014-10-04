@@ -47,7 +47,7 @@
   <string name="copy_done">Kontaktpersonen blev korrekt kopieret</string>
   <string name="copy_failure">Kopiering af kontaktpersonen mislykkedes</string>
   <string name="card_no_space">Kopiering af kontaktpersonen mislykkedes, SIM-kortet er fyldt</string>
-  <string name="ip_call_by_slot">IP-opkald fra <xliff:g id="subName">%s</xliff:g></string>
+  <string name="ip_call_by_slot">IP-opkald med <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Intet IP-nummer</string>
   <string name="no_ip_number_on_sim_card">Intet IP-nummer på SIM-kortet</string>
   <string name="set_ip_number">Angiv IP-nummer</string>

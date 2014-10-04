@@ -49,7 +49,7 @@
   <string name="copy_done">Контакт је успешно копиран</string>
   <string name="copy_failure">Копирање контакта није успело</string>
   <string name="card_no_space">Копирање контакта није успело, SIM картица је пуна</string>
-  <string name="ip_call_by_slot">IP позив <xliff:g id="subName">%s</xliff:g></string>
+  <string name="ip_call_by_slot">IP позив са <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Нема IP броја</string>
   <string name="no_ip_number_on_sim_card">Нема IP броја на SIM картици</string>
   <string name="set_ip_number">Постави IP број</string>

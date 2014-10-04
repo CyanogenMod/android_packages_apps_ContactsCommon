@@ -47,7 +47,7 @@
   <string name="copy_done">A névjegy másolása sikeresen megtörtént</string>
   <string name="copy_failure">A névjegy másolása nem sikerült</string>
   <string name="card_no_space">A névjegy másolása sikertelen, a SIM-kártya megtelt</string>
-  <string name="ip_call_by_slot">IP hívás tőle: <xliff:g id="subName">%s</xliff:g></string>
+  <string name="ip_call_by_slot">IP hívás a következővel: <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Nincs IP szám</string>
   <string name="no_ip_number_on_sim_card">Nincs IP szám a SIM kártyán</string>
   <string name="set_ip_number">IP szám beállítása</string>

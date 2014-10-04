@@ -18,15 +18,19 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">Lokales Tablet-Konto</string>
   <string name="local_storage_account" product="default">Lokales Telefon-Konto</string>
+  <string name="export_to_sim">Auf SIM-Karte exportieren</string>
   <string name="select_sim">SIM-Karte wählen</string>
   <string name="account_sim">SIM-Karte</string>
   <string name="name_for_sim">Name</string>
   <string name="fail_reason_import_vcard">Die vCard \"<xliff:g id="name">%s</xliff:g>\" konnte aufgrund eines E/A-Fehlers nicht importiert werden</string>
   <string name="label_groups">Gruppe</string>
   <string name="contact_share_failed_toast">Es können nicht mehr als <xliff:g id="count">%d</xliff:g> Kontakte geteilt werden</string>
+  <string name="exporting">Exportieren\u2026</string>
+  <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> von <xliff:g id="total_number">%2$s</xliff:g> Dateien</string>
   <string name="export_failed">Exportieren fehlgeschlagen</string>
   <string name="sim_card_full">Die SIM-Karte ist voll</string>
   <string name="export_finished">Export abgeschlossen</string>
+  <string name="tag_too_long">Kontaktname ist zu lang</string>
   <plurals name="export_cancelled">
     <item quantity="one">Exportieren abgebrochen, %d Element wurde exportiert</item>
     <item quantity="other">Exportieren abgebrochen, %d Elemente wurden exportiert</item>
@@ -39,6 +43,16 @@
   <string name="deleteConfirmation">Dieser Kontakt wird gelöscht.</string>
   <string name="readOnlyContactDeleteConfirmation">Dieser Kontakt enthält Daten aus mehreren Konten. Daten aus schreibgeschützten Konten werden in Ihren Kontaktlisten versteckt, jedoch nicht gelöscht.</string>
   <string name="readOnlyContactWarning">Kontakte aus schreibgeschützten Konten können in den Kontaktlisten nur versteckt, jedoch nicht gelöscht werden.</string>
+  <string name="multipleContactDeleteConfirmation">Beim Löschen dieses Kontaktes werden Daten von mehreren Konten gelöscht.</string>
+  <string name="copy_done">Kontakt erfolgreich kopiert</string>
+  <string name="copy_failure">Kopieren des Kontaktes fehlgeschlagen</string>
+  <string name="card_no_space">Das Kopieren des Kontaktes ist fehlgeschlagen, da die SIM-Karte voll ist</string>
+  <string name="ip_call_by_slot">VOIP-Anruf mit <xliff:g id="subName">%s</xliff:g></string>
+  <string name="no_ip_number">Keine VOIP-Nummer</string>
+  <string name="no_ip_number_on_sim_card">Keine VOIP-Nummer auf der SIM-Karte</string>
+  <string name="set_ip_number">VOIP-Nummer festlegen</string>
+  <string name="ipcall_dialog_title">VOIP-Einstellungen</string>
+  <string name="ipcall_dialog_edit_hint">Bitte VOIP-Prefix eingeben</string>
   <string name="select_path">Pfad auswählen</string>
   <string name="sd_card">SD-Karte</string>
   <string name="phone_storage">Telefonspeicher</string>
