@@ -97,4 +97,9 @@
     <string name="phone_storage">Phone storage</string>
 
     <string name="sim_contacts_not_loaded">The SIM contacts could not be loaded completely</string>
+
+    <!-- Restore groups dialog title, message and progress -->
+    <string name="restoreGroupsConfirmation_title">Restore groups?</string>
+    <string name="restoreGroupsConfirmation">You\'ll clear all categorized groups and default ones will be recreated.</string>
+    <string name="restoreGroupsProgress_title">Restoring groups\u2026</string>
 </resources>
