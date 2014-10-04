@@ -47,7 +47,7 @@
   <string name="copy_done">El contacte s\'ha copiat satisfactòriament</string>
   <string name="copy_failure">No s\'ha pogut copiar el contacte</string>
   <string name="card_no_space">No s\'ha pogut copiar el contacte, la targeta SIM és plena</string>
-  <string name="ip_call_by_slot">Trucada IP de <xliff:g id="subName">%s</xliff:g></string>
+  <string name="ip_call_by_slot">Trucada IP amb <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Sense número IP</string>
   <string name="no_ip_number_on_sim_card">Sense número IP a la targeta SIM</string>
   <string name="set_ip_number">Estableix un número IP</string>

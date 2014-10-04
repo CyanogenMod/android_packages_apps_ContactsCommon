@@ -24,18 +24,31 @@
   <string name="name_for_sim">Pavadinimas</string>
   <string name="fail_reason_import_vcard">vCard „<xliff:g id="name">%s</xliff:g>“ negalėjo būti importuoti dėl I / O klaidos</string>
   <string name="label_groups">Grupė</string>
+  <string name="contact_share_failed_toast">Negali būti bendrinama daugiau nei <xliff:g id="count">%d</xliff:g> kontaktų</string>
   <string name="exporting">Eksportuojama\u2026</string>
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> iš <xliff:g id="total_number">%2$s</xliff:g> failų</string>
   <string name="export_failed">Eksportavimas nepavyko</string>
   <string name="sim_card_full">SIM kortelė pilna</string>
   <string name="export_finished">Eksportavimas baigtas</string>
   <string name="tag_too_long">Kontakto vardas per ilgas</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">Eksportavimas buvo atšauktas, %d elementas buvo eksportuotas</item>
+    <item quantity="few">Eksportavimas buvo atšauktas, %d elementų buvo eksportuota</item>
+    <item quantity="other">Eksportavimas buvo atšauktas, %d elementų buvo eksportuota</item>
+  </plurals>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> neturi telefono numerio arba el. pašto</string>
   <string name="import_from_sim_select">Pasirinkite kortelę importuoti</string>
   <string name="no_sdcard_title" product="nosdcard">Saugykla nepasiekiama</string>
   <string name="no_sdcard_title" product="default">Nėras SD kortelės</string>
   <string name="deleteConfirmation_title">Ištrinti kontaktą?</string>
   <string name="deleteConfirmation">Šis kontaktas bus ištrintas.</string>
+  <string name="readOnlyContactDeleteConfirmation">Šiame kontakte yra informacijos iš kelių paskyrų. Informacija iš tik skaitymui skirtų paskyrų bus paslėpta iš jūsų kontaktų sąrašo, bet netrinama.</string>
+  <string name="readOnlyContactWarning">Jūs negalite ištrinti kontaktų tik iš skaitomų paskyrų, tačiau galite paslėpti juos savo kontaktų sąraše.</string>
+  <string name="multipleContactDeleteConfirmation">Panaikinus šį kontaktą bus panaikinta informacija iš kelių paskyrų.</string>
+  <string name="copy_done">Kontaktas buvo nukopijuotas sėkmingai</string>
+  <string name="copy_failure">Nepavyko nukopijuoti kontakto</string>
+  <string name="card_no_space">Nukopijuoti kontakto nepavyko, SIM kortelė pilna</string>
+  <string name="ip_call_by_slot">IP skambutis nuo <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Nėra IP numerio</string>
   <string name="no_ip_number_on_sim_card">IP numerio SIM kortelėje nėra</string>
   <string name="set_ip_number">Nustatyti IP numerį</string>

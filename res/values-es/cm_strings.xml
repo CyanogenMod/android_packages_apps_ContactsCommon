@@ -47,7 +47,7 @@
   <string name="copy_done">El contacto fue copiado satisfactoriamente</string>
   <string name="copy_failure">Falló la copia del contacto</string>
   <string name="card_no_space">Falló la copia del contacto. La tarjeta SIM está llena</string>
-  <string name="ip_call_by_slot">Llamada IP de <xliff:g id="subName">%s</xliff:g></string>
+  <string name="ip_call_by_slot">Llamada IP con <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">No hay número IP</string>
   <string name="no_ip_number_on_sim_card">No hay número IP en la tarjeta SIM</string>
   <string name="set_ip_number">Establecer número IP</string>

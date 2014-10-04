@@ -47,7 +47,7 @@
   <string name="copy_done">සම්බන්ධතාව සාර්ථක ලෙස පිටපත් කෙරුණි</string>
   <string name="copy_failure">සම්බන්ධතාව පිටපත් කිරීම අසමත්විය</string>
   <string name="card_no_space">සම්බන්ධතාව පිටපත් කිරීම අසමත්විය, සිම් පත පිරී ඇත</string>
-  <string name="ip_call_by_slot"><xliff:g id="subName">%s</xliff:g> වෙතින් IP ඇමතුමක්</string>
+  <string name="ip_call_by_slot"><xliff:g id="subName">%s</xliff:g> සමග IP ඇමතුමක්</string>
   <string name="no_ip_number">IP අංකයක් නැත</string>
   <string name="no_ip_number_on_sim_card">සිම් පතෙහි IP අංකයක් නැත</string>
   <string name="set_ip_number">IP අංකය සකසන්න</string>

@@ -46,7 +46,7 @@
   <string name="copy_done">Kişi başarıyla kopyalandı</string>
   <string name="copy_failure">Kişi kopyalanamadı</string>
   <string name="card_no_space">Kişi kopyalanamadı, SIM kart dolu</string>
-  <string name="ip_call_by_slot"><xliff:g id="subName">%s</xliff:g> ile IP arama</string>
+  <string name="ip_call_by_slot"><xliff:g id="subName">%s</xliff:g> ile IP araması</string>
   <string name="no_ip_number">IP numarası yok</string>
   <string name="no_ip_number_on_sim_card">SIM kartta IP numarası yok</string>
   <string name="set_ip_number">IP numarasını ayarla</string>
