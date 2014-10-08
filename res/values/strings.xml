@@ -840,4 +840,6 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
     <string name="import_contacts_sim">Import contacts from SIM?</string>
     <string name="import_contacts_sim_confirm">Import</string>
     <string name="import_contacts_sim_cancel">Cancel</string>
+    <!-- Title for Select Account Dialog [CHAR LIMIT=30] -->
+    <string name="select_account_dialog_title">Select Account</string>
 </resources>
