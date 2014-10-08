@@ -78,8 +78,8 @@ public final class AccountsListAdapter extends BaseAdapter {
 
     private List<AccountWithDataSet> getAccounts(AccountListFilter accountListFilter) {
         if (accountListFilter == AccountListFilter.ACCOUNTS_GROUP_WRITABLE) {
-            return new ArrayList<AccountWithDataSet>(mAccountTypes.getAccounts(true,
-                    AccountTypeManager.FLAG_ALL_ACCOUNTS_WITHOUT_LOCAL));
+            return new ArrayList<AccountWithDataSet>(mAccountTypes.getAccounts(
+                    true, AccountTypeManager.FLAG_ALL_ACCOUNTS_WITHOUT_SIM));
         }
         final List<AccountWithDataSet> writableAccountList = mAccountTypes
                 .getAccounts(accountListFilter == AccountListFilter.ACCOUNTS_CONTACT_WRITABLE
