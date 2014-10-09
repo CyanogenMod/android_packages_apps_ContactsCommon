@@ -195,21 +195,17 @@ public class AccountSelectionUtil {
             .create();
     }
 
-    public static void doImport(Context context, int resId, AccountWithDataSet account) {
+    public static void doImport(Context context, int resId,
+            AccountWithDataSet account) {
         switch (resId) {
-            case R.string.import_from_sim: {
-                if (TelephonyManager.getDefault().getPhoneCount() > 1) {
-                    SimSelectedListener simSelListner = new SimSelectedListener(context, account);
-                    displaySelectSimDialog(context, simSelListner);
-                } else {
-                    doImportFromSim(context, account);
-                }
-                break;
-            }
-            case R.string.import_from_sdcard: {
-                doImportFromSdCard(context, account);
-                break;
-            }
+        case R.string.import_from_sim: {
+            doImportFromSim(context, account);
+            break;
+        }
+        case R.string.import_from_sdcard: {
+            doImportFromSdCard(context, account);
+            break;
+        }
         }
     }
 
