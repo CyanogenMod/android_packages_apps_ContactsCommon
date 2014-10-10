@@ -43,6 +43,7 @@ public class PhoneNumberPickerFragment extends ContactEntryListFragment<ContactE
     private static final int REQUEST_CODE_ACCOUNT_FILTER = 1;
 
     private static final String KEY_SHORTCUT_ACTION = "shortcutAction";
+    private static final String DIRECTORY_ID_ARG_KEY = "directoryId";
 
     private OnPhoneNumberPickerActionListener mListener;
     private String mShortcutAction;
@@ -327,5 +328,17 @@ public class PhoneNumberPickerFragment extends ContactEntryListFragment<ContactE
         if (adapter != null) {
             adapter.setPhotoPosition(photoPosition);
         }
+    }
+
+    /**
+     * Loads the directory partition.
+     */
+    protected void loadDirectoryPartition(int partitionIndex, DirectoryPartition partition) {
+        Bundle args = new Bundle();
+        args.putLong(DIRECTORY_ID_ARG_KEY, partition.getDirectoryId());
+        if (getLoaderManager().getLoader(partitionIndex) != null) {
+            getLoaderManager().destroyLoader(partitionIndex);
+        }
+        getLoaderManager().restartLoader(partitionIndex, args, this);
     }
 }
