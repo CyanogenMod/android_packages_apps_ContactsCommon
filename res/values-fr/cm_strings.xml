@@ -24,6 +24,7 @@
   <string name="name_for_sim">Nom</string>
   <string name="fail_reason_import_vcard">La vCard \'<xliff:g id="name">%s</xliff:g>\' n\'a pas pu être importée en raison d\'une erreur d\'entrée/sortie</string>
   <string name="label_groups">Groupe</string>
+  <string name="contact_share_failed_toast">Impossible de partager plus de <xliff:g id="count">%d</xliff:g> contacts</string>
   <string name="exporting">Export\u2026</string>
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> sur <xliff:g id="total_number">%2$s</xliff:g> fichiers</string>
   <string name="export_failed">Échec de l\'exportation</string>
@@ -34,6 +35,7 @@
     <item quantity="one">L\'exportation a été annulée, %d élément a été exporté</item>
     <item quantity="other">L\'exportation a été annulée, %d éléments ont été exportés</item>
   </plurals>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> n\'a pas de numéro de téléphone ou d\'adresse courriel</string>
   <string name="import_from_sim_select">Choisissez la carte à importer</string>
   <string name="no_sdcard_title" product="nosdcard">Stockage non disponible</string>
   <string name="no_sdcard_title" product="default">Aucune carte SD</string>
@@ -41,7 +43,10 @@
   <string name="deleteConfirmation">Ce contact sera supprimé.</string>
   <string name="readOnlyContactDeleteConfirmation">Ce contact contient des informations de plusieurs comptes. Les informations de comptes en lecture seule seront masquées dans vos listes de contacts et non supprimées.</string>
   <string name="readOnlyContactWarning">Il est impossible de supprimer des contacts sur les comptes en lecture seule. Cependant, vous pouvez les masquer dans vos listes de contacts.</string>
+  <string name="multipleContactDeleteConfirmation">La suppression de ce contact entraînera la suppression des informations dans plusieurs comptes.</string>
   <string name="copy_done">Le contact a été copié avec succès</string>
+  <string name="copy_failure">Copie du contact échoué</string>
+  <string name="card_no_space">Copie du contact échoué, la carte SIM est pleine</string>
   <string name="ip_call_by_slot">Appel IP avec <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Aucun numéro IP</string>
   <string name="no_ip_number_on_sim_card">Aucun numéro IP sur la carte SIM</string>

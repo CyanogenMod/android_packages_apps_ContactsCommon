@@ -18,4 +18,12 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">本機平板電腦帳戶</string>
   <string name="local_storage_account" product="default">本地手機帳戶</string>
+  <string name="export_to_sim">匯出至 SIM 卡</string>
+  <string name="select_sim">選擇 SIM 卡</string>
+  <string name="account_sim">SIM 卡</string>
+  <string name="export_failed">匯出失敗</string>
+  <string name="sim_card_full">SIM 卡已滿</string>
+  <string name="no_sdcard_title" product="default">沒有 SD 卡</string>
+  <string name="deleteConfirmation_title">刪除聯絡人？</string>
+  <string name="sd_card">SD 卡</string>
 </resources>

@@ -24,18 +24,31 @@
   <string name="name_for_sim">Nazwa</string>
   <string name="fail_reason_import_vcard">vCard \"<xliff:g id="name">%s</xliff:g>\" nie może być zaimportowany przez błąd I/O</string>
   <string name="label_groups">Grupa</string>
+  <string name="contact_share_failed_toast">Nie może zostać udostępnionych więcej niż <xliff:g id="count">%d</xliff:g> kontaktów</string>
   <string name="exporting">Eksportowanie\u2026</string>
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> z <xliff:g id="total_number">%2$s</xliff:g> plików</string>
   <string name="export_failed">Eksport nie powiódł się</string>
   <string name="sim_card_full">Karta SIM jest pełna</string>
   <string name="export_finished">Eksport zakończony</string>
   <string name="tag_too_long">Nazwa kontaktu jest zbyt długa</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">Eksportowanie anulowane, %d kontakt eksportowany</item>
+    <item quantity="few">Eksportowanie anulowane, %d kontakty eksportowane</item>
+    <item quantity="other">Eksportowanie anulowane, %d kontaktów eksportowanych</item>
+  </plurals>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> nie zawiera numeru telefonu ani adresu email</string>
   <string name="import_from_sim_select">Wybierz kartę do zimportowania</string>
   <string name="no_sdcard_title" product="nosdcard">Pamięć niedostępna</string>
   <string name="no_sdcard_title" product="default">Brak karty SD</string>
   <string name="deleteConfirmation_title">Usunąć kontakt?</string>
   <string name="deleteConfirmation">Ten kontakt zostanie usunięty.</string>
+  <string name="readOnlyContactDeleteConfirmation">Ten kontakt zawiera informacje z wielu kont. Informacje z kont tylko do odczytu zostaną ukryte w twojej liście kontaktów, nie usunięte.</string>
+  <string name="readOnlyContactWarning">Nie możesz usunąć kontaktów z konta tylko do odczytu, ale możesz ukryć je z listy kontaktów.</string>
+  <string name="multipleContactDeleteConfirmation">Usunięcie tego kontaktu spowoduje usunięcie informacji z wielu kont.</string>
+  <string name="copy_done">Kontakt został skopiowany pomyślnie</string>
+  <string name="copy_failure">Kopiowanie kontaktu nie powiodło się</string>
+  <string name="card_no_space">Kopiowanie kontaktu nie powiodło się, karta SIM jest pełna</string>
+  <string name="ip_call_by_slot">Połączenie IP z <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Brak numeru IP</string>
   <string name="no_ip_number_on_sim_card">Brak numeru IP na karcie SIM</string>
   <string name="set_ip_number">Ustaw numer IP</string>

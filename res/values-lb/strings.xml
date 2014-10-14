@@ -25,7 +25,9 @@
   <string name="call_fax_home">Fax doheem uruffen</string>
   <string name="call_pager">Pager uruffen</string>
   <string name="call_other">Uruffen</string>
+  <string name="call_callback">Réckruffnummer uruffen</string>
   <string name="call_car">Auto uruffen</string>
+  <string name="call_company_main">Firmentelefon uruffen</string>
   <string name="call_isdn">ISDN uruffen</string>
   <string name="call_main">Haaptnummer uruffen</string>
   <string name="call_other_fax">Fax uruffen</string>
@@ -33,53 +35,210 @@
   <string name="call_telex">Telex uruffen</string>
   <string name="call_tty_tdd">TTY/TDD uruffen</string>
   <string name="call_work_mobile">Aarbechtshandy uruffen</string>
+  <string name="call_work_pager">Aarbechtspager uruffen</string>
   <string name="call_assistant"><xliff:g id="assistant">%s</xliff:g> uruffen</string>
   <string name="call_mms">MMS uruffen</string>
+  <string name="sms_custom"><xliff:g id="custom">%s</xliff:g> eng SMS schreiwen</string>
+  <string name="sms_home">SMS un déi privat Nummer schécken</string>
+  <string name="sms_mobile">SMS un den Handy schécken</string>
+  <string name="sms_work">SMS un d\'Aarbecht schécken</string>
+  <string name="sms_fax_work">SMS un den Aarbechtsfax schécken</string>
+  <string name="sms_fax_home">Fax un déi privat Nummer schécken</string>
+  <string name="sms_pager">SMS un de Pager schécken</string>
+  <string name="sms_other">SMS schécken</string>
+  <string name="sms_callback">SMS zréckschécken</string>
+  <string name="sms_car">SMS un den Auto schécken</string>
+  <string name="sms_company_main">SMS un d\'Haaptnummer vun der Firma schécken</string>
+  <string name="sms_isdn">SMS un d\'ISDN-Nummer schécken</string>
+  <string name="sms_main">SMS un d\'Haaptnummer schécken</string>
+  <string name="sms_other_fax">SMS un de Fax schécken</string>
+  <string name="sms_radio">SMS un de Radio schécken</string>
+  <string name="sms_telex">SMS un den Telex schécken</string>
+  <string name="sms_tty_tdd">SMS un den TTY/TDD schécken</string>
+  <string name="sms_work_mobile">SMS un den Aarbechtshandy schécken</string>
+  <string name="sms_work_pager">SMS un den Aarbechtspager schécken</string>
+  <string name="sms_assistant">Dem <xliff:g id="assistant">%s</xliff:g> eng SMS schécken</string>
+  <string name="sms_mms">MMS schécken</string>
+  <string name="clearFrequentsConfirmation_title">Dacks kontaktéiert eidel maachen?</string>
+  <string name="clearFrequentsConfirmation">Du läschs d\'Lëscht mat den dacks Kontaktéierten an den Appe \"Leit\" an \"Telefon\", an du forcéiers d\'Email-Appen d\'Adressastellungen nei ze léieren.</string>
+  <string name="clearFrequentsProgress_title">Dacks kontaktéiert gëtt eidel gemaach\u2026</string>
   <string name="status_available">Disponibel</string>
   <string name="status_away">Fort</string>
   <string name="status_busy">Beschäftegt</string>
   <string name="contactsList">Kontakter</string>
   <string name="local_invisible_directory">Aner</string>
+  <string name="directory_search_label">Verzeechnes</string>
   <string name="local_search_label">All Kontakter</string>
   <string name="user_profile_contacts_list_header" msgid="9154761216179882405">Ech</string>
+  <string name="search_results_searching">Gëtt gesicht\u2026</string>
+  <string name="foundTooManyContacts">Méi wéi <xliff:g id="count">%d</xliff:g> fonnt.</string>
   <string name="listFoundAllContactsZero">Keng Kontakter</string>
   <plurals name="searchFoundContacts">
     <item quantity="one">1 fonnt</item>
     <item quantity="other"><xliff:g id="count">%d</xliff:g> fonnt</item>
   </plurals>
+  <string name="description_quick_contact_for">Séiere Kontakt fir <xliff:g id="name">%1$s</xliff:g></string>
   <string name="missing_name">(Keen Numm)</string>
   <string name="favoritesFrequentCalled">Dacks ugeruff</string>
   <string name="favoritesFrequentContacted">Dacks kontaktéiert</string>
   <string name="description_view_contact_detail" msgid="2795575601596468581">Kontakt ukucken</string>
+  <string name="list_filter_phones">All d\'Kontakter mat Telefonsnummer</string>
+  <string name="view_updates_from_group">Aktualiséierunge weisen</string>
+  <string name="account_phone" product="tablet">Just Tablet, onsynchroniséiert</string>
+  <string name="account_phone" product="default">Just Telefon, onsynchroniséiert</string>
   <string name="nameLabelsGroup">Numm</string>
   <string name="nicknameLabelsGroup">Spëtznumm</string>
   <string name="full_name">Numm</string>
+  <string name="name_given">Virnumm</string>
+  <string name="name_family">Familljennumm</string>
+  <string name="name_prefix">Nummprefix</string>
+  <string name="name_middle">Zweete Virnumm</string>
+  <string name="name_suffix">Nummsuffix</string>
+  <string name="name_phonetic">Phoneteschen Numm</string>
+  <string name="name_phonetic_given">Phonetesche Virnumm</string>
+  <string name="name_phonetic_middle">Phoneteschen zweete VIrnumm</string>
+  <string name="name_phonetic_family">Phonetesche Familljennumm</string>
   <string name="phoneLabelsGroup">Telefon</string>
   <string name="emailLabelsGroup">E-Mail</string>
   <string name="postalLabelsGroup">Adress</string>
   <string name="imLabelsGroup">IM</string>
   <string name="organizationLabelsGroup">Organisatioun</string>
+  <string name="relationLabelsGroup">Relatioun</string>
+  <string name="eventLabelsGroup">Speziell Daten</string>
+  <string name="sms">Text-Message</string>
   <string name="postal_address">Adress</string>
+  <string name="ghostData_company">Firma</string>
   <string name="ghostData_title">Titel</string>
   <string name="label_notes">Notten</string>
+  <string name="label_sip_address">Interneturuff</string>
   <string name="websiteLabelsGroup">Websäit</string>
   <string name="groupsLabel">Gruppen</string>
-  <string name="email_other">E-Mail</string>
+  <string name="email_home">E-Mail un déi privat Adress schécken</string>
+  <string name="email_mobile">E-Mail un déi mobil Adress schécken</string>
+  <string name="email_work">E-Mail un d\'Aarbechtsadress schécken</string>
+  <string name="email_other">E-Mail schécken</string>
+  <string name="email_custom">E-Mail (<xliff:g id="custom">%s</xliff:g>)</string>
   <string name="email">E-Mail</string>
+  <string name="postal_street">Strooss</string>
+  <string name="postal_pobox">Postfach</string>
+  <string name="postal_neighborhood">Noperschaft</string>
   <string name="postal_city">Stad</string>
   <string name="postal_region">Staat</string>
+  <string name="postal_postcode">Postleetzuel</string>
   <string name="postal_country">Land</string>
+  <string name="map_home">Privatadress ukucken</string>
+  <string name="map_work">Aarbechtsadress ukucken</string>
   <string name="map_other">Adress ukucken</string>
+  <string name="map_custom"><xliff:g id="custom">%s</xliff:g>-Adress ukucken</string>
+  <string name="chat_aim">Iwwer AIM chatten</string>
+  <string name="chat_msn">Iwwer Windows Live chatten</string>
+  <string name="chat_yahoo">Iwwer Yahoo chatten</string>
+  <string name="chat_skype">Iwwer Skype chatten</string>
+  <string name="chat_qq">Iwwer QQ chatten</string>
+  <string name="chat_gtalk">Iwwer Google Talk chatten</string>
+  <string name="chat_icq">Iwwer ICQ chatten</string>
+  <string name="chat_jabber">Iwwer Jabber chatten</string>
+  <string name="chat">Chatten</string>
   <string name="description_minus_button">läschen</string>
+  <string name="expand_collapse_name_fields_description">Felder fir d\'Nimm ausklappen oder zesummeklappen</string>
   <string name="list_filter_all_accounts">All Kontakter</string>
   <string name="list_filter_all_starred">Markéiert</string>
   <string name="list_filter_customize">Personaliséieren</string>
   <string name="list_filter_single">Kontakt</string>
+  <string name="display_ungrouped">All déi aner Kontakter</string>
   <string name="display_all_contacts">All Kontakter</string>
+  <string name="menu_sync_remove">Synchroniséierungsgrupp läschen</string>
+  <string name="dialog_sync_add">Synchroniséierungsgrupp dobäisetzen</string>
+  <string name="display_more_groups">Méi Gruppen\u2026</string>
+  <string name="display_warn_remove_ungrouped">Wann \"<xliff:g id="group" example="Starred">%s</xliff:g>\" aus der Synchroniséierung geläscht gëtt, ginn och all déi net gruppéiert Kontakter aus der Synchroniséierung geläscht.</string>
+  <string name="savingDisplayGroups">Uweisastellunge gi gespäichert\u2026</string>
   <string name="menu_done">Fäerdeg</string>
   <string name="menu_doNotSave">Ofbriechen</string>
+  <string name="listAllContactsInAccount">Kontakter am Kont <xliff:g id="name" example="abc@gmail.com">%s</xliff:g></string>
+  <string name="listCustomView">Kontakter an der personaliséierter Usiicht</string>
+  <string name="listSingleContact">Eenzelne Kontakt</string>
+  <string name="dialog_new_contact_account">Kontakt ënner dem Kont uleeën</string>
+  <string name="import_from_sim">Vun der SIM-Kaart importéieren</string>
+  <string name="import_from_sdcard" product="default">Aus dem Späicher importéieren</string>
+  <string name="cancel_import_confirmation_message">Import vum Fichier <xliff:g id="filename" example="import.vcf">%s</xliff:g> ofbriechen?</string>
+  <string name="cancel_export_confirmation_message">Export vum Fichier <xliff:g id="filename" example="import.vcf">%s</xliff:g> ofbriechen?</string>
+  <string name="cancel_vcard_import_or_export_failed">Konnt den Import/Export vun der vCard net ofbriechen</string>
   <string name="fail_reason_unknown">Onbekannte Feeler.</string>
+  <string name="fail_reason_could_not_open_file">Konnt \"<xliff:g id="file_name">%s</xliff:g>" net opmaachen: <xliff:g id="exact_reason">%s</xliff:g>.</string>
+  <string name="fail_reason_could_not_initialize_exporter">Konnt den Exportéierprogramm net starten: \"<xliff:g id="exact_reason">%s</xliff:g>\".</string>
+  <string name="fail_reason_no_exportable_contact">Et gëtt kee Kontakt deen exportéiert ka ginn.</string>
+  <string name="fail_reason_error_occurred_during_export">Beim Exportéieren ass e Feeler opgetrueden: \"<xliff:g id="exact_reason">%s</xliff:g>\".</string>
+  <string name="fail_reason_too_long_filename">Den Numm vum Fichier ass ze laang (\"<xliff:g id="filename">%s</xliff:g>\").</string>
+  <string name="fail_reason_too_many_vcard" product="nosdcard">Et sinn ze vill vCard-Fichieren am Späicher.</string>
+  <string name="fail_reason_too_many_vcard" product="default">Et sinn ze vill vCard-Fichieren op der SD-Kaart.</string>
+  <string name="fail_reason_io_error">Lies-/Schreiffeeler</string>
+  <string name="fail_reason_low_memory_during_import">Net genuch Späicher. De Fichier kéint ze grouss ze sinn.</string>
+  <string name="fail_reason_vcard_parse_error">Konnt d\'vCard aus onerwaarte Grënn net liesen.</string>
+  <string name="fail_reason_not_supported">D\'Format ass net ënnerstëtzt.</string>
+  <string name="fail_reason_failed_to_collect_vcard_meta_info">Konnt d\'Metadate vun dëse vCard-Fichieren net liesen.</string>
+  <string name="fail_reason_failed_to_read_files">Een oder méi Fichiere konnten net importéiert ginn (%s).</string>
+  <string name="exporting_vcard_finished_title">Exportéierung vum Fichier <xliff:g id="filename" example="export.vcf">%s</xliff:g> ofgeschloss.</string>
+  <string name="exporting_vcard_canceled_title">Exportéierung vum Fichier <xliff:g id="filename" example="export.vcf">%s</xliff:g> ofgebrach.</string>
+  <string name="exporting_contact_list_title">Kontaktdate ginn exportéiert</string>
+  <string name="exporting_contact_list_message">Deng Kontaktdate ginn exportéiert als: <xliff:g id="file_name">%s</xliff:g>.</string>
+  <string name="composer_failed_to_get_database_infomation">Konnt d\'Datebankinformatiounen net lueden.</string>
+  <string name="composer_has_no_exportable_contact" product="tablet">Et gi keng Kontakter déi exportéiert kënne ginn. Wann s du keng Kontakter op dengem Tablet hues, kéinte verschidden Dateprovidere verbidden d\'Kontakter vum Tablet z\'exportéieren.</string>
+  <string name="composer_has_no_exportable_contact" product="default">Et gi keng Kontakter déi exportéiert kënne ginn. Wann s du keng Kontakter op dengem Telefon hues, kéinte verschidden Dateprovidere verbidden d\'Kontakter vum Telefon z\'exportéieren.</string>
+  <string name="composer_not_initialized">De vCard-Editor konnt net gestart ginn.</string>
+  <string name="exporting_contact_failed_title">Konnt net exportéieren</string>
+  <string name="exporting_contact_failed_message">D\'Kontaktdate goufen net exportéiert.\nGrond: \"<xliff:g id="fail_reason">%s</xliff:g>\"</string>
+  <string name="no_sdcard_message" product="nosdcard">De Späicher gouf net fonnt.</string>
+  <string name="no_sdcard_message" product="default">D\'SD-Kaart gouf net fonnt.</string>
+  <string name="confirm_export_message">Deng Kontaktlëscht gëtt an dëse Fichier exportéiert: <xliff:g id="vcard_filename">%s</xliff:g>.</string>
+  <string name="importing_vcard_description"><xliff:g id="name" example="Joe Due">%s</xliff:g> gëtt importéiert</string>
+  <string name="reading_vcard_failed_title">Konnt d\'vCard-Daten net liesen</string>
+  <string name="reading_vcard_canceled_title">D\'Liese vun de vCard-Date gouf ënnerbrach</string>
+  <string name="importing_vcard_finished_title">D\'vCard <xliff:g id="filename" example="import.vcf">%s</xliff:g> ass fäerdeg importéiert</string>
+  <string name="importing_vcard_canceled_title">Importéiere vum Fichier <xliff:g id="filename" example="export.vcf">%s</xliff:g> ofgebrach</string>
+  <string name="vcard_import_will_start_message"><xliff:g id="filename" example="import.vcf">%s</xliff:g> gëtt geschwënn importéiert.</string>
+  <string name="vcard_import_will_start_message_with_default_name">De Fichier gëtt geschwënn importéiert.</string>
+  <string name="vcard_import_request_rejected_message">D\'vCard-Importufro gouf rejetéiert. Probéier méi spéit nees.</string>
+  <string name="vcard_export_will_start_message"><xliff:g id="filename" example="import.vcf">%s</xliff:g> gëtt geschwënn exportéiert.</string>
+  <string name="vcard_export_request_rejected_message">D\'vCard-Exportufro gouf rejetéiert. Probéier méi spéit nees.</string>
+  <string name="vcard_unknown_filename">Kontakt</string>
+  <string name="caching_vcard_message">D\'vCard-Date ginn an den Tëschespäichere gelueden. Den Import fänkt geschwënn un.</string>
+  <string name="percentage"><xliff:g id="percentage" example="50">%s</xliff:g><xliff:g id="percentsign" example="%">%%</xliff:g></string>
+  <string name="vcard_import_failed">Konnt d\'vCard net importéieren.</string>
+  <string name="import_failure_no_vcard_file" product="nosdcard">Kee vCard-Fichier am Späicher fonnt.</string>
+  <string name="import_failure_no_vcard_file" product="default">Kee vCard-Fichier op der SD-Kaart fonnt.</string>
+  <string name="nfc_vcard_file_name">Kontakt iwwer NFC empfaangen</string>
+  <string name="confirm_export_title">Kontakter exportéieren?</string>
+  <string name="select_vcard_title">vCard-Fichier auswielen</string>
+  <string name="import_one_vcard_string">Ee vCard-Fichier importéieren</string>
+  <string name="import_multiple_vcard_string">Méi vCard-Fichieren importéieren</string>
+  <string name="import_all_vcard_string">All vCard-Fichieren importéieren</string>
+  <string name="searching_vcard_message" product="nosdcard">Sichen no vCard-Daten am Späicher\u2026</string>
+  <string name="searching_vcard_message" product="default">Sichen no vCard-Daten op der SD-Kaart\u2026</string>
+  <string name="caching_vcard_title">Tëschespäicher gëtt gefëllt</string>
+  <string name="scanning_sdcard_failed_message" product="nosdcard">De Späicher konnt net duerchsicht ginn. (Grond: \"<xliff:g id="fail_reason">%s</xliff:g>\")</string>
+  <string name="scanning_sdcard_failed_message" product="default">D\'SD-Kaart konnt net duerchsicht ginn. (Grond: \"<xliff:g id="fail_reason">%s</xliff:g>\")</string>
+  <string name="progress_notifier_message"><xliff:g id="current_number">%s</xliff:g>/<xliff:g id="total_number">%s</xliff:g>: <xliff:g id="name" example="Joe Due">%s</xliff:g> gëtt importéiert</string>
+  <string name="export_to_sdcard" product="default">An de Späicher exportéieren</string>
+  <string name="share_visible_contacts">Siichtbar Kontakter deelen</string>
+  <string name="dialog_import_export">Kontakter importéieren/exportéieren</string>
+  <string name="dialog_import">Kontakter importéieren</string>
+  <string name="share_error">Dëse Kontakt kann net gedeelt ginn.</string>
   <string name="menu_search">Sichen</string>
+  <string name="menu_contacts_filter">Kontakter fir unzeweisen</string>
+  <string name="activity_title_contacts_filter">Kontakter fir unzeweisen</string>
+  <string name="custom_list_filter">Personaliséiert Usiicht definéieren</string>
+  <string name="hint_findContacts">Kontakter fannen</string>
   <string name="contactsFavoritesLabel">Favoritten</string>
   <string name="listTotalAllContactsZero">Keng Kontakter.</string>
+  <string name="listTotalAllContactsZeroCustom">Keng siichtbar Kontakter.</string>
+  <string name="listTotalAllContactsZeroStarred">Keng Favoritten.</string>
+  <string name="listTotalAllContactsZeroGroup">Keng Kontakter an der Grupp <xliff:g id="name" example="Friends">%s</xliff:g></string>
+  <string name="menu_clear_frequents">Dacks kontaktéiert eidel maachen</string>
+  <string name="menu_accounts">Konten</string>
+  <string name="menu_import_export">Import/Export</string>
+  <string name="description_send_message">Dem <xliff:g id="name">%1$s</xliff:g> e Message schécken</string>
+  <string name="description_dial_phone_number">Dem <xliff:g id="name">%1$s</xliff:g> uruffen</string>
+  <string name="contact_status_update_attribution">iwwer <xliff:g id="source" example="Google Talk">%1$s</xliff:g></string>
+  <string name="contact_status_update_attribution_with_date"><xliff:g id="date" example="3 hours ago">%1$s</xliff:g> iwwer <xliff:g id="source" example="Google Talk">%2$s</xliff:g></string>
+  <string name="letter_tile_letter_font_family">sans-serif-thin</string>
 </resources>

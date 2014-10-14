@@ -46,6 +46,7 @@
   <string name="copy_done">Kontak berhasil disalin</string>
   <string name="copy_failure">Menyalin kontak gagal</string>
   <string name="card_no_space">Menyalin kontak gagal, kartu SIM penuh</string>
+  <string name="ip_call_by_slot">Panggilan IP dengan <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Tidak ada Nomor IP</string>
   <string name="no_ip_number_on_sim_card">Tidak ada Nomor IP pada kartu SIM</string>
   <string name="set_ip_number">Atur nomor IP</string>

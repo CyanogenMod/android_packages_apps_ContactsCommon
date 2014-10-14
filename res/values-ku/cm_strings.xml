@@ -18,4 +18,14 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">هەژماری ناوخۆی تاتەبژمێر</string>
   <string name="local_storage_account" product="default">هەژماری ناوخۆی تەلەفۆن</string>
+  <string name="export_to_sim">ناردنی ناو بۆ سیماکارت</string>
+  <string name="select_sim">دیاریکردنی سیم</string>
+  <string name="account_sim">سیمکارت</string>
+  <string name="name_for_sim">ناو</string>
+  <string name="label_groups">گرووپ</string>
+  <string name="ipcall_dialog_title">ڕێکخستنی تەلەفۆنی IP</string>
+  <string name="select_path">دیاریکردنی ڕێڕەو</string>
+  <string name="sd_card">بیرگەی دەرەکی</string>
+  <string name="phone_storage">بیرگەی تەلەفۆن</string>
+  <string name="sim_contacts_not_loaded">ناوی ناو سیمکارتەکە ناتوانرێت تەواوەتی دابەزێت</string>
 </resources>
