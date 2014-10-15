@@ -44,6 +44,9 @@
         <attr name="list_item_contacts_count_text_size" format="dimension"/>
         <attr name="list_item_data_width_weight" format="integer"/>
         <attr name="list_item_label_width_weight" format="integer"/>
+        <attr name="list_item_quick_call_view_source" format="reference" />
+        <attr name="list_item_quick_call_view_background" format="reference" />
+        <attr name="list_item_quick_call_size" format="dimension" />
     </declare-styleable>
 
     <declare-styleable name="ContactBrowser">
