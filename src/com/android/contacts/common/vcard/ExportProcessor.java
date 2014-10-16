@@ -263,8 +263,8 @@ public class ExportProcessor extends ProcessorBase {
         final Intent intent = new Intent();
         intent.setClassName(mService, mCallingActivity);
         final Notification notification =
-                NotificationImportExportListener.constructFinishNotification(mService, title,
-                        description, intent);
+                NotificationImportExportListener.constructFinishNotification(mService, VCardService.TYPE_EXPORT,
+                        title, description, intent);
         mNotificationManager.notify(NotificationImportExportListener.DEFAULT_NOTIFICATION_TAG,
                 mJobId, notification);
     }
