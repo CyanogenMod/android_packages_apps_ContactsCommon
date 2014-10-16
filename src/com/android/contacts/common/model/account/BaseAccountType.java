@@ -436,6 +436,8 @@ public abstract class BaseAccountType extends AccountType {
         DataKind kind = addKind(new DataKind(GroupMembership.CONTENT_ITEM_TYPE,
                 R.string.groupsLabel, 999, true));
 
+        kind.actionHeader = new SimpleInflater(R.string.label_groups);
+        kind.actionBody = new SimpleInflater(GroupMembership.GROUP_ROW_ID);
         kind.typeOverallMax = 1;
         kind.fieldList = Lists.newArrayList();
         kind.fieldList.add(new EditField(GroupMembership.GROUP_ROW_ID, -1, -1));
