@@ -1050,7 +1050,21 @@ public class ImportVCardActivity extends Activity {
      */
     private void doScanExternalStorageAndImportVCard() {
         // TODO: should use getExternalStorageState().
-        final File file = Environment.getExternalStorageDirectory();
+        Log.i(LOG_TAG, "Import Vcard from path:" + mSelectedStorage);
+        if (mSelectedStorage == VCardService.INVALID_PATH)
+            return;
+        File file;
+        switch (mSelectedStorage) {
+            case VCardService.INTERNAL_PATH:
+                file = Environment.getExternalStorageDirectory();
+                break;
+            case VCardService.EXTERNAL_PATH:
+                file = new File(MoreContactUtils.getSDPath(this));
+                break;
+            default:
+                file = Environment.getExternalStorageDirectory();
+                break;
+        }
         if (!file.exists() || !file.isDirectory() || !file.canRead()) {
             showDialog(R.id.dialog_sdcard_not_found);
         } else {
