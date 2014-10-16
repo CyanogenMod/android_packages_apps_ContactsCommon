@@ -100,9 +100,11 @@ public class DefaultContactListAdapter extends ContactListAdapter {
             }
             boolean isAirMode = MoreContactUtils.isAPMOnAndSIMPowerDown(getContext());
 
-            if (isAirMode) {
-                appendUriQueryParameterWithoutSim(loader, RawContacts.ACCOUNT_TYPE,
-                        SimAccountType.ACCOUNT_TYPE);
+            if (isAirMode
+                    || (null != filter && filter.filterType ==
+                        ContactListFilter.FILTER_TYPE_ALL_WITHOUT_SIM)) {
+                appendUriQueryParameterWithoutSim(loader,
+                        RawContacts.ACCOUNT_TYPE, SimAccountType.ACCOUNT_TYPE);
             } else {
                 // Do not show contacts when SIM card is disabled
                 String disabledSimFilter = MoreContactUtils.getDisabledSimFilter();
@@ -219,6 +221,11 @@ public class DefaultContactListAdapter extends ContactListAdapter {
             case ContactListFilter.FILTER_TYPE_ACCOUNT: {
                 // We use query parameters for account filter, so no selection to add here.
                 break;
+            }
+            case ContactListFilter.FILTER_TYPE_ALL_WITHOUT_SIM: {
+            appendUriQueryParameterWithoutSim(loader, RawContacts.ACCOUNT_TYPE,
+                    SimAccountType.ACCOUNT_TYPE);
+            break;
             }
         }
         loader.setSelection(selection.toString());
