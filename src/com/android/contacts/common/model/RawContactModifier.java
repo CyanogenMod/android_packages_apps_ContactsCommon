@@ -487,7 +487,7 @@ public class RawContactModifier {
      */
     public static boolean isEmpty(ValuesDelta values, DataKind kind) {
         if (Photo.CONTENT_ITEM_TYPE.equals(kind.mimeType)) {
-            return values.isInsert() && values.getAsByteArray(Photo.PHOTO) == null;
+            return values.getAsByteArray(Photo.PHOTO) == null;
         }
 
         // No defined fields mean this row is always empty
