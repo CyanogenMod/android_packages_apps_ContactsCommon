@@ -694,124 +694,60 @@ public class MoreContactUtils {
         return getAdnCount(sub) - count;
     }
 
-    public static int getAnrCount(int sub) {
-        int anrCount = 0;
-        /*{
-            try {
-                IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(ServiceManager
-                        .getService(PHONEBOOK));
-                if (iccIpb != null) {
-                    anrCount = iccIpb.getAnrCount(sub);
-                }
-            } catch (RemoteException ex) {
-                // ignore it
-            } catch (SecurityException ex) {
-                Log.i(TAG, ex.toString());
-            } catch (Exception ex) {
-            }
-        }
-        if (DBG) {
-            Log.d(TAG, "getAnrCount(" + sub + ") = " + anrCount);
-        }*/
-        return anrCount;
-    }
-
-    public static int getEmailCount(int sub) {
-        int emailCount = 0;
-       /*try {
-                IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(ServiceManager
-                        .getService(PHONEBOOK));
-                if (iccIpb != null) {
-                    emailCount = iccIpb.getEmailCount(sub);
-                }
-            } catch (RemoteException ex) {
-                // ignore it
-            } catch (SecurityException ex) {
-                Log.i(TAG, ex.toString());
-            } catch (Exception ex) {
-            }
-        }
-        if (DBG) {
-            Log.d(TAG, "getEmailCount(" + sub + ") = " + emailCount);
-        }*/
-        return emailCount;
-    }
-
     public static int getSpareAnrCount(int sub) {
         int anrCount = 0;
-        /*try {
+        long[] subId=SubscriptionManager.getSubId(sub);      
+         try {
                 IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(ServiceManager
                         .getService(PHONEBOOK));
-                if (iccIpb != null) {
-                    anrCount = iccIpb.getSpareAnrCount(sub);
-                }
+                 if (iccIpb != null) {
+                   if (subId != null
+                        && TelephonyManager.getDefault().isMultiSimEnabled()) {
+                    anrCount = iccIpb.getSpareEmailCountUsingSubId(subId[0]);
+                } else {
+                   anrCount = iccIpb.getSpareEmailCount();
+                 }
+            }           
             } catch (RemoteException ex) {
                 // ignore it
             } catch (SecurityException ex) {
                 Log.i(TAG, ex.toString());
             } catch (Exception ex) {
-            }
         }
         if (DBG) {
             Log.d(TAG, "getSpareAnrCount(" + sub + ") = " + anrCount);
-        }*/
+        }
         return anrCount;
     }
 
     public static int getSpareEmailCount(int sub) {
         int emailCount = 0;
-        /*try {
+        long[] subId=SubscriptionManager.getSubId(sub);
+        try {
                 IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(ServiceManager
                         .getService(PHONEBOOK));
-                if (iccIpb != null) {
-                    emailCount = iccIpb.getSpareEmailCount(sub);
-                }
+                 if (iccIpb != null) {
+                if (subId != null
+                        && TelephonyManager.getDefault().isMultiSimEnabled()) {
+                    emailCount = iccIpb.getSpareEmailCountUsingSubId(subId[0]);
+                } else {
+                    emailCount = iccIpb.getSpareEmailCount();
+                 }
+                 }            
             } catch (RemoteException ex) {
                 // ignore it
             } catch (SecurityException ex) {
                 Log.i(TAG, ex.toString());
             } catch (Exception ex) {
-            }
         }
         if (DBG) {
             Log.d(TAG, "getSpareEmailCount(" + sub + ") = " + emailCount);
-        }*/
+        }
         return emailCount;
     }
 
     private static boolean hasChinese(String name) {
         return name != null && name.getBytes().length > name.length();
-    }
-
-    public static int getAdnCount(int sub) {
-        int adnCount = 0;
-        long[] subId = SubscriptionManager.getSubId(sub);
-        try {
-            IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(
-                ServiceManager.getService(PHONEBOOK));
-
-            if (iccIpb != null) {
-                if (TelephonyManager.getDefault().isMultiSimEnabled()) {
-                    List<AdnRecord> list = iccIpb.getAdnRecordsInEfUsingSubId(
-                            subId[0], IccConstants.EF_ADN);
-                    if (null != list) {
-                        adnCount = list.size();
-                    }
-                } else {
-                    List<AdnRecord> list = iccIpb
-                            .getAdnRecordsInEf(IccConstants.EF_ADN);
-                    if (null != list) {
-                        adnCount = list.size();
-                    }
-                }
-            }
-        } catch (RemoteException ex) {
-            Log.e(TAG, "Failed to IIccPhoneBook", ex);
-        }
-        if (DBG) {
-            Log.d(TAG, "getAdnCount(" + sub + ") = " + adnCount);
-        }
-        return adnCount;
     }
 
     /**
