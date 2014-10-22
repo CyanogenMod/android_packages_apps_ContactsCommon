@@ -15,12 +15,19 @@
  */
 package com.android.contacts.common.util;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.telecom.PhoneAccount;
+import android.telecom.PhoneAccountHandle;
+import android.telecom.TelecomManager;
 import android.telephony.PhoneNumberUtils;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -69,5 +76,68 @@ public class TelephonyManagerUtils {
     public static boolean hasVideoCallSubscription(Context context) {
         // TODO: Check the telephony manager's subscriptions to see if any support video calls.
         return true;
+    }
+
+    /**
+     * Retrieve the account metadata, but if the account does not exist or the device has only a
+     * single registered and enabled account, return null.
+     */
+    private static PhoneAccount getAccountOrNull(Context context,
+            PhoneAccountHandle phoneAccount) {
+        final TelecomManager telecomManager =
+                (TelecomManager) context.getSystemService(Context.TELECOM_SERVICE);
+        final PhoneAccount account = telecomManager.getPhoneAccount(phoneAccount);
+        if (account == null || !telecomManager.hasMultipleCallCapableAccounts()) {
+            return null;
+        }
+        return account;
+    }
+
+    /**
+     * Generate account info from data in Telecomm database
+     */
+    public static PhoneAccountHandle getAccount(String componentString,
+            String accountId) {
+        if (TextUtils.isEmpty(componentString) || TextUtils.isEmpty(accountId)) {
+            return null;
+        }
+        final ComponentName componentName = ComponentName.unflattenFromString(componentString);
+        return new PhoneAccountHandle(componentName, accountId);
+    }
+
+    /**
+     * Generate account icon from data in Telecomm database
+     */
+    public static Drawable getAccountIcon(Context context, PhoneAccountHandle phoneAccount) {
+        final PhoneAccount account = getAccountOrNull(context, phoneAccount);
+        if (account == null) {
+            return null;
+        }
+        return account.getIcon(context);
+    }
+
+    public static Drawable getMultiSimIcon(Context context, int subscription) {
+        if (context == null) {
+            // If the context is null, return 0 as no resource found.
+            return null;
+        }
+
+        long subId[] = SubscriptionManager.getSubId(subscription);
+        final TelecomManager telecomManager = (TelecomManager) context
+                .getSystemService(Context.TELECOM_SERVICE);
+        List<PhoneAccountHandle> pHandles = telecomManager.getCallCapablePhoneAccounts();
+        PhoneAccountHandle phoneAccountHandle = null;
+        for (PhoneAccountHandle itorator : pHandles) {
+            if (String.valueOf(subId[0]).equals(itorator.getId())) {
+                phoneAccountHandle = itorator;
+            }
+        }
+
+        if (phoneAccountHandle == null) {
+            return null;
+        }
+        final PhoneAccount account = telecomManager
+                .getPhoneAccount(phoneAccountHandle);
+        return account.getIcon(context);
     }
 }
