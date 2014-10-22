@@ -19,6 +19,7 @@ package com.android.contacts.common;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.SystemProperties;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
@@ -89,6 +90,27 @@ public class CallUtil {
             Uri uri, String callOrigin, PhoneAccountHandle accountHandle) {
         return getCallIntent(uri, callOrigin, accountHandle,
                 VideoProfile.VideoState.AUDIO_ONLY);
+    }
+
+    /**
+     * get intent to start csvt.
+     */
+    public static Intent getCSVTCallIntent(String number) {
+        Intent intent = new Intent("com.borqs.videocall.action.LaunchVideoCallScreen");
+        intent.addCategory(Intent.CATEGORY_DEFAULT);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+        intent.putExtra("IsCallOrAnswer", true);
+        intent.putExtra("LaunchMode", 1);
+        intent.putExtra("call_number_key", number);
+        return intent;
+    }
+
+    /**
+     * if true, csvt is enabled.
+     */
+    public static boolean isCSVTEnabled() {
+        boolean CSVTSupported = SystemProperties.getBoolean("persist.radio.csvt.enabled", false);
+        return CSVTSupported;
     }
 
     /**
