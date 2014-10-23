@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-package com.android.dialerbind.analytics;
+package com.android.contacts.commonbind.analytics;
 
-import android.app.Activity;
+import android.preference.PreferenceActivity;
 
-public abstract class AnalyticsActivity extends Activity implements AnalyticsInterface {
+public abstract class AnalyticsPreferenceActivity extends PreferenceActivity
+        implements AnalyticsInterface {
     @Override
     public void sendHitEvent(String categoryId, String actionId, String labelId) {
     }
