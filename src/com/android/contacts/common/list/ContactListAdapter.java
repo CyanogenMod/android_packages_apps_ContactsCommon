@@ -101,8 +101,8 @@ public abstract class ContactListAdapter extends ContactEntryListAdapter {
         public static final int CONTACT_PHOTO_URI        = 5;
         public static final int CONTACT_LOOKUP_KEY       = 6;
         public static final int CONTACT_IS_USER_PROFILE  = 7;
-        public static final int CONTACT_HAS_NUMBER = 8;
-        public static final int CONTACT_SNIPPET          = 8;
+        public static final int CONTACT_HAS_NUMBER       = 8;
+        public static final int CONTACT_SNIPPET          = 9;
     }
 
     private CharSequence mUnknownNameText;
