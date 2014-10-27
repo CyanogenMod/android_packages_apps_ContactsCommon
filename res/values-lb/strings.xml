@@ -68,7 +68,7 @@
   <string name="contactsList">Kontakter</string>
   <string name="local_invisible_directory">Aner</string>
   <string name="directory_search_label">Verzeechnes</string>
-  <string name="local_search_label">All Kontakter</string>
+  <string name="local_search_label">All d\'Kontakter</string>
   <string name="user_profile_contacts_list_header" msgid="9154761216179882405">Ech</string>
   <string name="search_results_searching">Gëtt gesicht\u2026</string>
   <string name="foundTooManyContacts">Méi wéi <xliff:g id="count">%d</xliff:g> fonnt.</string>
@@ -141,12 +141,12 @@
   <string name="chat">Chatten</string>
   <string name="description_minus_button">läschen</string>
   <string name="expand_collapse_name_fields_description">Felder fir d\'Nimm ausklappen oder zesummeklappen</string>
-  <string name="list_filter_all_accounts">All Kontakter</string>
+  <string name="list_filter_all_accounts">All d\'Kontakter</string>
   <string name="list_filter_all_starred">Markéiert</string>
   <string name="list_filter_customize">Personaliséieren</string>
   <string name="list_filter_single">Kontakt</string>
   <string name="display_ungrouped">All déi aner Kontakter</string>
-  <string name="display_all_contacts">All Kontakter</string>
+  <string name="display_all_contacts">All d\'Kontakter</string>
   <string name="menu_sync_remove">Synchroniséierungsgrupp läschen</string>
   <string name="dialog_sync_add">Synchroniséierungsgrupp dobäisetzen</string>
   <string name="display_more_groups">Méi Gruppen\u2026</string>
