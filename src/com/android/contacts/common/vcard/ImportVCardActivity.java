@@ -909,6 +909,13 @@ public class ImportVCardActivity extends Activity {
             });
 
             AlertDialog dialog = builder.create();
+            dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                @Override
+                public void onCancel(DialogInterface dialog) {
+                    mSelectedStorage = VCardService.INVALID_PATH;
+                    finish();
+                }
+            });
             dialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(android.R.string.ok),
                     new DialogInterface.OnClickListener() {
                         @Override
@@ -921,6 +928,7 @@ public class ImportVCardActivity extends Activity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             mSelectedStorage = VCardService.INVALID_PATH;
+                            finish();
                         }
                     });
             dialog.show();
