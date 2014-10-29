@@ -28,6 +28,8 @@ import android.widget.TextView;
 import com.android.contacts.common.R;
 import com.android.contacts.common.model.AccountTypeManager;
 import com.android.contacts.common.model.account.AccountType;
+import com.android.contacts.common.model.account.PhoneAccountType;
+import com.android.contacts.common.model.account.SimAccountType;
 
 /**
  * Contact list filter parameters.
@@ -113,7 +115,13 @@ public class ContactListFilterView extends LinearLayout {
                 break;
             }
             case ContactListFilter.FILTER_TYPE_ACCOUNT: {
-                mAccountUserName.setVisibility(View.VISIBLE);
+                if (SimAccountType.ACCOUNT_TYPE.equals(mFilter.accountType)
+                    || PhoneAccountType.ACCOUNT_TYPE
+                            .equals(mFilter.accountType)) {
+                    mAccountUserName.setVisibility(View.GONE);
+                } else {
+                    mAccountUserName.setVisibility(View.VISIBLE);
+                }
                 mIcon.setVisibility(View.VISIBLE);
                 if (mFilter.icon != null) {
                     mIcon.setImageDrawable(mFilter.icon);
@@ -123,7 +131,7 @@ public class ContactListFilterView extends LinearLayout {
                 final AccountType accountType =
                         accountTypes.getAccountType(mFilter.accountType, mFilter.dataSet);
                 mAccountUserName.setText(mFilter.accountName);
-                mAccountType.setText(accountType.getDisplayLabel(getContext()));
+                mAccountType.setText(accountType.getDisplayLabel(getContext(),mFilter.accountName));
                 break;
             }
         }
