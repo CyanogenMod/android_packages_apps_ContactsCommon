@@ -27,6 +27,7 @@ import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.CommonDataKinds.StructuredPostal;
 import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.RawContacts;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
@@ -34,6 +35,7 @@ import android.widget.EditText;
 import com.android.contacts.common.MoreContactUtils;
 import com.android.contacts.common.R;
 import com.android.contacts.common.model.dataitem.DataKind;
+import com.android.internal.telephony.PhoneConstants;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -304,9 +306,27 @@ public abstract class AccountType {
         return label;
     }
 
+    public CharSequence getDisplayLabel(Context context, String accountName) {
+        if ((SimAccountType.ACCOUNT_TYPE).equals(accountType)) {
+            final int slot = MoreContactUtils.getSubscription(accountType,
+                    accountName);
+            return MoreContactUtils.getMultiSimAliasesName(context, slot);
+        }
+        return getDisplayLabel(context);
+    }
+
+    /**
+     * Gets an icon associated with a particular account type. If none found, return null.
+     *
+     * @param accountType the type of account
+     * @return a drawable for the icon or null if one cannot be found.
+     */
     public Drawable getDisplayIcon(Context context) {
         Drawable icon = null;
         updateAuthDescriptions(context);
+        if (PhoneAccountType.ACCOUNT_TYPE.equals(accountType)) {
+            return context.getResources().getDrawable(R.drawable.phone_account);
+        }
         if (mTypeToAuthDescription.containsKey(accountType)) {
             try {
                 AuthenticatorDescription desc = mTypeToAuthDescription
@@ -322,6 +342,30 @@ public abstract class AccountType {
             icon = context.getPackageManager().getDefaultActivityIcon();
         }
         return icon;
+    }
+
+    public Drawable getDisplayIcon(Context context, String accountName) {
+        if ((SimAccountType.ACCOUNT_TYPE).equals(accountType)) {
+            final int slot = MoreContactUtils.getSubscription(accountType,
+                    accountName);
+            if (TelephonyManager.getDefault().isMultiSimEnabled()) {
+                switch (slot) {
+                case PhoneConstants.SUB1:
+                    return context.getResources().getDrawable(
+                            R.drawable.sim1_account);
+                case PhoneConstants.SUB2:
+                    return context.getResources().getDrawable(
+                            R.drawable.sim2_account);
+                default:
+                    return context.getResources().getDrawable(
+                            R.drawable.simcard_account);
+                }
+            } else {
+                return context.getResources().getDrawable(
+                        R.drawable.simcard_account);
+            }
+        }
+        return getDisplayIcon(context);
     }
 
     /**
