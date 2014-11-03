@@ -53,7 +53,7 @@
     <dimen name="contact_filter_icon_size">32dip</dimen>
 
     <!-- Padding to be used between a visible scrollbar and the contact list -->
-    <dimen name="list_visible_scrollbar_padding">32dip</dimen>
+    <dimen name="list_visible_scrollbar_padding">0dip</dimen>
 
     <dimen name="contact_browser_list_header_left_margin">16dip</dimen>
     <dimen name="contact_browser_list_header_right_margin">@dimen/list_visible_scrollbar_padding</dimen>
