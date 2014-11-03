@@ -20,6 +20,8 @@ import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.preference.ListPreference;
 import android.util.AttributeSet;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.android.contacts.common.R;
 import com.android.contacts.common.preference.ContactsPreferences;
@@ -87,5 +89,14 @@ public final class SortOrderPreference extends ListPreference {
     protected void onPrepareDialogBuilder(Builder builder) {
         super.onPrepareDialogBuilder(builder);
         builder.setNegativeButton(null, null);
+    }
+
+    @Override
+    protected void onBindView(View view) {
+        super.onBindView(view);
+        final View imageFrame = view.findViewById(com.android.internal.R.id.icon_frame);
+        if (imageFrame != null) {
+            imageFrame.setVisibility(View.GONE);
+        }
     }
 }
