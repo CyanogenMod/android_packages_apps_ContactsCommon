@@ -41,6 +41,7 @@ public final class ContactTileLoaderFactory {
     public final static int LOOKUP_KEY = 4;
     public final static int CONTACT_PRESENCE = 5;
     public final static int CONTACT_STATUS = 6;
+    public final static int PHOTO_ID  = 7;
 
     // Only used for StrequentPhoneOnlyLoader
     public final static int PHONE_NUMBER = 5;
@@ -61,6 +62,7 @@ public final class ContactTileLoaderFactory {
         Contacts.LOOKUP_KEY, // ...................................4
         Contacts.CONTACT_PRESENCE, // .............................5
         Contacts.CONTACT_STATUS, // ...............................6
+        Contacts.PHOTO_ID, // .....................................7
     };
 
     /**

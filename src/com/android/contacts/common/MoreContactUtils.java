@@ -81,8 +81,6 @@ public class MoreContactUtils {
     private static final int ANR_POS = 3;
     private static final String PHONEBOOK_MSIM = "simphonebook_msim";
     private static final String PHONEBOOK = "simphonebook";
-    public static final String[] MULTI_SIM_NAME = { "perferred_name_sub1",
-            "perferred_name_sub2" };
 
     public static final String[] IPCALL_PREFIX = { "ip_call_prefix_sub1",
             "ip_call_prefix_sub2" };
@@ -832,12 +830,13 @@ public class MoreContactUtils {
     }
 
     public static String getSDPath(Context context) {
+        final String sdcardDesc = context.getString(com.android.internal.R.string.storage_sd_card);
         StorageManager mStorageManager = (StorageManager) context
                 .getSystemService(Context.STORAGE_SERVICE);
         StorageVolume[] volumes = mStorageManager.getVolumeList();
         for (int i = 0; i < volumes.length; i++) {
             if (volumes[i].isRemovable() && volumes[i].allowMassStorage()
-                    && volumes[i].getDescription(context).contains("SD")) {
+                    && volumes[i].getDescription(context).equals(sdcardDesc)) {
                 return volumes[i].getPath();
             }
         }
@@ -880,12 +879,8 @@ public class MoreContactUtils {
         }
         MSimTelephonyManager stm = getMSimTelephonyManager();
         if (stm.isMultiSimEnabled()) {
-            String name = Settings.System.getString(context.getContentResolver(),
-                    MULTI_SIM_NAME[subscription]);
-            if (!TextUtils.isEmpty(name)) {
-                return name;
-            }
-            return context.getString(R.string.account_sim) + " " + (subscription + 1);
+            return Settings.Global.getSimNameForSubscription(context, subscription,
+                    context.getString(R.string.account_sim) + " " + (subscription + 1));
         }
 
         return context.getString(R.string.account_sim);

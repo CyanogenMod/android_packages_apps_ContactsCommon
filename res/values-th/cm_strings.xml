@@ -46,6 +46,7 @@
   <string name="copy_done">รายชื่อผู้ติดต่อถูกค้ดลอกเรียบร้อยแล้ว</string>
   <string name="copy_failure">คัดลอกรายชื่อล้มเหลว</string>
   <string name="card_no_space">คัดลอกรายชื่อล้มเหลว, ซิมการ์ดเต็ม</string>
+  <string name="ip_call_by_slot">โทรผ่าน IP กับ <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">ไม่มีหมายเลข IP</string>
   <string name="no_ip_number_on_sim_card">ไม่มีหมายเลข IP ในซิมการ์ด</string>
   <string name="set_ip_number">กำหนดหมายเลข IP</string>

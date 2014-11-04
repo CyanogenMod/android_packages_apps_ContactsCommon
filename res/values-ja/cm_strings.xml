@@ -46,7 +46,7 @@
   <string name="copy_done">連絡先のコピーが完了しました</string>
   <string name="copy_failure">連絡先をコピーできませんでした</string>
   <string name="card_no_space">連絡先をコピーできませんでした、SIMカードがいっぱいです</string>
-  <string name="ip_call_by_slot"><xliff:g id="subName">%s</xliff:g>のIP電話</string>
+  <string name="ip_call_by_slot"><xliff:g id="subName">%s</xliff:g>のIP電話で発信</string>
   <string name="no_ip_number">IP番号がありません</string>
   <string name="no_ip_number_on_sim_card">SIMカードにIP番号がありません</string>
   <string name="set_ip_number">IP番号を設定</string>

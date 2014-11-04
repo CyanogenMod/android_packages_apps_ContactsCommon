@@ -47,6 +47,7 @@
   <string name="copy_done">Contact kopiëren gelukt</string>
   <string name="copy_failure">Contact kopiëren mislukt</string>
   <string name="card_no_space">Kopiëren van contact mislukt, simkaart is vol</string>
+  <string name="ip_call_by_slot">IP-oproep via <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Geen IP-nummer</string>
   <string name="no_ip_number_on_sim_card">Geen IP-nummer op simkaart</string>
   <string name="set_ip_number">IP-nummer instellen</string>

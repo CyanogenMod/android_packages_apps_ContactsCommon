@@ -18,4 +18,39 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">Локальний обліковий запис планшета</string>
   <string name="local_storage_account" product="default">Локальний обліковий запис телефону</string>
+  <string name="export_to_sim">Експорт до SIM-карти</string>
+  <string name="select_sim">Виберіть SIM</string>
+  <string name="account_sim">SIM-карта</string>
+  <string name="name_for_sim">Ім\'я</string>
+  <string name="fail_reason_import_vcard">Візитну картку \"<xliff:g id="name">%s</xliff:g>\" не вдалося імпортувати через помилку вводу/виводу</string>
+  <string name="label_groups">Група</string>
+  <string name="contact_share_failed_toast">Більше ніж <xliff:g id="count">%d</xliff:g> контактів не можна надати спільний доступ</string>
+  <string name="exporting">Експортую\u2026</string>
+  <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> із <xliff:g id="total_number">%2$s</xliff:g> файлів</string>
+  <string name="export_failed">Помилка експорту</string>
+  <string name="sim_card_full">SIM-карта заповнена</string>
+  <string name="export_finished">Експорт завершено</string>
+  <string name="tag_too_long">Ім\'я контакту задовге</string>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> не містить телефонний номер або електронну пошту</string>
+  <string name="import_from_sim_select">Виберіть карту для імпорту</string>
+  <string name="no_sdcard_title" product="nosdcard">Носій недоступний</string>
+  <string name="no_sdcard_title" product="default">Немає SD-карти</string>
+  <string name="deleteConfirmation_title">Видалити контакт?</string>
+  <string name="deleteConfirmation">Цей контакт буде видалено.</string>
+  <string name="readOnlyContactDeleteConfirmation">Цей контакт містить інформацію з кількома обліковими записами. Інформація з читання облікових записів буде приховано в списках контактів.</string>
+  <string name="readOnlyContactWarning">Ви не можете видалити контакти з облікових записів з доступом тільки читання, але їх можна сховати у ваші списки контактів.</string>
+  <string name="multipleContactDeleteConfirmation">Видалення цього контакту призведе до видалення інформації з кількох облікових записів.</string>
+  <string name="copy_done">Контакт був скопійований успішно</string>
+  <string name="copy_failure">Не вдалося скопіювати контакт</string>
+  <string name="card_no_space">Копіювання контактів не вдалося, SIM карта заповнена</string>
+  <string name="ip_call_by_slot">IP дзвінок із <xliff:g id="subName">%s</xliff:g></string>
+  <string name="no_ip_number">Немає IP номера</string>
+  <string name="no_ip_number_on_sim_card">Немає IP номера на SIM-карті</string>
+  <string name="set_ip_number">Встановити IP-номер</string>
+  <string name="ipcall_dialog_title">Налаштування IP-викликів</string>
+  <string name="ipcall_dialog_edit_hint">Будь ласка, введіть префікс IP</string>
+  <string name="select_path">Вибрати шлях</string>
+  <string name="sd_card">SD-карта</string>
+  <string name="phone_storage">Пам\'ять пристрою</string>
+  <string name="sim_contacts_not_loaded">Контакти SIM не вдалося завантажити повністю</string>
 </resources>

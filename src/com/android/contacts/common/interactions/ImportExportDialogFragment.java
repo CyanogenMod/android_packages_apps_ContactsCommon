@@ -120,6 +120,9 @@ public class ImportExportDialogFragment extends DialogFragment
     //decide whether pick phone or contacts
     private static final String IS_CONTACT = "is_contact";
 
+    // indicate that we want to export contacts
+    private static final String WANT_EXPORT = "want_export";
+
     // multi-pick contacts which contains email address
     private static final String ACTION_MULTI_PICK_EMAIL =
         "com.android.contacts.action.MULTI_PICK_EMAIL";
@@ -187,8 +190,8 @@ public class ImportExportDialogFragment extends DialogFragment
     }
 
     private String getMultiSimName(int subscription) {
-        return Settings.System.getString(getActivity().getContentResolver(),
-                MoreContactUtils.MULTI_SIM_NAME[subscription]);
+        return Settings.Global.getSimNameForSubscription(getActivity(), subscription,
+                String.valueOf(subscription + 1));
     }
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -253,6 +256,7 @@ public class ImportExportDialogFragment extends DialogFragment
                         Intent exportIntent = new Intent(ACTION_MULTI_PICK,
                                 Contacts.CONTENT_URI);
                         exportIntent.putExtra(IS_CONTACT,true);
+                        exportIntent.putExtra(WANT_EXPORT,true);
                         getActivity().startActivityForResult(exportIntent,
                                 SUBACTIVITY_EXPORT_CONTACTS);
                         break;

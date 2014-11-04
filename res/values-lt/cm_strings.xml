@@ -33,7 +33,7 @@
   <string name="tag_too_long">Kontakto vardas per ilgas</string>
   <plurals name="export_cancelled">
     <item quantity="one">Eksportavimas buvo atšauktas, %d elementas buvo eksportuotas</item>
-    <item quantity="few">Eksportavimas buvo atšauktas, %d elementų buvo eksportuota</item>
+    <item quantity="few">Eksportavimas buvo atšauktas, %d elementai buvo eksportuoti</item>
     <item quantity="other">Eksportavimas buvo atšauktas, %d elementų buvo eksportuota</item>
   </plurals>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> neturi telefono numerio arba el. pašto</string>
@@ -42,9 +42,9 @@
   <string name="no_sdcard_title" product="default">Nėras SD kortelės</string>
   <string name="deleteConfirmation_title">Ištrinti kontaktą?</string>
   <string name="deleteConfirmation">Šis kontaktas bus ištrintas.</string>
-  <string name="readOnlyContactDeleteConfirmation">Šiame kontakte yra informacijos iš kelių paskyrų. Informacija iš tik skaitymui skirtų paskyrų bus paslėpta iš jūsų kontaktų sąrašo, bet netrinama.</string>
+  <string name="readOnlyContactDeleteConfirmation">Šiame kontakte yra informacijos iš kelių paskyrų. Informacija tik iš skaitymui skirtų paskyrų bus paslėpta iš jūsų kontaktų sąrašo, neištrinta.</string>
   <string name="readOnlyContactWarning">Jūs negalite ištrinti kontaktų tik iš skaitomų paskyrų, tačiau galite paslėpti juos savo kontaktų sąraše.</string>
-  <string name="multipleContactDeleteConfirmation">Panaikinus šį kontaktą bus panaikinta informacija iš kelių paskyrų.</string>
+  <string name="multipleContactDeleteConfirmation">Ištrynus šį kontaktą bus ištrinta informacija iš kelių paskyrų.</string>
   <string name="copy_done">Kontaktas buvo nukopijuotas sėkmingai</string>
   <string name="copy_failure">Nepavyko nukopijuoti kontakto</string>
   <string name="card_no_space">Nukopijuoti kontakto nepavyko, SIM kortelė pilna</string>

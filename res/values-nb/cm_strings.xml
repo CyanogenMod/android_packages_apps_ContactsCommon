@@ -47,6 +47,7 @@
   <string name="copy_done">Kontakten ble vellykket kopiert</string>
   <string name="copy_failure">Kopiering av kontakten mislyktes</string>
   <string name="card_no_space">Kopiering av kontakten mislyktes, SIM-kortet er fullt</string>
+  <string name="ip_call_by_slot">IP-samtale med <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Ingen IP-nummer</string>
   <string name="no_ip_number_on_sim_card">Ingen IP-nummeret på SIM-kortet</string>
   <string name="set_ip_number">Angi IP-nummeret</string>
