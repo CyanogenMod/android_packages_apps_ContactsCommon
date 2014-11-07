@@ -189,4 +189,32 @@ public class CallUtil {
         }
         return false;
     }
+
+    /**
+     * if true, conference dialer  is enabled.
+     */
+    public static boolean isConferDialerEnabled() {
+        return SystemProperties.getBoolean("persist.radio.conferdialer", false);
+    }
+
+    /**
+     * get intent to start conference dialer
+     * with this intent, we can originate an conference call
+     */
+    public static Intent getConferenceDialerIntent(String number) {
+        Intent intent = new Intent("android.intent.action.ADDPARTICIPANT");
+        intent.putExtra("confernece_number_key", number);
+        return intent;
+    }
+
+    /**
+     * used to get intent to start conference dialer
+     * with this intent, we can add participants to an existing conference call
+     */
+    public static Intent getAddParticipantsIntent(String number) {
+        Intent intent = new Intent("android.intent.action.ADDPARTICIPANT");
+        intent.putExtra("add_participant", true);
+        intent.putExtra("current_participant_list", number);
+        return intent;
+    }
 }
