@@ -19,7 +19,7 @@
   <string name="local_storage_account" product="tablet">Локальний обліковий запис планшета</string>
   <string name="local_storage_account" product="default">Локальний обліковий запис телефону</string>
   <string name="export_to_sim">Експорт до SIM-карти</string>
-  <string name="select_sim">Виберіть SIM</string>
+  <string name="select_sim">Виберіть SIM-карту</string>
   <string name="account_sim">SIM-карта</string>
   <string name="name_for_sim">Ім\'я</string>
   <string name="fail_reason_import_vcard">Візитну картку \"<xliff:g id="name">%s</xliff:g>\" не вдалося імпортувати через помилку вводу/виводу</string>
