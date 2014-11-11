@@ -32,6 +32,7 @@ package com.android.contacts.common.model.account;
 import android.content.Context;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.SystemProperties;
 import android.provider.ContactsContract.CommonDataKinds.Email;
 import android.provider.ContactsContract.CommonDataKinds.StructuredName;
@@ -95,4 +96,8 @@ public class PhoneAccountType extends BaseAccountType{
         return true;
     }
 
+    @Override
+    public Drawable getDisplayIcon(Context context) {
+        return context.getResources().getDrawable(R.drawable.ic_hardware_phone_android);
+    }
 }
