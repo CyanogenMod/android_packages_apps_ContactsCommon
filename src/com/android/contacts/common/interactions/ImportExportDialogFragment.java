@@ -190,8 +190,8 @@ public class ImportExportDialogFragment extends DialogFragment
     }
 
     private String getMultiSimName(int subscription) {
-        return Settings.Global.getSimNameForSubscription(getActivity(), subscription,
-                String.valueOf(subscription + 1));
+        return MSimTelephonyManager.from(getActivity())
+                .getFormattedSimName(getActivity(), subscription);
     }
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
