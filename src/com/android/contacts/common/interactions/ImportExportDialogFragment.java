@@ -543,7 +543,7 @@ public class ImportExportDialogFragment extends AnalyticsDialogFragment
                                                         MoreContactUtils.MAX_LENGTH_NUMBER_IN_SIM);
                                             }
                                             anrNum.append(s);
-                                            anrNum.append(",");
+                                            anrNum.append(SimContactsConstants.ANR_SEP);
                                         }
                                     }
                                 }
@@ -557,7 +557,7 @@ public class ImportExportDialogFragment extends AnalyticsDialogFragment
                                                         MoreContactUtils.MAX_LENGTH_EMAIL_IN_SIM);
                                             }
                                             email.append(s);
-                                            email.append(",");
+                                            email.append(SimContactsConstants.EMAIL_SEP);
                                         }
                                     }
                                 }

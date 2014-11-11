@@ -504,7 +504,7 @@ public class MoreContactUtils {
             emailAddressArray = null;
         }
         if (!TextUtils.isEmpty(anrs)) {
-            anrArray = anrs.split(",");
+            anrArray = anrs.split(SimContactsConstants.ANR_SEP);
         } else {
             anrArray = null;
         }
@@ -614,7 +614,7 @@ public class MoreContactUtils {
             mValues.put(SimContactsConstants.STR_EMAILS, emails);
         }
         if (!TextUtils.isEmpty(anrNumber)) {
-            anrNumber = PhoneNumberUtils.stripSeparators(anrNumber);
+            anrNumber = anrNumber.replaceAll("[^0123456789PWN\\,\\;\\*\\#\\+\\&]", "");
             mValues.put(SimContactsConstants.STR_ANRS, anrNumber);
         }
 
