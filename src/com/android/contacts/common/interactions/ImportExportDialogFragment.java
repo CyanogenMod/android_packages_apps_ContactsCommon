@@ -412,7 +412,6 @@ public class ImportExportDialogFragment extends AnalyticsDialogFragment
             // GoogleSource.createMyContactsIfNotExist(account, getActivity());
             // in case export is stopped, record the count of inserted successfully
             int insertCount = 0;
-            freeSimCount = MoreContactUtils.getSimFreeCount(mPeople,subscription);
 
             mSimContactsOperation = new SimContactsOperation(mPeople);
             Cursor cr = null;
@@ -437,7 +436,7 @@ public class ImportExportDialogFragment extends AnalyticsDialogFragment
                     cr.close();
                 }
             }
-
+            freeSimCount = MoreContactUtils.getSimFreeCount(mPeople,subscription);
             boolean canSaveAnr = MoreContactUtils.canSaveAnr(subscription);
             boolean canSaveEmail = MoreContactUtils.canSaveEmail(subscription);
             int emptyAnr = MoreContactUtils.getSpareAnrCount(subscription);
