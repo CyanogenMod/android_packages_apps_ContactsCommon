@@ -124,7 +124,7 @@
     <dimen name="search_box_icon_size">28dp</dimen>
     <!-- Size of the close icon.
          Because it expands diagonally, it needs to be shrunk to look relatively the same size -->
-    <dimen name="search_box_close_icon_size">24dp</dimen>
+    <dimen name="search_box_close_icon_size">30dp</dimen>
     <!-- Padding around back arrow icon in the search box -->
     <dimen name="search_box_navigation_icon_margin">14dp</dimen>
     <!-- Padding around close icon in the search box -->
