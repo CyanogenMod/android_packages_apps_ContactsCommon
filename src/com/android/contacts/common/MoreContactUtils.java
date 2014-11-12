@@ -879,8 +879,7 @@ public class MoreContactUtils {
         }
         MSimTelephonyManager stm = getMSimTelephonyManager();
         if (stm.isMultiSimEnabled()) {
-            return Settings.Global.getSimNameForSubscription(context, subscription,
-                    context.getString(R.string.account_sim) + " " + (subscription + 1));
+            return stm.getFormattedSimName(context, subscription);
         }
 
         return context.getString(R.string.account_sim);
