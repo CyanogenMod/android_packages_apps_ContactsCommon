@@ -338,7 +338,7 @@ public class ImportExportDialogFragment extends DialogFragment
         Intent intent = new Intent(ACTION_MULTI_PICK);
         intent.setType(Contacts.CONTENT_TYPE);
         ContactListFilter filter = new ContactListFilter(
-                ContactListFilter.FILTER_TYPE_CUSTOM, null, null, null, null);
+                ContactListFilter.FILTER_TYPE_ALL_ACCOUNTS, null, null, null, null);
         intent.putExtra(AccountFilterActivity.KEY_EXTRA_CONTACT_LIST_FILTER,
                 filter);
         intent.putExtra(IS_CONTACT,true);
