@@ -17,6 +17,7 @@ package com.android.contacts.common.list;
 
 import android.accounts.Account;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
@@ -29,10 +30,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import android.widget.Toast;
 import com.android.contacts.common.ContactPhotoManager;
 import com.android.contacts.common.ContactPhotoManager.DefaultImageRequest;
 import com.android.contacts.common.R;
 import com.android.contacts.common.preference.ContactsPreferences;
+import com.android.contacts.common.model.Contact;
 
 /**
  * A cursor adapter for the {@link ContactsContract.Contacts#CONTENT_TYPE} content type.
@@ -53,6 +56,7 @@ public abstract class ContactListAdapter extends ContactEntryListAdapter {
             Contacts.IS_USER_PROFILE,               // 7
             RawContacts.ACCOUNT_TYPE,               // 8
             RawContacts.ACCOUNT_NAME,               // 9
+            Contacts.HAS_PHONE_NUMBER,               // 10
         };
 
         private static final String[] CONTACT_PROJECTION_ALTERNATIVE = new String[] {
@@ -66,6 +70,7 @@ public abstract class ContactListAdapter extends ContactEntryListAdapter {
             Contacts.IS_USER_PROFILE,               // 7
             RawContacts.ACCOUNT_TYPE,               // 8
             RawContacts.ACCOUNT_NAME,               // 9
+            Contacts.HAS_PHONE_NUMBER,              // 10
         };
 
         private static final String[] FILTER_PROJECTION_PRIMARY = new String[] {
@@ -79,7 +84,8 @@ public abstract class ContactListAdapter extends ContactEntryListAdapter {
             Contacts.IS_USER_PROFILE,               // 7
             RawContacts.ACCOUNT_TYPE,               // 8
             RawContacts.ACCOUNT_NAME,               // 9
-            SearchSnippets.SNIPPET,           // 10
+            Contacts.HAS_PHONE_NUMBER,              // 10
+            SearchSnippets.SNIPPET,                 // 11
         };
 
         private static final String[] FILTER_PROJECTION_ALTERNATIVE = new String[] {
@@ -93,7 +99,8 @@ public abstract class ContactListAdapter extends ContactEntryListAdapter {
             Contacts.IS_USER_PROFILE,               // 7
             RawContacts.ACCOUNT_TYPE,               // 8
             RawContacts.ACCOUNT_NAME,               // 9
-            SearchSnippets.SNIPPET,           // 10
+            Contacts.HAS_PHONE_NUMBER,              // 10
+            SearchSnippets.SNIPPET,                 // 11
         };
 
         public static final int CONTACT_ID               = 0;
@@ -106,7 +113,8 @@ public abstract class ContactListAdapter extends ContactEntryListAdapter {
         public static final int CONTACT_IS_USER_PROFILE  = 7;
         public static final int CONTACT_ACCOUNT_TYPE      = 8;
         public static final int CONTACT_ACCOUNT_NAME     = 9;
-        public static final int CONTACT_SNIPPET          = 10;
+        public static final int CONTACT_HAS_NUMBER       = 10;
+        public static final int CONTACT_SNIPPET          = 11;
     }
 
     private CharSequence mUnknownNameText;
@@ -212,12 +220,36 @@ public abstract class ContactListAdapter extends ContactEntryListAdapter {
         view.setUnknownNameText(mUnknownNameText);
         view.setQuickContactEnabled(isQuickContactEnabled());
         view.setAdjustSelectionBoundsEnabled(isAdjustSelectionBoundsEnabled());
+        view.setQuickCallButtonEnabled(isQuickCallButtonEnabled());
         view.setActivatedStateSupported(isSelectionVisible());
         if (mPhotoPosition != null) {
             view.setPhotoPosition(mPhotoPosition);
         }
         return view;
     }
+
+    private View.OnClickListener mClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            String lookup = ((ContactListItemView) view.getParent()).getQuickCallLookup();
+            Cursor cursor = mContext.getContentResolver().query(
+                    ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                    new String[] { ContactsContract.CommonDataKinds.Phone.NUMBER,
+                            ContactsContract.CommonDataKinds.Phone.LOOKUP_KEY},
+                    ContactsContract.CommonDataKinds.Phone.LOOKUP_KEY + "=?",
+                    new String[] { lookup }, null);
+
+            if (cursor != null) {
+                if (cursor.moveToNext()) {
+                    String phoneNumber = cursor.getString(0);
+                    Uri uri = Uri.parse("tel: " + phoneNumber);
+                    Intent intent = new Intent(Intent.ACTION_CALL, uri);
+                    mContext.startActivity(intent);
+                }
+                cursor.close();
+            }
+        }
+    };
 
     protected void bindSectionHeaderAndDivider(ContactListItemView view, int position,
             Cursor cursor) {
@@ -272,6 +304,12 @@ public abstract class ContactListAdapter extends ContactEntryListAdapter {
         // Note: we don't show phonetic any more (See issue 5265330)
 
         bindViewId(view, cursor, ContactQuery.CONTACT_ID);
+    }
+
+    protected void bindQuickCallView(final ContactListItemView view, Cursor cursor) {
+        view.showQuickCallView(cursor, ContactQuery.CONTACT_HAS_NUMBER,
+                ContactQuery.CONTACT_LOOKUP_KEY);
+        view.setOnQuickCallClickListener(mClickListener);
     }
 
     protected void bindPresenceAndStatusMessage(final ContactListItemView view, Cursor cursor) {
