@@ -189,10 +189,6 @@ public class ImportExportDialogFragment extends DialogFragment
         isMenuItemClicked = false;
     }
 
-    private String getMultiSimName(int subscription) {
-        return Settings.Global.getSimNameForSubscription(getActivity(), subscription,
-                String.valueOf(subscription + 1));
-    }
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Wrap our context to inflate list items using the correct theme
@@ -1001,7 +997,8 @@ public class ImportExportDialogFragment extends DialogFragment
             case R.string.export_to_sim: {
                 String[] items = new String[MSimTelephonyManager.getDefault().getPhoneCount()];
                 for (int i = 0; i < items.length; i++) {
-                    items[i] = getString(R.string.export_to_sim) + ": " + getMultiSimName(i);
+                    items[i] = getString(R.string.export_to_sim) + ": "
+                            + MoreContactUtils.getMultiSimAliasesName(getActivity(), i);
                 }
                 mExportSub = SimContactsConstants.SUB_1;
                 ExportToSimSelectListener listener = new ExportToSimSelectListener();
@@ -1062,7 +1059,8 @@ public class ImportExportDialogFragment extends DialogFragment
         // item is for sim account to show
         String[] items = new String[MSimTelephonyManager.getDefault().getPhoneCount()];
         for (int i = 0; i < items.length; i++) {
-            items[i] = getString(R.string.import_from_sim) + ": " + getMultiSimName(i);
+            items[i] = getString(R.string.import_from_sim) + ": "
+                    + MoreContactUtils.getMultiSimAliasesName(getActivity(), i);
         }
         new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.import_from_sim)
