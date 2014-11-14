@@ -47,10 +47,12 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.android.contacts.common.R;
+import com.android.contacts.common.editor.SelectAccountDialogFragment;
 import com.android.contacts.common.model.AccountTypeManager;
 import com.android.contacts.common.model.account.AccountWithDataSet;
 import com.android.contacts.common.MoreContactUtils;
 import com.android.contacts.common.util.AccountSelectionUtil;
+import com.android.contacts.common.util.AccountsListAdapter;
 import com.android.vcard.VCardEntryCounter;
 import com.android.vcard.VCardParser;
 import com.android.vcard.VCardParser_V21;
@@ -90,7 +92,7 @@ import java.util.regex.Pattern;
  * any Dialog in the instance. So this code is careless about the management around managed
  * dialogs stuffs (like how onCreateDialog() is used).
  */
-public class ImportVCardActivity extends Activity {
+public class ImportVCardActivity extends Activity implements SelectAccountDialogFragment.Listener {
     private static final String LOG_TAG = "VCardImport";
 
     private static final int SELECT_ACCOUNT = 0;
@@ -124,8 +126,6 @@ public class ImportVCardActivity extends Activity {
     // Connect status,default value is STATUS_DEFAULT.
     private int mConnectStatus = STATUS_DEFAULT;
 
-    private AccountSelectionUtil.AccountSelectedListener mAccountSelectionListener;
-
     private AccountWithDataSet mAccount;
 
     private ProgressDialog mProgressDialogForScanVCard;
@@ -142,6 +142,17 @@ public class ImportVCardActivity extends Activity {
     private int mSelectedStorage = VCardService.INTERNAL_PATH;
 
     private Handler mHandler = new Handler();
+
+    @Override
+    public void onAccountChosen(AccountWithDataSet account, Bundle extraArgs) {
+        mAccount = account;
+        startImport();
+    }
+
+    @Override
+    public void onAccountSelectorCancelled() {
+        finish();
+    }
 
     private static class VCardFile {
         private final String mName;
@@ -803,7 +814,7 @@ public class ImportVCardActivity extends Activity {
             public void run() {
                 if (!isFinishing()) {
                     mVCardCacheThread = new VCardCacheThread(uris);
-                    mListener = new NotificationImportExportListener(ImportVCardActivity.this);
+                    mListener = new NotificationImportExportListener(ImportVCardActivity.this.getApplication());
                     showDialog(R.id.dialog_cache_vcard);
                 }
             }
@@ -891,8 +902,12 @@ public class ImportVCardActivity extends Activity {
             } else if (accountList.size() == 1) {
                 mAccount = accountList.get(0);
             } else {
-                startActivityForResult(new Intent(this, SelectAccountActivity.class),
-                        SELECT_ACCOUNT);
+                SelectAccountDialogFragment.show(
+                        getFragmentManager(), this,
+                        R.string.dialog_new_contact_account,
+                        AccountsListAdapter.AccountListFilter.ACCOUNTS_CONTACT_WRITABLE_WITHOUT_SIM, null);
+//                startActivityForResult(new Intent(this, SelectAccountActivity.class),
+//                        SELECT_ACCOUNT);
                 return;
             }
         }
@@ -1086,6 +1101,13 @@ public class ImportVCardActivity extends Activity {
             Log.i(LOG_TAG, "Cache thread is still running. Show progress dialog again.");
             showDialog(R.id.dialog_cache_vcard);
         }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Log.e(LOG_TAG, "onNewIntent()");
+        Toast.makeText(this, "Cannot process another one!", Toast.LENGTH_SHORT).show();
     }
 
     /**
