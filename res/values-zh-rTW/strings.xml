@@ -256,8 +256,8 @@
     <string name="settings_contact_display_options_description" msgid="4130259058302284077">"設定聯絡人的顯示和排序方式。"</string>
     <string name="exporting">"正在導出"</string>
     <string name="reading_vcard_files">讀取Vcard文件</string>
-    <string name="export_failed">"導出失敗"</string>
-    <string name="sim_card_full">"發生錯誤，SIM卡已滿。"</string>
+    <string name="export_to_sim_failed">"導出失敗，<xliff:g id="insertCount">%d</xliff:g>條成功導出"</string>
+    <string name="export_sim_card_full">"SIM卡已滿，<xliff:g id="insertCount">%d</xliff:g>條成功導出"</string>
     <string name="export_finished">"導出結束"</string>
     <string name="export_no_phone_or_email">導出失敗, <xliff:g id="name">%s</xliff:g>沒有電話號碼或者郵箱地址</string>
     <string name="tag_too_long">"發生錯誤，聯絡人姓名過長。"</string>
