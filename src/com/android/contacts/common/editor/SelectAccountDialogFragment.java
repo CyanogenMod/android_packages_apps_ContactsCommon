@@ -40,6 +40,8 @@ public final class SelectAccountDialogFragment extends DialogFragment {
     private static final String KEY_LIST_FILTER = "list_filter";
     private static final String KEY_EXTRA_ARGS = "extra_args";
 
+    Listener mListener = null;
+
     public SelectAccountDialogFragment() { // All fragments must have a public default constructor.
     }
 
@@ -66,6 +68,35 @@ public final class SelectAccountDialogFragment extends DialogFragment {
         instance.setArguments(args);
         instance.setTargetFragment(targetFragment, 0);
         instance.show(fragmentManager, SelectAccountDialogFragment.TAG);
+    }
+
+    /**
+     * Show the dialog.
+     *
+     * @param fragmentManager {@link FragmentManager}.
+     * @param targetFragment {@link Fragment} that implements {@link Listener}.
+     * @param titleResourceId resource ID to use as the title.
+     * @param accountListFilter account filter.
+     * @param extraArgs Extra arguments, which will later be passed to
+     *     {@link Listener#onAccountChosen}.  {@code null} will be converted to
+     *     {@link Bundle#EMPTY}.
+     */
+    public static <F extends Listener> void show(FragmentManager fragmentManager,
+                                                            F targetFragment, int titleResourceId,
+                                                            AccountListFilter accountListFilter, Bundle extraArgs) {
+        final Bundle args = new Bundle();
+        args.putInt(KEY_TITLE_RES_ID, titleResourceId);
+        args.putSerializable(KEY_LIST_FILTER, accountListFilter);
+        args.putBundle(KEY_EXTRA_ARGS, (extraArgs == null) ? Bundle.EMPTY : extraArgs);
+
+        final SelectAccountDialogFragment instance = new SelectAccountDialogFragment();
+        instance.setArguments(args);
+        instance.setTargetListener(targetFragment);
+        instance.show(fragmentManager, SelectAccountDialogFragment.TAG);
+    }
+
+    public void setTargetListener(Listener listener) {
+        mListener = listener;
     }
 
     @Override
@@ -111,6 +142,8 @@ public final class SelectAccountDialogFragment extends DialogFragment {
         if (targetFragment != null && targetFragment instanceof Listener) {
             final Listener target = (Listener) targetFragment;
             target.onAccountChosen(account, getArguments().getBundle(KEY_EXTRA_ARGS));
+        } else if (mListener != null) {
+            mListener.onAccountChosen(account, getArguments().getBundle(KEY_EXTRA_ARGS));
         }
     }
 

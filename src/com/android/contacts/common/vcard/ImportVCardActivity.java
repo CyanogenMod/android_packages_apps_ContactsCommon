@@ -47,10 +47,12 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.android.contacts.common.R;
+import com.android.contacts.common.editor.SelectAccountDialogFragment;
 import com.android.contacts.common.model.AccountTypeManager;
 import com.android.contacts.common.model.account.AccountWithDataSet;
 import com.android.contacts.common.MoreContactUtils;
 import com.android.contacts.common.util.AccountSelectionUtil;
+import com.android.contacts.common.util.AccountsListAdapter;
 import com.android.vcard.VCardEntryCounter;
 import com.android.vcard.VCardParser;
 import com.android.vcard.VCardParser_V21;
@@ -90,10 +92,8 @@ import java.util.regex.Pattern;
  * any Dialog in the instance. So this code is careless about the management around managed
  * dialogs stuffs (like how onCreateDialog() is used).
  */
-public class ImportVCardActivity extends Activity {
+public class ImportVCardActivity extends Activity implements SelectAccountDialogFragment.Listener {
     private static final String LOG_TAG = "VCardImport";
-
-    private static final int SELECT_ACCOUNT = 0;
 
     /* package */ static final String VCARD_URI_ARRAY = "vcard_uri";
     /* package */ static final String ESTIMATED_VCARD_TYPE_ARRAY = "estimated_vcard_type";
@@ -124,8 +124,6 @@ public class ImportVCardActivity extends Activity {
     // Connect status,default value is STATUS_DEFAULT.
     private int mConnectStatus = STATUS_DEFAULT;
 
-    private AccountSelectionUtil.AccountSelectedListener mAccountSelectionListener;
-
     private AccountWithDataSet mAccount;
 
     private ProgressDialog mProgressDialogForScanVCard;
@@ -142,6 +140,17 @@ public class ImportVCardActivity extends Activity {
     private int mSelectedStorage = VCardService.INTERNAL_PATH;
 
     private Handler mHandler = new Handler();
+
+    @Override
+    public void onAccountChosen(AccountWithDataSet account, Bundle extraArgs) {
+        mAccount = account;
+        startImport();
+    }
+
+    @Override
+    public void onAccountSelectorCancelled() {
+        finish();
+    }
 
     private static class VCardFile {
         private final String mName;
@@ -803,7 +812,7 @@ public class ImportVCardActivity extends Activity {
             public void run() {
                 if (!isFinishing()) {
                     mVCardCacheThread = new VCardCacheThread(uris);
-                    mListener = new NotificationImportExportListener(ImportVCardActivity.this);
+                    mListener = new NotificationImportExportListener(ImportVCardActivity.this.getApplication());
                     showDialog(R.id.dialog_cache_vcard);
                 }
             }
@@ -891,31 +900,16 @@ public class ImportVCardActivity extends Activity {
             } else if (accountList.size() == 1) {
                 mAccount = accountList.get(0);
             } else {
-                startActivityForResult(new Intent(this, SelectAccountActivity.class),
-                        SELECT_ACCOUNT);
+                SelectAccountDialogFragment.show(
+                        getFragmentManager(), this,
+                        R.string.dialog_new_contact_account,
+                        AccountsListAdapter.AccountListFilter.ACCOUNTS_CONTACT_WRITABLE_WITHOUT_SIM,
+                        null);
                 return;
             }
         }
 
         startImport();
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        if (requestCode == SELECT_ACCOUNT) {
-            if (resultCode == Activity.RESULT_OK) {
-                mAccount = new AccountWithDataSet(
-                        intent.getStringExtra(SelectAccountActivity.ACCOUNT_NAME),
-                        intent.getStringExtra(SelectAccountActivity.ACCOUNT_TYPE),
-                        intent.getStringExtra(SelectAccountActivity.DATA_SET));
-                startImport();
-            } else {
-                if (resultCode != Activity.RESULT_CANCELED) {
-                    Log.w(LOG_TAG, "Result code was not OK nor CANCELED: " + resultCode);
-                }
-                finish();
-            }
-        }
     }
 
     private void startImport() {
@@ -975,14 +969,6 @@ public class ImportVCardActivity extends Activity {
     @Override
     protected Dialog onCreateDialog(int resId, Bundle bundle) {
         switch (resId) {
-            case R.string.import_from_sdcard: {
-                if (mAccountSelectionListener == null) {
-                    throw new NullPointerException(
-                            "mAccountSelectionListener must not be null.");
-                }
-                return AccountSelectionUtil.getSelectAccountDialog(this, resId,
-                        mAccountSelectionListener, mCancelListener);
-            }
             case R.id.dialog_searching_vcard: {
                 if (mProgressDialogForScanVCard == null) {
                     String message = getString(R.string.searching_vcard_message);
