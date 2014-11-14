@@ -481,7 +481,7 @@ public class RawContactDelta implements Parcelable {
                         }
                     } else {
                         anr.append(valuesDelta.getAfter().getAsString(Phone.NUMBER));
-                        anr.append(",");
+                        anr.append(SimContactsConstants.ANR_SEP);
                     }
                 }
             }
@@ -493,7 +493,7 @@ public class RawContactDelta implements Parcelable {
                         number = valuesDelta.getBefore().getAsString(Phone.NUMBER);
                     } else {
                         anr.append(valuesDelta.getBefore().getAsString(Phone.NUMBER));
-                        anr.append(",");
+                        anr.append(SimContactsConstants.ANR_SEP);
                     }
                 }
                 if (valuesDelta.getAfter() != null
@@ -506,7 +506,7 @@ public class RawContactDelta implements Parcelable {
                         }
                     } else {
                         newAnr.append(valuesDelta.getAfter().getAsString(Phone.NUMBER));
-                        newAnr.append(",");
+                        newAnr.append(SimContactsConstants.ANR_SEP);
                     }
                 }
             }
@@ -517,7 +517,7 @@ public class RawContactDelta implements Parcelable {
                 if (valuesDelta.getAfter() != null
                         && valuesDelta.getAfter().size() != 0) {
                     email.append(valuesDelta.getAfter().getAsString(Email.DATA));
-                    email.append(",");
+                    email.append(SimContactsConstants.EMAIL_SEP);
                 }
             }
         } else if (emails != null) {
@@ -525,12 +525,12 @@ public class RawContactDelta implements Parcelable {
                 if (valuesDelta.getBefore() != null
                         && valuesDelta.getBefore().size() != 0) {
                     email.append(valuesDelta.getBefore().getAsString(Email.DATA));
-                    email.append(",");
+                    email.append(SimContactsConstants.EMAIL_SEP);
                 }
                 if (valuesDelta.getAfter() != null
                         && valuesDelta.getAfter().size() != 0) {
                         newEmail.append(valuesDelta.getAfter().getAsString(Email.DATA));
-                        newEmail.append(",");
+                        newEmail.append(SimContactsConstants.EMAIL_SEP);
                 }
             }
         }
