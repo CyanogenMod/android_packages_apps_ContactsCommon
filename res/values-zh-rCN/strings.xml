@@ -255,8 +255,8 @@
     <string name="exporting">"正在导出"</string>
     <string name="reading_vcard_files">读取VCARD文件</string>
     <string name="progressdialog_cancel">取消</string>
-    <string name="export_failed">"导出失败"</string>
-    <string name="sim_card_full">"发生错误，SIM卡已满。"</string>
+    <string name="export_to_sim_failed">"导出失败，<xliff:g id="insertCount">%d</xliff:g>条成功导出"</string>
+    <string name="export_sim_card_full">"SIM卡已满，<xliff:g id="insertCount">%d</xliff:g>条成功导出"</string>
     <string name="export_finished">"导出结束"</string>
     <string name="tag_too_long">"发生错误，联系人姓名过长。"</string>
     <string name="sim_contacts_not_load">发生错误，SIM卡联系人未完全加载</string>

@@ -768,9 +768,9 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
 
     <string name="progressdialog_cancel">Cancel</string>
 
-    <string name="export_failed">Export failed</string>
+    <string name="export_to_sim_failed">Export failed, <xliff:g id="insertCount">%d</xliff:g> items are exported</string>
 
-    <string name="sim_card_full">Error, Sim Card is full.</string>
+    <string name="export_sim_card_full">Sim Card is full, <xliff:g id="insertCount">%d</xliff:g> items are exported</string>
 
     <string name="export_finished">Export finished</string>
 
