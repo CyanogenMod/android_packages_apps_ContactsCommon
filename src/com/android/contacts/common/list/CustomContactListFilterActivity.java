@@ -549,11 +549,14 @@ public class CustomContactListFilterActivity extends Activity
         private AccountSet mAccounts;
 
         private boolean mChildWithPhones = false;
+        private boolean mCustomContactDefaultState;
 
         public DisplayAdapter(Context context) {
             mContext = context;
             mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             mAccountTypes = AccountTypeManager.getInstance(context);
+            mCustomContactDefaultState = mContext.getResources().getBoolean(
+                    R.bool.config_custom_contact_default_state);
         }
 
         public void setAccounts(AccountSet accounts) {
@@ -614,7 +617,7 @@ public class CustomContactListFilterActivity extends Activity
             final GroupDelta child = (GroupDelta)this.getChild(groupPosition, childPosition);
             if (child != null) {
                 // Handle normal group, with title and checkbox
-                final boolean groupVisible = child.getVisible();
+                final boolean groupVisible = child.getVisible() || mCustomContactDefaultState;
                 checkbox.setVisibility(View.VISIBLE);
                 checkbox.setChecked(groupVisible);
 

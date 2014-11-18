@@ -414,6 +414,16 @@ class AccountTypeManagerImpl extends AccountTypeManager
         final SyncAdapterType[] syncs = ContentResolver.getSyncAdapterTypes();
         final AuthenticatorDescription[] auths = am.getAuthenticatorTypes();
 
+
+        // add local account type. we do not need a sync adapter for local contacts.
+        AccountType localAccount = new PhoneAccountType(mContext, mContext.getPackageName());
+        localAccount.titleRes = com.android.contacts.common.R.string.local_storage_account;
+        addAccountType(localAccount, accountTypesByTypeAndDataSet, accountTypesByType);
+        AccountWithDataSet phoneAccountType = new AccountWithDataSet(SimContactsConstants.PHONE_NAME,
+                localAccount.accountType, localAccount.dataSet);
+        allAccounts.add(phoneAccountType);
+        contactWritableAccounts.add(phoneAccountType);
+
         // First process sync adapters to find any that provide contact data.
         for (SyncAdapterType sync : syncs) {
             if (!ContactsContract.AUTHORITY.equals(sync.authority)) {
@@ -438,7 +448,8 @@ class AccountTypeManagerImpl extends AccountTypeManager
             } else if (SimAccountType.ACCOUNT_TYPE.equals(type)) {
                 accountType = new SimAccountType(mContext, auth.packageName);
             } else if (PhoneAccountType.ACCOUNT_TYPE.equals(type)) {
-                accountType = new PhoneAccountType(mContext, auth.packageName);
+                // handled above manually.
+                continue;
             } else {
                 // TODO: use syncadapter package instead, since it provides resources
                 Log.d(TAG, "Registering external account type=" + type
