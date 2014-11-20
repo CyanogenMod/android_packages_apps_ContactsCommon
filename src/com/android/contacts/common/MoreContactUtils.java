@@ -400,13 +400,7 @@ public class MoreContactUtils {
         SimContactsOperation mSimContactsOperation = new SimContactsOperation(context);
         result = mSimContactsOperation.insert(mValues, subscription);
 
-        if (result != null) {
-            // we should import the contact to the sim account at the same time.
-            String[] value = new String[] {
-                    name, number, emails, anrNumber
-            };
-            insertToPhone(value, context.getContentResolver(),subscription);
-        } else {
+        if (result == null) {
             Log.e(TAG, "export contact: [" + name + ", " + number + ", " + emails + "] to slot "
                     + subscription + " failed");
         }
