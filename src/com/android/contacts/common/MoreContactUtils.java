@@ -614,7 +614,7 @@ public class MoreContactUtils {
             mValues.put(SimContactsConstants.STR_EMAILS, emails);
         }
         if (!TextUtils.isEmpty(anrNumber)) {
-            anrNumber = anrNumber.replaceAll("[^0123456789PWN\\,\\;\\*\\#\\+\\&]", "");
+            anrNumber = anrNumber.replaceAll("[^0123456789PWN\\,\\;\\*\\#\\+\\:]", "");
             mValues.put(SimContactsConstants.STR_ANRS, anrNumber);
         }
 
