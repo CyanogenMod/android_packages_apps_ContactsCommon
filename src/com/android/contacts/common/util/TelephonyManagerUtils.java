@@ -128,7 +128,8 @@ public class TelephonyManagerUtils {
         List<PhoneAccountHandle> pHandles = telecomManager.getCallCapablePhoneAccounts();
         PhoneAccountHandle phoneAccountHandle = null;
         for (PhoneAccountHandle itorator : pHandles) {
-            if (String.valueOf(subId[0]).equals(itorator.getId())) {
+            if (subId != null
+                    && String.valueOf(subId[0]).equals(itorator.getId())) {
                 phoneAccountHandle = itorator;
             }
         }
