@@ -55,7 +55,7 @@ public interface SimContactsConstants {
     public static final String STR_NEW_ANRS = "newAnrs";
     public static final String INTENT_EXPORT_COMPLETE =
         "com.android.sim.INTENT_EXPORT_COMPLETE";
-    public static final String ANR_SEP = "&";
+    public static final String ANR_SEP = ":";
     public static final String EMAIL_SEP = ",";
     public static final String SIM_URI = "content://icc/adn";
     public static final String SIM_SUB_URI = "content://icc/adn/subId/";
