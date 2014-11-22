@@ -15,6 +15,7 @@
  */
 package com.android.contacts.common.list;
 
+import android.accounts.Account;
 import android.content.Context;
 import android.content.CursorLoader;
 import android.content.res.Resources;
@@ -710,22 +711,31 @@ public abstract class ContactEntryListAdapter extends IndexerListAdapter {
      * @param contactIdColumn Index of the contact id column
      * @param lookUpKeyColumn Index of the lookup key column
      * @param displayNameColumn Index of the display name column
+     * @param accountTypeColumn Index of the account type column
+     * @param accountNameColumn Index of the account name column
      */
     protected void bindQuickContact(final ContactListItemView view, int partitionIndex,
             Cursor cursor, int photoIdColumn, int photoUriColumn, int contactIdColumn,
-            int lookUpKeyColumn, int displayNameColumn) {
+            int lookUpKeyColumn,int displayNameColumn, int accountTypeColumn,
+            int accountNameColumn) {
         long photoId = 0;
         if (!cursor.isNull(photoIdColumn)) {
             photoId = cursor.getLong(photoIdColumn);
         }
 
+        Account account = null;
+        if (!cursor.isNull(accountTypeColumn) && !cursor.isNull(accountNameColumn)) {
+            final String accountType = cursor.getString(accountTypeColumn);
+            final String accountName = cursor.getString(accountNameColumn);
+            account = new Account(accountName, accountType);
+        }
         QuickContactBadge quickContact = view.getQuickContact();
         quickContact.assignContactUri(
                 getContactUri(partitionIndex, cursor, contactIdColumn, lookUpKeyColumn));
 
         if (photoId != 0 || photoUriColumn == -1) {
-            getPhotoLoader().loadThumbnail(quickContact, photoId, mDarkTheme, mCircularPhotos,
-                    null);
+            getPhotoLoader().loadThumbnail(quickContact, photoId, account,
+                    mDarkTheme, mCircularPhotos, null);
         } else {
             final String photoUriString = cursor.getString(photoUriColumn);
             final Uri photoUri = photoUriString == null ? null : Uri.parse(photoUriString);
@@ -734,8 +744,8 @@ public abstract class ContactEntryListAdapter extends IndexerListAdapter {
                 request = getDefaultImageRequestFromCursor(cursor, displayNameColumn,
                         lookUpKeyColumn);
             }
-            getPhotoLoader().loadPhoto(quickContact, photoUri, -1, mDarkTheme, mCircularPhotos,
-                    request);
+            getPhotoLoader().loadPhoto(quickContact, photoUri, account, -1,
+                    mDarkTheme, mCircularPhotos, request);
         }
 
     }

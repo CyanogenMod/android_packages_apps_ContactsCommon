@@ -79,6 +79,16 @@ public class MoreContactUtils {
     public static final String[] MULTI_SIM_NAME = { "perferred_name_sub1",
             "perferred_name_sub2" };
 
+    public static final String PREFERRED_SIM_ICON_INDEX = "preferred_sim_icon_index";
+    public static final String[] IPCALL_PREFIX = { "ip_call_prefix_sub1",
+            "ip_call_prefix_sub2" };
+    public final static int[] IC_SIM_PICTURE = {
+        R.drawable.ic_contact_picture_sim_1,
+        R.drawable.ic_contact_picture_sim_2,
+        R.drawable.ic_contact_picture_sim_personal,
+        R.drawable.ic_contact_picture_sim_business,
+        R.drawable.ic_contact_picture_sim_primary
+   };
     /**
      * Returns true if two data with mimetypes which represent values in contact entries are
      * considered equal for collapsing in the GUI. For caller-id, use
@@ -700,4 +710,27 @@ public class MoreContactUtils {
         }
         return name;
     }
+
+    /**
+     * Get SIM card icon index by slot
+     */
+    public static int getCurrentSimIconIndex(Context context, int slot) {
+        if (context == null || slot < SimContactsConstants.SUB_1
+                || slot >= TelephonyManager.getDefault().getPhoneCount()) {
+            return -1;
+        }
+
+        String simIconIndex = Settings.System.getString(context.getContentResolver(),
+                PREFERRED_SIM_ICON_INDEX);
+        if (TextUtils.isEmpty(simIconIndex)) {
+            return slot;
+        } else {
+            String[] indexs = simIconIndex.split(",");
+            if (slot >= indexs.length) {
+                return -1;
+            }
+            return Integer.parseInt(indexs[slot]);
+        }
+    }
+
 }
