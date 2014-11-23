@@ -123,6 +123,9 @@ public class TelephonyManagerUtils {
         }
 
         long subId[] = SubscriptionManager.getSubId(subscription);
+        if (subId == null) {
+            return null;
+        }
         final TelecomManager telecomManager = (TelecomManager) context
                 .getSystemService(Context.TELECOM_SERVICE);
         List<PhoneAccountHandle> pHandles = telecomManager.getCallCapablePhoneAccounts();
