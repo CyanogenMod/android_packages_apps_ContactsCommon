@@ -97,16 +97,11 @@ public class NotificationImportExportListener implements VCardImportExportListen
         }
 
         final String totalCountString = String.valueOf(totalCount);
-        final String tickerText =
-                mContext.getString(R.string.progress_notifier_message,
-                        String.valueOf(currentCount),
-                        totalCountString,
-                        entry.getDisplayName());
         final String description = mContext.getString(R.string.importing_vcard_description,
                 entry.getDisplayName());
 
         final Notification notification = constructProgressNotification(
-                mContext.getApplicationContext(), VCardService.TYPE_IMPORT, description, tickerText,
+                mContext.getApplicationContext(), VCardService.TYPE_IMPORT, description, null,
                 jobId, request.displayName, totalCount, currentCount);
         mNotificationManager.notify(DEFAULT_NOTIFICATION_TAG, jobId, notification);
     }
