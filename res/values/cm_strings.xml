@@ -18,4 +18,9 @@
     <!-- Virtual local storage account name -->
     <string name="local_storage_account" product="tablet">Local tablet account</string>
     <string name="local_storage_account" product="default">Local phone account</string>
+
+    <!-- CMCC -->
+    <string name="import_contacts_sim">Import contacts from SIM?</string>
+    <string name="import_contacts_sim_confirm">Import</string>
+    <string name="import_contacts_sim_cancel">Cancel</string>
 </resources>
