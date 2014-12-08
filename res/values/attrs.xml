@@ -17,6 +17,7 @@
 <resources>
     <declare-styleable name="Theme">
         <attr name="android:textColorSecondary" />
+        <attr name="android:colorPrimary" />
     </declare-styleable>
 
     <declare-styleable name="ContactsDataKind">
