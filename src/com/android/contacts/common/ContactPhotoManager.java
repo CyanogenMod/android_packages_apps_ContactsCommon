@@ -58,6 +58,7 @@ import android.widget.ImageView;
 import com.android.contacts.common.lettertiles.LetterTileDrawable;
 import com.android.contacts.common.util.BitmapUtil;
 import com.android.contacts.common.util.UriUtils;
+import com.android.contacts.common.widget.CheckableFlipDrawable;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
@@ -381,7 +382,7 @@ public abstract class ContactPhotoManager implements ComponentCallbacks2 {
                 boolean darkTheme, DefaultImageRequest defaultImageRequest) {
             final Drawable drawable = getDefaultImageForContact(view.getContext(),
                     defaultImageRequest, account);
-            view.setImageDrawable(drawable);
+            applyImageDrawable(view, drawable);
         }
 
         public static Drawable getDefaultImageForContact(Context context,
@@ -419,7 +420,16 @@ public abstract class ContactPhotoManager implements ComponentCallbacks2 {
                 sDrawable = new ColorDrawable(context.getResources().getColor(
                         R.color.image_placeholder));
             }
-            view.setImageDrawable(sDrawable);
+            applyImageDrawable(view, sDrawable);
+        }
+    }
+
+    protected static void applyImageDrawable(ImageView view, Drawable drawable) {
+        Drawable oldDrawable = view.getDrawable();
+        if (oldDrawable instanceof CheckableFlipDrawable) {
+            ((CheckableFlipDrawable) oldDrawable).setFront(drawable);
+        } else {
+            view.setImageDrawable(drawable);
         }
     }
 
@@ -973,10 +983,10 @@ class ContactPhotoManagerImpl extends ContactPhotoManager implements Callback {
             }
             layers[1] = getDrawableForBitmap(mContext.getResources(), cachedBitmap, request);
             TransitionDrawable drawable = new TransitionDrawable(layers);
-            view.setImageDrawable(drawable);
+            applyImageDrawable(view, drawable);
             drawable.startTransition(FADE_TRANSITION_DURATION);
         } else {
-            view.setImageDrawable(
+            applyImageDrawable(view,
                     getDrawableForBitmap(mContext.getResources(), cachedBitmap, request));
         }
 
