@@ -22,6 +22,7 @@ import com.android.contacts.common.R;
 public class CheckableFlipDrawable extends FlipDrawable implements
         ValueAnimator.AnimatorUpdateListener {
 
+    private final FrontDrawable mFrontDrawable;
     private final CheckmarkDrawable mCheckmarkDrawable;
 
     private final ValueAnimator mCheckmarkScaleAnimator;
@@ -37,9 +38,10 @@ public class CheckableFlipDrawable extends FlipDrawable implements
 
     public CheckableFlipDrawable(Drawable front, final Resources res,
             final int checkBackgroundColor, final int flipDurationMs) {
-        super(front, new CheckmarkDrawable(res, checkBackgroundColor),
+        super(new FrontDrawable(front), new CheckmarkDrawable(res, checkBackgroundColor),
                 flipDurationMs, 0 /* preFlipDurationMs */, POST_FLIP_DURATION_MS);
 
+        mFrontDrawable = (FrontDrawable) mFront;
         mCheckmarkDrawable = (CheckmarkDrawable) mBack;
 
         // We will create checkmark animations that are synchronized with the
@@ -67,17 +69,7 @@ public class CheckableFlipDrawable extends FlipDrawable implements
     }
 
     public void setFront(Drawable front) {
-        mFront.setCallback(null);
-
-        mFront = front;
-
-        mFront.setCallback(this);
-        mFront.setBounds(getBounds());
-        mFront.setAlpha(getAlpha());
-        mFront.setColorFilter(getColorFilter());
-        mFront.setLevel(getLevel());
-
-        reset();
+        mFrontDrawable.setInnerDrawable(front);
         invalidateSelf();
     }
 
@@ -127,6 +119,94 @@ public class CheckableFlipDrawable extends FlipDrawable implements
             mCheckmarkDrawable.setScaleAnimatorValue(value);
         } else if (animation == mCheckmarkAlphaAnimator) {
             mCheckmarkDrawable.setAlphaAnimatorValue(value);
+        }
+    }
+
+    private static class FrontDrawable extends Drawable implements Drawable.Callback {
+        private Drawable mDrawable;
+
+        public FrontDrawable(Drawable d) {
+            mDrawable = d;
+            mDrawable.setCallback(this);
+        }
+
+        public void setInnerDrawable(Drawable d) {
+            mDrawable.setCallback(null);
+            mDrawable = d;
+            mDrawable.setCallback(this);
+            assignDrawableBounds(getBounds());
+            invalidateSelf();
+        }
+
+        @Override
+        protected void onBoundsChange(final Rect bounds) {
+            super.onBoundsChange(bounds);
+            assignDrawableBounds(bounds);
+        }
+
+        private void assignDrawableBounds(Rect bounds) {
+            int w = mDrawable.getIntrinsicWidth();
+            int h = mDrawable.getIntrinsicHeight();
+            if (w > 0 && h > 0) {
+                mDrawable.setBounds(0, 0, w, h);
+            } else {
+                mDrawable.setBounds(bounds);
+            }
+        }
+
+        @Override
+        public void draw(final Canvas canvas) {
+            final Rect bounds = getBounds();
+            if (!isVisible() || bounds.isEmpty()) {
+                return;
+            }
+
+            int w = mDrawable.getIntrinsicWidth();
+            int h = mDrawable.getIntrinsicHeight();
+
+            if (w <= 0 || h <= 0) {
+                mDrawable.draw(canvas);
+            } else {
+                final float widthScale = (float) bounds.width() / (float) w;
+                final float heightScale = (float) bounds.height() / (float) h;
+                final float scale = Math.max(widthScale, heightScale);
+
+                canvas.save();
+                canvas.scale(scale, scale);
+                canvas.translate(bounds.left, bounds.top);
+                mDrawable.draw(canvas);
+                canvas.restore();
+            }
+        }
+
+        @Override
+        public void setAlpha(final int alpha) {
+            mDrawable.setAlpha(alpha);
+        }
+
+        @Override
+        public void setColorFilter(final ColorFilter cf) {
+            mDrawable.setColorFilter(cf);
+        }
+
+        @Override
+        public int getOpacity() {
+            return mDrawable.getOpacity();
+        }
+
+        @Override
+        public void invalidateDrawable(final Drawable who) {
+            invalidateSelf();
+        }
+
+        @Override
+        public void scheduleDrawable(final Drawable who, final Runnable what, final long when) {
+            scheduleSelf(what, when);
+        }
+
+        @Override
+        public void unscheduleDrawable(final Drawable who, final Runnable what) {
+            unscheduleSelf(what);
         }
     }
 
