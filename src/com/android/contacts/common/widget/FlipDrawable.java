@@ -115,16 +115,6 @@ public class FlipDrawable extends Drawable implements Drawable.Callback {
     }
 
     @Override
-    public int getIntrinsicWidth() {
-        return mFront.getIntrinsicWidth();
-    }
-
-    @Override
-    public int getIntrinsicHeight() {
-        return mFront.getIntrinsicHeight();
-    }
-
-    @Override
     protected void onBoundsChange(final Rect bounds) {
         super.onBoundsChange(bounds);
         if (bounds.isEmpty()) {

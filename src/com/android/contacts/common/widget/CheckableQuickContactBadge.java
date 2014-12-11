@@ -69,14 +69,8 @@ public class CheckableQuickContactBadge extends QuickContactBadge implements Che
         }
 
         mChecked = checked;
-
-        Drawable d = getDrawable();
-        if (d instanceof CheckableFlipDrawable) {
-            CheckableFlipDrawable cfd = (CheckableFlipDrawable) d;
-            cfd.flipTo(!mChecked);
-            if (!animate) {
-                cfd.reset();
-            }
+        if (mDrawable != null) {
+            applyCheckState(animate);
         }
     }
 
@@ -86,18 +80,19 @@ public class CheckableQuickContactBadge extends QuickContactBadge implements Che
             if (mDrawable == null) {
                 mDrawable = new CheckableFlipDrawable(d, getResources(),
                         mCheckMarkBackgroundColor, 150);
+                applyCheckState(false);
             } else {
-                int oldWidth = mDrawable.getIntrinsicWidth();
-                int oldHeight = mDrawable.getIntrinsicHeight();
                 mDrawable.setFront(d);
-                if (oldWidth != mDrawable.getIntrinsicWidth()
-                        || oldHeight != mDrawable.getIntrinsicHeight()) {
-                    // enforce drawable size update + layout
-                    super.setImageDrawable(null);
-                }
             }
             d = mDrawable;
         }
         super.setImageDrawable(d);
+    }
+
+    private void applyCheckState(boolean animate) {
+        mDrawable.flipTo(!mChecked);
+        if (!animate) {
+            mDrawable.reset();
+        }
     }
 }
