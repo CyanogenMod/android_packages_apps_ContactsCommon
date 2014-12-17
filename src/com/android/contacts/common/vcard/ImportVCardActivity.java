@@ -906,13 +906,12 @@ public class ImportVCardActivity extends Activity {
         boolean sdExist = MoreContactUtils.sdCardExist(this);
         boolean inExist = Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
         if (sdExist && inExist) {
-            CharSequence[] storage_list = new CharSequence[2];
-            storage_list[VCardService.INTERNAL_PATH] = Environment.getExternalStorageDirectory()
-                    .getPath();
-            storage_list[VCardService.EXTERNAL_PATH] = MoreContactUtils.getSDPath(this);
+            CharSequence[] storageNames = new CharSequence[2];
+            storageNames[VCardService.INTERNAL_PATH] = getString(R.string.phone_storage);
+            storageNames[VCardService.EXTERNAL_PATH] = getString(R.string.sd_card);
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle(R.string.select_path);
-            builder.setSingleChoiceItems(storage_list, 0, new DialogInterface.OnClickListener() {
+            builder.setSingleChoiceItems(storageNames, 0, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     Log.d(LOG_TAG, "onClicked Dialog on which = " + which);
