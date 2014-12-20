@@ -26,6 +26,7 @@ import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.Contacts;
@@ -51,6 +52,8 @@ import com.android.contacts.common.R;
 import com.android.contacts.common.format.TextHighlighter;
 import com.android.contacts.common.util.SearchUtil;
 import com.android.contacts.common.util.ViewUtil;
+import com.android.contacts.common.widget.CheckableImageView;
+import com.android.contacts.common.widget.CheckableQuickContactBadge;
 
 import com.google.common.collect.Lists;
 
@@ -76,7 +79,7 @@ import java.util.regex.Pattern;
  */
 
 public class ContactListItemView extends ViewGroup
-        implements SelectionBoundsAdjuster {
+        implements SelectionBoundsAdjuster, View.OnClickListener {
 
     // Style values for layout and appearance
     // The initialized values are defaults if none is provided through xml.
@@ -150,8 +153,10 @@ public class ContactListItemView extends ViewGroup
 
     // The views inside the contact view
     private boolean mQuickContactEnabled = true;
-    private QuickContactBadge mQuickContact;
-    private ImageView mPhotoView;
+    private boolean mQuickCallButtonEnabled = false;
+    private CheckableQuickContactBadge mQuickContact;
+    private ImageView mQuickCallView;
+    private CheckableImageView mPhotoView;
     private TextView mNameTextView;
     private TextView mPhoneticNameTextView;
     private TextView mLabelView;
@@ -159,12 +164,15 @@ public class ContactListItemView extends ViewGroup
     private TextView mSnippetView;
     private TextView mStatusView;
     private ImageView mPresenceIcon;
+    private String mQuickCallKey;
 
     private ColorStateList mSecondaryTextColor;
 
-
+    private int mQuickCallViewImageId = 0;
+    private int mQuickCallViewBgId = 0;
 
     private int mDefaultPhotoViewSize = 0;
+    private int mDefaultQuickCallViewSize = 0;
     /**
      * Can be effective even when {@link #mPhotoView} is null, as we want to have horizontal padding
      * to align other data in this View.
@@ -174,6 +182,15 @@ public class ContactListItemView extends ViewGroup
      * Can be effective even when {@link #mPhotoView} is null, as we want to have vertical padding.
      */
     private int mPhotoViewHeight;
+
+    /**
+     * Only effective when {@link #mQuickCallView} is null
+     */
+    private int mQuickCallViewWidth;
+    /**
+     * Only effective when {@link #mQuickCallView} is null
+     */
+    private int mQuickCallViewHeight;
 
     /**
      * Only effective when {@link #mPhotoView} is null.
@@ -218,6 +235,8 @@ public class ContactListItemView extends ViewGroup
 
     private Rect mBoundsWithoutHeader = new Rect();
 
+    private OnClickListener mListener;
+
     /** A helper used to highlight a prefix in a text field. */
     private final TextHighlighter mTextHighlighter;
     private CharSequence mUnknownNameText;
@@ -253,6 +272,9 @@ public class ContactListItemView extends ViewGroup
                 R.styleable.ContactListItemView_list_item_presence_icon_size, mPresenceIconSize);
         mDefaultPhotoViewSize = a.getDimensionPixelOffset(
                 R.styleable.ContactListItemView_list_item_photo_size, mDefaultPhotoViewSize);
+        mDefaultQuickCallViewSize = a.getDimensionPixelOffset(
+                R.styleable.ContactListItemView_list_item_quick_call_size,
+                mDefaultQuickCallViewSize);
         mTextIndent = a.getDimensionPixelOffset(
                 R.styleable.ContactListItemView_list_item_text_indent, mTextIndent);
         mTextOffsetTop = a.getDimensionPixelOffset(
@@ -267,6 +289,12 @@ public class ContactListItemView extends ViewGroup
         mNameTextViewTextSize = (int) a.getDimension(
                 R.styleable.ContactListItemView_list_item_name_text_size,
                 (int) getResources().getDimension(R.dimen.contact_browser_list_item_text_size));
+        mQuickCallViewImageId = a.getResourceId(
+                R.styleable.ContactListItemView_list_item_quick_call_view_source,
+                R.drawable.ic_action_call);
+        mQuickCallViewBgId = a.getResourceId(
+                R.styleable.ContactListItemView_list_item_quick_call_view_background,
+                R.drawable.ic_action_call_background);
 
         setPaddingRelative(
                 a.getDimensionPixelOffset(
@@ -307,6 +335,22 @@ public class ContactListItemView extends ViewGroup
         mQuickContactEnabled = flag;
     }
 
+    public void setQuickCallButtonEnabled(boolean flag) {
+        mQuickCallButtonEnabled = flag;
+    }
+
+    public void setQuickCallLookup(String lookupKey) {
+        mQuickCallKey = lookupKey;
+    }
+
+    public void setQuickCallButtonImageResource(int resourceId) {
+        mQuickCallViewImageId = resourceId;
+    }
+
+    public void setQuickCallButtonBackgroundResource(int resourceId) {
+        mQuickCallViewBgId = resourceId;
+    }
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         // We will match parent's width and wrap content vertically, but make sure
@@ -323,15 +367,16 @@ public class ContactListItemView extends ViewGroup
         mStatusTextViewHeight = 0;
 
         ensurePhotoViewSize();
+        ensureQuickCallViewSize();
 
         // Width each TextView is able to use.
         int effectiveWidth;
         // All the other Views will honor the photo, so available width for them may be shrunk.
         if (mPhotoViewWidth > 0 || mKeepHorizontalPaddingForPhotoView) {
             effectiveWidth = specWidth - getPaddingLeft() - getPaddingRight()
-                    - (mPhotoViewWidth + mGapBetweenImageAndText);
+                    - (mPhotoViewWidth + mGapBetweenImageAndText + mQuickCallViewWidth);
         } else {
-            effectiveWidth = specWidth - getPaddingLeft() - getPaddingRight();
+            effectiveWidth = specWidth - getPaddingLeft() - getPaddingRight() - mQuickCallViewWidth;
         }
 
         if (mIsSectionHeaderEnabled) {
@@ -449,6 +494,12 @@ public class ContactListItemView extends ViewGroup
                     MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
         }
 
+        if (isVisible(mQuickCallView)) {
+            mQuickCallView.measure(
+                    MeasureSpec.makeMeasureSpec(mQuickCallViewWidth, MeasureSpec.EXACTLY),
+                    MeasureSpec.makeMeasureSpec(mQuickCallViewHeight, MeasureSpec.EXACTLY));
+        }
+
         setMeasuredDimension(specWidth, height);
     }
 
@@ -550,6 +601,9 @@ public class ContactListItemView extends ViewGroup
             textTopBound += mNameTextViewHeight;
         }
 
+        // Center the photo vertically
+        final int quickCallTop = topBound + (bottomBound - topBound - mQuickCallViewHeight) / 2;
+
         // Presence and status
         if (isLayoutRtl) {
             int statusRightBound = rightBound;
@@ -569,6 +623,13 @@ public class ContactListItemView extends ViewGroup
                         statusRightBound,
                         textTopBound + mStatusTextViewHeight);
             }
+
+            if (isVisible(mQuickCallView)) {
+                mQuickCallView.layout(-width + (mQuickCallViewWidth + mPhotoViewWidth),
+                        quickCallTop,
+                        rightBound,
+                        quickCallTop + mQuickCallViewHeight);
+            }
         } else {
             int statusLeftBound = leftBound;
             if (isVisible(mPresenceIcon)) {
@@ -586,6 +647,13 @@ public class ContactListItemView extends ViewGroup
                         textTopBound,
                         rightBound,
                         textTopBound + mStatusTextViewHeight);
+            }
+
+            if (isVisible(mQuickCallView)) {
+                mQuickCallView.layout(rightBound - mQuickCallView.getMeasuredWidth(),
+                        quickCallTop,
+                        rightBound,
+                        quickCallTop + mQuickCallViewHeight);
             }
         }
 
@@ -674,8 +742,31 @@ public class ContactListItemView extends ViewGroup
         }
     }
 
+    /**
+     * Extracts width and height from the style
+     */
+    private void ensureQuickCallViewSize() {
+        mQuickCallViewWidth = mQuickCallViewHeight = getDefaultQuickCallViewSize();
+        if (!mQuickCallButtonEnabled || mQuickCallView == null) {
+            mQuickCallViewWidth = 0;
+            mQuickCallViewHeight = 0;
+        }
+    }
+
+    protected void setDefaultPhotoViewSize(int pixels) {
+        mDefaultPhotoViewSize = pixels;
+    }
+
     protected int getDefaultPhotoViewSize() {
         return mDefaultPhotoViewSize;
+    }
+
+    protected void setDefaultQuickCallViewSize(int pixels) {
+        mDefaultQuickCallViewSize = pixels;
+    }
+
+    protected int getDefaultQuickCallViewSize() {
+        return mDefaultQuickCallViewSize;
     }
 
     /**
@@ -745,6 +836,14 @@ public class ContactListItemView extends ViewGroup
     }
 
     /**
+     * Get the quick call lookup to use with Intent.ACTION_CALL
+     * @return
+     */
+    public String getQuickCallLookup() {
+        return mQuickCallKey;
+    }
+
+    /**
      * Returns the quick contact badge, creating it if necessary.
      */
     public QuickContactBadge getQuickContact() {
@@ -752,7 +851,7 @@ public class ContactListItemView extends ViewGroup
             throw new IllegalStateException("QuickContact is disabled for this view");
         }
         if (mQuickContact == null) {
-            mQuickContact = new QuickContactBadge(getContext());
+            mQuickContact = new CheckableQuickContactBadge(getContext());
             mQuickContact.setOverlay(null);
             mQuickContact.setLayoutParams(getDefaultPhotoLayoutParams());
             if (mNameTextView != null) {
@@ -766,12 +865,21 @@ public class ContactListItemView extends ViewGroup
         return mQuickContact;
     }
 
+    public void setChecked(boolean checked, boolean animate) {
+        if (mQuickContact != null) {
+            mQuickContact.setChecked(checked, animate);
+        }
+        if (mPhotoView != null) {
+            mPhotoView.setChecked(checked, animate);
+        }
+    }
+
     /**
      * Returns the photo view, creating it if necessary.
      */
     public ImageView getPhotoView() {
         if (mPhotoView == null) {
-            mPhotoView = new ImageView(getContext());
+            mPhotoView = new CheckableImageView(getContext());
             mPhotoView.setLayoutParams(getDefaultPhotoLayoutParams());
             // Quick contact style used above will set a background - remove it
             mPhotoView.setBackground(null);
@@ -779,6 +887,31 @@ public class ContactListItemView extends ViewGroup
             mPhotoViewWidthAndHeightAreReady = false;
         }
         return mPhotoView;
+    }
+
+    /**
+     * Returns the quick call view, creating it if necessary.
+     */
+    public ImageView getQuickCallView() {
+        if (mQuickCallView == null) {
+            mQuickCallView = new ImageView(mContext);
+            mQuickCallView.setLayoutParams(getDefaultPhotoLayoutParams());
+            mQuickCallView.setImageResource(mQuickCallViewImageId);
+            mQuickCallView.setBackgroundResource(mQuickCallViewBgId);
+            mQuickCallView.setClickable(true);
+            addView(mQuickCallView);
+        }
+        return mQuickCallView;
+    }
+
+    /**
+     * Removes the quick call view.
+     */
+    public void removeQuickCallView() {
+        if (mQuickCallView != null) {
+            removeView(mQuickCallView);
+            mQuickCallView = null;
+        }
     }
 
     /**
@@ -1124,6 +1257,18 @@ public class ContactListItemView extends ViewGroup
         }
     }
 
+    public void showQuickCallView(Cursor cursor, int numberColumIndex, int lookUpKey) {
+        int hasNumber = cursor.getInt(numberColumIndex);
+        if (!(hasNumber == 0)) {
+            getQuickCallView().setVisibility(View.VISIBLE);
+            setQuickCallLookup(cursor.getString(lookUpKey));
+        } else {
+            if (mQuickCallView != null) {
+                mQuickCallView.setVisibility(View.GONE);
+            }
+        }
+    }
+
     public void setDisplayName(CharSequence name, boolean highlight) {
         if (!TextUtils.isEmpty(name) && highlight) {
             clearHighlightSequences();
@@ -1444,7 +1589,27 @@ public class ContactListItemView extends ViewGroup
         if (mBoundsWithoutHeader.contains((int) x, (int) y) || !pointIsInView(x, y)) {
             return super.onTouchEvent(event);
         } else {
-            return true;
+            return false;
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (mListener != null && mQuickCallButtonEnabled) {
+            if (view == mQuickCallView) {
+                mListener.onClick(view);
+            }
+        }
+    }
+
+    /**
+     * Set the a click listener for the quick call view
+     * @param listener
+     */
+    public void setOnQuickCallClickListener(OnClickListener listener) {
+        this.mListener = listener;
+        if (mListener != null && mQuickCallView != null) {
+            mQuickCallView.setOnClickListener(mListener);
         }
     }
 
