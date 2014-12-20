@@ -123,13 +123,18 @@ public class TelephonyManagerUtils {
         }
 
         long subId[] = SubscriptionManager.getSubId(subscription);
+        String subIdstr = null;
+        if (subId != null && subId.length > 0) {
+            subIdstr = String.valueOf(subId[0]);
+        } else {
+            return null;
+        }
         final TelecomManager telecomManager = (TelecomManager) context
                 .getSystemService(Context.TELECOM_SERVICE);
         List<PhoneAccountHandle> pHandles = telecomManager.getCallCapablePhoneAccounts();
         PhoneAccountHandle phoneAccountHandle = null;
         for (PhoneAccountHandle itorator : pHandles) {
-            if (subId != null
-                    && String.valueOf(subId[0]).equals(itorator.getId())) {
+            if (subIdstr != null && subIdstr.equals(itorator.getId())) {
                 phoneAccountHandle = itorator;
             }
         }
