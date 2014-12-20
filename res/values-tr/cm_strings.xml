@@ -32,6 +32,7 @@
   <string name="export_finished">Dışa aktarım bitti</string>
   <string name="tag_too_long">Kişi ismi çok uzun</string>
   <plurals name="export_cancelled">
+    <item quantity="one">Aktarma işlemi iptal edildi, %d öge aktarıldı</item>
     <item quantity="other">Aktarma işlemi iptal edildi, %d öge aktarıldı</item>
   </plurals>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> telefon numarası ya da e-posta adresine sahip değil</string>
