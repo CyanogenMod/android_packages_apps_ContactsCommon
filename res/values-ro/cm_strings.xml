@@ -18,4 +18,44 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">Cont local tabletă</string>
   <string name="local_storage_account" product="default">Cont local telefon</string>
+  <string name="export_to_sim">Export în cartela SIM</string>
+  <string name="select_sim">Selectaţi SIM</string>
+  <string name="account_sim">Cartelă SIM</string>
+  <string name="name_for_sim">Nume</string>
+  <string name="fail_reason_import_vcard">VCard-ul \'<xliff:g id="name">%s</xliff:g>\' nu a putut fi importat din cauza unei erori I/O</string>
+  <string name="label_groups">Grup</string>
+  <string name="contact_share_failed_toast">Nu pot fi partajate mai mult de <xliff:g id="count">%d</xliff:g> persoane de contact</string>
+  <string name="exporting">Se exportă\u2026</string>
+  <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> din <xliff:g id="total_number">%2$s</xliff:g> fişiere</string>
+  <string name="export_failed">Exportul a eșuat</string>
+  <string name="sim_card_full">Cartela SIM este plină</string>
+  <string name="export_finished">Exportul s-a terminat</string>
+  <string name="tag_too_long">Numele persoanei de contact este prea lung</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">Exportul a fost anulat, %d element a fost exportat</item>
+    <item quantity="few">Exportul a fost anulat, %d elemente au fost exportate</item>
+    <item quantity="other">Exportul a fost anulat, %d elemente au fost exportate</item>
+  </plurals>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> nu are un număr de telefon sau adresă de email</string>
+  <string name="import_from_sim_select">Alege cardul ce se va importa</string>
+  <string name="no_sdcard_title" product="nosdcard">Stocare indisponibilă</string>
+  <string name="no_sdcard_title" product="default">Nu există card SD</string>
+  <string name="deleteConfirmation_title">Ştergeţi persoana de contact?</string>
+  <string name="deleteConfirmation">Acest contact va fi şters.</string>
+  <string name="readOnlyContactDeleteConfirmation">Acest contact conţine informaţii de la mai multe conturi. Informaţiile din conturile doar-în-citire vor fi ascunse în lista de contacte, nu eliminate.</string>
+  <string name="readOnlyContactWarning">Imposibil de şters contacte din conturi doar-în-citire, dar le puteţi ascunde în lista dumneavoastră de contacte.</string>
+  <string name="multipleContactDeleteConfirmation">Ştergerea acestei persoane de contact va şterge informaţii din mai multe conturi.</string>
+  <string name="copy_done">Persoana de contact a fost copiată cu succes</string>
+  <string name="copy_failure">Copierea contactului a eșuat</string>
+  <string name="card_no_space">Copierea contactului a eşuat, cartela SIM este plină</string>
+  <string name="ip_call_by_slot">Apel IP prin <xliff:g id="subName">%s</xliff:g></string>
+  <string name="no_ip_number">Niciun număr de IP</string>
+  <string name="no_ip_number_on_sim_card">Niciun număr de IP pe cartela SIM</string>
+  <string name="set_ip_number">Setarea numărul de IP</string>
+  <string name="ipcall_dialog_title">Setările de apel IP</string>
+  <string name="ipcall_dialog_edit_hint">Introduceți prefixul IP</string>
+  <string name="select_path">Selectaţi calea</string>
+  <string name="sd_card">Card SD</string>
+  <string name="phone_storage">Stocare pe telefon</string>
+  <string name="sim_contacts_not_loaded">Contactele SIM nu au putut fi încărcate complet</string>
 </resources>
