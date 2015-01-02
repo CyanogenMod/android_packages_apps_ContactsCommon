@@ -20,7 +20,7 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  */
- 
+
 package com.android.contacts.common.util;
 
 import java.util.ArrayList;
@@ -94,7 +94,9 @@ public class ContactsCommonRcsUtil {
                         } while (c.moveToNext());
                     }
                 } finally {
-                    c.close();
+                    if(null != c){
+                        c.close();
+                    }
                 }
                 for (Long contactId : contactIdList) {
                     if (ContactsCommonRcsUtil.isRCSUser(context, contactId)) {
@@ -131,7 +133,9 @@ public class ContactsCommonRcsUtil {
                 } while (c.moveToNext());
             }
         } finally {
-            c.close();
+            if(null != c){
+                c.close();
+            }
         }
         return false;
     }
