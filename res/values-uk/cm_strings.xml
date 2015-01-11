@@ -31,6 +31,11 @@
   <string name="sim_card_full">SIM-карта заповнена</string>
   <string name="export_finished">Експорт завершено</string>
   <string name="tag_too_long">Ім\'я контакту задовге</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">Експорт було скасовано, %d було експортовано</item>
+    <item quantity="few">Експорт було скасовано, %d було експортовано</item>
+    <item quantity="other">Експорт було скасовано, %d було експортовано</item>
+  </plurals>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> не містить телефонний номер або електронну пошту</string>
   <string name="import_from_sim_select">Виберіть карту для імпорту</string>
   <string name="no_sdcard_title" product="nosdcard">Носій недоступний</string>
@@ -42,7 +47,7 @@
   <string name="multipleContactDeleteConfirmation">Видалення цього контакту призведе до видалення інформації з кількох облікових записів.</string>
   <string name="copy_done">Контакт був скопійований успішно</string>
   <string name="copy_failure">Не вдалося скопіювати контакт</string>
-  <string name="card_no_space">Копіювання контактів не вдалося, SIM карта заповнена</string>
+  <string name="card_no_space">Копіювання контактів не вдалося, SIM-карта заповнена</string>
   <string name="ip_call_by_slot">IP дзвінок із <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Немає IP номера</string>
   <string name="no_ip_number_on_sim_card">Немає IP номера на SIM-карті</string>

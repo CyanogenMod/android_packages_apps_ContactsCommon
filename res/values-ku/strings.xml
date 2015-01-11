@@ -16,7 +16,6 @@
   ~ limitations under the License
   -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="toast_text_copied">ده‌ق له‌به‌ری گیرایه‌وه‌</string>
   <string name="call_custom">په‌یوه‌ندی
          <xliff:g id="custom">%s</xliff:g>
     </string>
@@ -26,7 +25,6 @@
   <string name="call_fax_work">په‌یوه‌ندی فاکسی سه‌رکار</string>
   <string name="call_fax_home">په‌یوه‌ندی فاکسی ماڵه‌وه‌</string>
   <string name="call_pager">لاپه‌ڕه‌ په‌یوه‌ندی</string>
-  <string name="call_other">پەیوەندی کردن</string>
   <string name="call_callback">په‌یوه‌ندی گه‌ڕانه‌وه‌</string>
   <string name="call_car">په‌یوه‌ندی ئۆتۆمبێل</string>
   <string name="call_company_main">په‌یوه‌ندی کۆمپانیای سه‌ره‌کی</string>
@@ -73,31 +71,19 @@
         .
     </string>
   <string name="clearFrequentsProgress_title">پاککردنه‌وه‌ی په‌یوه‌ندییه‌ زوو-زووه‌کان\u2026</string>
-  <string name="status_available">ئاماده‌</string>
   <string name="status_away">ئاماده‌ نییه‌</string>
   <string name="status_busy">سەرقاڵ</string>
-  <string name="contactsList">ناوەکان</string>
-  <string name="local_invisible_directory">دیکە</string>
   <string name="directory_search_label">بوخچه‌</string>
-  <string name="local_search_label">هەموو ناوەکان</string>
-  <string name="user_profile_contacts_list_header" msgid="9154761216179882405">من</string>
-  <string name="search_results_searching">گەڕان\u2026</string>
   <string name="foundTooManyContacts">زیاتر له‌ <xliff:g id="count">%d</xliff:g> دۆزرایه‌وه‌.</string>
-  <string name="listFoundAllContactsZero">ناو نییە</string>
   <string name="description_quick_contact_for">په‌یوه‌ندی خێرا بۆ  <xliff:g id="name">%1$s</xliff:g></string>
   <string name="missing_name">(ناوی نییه‌)</string>
   <string name="favoritesFrequentCalled">زۆرترین پەیوەندیکردن</string>
   <string name="favoritesFrequentContacted">زۆرترین ژماره‌ په‌یوه‌ندییه‌کان</string>
-  <string name="description_view_contact_detail" msgid="2795575601596468581">هەڵبژاردنی ناوەکان</string>
   <string name="list_filter_phones">هه‌موو په‌یوه‌ندییه‌کان لەگەڵ ژمارەی تەلەفۆنەکان</string>
   <string name="view_updates_from_group">بینینی نوێکاری</string>
   <string name="account_phone" product="tablet">ته‌نیا-تابلێت، گواستنه‌وه‌ نه‌کراوه‌</string>
   <string name="account_phone" product="default">ته‌نیا-مۆبایل، گواستنه‌وه‌ نه‌کراوه‌</string>
-  <string name="nameLabelsGroup">ناو</string>
   <string name="nicknameLabelsGroup">نازناو</string>
-  <string name="full_name">ناو</string>
-  <string name="name_given">ناوی دراو</string>
-  <string name="name_family">ناوی خێزان</string>
   <string name="name_prefix">ناوی پێشگر</string>
   <string name="name_middle">ناوی ناوه‌ند</string>
   <string name="name_suffix">ناوی پاشگر</string>
@@ -105,33 +91,23 @@
   <string name="name_phonetic_given">ناوی ده‌نگی پێدراو</string>
   <string name="name_phonetic_middle">ناوی ده‌نگی ناوه‌ند</string>
   <string name="name_phonetic_family">ناوی خێزانی ده‌نگی</string>
-  <string name="phoneLabelsGroup">مۆبایل</string>
   <string name="emailLabelsGroup">پۆست</string>
-  <string name="postalLabelsGroup">ناونیشان</string>
   <string name="imLabelsGroup">IM</string>
-  <string name="organizationLabelsGroup">ڕێکخستن</string>
   <string name="relationLabelsGroup">په‌یوه‌ندی کۆمه‌ڵایه‌تی</string>
   <string name="eventLabelsGroup">ڕۆژه‌ تایبه‌ته‌کان</string>
   <string name="sms">نامه‌ی ده‌قی</string>
-  <string name="postal_address">ناونیشان</string>
   <string name="ghostData_company">کۆمپانیا</string>
-  <string name="ghostData_title">ناونیشان</string>
   <string name="label_notes">تێبینییه‌کان</string>
   <string name="label_sip_address">په‌یوه‌ندی ئینته‌رنێتی</string>
   <string name="websiteLabelsGroup">ماڵپەڕ</string>
-  <string name="groupsLabel">کۆمه‌ڵه‌کان</string>
   <string name="email_home">پۆستی ئه‌لیکترۆنی ماڵه‌وه‌</string>
   <string name="email_mobile">پۆستی ئه‌لیکترۆنی مۆبایل</string>
   <string name="email_work">پۆستی ئه‌لیکترۆنی سه‌ر کار</string>
-  <string name="email_other">پۆست</string>
   <string name="email_custom">پۆست  <xliff:g id="custom">%s</xliff:g></string>
-  <string name="email">پۆست</string>
   <string name="postal_street">شه‌قام</string>
   <string name="postal_pobox">سندوقی PO</string>
   <string name="postal_neighborhood">دراوسێ</string>
   <string name="postal_city">شار</string>
-  <string name="postal_region">دەوڵەت</string>
-  <string name="postal_postcode">کۆدی پۆستە</string>
   <string name="postal_country">وڵات</string>
   <string name="map_home">بینینی ناونیشانی ماڵه‌وه‌</string>
   <string name="map_work">بینینی ناونیشانی سه‌ر کار</string>
@@ -146,21 +122,14 @@
   <string name="chat_icq">گفتوگۆکردن به‌به‌کارهێنانی ICQ</string>
   <string name="chat_jabber">گفتوگۆکردن به‌به‌کارهێنانی Jabber</string>
   <string name="chat">گفتوگۆکردن</string>
-  <string name="description_minus_button">سڕینەوە</string>
   <string name="expand_collapse_name_fields_description">فراوانکردن یان ته‌سک کردنه‌وه‌ی بۆشایی ناوه‌کان</string>
-  <string name="list_filter_all_accounts">هەموو ناوەکان</string>
-  <string name="list_filter_all_starred">ئه‌ستێره‌دار</string>
   <string name="list_filter_customize">خواستی خۆت</string>
-  <string name="list_filter_single">ناوەکان</string>
   <string name="display_ungrouped">هه‌موو په‌یوه‌ندییه‌کانی تر</string>
-  <string name="display_all_contacts">هەموو ناوەکان</string>
   <string name="menu_sync_remove">سڕینه‌وه‌ی گواستنه‌وه‌ی گروپ</string>
   <string name="dialog_sync_add">زیادکردنی گواستنه‌وه‌ی گروپ</string>
   <string name="display_more_groups">گروپی زیاتر\u2026</string>
   <string name="display_warn_remove_ungrouped">سڕینه‌وه‌ی  \"<xliff:g id="group" example="Starred">%s</xliff:g>\" له‌ گواستنه‌وه‌ و هه‌روه‌ها سڕینه‌وه‌ی هه‌ر نا گروپێکی په‌یوه‌ندی له‌ گواستنه‌وه‌.</string>
   <string name="savingDisplayGroups">پاشه‌که‌وتکردنی نیشاندانی ڕێکخستن\u2026</string>
-  <string name="menu_done">ئه‌نجام درا</string>
-  <string name="menu_doNotSave">هەڵوەشاندنەوە</string>
   <string name="listAllContactsInAccount">په‌یوه‌ندی له‌  <xliff:g id="name" example="abc@gmail.com">%s</xliff:g></string>
   <string name="listCustomView">په‌یوه‌ندی له‌ بینینی خوازراو</string>
   <string name="listSingleContact">په‌یوه‌ندی تاک</string>
@@ -170,7 +139,6 @@
   <string name="cancel_import_confirmation_message">لابردنی هاورده‌کردن له‌ <xliff:g id="filename" example="import.vcf">%s</xliff:g>؟</string>
   <string name="cancel_export_confirmation_message">لابردنی  ناردن له‌ <xliff:g id="filename" example="export.vcf">%s</xliff:g>؟</string>
   <string name="cancel_vcard_import_or_export_failed">نه‌توانرا هاورده‌ کردن و ناردنی vCard هه‌ڵبوه‌شێنرێت</string>
-  <string name="fail_reason_unknown">هه‌ڵه‌ی نه‌زانراو.</string>
   <string name="fail_reason_could_not_open_file">نه‌توانرا \"<xliff:g id="file_name">%s</xliff:g>" بکرێته‌وه‌: <xliff:g id="exact_reason">%s</xliff:g>.</string>
   <string name="fail_reason_could_not_initialize_exporter">نه‌توانرا ده‌ستبکرێت به‌ ناردن: \"<xliff:g id="exact_reason">%s</xliff:g>\".</string>
   <string name="fail_reason_no_exportable_contact">هیچ په‌یوه‌ندییه‌کانی شایه‌ن ناردن نییه‌.</string>
@@ -228,15 +196,10 @@
   <string name="export_to_sdcard" product="default">ناردن بۆ بیرگه‌</string>
   <string name="share_visible_contacts">به‌شداریپێکردنی په‌یوه‌ندییه‌ دیاره‌کان</string>
   <string name="dialog_import_export">هاورده‌کردن/ناردنی په‌یوه‌ندی</string>
-  <string name="dialog_import">هاوردنی ناوەکان</string>
   <string name="share_error">ئه‌م په‌یوه‌ندییه‌ ناتوانرێ به‌شداریپێبکرێت.</string>
-  <string name="menu_search">گەڕان</string>
   <string name="menu_contacts_filter">په‌یوه‌ندی شایه‌ن نیشاندان</string>
-  <string name="activity_title_contacts_filter">په‌یوه‌ندی شایه‌ن نیشاندان</string>
   <string name="custom_list_filter">شایه‌نی بینینی خوازراو</string>
   <string name="hint_findContacts">دۆزینه‌وه‌ی په‌یوه‌ندی</string>
-  <string name="contactsFavoritesLabel">دڵخوازه‌کان</string>
-  <string name="listTotalAllContactsZero">ناو نییە.</string>
   <string name="listTotalAllContactsZeroCustom">هیچ په‌یوه‌ندییه‌کی دیار نییه‌.</string>
   <string name="listTotalAllContactsZeroStarred">هیچ دڵخوازێک نییه‌.</string>
   <string name="listTotalAllContactsZeroGroup">هیچ په‌یوه‌ندییه‌ک نییه‌ له‌ <xliff:g id="name" example="Friends">%s</xliff:g></string>
