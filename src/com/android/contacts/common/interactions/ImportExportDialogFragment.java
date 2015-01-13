@@ -518,7 +518,7 @@ public class ImportExportDialogFragment extends AnalyticsDialogFragment
                                         arrayEmail.size() / emailCountInOneSimContact + 1)
                                         : (arrayEmail.size() / emailCountInOneSimContact));
                         //recalute the group when spare anr is not enough
-                        if (canSaveAnr && emptyAnr <= groupNumCount) {
+                        if (canSaveAnr && emptyAnr >=0 && emptyAnr <= groupNumCount) {
                             groupNumCount = arrayNumber.size() - emptyAnr;
                         }
                         int groupCount = Math.max(groupEmailCount,
@@ -533,7 +533,7 @@ public class ImportExportDialogFragment extends AnalyticsDialogFragment
                                 String num = arrayNumber.size() > 0 ? arrayNumber.remove(0) : null;
                                 StringBuilder anrNum = new StringBuilder();
                                 StringBuilder email = new StringBuilder();
-                                if (canSaveAnr && emptyAnr-- > 0) {
+                                if (canSaveAnr) {
                                     for (int j = 1; j < phoneCountInOneSimContact; j++) {
                                         if (arrayNumber.size() > 0 && emptyAnr-- > 0 ) {
                                             String s = arrayNumber.remove(0);
