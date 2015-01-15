@@ -453,7 +453,8 @@ public class ImportExportDialogFragment extends AnalyticsDialogFragment
                     Iterator<String[]> iterator = contactList.iterator();
                     while (iterator.hasNext() && !canceled && !isAirplaneMode && isSimCardLoaded) {
                         String[] contactInfo = iterator.next();
-                        String name = "";
+                        //contacts name has been existed in contactInfo,so no need query it again
+                        String name = contactInfo[4];
                         ArrayList<String> arrayNumber = new ArrayList<String>();
                         ArrayList<String> arrayEmail = new ArrayList<String>();
 
@@ -475,8 +476,6 @@ public class ImportExportDialogFragment extends AnalyticsDialogFragment
                                     if (!TextUtils.isEmpty(number) && emptyNumber-- >0) {
                                         arrayNumber.add(number);
                                     }
-                                } else if (StructuredName.CONTENT_ITEM_TYPE.equals(mimeType)) {
-                                    name = c.getString(2);
                                 }
                                 if (canSaveEmail) {
                                     if (Email.CONTENT_ITEM_TYPE.equals(mimeType)) {
