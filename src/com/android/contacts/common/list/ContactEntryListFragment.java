@@ -38,6 +38,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.view.View.OnTouchListener;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
@@ -118,6 +119,9 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
     private T mAdapter;
     private View mView;
     private ListView mListView;
+    private float mClickY;
+    private float mTouchSlop;
+    private ContactListGestureListener mContactListGestureListener;
 
     /**
      * Used for keeping track of the scroll state of the list.
@@ -185,6 +189,7 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
         super.onAttach(activity);
         setContext(activity);
         setLoaderManager(super.getLoaderManager());
+        mTouchSlop = ViewConfiguration.get(activity).getScaledTouchSlop();
     }
 
     /**
@@ -193,6 +198,13 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
     public void setContext(Context context) {
         mContext = context;
         configurePhotoLoader();
+    }
+
+    /**
+     * Register a listener for scroll events on contacts list view
+     */
+    public void setContactListGestureListener(ContactListGestureListener listener) {
+        mContactListGestureListener = listener;
     }
 
     public Context getContext() {
@@ -879,6 +891,35 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
     @Override
     public boolean onTouch(View view, MotionEvent event) {
         if (view == mListView) {
+            // proceed w/ gesture calculation only if a listener is registered
+            if (mContactListGestureListener != null) {
+                int action = event.getAction();
+                switch (action) {
+
+                    case MotionEvent.ACTION_DOWN:
+                        mClickY = event.getY();
+                        break;
+
+                    case MotionEvent.ACTION_MOVE:
+                        // only interested in vertical scroll movements
+                        float distanceMoved = mClickY - event.getY();
+                        if (Math.abs(distanceMoved) > mTouchSlop) {
+                            if (distanceMoved < 0) {
+                                // scrolled down
+                                mContactListGestureListener.onScroll(
+                                        ContactListGestureListener.SCROLL_DOWN);
+
+                            } else {
+                                // scrolled up
+                                mContactListGestureListener.onScroll(
+                                        ContactListGestureListener.SCROLL_UP);
+                            }
+                            // set Y to the current place in the gesture
+                            mClickY = event.getY();
+                        }
+
+                }
+            }
             hideSoftKeyboard();
         }
         return false;
@@ -932,4 +973,20 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
                 return View.SCROLLBAR_POSITION_RIGHT;
         }
     }
+
+    /**
+     * Callback interface to listen for scroll gestures on the Contacts List
+     */
+    public interface ContactListGestureListener {
+
+        public int SCROLL_UP = 0;
+        public int SCROLL_DOWN = 1;
+
+        /**
+         * Called when the user tries scrolling the contacts list
+         * @param scrollDirection direction of the scroll
+         */
+        public void onScroll(int scrollDirection);
+    }
+
 }
