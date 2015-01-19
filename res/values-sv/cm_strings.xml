@@ -37,7 +37,19 @@
   <string name="no_sdcard_title" product="default">Inget SD-kort</string>
   <string name="deleteConfirmation_title">Ta bort kontakt?</string>
   <string name="deleteConfirmation">Denna kontakt kommer tas bort.</string>
+  <string name="readOnlyContactWarning">Du kan inte ta bort kontakter från skrivskyddade konton, men du kan dölja dem i dina kontaktlistor.</string>
+  <string name="multipleContactDeleteConfirmation">Borttagning av denna kontakt kommer ta bort information ifrån flera konton.</string>
+  <string name="copy_done">Kontakten kopierades</string>
+  <string name="copy_failure">Kopiering av kontakten misslyckades</string>
+  <string name="card_no_space">Kopiering av kontakten misslyckades, SIM-kortet är fullt</string>
   <string name="ip_call_by_slot">IP-samtal med <xliff:g id="subName">%s</xliff:g></string>
+  <string name="no_ip_number">Inget IP-nummer</string>
+  <string name="no_ip_number_on_sim_card">Inget IP-nummer på SIM-kort</string>
+  <string name="set_ip_number">Ställ in IP-nummer</string>
+  <string name="ipcall_dialog_title">IP-samtalsinställningar</string>
+  <string name="ipcall_dialog_edit_hint">Skriv in IP-prefixet</string>
+  <string name="select_path">Välj sökväg</string>
   <string name="sd_card">SD-kort</string>
   <string name="phone_storage">Telefonlagring</string>
+  <string name="sim_contacts_not_loaded">Kontakter kunde inte läsas från SIM-kortet</string>
 </resources>
