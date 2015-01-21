@@ -25,6 +25,7 @@ import android.view.View;
 import com.android.contacts.common.util.ViewUtil;
 import com.android.contacts.common.R;
 import com.android.phone.common.animation.AnimUtils;
+import com.android.phone.common.animation.AnimUtils.AnimationCallback;
 
 /**
  * Controls the movement and appearance of the FAB (Floating Action Button).
@@ -142,8 +143,12 @@ public class FloatingActionButtonController {
      * @param delayMs The delay for the effect, in milliseconds.
      */
     public void scaleIn(int delayMs) {
+        scaleIn(delayMs, null);
+    }
+
+    public void scaleIn(int delayMs, AnimationCallback callback) {
         setVisible(true);
-        AnimUtils.scaleIn(mFloatingActionButtonContainer, FAB_SCALE_IN_DURATION, delayMs);
+        AnimUtils.scaleIn(mFloatingActionButtonContainer, FAB_SCALE_IN_DURATION, delayMs, callback);
         AnimUtils.fadeIn(mFloatingActionButton, FAB_SCALE_IN_DURATION,
                 delayMs + FAB_SCALE_IN_FADE_IN_DELAY, null);
     }
@@ -153,10 +158,14 @@ public class FloatingActionButtonController {
      * an animation for hiding the floating action button.
      */
     public void scaleOut() {
-        AnimUtils.scaleOut(mFloatingActionButtonContainer, mAnimationDuration);
+        scaleOut(null);
+    }
+
+    public void scaleOut(AnimationCallback callback) {
+        AnimUtils.scaleOut(mFloatingActionButtonContainer, mAnimationDuration, callback);
         // Fade out the icon faster than the scale out animation, so that the icon scaling is less
         // obvious. We don't want it to scale, but the resizing the container is not as performant.
-        AnimUtils.fadeOut(mFloatingActionButton, FAB_ICON_FADE_OUT_DURATION, null);
+        AnimUtils.fadeOut(mFloatingActionButton, FAB_ICON_FADE_OUT_DURATION);
     }
 
     /**
