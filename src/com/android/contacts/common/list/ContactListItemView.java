@@ -1261,9 +1261,11 @@ public class ContactListItemView extends ViewGroup
         }
     }
 
-    public void showQuickCallView(Cursor cursor, int numberColumIndex, int lookUpKey) {
+    public void showQuickCallView(Cursor cursor, int numberColumIndex, int lookUpKey,
+            int profileKey) {
         int hasNumber = cursor.getInt(numberColumIndex);
-        if (!(hasNumber == 0)) {
+        boolean isProfile = cursor.getInt(profileKey) == 1;
+        if (!(hasNumber == 0) && !isProfile) {
             getQuickCallView().setVisibility(View.VISIBLE);
             setQuickCallLookup(cursor.getString(lookUpKey));
         } else {

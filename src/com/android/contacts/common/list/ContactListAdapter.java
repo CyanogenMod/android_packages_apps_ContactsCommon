@@ -308,7 +308,7 @@ public abstract class ContactListAdapter extends ContactEntryListAdapter {
 
     protected void bindQuickCallView(final ContactListItemView view, Cursor cursor) {
         view.showQuickCallView(cursor, ContactQuery.CONTACT_HAS_NUMBER,
-                ContactQuery.CONTACT_LOOKUP_KEY);
+                ContactQuery.CONTACT_LOOKUP_KEY, ContactQuery.CONTACT_IS_USER_PROFILE);
         view.setOnQuickCallClickListener(mClickListener);
     }
 
