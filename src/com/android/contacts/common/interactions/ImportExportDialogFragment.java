@@ -452,7 +452,8 @@ public class ImportExportDialogFragment extends AnalyticsDialogFragment
                     Iterator<String[]> iterator = contactList.iterator();
                     while (iterator.hasNext() && !canceled && !isAirplaneMode && isSimCardLoaded) {
                         String[] contactInfo = iterator.next();
-                        String name = "";
+                        //contacts name has been existed in contactInfo,so no need query it again
+                        String name = contactInfo[4];
                         ArrayList<String> arrayNumber = new ArrayList<String>();
                         ArrayList<String> arrayEmail = new ArrayList<String>();
 
@@ -474,8 +475,6 @@ public class ImportExportDialogFragment extends AnalyticsDialogFragment
                                     if (!TextUtils.isEmpty(number) && emptyNumber-- >0) {
                                         arrayNumber.add(number);
                                     }
-                                } else if (StructuredName.CONTENT_ITEM_TYPE.equals(mimeType)) {
-                                    name = c.getString(2);
                                 }
                                 if (canSaveEmail) {
                                     if (Email.CONTENT_ITEM_TYPE.equals(mimeType)) {
@@ -517,7 +516,7 @@ public class ImportExportDialogFragment extends AnalyticsDialogFragment
                                         arrayEmail.size() / emailCountInOneSimContact + 1)
                                         : (arrayEmail.size() / emailCountInOneSimContact));
                         //recalute the group when spare anr is not enough
-                        if (canSaveAnr && emptyAnr <= groupNumCount) {
+                        if (canSaveAnr && emptyAnr >=0 && emptyAnr <= groupNumCount) {
                             groupNumCount = arrayNumber.size() - emptyAnr;
                         }
                         int groupCount = Math.max(groupEmailCount,
@@ -532,7 +531,7 @@ public class ImportExportDialogFragment extends AnalyticsDialogFragment
                                 String num = arrayNumber.size() > 0 ? arrayNumber.remove(0) : null;
                                 StringBuilder anrNum = new StringBuilder();
                                 StringBuilder email = new StringBuilder();
-                                if (canSaveAnr && emptyAnr-- > 0) {
+                                if (canSaveAnr) {
                                     for (int j = 1; j < phoneCountInOneSimContact; j++) {
                                         if (arrayNumber.size() > 0 && emptyAnr-- > 0 ) {
                                             String s = arrayNumber.remove(0);

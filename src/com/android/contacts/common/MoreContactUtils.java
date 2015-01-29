@@ -54,6 +54,7 @@ import android.provider.ContactsContract.CommonDataKinds.StructuredName;
 import android.provider.ContactsContract.Data;
 import android.provider.ContactsContract.RawContacts;
 import android.provider.Settings;
+import android.telephony.SubInfoRecord;
 import android.telephony.SubscriptionManager;
 import android.telephony.PhoneNumberUtils;
 import android.telecom.PhoneAccountHandle;
@@ -314,11 +315,11 @@ public class MoreContactUtils {
         return simFilter.toString();
     }
 
-    public static boolean isShowOperator(Context context) {
+    public static boolean shouldShowOperator(Context context) {
         return context.getResources().getBoolean(R.bool.config_show_operator);
     }
 
-    public static boolean isShowOperator(Resources resources) {
+    public static boolean shouldShowOperator(Resources resources) {
         return resources.getBoolean(R.bool.config_show_operator);
     }
 
@@ -793,19 +794,31 @@ public class MoreContactUtils {
     /**
      * Get Network SPN name, e.g. China Unicom
      */
-    public static String getNetworkSpnName(Context context, int subscription) {
+    public static String getNetworkSpnName(Context context, long subscription) {
         TelephonyManager tm = (TelephonyManager)
                 context.getSystemService(Context.TELEPHONY_SERVICE);
         String netSpnName = "";
         netSpnName = tm.getNetworkOperatorName(subscription);
         if (TextUtils.isEmpty(netSpnName)) {
-            // if could not get the operator name, use account name instead of
-            netSpnName = getSimAccountName(subscription);
+            // if could not get the operator name, use sim name instead of
+            List<SubInfoRecord> subInfoList = SubscriptionManager.getActiveSubInfoList();
+            if (subInfoList != null) {
+                for (int i = 0; i < subInfoList.size(); ++i) {
+                    final SubInfoRecord sir = subInfoList.get(i);
+                    if (sir.subId == subscription) {
+                        netSpnName = sir.displayName;
+                        break;
+                    }
+                }
+            }
         }
         return toUpperCaseFirstOne(netSpnName);
     }
 
     public static String toUpperCaseFirstOne(String s) {
+        if (TextUtils.isEmpty(s)) {
+            return s;
+        }
         if (Character.isUpperCase(s.charAt(0))) {
             return s;
         } else {
