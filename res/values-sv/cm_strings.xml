@@ -37,6 +37,7 @@
   <string name="no_sdcard_title" product="default">Inget SD-kort</string>
   <string name="deleteConfirmation_title">Ta bort kontakt?</string>
   <string name="deleteConfirmation">Denna kontakt kommer tas bort.</string>
+  <string name="readOnlyContactDeleteConfirmation">Denna kontakt innehåller information från flera konton. Information från skrivskyddade konton kommer att döljas i kontaktlistor.</string>
   <string name="readOnlyContactWarning">Du kan inte ta bort kontakter från skrivskyddade konton, men du kan dölja dem i dina kontaktlistor.</string>
   <string name="multipleContactDeleteConfirmation">Borttagning av denna kontakt kommer ta bort information ifrån flera konton.</string>
   <string name="copy_done">Kontakten kopierades</string>
