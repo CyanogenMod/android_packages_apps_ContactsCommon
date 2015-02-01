@@ -487,7 +487,7 @@ public class MoreContactUtils {
     }
 
     public static boolean insertToPhone(String[] values, final ContentResolver resolver,int sub) {
-        Account account = getAcount(sub);
+        Account account = getAccount(sub);
         final String name = values[NAME_POS];
         final String phoneNumber = values[NUMBER_POS];
         final String emailAddresses = values[EMAIL_POS];
@@ -632,7 +632,7 @@ public class MoreContactUtils {
         return result;
     }
 
-    public static Account getAcount(int sub) {
+    private static Account getAccount(int sub) {
         Account account = null;
         if (TelephonyManager.getDefault().isMultiSimEnabled()) {
             if (sub == SimContactsConstants.SUB_1) {
@@ -668,7 +668,7 @@ public class MoreContactUtils {
     }
 
     public static int getSimFreeCount(Context context, int sub) {
-        String accountName = getAcount(sub).name;
+        String accountName = getAccount(sub).name;
         int count = 0;
 
         if (context == null) {

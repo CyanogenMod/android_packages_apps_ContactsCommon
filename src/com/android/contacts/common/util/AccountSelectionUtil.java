@@ -288,7 +288,7 @@ public class AccountSelectionUtil {
         for (i = 1; i <= numPhones; i++) {
             subList[i-1] = "SIM" + i;
         }
-        subList[i-1] = context.getString(R.string.Import_All);
+        subList[i-1] = context.getString(R.string.import_contacts_from_all_cards);
         builder.setSingleChoiceItems(subList, -1, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
