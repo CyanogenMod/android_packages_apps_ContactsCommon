@@ -18,13 +18,13 @@ public class ImportSIMContactsDialogFragment extends DialogFragment {
         // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage(R.string.import_contacts_sim)
-                .setPositiveButton(R.string.import_contacts_sim_confirm,
+                .setPositiveButton(android.R.string.ok,
                         new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         ImportExportDialogFragment.show(getFragmentManager(),
                                 false, ImportSIMContactsDialogFragment.class);
                     }})
-                .setNegativeButton(R.string.import_contacts_sim_cancel,
+                .setNegativeButton(android.R.string.cancel,
                         new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // Nothing to do
