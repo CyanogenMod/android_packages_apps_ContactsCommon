@@ -659,46 +659,43 @@ public class ImportExportDialogFragment extends DialogFragment
         private Handler mToastHandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
-                int exportCount = 0;
                 switch (msg.what) {
                     case TOAST_EXPORT_FAILED:
-                        exportCount = msg.arg1;
-                        Toast.makeText(mPeople, mPeople.getString(R.string.export_to_sim_failed,
-                                exportCount), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mPeople, mPeople.getResources().getQuantityString(
+                                R.plurals.export_to_sim_failed, msg.arg1, msg.arg1),
+                                Toast.LENGTH_SHORT).show();
                         break;
+
                     case TOAST_EXPORT_FINISHED:
                         Toast.makeText(mPeople, R.string.export_finished, Toast.LENGTH_SHORT)
-                            .show();
+                                .show();
                         break;
 
-                    // add toast handler when sim card is full
                     case TOAST_SIM_CARD_FULL:
-                        exportCount = msg.arg1;
-                        Toast.makeText(mPeople, mPeople.getString(R.string.export_sim_card_full,
-                                exportCount), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mPeople, mPeople.getResources().getQuantityString(
+                                R.plurals.export_sim_card_full, msg.arg1, msg.arg1),
+                                Toast.LENGTH_SHORT).show();
                         break;
 
-                    //add the max count limit of Chinese code or not
                     case TOAST_CONTACT_NAME_TOO_LONG:
                         Toast.makeText(mPeople, R.string.tag_too_long, Toast.LENGTH_SHORT).show();
                         break;
 
-                     // add toast handler when export is canceled
                     case TOAST_EXPORT_CANCELED:
-                        exportCount = msg.arg1;
-                        Toast.makeText(mPeople,mPeople.getString(R.string.export_cancelled,
-                            String.valueOf(exportCount)), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mPeople, mPeople.getResources().getQuantityString(
+                                R.plurals.export_cancelled, msg.arg1, msg.arg1),
+                                Toast.LENGTH_SHORT).show();
                         break;
 
-                    // add toast handler when no phone or email
                     case TOAST_EXPORT_NO_PHONE_OR_EMAIL:
                         String name = (String) msg.obj;
                         Toast.makeText(mPeople,
                                 mPeople.getString(R.string.export_no_phone_or_email, name),
                                 Toast.LENGTH_SHORT).show();
                         break;
+
                     case TOAST_SIM_CARD_NOT_LOAD_COMPLETE:
-                        Toast.makeText(mPeople, R.string.sim_contacts_not_load,
+                        Toast.makeText(mPeople, R.string.sim_contacts_not_loaded,
                                 Toast.LENGTH_SHORT).show();
                         break;
                 }
@@ -726,7 +723,7 @@ public class ImportExportDialogFragment extends DialogFragment
 
             // add a cancel button to let user cancel explicitly.
             mExportProgressDlg.setButton(DialogInterface.BUTTON_NEGATIVE,
-                mPeople.getString(R.string.progressdialog_cancel),
+                mPeople.getString(android.R.string.cancel),
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
