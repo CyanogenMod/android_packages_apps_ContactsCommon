@@ -162,7 +162,6 @@
     <string name="dialog_new_contact_account" msgid="4107520273478326011">"在以下帐户中创建联系人："</string>
     <string name="import_from_sim" msgid="4749894687871835873">"从SIM卡导入"</string>
     <string name="import_from_sim_number" msgid="1232500923375370101">"从第<xliff:g id="SIM_NUMBER">%d</xliff:g>张SIM卡导入"</string>
-    <string name="export_to_sim">"导出到 SIM 卡"</string>
     <string name="import_from_sdcard" product="default" msgid="6423964533801496764">"从存储设备导入"</string>
     <string name="cancel_import_confirmation_message" msgid="7764915400478970495">"要取消导入“<xliff:g id="FILENAME">%s</xliff:g>”吗？"</string>
     <string name="cancel_export_confirmation_message" msgid="4063783315931861656">"要取消导出“<xliff:g id="FILENAME">%s</xliff:g>”吗？"</string>
@@ -176,7 +175,6 @@
     <string name="fail_reason_too_many_vcard" product="nosdcard" msgid="8720294715223591581">"存储设备中的 vCard 文件过多。"</string>
     <string name="fail_reason_too_many_vcard" product="default" msgid="3793454448838716962">"SD卡上的 vCard 文件过多。"</string>
     <string name="fail_reason_io_error" msgid="7736686553669161933">"I/O 错误"</string>
-    <string name="fail_reason_import_vcard">I/O 错误，无法导入 vCard <xliff:g id="name">%s</xliff:g></string>
     <string name="fail_reason_low_memory_during_import" msgid="3277485820827338116">"内存不足。该文件可能过大。"</string>
     <string name="fail_reason_vcard_parse_error" msgid="514012644716565082">"由于意外原因而无法解析 vCard。"</string>
     <string name="fail_reason_not_supported" msgid="388664373573337601">"不支持此格式。"</string>
@@ -234,7 +232,6 @@
     <string name="dialog_import_export" msgid="1125776851100740858">"导入/导出联系人"</string>
     <string name="dialog_import" msgid="5177004290082451296">"导入联系人"</string>
     <string name="share_error" msgid="665756457151793108">"无法分享此联系人。"</string>
-    <string name="share_failed">"联系人太多，分享失败。"</string>
     <string name="menu_search" msgid="7464453023659824700">"搜索"</string>
     <string name="menu_contacts_filter" msgid="586356478145511794">"要显示的联系人"</string>
     <string name="activity_title_contacts_filter" msgid="7689519428197855166">"要显示的联系人"</string>
@@ -252,33 +249,6 @@
     <string name="contact_status_update_attribution" msgid="8419168578670128134">"来源：<xliff:g id="SOURCE">%1$s</xliff:g>"</string>
     <string name="contact_status_update_attribution_with_date" msgid="7492465535645607473">"<xliff:g id="DATE">%1$s</xliff:g>，来源：<xliff:g id="SOURCE">%2$s</xliff:g>"</string>
     <string name="action_menu_back_from_search" msgid="1138551123844019647">"停止搜索"</string>
-    <string name="exporting">"正在导出"</string>
-    <string name="reading_vcard_files">读取VCARD文件</string>
-    <string name="progressdialog_cancel">取消</string>
-    <string name="export_failed">"导出失败"</string>
-    <string name="sim_card_full">"发生错误，SIM卡已满。"</string>
-    <string name="export_finished">"导出结束"</string>
-    <string name="tag_too_long">"发生错误，联系人姓名过长。"</string>
-    <string name="sim_contacts_not_load">发生错误，SIM卡联系人未完全加载</string>
-    <string name="export_cancelled">导出操作被取消，<xliff:g id="insertCount">%s</xliff:g>条成功导出</string>
-    <string name="export_no_phone_or_email">导出失败, <xliff:g id="name">%s</xliff:g>没有电话号码或者邮箱地址</string>
-    <string name="import_from_sim_select">"选择SIM卡进行导入"</string>
-    <string name="no_sdcard_title" product="nosdcard">"存储设备不存在"</string>
-    <string name="no_sdcard_title" product="default">"无 SD 卡"</string>
-    <string name="deleteConfirmation_title">"要删除联系人吗？"</string>
-    <string name="deleteConfirmation">"将会删除此联系人。"</string>
-    <string name="slot_name">"卡"</string>
-    <string name="copy_done">复制成功！</string>
-    <string name="copy_failure">复制失败！</string>
-    <string name="card_no_space">卡记录已满，部分信息未复制</string>
-    <string name="select_path">请选择路径</string>
     <string name="description_clear_search" msgid="3893511425518852086">"清除搜索内容"</string>
     <string name="settings_contact_display_options_title" msgid="1020420603072835628">"联系人显示选项"</string>
-    <!-- Menu item used to initiate ip call -->
-    <string name="ip_call_by_slot">IP拨号通过<xliff:g id="subName">%s</xliff:g></string>
-    <string name="set_ip_number">设置IP号</string>
-    <string name="no_ip_number">没有IP号</string>
-    <string name="no_ip_number_on_sim_card">SIM卡上没有IP号</string>
-    <string name="ipcall_dialog_title">IP电话设置</string>
-    <string name="ipcall_dialog_edit_hint">请输入IP电话前缀</string>
 </resources>
