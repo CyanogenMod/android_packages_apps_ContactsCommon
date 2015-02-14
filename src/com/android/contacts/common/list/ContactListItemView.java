@@ -52,6 +52,7 @@ import com.android.contacts.common.R;
 import com.android.contacts.common.format.TextHighlighter;
 import com.android.contacts.common.util.SearchUtil;
 import com.android.contacts.common.util.ViewUtil;
+import com.android.contacts.common.util.ContactsCommonRcsUtil;
 import com.android.contacts.common.widget.CheckableImageView;
 import com.android.contacts.common.widget.CheckableQuickContactBadge;
 
@@ -164,6 +165,7 @@ public class ContactListItemView extends ViewGroup
     private TextView mSnippetView;
     private TextView mStatusView;
     private ImageView mPresenceIcon;
+    private ImageView mRCSCapabilityIcon;
     private String mQuickCallKey;
 
     private ColorStateList mSecondaryTextColor;
@@ -215,6 +217,7 @@ public class ContactListItemView extends ViewGroup
     private int mLabelViewHeight;
     private int mDataViewHeight;
     private int mSnippetTextViewHeight;
+    private int mRCSCapabilityViewHeight;
     private int mStatusTextViewHeight;
 
     // Holds Math.max(mLabelTextViewHeight, mDataViewHeight), assuming Label and Data share the
@@ -459,6 +462,14 @@ public class ContactListItemView extends ViewGroup
                     MeasureSpec.makeMeasureSpec(mPresenceIconSize, MeasureSpec.EXACTLY),
                     MeasureSpec.makeMeasureSpec(mPresenceIconSize, MeasureSpec.EXACTLY));
             mStatusTextViewHeight = mPresenceIcon.getMeasuredHeight();
+        }
+
+        if (isVisible(mRCSCapabilityIcon)) {
+            int rcsIconSize = ContactsCommonRcsUtil.dip2px(getContext(), 16);
+            mRCSCapabilityIcon.measure(MeasureSpec.makeMeasureSpec(rcsIconSize,
+                    MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(
+                            rcsIconSize, MeasureSpec.EXACTLY));
+            mRCSCapabilityViewHeight = mRCSCapabilityIcon.getMeasuredHeight();
         }
 
         if (isVisible(mStatusView)) {
@@ -706,6 +717,14 @@ public class ContactListItemView extends ViewGroup
                     textTopBound,
                     rightBound,
                     textTopBound + mSnippetTextViewHeight);
+        }
+
+        if (isVisible(mRCSCapabilityIcon)) {
+            int iconWidth = mRCSCapabilityIcon.getMeasuredWidth();
+            int rcsTop = (bottom - top - mRCSCapabilityViewHeight) / 2;
+            int rcsBottom = rcsTop + mRCSCapabilityViewHeight;
+            mRCSCapabilityIcon.layout(rightBound - iconWidth, rcsTop,
+            rightBound, rcsBottom);
         }
     }
 
@@ -1236,6 +1255,25 @@ public class ContactListItemView extends ViewGroup
         } else {
             if (mPresenceIcon != null) {
                 mPresenceIcon.setVisibility(View.GONE);
+            }
+        }
+    }
+
+    /**
+     * Adds the RCS icon.
+     */
+    public void setRCSCapability(Drawable icon, boolean isRcsUser) {
+        if (icon != null && isRcsUser) {
+            if (mRCSCapabilityIcon == null) {
+                mRCSCapabilityIcon = new ImageView(getContext());
+                addView(mRCSCapabilityIcon);
+                mRCSCapabilityIcon.setImageDrawable(icon);
+                mRCSCapabilityIcon.setScaleType(ScaleType.CENTER);
+            }
+            mRCSCapabilityIcon.setVisibility(View.VISIBLE);
+        } else {
+            if (mRCSCapabilityIcon != null) {
+                mRCSCapabilityIcon.setVisibility(View.GONE);
             }
         }
     }

@@ -39,6 +39,8 @@ import android.util.Log;
 import android.view.inputmethod.EditorInfo;
 
 import com.android.contacts.common.R;
+import com.android.contacts.common.model.account.AccountType.DefinitionException;
+import com.android.contacts.common.model.account.AccountType.EditField;
 import com.android.contacts.common.model.dataitem.DataKind;
 import com.android.contacts.common.testing.NeededForTesting;
 import com.android.contacts.common.util.CommonDateUtils;
@@ -443,6 +445,32 @@ public abstract class BaseAccountType extends AccountType {
         kind.fieldList.add(new EditField(GroupMembership.GROUP_ROW_ID, -1, -1));
 
         kind.maxLinesForDisplay = MAX_LINES_FOR_GROUP;
+
+        return kind;
+    }
+
+    protected DataKind addDataKindEvent(Context context) throws DefinitionException {
+        DataKind kind = addKind(new DataKind(Event.CONTENT_ITEM_TYPE,
+                R.string.eventLabelsGroup, 150, true));
+
+        kind.actionHeader = new SimpleInflater(R.string.eventLabelsGroup);
+        kind.actionBody = new SimpleInflater(Event.START_DATE);
+
+        kind.typeColumn = Event.TYPE;
+        kind.typeList = Lists.newArrayList();
+        kind.dateFormatWithoutYear = CommonDateUtils.NO_YEAR_DATE_FORMAT;
+        kind.dateFormatWithYear = CommonDateUtils.FULL_DATE_FORMAT;
+        kind.typeList.add(buildEventType(Event.TYPE_BIRTHDAY, true).setSpecificMax(1));
+        kind.typeList.add(buildEventType(Event.TYPE_ANNIVERSARY, false));
+        kind.typeList.add(buildEventType(Event.TYPE_OTHER, false));
+        kind.typeList.add(buildEventType(Event.TYPE_CUSTOM, false).setSecondary(true)
+                .setCustomColumn(Event.LABEL));
+
+        kind.defaultValues = new ContentValues();
+        kind.defaultValues.put(Event.TYPE, Event.TYPE_BIRTHDAY);
+
+        kind.fieldList = Lists.newArrayList();
+        kind.fieldList.add(new EditField(Event.DATA, R.string.eventLabelsGroup, FLAGS_EVENT));
 
         return kind;
     }

@@ -43,6 +43,7 @@ import android.view.inputmethod.EditorInfo;
 import com.android.contacts.common.R;
 import com.android.contacts.common.SimContactsConstants;
 import com.android.contacts.common.model.account.AccountType.DefinitionException;
+import com.android.contacts.common.util.ContactsCommonRcsUtil;
 import com.google.android.collect.Lists;
 
 
@@ -74,6 +75,9 @@ public class PhoneAccountType extends BaseAccountType{
             addDataKindNote(context);
             addDataKindWebsite(context);
             addDataKindGroupMembership(context);
+            if (ContactsCommonRcsUtil.getIsRcs()) {
+                addDataKindEvent(context);
+            }
             if (context.getResources().getBoolean(
                     com.android.internal.R.bool.config_built_in_sip_phone)) {
                 addDataKindSipAddress(context);
