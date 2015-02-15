@@ -19,4 +19,7 @@
   <string name="local_storage_account" product="tablet">স্থানীয় ট্যাবলেট একাউন্ট</string>
   <string name="export_to_sim">সিম কার্ডে রপ্তানি করুন</string>
   <string name="select_sim">সিম নির্বাচন</string>
+  <string name="account_sim">সিম কার্ড</string>
+  <string name="name_for_sim">নাম</string>
+  <string name="label_groups">গ্রুপ</string>
 </resources>
