@@ -38,6 +38,11 @@ import java.util.List;
  */
 public class CallUtil {
 
+    /*Enable Video calling irrespective of video capabilities*/
+    private static final int ENABLE_VIDEO_CALLING = 1;
+    /*Disable Video calling irrespective of video capabilities*/
+    private static final int DISABLE_VIDEO_CALLING = 2;
+
     /**
      * Return an Intent for making a phone call. Scheme (e.g. tel, sip) will be determined
      * automatically.
@@ -85,7 +90,7 @@ public class CallUtil {
      * @return {@code true} if one of the call capable phone accounts supports video calling,
      *      {@code false} otherwise.
      */
-    public static boolean isVideoEnabled(Context context) {
+    private static boolean hasVideoCapability(Context context) {
         TelecomManager telecommMgr = (TelecomManager)
                 context.getSystemService(Context.TELECOM_SERVICE);
         if (telecommMgr == null) {
@@ -100,5 +105,23 @@ public class CallUtil {
             }
         }
         return false;
+    }
+
+    public static boolean isVideoEnabled(Context context) {
+
+        final int enableVideoCall = getVideoCallingConfig(context);
+
+        if (enableVideoCall == ENABLE_VIDEO_CALLING) {
+            return true;
+        } else if(enableVideoCall == DISABLE_VIDEO_CALLING) {
+            return false;
+        } else {
+            return hasVideoCapability(context);
+        }
+    }
+
+    private static int getVideoCallingConfig(Context context) {
+        return context.getResources().getInteger(
+                R.integer.config_enable_video_calling);
     }
 }
