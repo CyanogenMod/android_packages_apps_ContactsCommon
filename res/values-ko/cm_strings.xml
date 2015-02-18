@@ -44,6 +44,7 @@
   <string name="copy_failure">연락처를 복사하지 못했습니다</string>
   <string name="card_no_space">SIM 카드가 가득 차 있어 연락처를 복사하지 못했습니다</string>
   <string name="settings_contact_display_options_description">연락처가 표시 및 정렬되는 방식을 구성합니다.</string>
+  <string name="ip_call_by_slot"><xliff:g id="subName">%s</xliff:g>(으)로 IP 통화</string>
   <string name="no_ip_number">IP 번호 없음</string>
   <string name="no_ip_number_on_sim_card">SIM 카드에 IP 번호 없음</string>
   <string name="set_ip_number">IP 번호 설정</string>
