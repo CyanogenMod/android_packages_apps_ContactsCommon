@@ -165,7 +165,7 @@ public class SimContactsOperation {
 
     private Uri getContentUri(int subscription) {
         Uri uri = null;
-        long[] subId = SubscriptionManager.getSubId(subscription);
+        int[] subId = SubscriptionManager.getSubId(subscription);
 
         if (subId != null && TelephonyManager.getDefault().isMultiSimEnabled()) {
             uri = Uri.parse(SimContactsConstants.SIM_SUB_URI + subId[0]);

@@ -444,7 +444,7 @@ public class ImportExportDialogFragment extends AnalyticsDialogFragment
             // call query first, otherwise insert will fail if this insert is called
             // without any query before
             try{
-                long[] subId = SubscriptionManager.getSubId(subscription);
+                int[] subId = SubscriptionManager.getSubId(subscription);
                 if (subId != null
                         && TelephonyManager.getDefault().isMultiSimEnabled()) {
                     cr = mPeople.getContentResolver().query(
