@@ -31,14 +31,25 @@
   <string name="export_finished">Exporteren voltooid</string>
   <string name="tag_too_long">Naam van contact is te lang</string>
   <string name="sim_contacts_not_loaded">Kan SIM-contacten niet laden</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">Exporteren geannuleerd, %d item is geëxporteerd</item>
+    <item quantity="other">Exporteren geannuleerd, %d items zijn geëxporteerd</item>
+  </plurals>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> beschikt niet over een telefoonnummer of e-mailadres</string>
   <string name="import_from_sim_select">Kies kaart om te importeren</string>
   <string name="no_sdcard_title" product="nosdcard">Opslag niet beschikbaar</string>
   <string name="no_sdcard_title" product="default">Geen SD-kaart</string>
   <string name="deleteConfirmation_title">Contact verwijderen?</string>
   <string name="deleteConfirmation">Dit contact wordt verwijderd.</string>
+  <string name="copy_done">Contact succesvol gekopieerd</string>
+  <string name="copy_failure">Contact kopiëren mislukt</string>
+  <string name="card_no_space">Kopiëren van contact mislukt, simkaart is vol</string>
+  <string name="settings_contact_display_options_description">Instellen hoe uw contacten worden weergegeven en gesorteerd.</string>
   <string name="ip_call_by_slot">IP-oproep via <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Geen IP-nummer</string>
   <string name="no_ip_number_on_sim_card">Geen IP-nummer op simkaart</string>
+  <string name="set_ip_number">IP-nummer instellen</string>
+  <string name="ipcall_dialog_title">Instellingen IP-oproep</string>
   <string name="ipcall_dialog_edit_hint">Voer IP-voorvoegsel in</string>
   <string name="import_contacts_from_all_cards">Contacten van alle simkaarten importeren</string>
   <string name="select_path">Pad selecteren</string>

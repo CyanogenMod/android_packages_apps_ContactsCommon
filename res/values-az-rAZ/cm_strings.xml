@@ -29,5 +29,6 @@
   <string name="deleteConfirmation">Bu şəxs silinəcək.</string>
   <string name="no_ip_number">IP nömrəsi yoxdur</string>
   <string name="no_ip_number_on_sim_card">SIM kartda IP nömrəsi yoxdur</string>
+  <string name="ipcall_dialog_edit_hint">Zəhmət olmasa IP önəlavəsini daxil edin</string>
   <string name="select_sim">SIM seç</string>
 </resources>

@@ -18,18 +18,36 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">Lokalne konto tabletu</string>
   <string name="local_storage_account" product="default">Lokalne konto telefonu</string>
+  <string name="import_contacts_sim">Importować kontakty z karty SIM?</string>
+  <string name="manage_sim_contacts">Zarządzaj kontaktami z karty SIM</string>
   <string name="export_to_sim">Eksportuj do karty SIM</string>
+  <string name="fail_reason_import_vcard"><xliff:g id="name">%s</xliff:g> nie może zostać importowany z powodu błędu we/wy</string>
+  <string name="contact_share_failed_toast">Nie więcej niż <xliff:g id="count">%d</xliff:g> kontaktów może zostać udostępnionych</string>
   <string name="label_groups">Grupa</string>
+  <string name="exporting">Eksportowanie\u2026</string>
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> z <xliff:g id="total_number">%2$s</xliff:g> plików</string>
   <string name="export_failed">Eksport nie powiódł się</string>
+  <string name="sim_card_full">Karta SIM jest pełna</string>
   <string name="export_finished">Eksport zakończony</string>
+  <string name="tag_too_long">Nazwa kontaktu jest zbyt długa</string>
+  <string name="sim_contacts_not_loaded">Nie można załadować kontaktów z SIM</string>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> nie ma numeru telefonu ani adresu e-mail</string>
   <string name="import_from_sim_select">Wybierz kartę do zimportowania</string>
   <string name="no_sdcard_title" product="nosdcard">Pamięć niedostępna</string>
   <string name="no_sdcard_title" product="default">Brak karty SD</string>
   <string name="deleteConfirmation_title">Usunąć kontakt?</string>
   <string name="deleteConfirmation">Ten kontakt zostanie usunięty.</string>
+  <string name="copy_done">Kontakt został skopiowany pomyślnie</string>
+  <string name="copy_failure">Kopiowanie kontaktu nie powiodło się</string>
+  <string name="card_no_space">Kopiowanie kontaktu nie powiodło się, karta SIM jest pełna</string>
+  <string name="settings_contact_display_options_description">Skonfiguruj jak wyświetlane i sortowane mają być twoje kontakty.</string>
+  <string name="ip_call_by_slot">Połączenie IP przez <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Brak numeru IP</string>
   <string name="no_ip_number_on_sim_card">Brak numeru IP na karcie SIM</string>
+  <string name="set_ip_number">Ustaw numer IP</string>
+  <string name="ipcall_dialog_title">Ustawienia połączeń IP</string>
   <string name="ipcall_dialog_edit_hint">Proszę wpisać prefiks IP</string>
+  <string name="import_contacts_from_all_cards">Import kontaktów z wszystkich kart SIM</string>
+  <string name="select_path">Wybierz ścieżkę</string>
   <string name="select_sim">Wybierz SIM</string>
 </resources>
