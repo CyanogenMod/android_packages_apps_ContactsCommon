@@ -18,18 +18,41 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">Локальний обліковий запис планшета</string>
   <string name="local_storage_account" product="default">Локальний обліковий запис телефону</string>
+  <string name="import_contacts_sim">Імпорт контактів з SIM-карти?</string>
+  <string name="manage_sim_contacts">Керування контактами SIM-карти</string>
   <string name="export_to_sim">Експорт до SIM-картки</string>
+  <string name="fail_reason_import_vcard">Не вдалося імпортувати \'<xliff:g id="name">%s</xliff:g>\' через помилку вводу/виводу</string>
+  <string name="contact_share_failed_toast">Можливо відправити не більш ніж <xliff:g id="count">%d</xliff:g> контактів</string>
   <string name="label_groups">Група</string>
+  <string name="exporting">Експорт\u2026</string>
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> із <xliff:g id="total_number">%2$s</xliff:g> файлів</string>
   <string name="export_failed">Помилка експорту</string>
+  <string name="sim_card_full">SIM-карта заповнена</string>
   <string name="export_finished">Експорт завершено</string>
+  <string name="tag_too_long">Ім`я контакта занадто довге</string>
+  <string name="sim_contacts_not_loaded">Не вдається завантажити контакти SIM-карти</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">Експорт було скасовано, експортовано %d елемент</item>
+    <item quantity="few">Експорт було скасовано, експортовано %d елемента</item>
+    <item quantity="other">Експорт було скасовано, експортовано %d елементів</item>
+  </plurals>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> не мае телефонного номеру чи електронної пошти</string>
   <string name="import_from_sim_select">Виберіть карту для імпорту</string>
   <string name="no_sdcard_title" product="nosdcard">Носій недоступний</string>
   <string name="no_sdcard_title" product="default">Немає SD-карти</string>
   <string name="deleteConfirmation_title">Видалити контакт?</string>
   <string name="deleteConfirmation">Цей контакт буде видалено.</string>
+  <string name="copy_done">Контакт був скопійован успішно</string>
+  <string name="copy_failure">Не вдалося скопіювати контакт</string>
+  <string name="card_no_space">Копіювання контактів не вдалося, SIM-карта заповнена</string>
+  <string name="settings_contact_display_options_description">Налаштувати  відображання та сортування контактів.</string>
+  <string name="ip_call_by_slot">IP-виклик за допомогою <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Немає IP номера</string>
   <string name="no_ip_number_on_sim_card">Немає IP номера на SIM-картці</string>
+  <string name="set_ip_number">Задати IP-номер</string>
+  <string name="ipcall_dialog_title">Налаштування IP-телефонії</string>
   <string name="ipcall_dialog_edit_hint">Будь ласка, введіть префікс IP</string>
+  <string name="import_contacts_from_all_cards">Імпорт контактів із усіх SIM-карт</string>
+  <string name="select_path">Оберіть шлях</string>
   <string name="select_sim">Виберіть SIM-картку</string>
 </resources>
