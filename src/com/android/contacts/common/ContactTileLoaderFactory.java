@@ -42,6 +42,7 @@ public final class ContactTileLoaderFactory {
 
     public final static int CONTACT_PRESENCE = 7;
     public final static int CONTACT_STATUS = 8;
+    public final static int PHOTO_ID  = 9;
 
     // Only used for StrequentPhoneOnlyLoader
     public final static int PHONE_NUMBER = 7;
@@ -64,6 +65,7 @@ public final class ContactTileLoaderFactory {
         RawContacts.ACCOUNT_NAME, //                               6
         Contacts.CONTACT_PRESENCE, // .............................7
         Contacts.CONTACT_STATUS, // ...............................8
+        Contacts.PHOTO_ID, // .....................................9
     };
 
     /**
