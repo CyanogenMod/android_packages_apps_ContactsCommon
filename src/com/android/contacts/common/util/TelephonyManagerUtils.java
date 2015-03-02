@@ -113,7 +113,7 @@ public class TelephonyManagerUtils {
         if (account == null) {
             return null;
         }
-        return account.getIcon(context);
+        return account.createIconDrawable(context);
     }
 
     public static Drawable getMultiSimIcon(Context context, int subscription) {
@@ -122,7 +122,7 @@ public class TelephonyManagerUtils {
             return null;
         }
 
-        long subId[] = SubscriptionManager.getSubId(subscription);
+        int subId[] = SubscriptionManager.getSubId(subscription);
         String subIdstr = null;
         if (subId != null && subId.length > 0) {
             subIdstr = String.valueOf(subId[0]);
@@ -144,6 +144,6 @@ public class TelephonyManagerUtils {
         }
         final PhoneAccount account = telecomManager
                 .getPhoneAccount(phoneAccountHandle);
-        return account.getIcon(context);
+        return account.createIconDrawable(context);
     }
 }

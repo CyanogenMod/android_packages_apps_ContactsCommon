@@ -54,7 +54,7 @@ import android.provider.ContactsContract.CommonDataKinds.StructuredName;
 import android.provider.ContactsContract.Data;
 import android.provider.ContactsContract.RawContacts;
 import android.provider.Settings;
-import android.telephony.SubInfoRecord;
+import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.PhoneNumberUtils;
 import android.telecom.PhoneAccountHandle;
@@ -388,7 +388,7 @@ public class MoreContactUtils {
 
     public static int getAnrCount(int slot) {
         int anrCount = 0;
-        long[] subId = SubscriptionManager.getSubId(slot);
+        int[] subId = SubscriptionManager.getSubId(slot);
         try {
             IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(
                 ServiceManager.getService("simphonebook"));
@@ -410,7 +410,7 @@ public class MoreContactUtils {
 
     public static int getAdnCount(int slot) {
         int adnCount = 0;
-        long[] subId = SubscriptionManager.getSubId(slot);
+        int[] subId = SubscriptionManager.getSubId(slot);
                 try {
             IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(
                 ServiceManager.getService("simphonebook"));
@@ -432,7 +432,7 @@ public class MoreContactUtils {
 
     public static int getEmailCount(int slot) {
         int emailCount = 0;
-        long[] subId = SubscriptionManager.getSubId(slot);
+        int[] subId = SubscriptionManager.getSubId(slot);
                 try {
             IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(
                 ServiceManager.getService("simphonebook"));
@@ -697,7 +697,7 @@ public class MoreContactUtils {
 
     public static int getSpareAnrCount(int sub) {
         int anrCount = 0;
-        long[] subId=SubscriptionManager.getSubId(sub);      
+        int[] subId=SubscriptionManager.getSubId(sub);
          try {
                 IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(ServiceManager
                         .getService(PHONEBOOK));
@@ -723,7 +723,7 @@ public class MoreContactUtils {
 
     public static int getSpareEmailCount(int sub) {
         int emailCount = 0;
-        long[] subId=SubscriptionManager.getSubId(sub);
+        int[] subId=SubscriptionManager.getSubId(sub);
         try {
                 IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(ServiceManager
                         .getService(PHONEBOOK));
@@ -794,19 +794,20 @@ public class MoreContactUtils {
     /**
      * Get Network SPN name, e.g. China Unicom
      */
-    public static String getNetworkSpnName(Context context, long subscription) {
+    public static String getNetworkSpnName(Context context, int subscription) {
         TelephonyManager tm = (TelephonyManager)
                 context.getSystemService(Context.TELEPHONY_SERVICE);
         String netSpnName = "";
         netSpnName = tm.getNetworkOperatorName(subscription);
         if (TextUtils.isEmpty(netSpnName)) {
             // if could not get the operator name, use sim name instead of
-            List<SubInfoRecord> subInfoList = SubscriptionManager.getActiveSubInfoList();
+            List<SubscriptionInfo> subInfoList =
+                    SubscriptionManager.from(context).getActiveSubscriptionInfoList();
             if (subInfoList != null) {
                 for (int i = 0; i < subInfoList.size(); ++i) {
-                    final SubInfoRecord sir = subInfoList.get(i);
-                    if (sir.subId == subscription) {
-                        netSpnName = sir.displayName;
+                    final SubscriptionInfo sir = subInfoList.get(i);
+                    if (sir.getSubscriptionId() == subscription) {
+                        netSpnName = (String)sir.getDisplayName();
                         break;
                     }
                 }
@@ -899,7 +900,7 @@ public class MoreContactUtils {
     public static PhoneAccountHandle getAccount(int slot) {
         ComponentName serviceName = new ComponentName("com.android.phone",
                 "com.android.services.telephony.TelephonyConnectionService");
-        long[] subId = SubscriptionManager.getSubId(slot);
+        int[] subId = SubscriptionManager.getSubId(slot);
         return new PhoneAccountHandle(serviceName, String.valueOf(subId[0]));
     }
 
