@@ -926,8 +926,9 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
             new ContactsPreferences.ChangeListener() {
         @Override
         public void onChange() {
-            loadPreferences();
-            reloadData();
+            if(loadPreferences()) {
+                reloadData();
+            }
         }
     };
 
