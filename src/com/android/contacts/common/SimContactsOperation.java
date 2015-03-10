@@ -92,6 +92,9 @@ public class SimContactsOperation {
     public Uri insert(ContentValues values, int subscription) {
 
         Uri uri = getContentUri(subscription);
+        if (uri == null) {
+            return null;
+        }
         String number = values.getAsString(SimContactsConstants.STR_NUMBER);
         String anrs = values.getAsString(SimContactsConstants.STR_ANRS);
         if (!TextUtils.isEmpty(anrs)) {
@@ -109,7 +112,9 @@ public class SimContactsOperation {
 
     public int update(ContentValues values,int subscription) {
         Uri uri = getContentUri(subscription);
-
+        if (uri == null) {
+            return -1;
+        }
         int result;
         String oldNumber = values.getAsString(SimContactsConstants.STR_NUMBER);
         String newNumber = values.getAsString(SimContactsConstants.STR_NEW_NUMBER);
@@ -145,6 +150,9 @@ public class SimContactsOperation {
             anrs = anrs.replaceAll("[^0123456789PWN\\,\\;\\*\\#\\+\\:]", "");
         Uri uri = getContentUri(subscription);
 
+        if (uri == null) {
+            return -1;
+        }
 
         if (!TextUtils.isEmpty(name)) {
             buf.append("tag='");
@@ -177,6 +185,9 @@ public class SimContactsOperation {
         int[] subId = SubscriptionManager.getSubId(subscription);
 
         if (subId != null && TelephonyManager.from(mContext).isMultiSimEnabled()) {
+            if (subId.length < 1 || subId[0] < 0) {
+                return null;
+            }
             uri = Uri.parse(SimContactsConstants.SIM_SUB_URI + subId[0]);
         } else {
             uri = Uri.parse(SimContactsConstants.SIM_URI);
