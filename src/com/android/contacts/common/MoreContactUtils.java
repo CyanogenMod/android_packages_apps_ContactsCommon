@@ -338,7 +338,7 @@ public class MoreContactUtils {
 
     public static int getAnrCount(int slot) {
         int anrCount = 0;
-        long[] subId = SubscriptionManager.getSubId(slot);
+        int[] subId = SubscriptionManager.getSubId(slot);
         try {
             IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(
                 ServiceManager.getService("simphonebook"));
@@ -360,7 +360,7 @@ public class MoreContactUtils {
 
     public static int getSpareAnrCount(int slot) {
         int anrCount = 0;
-        long[] subId = SubscriptionManager.getSubId(slot);
+        int[] subId = SubscriptionManager.getSubId(slot);
                 try {
             IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(
                 ServiceManager.getService("simphonebook"));
@@ -382,7 +382,7 @@ public class MoreContactUtils {
 
     public static int getAdnCount(int slot) {
         int adnCount = 0;
-        long[] subId = SubscriptionManager.getSubId(slot);
+        int[] subId = SubscriptionManager.getSubId(slot);
                 try {
             IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(
                 ServiceManager.getService("simphonebook"));
@@ -404,7 +404,7 @@ public class MoreContactUtils {
 
     public static int getEmailCount(int slot) {
         int emailCount = 0;
-        long[] subId = SubscriptionManager.getSubId(slot);
+        int[] subId = SubscriptionManager.getSubId(slot);
                 try {
             IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(
                 ServiceManager.getService("simphonebook"));
@@ -426,7 +426,7 @@ public class MoreContactUtils {
 
     public static int getSpareEmailCount(int slot) {
         int emailCount = 0;
-        long[] subId = SubscriptionManager.getSubId(slot);
+        int[] subId = SubscriptionManager.getSubId(slot);
                 try {
             IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(
                 ServiceManager.getService("simphonebook"));

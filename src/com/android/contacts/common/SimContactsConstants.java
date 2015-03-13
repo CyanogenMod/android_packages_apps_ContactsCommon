@@ -70,7 +70,7 @@ public interface SimContactsConstants {
             "com.android.contacts.action.MULTI_PICK_SIM";
     public static final int SUB_1 = PhoneConstants.SUB1;
     public static final int SUB_2 = PhoneConstants.SUB2;
-    public static final int SUB_INVALID = SubscriptionManager.INVALID_SLOT_ID;
+    public static final int SUB_INVALID = SubscriptionManager.INVALID_SIM_SLOT_INDEX;
 
 }
 
