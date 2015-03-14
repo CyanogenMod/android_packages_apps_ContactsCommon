@@ -18,4 +18,40 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">Kohalik tahvli konto</string>
   <string name="local_storage_account" product="default">Kohalik telefoni konto</string>
+  <string name="import_contacts_sim">Impordi kontaktid SIM-kaardilt?</string>
+  <string name="manage_sim_contacts">Halda SIM-kaardi kontakte</string>
+  <string name="export_to_sim">Ekspordi SIM-kaardile</string>
+  <string name="fail_reason_import_vcard">\'<xliff:g id="name">%s</xliff:g>\' ei saa importida, kuna ilmnes I/O tõrge</string>
+  <string name="contact_share_failed_toast">Enam kui <xliff:g id="count">%d </xliff:g> kontakti ei saa jagada</string>
+  <string name="label_groups">Grupp</string>
+  <string name="exporting">Ekspordin\u2026</string>
+  <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> fail <xliff:g id="total_number">%2$s</xliff:g>-st</string>
+  <string name="export_failed">Eksportimine nurjus</string>
+  <string name="sim_card_full">SIM-kaart on täis</string>
+  <string name="export_finished">Eksport lõpetatud</string>
+  <string name="tag_too_long">Kontakti nimi on liiga pikk</string>
+  <string name="sim_contacts_not_loaded">Ei saa laadida kontakte SIM-kaardilt</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">Eksport katkestati, %d kirje eksporditi</item>
+    <item quantity="other">Eksport katkestati, %d kirjet eksporditi</item>
+  </plurals>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> on ilma telefoni numbri või e-posti aadressita</string>
+  <string name="import_from_sim_select">Vali SIM-kaart importimiseks</string>
+  <string name="no_sdcard_title" product="nosdcard">Mälu pole saadaval</string>
+  <string name="no_sdcard_title" product="default">SD kaarti pole</string>
+  <string name="deleteConfirmation_title">Kustuta kontakt?</string>
+  <string name="deleteConfirmation">See kontakt kustutatakse.</string>
+  <string name="copy_done">Kontakt kopeeriti edukalt</string>
+  <string name="copy_failure">Kontakti kopeerimine nurjus</string>
+  <string name="card_no_space">Kontakti kopeerimine nurjus, SIM-kaart on täis</string>
+  <string name="settings_contact_display_options_description">Saate seadistada, kuidas kontakte kuvada ja sorteerida.</string>
+  <string name="ip_call_by_slot">IP kõne läbi <xliff:g id="subName">%s</xliff:g></string>
+  <string name="no_ip_number">Ei ole IP number</string>
+  <string name="no_ip_number_on_sim_card">Ei ole IP numbrit SIM-kaardil</string>
+  <string name="set_ip_number">Määra IP number</string>
+  <string name="ipcall_dialog_title">IP kõne seaded</string>
+  <string name="ipcall_dialog_edit_hint">Sisestage IP eesliide</string>
+  <string name="import_contacts_from_all_cards">Impordi kontaktid kõikidelt SIM-kaartidelt</string>
+  <string name="select_path">Vali teekond</string>
+  <string name="select_sim">Vali SIM-kaart</string>
 </resources>
