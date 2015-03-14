@@ -21,13 +21,13 @@
   <string name="import_contacts_sim">Importer les contacts depuis la carte SIM ?</string>
   <string name="manage_sim_contacts">Gérer les contacts de la carte SIM</string>
   <string name="export_to_sim">Exporter vers la carte SIM</string>
-  <string name="fail_reason_import_vcard"><xliff:g id="name">%s</xliff:g> n\'a pas pu être importé en raison d\'une erreur I/O</string>
+  <string name="fail_reason_import_vcard">« <xliff:g id="name">%s</xliff:g> » n\'a pas pu être importé en raison d\'une erreur I/O</string>
   <string name="contact_share_failed_toast">Vous ne pouvez pas partager plus de <xliff:g id="count">%d</xliff:g> contacts</string>
   <string name="label_groups">Groupe</string>
   <string name="exporting">Exportation\u2026</string>
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> sur <xliff:g id="total_number">%2$s</xliff:g> fichiers</string>
   <string name="export_failed">Échec de l\'exportation</string>
-  <string name="sim_card_full">Carte SIM pleine</string>
+  <string name="sim_card_full">Carte SIM saturée</string>
   <string name="export_finished">Export terminé</string>
   <string name="tag_too_long">Nom du contact trop long</string>
   <string name="sim_contacts_not_loaded">Impossible de charger les contacts SIM</string>
@@ -36,14 +36,14 @@
     <item quantity="other">L\'exportation à été annulée, %d éléments ont été exportés</item>
   </plurals>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> n\'a pas de numéro de téléphone ou d\'adresse e-mail</string>
-  <string name="import_from_sim_select">Choisissez la carte à importer</string>
+  <string name="import_from_sim_select">Choisissez la carte SIM à importer</string>
   <string name="no_sdcard_title" product="nosdcard">Stockage non disponible</string>
   <string name="no_sdcard_title" product="default">Aucune carte SD</string>
   <string name="deleteConfirmation_title">Supprimer le contact ?</string>
   <string name="deleteConfirmation">Ce contact sera supprimé.</string>
   <string name="copy_done">Le contact a été copié avec succès</string>
   <string name="copy_failure">Copie du contact échouée</string>
-  <string name="card_no_space">Copie du contact échouée, la carte SIM est pleine</string>
+  <string name="card_no_space">Copie du contact échouée, la carte SIM est saturée</string>
   <string name="settings_contact_display_options_description">Configurer comment vos contacts sont affichés et triés.</string>
   <string name="ip_call_by_slot">Appel IP via <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Aucun numéro IP</string>
