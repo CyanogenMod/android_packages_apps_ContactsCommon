@@ -50,6 +50,7 @@ import com.android.contacts.common.ContactPresenceIconUtil;
 import com.android.contacts.common.ContactStatusUtil;
 import com.android.contacts.common.R;
 import com.android.contacts.common.format.TextHighlighter;
+import com.android.contacts.common.util.ContactDisplayUtils;
 import com.android.contacts.common.util.SearchUtil;
 import com.android.contacts.common.util.ViewUtil;
 import com.android.contacts.common.util.ContactsCommonRcsUtil;
@@ -1190,6 +1191,13 @@ public class ContactListItemView extends ViewGroup
         } else {
             mTextHighlighter.setPrefixText(getSnippetView(), text, mHighlightedPrefix);
             mSnippetView.setVisibility(VISIBLE);
+            if (ContactDisplayUtils.isPossiblePhoneNumber(text)) {
+                // Give the text-to-speech engine a hint that it's a phone number
+                mSnippetView.setContentDescription(
+                        ContactDisplayUtils.getTelephoneTtsSpannable(text));
+            } else {
+                mSnippetView.setContentDescription(null);
+            }
         }
     }
 
@@ -1334,6 +1342,14 @@ public class ContactListItemView extends ViewGroup
             name = mUnknownNameText;
         }
         setMarqueeText(getNameTextView(), name);
+
+        if (ContactDisplayUtils.isPossiblePhoneNumber(name)) {
+            // Give the text-to-speech engine a hint that it's a phone number
+            mNameTextView.setContentDescription(
+                    ContactDisplayUtils.getTelephoneTtsSpannable(name.toString()));
+        } else {
+            mNameTextView.setContentDescription(null);
+        }
     }
 
     public void hideDisplayName() {
