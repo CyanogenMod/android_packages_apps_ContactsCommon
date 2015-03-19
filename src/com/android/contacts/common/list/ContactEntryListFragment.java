@@ -155,6 +155,7 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
         @Override
         public void onReceive(Context context, Intent intent) {
             if (!mIgnoreSimStateChange) {
+                mForceLoad = loadPreferences();
                 reloadData();
             }
             mIgnoreSimStateChange = false;
