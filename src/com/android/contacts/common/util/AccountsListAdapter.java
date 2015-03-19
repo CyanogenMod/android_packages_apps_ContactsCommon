@@ -68,10 +68,10 @@ public final class AccountsListAdapter extends BaseAdapter {
         mAccountTypes = AccountTypeManager.getInstance(context);
         mAccounts = getAccounts(accountListFilter);
 
-        // Add a virtual local storage account to allow user to store its contacts in the phone
-        String localAccountName = context.getString(R.string.local_storage_account);
-        mAccounts.add(0, new AccountWithDataSet(localAccountName, AccountType.LOCAL_ACCOUNT, null));
-
+        // Add the virtual local storage account to allow user to store its contacts in the phone
+        mAccounts.add(0, new AccountWithDataSet(PhoneAccountType.ACCOUNT_NAME,
+                                                PhoneAccountType.ACCOUNT_TYPE,
+                                                null));
         if (currentAccount != null
                 && !mAccounts.isEmpty()
                 && !mAccounts.get(0).equals(currentAccount)
