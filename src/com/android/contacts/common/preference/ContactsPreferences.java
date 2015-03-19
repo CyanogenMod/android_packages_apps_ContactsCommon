@@ -52,17 +52,17 @@ public final class ContactsPreferences implements OnSharedPreferenceChangeListen
      */
     public static final int SORT_ORDER_PRIMARY = 1;
 
+    /**
+     * The value for the SORT_ORDER key corresponding to sort by family name first.
+     */
+    public static final int SORT_ORDER_ALTERNATIVE = 2;
+
     public static final String SORT_ORDER_KEY = "android.contacts.SORT_ORDER";
 
     /**
      * The values of SIMs serial numbers that have been imported
      */
     public static final String IMPORTED_SIMS_SNS = "android.contacts.IMPORTED_SIMS";
-
-    /**
-     * The value for the SORT_ORDER key corresponding to sort by family name first.
-     */
-    public static final int SORT_ORDER_ALTERNATIVE = 2;
 
     public static final String PREF_DISPLAY_ONLY_PHONES = "only_phones";
     public static final boolean PREF_DISPLAY_ONLY_PHONES_DEFAULT = false;
