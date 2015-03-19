@@ -156,6 +156,7 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
     private BroadcastReceiver mSIMStateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context arg0, Intent arg1) {
+            mForceLoad = loadPreferences();
             reloadData();
         }
     };
