@@ -876,7 +876,7 @@ public class MoreContactUtils {
     public static PhoneAccountHandle getAccount(int slot) {
         ComponentName serviceName = new ComponentName("com.android.phone",
                 "com.android.services.telephony.TelephonyConnectionService");
-        long[] subId = SubscriptionManager.getSubId(slot);
+        int[] subId = SubscriptionManager.getSubId(slot);
         return new PhoneAccountHandle(serviceName, String.valueOf(subId[0]));
     }
 
