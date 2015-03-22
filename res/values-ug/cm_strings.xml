@@ -16,5 +16,41 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="local_storage_account" product="tablet">يەرلىك تاختا كومپيۇتېر ھېساباتى</string>
+  <string name="local_storage_account" product="default">يەرلىك تېلېفون ھېساباتى</string>
+  <string name="import_contacts_sim">ئالاقەداشلارنى SIM كارتىدىن ئەكىرەمدۇ؟</string>
+  <string name="manage_sim_contacts">SIM كارتىدىكى ئالاقەداشلارنى باشقۇرۇش</string>
+  <string name="export_to_sim">SIM كارتىغا چىقار</string>
+  <string name="fail_reason_import_vcard">بىر كىرگۈزۈش چىقىرىش خاتالىقى سەۋەبىدىن <xliff:g id="name">%s</xliff:g> نى ئەكىرەلمىدى</string>
+  <string name="contact_share_failed_toast">ھەمبەھىرلەيدىغان ئالاقەداش <xliff:g id="count">%d</xliff:g> دىن ئاشمايدۇ</string>
+  <string name="label_groups">گۇرۇپپا</string>
+  <string name="exporting">چىقىرىۋاتىدۇ\u2026</string>
+  <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g>/<xliff:g id="total_number">%2$s</xliff:g> ھۆججەت</string>
+  <string name="export_failed">چىقىرالمىدى</string>
+  <string name="sim_card_full">SIM كارتا لىق</string>
+  <string name="export_finished">چىقىرىش تامام</string>
+  <string name="tag_too_long">ئالاقەداش ئىسمى بەك ئۇزۇن</string>
+  <string name="sim_contacts_not_loaded">SIM كارتىدىكى ئالاقەداشلارنى يۈكلىيەلمىدى</string>
+  <plurals name="export_cancelled">
+    <item quantity="other">چىقىرىشتىن ۋاز كەچتى، %d تۈر چىقىرىلدى</item>
+  </plurals>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g>نىڭ تېلېفون نومۇرى ياكى تورخەت ئادرېسى يوق</string>
   <string name="import_from_sim_select">ئەكىرىدىغان كارتىنى تاللاڭ</string>
+  <string name="no_sdcard_title" product="nosdcard">ساقلىغۇچنى ئىشلەتكىلى بولمايدۇ</string>
+  <string name="no_sdcard_title" product="default">SD كارتا يوق</string>
+  <string name="deleteConfirmation_title">ئالاقەداش ئۆچۈرەمدۇ؟</string>
+  <string name="deleteConfirmation">بۇ ئالاقەداش ئۆچۈرۈلىدۇ.</string>
+  <string name="copy_done">ئالاقەداش مۇۋەپپەقىيەتلىك كۆچۈرۈلدى</string>
+  <string name="copy_failure">ئالاقەداشنى كۆچۈرەلمىدى</string>
+  <string name="card_no_space">ئالاقەداشنى كۆچۈرەلمىدى، SIM كارتا لىق</string>
+  <string name="settings_contact_display_options_description">ئالاقەداشلىرىڭىزنى كۆرسىتىش ۋە تەرتىپلەش ئۇسۇلىنى سەپلەڭ.</string>
+  <string name="ip_call_by_slot"><xliff:g id="subName">%s</xliff:g> بىلەن IP چاقىرىش</string>
+  <string name="no_ip_number">IP نومۇر يوق</string>
+  <string name="no_ip_number_on_sim_card">SIM كارتىدا IP نومۇر يوق</string>
+  <string name="set_ip_number">IP نومۇر تەڭشەك</string>
+  <string name="ipcall_dialog_title">IP چاقىرىش تەڭشەكلىرى</string>
+  <string name="ipcall_dialog_edit_hint">IP ئالدى قوشۇلغۇچىسىنى كىرگۈزۈڭ</string>
+  <string name="import_contacts_from_all_cards">ھەممە SIM كارتىدىن ئالاقەداشلارنى ئەكىر</string>
+  <string name="select_path">يول تاللاڭ</string>
+  <string name="select_sim">SIM كارتا تاللا</string>
 </resources>

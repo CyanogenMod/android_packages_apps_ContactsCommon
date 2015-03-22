@@ -22,6 +22,7 @@
   <string name="label_groups">Grup</string>
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> din <xliff:g id="total_number">%2$s</xliff:g> fişiere</string>
   <string name="export_failed">Exportul a eșuat</string>
+  <string name="sim_card_full">Cartela SIM este plină</string>
   <string name="export_finished">Exportul s-a terminat</string>
   <string name="tag_too_long">Numele contactului este prea lung</string>
   <string name="import_from_sim_select">Alege cardul ce se va importa</string>
@@ -30,6 +31,7 @@
   <string name="deleteConfirmation_title">Ştergeţi persoana de contact?</string>
   <string name="deleteConfirmation">Acest contact va fi şters.</string>
   <string name="copy_failure">Copierea contactului a eșuat</string>
+  <string name="ip_call_by_slot">Apel IP prin <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Niciun număr de IP</string>
   <string name="no_ip_number_on_sim_card">Niciun număr de IP pe cartela SIM</string>
   <string name="ipcall_dialog_edit_hint">Introduceți prefixul IP</string>
