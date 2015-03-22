@@ -32,7 +32,7 @@
   <string name="tag_too_long">連絡先の名前が長すぎます</string>
   <string name="sim_contacts_not_loaded">SIMの連絡先を読み込めませんでした</string>
   <plurals name="export_cancelled">
-    <item quantity="other">エクスポートはキャンセルされました、%d項目がエクスポートされました</item>
+    <item quantity="other">エクスポートはキャンセルされました、%d個のアイテムがエクスポートされました</item>
   </plurals>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g>には電話番号またはメールアドレスがありません</string>
   <string name="import_from_sim_select">インポートするカードを選択</string>
