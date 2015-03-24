@@ -25,7 +25,6 @@ import android.os.Parcelable;
 import android.os.Trace;
 
 public class MaterialColorMapUtils {
-
     private final TypedArray sPrimaryColors;
     private final TypedArray sSecondaryColors;
 

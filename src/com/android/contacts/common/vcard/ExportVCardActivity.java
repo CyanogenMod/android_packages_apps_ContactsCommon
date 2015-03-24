@@ -30,6 +30,8 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
+import android.text.BidiFormatter;
+import android.text.TextDirectionHeuristics;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -113,6 +115,7 @@ public class ExportVCardActivity extends Activity implements ServiceConnection,
 
     private VCardService mService;
     private final Messenger mIncomingMessenger = new Messenger(new IncomingHandler());
+    private static final BidiFormatter mBidiFormatter = BidiFormatter.getInstance();
 
     // Used temporarily when asking users to confirm the file name
     private String mTargetFileName;
@@ -268,13 +271,25 @@ public class ExportVCardActivity extends Activity implements ServiceConnection,
         }
     }
 
+    /**
+     * Returns the name of the target path with additional formatting characters to improve its
+     * appearance in bidirectional text.
+     */
+    private String getTargetFileForDisplay() {
+        if (mTargetFileName == null) {
+            return null;
+        }
+        return mBidiFormatter.unicodeWrap(mTargetFileName, TextDirectionHeuristics.LTR);
+    }
+
     @Override
     protected Dialog onCreateDialog(int id, Bundle bundle) {
         switch (id) {
             case R.id.dialog_export_confirmation: {
                 return new AlertDialog.Builder(this)
                         .setTitle(R.string.confirm_export_title)
-                        .setMessage(getString(R.string.confirm_export_message, mTargetFileName))
+                        .setMessage(getString(R.string.confirm_export_message,
+                                getTargetFileForDisplay()))
                         .setPositiveButton(android.R.string.ok,
                                 new ExportConfirmationListener(mTargetFileName))
                         .setNegativeButton(android.R.string.cancel, this)
@@ -318,7 +333,7 @@ public class ExportVCardActivity extends Activity implements ServiceConnection,
             ((AlertDialog)dialog).setMessage(mErrorReason);
         } else if (id == R.id.dialog_export_confirmation) {
             ((AlertDialog)dialog).setMessage(
-                    getString(R.string.confirm_export_message, mTargetFileName));
+                    getString(R.string.confirm_export_message, getTargetFileForDisplay()));
         } else {
             super.onPrepareDialog(id, dialog, args);
         }
