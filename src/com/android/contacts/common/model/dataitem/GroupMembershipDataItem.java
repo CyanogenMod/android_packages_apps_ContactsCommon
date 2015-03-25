@@ -20,11 +20,14 @@ import android.content.ContentValues;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.GroupMembership;
 
+import com.android.contacts.common.GroupMetaData;
+
 /**
  * Represents a group memebership data item, wrapping the columns in
  * {@link ContactsContract.CommonDataKinds.GroupMembership}.
  */
 public class GroupMembershipDataItem extends DataItem {
+    public static final String GROUP_TITLE = "group_title";
 
     /* package */ GroupMembershipDataItem(ContentValues values) {
         super(values);
@@ -36,5 +39,13 @@ public class GroupMembershipDataItem extends DataItem {
 
     public String getGroupSourceId() {
         return getContentValues().getAsString(GroupMembership.GROUP_SOURCE_ID);
+    }
+
+    public void setGroupMetaData(GroupMetaData metaData) {
+        getContentValues().put(GROUP_TITLE, metaData.getTitle());
+    }
+
+    public String getGroupTitle() {
+        return getContentValues().getAsString(GROUP_TITLE);
     }
 }

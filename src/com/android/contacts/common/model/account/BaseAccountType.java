@@ -40,6 +40,7 @@ import android.view.inputmethod.EditorInfo;
 
 import com.android.contacts.common.R;
 import com.android.contacts.common.model.dataitem.DataKind;
+import com.android.contacts.common.model.dataitem.GroupMembershipDataItem;
 import com.android.contacts.common.testing.NeededForTesting;
 import com.android.contacts.common.util.CommonDateUtils;
 import com.android.contacts.common.util.ContactDisplayUtils;
@@ -437,7 +438,7 @@ public abstract class BaseAccountType extends AccountType {
                 R.string.groupsLabel, Weight.GROUP_MEMBERSHIP, true));
 
         kind.actionHeader = new SimpleInflater(R.string.label_groups);
-        kind.actionBody = new SimpleInflater(GroupMembership.GROUP_ROW_ID);
+        kind.actionBody = new SimpleInflater(GroupMembershipDataItem.GROUP_TITLE);
         kind.typeOverallMax = 1;
         kind.fieldList = Lists.newArrayList();
         kind.fieldList.add(new EditField(GroupMembership.GROUP_ROW_ID, -1, -1));
