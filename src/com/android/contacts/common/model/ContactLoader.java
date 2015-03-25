@@ -44,6 +44,7 @@ import com.android.contacts.common.model.account.AccountType;
 import com.android.contacts.common.model.account.AccountTypeWithDataSet;
 
 import com.android.contacts.common.model.dataitem.DataItem;
+import com.android.contacts.common.model.dataitem.GroupMembershipDataItem;
 import com.android.contacts.common.model.dataitem.PhoneDataItem;
 import com.android.contacts.common.model.dataitem.PhotoDataItem;
 import com.android.contacts.common.util.Constants;
@@ -896,7 +897,30 @@ public class ContactLoader extends AsyncTaskLoader<Contact> {
                 cursor.close();
             }
         }
-        result.setGroupMetaData(groupListBuilder.build());
+
+        final ImmutableList<GroupMetaData> metaDataList = groupListBuilder.build();
+        result.setGroupMetaData(metaDataList);
+
+        for (RawContact rawContact : result.getRawContacts()) {
+            for (DataItem dataItem : rawContact.getDataItems()) {
+                if (!(dataItem instanceof GroupMembershipDataItem)) {
+                    continue;
+                }
+
+                final GroupMembershipDataItem groupItem = (GroupMembershipDataItem) dataItem;
+                final Long groupId = groupItem.getGroupRowId();
+                if (groupId == null) {
+                    continue;
+                }
+
+                for (GroupMetaData groupData : metaDataList) {
+                    if (groupData.getGroupId() == groupId) {
+                        groupItem.setGroupMetaData(groupData);
+                        break;
+                    }
+                }
+            }
+        }
     }
 
     /**
