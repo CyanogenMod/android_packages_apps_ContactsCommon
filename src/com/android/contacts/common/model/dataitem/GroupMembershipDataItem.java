@@ -28,6 +28,8 @@ import com.android.contacts.common.GroupMetaData;
  */
 public class GroupMembershipDataItem extends DataItem {
     public static final String GROUP_TITLE = "group_title";
+    private static final String GROUP_IS_FAVORITES = "group_is_favorites";
+    private static final String GROUP_IS_DEFAULT = "group_is_default";
 
     /* package */ GroupMembershipDataItem(ContentValues values) {
         super(values);
@@ -42,10 +44,21 @@ public class GroupMembershipDataItem extends DataItem {
     }
 
     public void setGroupMetaData(GroupMetaData metaData) {
-        getContentValues().put(GROUP_TITLE, metaData.getTitle());
+        final ContentValues values = getContentValues();
+        values.put(GROUP_TITLE, metaData.getTitle());
+        values.put(GROUP_IS_FAVORITES, metaData.isFavorites());
+        values.put(GROUP_IS_DEFAULT, metaData.isDefaultGroup());
     }
 
     public String getGroupTitle() {
         return getContentValues().getAsString(GROUP_TITLE);
+    }
+
+    public boolean isFavoritesGroup() {
+        return getContentValues().getAsBoolean(GROUP_IS_FAVORITES);
+    }
+
+    public boolean isDefaultGroup() {
+        return getContentValues().getAsBoolean(GROUP_IS_DEFAULT);
     }
 }
