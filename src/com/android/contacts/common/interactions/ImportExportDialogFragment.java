@@ -139,7 +139,6 @@ public class ImportExportDialogFragment extends DialogFragment
     // only for sim contacts haven't been loaded completely
     private static final int TOAST_SIM_CARD_NOT_LOAD_COMPLETE = 6;
     private SimContactsOperation mSimContactsOperation;
-    private ArrayAdapter<Integer> mAdapter;
     private Activity mActivity;
     private static boolean isExportingToSIM = false;
     public static boolean isExportingToSIM(){
@@ -202,10 +201,6 @@ public class ImportExportDialogFragment extends DialogFragment
                 return result;
             }
         };
-
-        // Manually call notifyDataSetChanged() to refresh the list.
-        adapter.setNotifyOnChange(false);
-        loadData(contactsAreAvailable);
 
         final TelephonyManager manager =
                 (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
@@ -285,57 +280,8 @@ public class ImportExportDialogFragment extends DialogFragment
                 .setTitle(contactsAreAvailable
                         ? R.string.dialog_import_export
                         : R.string.dialog_import)
-                .setSingleChoiceItems(mAdapter, -1, clickListener)
+                .setSingleChoiceItems(adapter, -1, clickListener)
                 .create();
-    }
-
-    /**
-     * Loading the menu list data.
-     * @param contactsAreAvailable
-     */
-    private void loadData(boolean contactsAreAvailable) {
-        if (null == mActivity && null == mAdapter) {
-            return;
-        }
-
-        mAdapter.clear();
-        final Resources res = mActivity.getResources();
-        boolean hasIccCard = false;
-        if (TelephonyManager.getDefault().isMultiSimEnabled()) {
-           for (int i = 0; i < TelephonyManager.getDefault().getPhoneCount(); i++) {
-               hasIccCard = TelephonyManager.getDefault().hasIccCard(i);
-               if (hasIccCard) {
-                  break;
-               }
-           }
-        } else {
-           hasIccCard = TelephonyManager.getDefault().hasIccCard();
-        }
-
-        if (hasIccCard
-                && res.getBoolean(R.bool.config_allow_sim_import)) {
-            mAdapter.add(R.string.import_from_sim);
-        }
-        if (res.getBoolean(R.bool.config_allow_import_from_sdcard)) {
-            mAdapter.add(R.string.import_from_sdcard);
-        }
-
-        if (hasIccCard) {
-            mAdapter.add(R.string.export_to_sim);
-        }
-        if (res.getBoolean(R.bool.config_allow_export_to_sdcard)) {
-            // If contacts are available and there is at least one contact in
-            // database, show "Export to SD card" menu item. Otherwise hide it
-            // because it makes no sense.
-            if (contactsAreAvailable) {
-                mAdapter.add(R.string.export_to_sdcard);
-            }
-        }
-        if (res.getBoolean(R.bool.config_allow_share_visible_contacts)) {
-            if (contactsAreAvailable) {
-                mAdapter.add(R.string.share_visible_contacts);
-            }
-        }
     }
 
     private void doShareVisibleContacts() {
