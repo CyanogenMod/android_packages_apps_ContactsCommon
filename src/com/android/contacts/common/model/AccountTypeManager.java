@@ -643,6 +643,12 @@ class AccountTypeManagerImpl extends AccountTypeManager
     }
 
     private boolean isSimAccountInvalid(Account account) {
+        // skip this check if this is not a sim account
+        if (MoreContactUtils.getSubscription(account.type, account.name)
+                == SimContactsConstants.SUB_INVALID) {
+            return false;
+        }
+
         if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
             if (account.name.equals(SimContactsConstants.SIM_NAME))
                 return true;
