@@ -149,11 +149,15 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
     private Context mContext;
 
     private LoaderManager mLoaderManager;
+    private boolean mIgnoreSimStateChange;
 
     private BroadcastReceiver mSIMStateReceiver = new BroadcastReceiver() {
         @Override
-        public void onReceive(Context arg0, Intent arg1) {
-            reloadData();
+        public void onReceive(Context context, Intent intent) {
+            if (!mIgnoreSimStateChange) {
+                reloadData();
+            }
+            mIgnoreSimStateChange = false;
         }
     };
 
@@ -273,13 +277,6 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
         mAdapter = createListAdapter();
         mContactsPrefs = new ContactsPreferences(mContext);
         restoreSavedState(savedState);
-
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED);
-        filter.addAction(TelephonyIntents.ACTION_SIM_STATE_CHANGED);
-        if (mContext != null) {
-            mContext.registerReceiver(mSIMStateReceiver, filter);
-        }
     }
 
     public void restoreSavedState(Bundle savedState) {
@@ -316,6 +313,13 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
 
         mDirectoryListStatus = STATUS_NOT_LOADED;
         mLoadPriorityDirectoriesOnly = true;
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+        filter.addAction(TelephonyIntents.ACTION_SIM_STATE_CHANGED);
+        // Make sure to not trigger a full reload by the sticky SIM state change
+        // broadcast delivery on registration
+        mIgnoreSimStateChange = mContext.registerReceiver(mSIMStateReceiver, filter) != null;
 
         startLoading();
     }
@@ -496,14 +500,7 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
         super.onStop();
         mContactsPrefs.unregisterChangeListener();
         mAdapter.clearPartitions();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if (mContext != null) {
-            mContext.unregisterReceiver(mSIMStateReceiver);
-        }
+        mContext.unregisterReceiver(mSIMStateReceiver);
     }
 
     protected void reloadData() {
