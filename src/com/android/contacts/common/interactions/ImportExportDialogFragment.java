@@ -243,7 +243,7 @@ public class ImportExportDialogFragment extends DialogFragment
                 new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                boolean dismissDialog;
+                boolean dismissDialog = true;
                 final int resId = adapter.getItem(which).mChoiceResourceId;
                 switch (resId) {
                     case R.string.import_from_sim:
@@ -273,7 +273,9 @@ public class ImportExportDialogFragment extends DialogFragment
                                 + getActivity().getResources().getResourceEntryName(resId));
                     }
                 }
+                if (dismissDialog) {
                     dialog.dismiss();
+                }
             }
         };
         return new AlertDialog.Builder(getActivity())
