@@ -580,6 +580,26 @@ public class ImportExportDialogFragment extends AnalyticsDialogFragment
                                                     TOAST_EXPORT_FAILED, insertCount, 0));
                                             break;
                                         } else {
+                                            // Failed to insert to SIM card
+                                            int anrNumber = 0;
+                                            if (!TextUtils.isEmpty(anrNum)) {
+                                                anrNumber += anrNum.toString().split(
+                                                        SimContactsConstants.ANR_SEP).length;
+                                            }
+                                            // reset emptyNumber and emptyAnr to the value before
+                                            // the insert operation
+                                            emptyAnr += anrNumber;
+                                            emptyNumber += anrNumber;
+                                            if (!TextUtils.isEmpty(num)) {
+                                                emptyNumber++;
+                                            }
+
+                                            if (!TextUtils.isEmpty(email)) {
+                                                // reset emptyEmail to the value before the insert
+                                                // operation
+                                                emptyEmail += email.toString().split(
+                                                        SimContactsConstants.EMAIL_SEP).length;
+                                            }
                                             continue;
                                         }
                                     }
