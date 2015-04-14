@@ -526,6 +526,18 @@ public abstract class ContactPhotoManager implements ComponentCallbacks2 {
     }
 
     /**
+     * Used to request bitmap of a Contact photo
+     *
+     * @param photoUri Uri of the contact's photo
+     * @param imgView Sentinel used to triage this request through the existing contact bitmap
+     *                loading pipeline. The contact Bitmap won't be loaded into this imageview.
+     * @param widthHint TODO
+     * @param cb Callback via which a contact's bitmap is made available to the requester
+     */
+    public abstract void getBitmapForContact(Uri photoUri, ImageView imgView, int widthHint,
+            PhotoFetcherCallback cb);
+
+    /**
      * Calls {@link #loadPhoto(ImageView, Uri, boolean, boolean, DefaultImageRequest,
      * DefaultImageProvider)} with {@link #DEFAULT_AVATAR} and with the assumption, that
      * the image is a thumbnail.
@@ -601,6 +613,11 @@ public abstract class ContactPhotoManager implements ComponentCallbacks2 {
     // ComponentCallbacks2
     @Override
     public void onTrimMemory(int level) {
+    }
+
+    // callbacks associated with contact image requests
+    public interface PhotoFetcherCallback {
+        public void onFetchComplete(Bitmap bitmap);
     }
 }
 
@@ -879,6 +896,67 @@ class ContactPhotoManagerImpl extends ContactPhotoManager implements Callback {
         }
     }
 
+    /**
+     * Checks the cache to satisfy the bitmap request. If not found, requests the loader for
+     * the contact's image.
+     */
+    @Override
+    public void getBitmapForContact(Uri photoUri, ImageView imgView, int widthHint,
+            PhotoFetcherCallback cb) {
+        // ensure request is for a valid contact uri before checking for bitmap
+        // or posting a load request
+        if (photoUri == null || isDefaultImageUri(photoUri)) return;
+
+        // formulate the contact bitmap request
+        Request request = Request.createBitmapOnly(photoUri, widthHint, cb);
+        // check bitmap cache
+        boolean done = decodeContactBitmapFromCache(request);
+
+        // if not in cache , put request in loading queue
+        if (!done) {
+            Request loadRequest = Request.createBitmapOnly(photoUri, widthHint, cb);
+            mPendingRequests.put(imgView, loadRequest);
+            if (!mPaused) {
+                requestLoading();
+            }
+        }
+    }
+
+    /**
+     * Checks the cache for the contact bitmap's bytes, decodes those bytes, and sends the
+     * decoded bitmap to the requester
+     *
+     * @return true if the bitmap is present and the cache and has been sent to the requester
+     */
+    private boolean decodeContactBitmapFromCache(Request request) {
+        Uri photoUri = request.getUri();
+        PhotoFetcherCallback cb = request.getCallback();
+
+        // check cache for the bitmap bytes
+        BitmapHolder holder = mBitmapHolderCache.get(request.getKey());
+        if (holder.bytes != null && holder.bytes.length != 0 && holder.bitmapRef != null) {
+            // inflate bitmap from cache bytes
+            int sampleSize =
+                    BitmapUtil.findOptimalSampleSize(holder.originalSmallerExtent,
+                            request.getRequestedExtent());
+            if (holder.decodedSampleSize == sampleSize && holder.bitmap != null) {
+                // already has the decoded bytes at the requested size
+                cb.onFetchComplete(holder.bitmap);
+            } else {
+                Bitmap bitmap = BitmapUtil.decodeBitmapFromBytes(holder.bytes, sampleSize);
+                // redo holder
+                holder.decodedSampleSize = sampleSize;
+                holder.bitmap = bitmap;
+                holder.bitmapRef = new SoftReference<Bitmap>(bitmap);
+                cb.onFetchComplete(holder.bitmap);
+            }
+            return true;
+        }
+
+        // cache doesn't hold the requested bitmap
+        return false;
+    }
+
     @Override
     public void removePhoto(ImageView view) {
         view.setImageDrawable(null);
@@ -1153,10 +1231,15 @@ class ContactPhotoManagerImpl extends ContactPhotoManager implements Callback {
         Iterator<ImageView> iterator = mPendingRequests.keySet().iterator();
         while (iterator.hasNext()) {
             ImageView view = iterator.next();
-            Request key = mPendingRequests.get(view);
-            // TODO: Temporarily disable contact photo fading in, until issues with
-            // RoundedBitmapDrawables overlapping the default image drawables are resolved.
-            boolean loaded = loadCachedPhoto(view, key, false);
+            Request request = mPendingRequests.get(view);
+            boolean loaded = false;
+            if (request.isBitmapOnly()) {
+                decodeContactBitmapFromCache(request);
+            } else {
+                // TODO: Temporarily disable contact photo fading in, until issues with
+                // RoundedBitmapDrawables overlapping the default image drawables are resolved.
+                loaded = loadCachedPhoto(view, request, false);
+            }
             if (loaded) {
                 iterator.remove();
             }
@@ -1595,10 +1678,16 @@ class ContactPhotoManagerImpl extends ContactPhotoManager implements Callback {
         private final boolean mDarkTheme;
         private final int mRequestedExtent;
         private final DefaultImageProvider mDefaultProvider;
+
         /**
          * Whether or not the contact photo is to be displayed as a circle
          */
         private final boolean mIsCircular;
+
+        // params for bitmap requests
+        private boolean mIsBitmapOnly;
+        private PhotoFetcherCallback mCallback;
+
 
         private Request(long id, Uri uri, int requestedExtent, boolean darkTheme,
                 boolean isCircular, DefaultImageProvider defaultProvider) {
@@ -1621,6 +1710,23 @@ class ContactPhotoManagerImpl extends ContactPhotoManager implements Callback {
                     defaultProvider);
         }
 
+        public static Request createBitmapOnly(Uri uri, int requestedExtent,
+                PhotoFetcherCallback cb) {
+            Request request = new Request(0, uri, requestedExtent, false, false, null);
+            request.setBitmapOnly();
+            request.mCallback = cb;
+
+            return request;
+        }
+
+        public boolean isBitmapOnly() {
+            return mIsBitmapOnly;
+        }
+
+        public PhotoFetcherCallback getCallback() {
+            return mCallback;
+        }
+
         public boolean isUriRequest() {
             return mUri != null;
         }
@@ -1635,6 +1741,10 @@ class ContactPhotoManagerImpl extends ContactPhotoManager implements Callback {
 
         public int getRequestedExtent() {
             return mRequestedExtent;
+        }
+
+        public void setBitmapOnly() {
+            mIsBitmapOnly = true;
         }
 
         @Override
