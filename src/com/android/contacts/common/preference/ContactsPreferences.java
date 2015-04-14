@@ -47,6 +47,8 @@ public final class ContactsPreferences implements OnSharedPreferenceChangeListen
 
     public static final String DISPLAY_ORDER_KEY = "android.contacts.DISPLAY_ORDER";
 
+    private static final String LAST_UPDATED_MILLIS = "last_updated_millis";
+
     /**
      * The value for the SORT_ORDER key corresponding to sort by given name first.
      */
@@ -194,6 +196,8 @@ public final class ContactsPreferences implements OnSharedPreferenceChangeListen
                     mDisplayOrder = getDisplayOrder();
                 } else if (SORT_ORDER_KEY.equals(key)) {
                     mSortOrder = getSortOrder();
+                } else if (LAST_UPDATED_MILLIS.equals(key)) {
+                    return;
                 }
                 if (mListener != null) mListener.onChange();
             }
