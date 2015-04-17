@@ -191,8 +191,10 @@ public final class ContactsPreferences implements OnSharedPreferenceChangeListen
             @Override
             public void run() {
                 if (DISPLAY_ORDER_KEY.equals(key)) {
+                    mDisplayOrder = -1;
                     mDisplayOrder = getDisplayOrder();
                 } else if (SORT_ORDER_KEY.equals(key)) {
+                    mSortOrder = -1;
                     mSortOrder = getSortOrder();
                 }
                 if (mListener != null) mListener.onChange();
