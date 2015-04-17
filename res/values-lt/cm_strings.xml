@@ -44,7 +44,7 @@
   <string name="deleteConfirmation">Šis kontaktas bus ištrintas.</string>
   <string name="copy_done">Kontaktas buvo sėkmingai nukopijuotas</string>
   <string name="copy_failure">Nepavyko nukopijuoti kontakto</string>
-  <string name="card_no_space">Nukopijuoti kontakto nepavyko, SIM kortelė yra pilna</string>
+  <string name="card_no_space">Nepavyko nukopijuoti kontakto, SIM kortelė yra pilna</string>
   <string name="settings_contact_display_options_description">Konfigūruoti kaip jūsų kontaktai yra rodomi ir rūšiuojami.</string>
   <string name="ip_call_by_slot">IP skambutis per <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Nėra IP numerio</string>
