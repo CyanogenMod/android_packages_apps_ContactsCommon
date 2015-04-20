@@ -27,18 +27,28 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.android.contacts.common.list.DefaultContactListAdapter;
+import com.suntek.mway.rcs.client.api.voip.impl.RichScreenApi;
 
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 
 import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.Contacts.Data;
+import android.text.TextUtils;
+import android.util.Log;
 
 public class ContactsCommonRcsUtil {
+
+    public static final String TAG = "ContactsCommonRcsUtil";
+
+    public static final boolean DEBUG = false;
 
     public static final String RCS_CAPABILITY_CHANGED = "rcs_capability_changed";
 
@@ -48,11 +58,18 @@ public class ContactsCommonRcsUtil {
 
     public static final String RCS_CAPABILITY_MIMETYPE = "vnd.android.cursor.item/capability";
 
+ // User requst to update enhance screen
+    public static final String UPDATE_ENHANCE_SCREEN_PHONE_EVENT = "933 10 12000";
+
+    private static int DEFAULT_NUMBER_LENGTH = 11;
+
     public static final HashMap<Long, Boolean> RcsCapabilityMap = new HashMap<Long, Boolean>();
 
     public static final HashMap<Long, Boolean> RcsCapabilityMapCache = new HashMap<Long, Boolean>();
 
     private static boolean isRcs = false;
+
+    private static RichScreenApi mRichScreenApi = null;
 
     // private static long rcsCapabilityUpdatedContactId = -1;
 
@@ -82,27 +99,23 @@ public class ContactsCommonRcsUtil {
             @Override
             protected Void doInBackground(Void... params) {
                 ContentResolver resolver = context.getContentResolver();
-                Cursor c = resolver.query(Contacts.CONTENT_URI, new String[] {
-                    Contacts._ID
-                }, null, null, null);
-                ArrayList<Long> contactIdList = new ArrayList<Long>();
+                Cursor c = resolver.query(ContactsContract.Data.CONTENT_URI,
+                new String[] {
+                    ContactsContract.Data.DATA1
+                }, Data.MIMETYPE + " = ?" + " and " +
+                ContactsContract.Data.DATA2 + " = ?", new String[] {
+                        RCS_CAPABILITY_MIMETYPE, String.valueOf(1)
+                }, null);
                 try {
                     if (c != null && c.moveToFirst()) {
                         do {
                             Long contactId = c.getLong(0);
-                            contactIdList.add(contactId);
+                            RcsCapabilityMap.put(contactId, true);
                         } while (c.moveToNext());
                     }
                 } finally {
                     if(null != c){
                         c.close();
-                    }
-                }
-                for (Long contactId : contactIdList) {
-                    if (ContactsCommonRcsUtil.isRCSUser(context, contactId)) {
-                        RcsCapabilityMap.put(contactId, true);
-                    } else {
-                        RcsCapabilityMap.put(contactId, false);
                     }
                 }
                 return null;
@@ -116,27 +129,86 @@ public class ContactsCommonRcsUtil {
         }.execute();
     }
 
-    public static boolean isRCSUser(final Context context, long contactId) {
-        Cursor c = context.getContentResolver().query(ContactsContract.Data.CONTENT_URI,
-                new String[] {
-                    ContactsContract.Data.DATA2
-                }, Data.MIMETYPE + " = ?  and " + ContactsContract.Data.DATA1 + " = ?",
-                new String[] {
-                        RCS_CAPABILITY_MIMETYPE, String.valueOf(contactId)
-                }, null);
-        try {
-            if (c != null && c.moveToFirst()) {
-                do {
-                    if (c.getInt(0) == 1) {
-                        return true;
-                    }
-                } while (c.moveToNext());
-            }
-        } finally {
-            if(null != c){
-                c.close();
-            }
+    public static void setRichScreenApi(RichScreenApi richScreenApi) {
+        mRichScreenApi = richScreenApi;
+    }
+
+    public static RichScreenApi getRichScreenApi(Context context) {
+        if (mRichScreenApi == null) {
+            mRichScreenApi = new RichScreenApi(null);
+            mRichScreenApi.init(context, null);
+            Log.d(TAG, "_______mRichScreenApi init______");
         }
-        return false;
+        return mRichScreenApi;
+    }
+
+    private static boolean isWifiEnabled(Context context) {
+        WifiManager wifiManager = (WifiManager)context.getSystemService(Context.WIFI_SERVICE);
+        if (wifiManager.getWifiState() == WifiManager.WIFI_STATE_ENABLED) {
+            ConnectivityManager connManager = (ConnectivityManager)context
+                    .getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo wifiInfo = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+            return wifiInfo.isConnected();
+        } else {
+            return false;
+        }
+    }
+
+    public static String getFormatNumber(String number){
+        if(null == number){
+            return "";
+        }
+        number = number.replaceAll("-", "");
+        number = number.replaceAll(" ", "");
+        number = number.replaceAll(",", "");
+        int numberLen = number.length();
+        if(numberLen > DEFAULT_NUMBER_LENGTH){
+            number = number.substring(numberLen - DEFAULT_NUMBER_LENGTH, numberLen);
+        }
+        return number;
+    }
+
+    public static void updateAllEnhanceScreeen(final Context context) {
+        if (!isWifiEnabled(context))
+            return;
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ArrayList<String> phoneNumberList = new ArrayList<String>();
+                Cursor phonecursor = context.getContentResolver().query(
+                        ContactsContract.CommonDataKinds.Phone.CONTENT_URI, new String[] {
+                            Phone.NUMBER
+                        }, null, null, null);
+                try {
+                    if (phonecursor != null && phonecursor.moveToFirst()) {
+                        // boolean hasTryToGet = false;
+                        do {
+                            String phoneNumber = phonecursor.getString(0);
+                            phoneNumberList.add(getFormatNumber(phoneNumber));
+                        } while (phonecursor.moveToNext());
+                    }
+                } finally {
+                    if (null != phonecursor) {
+                        phonecursor.close();
+                    }
+                }
+                try {
+                    for (String aPhoneNumber : phoneNumberList) {
+                        if (!TextUtils.isEmpty(aPhoneNumber)) {
+                            if (DEBUG) {
+                                Log.d(TAG, "Phone Number is: " + aPhoneNumber);
+                                Log.d(TAG, "Calling downloadRichScrnObj for " + aPhoneNumber);
+                            }
+                            mRichScreenApi.downloadRichScrnObj(aPhoneNumber,
+                                    UPDATE_ENHANCE_SCREEN_PHONE_EVENT);
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return;
+                }
+            }
+        });
+        t.start();
     }
 }
