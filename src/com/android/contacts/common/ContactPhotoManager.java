@@ -1240,7 +1240,7 @@ class ContactPhotoManagerImpl extends ContactPhotoManager implements Callback {
             Request request = mPendingRequests.get(view);
             boolean loaded = false;
             if (request.isBitmapOnly()) {
-                decodeContactBitmapFromCache(request);
+                loaded = decodeContactBitmapFromCache(request);
             } else {
                 // TODO: Temporarily disable contact photo fading in, until issues with
                 // RoundedBitmapDrawables overlapping the default image drawables are resolved.
