@@ -31,6 +31,10 @@
   <string name="sim_card_full">SIM-kortet är fullt</string>
   <string name="export_finished">Export slutförd</string>
   <string name="tag_too_long">Kontaktnamnet är för långt</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">Exporten avbröts, %d objekt exporterades</item>
+    <item quantity="other">Exporten avbröts, %d objekt exporterades</item>
+  </plurals>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> har inte ett telefonnummer eller e-postadress</string>
   <string name="import_from_sim_select">Välj kort att importera</string>
   <string name="no_sdcard_title" product="nosdcard">Lagring ej tillgänglig</string>
