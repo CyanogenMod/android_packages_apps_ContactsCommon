@@ -30,6 +30,7 @@ import android.provider.ContactsContract.RawContacts;
 import android.widget.Toast;
 
 import com.android.contacts.common.R;
+import com.android.contacts.common.util.ContactsCommonRcsUtil;
 import com.android.vcard.VCardEntry;
 
 public class NotificationImportExportListener implements VCardImportExportListener,
@@ -130,6 +131,9 @@ public class NotificationImportExportListener implements VCardImportExportListen
                         VCardService.TYPE_IMPORT, description, null, intent);
         mNotificationManager.notify(NotificationImportExportListener.DEFAULT_NOTIFICATION_TAG,
                 jobId, notification);
+		if (ContactsCommonRcsUtil.getIsRcs()) {
+			ContactsCommonRcsUtil.updateAllEnhanceScreeen(mContext);
+		}
     }
 
     @Override

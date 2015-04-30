@@ -840,4 +840,12 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
     <string name="import_contacts_sim">Import contacts from SIM?</string>
     <string name="import_contacts_sim_confirm">Import</string>
     <string name="import_contacts_sim_cancel">Cancel</string>
+    <!-- Title for Select Account Dialog [CHAR LIMIT=30] -->
+    <string name="select_account_dialog_title">Select Account</string>
+
+    <!-- Label for the check box to toggle default sim card setting [CHAR LIMIT=35]-->
+    <string name="set_default_account">Always use this for calls</string>
+
+    <!-- Title for dialog to select Phone Account for outgoing call.  [CHAR LIMIT=40] -->
+    <string name="select_phone_account_for_calls">Call with</string>
 </resources>
