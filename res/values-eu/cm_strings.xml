@@ -16,7 +16,11 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="local_storage_account" product="tablet">Tabletaren tokiko kontua</string>
   <string name="local_storage_account" product="default">Telefonoaren tokiko kontua</string>
   <string name="name_for_sim">Izena</string>
+  <string name="fail_reason_import_vcard"><xliff:g id="name">%s</xliff:g> VCard txartela ez da inportatu, sarrera/irteera arazo bat dela eta</string>
   <string name="label_groups">Taldea</string>
+  <string name="deleteConfirmation_title">Ezabatu kontaktua?</string>
+  <string name="deleteConfirmation">Kontaktu hau ezabatuko da.</string>
 </resources>
