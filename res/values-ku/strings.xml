@@ -208,7 +208,6 @@
   <string name="vcard_export_request_rejected_message">vCard و ناردنی وه‌ داواکردنی ڕه‌تکرایه‌وه‌. دواتر هه‌وڵ بده‌ره‌وه‌.</string>
   <string name="vcard_unknown_filename">په‌یوه‌ندی</string>
   <string name="caching_vcard_message">گرتنی vCard بۆ بیرگه‌ی ناوه‌کی. له‌ ڕاستیدا دێته‌ ناوی به‌ زویی.</string>
-  <string name="percentage"><xliff:g id="percentage" example="50">%s</xliff:g><xliff:g id="percentsign" example="%">%%</xliff:g></string>
   <string name="vcard_import_failed">نه‌توانرا vCard تێبکرێت.</string>
   <string name="import_failure_no_vcard_file" product="nosdcard">هیچ vCard ـێک نه‌دۆزرایه‌وه‌.</string>
   <string name="import_failure_no_vcard_file" product="default">هیچ vCard نه‌دۆزرایه‌وه‌ له‌سه‌ر بیرگه‌.</string>

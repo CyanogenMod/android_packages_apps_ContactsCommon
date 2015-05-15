@@ -31,6 +31,10 @@
   <string name="export_finished">Vienti valmis</string>
   <string name="tag_too_long">Yhteystiedon nimi on liian pitkä</string>
   <string name="sim_contacts_not_loaded">Ei voi ladata SIM-kortin yhteystietoja</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">Vienti peruttiin, %d kohde vietiin</item>
+    <item quantity="other">Vienti peruttiin, %d kohdetta vietiin</item>
+  </plurals>
   <string name="export_no_phone_or_email">Yhteystiedolla <xliff:g id="name">%s</xliff:g> ei ole puhelinnumeroa tai sähköpostiosoitetta</string>
   <string name="import_from_sim_select">Valitse kortti josta tuodaan</string>
   <string name="no_sdcard_title" product="nosdcard">Tallennustila ei saatavilla</string>

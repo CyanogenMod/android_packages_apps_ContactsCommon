@@ -19,7 +19,7 @@
   <string name="local_storage_account" product="tablet">هەژماری ناوخۆی تاتەبژمێر</string>
   <string name="local_storage_account" product="default">هەژماری ناوخۆی تەلەفۆن</string>
   <string name="export_to_sim">ناردنی ناو بۆ سیماکارت</string>
-  <string name="label_groups">گرووپ</string>
+  <string name="label_groups">کۆمەڵ</string>
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> ی <xliff:g id="total_number">%2$s</xliff:g> فایلەکان</string>
   <string name="export_failed">هەناردن سەرکەوتوو نەبوو</string>
   <string name="export_finished">هەناردن تەواو بوو</string>

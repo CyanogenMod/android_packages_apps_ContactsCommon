@@ -16,5 +16,42 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="local_storage_account" product="tablet">Tabletaren tokiko kontua</string>
   <string name="local_storage_account" product="default">Telefonoaren tokiko kontua</string>
+  <string name="import_contacts_sim">Inportatu kontaktuak SIM txarteletik?</string>
+  <string name="manage_sim_contacts">Kudeatu SIM txarteleko kontaktuak</string>
+  <string name="export_to_sim">Esportatu SIM txartelera</string>
+  <string name="fail_reason_import_vcard">\'<xliff:g id="name">%s</xliff:g>\' ezin izan da inportatu sarrera/irteera errore bat dela eta</string>
+  <string name="contact_share_failed_toast">Ezin dira <xliff:g id="count">%d</xliff:g> kontaktu baino gehiago partekatu</string>
+  <string name="label_groups">Taldea</string>
+  <string name="exporting">Esportatzen\u2026</string>
+  <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> fitxategi <xliff:g id="total_number">%2$s</xliff:g>tik</string>
+  <string name="export_failed">Esportazioak huts egin du</string>
+  <string name="sim_card_full">SIM txartela beteta dago</string>
+  <string name="export_finished">Esportazioa burutu da</string>
+  <string name="tag_too_long">Kontaktuaren izena luzeegia da</string>
+  <string name="sim_contacts_not_loaded">Ez izan dira SIM txarteleko kontaktuak kargatu</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">Esportazioa bertan behera utzi da, %d esportatu da</item>
+    <item quantity="other">Esportazioa bertan behera utzi da, %d esportatu dira</item>
+  </plurals>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g>(e)k ez du telefono zenbakirik edo posta helbiderik</string>
+  <string name="import_from_sim_select">Hautatu inportatuko den txartela</string>
+  <string name="no_sdcard_title" product="nosdcard">Biltegiratzea ez dago eskuragarri</string>
+  <string name="no_sdcard_title" product="default">SD txartelik ez</string>
+  <string name="deleteConfirmation_title">Ezabatu kontaktua?</string>
+  <string name="deleteConfirmation">Kontaktu hau ezabatuko da.</string>
+  <string name="copy_done">Kontaktua ondo kopiatu da</string>
+  <string name="copy_failure">Kontaktuaren kopiak huts egin du</string>
+  <string name="card_no_space">Kontaktuaren kopiak huts egin du, SIM txartela beteta dago</string>
+  <string name="settings_contact_display_options_description">Konfiguratu zure kontatuak bistaratu eta ordenatuko diren modua.</string>
+  <string name="ip_call_by_slot"><xliff:g id="subName">%s</xliff:g> -rekin IP deia</string>
+  <string name="no_ip_number">IP zenbakirik ez</string>
+  <string name="no_ip_number_on_sim_card">IP zenbakirik ez SIM txartelean</string>
+  <string name="set_ip_number">Ezarri IP zenbakia</string>
+  <string name="ipcall_dialog_title">IP deien hobespenak</string>
+  <string name="ipcall_dialog_edit_hint">Sartu IP-aren aurrezenbakia</string>
+  <string name="import_contacts_from_all_cards">Inportatu kontaktuak SIM txartel guztietatik</string>
+  <string name="select_path">Hautatu bidea</string>
+  <string name="select_sim">Hautatu SIMa</string>
 </resources>

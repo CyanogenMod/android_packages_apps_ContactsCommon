@@ -160,7 +160,6 @@
   <string name="listSingleContact">Eenzelne Kontakt</string>
   <string name="dialog_new_contact_account">Kontakt ënner dem Kont uleeën</string>
   <string name="import_from_sim">Vun der SIM-Kaart importéieren</string>
-  <string name="import_from_sim_number">Vun der SIM-Kaart #<xliff:g id="sim_number" example="2">%d</xliff:g> importéieren</string>
   <string name="import_from_sdcard" product="default">Aus dem Späicher importéieren</string>
   <string name="cancel_import_confirmation_message">Import vum Fichier <xliff:g id="filename" example="import.vcf">%s</xliff:g> ofbriechen?</string>
   <string name="cancel_export_confirmation_message">Export vum Fichier <xliff:g id="filename" example="import.vcf">%s</xliff:g> ofbriechen?</string>
@@ -204,7 +203,6 @@
   <string name="vcard_export_request_rejected_message">D\'vCard-Exportufro gouf rejetéiert. Probéier méi spéit nees.</string>
   <string name="vcard_unknown_filename">Kontakt</string>
   <string name="caching_vcard_message">D\'vCard-Date ginn an den Tëschespäichere gelueden. Den Import fänkt geschwënn un.</string>
-  <string name="percentage"><xliff:g id="percentage" example="50">%s</xliff:g><xliff:g id="percentsign" example="%">%%</xliff:g></string>
   <string name="vcard_import_failed">Konnt d\'vCard net importéieren.</string>
   <string name="import_failure_no_vcard_file" product="nosdcard">Kee vCard-Fichier am Späicher fonnt.</string>
   <string name="import_failure_no_vcard_file" product="default">Kee vCard-Fichier op der SD-Kaart fonnt.</string>

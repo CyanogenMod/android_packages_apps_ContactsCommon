@@ -196,7 +196,6 @@
   <string name="vcard_export_request_rejected_message">vCard چىقىرىش ئىلتىماسى رەت قىلىندى. سەل تۇرۇپ قايتا سىناڭ.</string>
   <string name="vcard_unknown_filename">ئالاقەداش</string>
   <string name="caching_vcard_message">vCard نى يەرلىك ۋاقىتلىق ساقلىغۇچقا غەملەۋاتىدۇ. ناھايىتى تېزلا ھەقىقىي ئەكىرىشنى باشلايدۇ.</string>
-  <string name="percentage"><xliff:g id="PERCENTAGE">%s</xliff:g><xliff:g id="PERCENTSIGN">%%</xliff:g></string>
   <string name="vcard_import_failed">vCard نى ئەكىرەلمەيدۇ</string>
   <string name="import_failure_no_vcard_file" product="nosdcard">بۇ ساقلىغۇچتىن vCard ھۆججىتىنى تاپالمىدى</string>
   <string name="import_failure_no_vcard_file" product="default">SD كارتىدىن vCard ھۆججىتىنى تاپالمىدى.</string>
