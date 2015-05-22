@@ -617,12 +617,14 @@ public class ImportExportDialogFragment extends DialogFragment
             // call query first, otherwise insert will fail if this insert is called
             // without any query before
             try{
-                if (subscription == SimContactsConstants.SUB_1) {
-                    cr = mPeople.getContentResolver().query(Uri.parse("content://iccmsim/adn"),
-                        null, null, null, null);
-                } else if (subscription == SimContactsConstants.SUB_2) {
-                    cr = mPeople.getContentResolver().query(
-                            Uri.parse("content://iccmsim/adn_sub2"), null, null, null, null);
+                if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+                    if (subscription == SimContactsConstants.SUB_1) {
+                        cr = mPeople.getContentResolver().query(Uri.parse("content://iccmsim/adn"),
+                            null, null, null, null);
+                    } else if (subscription == SimContactsConstants.SUB_2) {
+                        cr = mPeople.getContentResolver().query(
+                                Uri.parse("content://iccmsim/adn_sub2"), null, null, null, null);
+                    }
                 } else {
                     cr = mPeople.getContentResolver().query(Uri.parse("content://icc/adn"), null,
                         null, null, null);
