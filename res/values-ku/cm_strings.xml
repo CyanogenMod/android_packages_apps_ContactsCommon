@@ -18,18 +18,36 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">هەژماری ناوخۆی تاتەبژمێر</string>
   <string name="local_storage_account" product="default">هەژماری ناوخۆی تەلەفۆن</string>
+  <string name="import_contacts_sim">هێنانی ناوەکان لە سیمکارتەکەوە?</string>
+  <string name="manage_sim_contacts">بەڕێوەبردنی پەیوەندییەکانی سیمکارت</string>
   <string name="export_to_sim">ناردنی ناو بۆ سیماکارت</string>
+  <string name="fail_reason_import_vcard">\'<xliff:g id="name">%s</xliff:g>\' نەتوانرا بهێنرێت لەبەر I/O هەڵە</string>
+  <string name="contact_share_failed_toast">زیاتر نە لە <xliff:g id="count">%d</xliff:g>ناوەکان دەتوانرێت بەشداریپێبکرێت</string>
   <string name="label_groups">کۆمەڵ</string>
+  <string name="exporting">دەرهێنان\u2026</string>
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> ی <xliff:g id="total_number">%2$s</xliff:g> فایلەکان</string>
   <string name="export_failed">هەناردن سەرکەوتوو نەبوو</string>
+  <string name="sim_card_full">سیمکارتەکە پڕە</string>
   <string name="export_finished">هەناردن تەواو بوو</string>
+  <string name="tag_too_long">ناو زۆر درێژە</string>
+  <string name="sim_contacts_not_loaded">ناتوانرێت ناوەکان دابەزێنرێت لەسەر سیمکارتەکە</string>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g>ژمارەی تەلەفۆن یان پۆستی ئەلیکترۆنی نیە</string>
   <string name="import_from_sim_select">کارتێک هەڵبژێرە بۆ هاوردن</string>
   <string name="no_sdcard_title" product="nosdcard">بیرگە بەردەست نییە</string>
   <string name="no_sdcard_title" product="default">میمۆری ده‌ره‌کی نییه‌</string>
   <string name="deleteConfirmation_title">سڕینەوەی پەیوەندی؟?</string>
   <string name="deleteConfirmation">ئەم پەیوەندییە دەسڕدرێتەوە.</string>
+  <string name="copy_done">ناوەکان بەسەرکەوتووی لەبەریگیرایەوە</string>
+  <string name="copy_failure">لەبەرگرتنەوەی ناوەکان سەرکەوتونەبوو</string>
+  <string name="card_no_space">لەبەرگرتنەوەی ناوەکان سەرکەوتونەبو. سیمکارتەکە پڕە</string>
+  <string name="settings_contact_display_options_description">ڕێکخستن بۆ چۆنیەتی پیشاندانی ناوەکان و جۆرەکەی.</string>
+  <string name="ip_call_by_slot">پەیوەندی تایبەتی لەگەڵ <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">ژمارەی IP نییە</string>
   <string name="no_ip_number_on_sim_card">ژمارەی IP لە ناو سیمکارتدا نییە</string>
+  <string name="set_ip_number">ژمارەی IP دابنێ</string>
+  <string name="ipcall_dialog_title">ڕێکخستنەکانی پەیوەندی IP</string>
   <string name="ipcall_dialog_edit_hint">تکایە پێشگری IP تێبکە</string>
+  <string name="import_contacts_from_all_cards">هێنانی ناوەکان لەسەر هەموو سیمکارتەکان</string>
+  <string name="select_path">دیاریکردنی ڕێڕەو</string>
   <string name="select_sim">دیاریکردنی سیم</string>
 </resources>
