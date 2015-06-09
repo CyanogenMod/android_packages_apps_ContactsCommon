@@ -42,14 +42,16 @@ import com.android.contacts.common.GeoUtil;
 import com.android.contacts.common.GroupMetaData;
 import com.android.contacts.common.model.account.AccountType;
 import com.android.contacts.common.model.account.AccountTypeWithDataSet;
-import com.android.contacts.common.util.Constants;
-import com.android.contacts.common.util.ContactLoaderUtils;
-import com.android.contacts.common.util.DataStatus;
-import com.android.contacts.common.util.UriUtils;
+
 import com.android.contacts.common.model.dataitem.DataItem;
 import com.android.contacts.common.model.dataitem.GroupMembershipDataItem;
 import com.android.contacts.common.model.dataitem.PhoneDataItem;
 import com.android.contacts.common.model.dataitem.PhotoDataItem;
+import com.android.contacts.common.util.Constants;
+import com.android.contacts.common.util.ContactLoaderUtils;
+import com.android.contacts.common.util.DataStatus;
+import com.android.contacts.common.util.UriUtils;
+
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
@@ -92,6 +94,14 @@ public class ContactLoader extends AsyncTaskLoader<Contact> {
     private Contact mContact;
     private ForceLoadContentObserver mObserver;
     private final Set<Long> mNotifiedRawContactIds = Sets.newHashSet();
+
+    /**
+     * If loading from an encoded contact entity, there are two
+     * possible schemas that can be used.
+     */
+    public enum EncodedContactEntitySchemaVersion {
+        ORIGINAL, ENHANCED_CALLER_META_DATA
+    }
 
     public ContactLoader(Context context, Uri lookupUri, boolean postViewNotification) {
         this(context, lookupUri, false, false, postViewNotification, false);
@@ -319,7 +329,8 @@ public class ContactLoader extends AsyncTaskLoader<Contact> {
                 resultIsCached = true;
             } else {
                 if (uriCurrentFormat.getLastPathSegment().equals(Constants.LOOKUP_URI_ENCODED)) {
-                    result = loadEncodedContactEntity(uriCurrentFormat, mLookupUri);
+                    result = loadEncodedContactEntity(uriCurrentFormat,
+                            mLookupUri, EncodedContactEntitySchemaVersion.ORIGINAL);
                 } else {
                     result = loadContactEntity(resolver, uriCurrentFormat);
                 }
@@ -361,84 +372,104 @@ public class ContactLoader extends AsyncTaskLoader<Contact> {
      */
     public static Contact parseEncodedContactEntity(Uri lookupUri)  {
         try {
-            return loadEncodedContactEntity(lookupUri, lookupUri);
+            return loadEncodedContactEntity(lookupUri, lookupUri, null);
         } catch (JSONException je) {
             return null;
         }
     }
 
-    private static Contact loadEncodedContactEntity(Uri uri, Uri lookupUri) throws JSONException {
-        final String jsonString = uri.getEncodedFragment();
-        final JSONObject json = new JSONObject(jsonString);
 
-        final long directoryId =
-                Long.valueOf(uri.getQueryParameter(ContactsContract.DIRECTORY_PARAM_KEY));
+    public static Contact parseEncodedContactEntity(Uri lookupUri,
+            EncodedContactEntitySchemaVersion schemaVersion)  {
+        try {
+            return loadEncodedContactEntity(lookupUri, lookupUri, schemaVersion);
+        } catch (JSONException je) {
+            return null;
+        }
+    }
 
-        final String displayName = json.optString(Contacts.DISPLAY_NAME);
-        final String altDisplayName = json.optString(
-                Contacts.DISPLAY_NAME_ALTERNATIVE, displayName);
-        final int displayNameSource = json.getInt(Contacts.DISPLAY_NAME_SOURCE);
-        final String photoUri = json.optString(Contacts.PHOTO_URI, null);
-        final Contact contact = new Contact(
-                uri, uri,
-                lookupUri,
-                directoryId,
-                null /* lookupKey */,
-                -1 /* id */,
-                -1 /* nameRawContactId */,
-                displayNameSource,
-                0 /* photoId */,
-                photoUri,
-                displayName,
-                altDisplayName,
-                null /* phoneticName */,
-                false /* starred */,
-                null /* presence */,
-                false /* sendToVoicemail */,
-                null /* customRingtone */,
-                false /* isUserProfile */);
-
-        contact.setStatuses(new ImmutableMap.Builder<Long, DataStatus>().build());
-
-        final String accountName = json.optString(RawContacts.ACCOUNT_NAME, null);
-        final String directoryName = uri.getQueryParameter(Directory.DISPLAY_NAME);
-        if (accountName != null) {
-            final String accountType = json.getString(RawContacts.ACCOUNT_TYPE);
-            contact.setDirectoryMetaData(directoryName, null, accountName, accountType,
-                    json.optInt(Directory.EXPORT_SUPPORT,
-                            Directory.EXPORT_SUPPORT_SAME_ACCOUNT_ONLY));
+    private static Contact loadEncodedContactEntity(Uri uri,
+            Uri lookupUri, EncodedContactEntitySchemaVersion schemaVersion) throws JSONException {
+        if (schemaVersion == EncodedContactEntitySchemaVersion.ENHANCED_CALLER_META_DATA) {
+            return new ContactBuilder(uri).build();
         } else {
-            contact.setDirectoryMetaData(directoryName, null, null, null,
-                    json.optInt(Directory.EXPORT_SUPPORT, Directory.EXPORT_SUPPORT_ANY_ACCOUNT));
-        }
+            final String jsonString = uri.getEncodedFragment();
+            final JSONObject json = new JSONObject(jsonString);
 
-        final ContentValues values = new ContentValues();
-        values.put(Data._ID, -1);
-        values.put(Data.CONTACT_ID, -1);
-        final RawContact rawContact = new RawContact(values);
+            final long directoryId =
+                    Long.valueOf(uri.getQueryParameter(ContactsContract.DIRECTORY_PARAM_KEY));
 
-        final JSONObject items = json.getJSONObject(Contacts.CONTENT_ITEM_TYPE);
-        final Iterator keys = items.keys();
-        while (keys.hasNext()) {
-            final String mimetype = (String) keys.next();
+            final String displayName = json.optString(Contacts.DISPLAY_NAME);
+            final String altDisplayName = json.optString(
+                    Contacts.DISPLAY_NAME_ALTERNATIVE, displayName);
+            final int displayNameSource = json.getInt(Contacts.DISPLAY_NAME_SOURCE);
+            final String photoUri = json.optString(Contacts.PHOTO_URI, null);
+            final Contact contact = new Contact(
+                    uri, uri,
+                    lookupUri,
+                    directoryId,
+                    null /* lookupKey */,
+                    -1 /* id */,
+                    -1 /* nameRawContactId */,
+                    displayNameSource,
+                    0 /* photoId */,
+                    photoUri,
+                    displayName,
+                    altDisplayName,
+                    null /* phoneticName */,
+                    false /* starred */,
+                    null /* presence */,
+                    false /* sendToVoicemail */,
+                    null /* customRingtone */,
+                    false /* isUserProfile */);
 
-            // Could be single object or array.
-            final JSONObject obj = items.optJSONObject(mimetype);
-            if (obj == null) {
-                final JSONArray array = items.getJSONArray(mimetype);
-                for (int i = 0; i < array.length(); i++) {
-                    final JSONObject item = array.getJSONObject(i);
-                    processOneRecord(rawContact, item, mimetype);
-                }
+            contact.setStatuses(new ImmutableMap.Builder<Long, DataStatus>().build());
+
+            final String accountName = json.optString(RawContacts.ACCOUNT_NAME, null);
+            final String directoryName = uri.getQueryParameter(Directory.DISPLAY_NAME);
+            if (accountName != null) {
+                final String accountType = json.getString(RawContacts.ACCOUNT_TYPE);
+                contact.setDirectoryMetaData(directoryName, null, accountName, accountType,
+                        json.optInt(Directory.EXPORT_SUPPORT,
+                                Directory.EXPORT_SUPPORT_SAME_ACCOUNT_ONLY));
             } else {
-                processOneRecord(rawContact, obj, mimetype);
+                contact.setDirectoryMetaData(directoryName, null, null, null,
+                        json.optInt(Directory.EXPORT_SUPPORT, Directory.EXPORT_SUPPORT_ANY_ACCOUNT));
             }
-        }
 
-        contact.setRawContacts(new ImmutableList.Builder<RawContact>()
-                .add(rawContact)
-                .build());
-        return contact;
+            final ContentValues values = new ContentValues();
+            values.put(Data._ID, -1);
+            values.put(Data.CONTACT_ID, -1);
+            final RawContact rawContact = new RawContact(values);
+
+            final JSONObject items = json.getJSONObject(Contacts.CONTENT_ITEM_TYPE);
+            final Iterator keys = items.keys();
+            while (keys.hasNext()) {
+                final String mimetype = (String) keys.next();
+
+                // Could be single object, int, or array.
+                JSONObject obj = items.optJSONObject(mimetype);
+                final int num = items.optInt(mimetype, -1);
+                if (obj == null && num != -1) {
+                    final JSONArray array = items.getJSONArray(mimetype);
+                    for (int i = 0; i < array.length(); i++) {
+                        final JSONObject item = array.getJSONObject(i);
+                        processOneRecord(rawContact, item, mimetype);
+                    }
+                } else if (num != -1 && obj != null) {
+                    obj = new JSONObject();
+                    obj.put(mimetype, num);
+                    processOneRecord(rawContact, obj, mimetype);
+                } else {
+                    processOneRecord(rawContact, obj, mimetype);
+                }
+            }
+
+            contact.setRawContacts(new ImmutableList.Builder<RawContact>()
+                    .add(rawContact)
+                    .build());
+            return contact;
+        }
     }
 
     private static void processOneRecord(RawContact rawContact, JSONObject item, String mimetype)
