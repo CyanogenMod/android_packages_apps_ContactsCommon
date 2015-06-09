@@ -31,6 +31,11 @@
   <string name="export_finished">Eksport zakończony</string>
   <string name="tag_too_long">Nazwa kontaktu jest zbyt długa</string>
   <string name="sim_contacts_not_loaded">Nie można załadować kontaktów z SIM</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">Eksportowanie zostało anulowane, %d element został eksportowany</item>
+    <item quantity="few">Eksportowanie zostało anulowane, %d elementy zostały eksportowane</item>
+    <item quantity="other">Eksportowanie zostało anulowane, %d elementów zostało eksportowane</item>
+  </plurals>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> nie ma numeru telefonu ani adresu e-mail</string>
   <string name="import_from_sim_select">Wybierz kartę do zimportowania</string>
   <string name="no_sdcard_title" product="nosdcard">Pamięć niedostępna</string>
