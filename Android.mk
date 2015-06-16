@@ -38,7 +38,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
 
 LOCAL_PACKAGE_NAME := com.android.contacts.common
 
-LOCAL_PROGUARD_ENABLED := disabled
+# LOCAL_PROGUARD_ENABLED := disabled
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
 include $(BUILD_PACKAGE)
