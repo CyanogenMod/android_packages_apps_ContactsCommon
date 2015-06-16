@@ -46,6 +46,15 @@ LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
 include $(BUILD_PACKAGE)
 
+# build a java-lib for inclusion w/ other projects
+include $(CLEAR_VARS)
+LOCAL_MODULE := contacts-common
+LOCAL_MODULE_TAGS := optional
+LOCAL_SRC_FILES := $(call all-java-files-under, $(src_dirs))
+LOCAL_RESOURCE_DIR := $(addprefix $(LOCAL_PATH)/, $(res_dirs))
+LOCAL_RESOURCE_DIR += $(LOCAL_PATH)/res
+include $(BUILD_STATIC_JAVA_LIBRARY)
+
 include $(CLEAR_VARS)
 
 # Open-source libphonenumber libraries as found in code.google.com/p/libphonenumber
