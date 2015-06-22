@@ -50,7 +50,7 @@
   <string name="no_ip_number_on_sim_card">IP zenbakirik ez SIM txartelean</string>
   <string name="set_ip_number">Ezarri IP zenbakia</string>
   <string name="ipcall_dialog_title">IP deien hobespenak</string>
-  <string name="ipcall_dialog_edit_hint">Sartu IP-aren aurrezenbakia</string>
+  <string name="ipcall_dialog_edit_hint">Sartu IP aurrezenbakia</string>
   <string name="import_contacts_from_all_cards">Inportatu kontaktuak SIM txartel guztietatik</string>
   <string name="select_path">Hautatu bidea</string>
   <string name="select_sim">Hautatu SIMa</string>
