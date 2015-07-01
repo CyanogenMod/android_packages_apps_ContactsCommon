@@ -16,5 +16,42 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="local_storage_account" product="tablet">Tabula loka konto</string>
+  <string name="local_storage_account" product="default">Telefona loka konto</string>
+  <string name="import_contacts_sim">Ĉu importi kontaktulojn el SIM-karto?</string>
+  <string name="manage_sim_contacts">Administri kontaktulojn de la SIM-karto</string>
+  <string name="export_to_sim">Eksporti al SIM-karto</string>
+  <string name="fail_reason_import_vcard">\'<xliff:g id="name">%s</xliff:g>\' ne povis estis importita pro en/el-eraro</string>
+  <string name="contact_share_failed_toast">Vi ne povas komunigi pli ol <xliff:g id="count">%d</xliff:g> kontaktulojn</string>
   <string name="label_groups">Grupo</string>
+  <string name="exporting">Eksportado\u2026</string>
+  <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> el <xliff:g id="total_number">%2$s</xliff:g> dosieroj</string>
+  <string name="export_failed">Eksportado fiaskis</string>
+  <string name="sim_card_full">La SIM-karto estas plena</string>
+  <string name="export_finished">Eksportado finita</string>
+  <string name="tag_too_long">La nomo de la kontaktulo estas tro longa</string>
+  <string name="sim_contacts_not_loaded">Ne eblas ŝarĝi SIM kontaktulojn</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">La eksportado estis nuligita, %d ero estis eksportita</item>
+    <item quantity="other">La eksportado estis nuligita, %d eroj estis eksportitaj</item>
+  </plurals>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> ne havas telefonnumeron aŭ retadreson</string>
+  <string name="import_from_sim_select">Elektu importotan karton</string>
+  <string name="no_sdcard_title" product="nosdcard">Ne disponebla memorilo</string>
+  <string name="no_sdcard_title" product="default">Neniu SD-karto</string>
+  <string name="deleteConfirmation_title">Ĉu forigi kontaktulon?</string>
+  <string name="deleteConfirmation">Tiu kontaktulo estos forigita.</string>
+  <string name="copy_done">Kontaktulo sukcese kopiita</string>
+  <string name="copy_failure">Kopio de kontaktulo fiaskis</string>
+  <string name="card_no_space">Kopio de kontaktulo fiaskis, la SIM-karto estas plena</string>
+  <string name="settings_contact_display_options_description">Agordi kiel viaj kontaktuloj estas montritaj kaj ordigitaj.</string>
+  <string name="ip_call_by_slot">IP alvoko per <xliff:g id="subName">%s</xliff:g></string>
+  <string name="no_ip_number">Neniu IP-numero</string>
+  <string name="no_ip_number_on_sim_card">Neniu IP-numero en la SIM-karto</string>
+  <string name="set_ip_number">Difini IP-numeron</string>
+  <string name="ipcall_dialog_title">Agordoj de IP alvokoj</string>
+  <string name="ipcall_dialog_edit_hint">Bonvolu tajpi la IP-prefikson</string>
+  <string name="import_contacts_from_all_cards">Importi kontaktulojn el ĉiuj SIM-kartoj</string>
+  <string name="select_path">Elekti vojon</string>
+  <string name="select_sim">Elekti SIM</string>
 </resources>

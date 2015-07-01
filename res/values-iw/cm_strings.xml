@@ -17,15 +17,15 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">חשבון טאבלט מקומי</string>
-  <string name="local_storage_account" product="default">חשבון סמארטפון מקומי</string>
-  <string name="import_contacts_sim">לייבא אנשי קשר מכרטיס ה-SIM?</string>
+  <string name="local_storage_account" product="default">חשבון מכשיר מקומי</string>
+  <string name="import_contacts_sim">לייבא אנשי קשר מכרטיס SIM?</string>
   <string name="manage_sim_contacts">נהל אנשי קשר ב-SIM</string>
-  <string name="export_to_sim">יצא לכרטיס SIM</string>
-  <string name="fail_reason_import_vcard">הייבוא של \'<xliff:g id="name">%s</xliff:g>\' נכשל עקב שגיאת קלט/פלט</string>
-  <string name="contact_share_failed_toast">לא ניתן לשתף יותר מ- <xliff:g id="count">%d</xliff:g> אנשי קשר</string>
+  <string name="export_to_sim">ייצא לכרטיס SIM</string>
+  <string name="fail_reason_import_vcard">הייבוא של \"<xliff:g id="name">%s</xliff:g>\" נכשל עקב שגיאת קלט/פלט</string>
+  <string name="contact_share_failed_toast">לא ניתן לשתף יותר מ-<xliff:g id="count">%d</xliff:g> אנשי קשר</string>
   <string name="label_groups">קבוצה</string>
   <string name="exporting">מייצא\u2026</string>
-  <string name="reading_vcard_files"><xliff:g id="current_number"> %1$s </xliff:g> מ- <xliff:g id="total_number"> %2$s </xliff:g> קבצים</string>
+  <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> מ-<xliff:g id="total_number">%2$s</xliff:g> קבצים</string>
   <string name="export_failed">הייצוא נכשל</string>
   <string name="sim_card_full">כרטיס ה-SIM מלא</string>
   <string name="export_finished">הייצוא הסתיים</string>
@@ -37,14 +37,14 @@
   </plurals>
   <string name="export_no_phone_or_email">ל<xliff:g id="name">%s</xliff:g> אין מספר טלפון או כתובת דוא\"ל</string>
   <string name="import_from_sim_select">בחר כרטיס לייבוא</string>
-  <string name="no_sdcard_title" product="nosdcard">שטח אחסון אינו זמין</string>
+  <string name="no_sdcard_title" product="nosdcard">אחסון לא זמין</string>
   <string name="no_sdcard_title" product="default">אין כרטיס זיכרון</string>
   <string name="deleteConfirmation_title">למחוק איש קשר?</string>
   <string name="deleteConfirmation">איש קשר זה יימחק.</string>
   <string name="copy_done">איש הקשר הועתק בהצלחה</string>
   <string name="copy_failure">העתקת איש הקשר נכשלה</string>
   <string name="card_no_space">העתקת איש הקשר נכשלה, כרטיס ה-SIM מלא</string>
-  <string name="settings_contact_display_options_description">הגדר כיצד אנשי הקשר שלך יוצגו ובאיזה סדר.</string>
+  <string name="settings_contact_display_options_description">הגדר כיצד אנשי הקשר שלך יוצגו וימוינו.</string>
   <string name="ip_call_by_slot">שיחת IP דרך <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">אין מספר IP</string>
   <string name="no_ip_number_on_sim_card">אין מספר IP בכרטיס ה-SIM</string>
