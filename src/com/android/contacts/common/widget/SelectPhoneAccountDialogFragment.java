@@ -82,13 +82,14 @@ public class SelectPhoneAccountDialogFragment extends DialogFragment {
      * @param accountHandles The {@code PhoneAccountHandle}s available to select from.
      * @param listener The listener for the results of the account selection.
      */
-    public static void showAccountDialog(FragmentManager fragmentManager, int titleResId,
-            boolean canSetDefault, List<PhoneAccountHandle> accountHandles,
-            SelectPhoneAccountListener listener) {
+    public static SelectPhoneAccountDialogFragment showAccountDialog(
+            FragmentManager fragmentManager, int titleResId, boolean canSetDefault,
+            List<PhoneAccountHandle> accountHandles, SelectPhoneAccountListener listener) {
         SelectPhoneAccountDialogFragment fragment =
                 new SelectPhoneAccountDialogFragment(
                         titleResId, canSetDefault, accountHandles, listener);
         fragment.show(fragmentManager, "selectAccount");
+        return fragment;
     }
 
     public SelectPhoneAccountDialogFragment(int titleResId, boolean canSetDefault,
