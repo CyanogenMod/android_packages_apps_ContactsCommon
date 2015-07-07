@@ -544,6 +544,18 @@ public abstract class ContactPhotoManager implements ComponentCallbacks2 {
             PhotoFetcherCallback cb);
 
     /**
+     * Used to request bitmap of a Contact photo
+     *
+     * @param photoId associated with the contact
+     * @param imgView Sentinel used to triage this request through the existing contact bitmap
+     *                loading pipeline. The contact Bitmap won't be loaded into this imageview.
+     * @param widthHint suggest bitmap dimensions
+     * @param cb Callback via which a contact's bitmap is made available to the requester
+     */
+    public abstract void getBitmapForContact(long photoId, ImageView imgView, int widthHint,
+            PhotoFetcherCallback cb);
+
+    /**
      * Calls {@link #loadPhoto(ImageView, Uri, boolean, boolean, DefaultImageRequest,
      * DefaultImageProvider)} with {@link #DEFAULT_AVATAR} and with the assumption, that
      * the image is a thumbnail.
@@ -917,13 +929,22 @@ class ContactPhotoManagerImpl extends ContactPhotoManager implements Callback {
 
         // formulate the contact bitmap request
         Request request = Request.createBitmapOnly(photoUri, widthHint, cb);
-        // check bitmap cache
-        boolean done = decodeContactBitmapFromCache(request);
+        getBitmapForContact(imgView, request);
+    }
 
-        // if not in cache, put request in loading queue
+    @Override
+    public void getBitmapForContact(long photoId, ImageView imgView, int widthHint,
+            PhotoFetcherCallback cb) {
+        if (photoId <= 0) return;
+        Request request = Request.createBitmapOnly(photoId, widthHint, cb);
+        getBitmapForContact(imgView, request);
+    }
+
+    private void getBitmapForContact(ImageView imgView, Request request) {
+        boolean done = decodeContactBitmapFromCache(request);
+        // if not in cache, put request into loading queue
         if (!done) {
-            Request loadRequest = Request.createBitmapOnly(photoUri, widthHint, cb);
-            mPendingRequests.put(imgView, loadRequest);
+            mPendingRequests.put(imgView, request);
             if (!mPaused) {
                 requestLoading();
             }
@@ -1730,6 +1751,21 @@ class ContactPhotoManagerImpl extends ContactPhotoManager implements Callback {
         public static Request createBitmapOnly(Uri uri, int requestedExtent,
                 PhotoFetcherCallback cb, DefaultImageRequest defaultImageRequest) {
             Request request = new Request(0, uri, requestedExtent, false, false, null,
+                    defaultImageRequest);
+            request.setBitmapOnly();
+            request.mCallback = cb;
+
+            return request;
+        }
+
+        public static Request createBitmapOnly(long photoId, int requestedExtent,
+                PhotoFetcherCallback cb) {
+            return createBitmapOnly(photoId, requestedExtent, cb, null);
+        }
+
+        public static Request createBitmapOnly(long photoId, int requestedExtent,
+                PhotoFetcherCallback cb, DefaultImageRequest defaultImageRequest) {
+            Request request = new Request(photoId, null, requestedExtent, false, false, null,
                     defaultImageRequest);
             request.setBitmapOnly();
             request.mCallback = cb;
