@@ -51,6 +51,11 @@ public class MockContactPhotoManager extends ContactPhotoManager {
     }
 
     @Override
+    public void getBitmapForContact(long photoId, ImageView imgView, int widthHint,
+            PhotoFetcherCallback cb) {
+    }
+
+    @Override
     public void removePhoto(ImageView view) {
         view.setImageDrawable(null);
     }
