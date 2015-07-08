@@ -37,7 +37,7 @@
               android:orientation="vertical" >
          <TextView android:id="@+id/label"
                    android:textAppearance="?android:attr/textAppearanceMedium"
-                   android:textColor="@color/dialtacts_primary_text_color"
+                   android:textColor="@color/sim_label_text_color"
                    android:includeFontPadding="false"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content" />
