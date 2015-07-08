@@ -155,4 +155,7 @@
     <!-- Color of the background of the contact detail and editor pages -->
     <color name="background_primary">#f9f9f9</color>
     <color name="contact_all_list_background_color">#FFFFFF</color>
+    
+    <!-- SIM Picker Label Text Color -->
+    <color name="sim_label_text_color">#ffffff</color>
 </resources>
