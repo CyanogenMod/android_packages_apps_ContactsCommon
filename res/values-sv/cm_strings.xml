@@ -18,8 +18,10 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">Lokalt surfplattekonto</string>
   <string name="local_storage_account" product="default">Lokalt telefonkonto</string>
+  <string name="import_contacts_sim">Importera kontakter från SIM-kortet?</string>
   <string name="manage_sim_contacts">Hantera SIM-kortets kontakter</string>
   <string name="export_to_sim">Exportera till SIM-kort</string>
+  <string name="fail_reason_import_vcard">Visitkortet \"<xliff:g id="name">%s</xliff:g>\" kunde inte importeras på grund av ett I/O-fel</string>
   <string name="contact_share_failed_toast">Maximalt <xliff:g id="count">%d</xliff:g> kontakter kan delas</string>
   <string name="label_groups">Grupp</string>
   <string name="exporting">Exporterar\u2026</string>
@@ -41,6 +43,7 @@
   <string name="deleteConfirmation">Denna kontakt kommer tas bort.</string>
   <string name="copy_done">Kontakten kopierades</string>
   <string name="copy_failure">Kopiering av kontakten misslyckades</string>
+  <string name="card_no_space">Kopiering av kontakten misslyckades, SIM-kortet är fullt</string>
   <string name="settings_contact_display_options_description">Konfigurera hur dina kontakter visas och sorteras.</string>
   <string name="ip_call_by_slot">IP-samtal via <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Inget IP-nummer</string>
