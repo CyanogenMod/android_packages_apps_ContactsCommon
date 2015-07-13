@@ -78,6 +78,10 @@ public class CheckableFlipDrawable extends FlipDrawable implements
         invalidateSelf();
     }
 
+    public Drawable getFrontDrawable() {
+        return mFrontDrawable.getInnerDrawable();
+    }
+
     @Override
     public void reset() {
         super.reset();
@@ -128,6 +132,10 @@ public class CheckableFlipDrawable extends FlipDrawable implements
         public FrontDrawable(Drawable d) {
             mDrawable = d;
             mDrawable.setCallback(this);
+        }
+
+        public Drawable getInnerDrawable() {
+            return mDrawable;
         }
 
         public void setInnerDrawable(Drawable d) {
