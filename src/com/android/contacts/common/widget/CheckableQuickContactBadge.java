@@ -12,6 +12,7 @@ import com.android.contacts.common.R;
 public class CheckableQuickContactBadge extends QuickContactBadge implements Checkable {
     private boolean mChecked = false;
     private int mCheckMarkBackgroundColor;
+    private int mCheckMarkCheckAlpha;
     private CheckableFlipDrawable mDrawable;
 
     public CheckableQuickContactBadge(Context context) {
@@ -49,6 +50,14 @@ public class CheckableQuickContactBadge extends QuickContactBadge implements Che
         }
     }
 
+    public void setCheckMarkCheckAlpha(int alpha) {
+        mCheckMarkCheckAlpha = alpha;
+        if (mDrawable != null) {
+            mDrawable.setCheckMarkCheckAlpha(alpha);
+            mDrawable.setAlpha(alpha);
+        }
+    }
+
     public void toggle() {
         setChecked(!mChecked);
     }
@@ -80,6 +89,8 @@ public class CheckableQuickContactBadge extends QuickContactBadge implements Che
             if (mDrawable == null) {
                 mDrawable = new CheckableFlipDrawable(d, getResources(),
                         mCheckMarkBackgroundColor, 150);
+                mDrawable.setCheckMarkCheckAlpha(mCheckMarkCheckAlpha);
+                mDrawable.setAlpha(mCheckMarkCheckAlpha);
                 applyCheckState(false);
             } else {
                 mDrawable.setFront(d);

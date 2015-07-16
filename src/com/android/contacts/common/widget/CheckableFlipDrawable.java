@@ -1,7 +1,6 @@
 package com.android.contacts.common.widget;
 
 import android.animation.ValueAnimator;
-import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,11 +10,7 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.util.AttributeSet;
-import android.widget.Checkable;
-import android.widget.QuickContactBadge;
 
 import com.android.contacts.common.R;
 
@@ -218,6 +213,10 @@ public class CheckableFlipDrawable extends FlipDrawable implements
         }
     }
 
+    public void setCheckMarkCheckAlpha(int alpha) {
+        mCheckmarkDrawable.setCheckMarkCheckAlpha(alpha);
+    }
+
     private static class CheckmarkDrawable extends Drawable {
         private static Bitmap sCheckMark;
 
@@ -261,15 +260,21 @@ public class CheckableFlipDrawable extends FlipDrawable implements
             // Fade the checkmark.
             final int oldAlpha = mPaint.getAlpha();
             // Interpolate the alpha.
-            mPaint.setAlpha((int) (oldAlpha * mAlphaFraction));
+            mPaint.setAlpha((int) (mCheckmarkAlpha * mAlphaFraction));
             canvas.drawBitmap(sCheckMark, sMatrix, mPaint);
             // Restore the alpha.
             mPaint.setAlpha(oldAlpha);
         }
 
         @Override
-        public void setAlpha(final int alpha) {
+        public void setAlpha(int alpha) {
             mPaint.setAlpha(alpha);
+        }
+
+        private int mCheckmarkAlpha = 255;
+
+        public void setCheckMarkCheckAlpha(final int alpha) {
+            mCheckmarkAlpha = alpha;
         }
 
         @Override
