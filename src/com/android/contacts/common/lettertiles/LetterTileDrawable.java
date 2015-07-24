@@ -164,7 +164,7 @@ public class LetterTileDrawable extends Drawable {
         }
 
         // Draw letter/digit only if the first character is an english letter
-        if (mDisplayName != null
+        if (!TextUtils.isEmpty(mDisplayName)
                 && isEnglishLetter(mDisplayName.charAt(0))
                 && (mAccount == null || (!mAccount.type.equals(SimAccountType.ACCOUNT_TYPE)))) {
             // Draw letter or digit.
