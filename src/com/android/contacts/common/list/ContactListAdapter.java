@@ -25,6 +25,7 @@ import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.Directory;
 import android.provider.ContactsContract.RawContacts;
 import android.provider.ContactsContract.SearchSnippets;
+import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -243,7 +244,12 @@ public abstract class ContactListAdapter extends ContactEntryListAdapter {
                 if (cursor.moveToNext()) {
                     String phoneNumber = cursor.getString(0);
                     Uri uri = Uri.parse("tel: " + phoneNumber);
-                    Intent intent = new Intent(Intent.ACTION_CALL, uri);
+                    Intent intent;
+                    if (PhoneNumberUtils.isEmergencyNumber(phoneNumber)) {
+                        intent = new Intent(Intent.ACTION_CALL_EMERGENCY, uri);
+                    } else {
+                        intent = new Intent(Intent.ACTION_CALL, uri);
+                    }
                     mContext.startActivity(intent);
                 }
                 cursor.close();
