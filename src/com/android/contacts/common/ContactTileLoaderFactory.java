@@ -111,6 +111,12 @@ public final class ContactTileLoaderFactory {
         return new CursorLoader(context, builder.build(), COLUMNS_PHONE_ONLY, null, null, null);
     }
 
+    public static CursorLoader createStarredPhoneOnlyLoader(Context context) {
+        return new CursorLoader(context, Contacts.CONTENT_URI, COLUMNS,
+                Contacts.STARRED + "=? AND " + Contacts.HAS_PHONE_NUMBER + "=?",
+                new String[]{"1", "1"},  STARRED_ORDER);
+    }
+
     public static CursorLoader createStarredLoader(Context context) {
         return new CursorLoader(context, Contacts.CONTENT_URI, COLUMNS, Contacts.STARRED + "=?",
                 new String[]{"1"},  STARRED_ORDER);
