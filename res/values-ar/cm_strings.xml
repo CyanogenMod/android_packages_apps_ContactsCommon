@@ -18,5 +18,44 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">حساب الكمبيوتر اللوحي المحلي</string>
   <string name="local_storage_account" product="default">حساب الهاتف المحلية</string>
+  <string name="import_contacts_sim">استيراد جهات الاتصال من شريحة SIM؟</string>
   <string name="manage_sim_contacts">إدارة جهات اتصال شريحة SIM</string>
+  <string name="export_to_sim">التصدير إلى شريحة SIM</string>
+  <string name="fail_reason_import_vcard">تعذر استيراد جهة الاتصال <xliff:g id="name">%s</xliff:g> بسبب خطأ في عملية الإدخال و الإخراج</string>
+  <string name="contact_share_failed_toast">لا يمكن مشاركة جهات اتصال أكثر من <xliff:g id="count">%d</xliff:g></string>
+  <string name="label_groups">المجموعة</string>
+  <string name="exporting">جاري التصدير\u2026</string>
+  <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> من <xliff:g id="total_number">%2$s</xliff:g> ملفات</string>
+  <string name="export_failed">فشل التصدير</string>
+  <string name="sim_card_full">شريحة SIM ممتلئة</string>
+  <string name="export_finished">انتهى التصدير</string>
+  <string name="tag_too_long">اسم جهة الاتصال طويل جداً</string>
+  <string name="sim_contacts_not_loaded">تعذر  تحميل جهات الاتصال شريحة SIM</string>
+  <plurals name="export_cancelled">
+    <item quantity="zero">تم إلغاء عملية التصدير، %d بنداً تم تصديره </item>
+    <item quantity="one">تم إلغاء عملية التصدير، %d بنوداً تم تصديرها</item>
+    <item quantity="two">تم إلغاء عملية التصدير، %d بنوداً تم تصديرها</item>
+    <item quantity="few">تم إلغاء عملية التصدير، %d بنوداً تم تصديرها</item>
+    <item quantity="many">تم إلغاء عملية التصدير، %d بنوداً تم تصديرها</item>
+    <item quantity="other">تم إلغاء عملية التصدير، %d بنوداً تم تصديرها</item>
+  </plurals>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> لا يملك رقم هاتف أو عنوان بريد إلكتروني</string>
+  <string name="import_from_sim_select">اختر مكاناً للاستيراد منه</string>
+  <string name="no_sdcard_title" product="nosdcard">التخزين غير متوفر</string>
+  <string name="no_sdcard_title" product="default">لا توجد بطاقة SD</string>
+  <string name="deleteConfirmation_title">حذف جهة اتصال؟</string>
+  <string name="deleteConfirmation">سيتم حذف جهة الاتصال هذه.</string>
+  <string name="copy_done">تم نسخ جهة الاتصال بنجاح</string>
+  <string name="copy_failure">فشل نسخ جهة الاتصال</string>
+  <string name="card_no_space">فشل نسخ جهة الاتصال، بطاقة SIM ممتلئة</string>
+  <string name="settings_contact_display_options_description">تهيئة طريقة عرض جهات اتصالك وفرزها</string>
+  <string name="ip_call_by_slot">مكالمة IP عبر <xliff:g id="subName">%s</xliff:g></string>
+  <string name="no_ip_number">لا يوجد عنوان IP</string>
+  <string name="no_ip_number_on_sim_card">لا يوجد عنوان IP في بطاقة SIM</string>
+  <string name="set_ip_number">تعيين رقم IP</string>
+  <string name="ipcall_dialog_title">إعدادات مكالمات IP</string>
+  <string name="ipcall_dialog_edit_hint">الرجاء إدخال بادئة IP</string>
+  <string name="import_contacts_from_all_cards">استيراد جهات الاتصال من جميع شرائح SIM</string>
+  <string name="select_path">حدد المسار</string>
+  <string name="select_sim">حدد شريحة SIM</string>
 </resources>
