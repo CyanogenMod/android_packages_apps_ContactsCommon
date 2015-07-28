@@ -81,15 +81,12 @@ public class SelectAccountActivity extends Activity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        // Position 0 contains the phone-local account
-                        if (which > 0) {
-                            final AccountWithDataSet account = mAccountList.get(which);
-                            final Intent intent = new Intent();
-                            intent.putExtra(ACCOUNT_NAME, account.name);
-                            intent.putExtra(ACCOUNT_TYPE, account.type);
-                            intent.putExtra(DATA_SET, account.dataSet);
-                            setResult(RESULT_OK, intent);
-                        }
+                        final AccountWithDataSet account = mAccountList.get(which);
+                        final Intent intent = new Intent();
+                        intent.putExtra(ACCOUNT_NAME, account.name);
+                        intent.putExtra(ACCOUNT_TYPE, account.type);
+                        intent.putExtra(DATA_SET, account.dataSet);
+                        setResult(RESULT_OK, intent);
                         finish();
                     }
                 };
