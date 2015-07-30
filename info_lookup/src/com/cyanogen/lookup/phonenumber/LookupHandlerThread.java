@@ -7,6 +7,7 @@ import android.os.Message;
 import com.cyanogen.lookup.phonenumber.provider.LookupProviderImpl;
 import com.cyanogen.lookup.phonenumber.request.LookupRequest;
 
+import java.lang.Override;
 import java.util.HashSet;
 
 public class LookupHandlerThread extends HandlerThread implements Handler.Callback {
@@ -14,9 +15,10 @@ public class LookupHandlerThread extends HandlerThread implements Handler.Callba
     private static final int MSG_FETCH_INFO = 0;
 
     private Context mContext;
-    private Handler mHandler;
+    private volatile Handler mHandler;
     private LookupProviderImpl mLookupProvider;
     private HashSet<LookupRequest> mSubmittedRequests;
+    private HashSet<LookupRequest> mBufferedRequests;
 
     public LookupHandlerThread(String name, Context ctx) {
         super(name);
@@ -33,7 +35,7 @@ public class LookupHandlerThread extends HandlerThread implements Handler.Callba
         boolean isSuccessful = mLookupProvider.initialize();
         if (isSuccessful) {
             mSubmittedRequests = new HashSet<>();
-            mHandler = new Handler(getLooper(), this);
+            mBufferedRequests = new HashSet<>();
             start();
         } else {
             mLookupProvider = null;
@@ -42,18 +44,39 @@ public class LookupHandlerThread extends HandlerThread implements Handler.Callba
         return isSuccessful;
     }
 
-    public boolean fetchInfoForPhoneNumber(LookupRequest lookupRequest) {
-        if (!mSubmittedRequests.contains(lookupRequest)) {
-            Message msg = mHandler.obtainMessage(MSG_FETCH_INFO);
-            msg.obj = lookupRequest;
-            boolean requested = mHandler.sendMessage(msg);
-            if (requested) {
-                mSubmittedRequests.add(lookupRequest);
+    @Override
+    protected synchronized void onLooperPrepared() {
+        mHandler = new Handler(getLooper(), this);
+        // process buffered requests
+        for (LookupRequest request : mBufferedRequests) {
+            submitLookupRequest(request);
+        }
+
+        mBufferedRequests = null;
+    }
+
+    public synchronized boolean fetchInfoForPhoneNumber(LookupRequest lookupRequest) {
+        if (mHandler == null) {  // queue requests if handler hasn't been initialized yet
+            if (!mBufferedRequests.contains(lookupRequest)) {
+                mBufferedRequests.add(lookupRequest);
+                return true;
             }
-            return requested;
+        } else {
+            if (!mSubmittedRequests.contains(lookupRequest)) {
+                if (submitLookupRequest(lookupRequest)) {
+                    mSubmittedRequests.add(lookupRequest);
+                    return true;
+                }
+            }
         }
 
         return false;
+    }
+
+    private boolean submitLookupRequest(LookupRequest lookupRequest) {
+        Message msg = mHandler.obtainMessage(MSG_FETCH_INFO);
+        msg.obj = lookupRequest;
+        return mHandler.sendMessage(msg);
     }
 
     @Override
