@@ -33,8 +33,8 @@ public class LookupHandlerThread extends HandlerThread implements Handler.Callba
         boolean isSuccessful = mLookupProvider.initialize();
         if (isSuccessful) {
             mSubmittedRequests = new HashSet<>();
-            mHandler = new Handler(getLooper(), this);
             start();
+            mHandler = new Handler(getLooper(), this);
         } else {
             mLookupProvider = null;
         }
