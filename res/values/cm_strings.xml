@@ -88,4 +88,5 @@
     <string name="select_path">Select path</string>
     <string name="select_sim">Select SIM</string>
 
+    <string name="contactsListPeople">People</string>
 </resources>
