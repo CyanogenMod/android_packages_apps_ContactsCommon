@@ -90,8 +90,16 @@ public class MoreContactUtils {
     public static final String[] MULTI_SIM_NAME = { "perferred_name_sub1",
             "perferred_name_sub2" };
 
+    public static final String PREFERRED_SIM_ICON_INDEX = "preferred_sim_icon_index";
     public static final String[] IPCALL_PREFIX = { "ipcall_prefix1",
             "ipcall_prefix2" };
+    public final static int[] IC_SIM_PICTURE = {
+        R.drawable.ic_contact_picture_sim_1,
+        R.drawable.ic_contact_picture_sim_2,
+        R.drawable.ic_contact_picture_sim_personal,
+        R.drawable.ic_contact_picture_sim_business,
+        R.drawable.ic_contact_picture_sim_primary
+    };
     /**
      * Returns true if two data with mimetypes which represent values in contact entries are
      * considered equal for collapsing in the GUI. For caller-id, use
@@ -728,6 +736,29 @@ public class MoreContactUtils {
         }
         return name;
     }
+
+    /**
+     * Get SIM card icon index by subscription
+     */
+    public static int getCurrentSimIconIndex(Context context, int subscription) {
+        if (context == null || subscription < PhoneConstants.SUB1
+                || subscription >= TelephonyManager.getDefault().getPhoneCount()) {
+            return -1;
+        }
+
+        String simIconIndex = Settings.System.getString(context.getContentResolver(),
+                PREFERRED_SIM_ICON_INDEX);
+        if (TextUtils.isEmpty(simIconIndex)) {
+            return subscription;
+        } else {
+            String[] indexs = simIconIndex.split(",");
+            if (subscription >= indexs.length) {
+                return -1;
+            }
+            return Integer.parseInt(indexs[subscription]);
+        }
+    }
+
 
     /**
      * Display IP call setting dialog
