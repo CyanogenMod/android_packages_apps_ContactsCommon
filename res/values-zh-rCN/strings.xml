@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
+<!--
   ~ Copyright (C) 2012 The Android Open Source Project
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -161,6 +161,7 @@
     <string name="listCustomView" msgid="1915154113477432033">"自定义视图中的联系人"</string>
     <string name="listSingleContact" msgid="8525131203887307088">"单个联系人"</string>
     <string name="dialog_new_contact_account" msgid="4107520273478326011">"在以下帐户中创建联系人："</string>
+    <string name="export_to_sim">"导出到 SIM 卡"</string>
     <string name="import_from_sim" msgid="4749894687871835873">"从 SIM 卡导入"</string>
     <string name="import_from_sim_summary" msgid="2306434118233541675">"从 SIM 卡“<xliff:g id="SIM_NAME">^1</xliff:g>” - <xliff:g id="SIM_NUMBER">^2</xliff:g> 导入"</string>
     <string name="import_from_sim_summary_no_number" msgid="8498561004799710237">"从 SIM 卡“<xliff:g id="SIM_NAME">%1$s</xliff:g>”导入"</string>
@@ -179,6 +180,7 @@
     <string name="fail_reason_too_many_vcard" product="nosdcard" msgid="8720294715223591581">"存储设备中的 vCard 文件过多。"</string>
     <string name="fail_reason_too_many_vcard" product="default" msgid="3793454448838716962">"SD卡上的 vCard 文件过多。"</string>
     <string name="fail_reason_io_error" msgid="7736686553669161933">"I/O 错误"</string>
+    <string name="fail_reason_import_vcard">I/O 错误，无法导入 vCard <xliff:g id="name">%s</xliff:g></string>
     <string name="fail_reason_low_memory_during_import" msgid="3277485820827338116">"内存不足。该文件可能过大。"</string>
     <string name="fail_reason_vcard_parse_error" msgid="514012644716565082">"由于意外原因而无法解析 vCard。"</string>
     <string name="fail_reason_not_supported" msgid="388664373573337601">"不支持此格式。"</string>

@@ -161,6 +161,7 @@
     <string name="listCustomView" msgid="1915154113477432033">"聯絡人自訂檢視"</string>
     <string name="listSingleContact" msgid="8525131203887307088">"單一聯絡人"</string>
     <string name="dialog_new_contact_account" msgid="4107520273478326011">"在帳戶下建立聯絡人"</string>
+    <string name="export_to_sim">"導出到 SIM 卡"</string>
     <string name="import_from_sim" msgid="4749894687871835873">"從 SIM 卡匯入"</string>
     <string name="import_from_sim_summary" msgid="2306434118233541675">"從 SIM 卡 <xliff:g id="SIM_NAME">^1</xliff:g> - <xliff:g id="SIM_NUMBER">^2</xliff:g> 匯入"</string>
     <string name="import_from_sim_summary_no_number" msgid="8498561004799710237">"從 SIM 卡 <xliff:g id="SIM_NAME">%1$s</xliff:g> 匯入"</string>
@@ -178,6 +179,7 @@
     <string name="fail_reason_too_many_vcard" product="nosdcard" msgid="8720294715223591581">"儲存裝置中的 vCard 檔案過多。"</string>
     <string name="fail_reason_too_many_vcard" product="default" msgid="3793454448838716962">"SD 卡上的 vCard 檔案過多。"</string>
     <string name="fail_reason_io_error" msgid="7736686553669161933">"I/O 錯誤"</string>
+    <string name="fail_reason_import_vcard">I/O 錯誤，無法匯入vCard <xliff:g id="name">%s</xliff:g></string>
     <string name="fail_reason_low_memory_during_import" msgid="3277485820827338116">"記憶體不足，檔案可能過大。"</string>
     <string name="fail_reason_vcard_parse_error" msgid="514012644716565082">"由於意外因素，導致無法剖析 vCard。"</string>
     <string name="fail_reason_not_supported" msgid="388664373573337601">"不支援此格式。"</string>
@@ -247,6 +249,24 @@
     <string name="action_menu_back_from_search" msgid="1138551123844019647">"停止搜尋"</string>
     <string name="description_clear_search" msgid="3893511425518852086">"清除搜尋"</string>
     <string name="settings_contact_display_options_title" msgid="1020420603072835628">"聯絡人顯示選項"</string>
+    <string name="settings_contact_display_options_description" msgid="4130259058302284077">"設定聯絡人的顯示和排序方式。"</string>
+    <string name="exporting">"正在導出"</string>
+    <string name="reading_vcard_files">讀取Vcard文件</string>
+    <string name="export_to_sim_failed">"導出失敗，<xliff:g id="insertCount">%d</xliff:g>條成功導出"</string>
+    <string name="export_sim_card_full">"SIM卡已滿，<xliff:g id="insertCount">%d</xliff:g>條成功導出"</string>
+    <string name="export_finished">"導出結束"</string>
+    <string name="export_no_phone_or_email">導出失敗, <xliff:g id="name">%s</xliff:g>沒有電話號碼或者郵箱地址</string>
+    <string name="tag_too_long">"發生錯誤，聯絡人姓名過長。"</string>
+    <string name="import_from_sim_select">"選擇SIM卡進行導入"</string>
+    <string name="no_sdcard_title" product="nosdcard">"無存儲設備"</string>
+    <string name="no_sdcard_title" product="default">"無 SD 卡"</string>
+    <string name="deleteConfirmation_title">"要刪除聯絡人嗎？"</string>
+    <string name="ContactMultiDeleteConfirmation">"將會刪除這些聯絡人。"</string>
+    <string name="slot_name">"卡"</string>
+
+    <string name="copy_done">複制成功！</string>
+    <string name="copy_failure">複制失敗！</string>
+    <string name="card_no_space">卡記錄已滿，部分信息未複制</string>
     <string name="select_account_dialog_title" msgid="5509088895267310568">"帳戶"</string>
     <string name="set_default_account" msgid="3865970860434642695">"一律使用這張 SIM 卡通話"</string>
     <string name="select_phone_account_for_calls" msgid="933905607702811164">"選擇通話帳戶"</string>
