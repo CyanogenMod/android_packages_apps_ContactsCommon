@@ -305,43 +305,10 @@ public class ImportExportDialogFragment extends DialogFragment
     }
 
     private void doShareVisibleContacts() {
-        try {
-            // TODO move the query into a loader and do this in a background thread
-            final Cursor cursor = getActivity().getContentResolver().query(Contacts.CONTENT_URI,
-                    LOOKUP_PROJECTION, Contacts.IN_VISIBLE_GROUP + "!=0", null, null);
-            if (cursor != null) {
-                try {
-                    if (!cursor.moveToFirst()) {
-                        Toast.makeText(getActivity(), R.string.share_error, Toast.LENGTH_SHORT)
-                                .show();
-                        return;
-                    }
-
-                    StringBuilder uriListBuilder = new StringBuilder();
-                    int index = 0;
-                    do {
-                        if (index != 0)
-                            uriListBuilder.append(':');
-                        uriListBuilder.append(cursor.getString(0));
-                        index++;
-                    } while (cursor.moveToNext());
-                    Uri uri = Uri.withAppendedPath(
-                            Contacts.CONTENT_MULTI_VCARD_URI,
-                            Uri.encode(uriListBuilder.toString()));
-
-                    final Intent intent = new Intent(Intent.ACTION_SEND);
-                    intent.setType(Contacts.CONTENT_VCARD_TYPE);
-                    intent.putExtra(Intent.EXTRA_STREAM, uri);
-                    ImplicitIntentsUtil.startActivityOutsideApp(getActivity(), intent);
-                } finally {
-                    cursor.close();
-                }
-            }
-        } catch (Exception e) {
-            Log.e(TAG, "Sharing visible contacts failed", e);
-            Toast.makeText(getContext(), R.string.share_visible_contacts_failure,
-                    Toast.LENGTH_SHORT).show();
-        }
+        Intent intent = new Intent(SimContactsConstants.ACTION_MULTI_PICK);
+        intent.setType(Contacts.CONTENT_TYPE);
+        intent.putExtra(SimContactsConstants.IS_CONTACT,true);
+        getActivity().startActivityForResult(intent, SUBACTIVITY_SHARE_VISILBLE_CONTACTS);
     }
 
     /**
