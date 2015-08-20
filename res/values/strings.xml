@@ -823,7 +823,7 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
 
     <!-- Title for dialog to select Phone Account for outgoing call.  [CHAR LIMIT=40] -->
     <string name="select_phone_account_for_calls">Call with</string>
-        <!-- Menu item used to initiate ip call -->
+    <!-- Menu item used to initiate ip call -->
     <string name="ip_call_by_slot">IP Call by <xliff:g id="subName">%s</xliff:g></string>
     <string name="set_ip_number">Set IP Number</string>
     <string name="no_ip_number">No IP number</string>
