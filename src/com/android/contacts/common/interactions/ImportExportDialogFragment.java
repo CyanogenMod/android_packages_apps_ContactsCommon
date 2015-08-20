@@ -223,10 +223,11 @@ public class ImportExportDialogFragment extends DialogFragment
                         break;
                     }
                     case R.string.export_to_vcf_file: {
-                        Intent exportIntent = new Intent(getActivity(), ExportVCardActivity.class);
-                        exportIntent.putExtra(VCardCommonArguments.ARG_CALLING_ACTIVITY,
-                                callingActivity);
-                        getActivity().startActivity(exportIntent);
+                        Intent exportIntent = new Intent(SimContactsConstants.ACTION_MULTI_PICK,
+                                Contacts.CONTENT_URI);
+                        exportIntent.putExtra(SimContactsConstants.IS_CONTACT, true);
+                        getActivity().startActivityForResult(exportIntent,
+                                SUBACTIVITY_EXPORT_CONTACTS);
                         break;
                     }
                     case R.string.share_visible_contacts: {
