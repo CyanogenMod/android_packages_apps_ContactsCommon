@@ -21,7 +21,7 @@
   <string name="import_contacts_sim">Importați contactele de pe cartela SIM?</string>
   <string name="manage_sim_contacts">Gestionează contactele de pe cartela SIM</string>
   <string name="export_to_sim">Export în cartela SIM</string>
-  <string name="fail_reason_import_vcard">\' <xliff:g id="name">%s\' </xliff:g> nu a putut fi importat din cauza unei erori I/O</string>
+  <string name="fail_reason_import_vcard">\'<xliff:g id="name">%s</xliff:g>\' nu a putut fi importat din cauza unei erori I/O</string>
   <string name="contact_share_failed_toast">Nu mai mult de <xliff:g id="count">%d</xliff:g> persoane de contact pot fi adăugate</string>
   <string name="label_groups">Grup</string>
   <string name="exporting">Se exportă\u2026</string>
