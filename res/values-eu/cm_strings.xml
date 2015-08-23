@@ -35,7 +35,7 @@
     <item quantity="one">Esportazioa bertan behera utzi da, %d esportatu da</item>
     <item quantity="other">Esportazioa bertan behera utzi da, %d esportatu dira</item>
   </plurals>
-  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g>(e)k ez du telefono zenbakirik edo posta helbiderik</string>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g>(e)k ez du telefono zenbakirik edo eposta helbiderik</string>
   <string name="import_from_sim_select">Hautatu inportatuko den txartela</string>
   <string name="no_sdcard_title" product="nosdcard">Biltegiratzea ez dago eskuragarri</string>
   <string name="no_sdcard_title" product="default">SD txartelik ez</string>

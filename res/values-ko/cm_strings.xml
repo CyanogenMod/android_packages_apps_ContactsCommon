@@ -51,7 +51,7 @@
   <string name="no_ip_number_on_sim_card">SIM 카드에 IP 번호 없음</string>
   <string name="set_ip_number">IP 번호 설정</string>
   <string name="ipcall_dialog_title">IP 통화 설정</string>
-  <string name="ipcall_dialog_edit_hint">IP 접두사를 입력해주세요</string>
+  <string name="ipcall_dialog_edit_hint">IP 접두사를 입력해 주십시오</string>
   <string name="select_path">경로 선택</string>
   <string name="sd_card">SD 카드</string>
   <string name="phone_storage">휴대전화 저장소</string>

@@ -17,6 +17,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">حساب محلی تبلت</string>
+  <string name="local_storage_account" product="default">حساب محلی تلفن</string>
   <string name="account_sim">سیم کارت</string>
   <string name="sim_card_full">سیم کارت پر است</string>
   <string name="no_sdcard_title" product="default">بدون کارت حافظه</string>
