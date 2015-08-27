@@ -14,6 +14,11 @@ public interface LookupProvider {
     boolean initialize();
 
     /**
+     * Returns true if the provider is installed and enabled
+     */
+    boolean isEnabled();
+
+    /**
      * Request to lookup contact info asynchronously. The callback is embedded
      * within {@link LookupRequest}
      */
