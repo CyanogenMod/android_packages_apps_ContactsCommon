@@ -17,29 +17,45 @@ public class LookupHandlerThread extends HandlerThread implements Handler.Callba
     private Handler mHandler;
     private LookupProviderImpl mLookupProvider;
     private HashSet<LookupRequest> mSubmittedRequests;
+    private boolean mInitialized = false;
 
     public LookupHandlerThread(String name, Context ctx) {
         super(name);
         mContext = ctx;
+        mLookupProvider = new LookupProviderImpl(mContext, null);
     }
 
     public LookupHandlerThread(String name, int priority, Context ctx) {
         super(name, priority);
         mContext = ctx;
+        mLookupProvider = new LookupProviderImpl(mContext, null);
     }
 
     public boolean initialize() {
-        mLookupProvider = new LookupProviderImpl(mContext, null);
-        boolean isSuccessful = mLookupProvider.initialize();
-        if (isSuccessful) {
-            mSubmittedRequests = new HashSet<>();
-            mHandler = new Handler(getLooper(), this);
-            start();
-        } else {
-            mLookupProvider = null;
+        if (mInitialized) {
+            return true;
         }
 
-        return isSuccessful;
+        mInitialized = mLookupProvider.initialize();
+        if (mInitialized) {
+            mSubmittedRequests = new HashSet<>();
+            start();
+            mHandler = new Handler(getLooper(), this);
+        }
+
+        return mInitialized;
+    }
+
+    public boolean isProviderEnabled() {
+        return mLookupProvider.isEnabled();
+    }
+
+    public void tearDown() {
+        if (mInitialized) {
+            quit();
+            mLookupProvider.disable();
+            mInitialized = false;
+        }
     }
 
     public boolean fetchInfoForPhoneNumber(LookupRequest lookupRequest) {
@@ -62,7 +78,7 @@ public class LookupHandlerThread extends HandlerThread implements Handler.Callba
         LookupRequest lookupRequest = (LookupRequest) msg.obj;
         switch (what) {
             case MSG_FETCH_INFO :
-                if (mLookupProvider != null) {
+                if (mInitialized) {
                     mLookupProvider.fetchInfo(lookupRequest);
                 }
         }

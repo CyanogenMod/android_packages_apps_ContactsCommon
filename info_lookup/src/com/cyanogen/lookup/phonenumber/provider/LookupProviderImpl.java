@@ -29,4 +29,9 @@ public class LookupProviderImpl implements LookupProvider {
     public void disable() {
         /* NOT IMPLEMENTED */
     }
+
+    @Override
+    public void isEnabled() {
+        /* NOT IMPLEMENTED */
+    }
 }
