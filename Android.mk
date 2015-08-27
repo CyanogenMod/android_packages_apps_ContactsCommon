@@ -41,6 +41,8 @@ LOCAL_PACKAGE_NAME := com.android.contacts.common
 LOCAL_PROGUARD_ENABLED := disabled
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
+LOCAL_SDK_VERSION := current
+
 include $(BUILD_PACKAGE)
 
 # Use the following include to make our test apk.
