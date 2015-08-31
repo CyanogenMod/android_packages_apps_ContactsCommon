@@ -35,7 +35,7 @@
     <item quantity="other">صدور لغو شد، %d مورد صادر شد</item>
   </plurals>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> شماره تلفن یا آدرس ایمیلی ندارد</string>
-  <string name="import_from_sim_select">انتخاب کارت برای وارد کردن</string>
+  <string name="import_from_sim_select">انتخاب سیم کارت برای وارد کردن</string>
   <string name="no_sdcard_title" product="nosdcard">حافظه در دسترس نیست</string>
   <string name="no_sdcard_title" product="default">بدون کارت حافظه</string>
   <string name="deleteConfirmation_title">مخاطب حذف شود؟</string>
