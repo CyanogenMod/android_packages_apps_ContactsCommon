@@ -18,6 +18,39 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">本機平板電腦帳戶</string>
   <string name="local_storage_account" product="default">本機電話帳戶</string>
+  <string name="import_contacts_sim">從 SIM 卡匯入聯絡人？</string>
+  <string name="manage_sim_contacts">管理 SIM 卡聯絡人</string>
   <string name="export_to_sim">匯出至 SIM 卡</string>
+  <string name="fail_reason_import_vcard">I/O 錯誤導致無法匯入「<xliff:g id="name">%s</xliff:g>」</string>
+  <string name="contact_share_failed_toast">可以共用不超過 <xliff:g id="count">%d </xliff:g> 個聯絡人</string>
+  <string name="label_groups">群組</string>
+  <string name="exporting">正在匯出\u2026</string>
+  <string name="reading_vcard_files"><xliff:g id="total_number">%2$s</xliff:g>個檔案中的<xliff:g id="current_number">%1$s</xliff:g>個</string>
+  <string name="export_failed">匯出失敗</string>
+  <string name="sim_card_full">SIM 卡已滿</string>
+  <string name="export_finished">匯出完成</string>
+  <string name="tag_too_long">聯絡人名稱過長</string>
+  <string name="sim_contacts_not_loaded">無法載入 SIM 卡聯絡人</string>
+  <plurals name="export_cancelled">
+    <item quantity="other">匯出已取消，已匯出 %d 個項目</item>
+  </plurals>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> 沒有電話號碼或電子郵件地址</string>
+  <string name="import_from_sim_select">選擇要匯入的卡</string>
+  <string name="no_sdcard_title" product="nosdcard">存儲不可用</string>
+  <string name="no_sdcard_title" product="default">沒有 SD 卡</string>
+  <string name="deleteConfirmation_title">刪除聯絡人？</string>
+  <string name="deleteConfirmation">此聯絡人將被刪除。</string>
+  <string name="copy_done">已成功複製聯絡人</string>
+  <string name="copy_failure">複製聯絡人失敗</string>
+  <string name="card_no_space">複製聯絡人失敗，SIM 卡已滿</string>
+  <string name="settings_contact_display_options_description">配置您的聯絡人顯示及分類的方式。</string>
+  <string name="ip_call_by_slot">來自 <xliff:g id="subName">%s</xliff:g> 的 IP 通話</string>
+  <string name="no_ip_number">沒有 IP 號碼</string>
+  <string name="no_ip_number_on_sim_card">SIM 卡上沒有 IP 號碼</string>
+  <string name="set_ip_number">設定 IP 號碼</string>
+  <string name="ipcall_dialog_title">IP 通話設定</string>
+  <string name="ipcall_dialog_edit_hint">請輸入 IP 首碼</string>
+  <string name="import_contacts_from_all_cards">從所有 SIM 卡匯入聯絡人</string>
+  <string name="select_path">選擇路徑</string>
   <string name="select_sim">選擇 SIM 卡</string>
 </resources>
