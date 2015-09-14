@@ -357,7 +357,7 @@ public class MoreContactUtils {
 
     public static int getAnrCount(int slot) {
         int anrCount = 0;
-        /*int[] subId = SubscriptionManager.getSubId(slot);
+        int[] subId = SubscriptionManager.getSubId(slot);
         try {
             IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(
                 ServiceManager.getService("simphonebook"));
@@ -372,18 +372,17 @@ public class MoreContactUtils {
             }
         } catch (RemoteException ex) {
             // ignore it
-        }*/
+        }
 
         return anrCount;
     }
 
     public static int getAdnCount(int slot) {
-        int adnCount = 250;
-        /*int[] subId = SubscriptionManager.getSubId(slot);
+        int adnCount = 0;
+        int[] subId = SubscriptionManager.getSubId(slot);
                 try {
             IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(
                 ServiceManager.getService("simphonebook"));
-
             if (iccIpb != null) {
                 if (subId != null
                         && TelephonyManager.getDefault().isMultiSimEnabled()) {
@@ -394,14 +393,13 @@ public class MoreContactUtils {
             }
         } catch (RemoteException ex) {
             // ignore it
-        }*/
-
+        }
         return adnCount;
     }
 
     public static int getEmailCount(int slot) {
         int emailCount = 0;
-        /*int[] subId = SubscriptionManager.getSubId(slot);
+        int[] subId = SubscriptionManager.getSubId(slot);
                 try {
             IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(
                 ServiceManager.getService("simphonebook"));
@@ -416,7 +414,7 @@ public class MoreContactUtils {
             }
         } catch (RemoteException ex) {
             // ignore it
-        }*/
+        }
 
         return emailCount;
     }
@@ -665,16 +663,16 @@ public class MoreContactUtils {
 
     public static int getSpareAnrCount(int sub) {
         int anrCount = 0;
-        /*int[] subId=SubscriptionManager.getSubId(sub);
+        int[] subId=SubscriptionManager.getSubId(sub);
          try {
                 IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(ServiceManager
                         .getService(PHONEBOOK));
                  if (iccIpb != null) {
                    if (subId != null
                         && TelephonyManager.getDefault().isMultiSimEnabled()) {
-                    anrCount = iccIpb.getSpareEmailCountUsingSubId(subId[0]);
+                    anrCount = iccIpb.getSpareAnrCountUsingSubId(subId[0]);
                 } else {
-                   anrCount = iccIpb.getSpareEmailCount();
+                   anrCount = iccIpb.getSpareAnrCount();
                  }
             }
             } catch (RemoteException ex) {
@@ -685,13 +683,13 @@ public class MoreContactUtils {
         }
         if (DBG) {
             Log.d(TAG, "getSpareAnrCount(" + sub + ") = " + anrCount);
-        }*/
+        }
         return anrCount;
     }
 
     public static int getSpareEmailCount(int sub) {
         int emailCount = 0;
-        /*int[] subId=SubscriptionManager.getSubId(sub);
+        int[] subId=SubscriptionManager.getSubId(sub);
         try {
                 IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(ServiceManager
                         .getService(PHONEBOOK));
@@ -711,7 +709,7 @@ public class MoreContactUtils {
         }
         if (DBG) {
             Log.d(TAG, "getSpareEmailCount(" + sub + ") = " + emailCount);
-        }*/
+        }
         return emailCount;
     }
 
