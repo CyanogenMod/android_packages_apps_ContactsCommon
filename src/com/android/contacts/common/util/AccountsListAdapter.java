@@ -108,14 +108,20 @@ public final class AccountsListAdapter extends BaseAdapter {
         final AccountWithDataSet account = mAccounts.get(position);
         final AccountType accountType = mAccountTypes.getAccountType(account.type, account.dataSet);
 
-        text1.setText(accountType.getDisplayLabel(mContext));
+        text1.setText(accountType.getDisplayLabel(mContext, account.name));
 
         // For email addresses, we don't want to truncate at end, which might cut off the domain
         // name.
+        if (SimAccountType.ACCOUNT_TYPE.equals(account.type)
+                || PhoneAccountType.ACCOUNT_TYPE.equals(account.type)) {
+            text2.setVisibility(View.GONE);
+        } else {
+            text2.setVisibility(View.VISIBLE);
+        }
         text2.setText(account.name);
         text2.setEllipsize(TruncateAt.MIDDLE);
 
-        icon.setImageDrawable(accountType.getDisplayIcon(mContext));
+        icon.setImageDrawable(accountType.getDisplayIcon(mContext, account.name));
 
         return resultView;
     }
