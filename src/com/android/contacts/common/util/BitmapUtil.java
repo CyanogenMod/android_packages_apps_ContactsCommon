@@ -27,6 +27,9 @@ import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.BitmapDrawable;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
 /**
  * Provides static functions to decode bitmaps at the optimal size
  */
@@ -159,6 +162,21 @@ public class BitmapUtil {
 
         final RectF dst = new RectF(0, 0, targetWidth, targetHeight);
         canvas.drawBitmap(input, src, dst, paint);
+        return result;
+    }
+
+    public static byte[] bitmapToByteArray(Bitmap bitmap) {
+        if (bitmap == null) {
+            return null;
+        }
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 90, stream);
+        byte[] result = stream.toByteArray();
+        try {
+            stream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return result;
     }
 }

@@ -222,7 +222,7 @@ public class Contact {
         mDirectoryExportSupport = exportSupport;
     }
 
-    /* package */ void setPhotoBinaryData(byte[] photoBinaryData) {
+    public void setPhotoBinaryData(byte[] photoBinaryData) {
         mPhotoBinaryData = photoBinaryData;
     }
 
