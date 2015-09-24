@@ -16,5 +16,41 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="local_storage_account" product="tablet">Tài khoản máy tính bảng nội bộ</string>
+  <string name="local_storage_account" product="default">Tài khoản điện thoại nội bộ</string>
+  <string name="import_contacts_sim">Nhập danh bạ từ thẻ SIM?</string>
+  <string name="manage_sim_contacts">Quản lý danh bạ trên thẻ SIM</string>
+  <string name="export_to_sim">Xuất đến thẻ SIM</string>
+  <string name="fail_reason_import_vcard">\'<xliff:g id="name">%s</xliff:g>\' không thể nhập do lỗi I/O</string>
+  <string name="contact_share_failed_toast">Không quá <xliff:g id="count">%d</xliff:g> số liên lạc có thể được chia sẻ</string>
+  <string name="label_groups">Nhóm</string>
+  <string name="exporting">Đang xuất\u2026</string>
+  <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> / <xliff:g id="total_number">%2$s</xliff:g> tập tin</string>
+  <string name="export_failed">Xuất thất bại</string>
+  <string name="sim_card_full">Thẻ SIM đã đầy</string>
+  <string name="export_finished">Xuất hoàn tất</string>
+  <string name="tag_too_long">Tên liên lạc quá dài</string>
+  <string name="sim_contacts_not_loaded">Không thể nạp danh bạ trên SIM</string>
+  <plurals name="export_cancelled">
+    <item quantity="other">Đã hủy xuất, %d mục đã được xuất</item>
+  </plurals>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> không có số điện thoại hoặc địa chỉ email</string>
+  <string name="import_from_sim_select">Chọn thẻ để nhập</string>
+  <string name="no_sdcard_title" product="nosdcard">Bộ nhớ không khả dụng</string>
   <string name="no_sdcard_title" product="default">Không có thẻ nhớ</string>
+  <string name="deleteConfirmation_title">Xóa số liên lạc?</string>
+  <string name="deleteConfirmation">Số liên lạc này sẽ bị xóa.</string>
+  <string name="copy_done">Số liên lạc đã được sao chép thành công</string>
+  <string name="copy_failure">Sao chép số liên lạc đã thất bại</string>
+  <string name="card_no_space">Sao chép số liên lạc đã thất bại, thẻ SIM đã đầy</string>
+  <string name="settings_contact_display_options_description">Thiết lập cấu hình hiển thị và sắp xếp danh bạ của bạn.</string>
+  <string name="ip_call_by_slot">Cuộc gọi IP qua <xliff:g id="subName">%s</xliff:g></string>
+  <string name="no_ip_number">Không có số IP</string>
+  <string name="no_ip_number_on_sim_card">Không có số IP trên thẻ SIM</string>
+  <string name="set_ip_number">Đặt số IP</string>
+  <string name="ipcall_dialog_title">Thiết đặt cuộc gọi IP</string>
+  <string name="ipcall_dialog_edit_hint">Vui lòng nhập tiền tố IP</string>
+  <string name="import_contacts_from_all_cards">Nhập danh bạ từ tất cả các thẻ SIM</string>
+  <string name="select_path">Chọn đường dẫn</string>
+  <string name="select_sim">Chọn SIM</string>
 </resources>
