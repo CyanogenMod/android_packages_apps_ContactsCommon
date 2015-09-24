@@ -71,7 +71,7 @@ public class ContactBuilder {
 
     private String mNormalizedNumber;
     private String mFormattedNumber;
-    private int mDisplayNameSource = DisplayNameSources.ORGANIZATION;
+    private int mDisplayNameSource = DisplayNameSources.STRUCTURED_NAME;
     private Uri mPhotoUri;
     private String mPhotoUrl;
 
@@ -279,12 +279,10 @@ public class ContactBuilder {
 
         final ContentValues values = new ContentValues();
         values.put(ContactsContract.Data._ID, -1);
-        values.put(ContactsContract.Data.CONTACT_ID, -1);
         final RawContact rawContact = new RawContact(values);
 
         final ContentValues numberValues = new ContentValues();
         numberValues.put(ContactsContract.Data._ID, -1);
-        numberValues.put(ContactsContract.Data.CONTACT_ID, -1);
         numberValues.put(ContactsContract.Data.MIMETYPE, Phone.CONTENT_ITEM_TYPE);
 
         // Use the incoming call's phone number if no other phone number
@@ -322,7 +320,6 @@ public class ContactBuilder {
 
             final ContentValues addressValues = new ContentValues();
             addressValues.put(ContactsContract.Data._ID, -1);
-            addressValues.put(ContactsContract.Data.CONTACT_ID, -1);
             addressValues.put(ContactsContract.Data.MIMETYPE, StructuredPostal.CONTENT_ITEM_TYPE);
 
             // Insert addresses if there are any
@@ -423,7 +420,6 @@ public class ContactBuilder {
 
             final ContentValues nameValues = new ContentValues();
             nameValues.put(ContactsContract.Data._ID, -1);
-            nameValues.put(ContactsContract.Data.CONTACT_ID, -1);
             nameValues.put(ContactsContract.Data.DATA1, mName.displayName);
             nameValues.put(ContactsContract.Data.MIMETYPE, StructuredName.CONTENT_ITEM_TYPE);
             rawContact.addDataItemValues(nameValues);
