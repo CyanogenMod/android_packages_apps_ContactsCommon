@@ -57,6 +57,8 @@ public class Contact {
         NOT_FOUND,
     }
 
+    public static final String CONTACT_URI_EXTRA = "contact_uri_extra";
+
     private final Uri mRequestedUri;
     private final Uri mLookupUri;
     private final Uri mUri;
