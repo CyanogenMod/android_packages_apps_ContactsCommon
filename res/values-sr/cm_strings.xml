@@ -34,7 +34,6 @@
   <plurals name="export_cancelled">
     <item quantity="one">Извоз је отказан. %d ставка је извежена</item>
     <item quantity="few">Извоз је отказан. %d ставки је извежено</item>
-    <item quantity="many">Извоз је отказан. %d ставки је извежено</item>
     <item quantity="other">Извоз је отказан. %d ставки је извежено</item>
   </plurals>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> нема број телефона или адресу е-поште</string>
