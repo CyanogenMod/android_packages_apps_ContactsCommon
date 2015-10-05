@@ -35,4 +35,10 @@ public class LookupProviderImpl implements LookupProvider {
         /* NOT a valid implementation */
         return false;
     }
+
+    @Override
+    public void markAsSpam(String phoneNumber) {
+        /* NOT IMPLEMENTED */
+    }
+
 }

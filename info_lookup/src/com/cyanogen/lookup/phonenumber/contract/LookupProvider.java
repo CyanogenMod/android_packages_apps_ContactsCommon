@@ -28,6 +28,11 @@ public interface LookupProvider {
      * Explicit call to disable provider and free resources
      */
     void disable();
-    
+
+    /**
+     * Interface to provide ability to flag a phone number as spam
+     */
+    void markAsSpam(String phoneNumber);
+
 }
 
