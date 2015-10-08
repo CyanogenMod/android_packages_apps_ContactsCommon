@@ -293,7 +293,6 @@ public class SimContactsOperation {
                 if (!TextUtils.isEmpty(value)) {
                     retval.append(value);
                 }
-                retval.append(c.getString(c.getColumnIndex(columnName)));
             }
 
         } catch (Exception e) {
