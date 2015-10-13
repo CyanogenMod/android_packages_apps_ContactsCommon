@@ -244,12 +244,9 @@
   <string name="menu_select_sim">Seleicionar tarxeta SIM</string>
   <string name="menu_accounts">Cuentes</string>
   <string name="menu_import_export">Importar/esportar</string>
-  <string name="tab_font_family">sans-serif</string>
   <string name="contact_status_update_attribution">per aciu de <xliff:g id="source" example="Google Talk">%1$s</xliff:g></string>
   <string name="contact_status_update_attribution_with_date"><xliff:g id="date" example="3 hours ago">%1$s</xliff:g> per aciu de <xliff:g id="source" example="Google Talk">%2$s</xliff:g></string>
-  <string name="letter_tile_letter_font_family">sans-serif-light</string>
   <string name="action_menu_back_from_search">Parar la gueta</string>
   <string name="description_clear_search">Llimpiar gueta</string>
-  <string name="search_font_family">sans-serif</string>
   <string name="settings_contact_display_options_title">Opciones visualización contautos</string>
 </resources>

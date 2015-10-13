@@ -57,6 +57,8 @@ public class Contact {
         NOT_FOUND,
     }
 
+    public static final String CONTACT_URI_EXTRA = "contact_uri_extra";
+
     private final Uri mRequestedUri;
     private final Uri mLookupUri;
     private final Uri mUri;
@@ -222,7 +224,7 @@ public class Contact {
         mDirectoryExportSupport = exportSupport;
     }
 
-    /* package */ void setPhotoBinaryData(byte[] photoBinaryData) {
+    public void setPhotoBinaryData(byte[] photoBinaryData) {
         mPhotoBinaryData = photoBinaryData;
     }
 

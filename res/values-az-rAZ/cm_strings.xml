@@ -16,19 +16,42 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="local_storage_account" product="tablet">Yerli tablet hesabı</string>
+  <string name="local_storage_account" product="tablet">Yerli planşet hesabı</string>
   <string name="local_storage_account" product="default">Yerli telefon hesabı</string>
+  <string name="import_contacts_sim">Şəxslər SIM kartdan idxal edilsin?</string>
+  <string name="manage_sim_contacts">SIM kart şəxslərini idarə et</string>
+  <string name="export_to_sim">SIM karta ixrac et</string>
+  <string name="fail_reason_import_vcard">\'<xliff:g id="name">%s</xliff:g>\' G/Ç xətasına görə idxal edilə bilmədi</string>
+  <string name="contact_share_failed_toast"><xliff:g id="count">%d</xliff:g> şəxsdən çoxu paylaşıla bilməz</string>
   <string name="label_groups">Qrup</string>
+  <string name="exporting">İxrac edilir\u2026</string>
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> / <xliff:g id="total_number">%2$s</xliff:g> fayl</string>
   <string name="export_failed">İxrac uğursuz oldu</string>
+  <string name="sim_card_full">SIM kart dolub</string>
   <string name="export_finished">İxrac tamamlandı</string>
+  <string name="tag_too_long">Şəxs adı çox uzundur</string>
+  <string name="sim_contacts_not_loaded">SIM şəxsləri yüklənə bilmədi</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">İxracdan imtina edildi. %d element ixrac edildi</item>
+    <item quantity="other">İxracdan imtina edildi. %d element ixrac edildi</item>
+  </plurals>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> telefon nömrəsinə və e-poçt ünvanına sahib deyil</string>
   <string name="import_from_sim_select">İdxal olunacaq kartı seçin</string>
   <string name="no_sdcard_title" product="nosdcard">Yaddaş əlçatmazdır</string>
   <string name="no_sdcard_title" product="default">SD kart yoxdur</string>
   <string name="deleteConfirmation_title">Şəxs silinsin?</string>
   <string name="deleteConfirmation">Bu şəxs silinəcək.</string>
+  <string name="copy_done">Şəxs uğurla kopyalandı</string>
+  <string name="copy_failure">Şəxs kopyalanmadı</string>
+  <string name="card_no_space">Şəxs kopyalanmadı, SIM kart dolub</string>
+  <string name="settings_contact_display_options_description">Şəxslərinizin necə görüntülənəcəyini və sıralanacağını nizamlayın.</string>
+  <string name="ip_call_by_slot"><xliff:g id="subName">%s</xliff:g> ilə IP zəngi</string>
   <string name="no_ip_number">IP nömrəsi yoxdur</string>
   <string name="no_ip_number_on_sim_card">SIM kartda IP nömrəsi yoxdur</string>
+  <string name="set_ip_number">IP nömrəsi tənzimlə</string>
+  <string name="ipcall_dialog_title">IP zəng tənzimləmələri</string>
   <string name="ipcall_dialog_edit_hint">Zəhmət olmasa IP önəlavəsini daxil edin</string>
+  <string name="import_contacts_from_all_cards">Bütün SIM kartdan şəxsləri idxal et</string>
+  <string name="select_path">Yeri seçin</string>
   <string name="select_sim">SIM seç</string>
 </resources>
