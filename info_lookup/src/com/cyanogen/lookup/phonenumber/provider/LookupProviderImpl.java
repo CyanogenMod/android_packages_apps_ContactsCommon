@@ -41,4 +41,16 @@ public class LookupProviderImpl implements LookupProvider {
         /* NOT IMPLEMENTED */
     }
 
+    @Override
+    public boolean hasSpamReporting() {
+        /* NOT a valid implementation */
+        return false;
+    }
+
+    @Override
+    public String getDisplayName() {
+        /* NOT a valid implementation */
+        return null;
+    }
+
 }

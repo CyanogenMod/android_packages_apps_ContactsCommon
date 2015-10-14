@@ -97,6 +97,24 @@ public class LookupHandlerThread extends HandlerThread implements Handler.Callba
         }
     }
 
+    /**
+     * Check if the provider supports spam reporting
+     *
+     * @return {@link Boolean}
+     */
+    public boolean hasSpamReporting() {
+        return mLookupProvider.hasSpamReporting();
+    }
+
+    /**
+     * Get the display name of the provider
+     *
+     * @return {@link String}
+     */
+    public String getProviderName() {
+        return mLookupProvider.getDisplayName();
+    }
+
     @Override
     public boolean handleMessage(Message msg) {
         int what = msg.what;
