@@ -41,4 +41,10 @@ public class LookupProviderImpl implements LookupProvider {
         /* NOT IMPLEMENTED */
     }
 
+    @Override
+    public String getSpamReportingProvider() {
+        /* NOT IMPLEMENTED */
+        return null;
+    }
+
 }

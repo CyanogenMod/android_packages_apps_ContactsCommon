@@ -97,6 +97,10 @@ public class LookupHandlerThread extends HandlerThread implements Handler.Callba
         }
     }
 
+    public String getSpamReportingProvider() {
+        return mLookupProvider.getSpamReportingProvider();
+    }
+
     @Override
     public boolean handleMessage(Message msg) {
         int what = msg.what;

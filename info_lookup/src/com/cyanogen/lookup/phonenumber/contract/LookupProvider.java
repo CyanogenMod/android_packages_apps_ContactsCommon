@@ -34,5 +34,12 @@ public interface LookupProvider {
      */
     void markAsSpam(String phoneNumber);
 
+    /**
+     * Returns the spam reporting provider's name or null if none available
+     *
+     * @return {@link String}
+     */
+    String getSpamReportingProvider();
+
 }
 
