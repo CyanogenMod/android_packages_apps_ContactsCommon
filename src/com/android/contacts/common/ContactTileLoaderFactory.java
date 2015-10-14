@@ -111,6 +111,25 @@ public final class ContactTileLoaderFactory {
         return new CursorLoader(context, builder.build(), COLUMNS_PHONE_ONLY, null, null, null);
     }
 
+    public static CursorLoader createStrequentCallableExtendedLoader(Context context,
+            String additionalQueryParameterKey, String additionalQueryParameterValue) {
+        Uri.Builder builder = Contacts.CONTENT_STREQUENT_URI.buildUpon();
+        builder.appendQueryParameter(ContactsContract.STREQUENT_PHONE_ONLY, "true");
+        // Do not show contacts in disabled SIM card
+        String disabledSimFilter = MoreContactUtils.getDisabledSimFilter();
+        if (!TextUtils.isEmpty(disabledSimFilter)) {
+            builder.appendQueryParameter(RawContacts.ACCOUNT_NAME, disabledSimFilter);
+            builder.appendQueryParameter(SimContactsConstants
+                    .WITHOUT_SIM_FLAG, "true");
+        }
+        if (!TextUtils.isEmpty(additionalQueryParameterKey) &&
+                !TextUtils.isEmpty(additionalQueryParameterValue)) {
+            builder.appendQueryParameter(additionalQueryParameterKey,
+                    additionalQueryParameterValue);
+        }
+        return new CursorLoader(context, builder.build(), COLUMNS_PHONE_ONLY, null, null, null);
+    }
+
     public static CursorLoader createStarredPhoneOnlyLoader(Context context) {
         return new CursorLoader(context, Contacts.CONTENT_URI, COLUMNS,
                 Contacts.STARRED + "=? AND " + Contacts.HAS_PHONE_NUMBER + "=?",

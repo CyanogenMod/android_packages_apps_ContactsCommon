@@ -19,6 +19,7 @@ package com.android.contacts.common.database;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
+import android.net.Uri;
 import android.provider.ContactsContract;
 import android.util.Log;
 
@@ -40,8 +41,10 @@ public class ContactUpdateUtils {
         values.put(ContactsContract.Data.IS_SUPER_PRIMARY, 1);
         values.put(ContactsContract.Data.IS_PRIMARY, 1);
 
-        context.getContentResolver().update(
-                ContentUris.withAppendedId(ContactsContract.Data.CONTENT_URI, dataId),
-                values, null, null);
+        // This overrides "is_read_only" by saying we are a sync adapter
+        // TODO: Might want to create better abstractions around Contacts instead faking syncadapter
+        Uri uri = ContentUris.withAppendedId(ContactsContract.Data.CONTENT_URI, dataId).buildUpon()
+                .appendQueryParameter(ContactsContract.CALLER_IS_SYNCADAPTER, "true").build();
+        context.getContentResolver().update(uri, values, null, null);
     }
 }
