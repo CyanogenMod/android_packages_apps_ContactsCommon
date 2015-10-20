@@ -56,6 +56,7 @@ public class ExportProcessor extends ProcessorBase {
 
     private volatile boolean mCanceled;
     private volatile boolean mDone;
+    private String selExport = "";
 
     public ExportProcessor(VCardService service, ExportRequest exportRequest, int jobId,
             String callingActivity) {
@@ -141,7 +142,7 @@ public class ExportProcessor extends ProcessorBase {
             final Uri contentUriForRawContactsEntity = RawContactsEntity.CONTENT_URI;
             // TODO: should provide better selection.
             if (!composer.init(Contacts.CONTENT_URI, new String[] {Contacts._ID},
-                    null, null,
+                    selExport, null,
                     null, contentUriForRawContactsEntity)) {
                 final String errorReason = composer.getErrorReason();
                 Log.e(LOG_TAG, "initialization of vCard composer failed: " + errorReason);
@@ -215,6 +216,10 @@ public class ExportProcessor extends ProcessorBase {
             }
             mService.handleFinishExportNotification(mJobId, successful);
         }
+    }
+
+    public void setSelExport(String sel) {
+        selExport = sel;
     }
 
     private String translateComposerError(String errorMessage) {

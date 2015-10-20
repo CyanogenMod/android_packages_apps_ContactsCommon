@@ -22,6 +22,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -31,11 +33,14 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.android.contacts.common.R;
+import com.android.contacts.common.SimContactsConstants;
 import com.android.contacts.common.model.AccountTypeManager;
 import com.android.contacts.common.model.account.AccountType;
 import com.android.contacts.common.model.account.AccountWithDataSet;
 import com.android.contacts.common.vcard.ImportVCardActivity;
+import com.android.internal.telephony.PhoneConstants;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -48,6 +53,8 @@ public class AccountSelectionUtil {
     public static boolean mVCardShare = false;
 
     public static Uri mPath;
+    // QRD enhancement: import subscription selected by user
+    private static int mImportSub = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
 
     public static class AccountSelectedListener
             implements DialogInterface.OnClickListener {
@@ -56,7 +63,7 @@ public class AccountSelectionUtil {
         final private int mResId;
         final private int mSubscriptionId;
 
-        final protected List<AccountWithDataSet> mAccountList;
+        protected List<AccountWithDataSet> mAccountList;
 
         public AccountSelectedListener(Context context, List<AccountWithDataSet> accountList,
                 int resId, int subscriptionId) {
@@ -78,8 +85,21 @@ public class AccountSelectionUtil {
 
         public void onClick(DialogInterface dialog, int which) {
             dialog.dismiss();
-            doImport(mContext, mResId, mAccountList.get(which), mSubscriptionId);
+            doImport(mContext, mResId, mAccountList.get(which));
         }
+        /**
+         * Reset the account list for this listener, to make sure the selected
+         * items reflect the displayed items.
+         *
+         * @param accountList The reset account list.
+         */
+        void setAccountList(List<AccountWithDataSet> accountList) {
+            mAccountList = accountList;
+        }
+    }
+
+    public static void setImportSubscription(int subscription) {
+        mImportSub = subscription;
     }
 
     public static Dialog getSelectAccountDialog(Context context, int resId) {
@@ -91,15 +111,28 @@ public class AccountSelectionUtil {
         return getSelectAccountDialog(context, resId, onClickListener, null);
     }
 
+    public static Dialog getSelectAccountDialog(Context context, int resId,
+            DialogInterface.OnClickListener onClickListener,
+            DialogInterface.OnCancelListener onCancelListener) {
+        return getSelectAccountDialog(context, resId, onClickListener,
+            onCancelListener, true);
+    }
+
     /**
      * When OnClickListener or OnCancelListener is null, uses a default listener.
      * The default OnCancelListener just closes itself with {@link Dialog#dismiss()}.
      */
     public static Dialog getSelectAccountDialog(Context context, int resId,
             DialogInterface.OnClickListener onClickListener,
-            DialogInterface.OnCancelListener onCancelListener) {
+            DialogInterface.OnCancelListener onCancelListener, boolean includeSIM) {
         final AccountTypeManager accountTypes = AccountTypeManager.getInstance(context);
-        final List<AccountWithDataSet> writableAccountList = accountTypes.getAccounts(true);
+        List<AccountWithDataSet> writableAccountList = accountTypes.getAccounts(true);
+        if (includeSIM) {
+            writableAccountList = accountTypes.getAccounts(true);
+        } else {
+            writableAccountList = accountTypes.getAccounts(true,
+                AccountTypeManager.FLAG_ALL_ACCOUNTS_WITHOUT_SIM);
+        }
 
         Log.i(LOG_TAG, "The number of available accounts: " + writableAccountList.size());
 
@@ -144,6 +177,13 @@ public class AccountSelectionUtil {
             AccountSelectedListener accountSelectedListener =
                 new AccountSelectedListener(context, writableAccountList, resId);
             onClickListener = accountSelectedListener;
+        } else if (onClickListener instanceof AccountSelectedListener) {
+            // Because the writableAccountList is different if includeSIM or not, so
+            // should reset the account list for the AccountSelectedListener which
+            // is initialized with FLAG_ALL_ACCOUNTS.
+            // Reset the account list to make sure the selected account is contained
+            // in these display accounts.
+            ((AccountSelectedListener) onClickListener).setAccountList(writableAccountList);
         }
         if (onCancelListener == null) {
             onCancelListener = new DialogInterface.OnCancelListener() {
@@ -159,11 +199,11 @@ public class AccountSelectionUtil {
             .create();
     }
 
-    public static void doImport(Context context, int resId, AccountWithDataSet account,
-            int subscriptionId) {
+    public static void doImport(Context context, int resId,
+            AccountWithDataSet account) {
         switch (resId) {
-            case R.string.manage_sim_contacts: {
-                doImportFromSim(context, account, subscriptionId);
+            case R.string.import_from_sim: {
+                doImportFromSim(context, account);
                 break;
             }
             case R.string.import_from_vcf_file: {
@@ -173,17 +213,18 @@ public class AccountSelectionUtil {
         }
     }
 
-    public static void doImportFromSim(Context context, AccountWithDataSet account,
-            int subscriptionId) {
-        Intent importIntent = new Intent(Intent.ACTION_VIEW);
-        importIntent.setType("vnd.android.cursor.item/sim-contact");
+    public static void doImportFromSim(Context context, AccountWithDataSet account) {
+        Intent importIntent = new Intent(SimContactsConstants.ACTION_MULTI_PICK_SIM);
         if (account != null) {
-            importIntent.putExtra("account_name", account.name);
-            importIntent.putExtra("account_type", account.type);
-            importIntent.putExtra("data_set", account.dataSet);
+            importIntent.putExtra(SimContactsConstants.ACCOUNT_NAME, account.name);
+            importIntent.putExtra(SimContactsConstants.ACCOUNT_TYPE, account.type);
+            importIntent.putExtra(SimContactsConstants.ACCOUNT_DATA, account.dataSet);
         }
-        importIntent.putExtra("subscription_id", (Integer) subscriptionId);
-        importIntent.setClassName("com.android.phone", "com.android.phone.SimContacts");
+        if (TelephonyManager.getDefault().isMultiSimEnabled()) {
+            importIntent.putExtra(PhoneConstants.SLOT_KEY, mImportSub);
+        } else {
+            importIntent.putExtra(PhoneConstants.SLOT_KEY,PhoneConstants.SUB1);
+        }
         context.startActivity(importIntent);
     }
 

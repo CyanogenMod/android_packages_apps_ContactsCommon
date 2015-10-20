@@ -24,15 +24,20 @@ import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.provider.BaseColumns;
+import android.provider.ContactsContract.CommonDataKinds.Email;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.provider.ContactsContract.CommonDataKinds.StructuredName;
 import android.provider.ContactsContract.Data;
 import android.provider.ContactsContract.Profile;
 import android.provider.ContactsContract.RawContacts;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.contacts.common.model.AccountTypeManager;
 import com.android.contacts.common.model.ValuesDelta;
 import com.android.contacts.common.model.account.AccountType;
 import com.android.contacts.common.testing.NeededForTesting;
+import com.android.contacts.common.SimContactsConstants;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
@@ -416,6 +421,139 @@ public class RawContactDelta implements Parcelable {
         }
     }
 
+    public ContentValues buildSimDiff() {
+        ContentValues values = new ContentValues();
+        ArrayList<ValuesDelta> names = getMimeEntries(StructuredName.CONTENT_ITEM_TYPE);
+        ArrayList<ValuesDelta> phones = getMimeEntries(Phone.CONTENT_ITEM_TYPE);
+        ArrayList<ValuesDelta> emails = getMimeEntries(Email.CONTENT_ITEM_TYPE);
+
+        ValuesDelta nameValuesDelta = null;
+        ValuesDelta emailValuesDelta = null;
+
+        if (getMimeEntriesCount(StructuredName.CONTENT_ITEM_TYPE, true) > 0) {
+            nameValuesDelta = names.get(0);
+            names.get(0).putNull(StructuredName.GIVEN_NAME);
+            names.get(0).putNull(StructuredName.FAMILY_NAME);
+            names.get(0).putNull(StructuredName.PREFIX);
+            names.get(0).putNull(StructuredName.MIDDLE_NAME);
+            names.get(0).putNull(StructuredName.SUFFIX);
+            names.get(0).put(StructuredName.MIMETYPE, StructuredName.CONTENT_ITEM_TYPE);
+        }
+        if (emails != null && emails.size() > 0) {
+            emailValuesDelta = emails.get(0);
+        }
+
+        String name = null;
+        String number = null;
+        String newName = null;
+        String newNumber = null;
+        StringBuilder email = new StringBuilder();
+        StringBuilder anr = new StringBuilder();
+        StringBuilder newEmail = new StringBuilder();
+        StringBuilder newAnr = new StringBuilder();
+
+        if (nameValuesDelta != null) {
+            if (isContactInsert()) {
+                name = nameValuesDelta.getAsString(StructuredName.DISPLAY_NAME);
+            } else {
+                if (nameValuesDelta.getBefore() != null) {
+                    name = nameValuesDelta.getBefore()
+                        .getAsString(StructuredName.DISPLAY_NAME);
+                }
+                if (nameValuesDelta.getAfter() != null) {
+                    newName = nameValuesDelta.getAfter()
+                        .getAsString(StructuredName.DISPLAY_NAME);
+                }
+            }
+        }
+
+        if (isContactInsert() && phones != null) {
+            for (ValuesDelta valuesDelta : phones) {
+                if (valuesDelta.getAfter() != null
+                        && valuesDelta.getAfter().size() != 0) {
+                    if (Phone.TYPE_MOBILE == valuesDelta.getAfter().getAsLong(Phone.TYPE)) {
+                        if (TextUtils.isEmpty(number)) {
+                            number = valuesDelta.getAfter().getAsString(Phone.NUMBER);
+                        } else {
+                            // don't supports to save two mobile number,so gives
+                            // invalid str here
+                            number = SimContactsConstants.STR_ANRS;
+                        }
+                    } else {
+                        anr.append(valuesDelta.getAfter().getAsString(Phone.NUMBER));
+                        anr.append(SimContactsConstants.ANR_SEP);
+                    }
+                }
+            }
+        } else if(phones != null) {
+            for (ValuesDelta valuesDelta : phones) {
+                if (valuesDelta.getBefore() != null
+                        && valuesDelta.getBefore().size() != 0) {
+                    if (Phone.TYPE_MOBILE == valuesDelta.getBefore().getAsLong(Phone.TYPE) ) {
+                        number = valuesDelta.getBefore().getAsString(Phone.NUMBER);
+                    } else {
+                        anr.append(valuesDelta.getBefore().getAsString(Phone.NUMBER));
+                        anr.append(SimContactsConstants.ANR_SEP);
+                    }
+                }
+                if (valuesDelta.getAfter() != null
+                        && valuesDelta.getAfter().size() != 0) {
+                    if (Phone.TYPE_MOBILE == valuesDelta.getAsLong(Phone.TYPE)) {
+                        if (TextUtils.isEmpty(newNumber)) {
+                            newNumber = valuesDelta.getAfter().getAsString(Phone.NUMBER);
+                        } else {
+                            newNumber = SimContactsConstants.STR_ANRS;
+                        }
+                    } else {
+                        newAnr.append(valuesDelta.getAfter().getAsString(Phone.NUMBER));
+                        newAnr.append(SimContactsConstants.ANR_SEP);
+                    }
+                }
+            }
+        }
+
+        if (isContactInsert() && emails != null) {
+            for (ValuesDelta valuesDelta : emails) {
+                if (valuesDelta.getAfter() != null
+                        && valuesDelta.getAfter().size() != 0) {
+                    email.append(valuesDelta.getAfter().getAsString(Email.DATA));
+                    email.append(SimContactsConstants.EMAIL_SEP);
+                }
+            }
+        } else if (emails != null) {
+            for (ValuesDelta valuesDelta : emails) {
+                if (valuesDelta.getBefore() != null
+                        && valuesDelta.getBefore().size() != 0) {
+                    email.append(valuesDelta.getBefore().getAsString(Email.DATA));
+                    email.append(SimContactsConstants.EMAIL_SEP);
+                }
+                if (valuesDelta.getAfter() != null
+                        && valuesDelta.getAfter().size() != 0) {
+                        newEmail.append(valuesDelta.getAfter().getAsString(Email.DATA));
+                        newEmail.append(SimContactsConstants.EMAIL_SEP);
+                }
+            }
+        }
+
+        if (isContactInsert()) {
+            if (name != null || number != null || anr != null || email != null) {
+                values.put(SimContactsConstants.STR_TAG, name);
+                values.put(SimContactsConstants.STR_NUMBER, number);
+                values.put(SimContactsConstants.STR_EMAILS, email.toString());
+                values.put(SimContactsConstants.STR_ANRS, anr.toString());
+            }
+        } else {
+            values.put(SimContactsConstants.STR_TAG, name);
+            values.put(SimContactsConstants.STR_NUMBER, number);
+            values.put(SimContactsConstants.STR_EMAILS, email.toString());
+            values.put(SimContactsConstants.STR_ANRS, anr.toString());
+            values.put(SimContactsConstants.STR_NEW_TAG, newName);
+            values.put(SimContactsConstants.STR_NEW_NUMBER, newNumber);
+            values.put(SimContactsConstants.STR_NEW_EMAILS, newEmail.toString());
+            values.put(SimContactsConstants.STR_NEW_ANRS, newAnr.toString());
+        }
+        return values;
+    }
     /**
      * Build a list of {@link ContentProviderOperation} that will transform the
      * current "before" {@link Entity} state into the modified state which this

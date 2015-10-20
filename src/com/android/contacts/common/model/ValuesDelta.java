@@ -23,6 +23,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.provider.BaseColumns;
 import android.provider.ContactsContract;
+import android.provider.ContactsContract.Data;
 
 import com.android.contacts.common.testing.NeededForTesting;
 import com.google.common.collect.Sets;
@@ -61,6 +62,17 @@ public class ValuesDelta implements Parcelable {
         final ValuesDelta entry = new ValuesDelta();
         entry.mBefore = before;
         entry.mAfter = new ContentValues();
+
+        // init data1 to mAfter map. when no operation edittext of
+        // sim phone in the UI, the mAfter init have no data1 value,
+        // it will cause the builddiff data not right.
+        if (before.containsKey(Data.DATA1)) {
+            String contactInfo = before.getAsString(Data.DATA1);
+            if (null != contactInfo && !"".equals(contactInfo)) {
+                entry.mAfter.put(Data.DATA1, contactInfo);
+            }
+        }
+
         return entry;
     }
 
@@ -81,6 +93,10 @@ public class ValuesDelta implements Parcelable {
     @NeededForTesting
     public ContentValues getAfter() {
         return mAfter;
+    }
+
+    public ContentValues getBefore() {
+        return mBefore;
     }
 
     public boolean containsKey(String key) {

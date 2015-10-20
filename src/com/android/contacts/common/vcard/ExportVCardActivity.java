@@ -46,6 +46,7 @@ public class ExportVCardActivity extends Activity implements ServiceConnection,
         DialogInterface.OnClickListener, DialogInterface.OnCancelListener {
     private static final String LOG_TAG = "VCardExport";
     private static final boolean DEBUG = VCardService.DEBUG;
+    private String selExport = "";
     private static final int REQUEST_CREATE_DOCUMENT = 100;
 
     /**
@@ -98,6 +99,10 @@ public class ExportVCardActivity extends Activity implements ServiceConnection,
             showDialog(R.id.dialog_fail_to_export_with_reason);
         }
         // Continued to onServiceConnected()
+        Intent selExportIntent = getIntent();
+        if(selExportIntent != null) {
+            selExport = selExportIntent.getStringExtra("SelExport");
+        }
     }
 
     @Override

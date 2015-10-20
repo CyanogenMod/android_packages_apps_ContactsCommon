@@ -48,7 +48,7 @@ public class CallUtil {
      * automatically.
      */
     public static Intent getCallIntent(String number) {
-        return getCallIntent(getCallUri(number));
+        return getCallIntent(number, null);
     }
 
     /**
@@ -57,6 +57,28 @@ public class CallUtil {
      */
     public static Intent getCallIntent(Uri uri) {
         return new Intent(Intent.ACTION_CALL, uri);
+    }
+
+    /**
+     * A variant of {@link #getCallIntent(String, String)} but also include {@code Account}.
+     */
+    public static Intent getCallIntent(
+            String number, PhoneAccountHandle accountHandle) {
+        return getCallIntent(CallUtil.getCallUri(number), accountHandle);
+    }
+
+    /**
+     * A variant of {@link #getCallIntent(android.net.Uri)} but also accept a call
+     * origin and {@code Account} and {@code VideoCallProfile} state.
+     * For more information about call origin, see comments in Phone package (PhoneApp).
+     */
+    public static Intent getCallIntent(Uri uri, PhoneAccountHandle accountHandle) {
+        final Intent intent = new Intent(Intent.ACTION_CALL, uri);
+        if (accountHandle != null) {
+            intent.putExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE, accountHandle);
+        }
+
+        return intent;
     }
 
     /**

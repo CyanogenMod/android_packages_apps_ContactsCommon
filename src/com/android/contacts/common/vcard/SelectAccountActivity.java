@@ -58,7 +58,8 @@ public class SelectAccountActivity extends Activity {
         // - no account -> use phone-local storage without asking the user
         final int resId = R.string.import_from_vcf_file;
         final AccountTypeManager accountTypes = AccountTypeManager.getInstance(this);
-        final List<AccountWithDataSet> accountList = accountTypes.getAccounts(true);
+        final List<AccountWithDataSet> accountList = accountTypes.getAccounts(true,
+                AccountTypeManager.FLAG_ALL_ACCOUNTS_WITHOUT_SIM);
         if (accountList.size() == 0) {
             Log.w(LOG_TAG, "Account does not exist");
             finish();
@@ -106,7 +107,7 @@ public class SelectAccountActivity extends Activity {
                 }
                 return AccountSelectionUtil.getSelectAccountDialog(this, resId,
                         mAccountSelectionListener,
-                        new CancelListener());
+                        new CancelListener(), false);
             }
         }
         return super.onCreateDialog(resId, bundle);

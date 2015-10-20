@@ -120,7 +120,8 @@ public class AccountFilterActivity extends Activity implements AdapterView.OnIte
                 // Hide extensions with no raw_contacts.
                 continue;
             }
-            Drawable icon = accountType != null ? accountType.getDisplayIcon(context) : null;
+            Drawable icon = accountType != null ? accountType.getDisplayIcon(
+                    context, account.name) : null;
             accountFilters.add(ContactListFilter.createAccountFilter(
                     account.type, account.name, account.dataSet, icon));
         }
