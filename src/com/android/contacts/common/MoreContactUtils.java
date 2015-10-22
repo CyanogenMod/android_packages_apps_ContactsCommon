@@ -39,6 +39,8 @@ import android.provider.ContactsContract.CommonDataKinds.StructuredName;
 import android.provider.ContactsContract.Data;
 import android.provider.ContactsContract.RawContacts;
 import android.provider.Settings;
+import android.telecom.PhoneAccountHandle;
+import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.SubscriptionInfo;
@@ -237,6 +239,49 @@ public class MoreContactUtils {
         return rect;
     }
 
+    public static boolean shouldShowOperator(Context context) {
+        return context.getResources().getBoolean(R.bool.config_show_operator);
+    }
+
+    /**
+     * Get Network SPN name, e.g. China Unicom
+     */
+    public static String getNetworkSpnName(Context context, int subscription) {
+        TelephonyManager tm = (TelephonyManager)
+                context.getSystemService(Context.TELEPHONY_SERVICE);
+        String netSpnName = "";
+        if (tm != null) {
+            // Get active operator name.
+            netSpnName = tm.getNetworkOperatorName();
+            if (TextUtils.isEmpty(netSpnName)) {
+                // if could not get the operator name, use sim name instead of
+                List<SubscriptionInfo> subInfoList =
+                        SubscriptionManager.from(context).getActiveSubscriptionInfoList();
+                if (subInfoList != null) {
+                    for (int i = 0; i < subInfoList.size(); ++i) {
+                        final SubscriptionInfo sir = subInfoList.get(i);
+                        if (sir.getSubscriptionId() == subscription) {
+                            netSpnName = (String)sir.getDisplayName();
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        return toUpperCaseFirstOne(netSpnName);
+    }
+
+    private static String toUpperCaseFirstOne(String s) {
+        if (TextUtils.isEmpty(s)) {
+            return s;
+        }
+        if (Character.isUpperCase(s.charAt(0))) {
+            return s;
+        } else {
+            return (new StringBuilder()).append(Character.toUpperCase(s.charAt(0)))
+                    .append(s.substring(1)).toString();
+        }
+    }
     /**
      * Returns a header view based on the R.layout.list_separator, where the
      * containing {@link android.widget.TextView} is set using the given textResourceId.

@@ -91,4 +91,6 @@
     <string name="pref_privacy_policy_key">pref_privacy_policy</string>
     <string name="pref_terms_of_service_key">pref_terms_of_service</string>
 
+    <!-- configuration for set operator show in dialpad or calllog -->
+    <bool name="config_show_operator">false</bool>
 </resources>
