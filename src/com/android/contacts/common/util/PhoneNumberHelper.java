@@ -36,6 +36,7 @@ public class PhoneNumberHelper {
 
     private static final String LOG_TAG = PhoneNumberHelper.class.getSimpleName();
 
+    private static final String KOREA_ISO_COUNTRY_CODE = "KR";
     /**
      * Determines if the specified number is actually a URI (i.e. a SIP address) rather than a
      * regular PSTN phone number, based on whether or not the number contains an "@" character.
@@ -124,7 +125,19 @@ public class PhoneNumberHelper {
         String result = null;
         try {
             PhoneNumber pn = util.parseAndKeepRawInput(phoneNumber, defaultCountryIso);
-            result = util.formatInOriginalFormat(pn, defaultCountryIso);
+            /**
+             * Need to reformat any local Korean phone numbers (when the user is in Korea) with
+             * country code to corresponding national format which would replace the leading
+             * +82 with 0.
+             */
+            if (KOREA_ISO_COUNTRY_CODE.equals(defaultCountryIso) &&
+                    (pn.getCountryCode() == util.getCountryCodeForRegion(KOREA_ISO_COUNTRY_CODE)) &&
+                    (pn.getCountryCodeSource() ==
+                            PhoneNumber.CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN)) {
+                result = util.format(pn, PhoneNumberUtil.PhoneNumberFormat.NATIONAL);
+            } else {
+                result = util.formatInOriginalFormat(pn, defaultCountryIso);
+            }
         } catch (NumberParseException e) {
             Log.w(LOG_TAG, "Number could not be parsed with the given country code!");
         }

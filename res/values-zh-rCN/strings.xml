@@ -283,4 +283,9 @@
     <string name="no_ip_number_on_sim_card">SIM卡上没有IP号</string>
     <string name="ipcall_dialog_title">IP电话设置</string>
     <string name="ipcall_dialog_edit_hint">请输入IP电话前缀</string>
+    <string name="call_with_a_note" msgid="8453800473226831257">"拨打电话时发送记事"</string>
+    <string name="call_subject_hint" msgid="2270115162050853866">"输入可在拨打电话时发送的记事…"</string>
+    <string name="send_and_call_button" msgid="7459507823002185202">"发送记事并拨打电话"</string>
+    <string name="call_subject_limit" msgid="4746194916585506281">"<xliff:g id="COUNT">%1$s</xliff:g> / <xliff:g id="LIMIT">%2$s</xliff:g>"</string>
+    <string name="call_subject_type_and_number" msgid="517676698821671164">"<xliff:g id="TYPE">%1$s</xliff:g> • <xliff:g id="NUMBER">%2$s</xliff:g>"</string>
 </resources>

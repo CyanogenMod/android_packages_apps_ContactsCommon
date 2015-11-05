@@ -134,7 +134,7 @@
     <string name="map_other" msgid="55098598855607997">"Manzilni ko‘rish"</string>
     <string name="map_custom" msgid="4943554530347163288">"<xliff:g id="CUSTOM">%s</xliff:g> manzillarni ko‘rish"</string>
     <string name="chat_aim" msgid="6479001490307452172">"AIM’da suhbatlashish"</string>
-    <string name="chat_msn" msgid="627481952525245054">"Windows Live’da suhbatlashish"</string>
+    <string name="chat_msn" msgid="627481952525245054">"Windows Live orqali chat"</string>
     <string name="chat_yahoo" msgid="5542489454092719897">"Yahoo’da suhbatlashish"</string>
     <string name="chat_skype" msgid="3145166404699830256">"Skype’da suhbatlashish"</string>
     <string name="chat_qq" msgid="2811762660890755082">"QQ’da suhbatlashish"</string>
@@ -228,7 +228,7 @@
     <string name="dialog_import_export" msgid="1125776851100740858">"Kontaktlarni import/eksport qilish"</string>
     <string name="dialog_import" msgid="5177004290082451296">"Kontaktlarni import qilish"</string>
     <string name="share_error" msgid="665756457151793108">"Kontaktni yuborib bo‘lmadi."</string>
-    <string name="menu_search" msgid="7464453023659824700">"Izlash"</string>
+    <string name="menu_search" msgid="7464453023659824700">"Qidirish"</string>
     <string name="menu_contacts_filter" msgid="586356478145511794">"Kontaktlarni filtrlash"</string>
     <string name="activity_title_contacts_filter" msgid="7689519428197855166">"Kontaktlarni filtrlash"</string>
     <string name="custom_list_filter" msgid="582616656313514803">"Kontaktlar guruhini tanlang"</string>
@@ -250,4 +250,9 @@
     <string name="select_account_dialog_title" msgid="5509088895267310568">"Hisob"</string>
     <string name="set_default_account" msgid="3865970860434642695">"Har doim qo‘ng‘iroqlar u-n foyd-sin"</string>
     <string name="select_phone_account_for_calls" msgid="933905607702811164">"Ushbu bilan qo‘ng‘iroq qilish"</string>
+    <string name="call_with_a_note" msgid="8453800473226831257">"Qo‘ng‘iroq va izoh"</string>
+    <string name="call_subject_hint" msgid="2270115162050853866">"Qo‘ng‘iroqqa qo‘shib yuborish uchun izoh yozing ..."</string>
+    <string name="send_and_call_button" msgid="7459507823002185202">"YUBORISH va QO‘NG‘IROQ QILISH"</string>
+    <string name="call_subject_limit" msgid="4746194916585506281">"<xliff:g id="COUNT">%1$s</xliff:g> / <xliff:g id="LIMIT">%2$s</xliff:g>"</string>
+    <string name="call_subject_type_and_number" msgid="517676698821671164">"<xliff:g id="TYPE">%1$s</xliff:g> • <xliff:g id="NUMBER">%2$s</xliff:g>"</string>
 </resources>
