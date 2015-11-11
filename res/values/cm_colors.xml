@@ -15,6 +15,9 @@
      limitations under the License.
 -->
 <resources>
+    <color name="contact_tile_text_color">#ff202020</color>
+    <color name="frequent_contact_text_color">#ff000000</color>
+    <color name="quick_contact_text_color">#ffffffff</color>
 <!-- Background colors for LetterTileDrawables definitions. -->
     <color name="letter_tile_red_color">#DB4437</color>
     <color name="letter_tile_pink_color">#E91E63</color>
