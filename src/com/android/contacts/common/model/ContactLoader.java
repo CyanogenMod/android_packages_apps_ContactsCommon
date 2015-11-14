@@ -450,17 +450,18 @@ public class ContactLoader extends AsyncTaskLoader<Contact> {
                 // Could be single object, int, or array.
                 JSONObject obj = items.optJSONObject(mimetype);
                 final int num = items.optInt(mimetype, -1);
-                if (obj == null && num != -1) {
+                if (obj == null && num == -1) {
+                    // Neither object nor int, thus must be array
                     final JSONArray array = items.getJSONArray(mimetype);
                     for (int i = 0; i < array.length(); i++) {
                         final JSONObject item = array.getJSONObject(i);
                         processOneRecord(rawContact, item, mimetype);
                     }
-                } else if (num != -1 && obj != null) {
+                } else if (num != -1) {
                     obj = new JSONObject();
                     obj.put(mimetype, num);
                     processOneRecord(rawContact, obj, mimetype);
-                } else {
+                } else if (obj != null) {
                     processOneRecord(rawContact, obj, mimetype);
                 }
             }
