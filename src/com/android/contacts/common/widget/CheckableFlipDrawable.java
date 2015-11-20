@@ -1,7 +1,7 @@
 package com.android.contacts.common.widget;
 
 import android.animation.ValueAnimator;
-import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,12 +10,9 @@ import android.graphics.ColorFilter;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.util.AttributeSet;
-import android.widget.Checkable;
-import android.widget.QuickContactBadge;
 
 import com.android.contacts.common.R;
 
@@ -73,6 +70,10 @@ public class CheckableFlipDrawable extends FlipDrawable implements
         invalidateSelf();
     }
 
+    public void scaleFrontDrawableToBounds(boolean fitBounds) {
+        mFrontDrawable.scaleDrawableToBounds(fitBounds);
+    }
+
     public void setCheckMarkBackgroundColor(int color) {
         mCheckmarkDrawable.setBackgroundColor(color);
         invalidateSelf();
@@ -128,6 +129,8 @@ public class CheckableFlipDrawable extends FlipDrawable implements
 
     private static class FrontDrawable extends Drawable implements Drawable.Callback {
         private Drawable mDrawable;
+        private boolean mScaleDrawableToBounds = false; // only applies to drawables with intrinsic
+                                                        // height and width
 
         public FrontDrawable(Drawable d) {
             mDrawable = d;
@@ -144,6 +147,25 @@ public class CheckableFlipDrawable extends FlipDrawable implements
             mDrawable.setCallback(this);
             assignDrawableBounds(getBounds());
             invalidateSelf();
+        }
+
+        public void scaleDrawableToBounds(boolean fitBounds) {
+            mScaleDrawableToBounds = fitBounds;
+        }
+
+        @Override
+        public void setTintMode(PorterDuff.Mode tintMode) {
+            mDrawable.setTintMode(tintMode);
+        }
+
+        @Override
+        public void setTintList(ColorStateList tint) {
+            mDrawable.setTintList(tint);
+        }
+
+        @Override
+        public boolean setState(int[] stateSet) {
+            return mDrawable.setState(stateSet);
         }
 
         @Override
@@ -175,13 +197,16 @@ public class CheckableFlipDrawable extends FlipDrawable implements
             if (w <= 0 || h <= 0) {
                 mDrawable.draw(canvas);
             } else {
-                final float widthScale = (float) bounds.width() / (float) w;
-                final float heightScale = (float) bounds.height() / (float) h;
-                final float scale = Math.max(widthScale, heightScale);
-
                 canvas.save();
-                canvas.scale(scale, scale);
-                canvas.translate(bounds.left, bounds.top);
+                if (mScaleDrawableToBounds) {
+                    final float widthScale = (float) bounds.width() / (float) w;
+                    final float heightScale = (float) bounds.height() / (float) h;
+                    final float scale = Math.max(widthScale, heightScale);
+                    canvas.scale(scale, scale);
+                    canvas.translate(bounds.left, bounds.top);
+                } else {
+                    canvas.translate(bounds.centerX() - (w/2f), bounds.centerY() - (h/2f));
+                }
                 mDrawable.draw(canvas);
                 canvas.restore();
             }
