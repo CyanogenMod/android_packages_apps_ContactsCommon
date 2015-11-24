@@ -379,12 +379,8 @@ public abstract class ContactPhotoManager implements ComponentCallbacks2 {
          * @param defaultImageRequest {@link DefaultImageRequest} object that specifies how a
          * default letter tile avatar should be drawn.
          */
-        public abstract void applyDefaultImage(ImageView view, int extent, boolean darkTheme,
-                DefaultImageRequest defaultImageRequest);
-
-        public void applyDefaultImage(ImageView view, Account account, int extent,
-                boolean darkTheme, DefaultImageRequest defaultImageRequest) {
-        }
+        public abstract void applyDefaultImage(ImageView view, Account account, int extent,
+                boolean darkTheme, DefaultImageRequest defaultImageRequest);
     }
 
     /**
@@ -393,12 +389,6 @@ public abstract class ContactPhotoManager implements ComponentCallbacks2 {
      * background and the type of letter is decided based on the contact's details.
      */
     private static class LetterTileDefaultImageProvider extends DefaultImageProvider {
-        @Override
-        public void applyDefaultImage(ImageView view, int extent, boolean darkTheme,
-                DefaultImageRequest defaultImageRequest) {
-            applyDefaultImage(view, null, extent, darkTheme, defaultImageRequest);
-        }
-
         @Override
         public void applyDefaultImage(ImageView view, Account account, int extent,
                 boolean darkTheme, DefaultImageRequest defaultImageRequest) {
@@ -435,8 +425,8 @@ public abstract class ContactPhotoManager implements ComponentCallbacks2 {
         private static Drawable sDrawable;
 
         @Override
-        public void applyDefaultImage(ImageView view, int extent, boolean darkTheme,
-                DefaultImageRequest defaultImageRequest) {
+        public void applyDefaultImage(ImageView view, Account account, int extent,
+                boolean darkTheme, DefaultImageRequest defaultImageRequest) {
             if (sDrawable == null) {
                 Context context = view.getContext();
                 sDrawable = new ColorDrawable(context.getResources().getColor(
@@ -904,8 +894,8 @@ class ContactPhotoManagerImpl extends ContactPhotoManager implements Callback {
             mPendingRequests.remove(view);
         } else {
             if (DEBUG) Log.d(TAG, "loadPhoto request: " + photoId);
-            loadPhotoByIdOrUri(view, Request.createFromThumbnailId(photoId, darkTheme, isCircular,
-                    defaultProvider, defaultImageRequest));
+            loadPhotoByIdOrUri(view, Request.createFromThumbnailId(photoId, account, darkTheme,
+                    isCircular, defaultProvider, defaultImageRequest));
         }
     }
 
@@ -924,7 +914,7 @@ class ContactPhotoManagerImpl extends ContactPhotoManager implements Callback {
                 createAndApplyDefaultImageForUri(view, account, photoUri, requestedExtent,
                         darkTheme, isCircular, defaultProvider);
             } else {
-                loadPhotoByIdOrUri(view, Request.createFromUri(photoUri, requestedExtent,
+                loadPhotoByIdOrUri(view, Request.createFromUri(photoUri, account, requestedExtent,
                         darkTheme, isCircular, defaultProvider, defaultImageRequest));
             }
         }
@@ -1769,6 +1759,7 @@ class ContactPhotoManagerImpl extends ContactPhotoManager implements Callback {
     private static final class Request {
         private final long mId;
         private final Uri mUri;
+        private final Account mAccount;
         private final boolean mDarkTheme;
         private final int mRequestedExtent;
         private final DefaultImageProvider mDefaultProvider;
@@ -1780,10 +1771,11 @@ class ContactPhotoManagerImpl extends ContactPhotoManager implements Callback {
         private PhotoFetcherCallback mCallback;
         private DefaultImageRequest mDefaultImageRequest;
 
-        private Request(long id, Uri uri, int requestedExtent, boolean darkTheme,
+        private Request(long id, Uri uri, Account account, int requestedExtent, boolean darkTheme,
                 boolean isCircular, DefaultImageProvider defaultProvider, DefaultImageRequest defaultImageRequest) {
             mId = id;
             mUri = uri;
+            mAccount = account;
             mDarkTheme = darkTheme;
             mIsCircular = isCircular;
             mRequestedExtent = requestedExtent;
@@ -1791,33 +1783,34 @@ class ContactPhotoManagerImpl extends ContactPhotoManager implements Callback {
             mDefaultImageRequest = defaultImageRequest;
         }
 
-        public static Request createFromThumbnailId(long id, boolean darkTheme, boolean isCircular,
-                DefaultImageProvider defaultProvider, DefaultImageRequest defaultImageRequest) {
-            return new Request(id, null /* no URI */, -1, darkTheme, isCircular, defaultProvider,
-                    defaultImageRequest);
+        public static Request createFromThumbnailId(long id, Account account, boolean darkTheme,
+                boolean isCircular, DefaultImageProvider defaultProvider,
+                DefaultImageRequest defaultImageRequest) {
+            return new Request(id, null /* no URI */, null /* no account */, -1, darkTheme,
+                    isCircular, defaultProvider, defaultImageRequest);
         }
 
         public static Request createFromUri(Uri uri, int requestedExtent, boolean darkTheme,
                 boolean isCircular, DefaultImageProvider defaultProvider) {
-            return createFromUri(uri, requestedExtent, darkTheme, isCircular,
+            return createFromUri(uri, null /* no account */ ,requestedExtent, darkTheme, isCircular,
                     defaultProvider, null);
         }
 
-        public static Request createFromUri(Uri uri, int requestedExtent, boolean darkTheme,
-                boolean isCircular, DefaultImageProvider defaultProvider,
+        public static Request createFromUri(Uri uri, Account account, int requestedExtent,
+                boolean darkTheme, boolean isCircular, DefaultImageProvider defaultProvider,
                 DefaultImageRequest defaultImageRequest) {
-            return new Request(0 /* no ID */, uri, requestedExtent, darkTheme, isCircular,
+            return new Request(0 /* no ID */, uri, account, requestedExtent, darkTheme, isCircular,
                     defaultProvider, defaultImageRequest);
         }
 
         public static Request createBitmapOnly(Uri uri, int requestedExtent,
                                                PhotoFetcherCallback cb) {
-            return createBitmapOnly(uri, requestedExtent, cb, null);
+            return createBitmapOnly(uri, null /* no account */ , requestedExtent, cb, null);
         }
 
-        public static Request createBitmapOnly(Uri uri, int requestedExtent,
+        public static Request createBitmapOnly(Uri uri, Account account, int requestedExtent,
                 PhotoFetcherCallback cb, DefaultImageRequest defaultImageRequest) {
-            Request request = new Request(0, uri, requestedExtent, false, false, null,
+            Request request = new Request(0, uri, account, requestedExtent, false, false, null,
                     defaultImageRequest);
             request.setBitmapOnly();
             request.mCallback = cb;
@@ -1832,7 +1825,7 @@ class ContactPhotoManagerImpl extends ContactPhotoManager implements Callback {
 
         public static Request createBitmapOnly(long photoId, int requestedExtent,
                 PhotoFetcherCallback cb, DefaultImageRequest defaultImageRequest) {
-            Request request = new Request(photoId, null, requestedExtent, false, false, null,
+            Request request = new Request(photoId, null, null, requestedExtent, false, false, null,
                     defaultImageRequest);
             request.setBitmapOnly();
             request.mCallback = cb;
@@ -1920,8 +1913,8 @@ class ContactPhotoManagerImpl extends ContactPhotoManager implements Callback {
                             : DefaultImageRequest.EMPTY_DEFAULT_IMAGE_REQUEST;
                 }
             }
-
-            mDefaultProvider.applyDefaultImage(view, mRequestedExtent, mDarkTheme, request);
+            mDefaultProvider.applyDefaultImage(view, mAccount, mRequestedExtent, mDarkTheme,
+                    request);
         }
     }
 }
