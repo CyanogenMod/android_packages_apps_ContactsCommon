@@ -15,6 +15,7 @@
      limitations under the License.
 -->
 <resources>
+    <color name="search_back_button_tint_color">#ff0288d1</color>
     <color name="contact_tile_text_color">#ff202020</color>
     <color name="frequent_contact_text_color">#ff000000</color>
     <color name="quick_contact_text_color">#ffffffff</color>
