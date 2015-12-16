@@ -37,7 +37,6 @@
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> không có số điện thoại hoặc địa chỉ email</string>
   <string name="import_from_sim_select">Chọn thẻ để nhập</string>
   <string name="no_sdcard_title" product="nosdcard">Bộ nhớ không khả dụng</string>
-  <string name="no_sdcard_title" product="default">Không có thẻ nhớ</string>
   <string name="deleteConfirmation_title">Xóa số liên lạc?</string>
   <string name="deleteConfirmation">Số liên lạc này sẽ bị xóa.</string>
   <string name="copy_done">Số liên lạc đã được sao chép thành công</string>
