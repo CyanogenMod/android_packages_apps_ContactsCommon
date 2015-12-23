@@ -16,13 +16,23 @@
 
 package com.android.contacts.common.compat;
 
+import android.net.Uri;
+import android.provider.ContactsContract;
 import android.provider.ContactsContract.Directory;
 
 public class DirectorySdkCompat {
 
     private static final String TAG = "DirectorySdkCompat";
 
+    public static final Uri ENTERPRISE_CONTENT_URI = Directory.ENTERPRISE_CONTENT_URI;
+    public static final long ENTERPRISE_LOCAL_DEFAULT = Directory.ENTERPRISE_DEFAULT;
+    public static final long ENTERPRISE_LOCAL_INVISIBLE = Directory.ENTERPRISE_LOCAL_INVISIBLE;
+
     public static boolean isRemoteDirectory(long directoryId) {
         return Directory.isRemoteDirectory(directoryId);
+    }
+
+    public static boolean isEnterpriseDirectoryId(long directoryId) {
+        return Directory.isEnterpriseDirectoryId(directoryId);
     }
 }
