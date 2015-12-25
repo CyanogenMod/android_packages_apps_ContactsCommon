@@ -16,13 +16,13 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="local_storage_account" product="tablet">Cuenta local del tablet</string>
-  <string name="local_storage_account" product="default">Cuenta local del teléfono</string>
+  <string name="local_storage_account" product="tablet">Cuenta de tablet local</string>
+  <string name="local_storage_account" product="default">Cuenta de teléfono local</string>
   <string name="import_contacts_sim">¿Importar contactos de la tarjeta SIM?</string>
   <string name="manage_sim_contacts">Gestionar los contactos de la tarjeta SIM</string>
   <string name="export_to_sim">Exportar a la tarjeta SIM</string>
-  <string name="fail_reason_import_vcard">\u00AB<xliff:g id="name">%s</xliff:g>\u00BB no puede ser importado debido a un error de E/S</string>
-  <string name="contact_share_failed_toast">No pueden ser compartidos más de <xliff:g id="count">%d</xliff:g> contactos</string>
+  <string name="fail_reason_import_vcard">\'<xliff:g id="name">%s</xliff:g>\' no puede ser importado debido a un error de E/S</string>
+  <string name="contact_share_failed_toast">No pueden compartirse más de <xliff:g id="count">%d</xliff:g> contactos</string>
   <string name="label_groups">Grupo</string>
   <string name="exporting">Exportando\u2026</string>
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> de <xliff:g id="total_number">%2$s</xliff:g> archivos</string>
@@ -30,26 +30,25 @@
   <string name="sim_card_full">La tarjeta SIM está llena</string>
   <string name="export_finished">Exportación finalizada</string>
   <string name="tag_too_long">El nombre del contacto es demasiado largo</string>
-  <string name="sim_contacts_not_loaded">No se puede cargar los contactos de la tarjeta SIM</string>
+  <string name="sim_contacts_not_loaded">No se pueden cargar los contactos de la tarjeta SIM</string>
   <plurals name="export_cancelled">
-    <item quantity="one">Exportación cancelada. Se exportó %d contacto</item>
-    <item quantity="other">Exportación cancelada. Se exportaron %d contactos</item>
+    <item quantity="one">Exportación cancelada. Se exportó %d artículo</item>
+    <item quantity="other">Exportación cancelada. Se exportaron %d artículos</item>
   </plurals>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> no tiene un número de teléfono o una dirección de correo</string>
   <string name="import_from_sim_select">Elige una tarjeta para importar</string>
   <string name="no_sdcard_title" product="nosdcard">Almacenamiento no disponible</string>
-  <string name="no_sdcard_title" product="default">No hay tarjeta SD</string>
   <string name="deleteConfirmation_title">¿Eliminar contacto?</string>
   <string name="deleteConfirmation">Este contacto será eliminado.</string>
   <string name="copy_done">Contacto copiado satisfactoriamente</string>
-  <string name="copy_failure">Falló la copia del contacto</string>
-  <string name="card_no_space">Falló la copia de todos los contactos. La tarjeta SIM está llena</string>
+  <string name="copy_failure">No se pudo copiar el contacto</string>
+  <string name="card_no_space">No se pudieron copiar los contactos. La tarjeta SIM está llena</string>
   <string name="settings_contact_display_options_description">Configurar cómo se muestran y se ordenan tus contactos.</string>
   <string name="ip_call_by_slot">Llamada IP vía <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">No hay número IP</string>
   <string name="no_ip_number_on_sim_card">No hay número IP en la tarjeta SIM</string>
   <string name="set_ip_number">Establecer número IP</string>
-  <string name="ipcall_dialog_title">Configuracion de llamadas IP</string>
+  <string name="ipcall_dialog_title">Configuración de llamadas IP</string>
   <string name="ipcall_dialog_edit_hint">Por favor, introduce el prefijo IP</string>
   <string name="import_contacts_from_all_cards">Importar contactos de todas las tarjetas SIM</string>
   <string name="select_path">Selecciona la ruta</string>
