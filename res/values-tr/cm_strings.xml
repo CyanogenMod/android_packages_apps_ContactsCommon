@@ -22,7 +22,7 @@
   <string name="manage_sim_contacts">SIM kart kişilerini yönet</string>
   <string name="export_to_sim">SIM karta aktar</string>
   <string name="fail_reason_import_vcard">\'<xliff:g id="name">%s</xliff:g>\' bir G/Ç hatasından dolayı alınamadı</string>
-  <string name="contact_share_failed_toast"><xliff:g id="count">%d</xliff:g> \'den fazla kişi paylaşılamaz</string>
+  <string name="contact_share_failed_toast">En fazla <xliff:g id="count">%d</xliff:g> kişi paylaşılabilir</string>
   <string name="label_groups">Grup</string>
   <string name="exporting">Dışa aktarılıyor\u2026</string>
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> / <xliff:g id="total_number">%2$s</xliff:g> dosya</string>
