@@ -16,6 +16,8 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="local_storage_account" product="tablet">حساب الجهاز اللوحي المحلي</string>
+  <string name="local_storage_account" product="default">حساب الهاتف المحلي</string>
   <string name="import_contacts_sim">استيراد جهات الاتصال من شريحة SIM؟</string>
   <string name="manage_sim_contacts">إدارة جهات اتصال شريحة SIM</string>
   <string name="export_to_sim">التصدير إلى شريحة SIM</string>
