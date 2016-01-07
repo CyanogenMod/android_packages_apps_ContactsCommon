@@ -42,7 +42,12 @@ public class LookupProviderImpl implements LookupProvider {
     }
 
     @Override
-    public boolean hasSpamReporting() {
+    public void unmarkAsSpam(String phoneNumber) {
+        /* NOT IMPLEMENTED */
+    }
+
+    @Override
+    public boolean supportsSpamReporting() {
         /* NOT a valid implementation */
         return false;
     }

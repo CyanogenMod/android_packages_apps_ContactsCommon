@@ -30,18 +30,25 @@ public interface LookupProvider {
     void disable();
 
     /**
-     * Interface to provide ability to flag a phone number as spam
+     * flag a phone number as spam
      *
      * @param phoneNumber {@link String}
      */
     void markAsSpam(String phoneNumber);
 
     /**
+     * un-flag a phone number as spam
+     *
+     * @param phoneNumber {@link String}
+     */
+    void unmarkAsSpam(String phoneNumber);
+
+    /**
      * Check if the current provider supports spam reporting
      *
      * @return {@link Boolean} <code>true</code> if available, <code>false</code> if not
      */
-    boolean hasSpamReporting();
+    boolean supportsSpamReporting();
 
     /**
      * Returns the name of the current provider
