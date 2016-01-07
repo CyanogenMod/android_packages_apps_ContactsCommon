@@ -1,4 +1,4 @@
-package com.cyanogen.lookup.phonenumber;
+package com.cyanogen.lookup.phonenumber.util;
 
 import android.content.Context;
 import android.os.Handler;
@@ -6,7 +6,7 @@ import android.os.HandlerThread;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
-import com.cyanogen.lookup.phonenumber.provider.LookupProviderImpl;
+import com.cyanogen.lookup.phonenumber.contract.LookupProvider;
 import com.cyanogen.lookup.phonenumber.request.LookupRequest;
 
 import java.util.HashSet;
@@ -19,20 +19,21 @@ public class LookupHandlerThread extends HandlerThread implements Handler.Callba
 
     private Context mContext;
     private Handler mHandler;
-    private LookupProviderImpl mLookupProvider;
+    private LookupProvider mLookupProvider;
     private HashSet<LookupRequest> mSubmittedRequests;
     private boolean mInitialized = false;
 
-    public LookupHandlerThread(String name, Context ctx) {
-        super(name);
+    public LookupHandlerThread(String threadName, Context ctx, LookupProvider lookupProvider) {
+        super(threadName);
         mContext = ctx;
-        mLookupProvider = new LookupProviderImpl(mContext, null);
+        mLookupProvider = lookupProvider;
     }
 
-    public LookupHandlerThread(String name, int priority, Context ctx) {
+    public LookupHandlerThread(String name, int priority, Context ctx,
+            LookupProvider lookupProvider) {
         super(name, priority);
         mContext = ctx;
-        mLookupProvider = new LookupProviderImpl(mContext, null);
+        mLookupProvider = lookupProvider;
     }
 
     public boolean initialize() {
@@ -102,8 +103,8 @@ public class LookupHandlerThread extends HandlerThread implements Handler.Callba
      *
      * @return {@link Boolean}
      */
-    public boolean hasSpamReporting() {
-        return mLookupProvider.hasSpamReporting();
+    public boolean isProviderInterestedInSpam() {
+        return mLookupProvider.supportsSpamReporting();
     }
 
     /**

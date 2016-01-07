@@ -10,7 +10,7 @@ import com.cyanogen.lookup.phonenumber.request.LookupRequest;
  */
 public class LookupProviderImpl implements LookupProvider {
 
-    public LookupProviderImpl(Context context, Handler handler) {
+    public LookupProviderImpl(Context context) {
         /* NOT IMPLEMENTED */
     }
 
@@ -42,7 +42,12 @@ public class LookupProviderImpl implements LookupProvider {
     }
 
     @Override
-    public boolean hasSpamReporting() {
+    public void unmarkAsSpam(String phoneNumber) {
+        /* NOT IMPLEMENTED */
+    }
+
+    @Override
+    public boolean supportsSpamReporting() {
         /* NOT a valid implementation */
         return false;
     }
