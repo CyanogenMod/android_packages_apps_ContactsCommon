@@ -29,6 +29,8 @@
  */
 package com.android.contacts.common;
 
+import android.telephony.SubscriptionManager;
+import com.android.internal.telephony.PhoneConstants;
 
 public interface SimContactsConstants {
 
@@ -66,6 +68,9 @@ public interface SimContactsConstants {
             "com.android.contacts.action.MULTI_PICK_CALL";
     public static final String ACTION_MULTI_PICK_SIM =
             "com.android.contacts.action.MULTI_PICK_SIM";
+    public static final String SUB = PhoneConstants.SLOT_KEY;
+
+    public static final int SUB_1 = PhoneConstants.SUB1;
+    public static final int SUB_2 = PhoneConstants.SUB2;
+    public static final int SUB_INVALID = SubscriptionManager.INVALID_SIM_SLOT_INDEX;
 }
-
-
