@@ -1,4 +1,4 @@
-package com.cyanogen.lookup.phonenumber.util;
+package com.cyanogen.lookup.phonenumber;
 
 import android.content.Context;
 import android.os.Handler;
@@ -103,8 +103,8 @@ public class LookupHandlerThread extends HandlerThread implements Handler.Callba
      *
      * @return {@link Boolean}
      */
-    public boolean isProviderInterestedInSpam() {
-        return mLookupProvider.supportsSpamReporting();
+    public boolean hasSpamReporting() {
+        return mLookupProvider.hasSpamReporting();
     }
 
     /**
