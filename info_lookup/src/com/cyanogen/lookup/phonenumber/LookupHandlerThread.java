@@ -6,7 +6,7 @@ import android.os.HandlerThread;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
-import com.cyanogen.lookup.phonenumber.contract.LookupProvider;
+import com.cyanogen.lookup.phonenumber.provider.LookupProviderImpl;
 import com.cyanogen.lookup.phonenumber.request.LookupRequest;
 
 import java.util.HashSet;
@@ -19,21 +19,20 @@ public class LookupHandlerThread extends HandlerThread implements Handler.Callba
 
     private Context mContext;
     private Handler mHandler;
-    private LookupProvider mLookupProvider;
+    private LookupProviderImpl mLookupProvider;
     private HashSet<LookupRequest> mSubmittedRequests;
     private boolean mInitialized = false;
 
-    public LookupHandlerThread(String threadName, Context ctx, LookupProvider lookupProvider) {
-        super(threadName);
+    public LookupHandlerThread(String name, Context ctx) {
+        super(name);
         mContext = ctx;
-        mLookupProvider = lookupProvider;
+        mLookupProvider = new LookupProviderImpl(mContext, null);
     }
 
-    public LookupHandlerThread(String name, int priority, Context ctx,
-            LookupProvider lookupProvider) {
+    public LookupHandlerThread(String name, int priority, Context ctx) {
         super(name, priority);
         mContext = ctx;
-        mLookupProvider = lookupProvider;
+        mLookupProvider = new LookupProviderImpl(mContext, null);
     }
 
     public boolean initialize() {
