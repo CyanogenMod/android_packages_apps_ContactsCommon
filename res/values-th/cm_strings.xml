@@ -18,4 +18,25 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">บัญชีภายในแท็บเล็ต</string>
   <string name="local_storage_account" product="default">บัญชีภายในโทรศัพท์</string>
+  <string name="export_to_sim">ส่งออกไปยังซิมการ์ด</string>
+  <string name="export_to_sim_summary">ส่งออกไปยังซิม <xliff:g id="sim_name">^1</xliff:g> - <xliff:g id="sim_number">^2</xliff:g></string>
+  <string name="export_to_sim_summary_no_number">ส่งออกไปยังซิม <xliff:g id="sim_name">%1$s</xliff:g></string>
+  <string name="share_failed">มีรายชื่อมากเกินไป การแบ่งปันล้มเหลว</string>
+  <string name="label_groups">กลุ่ม</string>
+  <string name="exporting">กำลังส่งออก\u2026</string>
+  <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> จาก <xliff:g id="total_number">%2$s</xliff:g> ไฟล์</string>
+  <string name="export_finished">ส่งออกเสร็จสมบูรณ์</string>
+  <string name="tag_too_long">ชื่อผู้ติดต่อยาวเกินไป</string>
+  <string name="sim_contacts_not_loaded">ไม่สามารถโหลดรายชื่อผู้ติดต่อจากซิมการ์ดได้</string>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> ไม่มีหมายเลขโทรศัพท์หรือที่อยู่อีเมล</string>
+  <string name="import_from_sim_select">เลือกการ์ดที่จะนำเข้า</string>
+  <string name="copy_done">คัดลอกรายชื่อติดต่อเสร็จสมบูรณ์</string>
+  <string name="copy_failure">คัดลอกรายชื่อล้มเหลว</string>
+  <string name="card_no_space">คัดลอกรายชื่อล้มเหลว ซิมการ์ดเต็ม</string>
+  <string name="ip_call_by_slot">โทรผ่าน IP โดย <xliff:g id="subName">%s</xliff:g></string>
+  <string name="no_ip_number">ไม่มีหมายเลข IP</string>
+  <string name="no_ip_number_on_sim_card">ไม่มีหมายเลข IP ในซิมการ์ด</string>
+  <string name="set_ip_number">กำหนดหมายเลข IP</string>
+  <string name="ipcall_dialog_title">ตั้งค่าการโทรผ่าน IP</string>
+  <string name="ipcall_dialog_edit_hint">กรุณากรอกเลขนำหน้า IP</string>
 </resources>

@@ -19,6 +19,9 @@
   <string name="local_storage_account" product="tablet">Helyi táblagép fiók</string>
   <string name="local_storage_account" product="default">Helyi telefon fiók</string>
   <string name="export_to_sim">Exportálás SIM kártyára</string>
+  <string name="export_to_sim_summary">SIM-re exportálás: <xliff:g id="sim_name">^1</xliff:g> - <xliff:g id="sim_number">^2</xliff:g></string>
+  <string name="export_to_sim_summary_no_number">SIM-re exportálás: <xliff:g id="sim_name">%1$s</xliff:g></string>
+  <string name="share_failed">Túl sok névjegy, a megosztás sikertelen</string>
   <string name="label_groups">Csoport</string>
   <string name="exporting">Exportálás\u2026</string>
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> / <xliff:g id="total_number">%2$s</xliff:g> fájl</string>

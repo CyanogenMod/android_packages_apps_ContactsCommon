@@ -19,6 +19,9 @@
   <string name="local_storage_account" product="tablet">Yerel tablet hesabı</string>
   <string name="local_storage_account" product="default">Yerel telefon hesabı</string>
   <string name="export_to_sim">SIM karta aktar</string>
+  <string name="export_to_sim_summary"><xliff:g id="sim_name">^1</xliff:g> - <xliff:g id="sim_number">^2</xliff:g> SIM\'ine aktar</string>
+  <string name="export_to_sim_summary_no_number"><xliff:g id="sim_name">%1$s</xliff:g> SIM\'ine aktar</string>
+  <string name="share_failed">Çok fazla kişi var, paylaşılamadı</string>
   <string name="label_groups">Grup</string>
   <string name="exporting">Dışa aktarılıyor\u2026</string>
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> / <xliff:g id="total_number">%2$s</xliff:g> dosya</string>

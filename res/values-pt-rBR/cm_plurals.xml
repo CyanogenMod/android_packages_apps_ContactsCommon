@@ -17,15 +17,15 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <plurals name="export_to_sim_failed">
-    <item quantity="one">Error en la exportación, se exportó <xliff:g id="insertCount">%d</xliff:g> artículo</item>
-    <item quantity="other">Error en la exportación, se exportaron <xliff:g id="insertCount">%d</xliff:g> artículos</item>
+    <item quantity="one">Falha na exportação, <xliff:g id="insertCount">%d</xliff:g> item foi exportado</item>
+    <item quantity="other">Falha na exportação, <xliff:g id="insertCount">%d</xliff:g> foram exportados</item>
   </plurals>
   <plurals name="export_sim_card_full">
-    <item quantity="one">La tarjeta SIM está llena, <xliff:g id="insertCount">%d </xliff:g> artículo fue exportado</item>
-    <item quantity="other">La tarjeta SIM está llena, <xliff:g id="insertCount">%d </xliff:g> artículos fueron exportados</item>
+    <item quantity="one">O cartão SIM está cheio. <xliff:g id="insertCount">%d</xliff:g> item foi exportado</item>
+    <item quantity="other">O cartão SIM está cheio. <xliff:g id="insertCount">%d</xliff:g> itens foram exportados</item>
   </plurals>
   <plurals name="export_cancelled">
-    <item quantity="one">Exportación cancelada, se exportó <xliff:g id="insertCount">%d</xliff:g> artículo</item>
-    <item quantity="other">Exportación cancelada, se exportaron <xliff:g id="insertCount">%d</xliff:g> artículos</item>
+    <item quantity="one">A exportação foi cancelada, <xliff:g id="insertCount">%d</xliff:g> item foi exportado</item>
+    <item quantity="other">A exportação foi cancelada, <xliff:g id="insertCount">%d </xliff:g> itens foram exportados</item>
   </plurals>
 </resources>
