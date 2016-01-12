@@ -18,4 +18,41 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">Lokalni tablet račun</string>
   <string name="local_storage_account" product="default">Lokalni račun telefona</string>
+  <string name="import_contacts_sim">Uvezi kontakte sa SIM kartice?</string>
+  <string name="manage_sim_contacts">Upravljanje kontaktima na SIM kartici</string>
+  <string name="export_to_sim">Izezi na SIM karticu</string>
+  <string name="fail_reason_import_vcard">\"<xliff:g id="name">%s</xliff:g>\" nije moguće uvesti zbog I/O greške</string>
+  <string name="contact_share_failed_toast">Nije moguće dijeliti više od <xliff:g id="count">%d</xliff:g> kontakata</string>
+  <string name="label_groups">Grupa</string>
+  <string name="exporting">Izvozim\u2026</string>
+  <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> od <xliff:g id="total_number">%2$s</xliff:g> datoteka</string>
+  <string name="export_failed">Izvoz neuspješan</string>
+  <string name="sim_card_full">SIM kartica je puna</string>
+  <string name="export_finished">Izvoz dovršen</string>
+  <string name="tag_too_long">Ime kontakta je predugo</string>
+  <string name="sim_contacts_not_loaded">Neuspješno učitavanje kontakata sa SIM kartice</string>
+  <plurals name="export_cancelled">
+    <item quantity="one">Izvoz prekinut, %d stavka izvezena</item>
+    <item quantity="few">Izvoz prekinut, %d stavki izvezeno</item>
+    <item quantity="other">Izvoz prekinut, %d stavki izvezeno</item>
+  </plurals>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> nema telefonski broj ni email adresu</string>
+  <string name="import_from_sim_select">Odaberite karticu za uvoz</string>
+  <string name="no_sdcard_title" product="nosdcard">Uređaj za pohranu nije dostupan</string>
+  <string name="no_sdcard_title" product="default">Nema SD kartice</string>
+  <string name="deleteConfirmation_title">Izbrisati kontakt?</string>
+  <string name="deleteConfirmation">Ovaj će kontakt biti izbrisan.</string>
+  <string name="copy_done">Kontakt je uspješno kopiran</string>
+  <string name="copy_failure">Nije uspjelo kopiranje kontakta</string>
+  <string name="card_no_space">Kopiranje kontakta nije uspjelo, SIM kartica je puna</string>
+  <string name="settings_contact_display_options_description">Postavke prikaza i redosljeda kontakata.</string>
+  <string name="ip_call_by_slot">IP poziv putem <xliff:g id="subName">%s</xliff:g></string>
+  <string name="no_ip_number">Nema IP broja</string>
+  <string name="no_ip_number_on_sim_card">Na SIM kartici nema IP broja</string>
+  <string name="set_ip_number">Postavi IP broj</string>
+  <string name="ipcall_dialog_title">Postavke IP poziva</string>
+  <string name="ipcall_dialog_edit_hint">Unesite IP prefiks</string>
+  <string name="import_contacts_from_all_cards">Uvezi kontakte sa svih SIM kartica</string>
+  <string name="select_path">Odaberite putanju</string>
+  <string name="select_sim">Odaberite SIM</string>
 </resources>
