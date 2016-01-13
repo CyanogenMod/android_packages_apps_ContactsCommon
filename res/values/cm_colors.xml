@@ -48,4 +48,8 @@
     <color name="letter_tile_orange_color_dark">#E65100</color>
     <color name="letter_tile_deep_orange_color_dark">#E64A19</color>
     <color name="letter_tile_grey_color_dark">#424242</color>
+
+    <!--Block contact dialog-->
+    <color name="block_contact_dialog_primary_text_color">#80000000</color>
+    <color name="block_contact_dialog_secondary_text_color">#A6A6A6</color>
 </resources>

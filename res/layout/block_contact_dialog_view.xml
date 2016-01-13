@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/block_contact_dialog_padding"
+    android:paddingEnd="@dimen/block_contact_dialog_padding"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/block_contact_dialog_primary_text_size"
+        android:textColor="@color/block_contact_dialog_primary_text_color"
+        android:layout_marginTop="8dp"
+        android:text="@string/block_dialog_description"/>
+
+    <CheckBox
+        android:id="@+id/spamCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/block_contact_dialog_secondary_text_size"
+        android:textColor="@color/block_contact_dialog_secondary_text_color"
+        android:checked="true"
+        android:layout_marginTop="24dp"/>
+</LinearLayout>

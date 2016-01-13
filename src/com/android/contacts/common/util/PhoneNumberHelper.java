@@ -16,10 +16,12 @@
 package com.android.contacts.common.util;
 
 import android.content.Context;
+import android.location.Geocoder;
 import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.android.contacts.common.GeoUtil;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
@@ -142,6 +144,10 @@ public class PhoneNumberHelper {
             Log.w(LOG_TAG, "Number could not be parsed with the given country code!");
         }
         return result;
+    }
+
+    public static String formatPhoneNumber(Context context, String phoneNumber) {
+        return formatNumber(phoneNumber, GeoUtil.getCurrentCountryIso(context));
     }
 
     /**

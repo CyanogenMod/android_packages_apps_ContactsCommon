@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="block_contact_dialog_padding">24dp</dimen>
+    <dimen name="block_contact_dialog_primary_text_size">16sp</dimen>
+    <dimen name="block_contact_dialog_secondary_text_size">14sp</dimen>
+</resources>
