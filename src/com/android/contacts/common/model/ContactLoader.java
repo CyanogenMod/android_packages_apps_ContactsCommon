@@ -390,6 +390,10 @@ public class ContactLoader extends AsyncTaskLoader<Contact> {
 
     private static Contact loadEncodedContactEntity(Uri uri,
             Uri lookupUri, EncodedContactEntitySchemaVersion schemaVersion) throws JSONException {
+        if (lookupUri == null) {
+            return null;
+        }
+
         if (schemaVersion == EncodedContactEntitySchemaVersion.ENHANCED_CALLER_META_DATA) {
             return new ContactBuilder(uri).build();
         } else {
