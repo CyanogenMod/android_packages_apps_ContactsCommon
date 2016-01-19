@@ -17,6 +17,7 @@
 package com.android.contacts.common.model;
 
 import android.content.ContentValues;
+import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 
 import com.android.contacts.common.util.CallerMetaData;
@@ -74,6 +75,7 @@ public class ContactBuilder {
     private int mDisplayNameSource = DisplayNameSources.STRUCTURED_NAME;
     private Uri mPhotoUri;
     private String mPhotoUrl;
+    private String mLookupKey;
 
     private boolean mIsBusiness;
 
@@ -143,6 +145,14 @@ public class ContactBuilder {
                             mWebsites.add(new WebsiteUrl(websiteObj));
                         }
                     }
+                }
+
+                // determine the lookup-key for the contact
+                if (nameObj != null && !TextUtils.isEmpty(mName.displayName)) {
+                    mLookupKey = mName.displayName;
+                } else if (mPhoneNumbers.size() > 0) {
+                    String number = mPhoneNumbers.get(0).number;
+                    mLookupKey = PhoneNumberUtils.normalizeNumber(number);
                 }
 
                 mSpamCount = contact.optInt(CallerMetaData.SPAM_COUNT, 0);
@@ -387,7 +397,7 @@ public class ContactBuilder {
                     lookupUri, lookupUri,
                     lookupUri,
                     mDirectoryId,
-                    null /* lookupKey */,
+                    mLookupKey,
                     -1 /* id */,
                     -1 /* nameRawContactId */,
                     mDisplayNameSource,
