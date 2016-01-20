@@ -40,7 +40,8 @@ public interface OnPhoneNumberPickerActionListener  {
     void onCallNumberDirectly(String phoneNumber, boolean isVideoCall);
 
     /**
-     * Calls the specified phone number, either as an audio or video call.
+     * Calls the specified phone number, either as an audio or video call to a particular
+     * InCallProvider.
      */
     void onCallNumberDirectly(String phoneNumber, boolean isVideoCall, String mimeType);
 
