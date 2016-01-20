@@ -196,7 +196,7 @@ public class PhoneNumberPickerFragment extends ContactEntryListFragment<ContactE
             final String number = getPhoneNumber(position);
             if (!TextUtils.isEmpty(number)) {
                 cacheContactInfo(position);
-                mListener.onCallNumberDirectly(number);
+                mListener.onCallNumberDirectly(number, false, getPhoneNumberMimeType(position));
             } else {
                 Log.w(TAG, "Item at " + position + " was clicked before"
                         + " adapter is ready. Ignoring");
@@ -217,6 +217,11 @@ public class PhoneNumberPickerFragment extends ContactEntryListFragment<ContactE
     protected String getPhoneNumber(int position) {
         final PhoneNumberListAdapter adapter = (PhoneNumberListAdapter) getAdapter();
         return adapter.getPhoneNumber(position);
+    }
+
+    protected String getPhoneNumberMimeType(int position) {
+        final PhoneNumberListAdapter adapter = (PhoneNumberListAdapter) getAdapter();
+        return adapter.getMimeType(position);
     }
 
     protected Uri getPhoneUri(int position) {
