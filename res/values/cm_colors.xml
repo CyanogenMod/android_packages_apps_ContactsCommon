@@ -52,4 +52,7 @@
     <!--Block contact dialog-->
     <color name="block_contact_dialog_primary_text_color">#80000000</color>
     <color name="block_contact_dialog_secondary_text_color">#A6A6A6</color>
+
+    <!-- Color used by the incall plugin user interface -->
+    <color name="plugin_login_button_tint">#0288d1</color>
 </resources>

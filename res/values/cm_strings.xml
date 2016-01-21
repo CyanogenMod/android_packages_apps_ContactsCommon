@@ -65,4 +65,10 @@
     <string name="block_dialog_report_spam">Report as spam to <xliff:g id="provider">%s</xliff:g></string>
     <string name="block_dialog_report_nonspam">Report as non-spam to <xliff:g id="provider">%s</xliff:g></string>
 
+    <string name="plugin_login_msg">Sign into <xliff:g id="plugin_name">%1$s</xliff:g> to see
+        your <xliff:g id="plugin_name">%1$s</xliff:g> contacts here</string>
+    <string name="plugin_login_button_title">Sign In</string>
+    <string name="plugin_empty_list_text">You have no <xliff:g id="plugin_name">%s</xliff:g>
+        contacts,\n</string>
+    <string name="plugin_empty_list_action_text">add people</string>
 </resources>
