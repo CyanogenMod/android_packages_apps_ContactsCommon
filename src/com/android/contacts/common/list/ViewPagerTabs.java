@@ -26,6 +26,7 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewOutlineProvider;
+import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
@@ -44,6 +45,9 @@ public class ViewPagerTabs extends HorizontalScrollView implements ViewPager.OnP
 
     ViewPager mPager;
     private ViewPagerTabStrip mTabStrip;
+    // Keep track if scrolling to the target tab should be performed after the View has been
+    // rendered (so View.getWidth() returns valid values)
+    ViewTreeObserver mTabLayoutObserver;
 
     /**
      * Linearlayout that will contain the TextViews serving as tabs. This is the only child
@@ -230,9 +234,29 @@ public class ViewPagerTabs extends HorizontalScrollView implements ViewPager.OnP
         selectedChild.setSelected(true);
 
         // Update scroll position
+        mPrevSelected = position;
+        if (selectedChild.getWidth() == 0) {
+            // this View is not laid out yet, defer scroll calculation
+            mTabLayoutObserver = selectedChild.getViewTreeObserver();
+            mTabLayoutObserver.addOnGlobalLayoutListener(new ViewTreeObserver
+                    .OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    if (mTabLayoutObserver != null && mTabLayoutObserver.isAlive()) {
+                        performScroll();
+                        mTabLayoutObserver.removeOnGlobalLayoutListener(this);
+                    }
+                }
+            });
+        } else {
+            performScroll();
+        }
+    }
+
+    public void performScroll() {
+        final View selectedChild = mTabStrip.getChildAt(mPrevSelected);
         final int scrollPos = selectedChild.getLeft() - (getWidth() - selectedChild.getWidth()) / 2;
         smoothScrollTo(scrollPos, 0);
-        mPrevSelected = position;
     }
 
     @Override

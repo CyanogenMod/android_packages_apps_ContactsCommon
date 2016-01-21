@@ -451,12 +451,12 @@ public class ContactLoader extends AsyncTaskLoader<Contact> {
             while (keys.hasNext()) {
                 final String mimetype = (String) keys.next();
 
-                // Could be single object, int, or array.
+                // Could be single object, int, array or a string.
                 JSONObject obj = items.optJSONObject(mimetype);
                 final int num = items.optInt(mimetype, -1);
-                if (obj == null && num == -1) {
-                    // Neither object nor int, thus must be array
-                    final JSONArray array = items.getJSONArray(mimetype);
+                final JSONArray array = items.optJSONArray(mimetype);
+                final String str = items.optString(mimetype, null);
+                if (array != null) {
                     for (int i = 0; i < array.length(); i++) {
                         final JSONObject item = array.getJSONObject(i);
                         processOneRecord(rawContact, item, mimetype);
@@ -466,7 +466,16 @@ public class ContactLoader extends AsyncTaskLoader<Contact> {
                     obj.put(mimetype, num);
                     processOneRecord(rawContact, obj, mimetype);
                 } else if (obj != null) {
+                    // when obj is true, str type is true too, so handle obj type first
                     processOneRecord(rawContact, obj, mimetype);
+                } else if (str != null){
+                    // when it's a true string, obj is null
+                    obj = new JSONObject();
+                    obj.put(mimetype, str);
+                    processOneRecord(rawContact, obj, mimetype);
+                } else {
+                    // unknown type
+                    continue;
                 }
             }
 

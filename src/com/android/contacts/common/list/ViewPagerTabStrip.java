@@ -70,7 +70,7 @@ public class ViewPagerTabStrip extends LinearLayout {
         int childCount = getChildCount();
 
         // Thick colored underline below the current selection
-        if (childCount > 0) {
+        if (childCount > 0 && mIndexForSelection >= 0 && mIndexForSelection < childCount) {
             View selectedTitle = getChildAt(mIndexForSelection);
 
             if (selectedTitle == null) {
