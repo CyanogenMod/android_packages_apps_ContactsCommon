@@ -4,11 +4,7 @@ import android.app.DialogFragment;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.telephony.PhoneNumberUtils;
-import android.text.TextUtils;
-import com.android.contacts.common.R;
 import com.android.contacts.common.activity.fragment.BlockContactDialogFragment;
 import com.android.contacts.common.model.Contact;
 import com.android.contacts.common.model.RawContact;
@@ -32,7 +28,7 @@ public class BlockContactHelper {
     private volatile boolean mIsProviderInitialized;
     private boolean mBackgroundTaskCompleted;
 
-    public enum BlockMode {
+    public enum BlockOperation {
         BLOCK,
         UNBLOCK
     }
@@ -50,9 +46,14 @@ public class BlockContactHelper {
         mBackgroundTask = new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
-                if (mContact == null) return null;
+                if (mContact == null) {
+                    return null;
+                }
+
+                // reset blacklist status
+                mIsBlacklisted = false;
                 // check blacklist status of all of the contact's numbers
-                contact:
+                blacklist_search:
                 for (RawContact rawContact : mContact.getRawContacts()) {
                     List<DataItem> data = rawContact.getDataItems();
                     for(DataItem item : data) {
@@ -60,7 +61,7 @@ public class BlockContactHelper {
                             PhoneDataItem phoneDataItem = (PhoneDataItem) item;
                             if (isBlacklisted(phoneDataItem.getNumber())) {
                                 mIsBlacklisted = true;
-                                break contact;
+                                break blacklist_search;
                             }
                         }
                     }
@@ -99,11 +100,11 @@ public class BlockContactHelper {
                 != BlacklistUtils.MATCH_NONE;
     }
 
-    public DialogFragment getBlockContactDialog(BlockMode blockMode) {
+    public DialogFragment getBlockContactDialog(BlockOperation blockOperation) {
         BlockContactDialogFragment f = new BlockContactDialogFragment();
         Bundle bundle = new Bundle();
-        int launchMode = blockMode == BlockMode.BLOCK ? BlockContactDialogFragment.BLOCK_MODE :
-                BlockContactDialogFragment.UNBLOCK_MODE;
+        int launchMode = blockOperation == BlockOperation.BLOCK ?
+                BlockContactDialogFragment.BLOCK_MODE : BlockContactDialogFragment.UNBLOCK_MODE;
         bundle.putInt(BlockContactDialogFragment.KEY_LAUNCH_MODE, launchMode);
         String providerName = mLookupProvider.getDisplayName();
         bundle.putString(BlockContactDialogFragment.KEY_CURRENT_LOOKUP_PROVIDER_NAME, providerName);
@@ -113,41 +114,37 @@ public class BlockContactHelper {
     }
 
     public void blockContact(boolean notifyLookupProvider) {
-        for (RawContact rawContact : mContact.getRawContacts()) {
-            List<DataItem> data = rawContact.getDataItems();
-            for(DataItem item : data) {
-                if (item instanceof PhoneDataItem) {
-                    PhoneDataItem phoneDataItem = (PhoneDataItem) item;
-                    String number = phoneDataItem.getNumber();
-                    toggleBlacklistStatus(number, true /*block contact*/);
-
-                    if (notifyLookupProvider && mIsProviderInitialized &&
-                            mLookupProvider.supportsSpamReporting()) {
-                        String formattedNumber = PhoneNumberHelper.formatPhoneNumber(mContext,
-                                number);
-                        mLookupProvider.markAsSpam(formattedNumber);
-                    }
-                }
-            }
-        }
-
+        applyBlockOperationOnContact(BlockOperation.BLOCK, notifyLookupProvider);
         gatherDataInBackground();
     }
 
     public void unblockContact(boolean notifyLookupProvider) {
+        applyBlockOperationOnContact(BlockOperation.UNBLOCK, notifyLookupProvider);
+        gatherDataInBackground();
+    }
+
+    public void applyBlockOperationOnContact(BlockOperation blockOperation, boolean notifyLookupProvider) {
+        boolean shouldBlock = blockOperation == BlockOperation.BLOCK;
         for (RawContact rawContact : mContact.getRawContacts()) {
             List<DataItem> data = rawContact.getDataItems();
             for(DataItem item : data) {
                 if (item instanceof PhoneDataItem) {
                     PhoneDataItem phoneDataItem = (PhoneDataItem) item;
                     String number = phoneDataItem.getNumber();
-                    toggleBlacklistStatus(number, false /*unblock contact*/);
+                    toggleBlacklistStatus(number, shouldBlock);
 
                     if (notifyLookupProvider && mIsProviderInitialized &&
                             mLookupProvider.supportsSpamReporting()) {
+
                         String formattedNumber = PhoneNumberHelper.formatPhoneNumber(mContext,
                                 number);
-                        mLookupProvider.unmarkAsSpam(formattedNumber);
+                        switch (blockOperation) {
+                            case BLOCK:
+                                mLookupProvider.markAsSpam(formattedNumber);
+                                break;
+                            case UNBLOCK:
+                                mLookupProvider.unmarkAsSpam(formattedNumber);
+                        }
                     }
                 }
             }

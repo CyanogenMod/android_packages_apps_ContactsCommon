@@ -62,10 +62,12 @@ public class BlockContactDialogFragment extends DialogFragment
 
         String checkboxDescription = TextUtils.isEmpty(lookupProviderName) ?
                 null :
-                hostActivity.getResources().getString(R.string.block_dialog_report_spam,
+                hostActivity.getResources().getString(
+                        blockMode ? R.string.block_dialog_report_spam :
+                                R.string.block_dialog_report_nonspam,
                         lookupProviderName);
 
-        if (!blockMode || TextUtils.isEmpty(checkboxDescription)) {
+        if (TextUtils.isEmpty(checkboxDescription)) {
             mNotifyProviderCheckBox.setChecked(false);
             mNotifyProviderCheckBox.setVisibility(View.GONE);
         } else {
