@@ -38,6 +38,7 @@ public class ContactEntry {
     public boolean isFavorite = false;
     public boolean isDefaultNumber = false;
     public Account account;
+    public String mimeType;
 
     public static final ContactEntry BLANK_ENTRY = new ContactEntry();
 }

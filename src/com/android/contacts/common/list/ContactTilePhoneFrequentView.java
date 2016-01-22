@@ -31,6 +31,7 @@ import com.android.contacts.common.util.ViewUtil;
  */
 public class ContactTilePhoneFrequentView extends ContactTileView {
     private String mPhoneNumberString;
+    private String mPhoneNumberMimeTypeString;
 
     public ContactTilePhoneFrequentView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -50,9 +51,13 @@ public class ContactTilePhoneFrequentView extends ContactTileView {
     public void loadFromContact(ContactEntry entry) {
         super.loadFromContact(entry);
         mPhoneNumberString = null; // ... in case we're reusing the view
+        mPhoneNumberMimeTypeString = null; // ... in case we're reusing the view
+
         if (entry != null) {
             // Grab the phone-number to call directly... see {@link onClick()}
             mPhoneNumberString = entry.phoneNumber;
+            mPhoneNumberMimeTypeString = entry.mimeType;
+
         }
     }
 
@@ -71,7 +76,7 @@ public class ContactTilePhoneFrequentView extends ContactTileView {
                     // call them at the number that you usually talk to them
                     // at (i.e. the one displayed in the UI), regardless of
                     // whether that's their default number.
-                    mListener.onCallNumberDirectly(mPhoneNumberString);
+                    mListener.onCallNumberDirectly(mPhoneNumberString, mPhoneNumberMimeTypeString);
                 }
             }
         };
