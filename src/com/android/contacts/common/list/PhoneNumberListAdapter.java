@@ -102,6 +102,7 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
             Phone.PHOTO_THUMBNAIL_URI,          // 8
             RawContacts.ACCOUNT_TYPE,           // 9
             RawContacts.ACCOUNT_NAME,           // 10
+            Phone.MIMETYPE,                     // 11
         };
 
         public static final String[] PROJECTION_ALTERNATIVE = new String[] {
@@ -116,6 +117,7 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
             Phone.PHOTO_THUMBNAIL_URI,          // 8
             RawContacts.ACCOUNT_TYPE,           // 9
             RawContacts.ACCOUNT_NAME,           // 10
+            Phone.MIMETYPE,                     // 11
         };
 
         public static final int PHONE_ID                = 0;
@@ -129,6 +131,7 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
         public static final int PHOTO_URI               = 8;
         public static final int PHONE_ACCOUNT_TYPE      = 9;
         public static final int PHONE_ACCOUNT_NAME      = 10;
+        public static final int PHONE_MIME_TYPE         = 11;
     }
 
     private static final String IGNORE_NUMBER_TOO_LONG_CLAUSE =
@@ -303,6 +306,11 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
     public String getPhoneNumber(int position) {
         final Cursor item = (Cursor)getItem(position);
         return item != null ? item.getString(PhoneQuery.PHONE_NUMBER) : null;
+    }
+
+    public String getMimeType(int position) {
+        final Cursor item = (Cursor)getItem(position);
+        return item != null ? item.getString(PhoneQuery.PHONE_MIME_TYPE) : null;
     }
 
     /**

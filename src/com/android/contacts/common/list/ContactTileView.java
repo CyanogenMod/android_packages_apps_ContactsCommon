@@ -232,7 +232,7 @@ public abstract class ContactTileView extends FrameLayout {
         /**
          * Notification that the specified number is to be called.
          */
-        void onCallNumberDirectly(String phoneNumber);
+        void onCallNumberDirectly(String phoneNumber, String mimeType);
         /**
          * @return The width of each tile. This doesn't have to be a precise number (e.g. paddings
          *         can be ignored), but is used to load the correct picture size from the database

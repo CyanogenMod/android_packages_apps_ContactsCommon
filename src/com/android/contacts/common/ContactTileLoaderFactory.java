@@ -55,6 +55,9 @@ public final class ContactTileLoaderFactory {
     // contact id for strequent items, we thus have to use Phone.contact_id instead.
     public final static int CONTACT_ID_FOR_DATA = 12;
 
+    public final static int PHONE_NUMBER_MIMETYPE = 13;
+
+
     private static final String[] COLUMNS = new String[] {
         Contacts._ID, // ..........................................0
         Contacts.DISPLAY_NAME, // .................................1
@@ -88,7 +91,8 @@ public final class ContactTileLoaderFactory {
         Phone.LABEL, // ............................................9
         Phone.IS_SUPER_PRIMARY, //.................................10
         Contacts.PINNED, // .......................................11
-        Phone.CONTACT_ID //........................................12
+        Phone.CONTACT_ID, //.......................................12
+        Phone.MIMETYPE //..........................................13
     };
 
     private static final String STARRED_ORDER = Contacts.DISPLAY_NAME+" COLLATE NOCASE ASC";
