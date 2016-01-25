@@ -19,6 +19,9 @@
   <string name="local_storage_account" product="tablet">Lokální účet tabletu</string>
   <string name="local_storage_account" product="default">Lokální účet telefonu</string>
   <string name="export_to_sim">Exportovat na SIM kartu</string>
+  <string name="export_to_sim_summary">Export na SIM kartu <xliff:g id="sim_name">^1</xliff:g> - <xliff:g id="sim_number">^2</xliff:g></string>
+  <string name="export_to_sim_summary_no_number">Export na SIM kartu <xliff:g id="sim_name">%1$s</xliff:g></string>
+  <string name="share_failed">Příliš mnoho kontaktů, sdílení bylo neúspěšné</string>
   <string name="label_groups">Skupina</string>
   <string name="exporting">Exportování\u2026</string>
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> z <xliff:g id="total_number">%2$s</xliff:g> souborů</string>
@@ -36,4 +39,14 @@
   <string name="set_ip_number">Nastavit IP číslo</string>
   <string name="ipcall_dialog_title">Nastavení IP volání</string>
   <string name="ipcall_dialog_edit_hint">Zadejte prefix pro IP</string>
+  <string name="menu_block_contact">Blokovat</string>
+  <string name="menu_unblock_contact">Odblokovat</string>
+  <string name="block_dialog_title">Blokovat tento kontakt?</string>
+  <string name="unblock_dialog_title">Odblokovat tento kontakt?</string>
+  <string name="block_dialog_positive">Blokovat</string>
+  <string name="unblock_dialog_positive">Odblokovat</string>
+  <string name="block_dialog_negative">Zrušit</string>
+  <string name="block_dialog_description">Od této osoby již nebudete přijímat hovory a zprávy.</string>
+  <string name="block_dialog_report_spam">Nahlásit jako spam operátoru <xliff:g id="provider">%s</xliff:g></string>
+  <string name="block_dialog_report_nonspam">Nahlásit že není spam operátoru <xliff:g id="provider">%s</xliff:g></string>
 </resources>

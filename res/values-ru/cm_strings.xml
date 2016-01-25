@@ -39,4 +39,14 @@
   <string name="set_ip_number">Задать IP-номер</string>
   <string name="ipcall_dialog_title">Настройки IP-телефонии</string>
   <string name="ipcall_dialog_edit_hint">Введите IP-префикс</string>
+  <string name="menu_block_contact">Заблокировать</string>
+  <string name="menu_unblock_contact">Разблокировать</string>
+  <string name="block_dialog_title">Заблокировать этот контакт?</string>
+  <string name="unblock_dialog_title">Разблокировать этот контакт?</string>
+  <string name="block_dialog_positive">Заблокировать</string>
+  <string name="unblock_dialog_positive">Разблокировать</string>
+  <string name="block_dialog_negative">Отмена</string>
+  <string name="block_dialog_description">Вы больше не будете получать звонки или сообщения от этого человека.</string>
+  <string name="block_dialog_report_spam">Сообщить о спаме в <xliff:g id="provider">%s</xliff:g></string>
+  <string name="block_dialog_report_nonspam">Сообщить об отсутствии спама <xliff:g id="provider">%s</xliff:g></string>
 </resources>

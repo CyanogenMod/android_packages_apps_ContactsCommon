@@ -39,4 +39,14 @@
   <string name="set_ip_number">Estableix un número IP</string>
   <string name="ipcall_dialog_title">Ajustaments de trucada IP</string>
   <string name="ipcall_dialog_edit_hint">Si us plau introdueix el prefix IP</string>
+  <string name="menu_block_contact">Bloqueja</string>
+  <string name="menu_unblock_contact">Desbloqueja</string>
+  <string name="block_dialog_title">Vols bloquejar aquest contacte?</string>
+  <string name="unblock_dialog_title">Vols desbloquejar aquest contacte?</string>
+  <string name="block_dialog_positive">Bloqueja</string>
+  <string name="unblock_dialog_positive">Desbloqueja</string>
+  <string name="block_dialog_negative">Cancel·la</string>
+  <string name="block_dialog_description">Ja no rebràs més trucades o missatges d\'aquesta persona.</string>
+  <string name="block_dialog_report_spam">Informa com a no desitjat a <xliff:g id="provider">%s</xliff:g></string>
+  <string name="block_dialog_report_nonspam">Informa com a desitjat a <xliff:g id="provider">%s</xliff:g></string>
 </resources>

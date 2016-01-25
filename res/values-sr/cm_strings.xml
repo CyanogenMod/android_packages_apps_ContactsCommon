@@ -39,4 +39,14 @@
   <string name="set_ip_number">Постави IP број</string>
   <string name="ipcall_dialog_title">Подешавања IP позива</string>
   <string name="ipcall_dialog_edit_hint">Унеси IP префикс</string>
+  <string name="menu_block_contact">Блокирано</string>
+  <string name="menu_unblock_contact">Одблокирај</string>
+  <string name="block_dialog_title">Блокирати овај контакт?</string>
+  <string name="unblock_dialog_title">Деблокирати овај контакт?</string>
+  <string name="block_dialog_positive">Блокирано</string>
+  <string name="unblock_dialog_positive">Одблокирај</string>
+  <string name="block_dialog_negative">Поништи</string>
+  <string name="block_dialog_description">Нећеш више примати позиве или поруке од те особе.</string>
+  <string name="block_dialog_report_spam">Пријави спам у <xliff:g id="provider">%s</xliff:g></string>
+  <string name="block_dialog_report_nonspam">Пријави да није спам у <xliff:g id="provider">%s</xliff:g></string>
 </resources>

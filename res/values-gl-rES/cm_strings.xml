@@ -36,4 +36,13 @@
   <string name="set_ip_number">Estabelecer o número de IP</string>
   <string name="ipcall_dialog_title">Axustes da chamada vía IP</string>
   <string name="ipcall_dialog_edit_hint">Por favor insire o prefixo IP</string>
+  <string name="menu_block_contact">Bloquear</string>
+  <string name="menu_unblock_contact">Desbloquear</string>
+  <string name="block_dialog_title">Bloquear a este contacto?</string>
+  <string name="unblock_dialog_title">Desbloquear a este contacto?</string>
+  <string name="block_dialog_positive">Bloquear</string>
+  <string name="unblock_dialog_positive">Desbloquear</string>
+  <string name="block_dialog_negative">Anular</string>
+  <string name="block_dialog_description">Xa non recibirá máis chamadas nin mensaxes desta persoa.</string>
+  <string name="block_dialog_report_spam">Declarar que é lixo perante <xliff:g id="provider">%s</xliff:g></string>
 </resources>

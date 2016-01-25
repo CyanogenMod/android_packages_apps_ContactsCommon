@@ -39,4 +39,14 @@
   <string name="set_ip_number">Définir un numéro IP</string>
   <string name="ipcall_dialog_title">Paramètres d\'appels IP</string>
   <string name="ipcall_dialog_edit_hint">Veuillez entrer le préfixe IP</string>
+  <string name="menu_block_contact">Bloquer</string>
+  <string name="menu_unblock_contact">Débloquer</string>
+  <string name="block_dialog_title">Bloquer ce contact ?</string>
+  <string name="unblock_dialog_title">Débloquer ce contact ?</string>
+  <string name="block_dialog_positive">Bloquer</string>
+  <string name="unblock_dialog_positive">Débloquer</string>
+  <string name="block_dialog_negative">Annuler</string>
+  <string name="block_dialog_description">Vous ne recevrez plus d\'appels ou de SMS de cette personne.</string>
+  <string name="block_dialog_report_spam">Signaler comme spam à <xliff:g id="provider">%s</xliff:g></string>
+  <string name="block_dialog_report_nonspam">Signaler comme non-spam à <xliff:g id="provider">%s</xliff:g></string>
 </resources>

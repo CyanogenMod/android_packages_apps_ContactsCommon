@@ -39,4 +39,14 @@
   <string name="set_ip_number">Ορισμός αριθμού IP</string>
   <string name="ipcall_dialog_title">Ρυθμίσεις κλήσεων IP</string>
   <string name="ipcall_dialog_edit_hint">Παρακαλώ εισάγετε το πρόθεμα της IP</string>
+  <string name="menu_block_contact">Αποκλεισμός</string>
+  <string name="menu_unblock_contact">Άρση αποκλεισμού</string>
+  <string name="block_dialog_title">Αποκλεισμός αυτής της επαφής;</string>
+  <string name="unblock_dialog_title">Άρση αποκλεισμού αυτής της επαφής;</string>
+  <string name="block_dialog_positive">Αποκλεισμός</string>
+  <string name="unblock_dialog_positive">Άρση αποκλεισμού</string>
+  <string name="block_dialog_negative">Ακύρωση</string>
+  <string name="block_dialog_description">Δε θα λαμβάνετε πλέον κλήσεις ή μηνύματα από αυτό το άτομο.</string>
+  <string name="block_dialog_report_spam">Αναφορά ως ανεπιθύμητη στο <xliff:g id="provider">%s</xliff:g></string>
+  <string name="block_dialog_report_nonspam">Αναφορά ως μη ανεπιθύμητη στο <xliff:g id="provider">%s</xliff:g></string>
 </resources>
