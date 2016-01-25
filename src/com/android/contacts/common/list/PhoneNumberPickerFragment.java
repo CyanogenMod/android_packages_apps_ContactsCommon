@@ -33,6 +33,10 @@ import com.android.contacts.common.list.ShortcutIntentBuilder.OnShortcutIntentCr
 import com.android.contacts.common.util.AccountFilterUtil;
 import com.android.contacts.commonbind.analytics.AnalyticsUtil;
 
+import com.android.phone.common.incall.CallMethodInfo;
+
+import com.cyanogen.ambient.incall.extension.OriginCodes;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -210,6 +214,12 @@ public class PhoneNumberPickerFragment extends ContactEntryListFragment<ContactE
         }
     }
 
+    protected void onProviderClick(int position, long id, CallMethodInfo cmi) {
+        final String number = getPhoneNumber(position);
+        final String username = getUserName(position);
+        cmi.placeCall(OriginCodes.DIALPAD_T9_SEARCH, username, getContext());
+    }
+
     protected void cacheContactInfo(int position) {
         // Not implemented. Hook for child classes
     }
@@ -227,6 +237,11 @@ public class PhoneNumberPickerFragment extends ContactEntryListFragment<ContactE
     protected Uri getPhoneUri(int position) {
         final PhoneNumberListAdapter adapter = (PhoneNumberListAdapter) getAdapter();
         return adapter.getDataUri(position);
+    }
+
+    protected String getUserName(int position) {
+        final PhoneNumberListAdapter adapter = (PhoneNumberListAdapter) getAdapter();
+        return adapter.getUsername(position);
     }
 
     protected String getLookupKey(int position) {

@@ -20,8 +20,10 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.content.CursorLoader;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.net.Uri;
 import android.net.Uri.Builder;
+import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Callable;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
@@ -37,6 +39,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.TextView;
 import com.android.contacts.common.GeoUtil;
 import com.android.contacts.common.R;
 import com.android.contacts.common.ContactPhotoManager.DefaultImageRequest;
@@ -313,6 +316,11 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
         return item != null ? item.getString(PhoneQuery.PHONE_MIME_TYPE) : null;
     }
 
+    public String getUsername(int position) {
+        final Cursor item = (Cursor)getItem(position);
+        return item != null ? item.getString(item.getColumnIndex("callable_extra_number")) : null;
+    }
+
     /**
      * Builds a {@link Data#CONTENT_URI} for the given cursor position.
      *
@@ -437,6 +445,32 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
 
         final DirectoryPartition directory = (DirectoryPartition) getPartition(partition);
         bindPhoneNumber(view, cursor, directory.isDisplayNumber());
+        bindExtraCallAction(view, cursor, position);
+    }
+
+    public View.OnClickListener bindExtraCallActionOnClick(TextView v, String text, int position) {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Implement in other adapters;
+            }
+        };
+    }
+
+    private void bindExtraCallAction(ContactListItemView view, Cursor cursor, int position) {
+        try {
+            int columnIndex = cursor.getColumnIndexOrThrow("callable_extra_number");
+            final String extra = cursor.getString(columnIndex);
+
+            if (!TextUtils.isEmpty(extra)) {
+                TextView callProviderView = view.getCallProviderView();
+                view.setExtraNumber(extra);
+                callProviderView.setOnClickListener(
+                        bindExtraCallActionOnClick(callProviderView, extra, position));
+            }
+        } catch (IllegalArgumentException e) {
+            Log.i(TAG, "Column does not exist", e);
+        }
     }
 
     protected void bindPhoneNumber(ContactListItemView view, Cursor cursor, boolean displayNumber) {

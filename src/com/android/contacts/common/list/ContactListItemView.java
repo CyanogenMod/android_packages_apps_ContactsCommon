@@ -35,11 +35,13 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.AbsListView.SelectionBoundsAdjuster;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -161,6 +163,7 @@ public class ContactListItemView extends ViewGroup
     private TextView mPhoneticNameTextView;
     private TextView mLabelView;
     private TextView mDataView;
+    private TextView mCallProviderView;
     private TextView mSnippetView;
     private TextView mStatusView;
     private ImageView mPresenceIcon;
@@ -203,6 +206,8 @@ public class ContactListItemView extends ViewGroup
     private int mPhoneticNameTextViewHeight;
     private int mLabelViewHeight;
     private int mDataViewHeight;
+    private int mCallProviderViewHeight;
+    private int mCallProviderBottomPadding;
     private int mSnippetTextViewHeight;
     private int mStatusTextViewHeight;
     private int mCheckBoxHeight;
@@ -335,6 +340,8 @@ public class ContactListItemView extends ViewGroup
         mStatusTextViewHeight = 0;
         mCheckBoxWidth = 0;
         mCheckBoxHeight = 0;
+        mCallProviderViewHeight = 0;
+        mCallProviderBottomPadding = 0;
 
         ensurePhotoViewSize();
 
@@ -413,6 +420,17 @@ public class ContactListItemView extends ViewGroup
             mDataViewHeight = mDataView.getMeasuredHeight();
         }
 
+        if (isVisible(mCallProviderView)) {
+            mCallProviderView.measure(MeasureSpec.makeMeasureSpec(dataWidth, MeasureSpec.EXACTLY),
+                    MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+
+            // Multiply our height by two + gap
+            // Why? cause padding below and above the text + text height
+            mCallProviderViewHeight = mCallProviderView.getMeasuredHeight();
+            mCallProviderBottomPadding = getContext().getResources()
+                    .getDimensionPixelSize(R.dimen.call_provider_bottom_padding);
+        }
+
         if (isVisible(mLabelView)) {
             // For performance reason we don't want AT_MOST usually, but when the picture is
             // on right, we need to use it anyway because mDataView is next to mLabelView.
@@ -456,14 +474,18 @@ public class ContactListItemView extends ViewGroup
 
         // Calculate height including padding.
         int height = (mNameTextViewHeight + mPhoneticNameTextViewHeight +
-                mLabelAndDataViewMaxHeight +
-                mSnippetTextViewHeight + mStatusTextViewHeight);
+                mLabelAndDataViewMaxHeight + mSnippetTextViewHeight + mStatusTextViewHeight);
 
         // Make sure the height is at least as high as the photo
         height = Math.max(height, mPhotoViewHeight + getPaddingBottom() + getPaddingTop());
 
         // Make sure height is at least the preferred height
         height = Math.max(height, preferredHeight);
+
+        if (isVisible(mCallProviderView)) {
+            // add callproviderviewheight;
+            height += mCallProviderViewHeight + mCallProviderBottomPadding;
+        }
 
         // Measure the header if it is visible.
         if (mHeaderTextView != null && mHeaderTextView.getVisibility() == VISIBLE) {
@@ -542,7 +564,8 @@ public class ContactListItemView extends ViewGroup
             // Photo is the left most view. All the other Views should on the right of the photo.
             if (photoView != null) {
                 // Center the photo vertically
-                final int photoTop = topBound + (bottomBound - topBound - mPhotoViewHeight) / 2;
+                int photoTop = (topBound + (bottomBound - topBound - mPhotoViewHeight -
+                        mCallProviderViewHeight - mCallProviderBottomPadding) / 2);
                 photoView.layout(
                         leftBound,
                         photoTop,
@@ -575,7 +598,8 @@ public class ContactListItemView extends ViewGroup
 
         // Center text vertically, then apply the top offset.
         final int totalTextHeight = mNameTextViewHeight + mPhoneticNameTextViewHeight +
-                mLabelAndDataViewMaxHeight + mSnippetTextViewHeight + mStatusTextViewHeight;
+                mLabelAndDataViewMaxHeight + mSnippetTextViewHeight + mStatusTextViewHeight
+                + mCallProviderViewHeight + mCallProviderBottomPadding;
         int textTopBound = (bottomBound + topBound - totalTextHeight) / 2 + mTextOffsetTop;
 
         // Layout all text view and presence icon
@@ -676,8 +700,16 @@ public class ContactListItemView extends ViewGroup
                     rightBound,
                     textTopBound + mLabelAndDataViewMaxHeight);
         }
+
         if (isVisible(mLabelView) || isVisible(mDataView)) {
             textTopBound += mLabelAndDataViewMaxHeight;
+        }
+
+        if (isVisible(mCallProviderView)) {
+            mCallProviderView.layout(dataLeftBound,
+                    textTopBound + mCallProviderBottomPadding,
+                    rightBound,
+                    textTopBound + mCallProviderViewHeight + mCallProviderBottomPadding);
         }
 
         if (isVisible(mSnippetView)) {
@@ -1046,6 +1078,41 @@ public class ContactListItemView extends ViewGroup
         }
     }
 
+    /**
+     * Sets phone number for a list item. This takes care of number highlighting if the highlight
+     * mask exists.
+     */
+    public void setExtraNumber(String text) {
+        if (TextUtils.isEmpty(text)) {
+            if (mCallProviderView != null) {
+                mCallProviderView.setVisibility(View.GONE);
+            }
+        } else {
+            getCallProviderView();
+
+            // TODO: Format number using PhoneNumberUtils.formatNumber before assigning it to
+            // mDataView. Make sure that determination of the highlight sequences are done only
+            // after number formatting.
+
+            // Sets phone number texts for display after highlighting it, if applicable.
+            // CharSequence textToSet = text;
+            final SpannableString textToSet = new SpannableString(text);
+
+            if (mNumberHighlightSequence.size() != 0) {
+                final HighlightSequence highlightSequence = mNumberHighlightSequence.get(0);
+                mTextHighlighter.applyMaskingHighlight(textToSet, highlightSequence.start,
+                        highlightSequence.end);
+            }
+
+            setMarqueeText(mCallProviderView, textToSet);
+            mCallProviderView.setVisibility(VISIBLE);
+
+            // We have a phone number as "mDataView" so make it always LTR and VIEW_START
+            mCallProviderView.setTextDirection(View.TEXT_DIRECTION_LTR);
+            mCallProviderView.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
+        }
+    }
+
     private void setMarqueeText(TextView textView, char[] text, int size) {
         if (getTextEllipsis() == TruncateAt.MARQUEE) {
             setMarqueeText(textView, new String(text, 0, size));
@@ -1096,6 +1163,24 @@ public class ContactListItemView extends ViewGroup
             addView(mDataView);
         }
         return mDataView;
+    }
+
+    /**
+     * Returns the text view for the data text, creating it if necessary.
+     */
+    public TextView getCallProviderView() {
+        if (mCallProviderView == null) {
+            mCallProviderView = new TextView(getContext());
+            mCallProviderView.setSingleLine(true);
+            mCallProviderView.setEllipsize(getTextEllipsis());
+            mCallProviderView.setTextAppearance(getContext(), R.style.TextAppearanceSmall);
+            mCallProviderView.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
+            mCallProviderView.setActivated(isActivated());
+            mCallProviderView.setId(R.id.cliv_data_view);
+            mCallProviderView.setElegantTextHeight(false);
+            addView(mCallProviderView);
+        }
+        return mCallProviderView;
     }
 
     /**
