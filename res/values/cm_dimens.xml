@@ -3,4 +3,6 @@
     <dimen name="block_contact_dialog_padding">24dp</dimen>
     <dimen name="block_contact_dialog_primary_text_size">16sp</dimen>
     <dimen name="block_contact_dialog_secondary_text_size">14sp</dimen>
+
+    <dimen name="call_provider_bottom_padding">20dp</dimen>
 </resources>
