@@ -39,4 +39,14 @@
   <string name="set_ip_number">Ezarri IP zenbakia</string>
   <string name="ipcall_dialog_title">IP deien hobespenak</string>
   <string name="ipcall_dialog_edit_hint">Sartu IP aurrezenbakia</string>
+  <string name="menu_block_contact">Blokeatu</string>
+  <string name="menu_unblock_contact">Desblokeatu</string>
+  <string name="block_dialog_title">Blokeatu kontaktu hau?</string>
+  <string name="unblock_dialog_title">Desblokeatu kontaktu hau?</string>
+  <string name="block_dialog_positive">Blokeatu</string>
+  <string name="unblock_dialog_positive">Desblokeatu</string>
+  <string name="block_dialog_negative">Utzi</string>
+  <string name="block_dialog_description">Ez duzu pertsona honen deirik edo mezurik jasoko aurrerantzean.</string>
+  <string name="block_dialog_report_spam">Spam dela adierazi <xliff:g id="provider">%s</xliff:g>ri</string>
+  <string name="block_dialog_report_nonspam">Spam ez dela adierazi <xliff:g id="provider">%s</xliff:g>(r)i</string>
 </resources>

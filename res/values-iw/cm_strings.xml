@@ -39,4 +39,13 @@
   <string name="set_ip_number">הגדר מספר IP</string>
   <string name="ipcall_dialog_title">הגדרות שיחת IP</string>
   <string name="ipcall_dialog_edit_hint">אנא הזן את קידומת ה-IP</string>
+  <string name="menu_block_contact">חסימה</string>
+  <string name="menu_unblock_contact">ביטול חסימה</string>
+  <string name="block_dialog_title">לחסום את איש הקשר הזה?</string>
+  <string name="unblock_dialog_title">לבטל חסימת איש קשר זה?</string>
+  <string name="block_dialog_positive">חסום</string>
+  <string name="unblock_dialog_positive">בטל חסימה</string>
+  <string name="block_dialog_negative">ביטול</string>
+  <string name="block_dialog_description">לא יתקבלו יותר שיחות או הודעות מאדם זה.</string>
+  <string name="block_dialog_report_spam">דווח כספאם ל-<xliff:g id="provider">%s</xliff:g></string>
 </resources>

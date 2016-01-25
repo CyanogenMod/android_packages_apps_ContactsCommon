@@ -19,6 +19,7 @@
   <string name="local_storage_account" product="tablet">Lokalt surfplattekonto</string>
   <string name="local_storage_account" product="default">Lokalt telefonkonto</string>
   <string name="export_to_sim">Exportera till SIM-kort</string>
+  <string name="share_failed">För många kontakter, delning misslyckades</string>
   <string name="label_groups">Grupp</string>
   <string name="exporting">Exporterar\u2026</string>
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> av <xliff:g id="total_number">%2$s</xliff:g> filer</string>
@@ -36,4 +37,8 @@
   <string name="set_ip_number">Ställ in IP-nummer</string>
   <string name="ipcall_dialog_title">IP-samtalsinställningar</string>
   <string name="ipcall_dialog_edit_hint">Skriv in IP-prefixet</string>
+  <string name="menu_block_contact">Blockera</string>
+  <string name="block_dialog_positive">Blockera</string>
+  <string name="unblock_dialog_positive">Avblockera</string>
+  <string name="block_dialog_negative">Avbryt</string>
 </resources>

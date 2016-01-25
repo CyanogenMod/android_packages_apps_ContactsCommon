@@ -39,4 +39,13 @@
   <string name="set_ip_number">VoIP-Nummer festlegen</string>
   <string name="ipcall_dialog_title">VoIP-Einstellungen</string>
   <string name="ipcall_dialog_edit_hint">Bitte VoIP-Prefix eingeben</string>
+  <string name="menu_block_contact">Blockieren</string>
+  <string name="menu_unblock_contact">Blockierung aufheben</string>
+  <string name="block_dialog_title">Diesen Kontakt blockieren?</string>
+  <string name="unblock_dialog_title">Blockierung für diesen Kontakt aufheben?</string>
+  <string name="block_dialog_positive">Blockieren</string>
+  <string name="unblock_dialog_positive">Blockierung aufheben</string>
+  <string name="block_dialog_negative">Abbrechen</string>
+  <string name="block_dialog_description">Sie werden keine Anrufe oder Nachrichten mehr von dieser Person erhalten.</string>
+  <string name="block_dialog_report_spam">An <xliff:g id="provider">%s</xliff:g> als Spam melden</string>
 </resources>

@@ -39,4 +39,14 @@
   <string name="set_ip_number">设置 IP 号码</string>
   <string name="ipcall_dialog_title">IP 呼叫设置</string>
   <string name="ipcall_dialog_edit_hint">请输入 IP 前缀</string>
+  <string name="menu_block_contact">屏蔽</string>
+  <string name="menu_unblock_contact">取消屏蔽</string>
+  <string name="block_dialog_title">屏蔽此联系人？</string>
+  <string name="unblock_dialog_title">取消屏蔽此联系人？</string>
+  <string name="block_dialog_positive">屏蔽</string>
+  <string name="unblock_dialog_positive">取消屏蔽</string>
+  <string name="block_dialog_negative">取消</string>
+  <string name="block_dialog_description">您将不会再收到此人的来电或信息。</string>
+  <string name="block_dialog_report_spam">报告垃圾呼叫到 <xliff:g id="provider">%s</xliff:g></string>
+  <string name="block_dialog_report_nonspam">报告非垃圾呼叫到 <xliff:g id="provider">%s</xliff:g></string>
 </resources>

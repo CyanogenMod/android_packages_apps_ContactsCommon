@@ -39,4 +39,14 @@
   <string name="set_ip_number">Nastavi številko IP</string>
   <string name="ipcall_dialog_title">Nastavitve klicev IP</string>
   <string name="ipcall_dialog_edit_hint">Vnesite predpono IP</string>
+  <string name="menu_block_contact">Blokiraj</string>
+  <string name="menu_unblock_contact">Odblokiraj</string>
+  <string name="block_dialog_title">Blokiraj stik?</string>
+  <string name="unblock_dialog_title">Odblokiraj stik?</string>
+  <string name="block_dialog_positive">Blokiraj</string>
+  <string name="unblock_dialog_positive">Odblokiraj</string>
+  <string name="block_dialog_negative">Prekliči</string>
+  <string name="block_dialog_description">Od te osebe ne boste več prejemali klicev ali sporočil.</string>
+  <string name="block_dialog_report_spam">Prijavi kot nezaželeno na <xliff:g id="provider">%s</xliff:g></string>
+  <string name="block_dialog_report_nonspam">Prijavi kot želeno na <xliff:g id="provider">%s</xliff:g></string>
 </resources>
