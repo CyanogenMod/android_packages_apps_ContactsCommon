@@ -19,5 +19,6 @@ package com.android.contacts.common.compat;
 public class CallSdkCompat {
     public static class Details {
         public static final int PROPERTY_WORK_CALL = 0x00000020;
+        public static final int CAPABILITY_CANNOT_DOWNGRADE_VIDEO_TO_AUDIO = 0x00400000;
     }
 }
