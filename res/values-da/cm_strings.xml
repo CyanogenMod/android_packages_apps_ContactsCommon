@@ -19,6 +19,7 @@
   <string name="local_storage_account" product="tablet">Lokal tabletkonto</string>
   <string name="local_storage_account" product="default">Lokal telefonkonto</string>
   <string name="export_to_sim">Eksportér til SIM-kortet</string>
+  <string name="share_failed">For mange kontakter, deling mislykket</string>
   <string name="label_groups">Gruppe</string>
   <string name="exporting">Eksporterer\u2026</string>
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> af <xliff:g id="total_number">%2$s</xliff:g> filer</string>
@@ -36,4 +37,14 @@
   <string name="set_ip_number">Angiv IP-nummer</string>
   <string name="ipcall_dialog_title">IP-opkaldsindstillinger</string>
   <string name="ipcall_dialog_edit_hint">Indtast IP-præfiks</string>
+  <string name="menu_block_contact">Blokér</string>
+  <string name="menu_unblock_contact">FJern blokering</string>
+  <string name="block_dialog_title">Blokér denne kontaktperson?</string>
+  <string name="unblock_dialog_title">Fjern blokering af denne kontaktperson?</string>
+  <string name="block_dialog_positive">Blokér</string>
+  <string name="unblock_dialog_positive">Fjern blokering</string>
+  <string name="block_dialog_negative">Annullér</string>
+  <string name="block_dialog_description">Du vil ikke længere modtage opkald eller beskeder fra denne person.</string>
+  <string name="block_dialog_report_spam">Rapporter som spam til <xliff:g id="provider">%s</xliff:g></string>
+  <string name="block_dialog_report_nonspam">Rapporter som ikke-spam til <xliff:g id="provider">%s</xliff:g></string>
 </resources>

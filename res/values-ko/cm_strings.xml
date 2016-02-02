@@ -39,4 +39,11 @@
   <string name="set_ip_number">IP 번호 설정</string>
   <string name="ipcall_dialog_title">IP 통화 설정</string>
   <string name="ipcall_dialog_edit_hint">IP 접두사를 입력해 주십시오</string>
+  <string name="menu_block_contact">차단</string>
+  <string name="menu_unblock_contact">차단 해제</string>
+  <string name="block_dialog_title">이 연락처를 차단하겠습니까?</string>
+  <string name="unblock_dialog_title">이 연락처를 차단 해제하겠습니까?</string>
+  <string name="block_dialog_positive">차단</string>
+  <string name="unblock_dialog_positive">차단 해제</string>
+  <string name="block_dialog_negative">취소</string>
 </resources>

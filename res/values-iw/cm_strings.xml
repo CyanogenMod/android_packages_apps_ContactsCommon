@@ -48,4 +48,5 @@
   <string name="block_dialog_negative">ביטול</string>
   <string name="block_dialog_description">לא יתקבלו יותר שיחות או הודעות מאדם זה.</string>
   <string name="block_dialog_report_spam">דווח כספאם ל-<xliff:g id="provider">%s</xliff:g></string>
+  <string name="block_dialog_report_nonspam">דווח כלא ספאם אל <xliff:g id="provider">%s</xliff:g></string>
 </resources>

@@ -39,4 +39,14 @@
   <string name="set_ip_number">IP番号を設定</string>
   <string name="ipcall_dialog_title">IP電話の設定</string>
   <string name="ipcall_dialog_edit_hint">IP電話のプレフィックスを入力してください</string>
+  <string name="menu_block_contact">拒否</string>
+  <string name="menu_unblock_contact">拒否解除</string>
+  <string name="block_dialog_title">この連絡先を着信/受信拒否しますか？</string>
+  <string name="unblock_dialog_title">この連絡先を着信/受信拒否解除しますか？</string>
+  <string name="block_dialog_positive">拒否</string>
+  <string name="unblock_dialog_positive">拒否解除</string>
+  <string name="block_dialog_negative">キャンセル</string>
+  <string name="block_dialog_description">この人物からの着信やメッセージを受け取らないようになりました。</string>
+  <string name="block_dialog_report_spam">迷惑電話として<xliff:g id="provider">%s</xliff:g>に報告</string>
+  <string name="block_dialog_report_nonspam">迷惑電話ではないとして<xliff:g id="provider">%s</xliff:g>に報告</string>
 </resources>

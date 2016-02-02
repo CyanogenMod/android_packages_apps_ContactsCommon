@@ -39,4 +39,14 @@
   <string name="set_ip_number">Aseta IP-numero</string>
   <string name="ipcall_dialog_title">IP-puheluasetukset</string>
   <string name="ipcall_dialog_edit_hint">Anna IP:n etuliite</string>
+  <string name="menu_block_contact">Estä</string>
+  <string name="menu_unblock_contact">Poista esto</string>
+  <string name="block_dialog_title">Estä tämä henkilö?</string>
+  <string name="unblock_dialog_title">Poista tämän henkilön esto?</string>
+  <string name="block_dialog_positive">Estä</string>
+  <string name="unblock_dialog_positive">Poista esto</string>
+  <string name="block_dialog_negative">Peruuta</string>
+  <string name="block_dialog_description">Et saa enään puheluita tai viestejä tältä henkilöltä.</string>
+  <string name="block_dialog_report_spam">Ilmoita spam-puheluista palveluun <xliff:g id="provider">%s</xliff:g></string>
+  <string name="block_dialog_report_nonspam">Ilmoita ei-spam-puhelusta palveluun <xliff:g id="provider">%s</xliff:g></string>
 </resources>
