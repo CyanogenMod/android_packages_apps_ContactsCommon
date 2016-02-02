@@ -39,4 +39,14 @@
   <string name="set_ip_number">IP cím beállítása</string>
   <string name="ipcall_dialog_title">IP hívás beállításai</string>
   <string name="ipcall_dialog_edit_hint">Kérem adja meg az IP előtagot</string>
+  <string name="menu_block_contact">Blokkolás</string>
+  <string name="menu_unblock_contact">Blokkolás feloldása</string>
+  <string name="block_dialog_title">Blokkolja a kapcsolatot?</string>
+  <string name="unblock_dialog_title">Kapcsolat blokkolásának megszüntetése?</string>
+  <string name="block_dialog_positive">Blokkolás</string>
+  <string name="unblock_dialog_positive">Blokkolás feloldása</string>
+  <string name="block_dialog_negative">Elvet</string>
+  <string name="block_dialog_description">Ettől a személytől többet nem fog hívást vagy üzenetet kapni.</string>
+  <string name="block_dialog_report_spam">Spamként jelent: <xliff:g id="provider">%s</xliff:g></string>
+  <string name="block_dialog_report_nonspam">Nem spamként jelent: <xliff:g id="provider">%s</xliff:g></string>
 </resources>

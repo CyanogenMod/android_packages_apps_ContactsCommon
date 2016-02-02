@@ -19,6 +19,7 @@
   <string name="local_storage_account" product="tablet">Cont local tabletă</string>
   <string name="local_storage_account" product="default">Cont local telefon</string>
   <string name="export_to_sim">Export în cartela SIM</string>
+  <string name="share_failed">Prea multe contacte, distribuire eșuată</string>
   <string name="label_groups">Grup</string>
   <string name="exporting">Se exportă\u2026</string>
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> din <xliff:g id="total_number">%2$s</xliff:g> fișiere</string>
@@ -36,4 +37,11 @@
   <string name="set_ip_number">Setare număr de IP</string>
   <string name="ipcall_dialog_title">Setări apel IP</string>
   <string name="ipcall_dialog_edit_hint">Introduceți prefixul IP</string>
+  <string name="menu_block_contact">Blocare</string>
+  <string name="menu_unblock_contact">Deblocare</string>
+  <string name="block_dialog_title">Blocați acest contact?</string>
+  <string name="unblock_dialog_title">Deblocați acest contact?</string>
+  <string name="block_dialog_positive">Blocare</string>
+  <string name="unblock_dialog_positive">Deblocare</string>
+  <string name="block_dialog_negative">Anulare</string>
 </resources>

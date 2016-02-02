@@ -48,4 +48,5 @@
   <string name="block_dialog_negative">Cancelar</string>
   <string name="block_dialog_description">Você não receberá mais chamadas ou mensagens desta pessoa.</string>
   <string name="block_dialog_report_spam">Reportar como spam para <xliff:g id="provider">%s</xliff:g></string>
+  <string name="block_dialog_report_nonspam">Reportar como não-spam para <xliff:g id="provider">%s</xliff:g></string>
 </resources>
