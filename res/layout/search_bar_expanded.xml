@@ -32,6 +32,13 @@
         android:contentDescription="@string/action_menu_back_from_search"
         android:tint="@color/search_back_button_tint_color" />
 
+    <Spinner
+        android:id="@+id/call_method_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:dropDownWidth="@dimen/call_method_spinner_dropdown_item_width"
+        android:background="?android:attr/selectableItemBackgroundBorderless" />
+
     <EditText
         android:id="@+id/search_view"
         android:layout_width="0dp"
