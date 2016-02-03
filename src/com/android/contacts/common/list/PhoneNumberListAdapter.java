@@ -461,12 +461,14 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
         try {
             int columnIndex = cursor.getColumnIndexOrThrow("callable_extra_number");
             final String extra = cursor.getString(columnIndex);
+            TextView callProviderView = view.getCallProviderView();
 
             if (!TextUtils.isEmpty(extra)) {
-                TextView callProviderView = view.getCallProviderView();
                 view.setExtraNumber(extra);
                 callProviderView.setOnClickListener(
                         bindExtraCallActionOnClick(callProviderView, extra, position));
+            } else {
+                view.setExtraNumber(null);
             }
         } catch (IllegalArgumentException e) {
             Log.i(TAG, "Column does not exist", e);
