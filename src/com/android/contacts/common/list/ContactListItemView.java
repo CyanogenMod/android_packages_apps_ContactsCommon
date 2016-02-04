@@ -1079,8 +1079,7 @@ public class ContactListItemView extends ViewGroup
     }
 
     /**
-     * Sets phone number for a list item. This takes care of number highlighting if the highlight
-     * mask exists.
+     * Sets phone number for a list item.
      */
     public void setExtraNumber(String text) {
         if (TextUtils.isEmpty(text)) {
@@ -1090,20 +1089,7 @@ public class ContactListItemView extends ViewGroup
         } else {
             getCallProviderView();
 
-            // TODO: Format number using PhoneNumberUtils.formatNumber before assigning it to
-            // mDataView. Make sure that determination of the highlight sequences are done only
-            // after number formatting.
-
-            // Sets phone number texts for display after highlighting it, if applicable.
-            // CharSequence textToSet = text;
             final SpannableString textToSet = new SpannableString(text);
-
-            if (mNumberHighlightSequence.size() != 0) {
-                final HighlightSequence highlightSequence = mNumberHighlightSequence.get(0);
-                mTextHighlighter.applyMaskingHighlight(textToSet, highlightSequence.start,
-                        highlightSequence.end);
-            }
-
             setMarqueeText(mCallProviderView, textToSet);
             mCallProviderView.setVisibility(VISIBLE);
 

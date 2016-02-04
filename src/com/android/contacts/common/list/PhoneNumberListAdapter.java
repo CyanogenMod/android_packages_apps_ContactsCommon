@@ -457,7 +457,7 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
         };
     }
 
-    private void bindExtraCallAction(ContactListItemView view, Cursor cursor, int position) {
+    protected void bindExtraCallAction(ContactListItemView view, Cursor cursor, int position) {
         try {
             int columnIndex = cursor.getColumnIndexOrThrow("callable_extra_number");
             final String extra = cursor.getString(columnIndex);
