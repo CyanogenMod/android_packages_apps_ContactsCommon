@@ -1065,7 +1065,7 @@ class ContactPhotoManagerImpl extends ContactPhotoManager implements Callback {
      */
     private boolean loadCachedPhoto(ImageView view, Request request, boolean fadeIn) {
         BitmapHolder holder = mBitmapHolderCache.get(request.getKey());
-        if (holder == null) {
+        if (holder == null || holder == BITMAP_UNAVAILABLE) {
             // The bitmap has not been loaded ==> show default avatar
             request.applyDefaultImage(view, request.mIsCircular);
             return false;
