@@ -1597,6 +1597,16 @@ public class ContactListItemView extends ViewGroup
                 getContext().getColor(R.color.search_shortcut_icon_color)));
     }
 
+    /**
+     * Set drawable directly for the drawable of the photo view.
+     *
+     * @param d drawable of drawable resource.
+     */
+    public void setDrawable(Drawable d) {
+        ImageView photo = getPhotoView();
+        photo.setImageDrawable(d);
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         final float x = event.getX();
