@@ -53,6 +53,8 @@ import com.android.contacts.common.model.account.SimAccountType;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.cyanogen.ambient.incall.CallableConstants.ADDITIONAL_CALLABLE_MIMETYPES_PARAM_KEY;
+
 /**
  * A cursor adapter for the {@link Phone#CONTENT_ITEM_TYPE} and
  * {@link SipAddress#CONTENT_ITEM_TYPE}.
@@ -202,6 +204,11 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
                 builder.appendPath(query);      // Builder will encode the query
                 builder.appendQueryParameter(ContactsContract.DIRECTORY_PARAM_KEY,
                         String.valueOf(directoryId));
+                String mimeTypes = getAdditionalMimeTypeSearch();
+                if (mimeTypes != null) {
+                    builder.appendQueryParameter(ADDITIONAL_CALLABLE_MIMETYPES_PARAM_KEY,
+                            mimeTypes);
+                }
                 if (isRemoteDirectoryQuery) {
                     builder.appendQueryParameter(ContactsContract.LIMIT_PARAM_KEY,
                             String.valueOf(getDirectoryResultLimit(getDirectoryById(directoryId))));
