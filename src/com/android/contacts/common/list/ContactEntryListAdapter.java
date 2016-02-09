@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.CursorLoader;
 import android.content.res.Resources;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -94,6 +95,8 @@ public abstract class ContactEntryListAdapter extends IndexerListAdapter {
 
     private ContactListFilter mFilter;
     private boolean mDarkTheme = false;
+
+    private String mAdditionalMimeTypeSearch;
 
     /** Resource used to provide header-text for default filter. */
     private CharSequence mDefaultFilterHeaderText;
@@ -386,6 +389,14 @@ public abstract class ContactEntryListAdapter extends IndexerListAdapter {
 
     public void setDarkTheme(boolean value) {
         mDarkTheme = value;
+    }
+
+    public void setAdditionalMimeTypeSearch(String value) {
+        mAdditionalMimeTypeSearch = value;
+    }
+
+    public String getAdditionalMimeTypeSearch() {
+        return mAdditionalMimeTypeSearch;
     }
 
     /**

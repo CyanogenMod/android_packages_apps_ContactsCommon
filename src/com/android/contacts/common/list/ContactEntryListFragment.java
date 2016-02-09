@@ -27,6 +27,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.Loader;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -86,6 +87,7 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
     private static final String KEY_DARK_THEME = "darkTheme";
     private static final String KEY_LEGACY_COMPATIBILITY = "legacyCompatibility";
     private static final String KEY_DIRECTORY_RESULT_LIMIT = "directoryResultLimit";
+    private static final String KEY_ADDITIONAL_MIMETYPE_SEARCH = "additionalMimeTypeSearch";
 
     private static final String DIRECTORY_ID_ARG_KEY = "directoryId";
 
@@ -115,6 +117,8 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
     private T mAdapter;
     private View mView;
     private ListView mListView;
+
+    private String mAdditionalMimeTypeSearch;
 
     /**
      * Used for keeping track of the scroll state of the list.
@@ -265,6 +269,7 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
         outState.putString(KEY_QUERY_STRING, mQueryString);
         outState.putInt(KEY_DIRECTORY_RESULT_LIMIT, mDirectoryResultLimit);
         outState.putBoolean(KEY_DARK_THEME, mDarkTheme);
+        outState.putString(KEY_ADDITIONAL_MIMETYPE_SEARCH, mAdditionalMimeTypeSearch);
 
         if (mListView != null) {
             outState.putParcelable(KEY_LIST_STATE, mListView.onSaveInstanceState());
@@ -299,6 +304,7 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
         mQueryString = savedState.getString(KEY_QUERY_STRING);
         mDirectoryResultLimit = savedState.getInt(KEY_DIRECTORY_RESULT_LIMIT);
         mDarkTheme = savedState.getBoolean(KEY_DARK_THEME);
+        mAdditionalMimeTypeSearch = savedState.getString(KEY_ADDITIONAL_MIMETYPE_SEARCH);
 
         // Retrieve list state. This will be applied in onLoadFinished
         mListState = savedState.getParcelable(KEY_LIST_STATE);
@@ -831,6 +837,7 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
         mAdapter.setSelectionVisible(mSelectionVisible);
         mAdapter.setDirectoryResultLimit(mDirectoryResultLimit);
         mAdapter.setDarkTheme(mDarkTheme);
+        mAdapter.setAdditionalMimeTypeSearch(mAdditionalMimeTypeSearch);
     }
 
     @Override
@@ -914,6 +921,11 @@ public abstract class ContactEntryListFragment<T extends ContactEntryListAdapter
     public void setDarkTheme(boolean value) {
         mDarkTheme = value;
         if (mAdapter != null) mAdapter.setDarkTheme(value);
+    }
+
+    public void setAdditionalMimeTypeSearch(String value) {
+        mAdditionalMimeTypeSearch = value;
+        if (mAdapter != null) mAdapter.setAdditionalMimeTypeSearch(value);
     }
 
     /**
