@@ -229,11 +229,6 @@ public class PhoneNumberPickerFragment extends ContactEntryListFragment<ContactE
         return adapter.getDataUri(position);
     }
 
-    protected String getUserName(int position) {
-        final PhoneNumberListAdapter adapter = (PhoneNumberListAdapter) getAdapter();
-        return adapter.getUsername(position);
-    }
-
     protected String getLookupKey(int position) {
         final PhoneNumberListAdapter adapter = (PhoneNumberListAdapter) getAdapter();
         return adapter.getLookupKey(position);

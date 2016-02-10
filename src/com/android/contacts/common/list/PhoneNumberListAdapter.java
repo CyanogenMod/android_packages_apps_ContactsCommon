@@ -50,6 +50,9 @@ import com.android.contacts.common.util.Constants;
 import com.android.contacts.common.MoreContactUtils;
 import com.android.contacts.common.model.account.SimAccountType;
 
+import com.android.phone.common.incall.CallMethodInfo;
+import com.android.phone.common.incall.CallMethodHelper;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,6 +77,8 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
     // Thi sis so that we can identify them and set them up properly. If no extended directories
     // exist, this will be Long.MAX_VALUE
     private long mFirstExtendedDirectoryId = Long.MAX_VALUE;
+
+    private CallMethodInfo mCurrentCallMethodInfo;
 
     public static class PhoneQuery {
 
@@ -452,34 +457,6 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
 
         final DirectoryPartition directory = (DirectoryPartition) getPartition(partition);
         bindPhoneNumber(view, cursor, directory.isDisplayNumber());
-        bindExtraCallAction(view, cursor, position);
-    }
-
-    public View.OnClickListener bindExtraCallActionOnClick(TextView v, String text, int position) {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Implement in other adapters;
-            }
-        };
-    }
-
-    protected void bindExtraCallAction(ContactListItemView view, Cursor cursor, int position) {
-        try {
-            int columnIndex = cursor.getColumnIndexOrThrow("callable_extra_number");
-            final String extra = cursor.getString(columnIndex);
-            TextView callProviderView = view.getCallProviderView();
-
-            if (!TextUtils.isEmpty(extra)) {
-                view.setExtraNumber(extra);
-                callProviderView.setOnClickListener(
-                        bindExtraCallActionOnClick(callProviderView, extra, position));
-            } else {
-                view.setExtraNumber(null);
-            }
-        } catch (IllegalArgumentException e) {
-            Log.i(TAG, "Column does not exist", e);
-        }
     }
 
     protected void bindPhoneNumber(ContactListItemView view, Cursor cursor, boolean displayNumber) {
@@ -488,8 +465,18 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
             final int type = cursor.getInt(PhoneQuery.PHONE_TYPE);
             final String customLabel = cursor.getString(PhoneQuery.PHONE_LABEL);
 
+            if (type == Phone.TYPE_CUSTOM) {
+                final String providerLabel = cursor.getString(PhoneQuery.PHONE_MIME_TYPE);
+                CallMethodInfo cmi = CallMethodHelper.getMethodForMimeType(providerLabel);
+                if (cmi != null) {
+                    label = cmi.mName;
+                }
+            }
+
             // TODO cache
-            label = Phone.getTypeLabel(getContext().getResources(), type, customLabel);
+            if (label == null) {
+                label = Phone.getTypeLabel(getContext().getResources(), type, customLabel);
+            }
         }
         view.setLabel(label);
         final String text;
@@ -664,4 +651,9 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
         }
         return disabledSimName;
     }
+
+    public void setCurrentCallMethod(CallMethodInfo cmi) {
+        mCurrentCallMethodInfo = cmi;
+    }
+
 }
