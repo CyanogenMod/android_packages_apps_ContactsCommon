@@ -18,19 +18,19 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="local_storage_account" product="tablet">Локален профил (на таблета)</string>
   <string name="local_storage_account" product="default">Локален профил (на телефона)</string>
-  <string name="import_contacts_sim">Да бъдат ли импортирани контактите от SIM картата?</string>
-  <string name="manage_sim_contacts">Управление на контактите в SIM картата</string>
-  <string name="export_to_sim">Експортиране към SIM картата</string>
+  <string name="import_contacts_sim">Да бъдат ли импортирани контактите от СИМ картата?</string>
+  <string name="manage_sim_contacts">Управление на контактите в СИМ картата</string>
+  <string name="export_to_sim">Експортиране към СИМ картата</string>
   <string name="fail_reason_import_vcard">\'<xliff:g id="name">%s</xliff:g>\' не може да бъде импортиран поради входно/изходна грешка</string>
   <string name="contact_share_failed_toast">Не може да споделите повече от <xliff:g id="count">%d </xliff:g> контакта</string>
   <string name="label_groups">Група</string>
   <string name="exporting">Експортиране\u2026</string>
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> от <xliff:g id="total_number">%2$s</xliff:g> файла</string>
   <string name="export_failed">Експортирането се провали</string>
-  <string name="sim_card_full">SIM картата е пълна</string>
+  <string name="sim_card_full">СИМ картата е пълна</string>
   <string name="export_finished">Експортирането  завърши</string>
   <string name="tag_too_long">Името на контакта е твърде дълго</string>
-  <string name="sim_contacts_not_loaded">Зареждането на контактите от SIM картата не е възможно</string>
+  <string name="sim_contacts_not_loaded">Зареждането на контактите от СИМ картата не е възможно</string>
   <plurals name="export_cancelled">
     <item quantity="one">Експортирането е отменено след %d експортирани елемента</item>
     <item quantity="other">Експортирането е отменено след %d експортирани елемента</item>
@@ -43,7 +43,7 @@
   <string name="deleteConfirmation">Контактът ще бъде изтрит.</string>
   <string name="copy_done">Контактът е копиран успешно</string>
   <string name="copy_failure">Копирането на контакта се провали</string>
-  <string name="card_no_space">Копирането на контакта се провали защото SIM картата е пълна</string>
+  <string name="card_no_space">Копирането на контакта се провали защото СИМ картата е пълна</string>
   <string name="settings_contact_display_options_description">Изберете как да бъдат показвани и сортирани вашите контакти.</string>
   <string name="ip_call_by_slot">IP обаждане чрез <xliff:g id="subName">%s </xliff:g></string>
   <string name="no_ip_number">Няма IP номер</string>
@@ -51,7 +51,7 @@
   <string name="set_ip_number">Задаване на IP номер</string>
   <string name="ipcall_dialog_title">Настройки за IP обаждания</string>
   <string name="ipcall_dialog_edit_hint">Моля, въведете IP префикс</string>
-  <string name="import_contacts_from_all_cards">Импортиране на контактите от всички SIM карти</string>
+  <string name="import_contacts_from_all_cards">Импортиране на контактите от всички СИМ карти</string>
   <string name="select_path">Изберете път</string>
-  <string name="select_sim">Изберете SIM карта</string>
+  <string name="select_sim">Изберете СИМ карта</string>
 </resources>
