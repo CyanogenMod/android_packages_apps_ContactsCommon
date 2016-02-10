@@ -26,6 +26,11 @@ public class LookupProviderImpl implements LookupProvider {
     }
 
     @Override
+    public void blockingFetchInfo(final LookupRequest request) {
+        /* NOT IMPLEMENTED */
+    }
+
+    @Override
     public void disable() {
         /* NOT IMPLEMENTED */
     }

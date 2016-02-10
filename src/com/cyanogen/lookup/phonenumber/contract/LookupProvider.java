@@ -1,6 +1,7 @@
 package com.cyanogen.lookup.phonenumber.contract;
 
 import com.cyanogen.lookup.phonenumber.request.LookupRequest;
+import com.cyanogen.lookup.phonenumber.response.LookupResponse;
 
 /**
  * Notion of a phone number lookup provider
@@ -23,6 +24,12 @@ public interface LookupProvider {
      * within {@link LookupRequest}
      */
     void fetchInfo(LookupRequest request);
+
+    /**
+     * Request the Provider for contact info. This call will block the current thread till
+     * the request completes.
+     */
+    LookupResponse blockingFetchInfo(LookupRequest lookupRequest);
 
     /**
      * Explicit call to disable provider and free resources

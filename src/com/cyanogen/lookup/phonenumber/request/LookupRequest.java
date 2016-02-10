@@ -6,6 +6,9 @@ import com.cyanogen.lookup.phonenumber.response.LookupResponse;
  * Encapsulates the notion of a phone number lookup request
  */
 public class LookupRequest {
+    /**
+     * phone number must be in an E164 format
+     */
     public String mPhoneNumber;
     public Callback mCallback;
 

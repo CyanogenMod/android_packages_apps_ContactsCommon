@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
  * ADT to store the result of a phone number lookup
  */
 public class LookupResponse {
+    public StatusCode mStatusCode = StatusCode.NULL;
     public String mProviderName;
     public String mName;
     public String mNumber;
@@ -14,12 +15,14 @@ public class LookupResponse {
     public String mAddress;
     public String mPhotoUrl;
     public int mSpamCount;
+    public boolean mIsSpam;
 
     public Drawable mAttributionLogo;
 
     @Override
     public String toString() {
-        return String.format("{ providerName = %s, name = %s, number = %s, city = %s, country = %s, address = %s, photo-url : %s, spam-count = %d}",
+        return String.format("{ statusCode = %s, providerName = %s, name = %s, number = %s, city = %s, country = %s, address = %s, photo-url : %s, spam-count = %d, isSpam = %b}",
+                mStatusCode,
                 mProviderName != null ? mProviderName : "null" ,
                 mName != null ? mName : "null" ,
                 mNumber != null ? mNumber : "null" ,
@@ -27,6 +30,7 @@ public class LookupResponse {
                 mCountry != null ? mCountry : "null" ,
                 mAddress != null ? mAddress : "null" ,
                 mPhotoUrl != null ? mPhotoUrl : "null" ,
-                mSpamCount );
+                mSpamCount,
+                mIsSpam);
     }
 }
