@@ -50,9 +50,6 @@ import com.android.contacts.common.util.Constants;
 import com.android.contacts.common.MoreContactUtils;
 import com.android.contacts.common.model.account.SimAccountType;
 
-import com.android.phone.common.incall.CallMethodInfo;
-import com.android.phone.common.incall.CallMethodHelper;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,8 +74,6 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
     // Thi sis so that we can identify them and set them up properly. If no extended directories
     // exist, this will be Long.MAX_VALUE
     private long mFirstExtendedDirectoryId = Long.MAX_VALUE;
-
-    private CallMethodInfo mCurrentCallMethodInfo;
 
     public static class PhoneQuery {
 
@@ -459,19 +454,18 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
         bindPhoneNumber(view, cursor, directory.isDisplayNumber());
     }
 
+
+    public String getLabelType(Cursor c, int type) {
+        return null;
+    }
+
     protected void bindPhoneNumber(ContactListItemView view, Cursor cursor, boolean displayNumber) {
         CharSequence label = null;
         if (displayNumber &&  !cursor.isNull(PhoneQuery.PHONE_TYPE)) {
             final int type = cursor.getInt(PhoneQuery.PHONE_TYPE);
             final String customLabel = cursor.getString(PhoneQuery.PHONE_LABEL);
 
-            if (type == Phone.TYPE_CUSTOM) {
-                final String providerLabel = cursor.getString(PhoneQuery.PHONE_MIME_TYPE);
-                CallMethodInfo cmi = CallMethodHelper.getMethodForMimeType(providerLabel);
-                if (cmi != null) {
-                    label = cmi.mName;
-                }
-            }
+            label = getLabelType(cursor, type);
 
             // TODO cache
             if (label == null) {
@@ -650,10 +644,6 @@ public class PhoneNumberListAdapter extends ContactEntryListAdapter {
             }
         }
         return disabledSimName;
-    }
-
-    public void setCurrentCallMethod(CallMethodInfo cmi) {
-        mCurrentCallMethodInfo = cmi;
     }
 
 }
