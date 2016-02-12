@@ -55,4 +55,6 @@
 
     <!-- Color used by the incall plugin user interface -->
     <color name="plugin_login_button_tint">#0288d1</color>
+
+    <color name="spam_contact_color">#ff402c</color>
 </resources>

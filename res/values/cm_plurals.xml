@@ -29,4 +29,10 @@
         <item quantity="one">Export was cancelled, <xliff:g id="insertCount">%d</xliff:g> item was exported</item>
         <item quantity="other">Export was cancelled, <xliff:g id="insertCount">%d</xliff:g> items were exported</item>
     </plurals>
+
+    <plurals name="spam_count_text">
+        <item quantity="zero">Not spam</item>
+        <item quantity="one"><xliff:g id="spamCount">%d</xliff:g> person marked this as spam</item>
+        <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> people marked this as spam</item>
+    </plurals>
 </resources>
