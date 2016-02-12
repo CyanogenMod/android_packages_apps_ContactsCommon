@@ -26,9 +26,11 @@ public class BlockContactDialogFragment extends DialogFragment
     public static final int UNBLOCK_MODE = 1;
     public static final String KEY_CURRENT_LOOKUP_PROVIDER_NAME = "CURRENT_LOOKUP_PROVIDER_NAME";
     public static final String KEY_LAUNCH_MODE = "LAUNCH_MODE";
+    public static final String BLOCK_UI_RESULT_CALLBACK = "BLOCK_UI_RESULT_CALLBACK";
 
     private int mLaunchMode;
     private CheckBox mNotifyProviderCheckBox;
+    private BlockContactCallbacks mUIResultCallbacks;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -37,6 +39,17 @@ public class BlockContactDialogFragment extends DialogFragment
             Bundle bundle = getArguments();
             mLaunchMode = bundle.getInt(KEY_LAUNCH_MODE);
             lookupProviderName = bundle.getString(KEY_CURRENT_LOOKUP_PROVIDER_NAME);
+
+            mUIResultCallbacks = null;
+
+            if (bundle.getSerializable(BLOCK_UI_RESULT_CALLBACK) != null) {
+                try {
+                    mUIResultCallbacks = (BlockContactCallbacks) bundle.getSerializable
+                            (BLOCK_UI_RESULT_CALLBACK);
+                } catch (ClassCastException e) {
+                    mUIResultCallbacks = null;
+                }
+            }
         }
 
         Activity hostActivity = getActivity();
@@ -99,6 +112,14 @@ public class BlockContactDialogFragment extends DialogFragment
                 ((BlockContactCallbacks) parentActivity).onBlockContact(mCheckboxStatus);
             } else {
                 ((BlockContactCallbacks) parentActivity).onUnblockContact(mCheckboxStatus);
+            }
+        }
+
+        if (mUIResultCallbacks != null && mUIResultCallbacks instanceof BlockContactCallbacks) {
+            if (mLaunchMode == BLOCK_MODE) {
+                ((BlockContactCallbacks) mUIResultCallbacks).onBlockContact(mCheckboxStatus);
+            } else {
+                ((BlockContactCallbacks) mUIResultCallbacks).onUnblockContact(mCheckboxStatus);
             }
         }
     }
