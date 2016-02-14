@@ -23,16 +23,16 @@
   <string name="export_to_sim_summary_no_number">Export zur SIM-Karte <xliff:g id="sim_name">%1$s</xliff:g></string>
   <string name="share_failed">Teilen fehlgeschlagen, zu viele Kontake</string>
   <string name="label_groups">Gruppe</string>
-  <string name="exporting">Exportieren\u2026</string>
+  <string name="exporting">Wird exportiert\u2026</string>
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> von <xliff:g id="total_number">%2$s</xliff:g> Dateien</string>
   <string name="export_finished">Export abgeschlossen</string>
-  <string name="tag_too_long">Der Kontaktname ist zu lang</string>
-  <string name="sim_contacts_not_loaded">SIM-Kontakte konnten nicht geladen werden</string>
+  <string name="tag_too_long">Der Kontaktname ist zu lang.</string>
+  <string name="sim_contacts_not_loaded">SIM-Kontakte konnten nicht geladen werden.</string>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> hat keine Telefonnummer oder E-Mail-Adresse</string>
   <string name="import_from_sim_select">SIM-Karte zum Importieren wählen</string>
   <string name="copy_done">Kontakt wurde erfolgreich kopiert</string>
-  <string name="copy_failure">Kopieren des Kontaktes fehlgeschlagen</string>
-  <string name="card_no_space">Das Kopieren des Kontaktes ist fehlgeschlagen, da die SIM-Karte voll ist</string>
+  <string name="copy_failure">Kopieren des Kontakts fehlgeschlagen</string>
+  <string name="card_no_space">Das Kopieren des Kontakts ist fehlgeschlagen, da die SIM-Karte voll ist.</string>
   <string name="ip_call_by_slot">VoIP-Anruf über <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Keine VoIP-Nummer</string>
   <string name="no_ip_number_on_sim_card">Keine VoIP-Nummer auf der SIM-Karte</string>
@@ -48,4 +48,5 @@
   <string name="block_dialog_negative">Abbrechen</string>
   <string name="block_dialog_description">Sie werden keine Anrufe oder Nachrichten mehr von dieser Person erhalten.</string>
   <string name="block_dialog_report_spam">An <xliff:g id="provider">%s</xliff:g> als Spam melden</string>
+  <string name="block_dialog_report_nonspam">An <xliff:g id="provider">%s</xliff:g> als vertrauenswürdig melden</string>
 </resources>

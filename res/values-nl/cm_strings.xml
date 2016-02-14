@@ -46,4 +46,7 @@
   <string name="block_dialog_positive">Blokkeren</string>
   <string name="unblock_dialog_positive">Deblokkeren</string>
   <string name="block_dialog_negative">Annuleren</string>
+  <string name="block_dialog_description">U ontvangt geen oproepen of berichten meer van deze persoon.</string>
+  <string name="block_dialog_report_spam">Rapporteren als ongewenst aan <xliff:g id="provider">%s</xliff:g></string>
+  <string name="block_dialog_report_nonspam">Rapporteren als niet-ongewenst aan <xliff:g id="provider">%s</xliff:g></string>
 </resources>

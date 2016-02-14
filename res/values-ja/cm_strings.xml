@@ -41,8 +41,8 @@
   <string name="ipcall_dialog_edit_hint">IP電話のプレフィックスを入力してください</string>
   <string name="menu_block_contact">拒否</string>
   <string name="menu_unblock_contact">拒否解除</string>
-  <string name="block_dialog_title">この連絡先を着信/受信拒否しますか？</string>
-  <string name="unblock_dialog_title">この連絡先を着信/受信拒否解除しますか？</string>
+  <string name="block_dialog_title">この連絡先を拒否しますか？</string>
+  <string name="unblock_dialog_title">この連絡先を拒否解除しますか？</string>
   <string name="block_dialog_positive">拒否</string>
   <string name="unblock_dialog_positive">拒否解除</string>
   <string name="block_dialog_negative">キャンセル</string>
