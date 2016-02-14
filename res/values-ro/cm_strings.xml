@@ -44,4 +44,5 @@
   <string name="block_dialog_positive">Blocare</string>
   <string name="unblock_dialog_positive">Deblocare</string>
   <string name="block_dialog_negative">Anulare</string>
+  <string name="block_dialog_description">Nu veți mai primi apeluri sau mesaje de la această persoană.</string>
 </resources>

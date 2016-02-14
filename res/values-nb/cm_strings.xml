@@ -39,4 +39,9 @@
   <string name="set_ip_number">Angi IP-nummeret</string>
   <string name="ipcall_dialog_title">IP Samtaleinnstillinger</string>
   <string name="ipcall_dialog_edit_hint">Skriv inn IP prefiks</string>
+  <string name="menu_block_contact">Blokker</string>
+  <string name="menu_unblock_contact">Opphev blokkering</string>
+  <string name="block_dialog_positive">Blokker</string>
+  <string name="unblock_dialog_positive">Opphev blokkering</string>
+  <string name="block_dialog_negative">Avbryt</string>
 </resources>

@@ -46,4 +46,7 @@
   <string name="block_dialog_positive">차단</string>
   <string name="unblock_dialog_positive">차단 해제</string>
   <string name="block_dialog_negative">취소</string>
+  <string name="block_dialog_description">더 이상 이 사람이 보내는 전화나 메시지를 받지 않게 됩니다.</string>
+  <string name="block_dialog_report_spam"><xliff:g id="provider">%s</xliff:g>에 스팸으로 신고</string>
+  <string name="block_dialog_report_nonspam"><xliff:g id="provider">%s</xliff:g>에 스팸이 아니라고 신고</string>
 </resources>

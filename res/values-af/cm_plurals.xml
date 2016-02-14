@@ -17,13 +17,15 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <plurals name="export_to_sim_failed">
-    <item quantity="one">Exportul nu a reușit, <xliff:g id="insertCount">%d</xliff:g> element a fost exportat</item>
-    <item quantity="few">Exportul nu a reușit, <xliff:g id="insertCount">%d</xliff:g> elemente au fost exportate</item>
-    <item quantity="other">Exportul nu a reușit, <xliff:g id="insertCount">%d</xliff:g> elemente au fost exportate</item>
+    <item quantity="one">Uitvoer het misluk, <xliff:g id="insertCount">%d</xliff:g> item was uitgevoer</item>
+    <item quantity="other">Uitvoer het misluk, <xliff:g id="insertCount">%d</xliff:g> items was uitgevoer</item>
   </plurals>
   <plurals name="export_sim_card_full">
-    <item quantity="one">Cartela SIM este plină,<xliff:g id="insertCount">%d </xliff:g> element a fost exportat</item>
-    <item quantity="few">Cartela SIM este plină,<xliff:g id="insertCount">%d </xliff:g> elemente au fost exportate</item>
-    <item quantity="other">Cartela SIM este plină, <xliff:g id="insertCount">%d </xliff:g> elemente au fost exportate</item>
+    <item quantity="one">SIM kaart is vol, <xliff:g id="insertCount">%d</xliff:g> item was uitgevoer</item>
+    <item quantity="other">SIM kaart is vol, <xliff:g id="insertCount">%d</xliff:g> items was uitgevoer</item>
+  </plurals>
+  <plurals name="export_cancelled">
+    <item quantity="one">Uitvoer was gekanselleer, <xliff:g id="insertCount">%d</xliff:g> item was uitgevoer</item>
+    <item quantity="other">Uitvoer was gekanselleer, <xliff:g id="insertCount">%d</xliff:g> items was uitgevoer</item>
   </plurals>
 </resources>

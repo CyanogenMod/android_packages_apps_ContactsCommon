@@ -40,10 +40,13 @@
   <string name="ipcall_dialog_title">IP-samtalsinställningar</string>
   <string name="ipcall_dialog_edit_hint">Skriv in IP-prefixet</string>
   <string name="menu_block_contact">Blockera</string>
+  <string name="menu_unblock_contact">Avblockera</string>
   <string name="block_dialog_title">Blockera den här kontakten?</string>
   <string name="unblock_dialog_title">Avblockera den här kontakten?</string>
   <string name="block_dialog_positive">Blockera</string>
   <string name="unblock_dialog_positive">Avblockera</string>
   <string name="block_dialog_negative">Avbryt</string>
+  <string name="block_dialog_description">Du kommer inte längre få samtal eller meddelanden från den här personen.</string>
   <string name="block_dialog_report_spam">Rapportera som spam till <xliff:g id="provider">%s</xliff:g></string>
+  <string name="block_dialog_report_nonspam">Rapportera som icke-spam till <xliff:g id="provider">%s</xliff:g></string>
 </resources>
