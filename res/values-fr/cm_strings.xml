@@ -28,7 +28,7 @@
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> sur <xliff:g id="total_number">%2$s</xliff:g> fichiers</string>
   <string name="export_failed">Échec de l\'exportation</string>
   <string name="sim_card_full">Carte SIM saturée</string>
-  <string name="export_finished">Export terminé</string>
+  <string name="export_finished">Exportation terminée</string>
   <string name="tag_too_long">Nom du contact trop long</string>
   <string name="sim_contacts_not_loaded">Impossible de charger les contacts SIM</string>
   <plurals name="export_cancelled">
@@ -42,8 +42,8 @@
   <string name="deleteConfirmation_title">Supprimer le contact ?</string>
   <string name="deleteConfirmation">Ce contact sera supprimé.</string>
   <string name="copy_done">Le contact a été copié avec succès</string>
-  <string name="copy_failure">Copie du contact échouée</string>
-  <string name="card_no_space">Copie du contact échouée, la carte SIM est saturée</string>
+  <string name="copy_failure">Impossible de copier le contact</string>
+  <string name="card_no_space">Impossible de copier le contact, la carte SIM est saturée</string>
   <string name="settings_contact_display_options_description">Configurer comment vos contacts sont affichés et triés.</string>
   <string name="ip_call_by_slot">Appel IP via <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Aucun numéro IP</string>

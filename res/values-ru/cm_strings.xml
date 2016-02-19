@@ -16,8 +16,8 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="local_storage_account" product="tablet">Локальная учётная запись планшета</string>
-  <string name="local_storage_account" product="default">Локальная учётная запись телефона</string>
+  <string name="local_storage_account" product="tablet">Локальный аккаунт планшета</string>
+  <string name="local_storage_account" product="default">Локальный аккаунт телефона</string>
   <string name="import_contacts_sim">Импортировать контакты с SIM-карты?</string>
   <string name="manage_sim_contacts">Управление контактами SIM-карты</string>
   <string name="export_to_sim">Экспорт на SIM-карту</string>
@@ -26,15 +26,15 @@
   <string name="label_groups">Группа</string>
   <string name="exporting">Экспорт\u2026</string>
   <string name="reading_vcard_files">Обработка: <xliff:g id="current_number">%1$s</xliff:g> из <xliff:g id="total_number">%2$s</xliff:g></string>
-  <string name="export_failed">Не удалось выполнить экспорт</string>
+  <string name="export_failed">Не удалось экспортировать</string>
   <string name="sim_card_full">SIM-карта заполнена</string>
   <string name="export_finished">Экспорт завершён</string>
   <string name="tag_too_long">Слишком длинное имя контакта</string>
-  <string name="sim_contacts_not_loaded">Не удалось загрузить контакты SIM-карты</string>
+  <string name="sim_contacts_not_loaded">Не удалось загрузить контакты с SIM-карты</string>
   <plurals name="export_cancelled">
     <item quantity="one">Экспорт отменён, экспортирован %d элемент</item>
-    <item quantity="few">Экспорт отменён, экспортировано %d элемента</item>
-    <item quantity="other">Экспорт отменён, экспортировано %d элементов</item>
+    <item quantity="few">Экспорт отменён, экспортированы %d элемента</item>
+    <item quantity="other">Экспорт отменён, экспортированы %d элементов</item>
   </plurals>
   <string name="export_no_phone_or_email">У контакта «<xliff:g id="name">%s</xliff:g>» нет номера телефона или адреса электронной почты</string>
   <string name="import_from_sim_select">Выберите карту для импорта</string>
@@ -42,9 +42,9 @@
   <string name="no_sdcard_title" product="default">SD-карта не подключена</string>
   <string name="deleteConfirmation_title">Удалить контакт?</string>
   <string name="deleteConfirmation">Этот контакт будет удалён.</string>
-  <string name="copy_done">Контакт успешно скопирован</string>
-  <string name="copy_failure">Копирование контакта не удалось</string>
-  <string name="card_no_space">Копирование контакта не удалось, SIM-карта заполнена</string>
+  <string name="copy_done">Контакт скопирован</string>
+  <string name="copy_failure">Не удалось скопировать контакт</string>
+  <string name="card_no_space">Не удалось скопировать контакт, SIM-карта заполнена</string>
   <string name="settings_contact_display_options_description">Настройка параметров отображения и сортировки контактов.</string>
   <string name="ip_call_by_slot">IP-вызов через <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Нет IP-номера</string>
