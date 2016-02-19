@@ -20,7 +20,7 @@
   <string name="local_storage_account" product="default">Локален профил (на телефона)</string>
   <string name="import_contacts_sim">Да бъдат ли импортирани контактите от СИМ картата?</string>
   <string name="manage_sim_contacts">Управление на контактите в СИМ картата</string>
-  <string name="export_to_sim">Експортиране към СИМ картата</string>
+  <string name="export_to_sim">Експортиране към СИМ карта</string>
   <string name="fail_reason_import_vcard">\'<xliff:g id="name">%s</xliff:g>\' не може да бъде импортиран поради входно/изходна грешка</string>
   <string name="contact_share_failed_toast">Не може да споделите повече от <xliff:g id="count">%d </xliff:g> контакта</string>
   <string name="label_groups">Група</string>
