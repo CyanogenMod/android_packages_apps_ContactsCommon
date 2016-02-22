@@ -45,4 +45,6 @@
   <string name="unblock_dialog_positive">Deblocare</string>
   <string name="block_dialog_negative">Anulare</string>
   <string name="block_dialog_description">Nu veți mai primi apeluri sau mesaje de la această persoană.</string>
+  <string name="block_dialog_report_spam">Raportează ca spam la <xliff:g id="provider">%s</xliff:g></string>
+  <string name="block_dialog_report_nonspam">Raportează ca non-spam la <xliff:g id="provider">%s </xliff:g></string>
 </resources>

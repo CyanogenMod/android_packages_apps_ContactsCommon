@@ -21,8 +21,8 @@
     <item quantity="other">Прекратено експортиране, <xliff:g id="insertCount">%d</xliff:g> елементa експортирани</item>
   </plurals>
   <plurals name="export_sim_card_full">
-    <item quantity="one">Капацитетът на СИМ-Картата изчерпан, <xliff:g id="insertCount">%d</xliff:g> елемента е експортиран</item>
-    <item quantity="other">Капацитетът на СИМ-Картата изчерпан, <xliff:g id="insertCount">%d</xliff:g> елемента експортирани</item>
+    <item quantity="one">Капацитетът на СИМ картата изчерпан, <xliff:g id="insertCount">%d</xliff:g> елемент е експортиран</item>
+    <item quantity="other">Капацитетът на СИМ картата изчерпан, <xliff:g id="insertCount">%d</xliff:g> елемента са експортирани</item>
   </plurals>
   <plurals name="export_cancelled">
     <item quantity="one">Експортирането прекратено, <xliff:g id="insertCount">%d</xliff:g> елемента е експортиран</item>
