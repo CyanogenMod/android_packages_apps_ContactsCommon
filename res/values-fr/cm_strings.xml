@@ -25,14 +25,14 @@
   <string name="label_groups">Groupe</string>
   <string name="exporting">Exportation\u2026</string>
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> sur <xliff:g id="total_number">%2$s</xliff:g> fichiers</string>
-  <string name="export_finished">Export terminé</string>
+  <string name="export_finished">Exportation terminée</string>
   <string name="tag_too_long">Nom du contact trop long</string>
   <string name="sim_contacts_not_loaded">Impossible de charger les contacts SIM</string>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> n\'a pas de numéro de téléphone ou d\'adresse e-mail</string>
   <string name="import_from_sim_select">Choisissez la carte SIM à importer</string>
   <string name="copy_done">Le contact a été copié avec succès</string>
-  <string name="copy_failure">Copie du contact échouée</string>
-  <string name="card_no_space">Copie du contact échouée, la carte SIM est saturée</string>
+  <string name="copy_failure">Impossible de copier le contact</string>
+  <string name="card_no_space">Impossible de copier le contact, la carte SIM est saturée</string>
   <string name="ip_call_by_slot">Appel IP via <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Aucun numéro IP</string>
   <string name="no_ip_number_on_sim_card">Aucun numéro IP sur la carte SIM</string>

@@ -16,8 +16,8 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="local_storage_account" product="tablet">Локальная учётная запись планшета</string>
-  <string name="local_storage_account" product="default">Локальная учётная запись телефона</string>
+  <string name="local_storage_account" product="tablet">Локальный аккаунт планшета</string>
+  <string name="local_storage_account" product="default">Локальный аккаунт телефона</string>
   <string name="export_to_sim">Экспорт на SIM-карту</string>
   <string name="export_to_sim_summary">Экспорт на SIM <xliff:g id="sim_name">^1</xliff:g> — <xliff:g id="sim_number">^2</xliff:g></string>
   <string name="export_to_sim_summary_no_number">Экспорт на SIM <xliff:g id="sim_name">%1$s</xliff:g></string>
@@ -27,12 +27,12 @@
   <string name="reading_vcard_files">Обработка: <xliff:g id="current_number">%1$s</xliff:g> из <xliff:g id="total_number">%2$s</xliff:g></string>
   <string name="export_finished">Экспорт завершён</string>
   <string name="tag_too_long">Слишком длинное имя контакта</string>
-  <string name="sim_contacts_not_loaded">Не удалось загрузить контакты SIM-карты</string>
+  <string name="sim_contacts_not_loaded">Не удалось загрузить контакты с SIM-карты</string>
   <string name="export_no_phone_or_email">У контакта «<xliff:g id="name">%s</xliff:g>» нет номера телефона или адреса электронной почты</string>
   <string name="import_from_sim_select">Выберите карту для импорта</string>
-  <string name="copy_done">Контакт успешно скопирован</string>
-  <string name="copy_failure">Копирование контакта не удалось</string>
-  <string name="card_no_space">Копирование контакта не удалось, SIM-карта заполнена</string>
+  <string name="copy_done">Контакт скопирован</string>
+  <string name="copy_failure">Не удалось скопировать контакт</string>
+  <string name="card_no_space">Не удалось скопировать контакт, SIM-карта заполнена</string>
   <string name="ip_call_by_slot">IP-вызов через <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Нет IP-номера</string>
   <string name="no_ip_number_on_sim_card">На SIM-карте нет IP-номера</string>

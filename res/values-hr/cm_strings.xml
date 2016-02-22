@@ -45,7 +45,7 @@
   <string name="unblock_dialog_title">Odblokiraj ovaj kontakt?</string>
   <string name="block_dialog_positive">Blokiraj</string>
   <string name="unblock_dialog_positive">Odblokiraj</string>
-  <string name="block_dialog_negative">Poništi</string>
+  <string name="block_dialog_negative">Odustani</string>
   <string name="block_dialog_description">Više nećete primati pozive ili poruke od ove osobe.</string>
   <string name="block_dialog_report_spam">Prijavi kao neželjenu u <xliff:g id="provider">%s</xliff:g></string>
   <string name="block_dialog_report_nonspam">Prijavi da nije spam u <xliff:g id="provider">%s</xliff:g></string>
