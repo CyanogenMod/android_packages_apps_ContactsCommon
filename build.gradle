@@ -18,5 +18,5 @@ dependencies {
     compile project(':jsr305')
     compile project(':vcard')
 
-    compile project(':PhoneCommon')
+    compile project(':phonecommon')
 }
