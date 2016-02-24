@@ -18,6 +18,9 @@ import java.util.List;
 /**
  * Helper class used to interface with the framework implementation of Blacklist and delegating
  * the apropos information to the active phonenumber LookupProvider, if any.
+ *
+ * Ensure that {@link #destroy()} is called so that the necessary resource cleanup
+ * takes place
  */
 public class BlockContactHelper {
     private final Context mContext;
@@ -171,6 +174,13 @@ public class BlockContactHelper {
                 return null;
             }
         }.execute();
+    }
+
+    /**
+     * Clean-up any external resources that are used
+     */
+    public void destroy() {
+        mLookupProvider.disable();
     }
 
 }
