@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import com.cyanogen.lookup.phonenumber.contract.LookupProvider;
 import com.cyanogen.lookup.phonenumber.request.LookupRequest;
+import com.cyanogen.lookup.phonenumber.response.LookupResponse;
 
 import java.util.HashSet;
 
@@ -63,6 +64,10 @@ public class LookupHandlerThread extends HandlerThread implements Handler.Callba
             mLookupProvider.disable();
             mInitialized = false;
         }
+    }
+
+    public LookupResponse blockingFetchInfoForPhoneNumber(LookupRequest lookupRequest) {
+        return mLookupProvider.blockingFetchInfo(lookupRequest);
     }
 
     public boolean fetchInfoForPhoneNumber(LookupRequest lookupRequest) {
