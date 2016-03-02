@@ -15,6 +15,7 @@
  */
 package com.android.contacts.common.compat;
 
+import android.content.Intent;
 import android.telecom.TelecomManager;
 
 /**
@@ -22,8 +23,9 @@ import android.telecom.TelecomManager;
  */
 public class TelecomManagerUtil {
     /**
-     * This method is supposed to launch the {@link android.app.Activity} to manage blocked numbers.
-     * However, the API is only available on N and above, so we put no-op implementation here.
+     * No-op implementation.
      */
-    public static void launchBlockedNumbersActivity(TelecomManager tm) {}
+    public static Intent createManageBlockedNumbersIntent(TelecomManager tm) {
+        return null;
+    }
 }

@@ -15,6 +15,7 @@
  */
 package com.android.contacts.common.compat;
 
+import android.content.Intent;
 import android.telecom.TelecomManager;
 
 /**
@@ -22,9 +23,9 @@ import android.telecom.TelecomManager;
  */
 public class TelecomManagerUtil {
     /**
-     * Launches the {@link android.app.Activity} to manage blocked numbers.
+     * Creates {@link Intent} to launch the activity to manage blocked numbers.
      */
-    public static void launchBlockedNumbersActivity(TelecomManager tm) {
-        tm.launchManageBlockedNumbersActivity();
+    public static Intent createManageBlockedNumbersIntent(TelecomManager tm) {
+        return tm.createManageBlockedNumbersIntent();
     }
 }
