@@ -16,13 +16,21 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">Vietējais planšetes konts</string>
   <string name="local_storage_account" product="default">Vietējais telefona konts</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">Eksportēt uz SIM karti</string>
+  <!-- Action string for selecting a SIM subscription for exporting contacts -->
+  <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="label_groups">Grupa</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> no <xliff:g id="total_number">%2$s</xliff:g> failiem</string>
   <string name="export_finished">Eksports pabeigts</string>
   <string name="import_from_sim_select">Izvēlēties karti, kurā importēt</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="no_ip_number">Nav IP numura</string>
   <string name="no_ip_number_on_sim_card">SIM kartē nav IP numura</string>
   <string name="ipcall_dialog_edit_hint">Lūdzu ievadiet IP priedēkli</string>

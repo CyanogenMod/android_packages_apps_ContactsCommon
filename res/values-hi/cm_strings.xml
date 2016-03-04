@@ -16,11 +16,18 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">स्थानीय टैब्लेट खाता</string>
   <string name="local_storage_account" product="default">स्थानीय फ़ोन खाता</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">सिम कार्ड में निर्यात करें</string>
+  <!-- Action string for selecting a SIM subscription for exporting contacts -->
+  <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="label_groups">समूह</string>
   <string name="exporting">निर्यात कर रहे हैं\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files">कुल  <xliff:g id="total_number">%2$s</xliff:g> में से <xliff:g id="current_number">%1$s</xliff:g> फ़ाइलें</string>
   <string name="export_finished">निर्यात पूरा हुआ</string>
   <string name="tag_too_long">संपर्क नाम बहुत लंबा है</string>
@@ -30,6 +37,7 @@
   <string name="copy_done">संपर्क को सफलतापूर्वक कॉपी किया गया</string>
   <string name="copy_failure">संपर्क को कॉपी करना विफल हुआ</string>
   <string name="card_no_space">संपर्क को कॉपी करना विफल हुआ, सि कार्ड भर चुका है</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot"><xliff:g id="subName">%s</xliff:g> के ज़रिए आईपी कॉल</string>
   <string name="no_ip_number">कोई आईपी नंबर नहीं है</string>
   <string name="no_ip_number_on_sim_card">सिम कार्ड में कोई आईपी नंबर नहीं है</string>

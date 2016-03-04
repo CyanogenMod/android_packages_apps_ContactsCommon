@@ -16,12 +16,19 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">Lokal tabletkonto</string>
   <string name="local_storage_account" product="default">Lokal telefonkonto</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">Eksportér til SIM-kortet</string>
+  <!-- Action string for selecting a SIM subscription for exporting contacts -->
+  <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="share_failed">For mange kontakter, deling mislykket</string>
   <string name="label_groups">Gruppe</string>
   <string name="exporting">Eksporterer\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> af <xliff:g id="total_number">%2$s</xliff:g> filer</string>
   <string name="export_finished">Eksport afsluttet</string>
   <string name="tag_too_long">Kontaktnavn er for langt</string>
@@ -31,6 +38,7 @@
   <string name="copy_done">Kontakt blev kopieret korrekt</string>
   <string name="copy_failure">Kopiering af kontaktpersonen mislykkedes</string>
   <string name="card_no_space">Kopiering af kontaktpersonen mislykkedes, SIM-kortet er fyldt</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot">IP-opkald med <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Intet IP-nummer</string>
   <string name="no_ip_number_on_sim_card">Intet IP-nummer på SIM-kortet</string>

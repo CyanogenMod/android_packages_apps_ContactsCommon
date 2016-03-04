@@ -16,11 +16,18 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">本機平板電腦帳戶</string>
   <string name="local_storage_account" product="default">本機電話帳戶</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">匯出至 SIM 卡</string>
+  <!-- Action string for selecting a SIM subscription for exporting contacts -->
+  <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="label_groups">群組</string>
   <string name="exporting">正在匯出\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files"><xliff:g id="total_number">%2$s</xliff:g>個檔案中的<xliff:g id="current_number">%1$s</xliff:g>個</string>
   <string name="export_finished">匯出完成</string>
   <string name="tag_too_long">聯絡人名稱過長</string>
@@ -30,6 +37,7 @@
   <string name="copy_done">已成功複製聯絡人</string>
   <string name="copy_failure">複製聯絡人失敗</string>
   <string name="card_no_space">複製聯絡人失敗，SIM 卡已滿</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot">來自 <xliff:g id="subName">%s</xliff:g> 的 IP 通話</string>
   <string name="no_ip_number">沒有 IP 號碼</string>
   <string name="no_ip_number_on_sim_card">SIM 卡上沒有 IP 號碼</string>

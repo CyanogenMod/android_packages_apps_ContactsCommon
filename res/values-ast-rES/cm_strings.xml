@@ -16,11 +16,18 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">Cuenta llocal de la tablet</string>
   <string name="local_storage_account" product="default">Cuenta llocal del teléfonu</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">Esportar a la tarxeta SIM</string>
+  <!-- Action string for selecting a SIM subscription for exporting contacts -->
+  <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="label_groups">Grupu</string>
   <string name="exporting">Esportando\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> de <xliff:g id="total_number">%2$s</xliff:g> ficheros</string>
   <string name="export_finished">Finó la esportación</string>
   <string name="tag_too_long">El nome del contautu ye enforma llargu</string>
@@ -30,6 +37,7 @@
   <string name="copy_done">Contautu copiáu correchamente</string>
   <string name="copy_failure">Falló la copia del contautu</string>
   <string name="card_no_space">Falló la copia de tolos contautos. La tarxeta SIM ta enllena</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot">Llamada IP vía <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Nun hai númberu IP</string>
   <string name="no_ip_number_on_sim_card">Nun hai númberu IP na tarxeta SIM</string>

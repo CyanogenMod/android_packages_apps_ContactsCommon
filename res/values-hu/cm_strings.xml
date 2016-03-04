@@ -16,14 +16,21 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">Helyi táblagép fiók</string>
   <string name="local_storage_account" product="default">Helyi telefon fiók</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">Exportálás SIM kártyára</string>
+  <!-- Action string for selecting a SIM subscription for exporting contacts -->
   <string name="export_to_sim_summary">SIM-re exportálás: <xliff:g id="sim_name">^1</xliff:g> - <xliff:g id="sim_number">^2</xliff:g></string>
+  <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
   <string name="export_to_sim_summary_no_number">SIM-re exportálás: <xliff:g id="sim_name">%1$s</xliff:g></string>
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="share_failed">Túl sok névjegy, a megosztás sikertelen</string>
   <string name="label_groups">Csoport</string>
   <string name="exporting">Exportálás\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> / <xliff:g id="total_number">%2$s</xliff:g> fájl</string>
   <string name="export_finished">Exportálás kész</string>
   <string name="tag_too_long">A névjegynél megadott név túl hosszú</string>
@@ -33,6 +40,7 @@
   <string name="copy_done">A névjegy másolása sikeres</string>
   <string name="copy_failure">A névjegy másolása sikertelen</string>
   <string name="card_no_space">A névjegy másolása sikertelen, a SIM-kártya megtelt</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot">IP hívás a következővel: <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Nincs IP szám</string>
   <string name="no_ip_number_on_sim_card">Nincs IP szám a SIM kártyán</string>

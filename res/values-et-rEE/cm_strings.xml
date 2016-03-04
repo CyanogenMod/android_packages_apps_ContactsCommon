@@ -16,11 +16,18 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">Kohalik tahvli konto</string>
   <string name="local_storage_account" product="default">Kohalik telefoni konto</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">Ekspordi SIM-kaardile</string>
+  <!-- Action string for selecting a SIM subscription for exporting contacts -->
+  <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="label_groups">Grupp</string>
   <string name="exporting">Ekspordin\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> fail <xliff:g id="total_number">%2$s</xliff:g>-st</string>
   <string name="export_finished">Eksport lõpetatud</string>
   <string name="tag_too_long">Kontakti nimi on liiga pikk</string>
@@ -30,6 +37,7 @@
   <string name="copy_done">Kontakt kopeeriti edukalt</string>
   <string name="copy_failure">Kontakti kopeerimine nurjus</string>
   <string name="card_no_space">Kontakti kopeerimine nurjus, SIM-kaart on täis</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot">IP kõne läbi <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Ei ole IP number</string>
   <string name="no_ip_number_on_sim_card">Ei ole IP numbrit SIM-kaardil</string>

@@ -16,14 +16,21 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">Локални налог таблета</string>
   <string name="local_storage_account" product="default">Локални налог телефона</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">Извези на SIM картицу</string>
+  <!-- Action string for selecting a SIM subscription for exporting contacts -->
   <string name="export_to_sim_summary">Извези у SIM <xliff:g id="sim_name">^1</xliff:g> - <xliff:g id="sim_number">^2</xliff:g></string>
+  <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
   <string name="export_to_sim_summary_no_number">Извоз у SIM <xliff:g id="sim_name">%1$s</xliff:g></string>
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="share_failed">Превише контаката, дељење није успело</string>
   <string name="label_groups">Група</string>
   <string name="exporting">Извоз\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> од <xliff:g id="total_number">%2$s</xliff:g> фајлова</string>
   <string name="export_finished">Извоз завршен</string>
   <string name="tag_too_long">Име контакта је предуго</string>
@@ -33,6 +40,7 @@
   <string name="copy_done">Контакт је копиран успешно</string>
   <string name="copy_failure">Копирање контакта није успело</string>
   <string name="card_no_space">Копирање контакта није успело, SIM картица је пуна</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot">IP позив преко <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Нема IP броја</string>
   <string name="no_ip_number_on_sim_card">Нема IP броја на SIM картици</string>
