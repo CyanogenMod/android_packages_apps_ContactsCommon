@@ -16,14 +16,21 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">Cuenta de tablet local</string>
   <string name="local_storage_account" product="default">Cuenta de teléfono local</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">Exportar a la tarjeta SIM</string>
+  <!-- Action string for selecting a SIM subscription for exporting contacts -->
   <string name="export_to_sim_summary">Exportar a la SIM <xliff:g id="sim_name">^1</xliff:g> - <xliff:g id="sim_number">^2</xliff:g></string>
+  <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
   <string name="export_to_sim_summary_no_number">Exportar a la SIM <xliff:g id="sim_name">%1$s</xliff:g></string>
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="share_failed">Demasiados contactos, error al compartir</string>
   <string name="label_groups">Grupo</string>
   <string name="exporting">Exportando\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> de <xliff:g id="total_number">%2$s</xliff:g> archivos</string>
   <string name="export_finished">Exportación finalizada</string>
   <string name="tag_too_long">El nombre del contacto es demasiado largo</string>
@@ -33,6 +40,7 @@
   <string name="copy_done">Contacto copiado correctamente</string>
   <string name="copy_failure">No se pudo copiar el contacto</string>
   <string name="card_no_space">No se pudieron copiar los contactos. La tarjeta SIM está llena</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot">Llamada IP vía <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">No hay número IP</string>
   <string name="no_ip_number_on_sim_card">No hay número IP en la tarjeta SIM</string>

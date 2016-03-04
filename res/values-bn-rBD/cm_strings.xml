@@ -16,6 +16,14 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">স্থানীয় ট্যাবলেট একাউন্ট</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">সিম কার্ডে রপ্তানি করুন</string>
+  <!-- Action string for selecting a SIM subscription for exporting contacts -->
+  <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
+  <!-- Menu item used to initiate ip call -->
 </resources>

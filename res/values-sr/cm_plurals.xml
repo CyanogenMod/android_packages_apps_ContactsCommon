@@ -19,7 +19,7 @@
   <plurals name="export_to_sim_failed">
     <item quantity="one">Неуспео извоз, <xliff:g id="insertCount">%d</xliff:g> ставка извезена</item>
     <item quantity="few">Неуспео извоз, <xliff:g id="insertCount">%d</xliff:g> ставка извезена</item>
-    <item quantity="other">Неуспео извоз, <xliff:g id="insertCount">%d</xliff:g> ставка извезена</item>
+    <item quantity="other">Неуспео извоз, <xliff:g id="insertCount">%d</xliff:g> ставке извезене</item>
   </plurals>
   <plurals name="export_sim_card_full">
     <item quantity="one">SIM картица је пуна, <xliff:g id="insertCount">%d</xliff:g> ставка је извезена</item>

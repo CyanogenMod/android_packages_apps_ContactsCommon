@@ -16,212 +16,557 @@
   ~ limitations under the License
   -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Toast shown when text is copied to the clipboard [CHAR LIMIT=64] -->
   <string name="toast_text_copied">ده‌ق له‌ به‌ر گیرایه‌وه‌</string>
+  <!-- Option displayed in context menu to copy long pressed item to clipboard [CHAR LIMIT=64] -->
+  <!-- Action string for calling a custom phone number -->
   <string name="call_custom">په‌یوه‌ندی
          <xliff:g id="custom">%s</xliff:g>
     </string>
+  <!-- Action string for calling a home phone number -->
   <string name="call_home">په‌یوه‌ندی ماڵه‌وه‌</string>
+  <!-- Action string for calling a mobile phone number -->
   <string name="call_mobile">په‌یوه‌ندی مۆبایل</string>
+  <!-- Action string for calling a work phone number -->
   <string name="call_work">په‌یوه‌ندی سه‌رکار</string>
+  <!-- Action string for calling a work fax phone number -->
   <string name="call_fax_work">په‌یوه‌ندی فاکسی سه‌رکار</string>
+  <!-- Action string for calling a home fax phone number -->
   <string name="call_fax_home">په‌یوه‌ندی فاکسی ماڵه‌وه‌</string>
+  <!-- Action string for calling a pager phone number -->
   <string name="call_pager">لاپه‌ڕه‌ په‌یوه‌ندی</string>
+  <!-- Action string for calling an other phone number -->
   <string name="call_other">پەیوەندیکردن</string>
+  <!-- Action string for calling a callback number -->
   <string name="call_callback">په‌یوه‌ندی گه‌ڕانه‌وه‌</string>
+  <!-- Action string for calling a car phone number -->
   <string name="call_car">په‌یوه‌ندی ئۆتۆمبێل</string>
+  <!-- Action string for calling a company main phone number -->
   <string name="call_company_main">په‌یوه‌ندی کۆمپانیای سه‌ره‌کی</string>
+  <!-- Action string for calling a ISDN phone number -->
   <string name="call_isdn">په‌یوه‌ندی ISDN</string>
+  <!-- Action string for calling a main phone number -->
   <string name="call_main">په‌یوه‌ندی سه‌ره‌کی</string>
+  <!-- Action string for calling an other fax phone number -->
   <string name="call_other_fax">په‌یوه‌ندی فاکس</string>
+  <!-- Action string for calling a radio phone number -->
   <string name="call_radio">په‌یوه‌ندی ڕادیۆ</string>
+  <!-- Action string for calling a Telex phone number -->
   <string name="call_telex">په‌یوه‌ندی تێلئێکس</string>
+  <!-- Action string for calling a TTY/TDD phone number -->
   <string name="call_tty_tdd">په‌یوه‌ندی TTY/TDD</string>
+  <!-- Action string for calling a work mobile phone number -->
   <string name="call_work_mobile">په‌یوه‌ندی سه‌رکاری مۆبایل</string>
+  <!-- Action string for calling a work pager phone number -->
   <string name="call_work_pager">لاپه‌ڕه‌ په‌یوه‌ندی سه‌ر کار</string>
+  <!-- Action string for calling an assistant phone number -->
   <string name="call_assistant">په‌یوه‌ندی
         <xliff:g id="assistant">%s</xliff:g>
     </string>
+  <!-- Action string for calling a MMS phone number -->
   <string name="call_mms">په‌یوه‌ندی MMS</string>
+  <!-- Action string for sending an SMS to a custom phone number -->
   <string name="sms_custom">ده‌ق
          <xliff:g id="custom">%s</xliff:g>
     </string>
+  <!-- Action string for sending an SMS to a home phone number -->
   <string name="sms_home">ده‌قی ماڵه‌وه‌</string>
+  <!-- Action string for sending an SMS to a mobile phone number -->
   <string name="sms_mobile">ده‌قی مۆبایل</string>
+  <!-- Action string for sending an SMS to a work phone number -->
   <string name="sms_work">ده‌قی سه‌ر کار</string>
+  <!-- Action string for sending an SMS to a work fax phone number -->
   <string name="sms_fax_work">ده‌قی سه‌رکاری فاکس</string>
+  <!-- Action string for sending an SMS to a home fax phone number -->
   <string name="sms_fax_home">ده‌قی ماڵه‌وه‌ی فاکس</string>
+  <!-- Action string for sending an SMS to a pager phone number -->
   <string name="sms_pager">لاپه‌ڕه‌ ده‌ق</string>
+  <!-- Action string for sending an SMS to an other phone number -->
   <string name="sms_other">ده‌ق</string>
+  <!-- Action string for sending an SMS to a callback number -->
   <string name="sms_callback">ده‌قی په‌یوه‌ندی گه‌ڕانه‌وه‌</string>
+  <!-- Action string for sending an SMS to a car phone number -->
   <string name="sms_car">ده‌قی ئۆتۆمبێل</string>
+  <!-- Action string for sending an SMS to a company main phone number -->
   <string name="sms_company_main">ده‌قی کۆمپانیای سه‌ره‌کی</string>
+  <!-- Action string for sending an SMS to a ISDN phone number -->
   <string name="sms_isdn">ده‌قی ISDN</string>
+  <!-- Action string for sending an SMS to a main phone number -->
   <string name="sms_main">ده‌قی سه‌ره‌کی</string>
+  <!-- Action string for sending an SMS to an other fax phone number -->
   <string name="sms_other_fax">ده‌قی فاکس</string>
+  <!-- Action string for sending an SMS to a radio phone number -->
   <string name="sms_radio">ده‌قی ڕادیۆ</string>
+  <!-- Action string for sending an SMS to a Telex phone number -->
   <string name="sms_telex">ده‌قی تێلێکس</string>
+  <!-- Action string for sending an SMS to a TTY/TDD phone number -->
   <string name="sms_tty_tdd">ده‌قی TTY/TDD</string>
+  <!-- Action string for sending an SMS to a work mobile phone number -->
   <string name="sms_work_mobile">ده‌قی ژماره‌ی سه‌ر کار</string>
+  <!-- Action string for sending an SMS to a work pager phone number -->
   <string name="sms_work_pager">ده‌قی لاپه‌ڕه‌ی سه‌ر کار</string>
+  <!-- Action string for sending an SMS to an assistant phone number -->
   <string name="sms_assistant">ده‌ق
         <xliff:g id="assistant">%s</xliff:g>
     </string>
+  <!-- Action string for sending an SMS to a MMS phone number -->
   <string name="sms_mms">ده‌قی MMS</string>
+  <!-- Description string for an action button to initiate a video call. -->
+  <!-- Title of the confirmation dialog for clearing frequents. [CHAR LIMIT=37] -->
   <string name="clearFrequentsConfirmation_title">پاککردنه‌وه‌ی زوو-زوو په‌یوه‌ندی پێوه‌کراوه‌کان؟</string>
+  <!-- Confirmation dialog for clearing frequents. [CHAR LIMIT=NONE] -->
+  <!-- Title of the "Clearing frequently contacted" progress-dialog [CHAR LIMIT=35] -->
   <string name="clearFrequentsProgress_title">پاککردنه‌وه‌ی په‌یوه‌ندییه‌ زوو-زووه‌کان\u2026</string>
+  <!--  Used to display as default status when the contact is available for chat [CHAR LIMIT=19] -->
   <string name="status_available">بەردەست</string>
+  <!--  Used to display as default status when the contact is away or idle for chat [CHAR LIMIT=19] -->
   <string name="status_away">ئاماده‌ نییه‌</string>
+  <!--  Used to display as default status when the contact is busy or Do not disturb for chat [CHAR LIMIT=19] -->
   <string name="status_busy">سەرقاڵ</string>
+  <!-- Directory partition name (also exists in contacts) -->
   <string name="contactsList">ناوەکان</string>
+  <!-- The name of the invisible local contact directory -->
   <string name="local_invisible_directory">دیکە</string>
+  <!-- The label in section header in the contact list for a contact directory [CHAR LIMIT=128] -->
   <string name="directory_search_label">بوخچه‌</string>
+  <!-- The label in section header in the contact list for a local contacts [CHAR LIMIT=128] -->
   <string name="local_search_label">هەموو ناوەکان</string>
+  <!-- String describing the text on the header of the profile contact in the contacts list
+         This may be programatically capitalized. [CHAR LIMIT=20] -->
   <string name="user_profile_contacts_list_header" msgid="9154761216179882405">من</string>
+  <!-- Title shown in the search result activity of contacts app while searching.  [CHAR LIMIT=20]
+         (also in contacts) -->
   <string name="search_results_searching">گەڕان\u2026</string>
+  <!-- Displayed at the top of search results indicating that more contacts were found than shown [CHAR LIMIT=64] -->
   <string name="foundTooManyContacts">زیاتر له‌ <xliff:g id="count">%d</xliff:g> دۆزرایه‌وه‌.</string>
+  <!-- Displayed at the top of the contacts showing the zero total number of contacts found when "Only contacts with phones" not selected. [CHAR LIMIT=30]
+         (also in contacts) -->
   <string name="listFoundAllContactsZero">ناو نییە</string>
+  <!-- Displayed at the top of the contacts showing the total number of contacts found when typing search query -->
+  <!-- String describing the text for photo of a contact in a contacts list.
+
+        Note: AccessibilityServices use this attribute to announce what the view represents.
+              This is especially valuable for views without textual representation like ImageView.
+    -->
   <string name="description_quick_contact_for">په‌یوه‌ندی خێرا بۆ  <xliff:g id="name">%1$s</xliff:g></string>
+  <!-- Shown as the display name for a person when the name is missing or unknown. [CHAR LIMIT=18]-->
   <string name="missing_name">(ناوی نییه‌)</string>
+  <!-- The text displayed on the divider for the Favorites tab in Phone app indicating that items below it are frequently called as opposed to starred contacts [CHAR LIMIT = 39] -->
   <string name="favoritesFrequentCalled">زۆرترین پەیوەندیکردن</string>
+  <!-- The text displayed on the divider for the Favorites tab in People app indicating that items below it are frequently contacted [CHAR LIMIT = 39] -->
   <string name="favoritesFrequentContacted">زۆرترین ژماره‌ په‌یوه‌ندییه‌کان</string>
+  <!-- String describing a contact picture that introduces users to the contact detail screen.
+
+       Used by AccessibilityService to announce the purpose of the button.
+
+       [CHAR LIMIT=NONE]
+    -->
   <string name="description_view_contact_detail" msgid="2795575601596468581">بینینی ناو</string>
+  <!-- Contact list filter selection indicating that the list shows all contacts with phone numbers [CHAR LIMIT=64] -->
   <string name="list_filter_phones">هه‌موو په‌یوه‌ندییه‌کان لەگەڵ ژمارەی تەلەفۆنەکان</string>
+  <!-- Button to view the updates from the current group on the group detail page [CHAR LIMIT=25] -->
   <string name="view_updates_from_group">بینینی نوێکاری</string>
+  <!-- Title for data source when creating or editing a contact that doesn't
+         belong to a specific account.  This contact will only exist on the phone
+         and will not be synced. -->
   <string name="account_phone" product="tablet">ته‌نیا-تابلێت، گواستنه‌وه‌ نه‌کراوه‌</string>
+  <!-- Title for data source when creating or editing a contact that doesn't
+         belong to a specific account.  This contact will only exist on the phone
+         and will not be synced. -->
   <string name="account_phone" product="default">ته‌نیا-مۆبایل، گواستنه‌وه‌ نه‌کراوه‌</string>
+  <!-- Header that expands to list all name types when editing a structured name of a contact
+         [CHAR LIMIT=20] -->
   <string name="nameLabelsGroup">ناو</string>
+  <!-- Header that expands to list all nickname types when editing a nickname of a contact
+         [CHAR LIMIT=20] -->
   <string name="nicknameLabelsGroup">نازناو</string>
+  <!-- Field title for the full name of a contact [CHAR LIMIT=64]-->
   <string name="full_name">ناو</string>
+  <!-- Field title for the given name of a contact -->
+  <!-- Field title for the family name of a contact -->
+  <!-- Field title for the prefix name of a contact -->
   <string name="name_prefix">ناوی پێشگر</string>
+  <!-- Field title for the middle name of a contact -->
   <string name="name_middle">ناوی ناوه‌ند</string>
+  <!-- Field title for the suffix name of a contact -->
   <string name="name_suffix">ناوی پاشگر</string>
+  <!-- Field title for the phonetic name of a contact [CHAR LIMIT=64]-->
   <string name="name_phonetic">ناوی ده‌نگی</string>
+  <!-- Field title for the phonetic given name of a contact -->
+  <!-- Field title for the phonetic middle name of a contact -->
   <string name="name_phonetic_middle">ناوی ده‌نگی ناوه‌ند</string>
+  <!-- Field title for the phonetic family name of a contact -->
+  <!-- Header that expands to list all of the types of phone numbers when editing or creating a
+         phone number for a contact [CHAR LIMIT=20] -->
   <string name="phoneLabelsGroup">مۆبایل</string>
+  <!-- Header that expands to list all of the types of email addresses when editing or creating
+         an email address for a contact [CHAR LIMIT=20] -->
   <string name="emailLabelsGroup">پۆست</string>
+  <!-- Header that expands to list all of the types of postal addresses when editing or creating
+         an postal address for a contact [CHAR LIMIT=20] -->
   <string name="postalLabelsGroup">ناونیشان</string>
+  <!-- Header that expands to list all of the types of IM account when editing or creating an IM
+         account for a contact [CHAR LIMIT=20] -->
   <string name="imLabelsGroup">IM</string>
+  <!-- Header that expands to list all organization types when editing an organization of a
+         contact [CHAR LIMIT=20] -->
   <string name="organizationLabelsGroup">ناوی ڕێکخراو</string>
+  <!-- Header for the list of all relationships for a contact [CHAR LIMIT=20] -->
   <string name="relationLabelsGroup">په‌یوه‌ندی کۆمه‌ڵایه‌تی</string>
+  <!-- Header that expands to list all event types when editing an event of a contact
+         [CHAR LIMIT=20] -->
   <string name="eventLabelsGroup">ڕۆژه‌ تایبه‌ته‌کان</string>
+  <!-- Generic action string for text messaging a contact. Used by AccessibilityService to
+         announce the purpose of the view. [CHAR LIMIT=NONE] -->
   <string name="sms">نامه‌ی ده‌قی</string>
+  <!-- Field title for the full postal address of a contact [CHAR LIMIT=64]-->
   <string name="postal_address">ناونیشان</string>
+  <!-- Hint text for the organization name when editing -->
   <string name="ghostData_company">کۆمپانیا</string>
+  <!-- Hint text for the organization title when editing -->
   <string name="ghostData_title">سەردێڕ</string>
+  <!-- The label describing the Notes field of a contact. This field allows free form text entry
+         about a contact -->
   <string name="label_notes">تێبینییه‌کان</string>
+  <!-- The label describing the SIP address field of a contact. [CHAR LIMIT=20] -->
+  <!-- Header that expands to list all website types when editing a website of a contact
+         [CHAR LIMIT=20] -->
   <string name="websiteLabelsGroup">ماڵپەڕ</string>
+  <!-- Header for the list of all groups for a contact [CHAR LIMIT=20] -->
   <string name="groupsLabel">کۆمه‌ڵه‌کان</string>
+  <!-- Action string for sending an email to a home email address -->
   <string name="email_home">پۆستی ئه‌لیکترۆنی ماڵه‌وه‌</string>
+  <!-- Action string for sending an email to a mobile email address -->
   <string name="email_mobile">پۆستی ئه‌لیکترۆنی مۆبایل</string>
+  <!-- Action string for sending an email to a work email address -->
   <string name="email_work">پۆستی ئه‌لیکترۆنی سه‌ر کار</string>
+  <!-- Action string for sending an email to an other email address -->
   <string name="email_other">پۆستی ئه‌لەکترۆنی</string>
+  <!-- Action string for sending an email to a custom email address -->
   <string name="email_custom">پۆست  <xliff:g id="custom">%s</xliff:g></string>
+  <!-- Generic action string for sending an email -->
   <string name="email">پۆستی ئه‌لەکترۆنی</string>
+  <!-- Field title for the street of a structured postal address of a contact -->
   <string name="postal_street">شه‌قام</string>
+  <!-- Field title for the PO box of a structured postal address of a contact -->
   <string name="postal_pobox">سندوقی PO</string>
+  <!-- Field title for the neighborhood of a structured postal address of a contact -->
   <string name="postal_neighborhood">دراوسێ</string>
+  <!-- Field title for the city of a structured postal address of a contact -->
   <string name="postal_city">شار</string>
+  <!-- Field title for the region, or state, of a structured postal address of a contact -->
   <string name="postal_region">وڵات</string>
+  <!-- Field title for the postal code of a structured postal address of a contact -->
   <string name="postal_postcode">کۆدی پۆستی</string>
+  <!-- Field title for the country of a structured postal address of a contact -->
   <string name="postal_country">وڵات</string>
+  <!-- Action string for viewing a home postal address -->
   <string name="map_home">بینینی ناونیشانی ماڵه‌وه‌</string>
+  <!-- Action string for viewing a work postal address -->
   <string name="map_work">بینینی ناونیشانی سه‌ر کار</string>
+  <!-- Action string for viewing an other postal address -->
   <string name="map_other">بینینی ناونیشان</string>
+  <!-- Action string for viewing a custom postal address -->
   <string name="map_custom">بینینی <xliff:g id="custom">%s</xliff:g> ناونیشان</string>
+  <!-- Action string for starting an IM chat with the AIM protocol -->
   <string name="chat_aim">گفتوگۆکردن به‌به‌کارهێنانی AIM</string>
+  <!-- Action string for starting an IM chat with the MSN or Windows Live protocol -->
   <string name="chat_msn">گفتوگۆکردن به‌به‌کارهێنانی Windows Live</string>
+  <!-- Action string for starting an IM chat with the Yahoo protocol -->
   <string name="chat_yahoo">گفتوگۆکردن به‌به‌کارهێنانی Yahoo</string>
+  <!-- Action string for starting an IM chat with the Skype protocol -->
   <string name="chat_skype">گفتوگۆکردن به‌به‌کارهێنانی سکایپ</string>
+  <!-- Action string for starting an IM chat with the QQ protocol -->
   <string name="chat_qq">گفتوگۆکردن به‌به‌کارهێنانی QQ</string>
+  <!-- Action string for starting an IM chat with the Google Talk protocol -->
   <string name="chat_gtalk">گفتوگۆکردن به‌به‌کارهێنانی Google Talk</string>
+  <!-- Action string for starting an IM chat with the ICQ protocol -->
   <string name="chat_icq">گفتوگۆکردن به‌به‌کارهێنانی ICQ</string>
+  <!-- Action string for starting an IM chat with the Jabber protocol -->
   <string name="chat_jabber">گفتوگۆکردن به‌به‌کارهێنانی Jabber</string>
+  <!-- Generic action string for starting an IM chat -->
   <string name="chat">گفتوگۆکردن</string>
+  <!-- String describing the Contact Editor Minus button
+
+         Used by AccessibilityService to announce the purpose of the button.
+
+         [CHAR LIMIT=NONE]
+    -->
   <string name="description_minus_button">سڕینەوە</string>
+  <!-- Content description for the expand or collapse name fields button.
+         Clicking this button causes the name editor to toggle between showing
+         a single field where the entire name is edited at once, or multiple
+         fields corresponding to each part of the name (Name Prefix, First Name,
+         Middle Name, Last Name, Name Suffix).
+         [CHAR LIMIT=NONE] -->
   <string name="expand_collapse_name_fields_description">فراوانکردن یان ته‌سک کردنه‌وه‌ی بۆشایی ناوه‌کان</string>
+  <!-- Contact list filter label indicating that the list is showing all available accounts [CHAR LIMIT=64] -->
   <string name="list_filter_all_accounts">هەموو ناوەکان</string>
+  <!-- Contact list filter label indicating that the list is showing all starred contacts [CHAR LIMIT=64] -->
   <string name="list_filter_all_starred">ئه‌ستێره‌دار</string>
+  <!-- Contact list filter selection indicating that the list shows groups chosen by the user [CHAR LIMIT=64] -->
   <string name="list_filter_customize">خواستی خۆت</string>
+  <!-- Contact list filter selection indicating that the list shows only the selected contact [CHAR LIMIT=64] -->
   <string name="list_filter_single">ناو</string>
+  <!-- List title for a special contacts group that covers all contacts. [CHAR LIMIT=25] -->
   <string name="display_ungrouped">هه‌موو په‌یوه‌ندییه‌کانی تر</string>
+  <!-- List title for a special contacts group that covers all contacts that
+a        ren't members of any other group. [CHAR LIMIT=25] -->
   <string name="display_all_contacts">هەموو ناوەکان</string>
   <string name="menu_sync_remove">سڕینه‌وه‌ی گواستنه‌وه‌ی گروپ</string>
   <string name="dialog_sync_add">زیادکردنی گواستنه‌وه‌ی گروپ</string>
   <string name="display_more_groups">گروپی زیاتر\u2026</string>
+  <!-- Warning message given to users just before they remove a currently syncing
+         group that would also cause all ungrouped contacts to stop syncing.  [CHAR LIMIT=NONE] -->
   <string name="display_warn_remove_ungrouped">سڕینه‌وه‌ی  \"<xliff:g id="group" example="Starred">%s</xliff:g>\" له‌ گواستنه‌وه‌ و هه‌روه‌ها سڕینه‌وه‌ی هه‌ر نا گروپێکی په‌یوه‌ندی له‌ گواستنه‌وه‌.</string>
+  <!-- Displayed in a spinner dialog as user changes to display options are saved -->
   <string name="savingDisplayGroups">پاشه‌که‌وتکردنی نیشاندانی ڕێکخستن\u2026</string>
+  <!-- Menu item to indicate you are done editing a contact and want to save the changes you've made -->
   <string name="menu_done">کراو</string>
+  <!-- Menu item to indicate you want to cancel the current editing process and NOT save the changes you've made [CHAR LIMIT=12] -->
   <string name="menu_doNotSave">هەڵوەشاندنەوە</string>
+  <!-- Displayed at the top of the contacts showing the account filter selected  [CHAR LIMIT=64] -->
   <string name="listAllContactsInAccount">په‌یوه‌ندی له‌  <xliff:g id="name" example="abc@gmail.com">%s</xliff:g></string>
+  <!-- Displayed at the top of the contacts showing single contact. [CHAR LIMIT=64] -->
   <string name="listCustomView">په‌یوه‌ندی له‌ بینینی خوازراو</string>
+  <!-- Displayed at the top of the contacts showing single contact. [CHAR LIMIT=64] -->
   <string name="listSingleContact">په‌یوه‌ندی تاک</string>
   <string name="dialog_new_contact_account">دروستکردنی په‌یوه‌ندی له‌ ژێر هه‌ژماردا</string>
+  <!-- Action string for selecting SIM for importing contacts -->
   <string name="import_from_sim">هاورده‌کردن له‌ سیمکارده‌وه‌</string>
+  <!-- Action string for selecting a SIM subscription for importing contacts -->
+  <!-- Action string for selecting a SIM subscription for importing contacts, without a phone number -->
+  <!-- Action string for selecting a .vcf file to import contacts from [CHAR LIMIT=30] -->
+  <!-- Message shown in a Dialog confirming a user's cancel request toward existing vCard import.
+         The argument is file name for the vCard import the user wants to cancel.
+         [CHAR LIMIT=128] -->
   <string name="cancel_import_confirmation_message">لابردنی هاورده‌کردن له‌ <xliff:g id="filename" example="import.vcf">%s</xliff:g>؟</string>
+  <!-- Message shown in a Dialog confirming a user's cancel request toward existing vCard export.
+         The argument is file name for the vCard export the user wants to cancel.
+         [CHAR LIMIT=128] -->
   <string name="cancel_export_confirmation_message">لابردنی  ناردن له‌ <xliff:g id="filename" example="export.vcf">%s</xliff:g>؟</string>
+  <!-- Title shown in a Dialog telling users cancel vCard import/export operation is failed. [CHAR LIMIT=40] -->
   <string name="cancel_vcard_import_or_export_failed">نه‌توانرا هاورده‌ کردن و ناردنی vCard هه‌ڵبوه‌شێنرێت</string>
+  <!-- The failed reason which should not be shown but it may in some buggy condition. [CHAR LIMIT=40] -->
   <string name="fail_reason_unknown">هه‌ڵه‌ی نه‌زانراو.</string>
+  <!-- The failed reason shown when vCard importer/exporter could not open the file
+         specified by a user. The file name should be in the message. [CHAR LIMIT=NONE] -->
   <string name="fail_reason_could_not_open_file">نه‌توانرا \"<xliff:g id="file_name">%s</xliff:g>" بکرێته‌وه‌: <xliff:g id="exact_reason">%s</xliff:g>.</string>
+  <!-- The failed reason shown when contacts exporter fails to be initialized.
+         Some exact reason must follow this. [CHAR LIMIT=NONE]-->
   <string name="fail_reason_could_not_initialize_exporter">نه‌توانرا ده‌ستبکرێت به‌ ناردن: \"<xliff:g id="exact_reason">%s</xliff:g>\".</string>
+  <!-- The failed reason shown when there's no contact which is allowed to be exported.
+         Note that user may have contacts data but all of them are probably not allowed to be
+         exported because of security/permission reasons. [CHAR LIMIT=NONE] -->
   <string name="fail_reason_no_exportable_contact">هیچ په‌یوه‌ندییه‌کانی شایه‌ن ناردن نییه‌.</string>
+  <!-- The user doesn't have all permissions required to use the current screen. So
+         close the current screen and show the user this message. -->
+  <!-- The failed reason shown when some error happend during contacts export.
+         Some exact reason must follow this. [CHAR LIMIT=NONE] -->
   <string name="fail_reason_error_occurred_during_export">هه‌ڵه‌یه‌ک ڕوویدا له‌کاتی ناردن:  \"<xliff:g id="exact_reason">%s</xliff:g>\".</string>
+  <!-- The failed reason shown when the given file name is too long for the system.
+         The length limit of each file is different in each Android device, so we don't need to
+         mention it here. [CHAR LIMIT=NONE] -->
   <string name="fail_reason_too_long_filename">داواکاری ناوی په‌ڕگه‌ زۆر درێژه‌  (\"<xliff:g id="filename">%s</xliff:g>\").</string>
+  <!-- The failed reason shown when vCard exporter could not create a file for the vCard since
+         there are too many files relevant to vCard. [CHAR LIMIT=NONE] -->
   <string name="fail_reason_too_many_vcard" product="nosdcard">زۆر په‌ڕگه‌ی vCard هه‌یه‌ له‌ بیرگه‌.</string>
+  <!-- The failed reason shown when vCard exporter could not create a file for the vCard since
+         there are too many files relevant to vCard. -->
   <string name="fail_reason_too_many_vcard" product="default">زۆر په‌ڕگه‌ی vCard هه‌یه‌ له‌ بیرگه‌ی ده‌ره‌کی.</string>
+  <!-- The failed reason shown when Contacts app (especially vCard importer/exporter)
+         emitted some I/O error. Exact reason will be appended by the system. [CHAR LIMIT=NONE] -->
   <string name="fail_reason_io_error">هه‌ڵه‌ی I/O</string>
+  <!-- Failure reason show when Contacts app (especially vCard importer) encountered
+         low memory problem and could not proceed its import procedure. [CHAR LIMIT=NONE] -->
   <string name="fail_reason_low_memory_during_import">بۆشایی بیرگه‌ نییه‌. په‌ڕگه‌که‌ زۆر گه‌وره‌یه‌.</string>
+  <!-- The failed reason shown when vCard parser was not able to be parsed by the current vCard
+         implementation. This might happen even when the input vCard is completely valid, though
+         we believe it is rather rare in the actual world. [CHAR LIMIT=NONE] -->
   <string name="fail_reason_vcard_parse_error">نه‌توانرا پێوانه‌ی vCard بکرێت به‌هۆی هۆکارێکی چاوه‌ڕوان نه‌کراوه‌وه‌.</string>
+  <!-- The failed reason shown when vCard importer doesn't support the format.
+         This may be shown when the vCard is corrupted [CHAR LIMIT=40] -->
   <string name="fail_reason_not_supported">جۆری په‌ڕگه‌که‌ گونجاو نییه‌.</string>
+  <!-- Fail reason shown when vCard importer failed to look over meta information stored in vCard file(s). -->
   <string name="fail_reason_failed_to_collect_vcard_meta_info">نه‌توانرا زانیاری مێتا ده‌ستبکه‌وێت له‌ په‌ڕگه‌ی vCard.</string>
+  <!-- The failed reason shown when the import of some of vCard files failed during multiple vCard
+         files import. It includes the case where all files were failed to be imported. -->
   <string name="fail_reason_failed_to_read_files">په‌ڕگه‌یه‌ک یان زیاتر له‌ دانه‌یه‌ک نه‌توانرا هاورده‌ بکرێت  (%s).</string>
+  <!-- The title shown when exporting vCard is successfuly finished [CHAR LIMIT=40] -->
   <string name="exporting_vcard_finished_title">ناردن ته‌واوبوو <xliff:g id="filename" example="export.vcf">%s</xliff:g>.</string>
+  <!-- The title shown when exporting vCard has finished successfully but the destination filename could not be resolved. [CHAR LIMIT=NONE] -->
+  <!-- The title shown when exporting vCard is canceled (probably by a user)
+         The argument is file name the user canceled importing.
+         [CHAR LIMIT=40] -->
   <string name="exporting_vcard_canceled_title">ناردنی<xliff:g id="filename" example="export.vcf">%s</xliff:g> هه‌ڵوه‌شێنرایه‌وه‌.</string>
+  <!-- Dialog title shown when the application is exporting contact data outside. [CHAR LIMIT=NONE] -->
   <string name="exporting_contact_list_title">ناردنی زانیاری په‌یوه‌ندی</string>
+  <!-- Message shown when the application is exporting contact data outside -->
   <string name="exporting_contact_list_message">زانیاری په‌یوه‌ندی ده‌نێردرێت بۆ:  <xliff:g id="file_name">%s</xliff:g>.</string>
+  <!-- The error reason the vCard composer "may" emit when database is corrupted or
+         something is going wrong. Usually users should not see this text. [CHAR LIMIT=NONE] -->
   <string name="composer_failed_to_get_database_infomation">نه‌توانرا زانیاری داتابه‌یس وه‌ربگیرێت.</string>
+  <!-- This error message shown when the user actually have no contact
+         (e.g. just after data-wiping), or, data providers of the contact list prohibits their
+         contacts from being exported to outside world via vcard exporter, etc. [CHAR LIMIT=NONE] -->
   <string name="composer_has_no_exportable_contact" product="tablet">هیچ په‌یوه‌ندییه‌کانی شایه‌ن ناردن نیه‌. ئه‌گه‌ر په‌یوه‌ندیت هه‌یه‌ له‌سه‌ر تابلێته‌که‌ت، هه‌ندێک داتا له‌وانه‌یه‌ ڕێگری بکات له‌ په‌یوه‌ندییه‌کان بۆ ناردن له‌سه‌ر تابلێته‌که‌ت.</string>
+  <!-- This error message shown when the user actually have no contact
+         (e.g. just after data-wiping), or, data providers of the contact list prohibits their
+         contacts from being exported to outside world via vcard exporter, etc. [CHAR LIMIT=NONE] -->
   <string name="composer_has_no_exportable_contact" product="default">هیچ په‌یوه‌ندییه‌کانی شایه‌ن ناردن نیه‌. ئه‌گه‌ر په‌یوه‌ندیت هه‌یه‌ له‌سه‌ر مۆبایله‌که‌ت، هه‌ندێک داتا له‌وانه‌یه‌ ڕێگری بکات له‌ په‌یوه‌ندییه‌کان بۆ ناردن له‌سه‌ر مۆبایله‌که‌ت.</string>
+  <!-- The error reason the vCard composer may emit when vCard composer is not initialized
+         even when needed.
+         Users should not usually see this error message. [CHAR LIMIT=NONE] -->
   <string name="composer_not_initialized">که‌پسکه‌ری vCard کاری نه‌کرد.</string>
+  <!-- Dialog title shown when exporting Contact data failed. [CHAR LIMIT=20] -->
   <string name="exporting_contact_failed_title">نه‌توانرا بنێردرێ</string>
+  <!-- Dialog message shown when exporting Contact data failed. [CHAR LIMIT=NONE] -->
   <string name="exporting_contact_failed_message">داتای په‌یوه‌ندی نه‌توانرا بنێردرێ.\nهۆکار: \"<xliff:g id="fail_reason">%s</xliff:g>\"</string>
+  <!-- Description shown when importing vCard data.
+         The argument is the name of a contact which is being read.
+         [CHAR LIMIT=20] -->
   <string name="importing_vcard_description">هاورده‌کردن  <xliff:g id="name" example="Joe Due">%s</xliff:g></string>
+  <!-- Dialog title shown when reading vCard data failed [CHAR LIMIT=40] -->
   <string name="reading_vcard_failed_title">نه‌توانرا VCard بخوێنرێته‌وه‌</string>
+  <!-- The title shown when reading vCard is canceled (probably by a user)
+         [CHAR LIMIT=40] -->
   <string name="reading_vcard_canceled_title">خوێندنه‌وه‌ی vCard هه‌ڵوه‌شێنرایه‌وه‌</string>
+  <!-- The title shown when reading vCard finished
+         The argument is file name the user imported.
+         [CHAR LIMIT=40] -->
   <string name="importing_vcard_finished_title">هاورده‌کردنی VCard ته‌واوبوو <xliff:g id="filename" example="import.vcf">%s</xliff:g></string>
+  <!-- The title shown when importing vCard is canceled (probably by a user)
+         The argument is file name the user canceled importing.
+         [CHAR LIMIT=40] -->
   <string name="importing_vcard_canceled_title">هاورده‌کردنی  <xliff:g id="filename" example="import.vcf">%s</xliff:g> هه‌ڵوه‌شێنرایه‌وه‌</string>
+  <!-- The message shown when vCard import request is accepted. The system may start that work soon, or do it later
+         when there are already other import/export requests.
+         The argument is file name the user imported.
+         [CHAR LIMIT=40] -->
   <string name="vcard_import_will_start_message"><xliff:g id="filename" example="import.vcf">%s</xliff:g> هاورده‌ ده‌کرێت به‌ کورتی.</string>
+  <!-- The message shown when vCard import request is accepted. The system may start that work soon, or do it later when there are already other import/export requests.
+         "The file" is what a user selected for importing.
+         [CHAR LIMIT=40] -->
   <string name="vcard_import_will_start_message_with_default_name">په‌ڕگه‌که‌ هاورده‌ ده‌کرێ به‌ کورتی</string>
+  <!-- The message shown when a given vCard import request is rejected by the system. [CHAR LIMIT=NONE] -->
   <string name="vcard_import_request_rejected_message">vCard و ناردنی وه‌ داواکردنی ڕه‌تکرایه‌وه‌. دواتر هه‌وڵ بده‌ره‌وه‌.</string>
+  <!-- The message shown when vCard export request is accepted. The system may start that work soon, or do it later
+         when there are already other import/export requests.
+         The argument is file name the user exported.
+         [CHAR LIMIT=40] -->
   <string name="vcard_export_will_start_message"><xliff:g id="filename" example="import.vcf">%s</xliff:g> ده‌نێردرێت به‌ کورتی.</string>
+  <!-- The message shown when a vCard export request is accepted but the destination filename could not be resolved. [CHAR LIMIT=NONE] -->
+  <!-- The message shown when a given vCard export request is rejected by the system. [CHAR LIMIT=NONE] -->
   <string name="vcard_export_request_rejected_message">vCard و ناردنی وه‌ داواکردنی ڕه‌تکرایه‌وه‌. دواتر هه‌وڵ بده‌ره‌وه‌.</string>
+  <!-- Used when file name is unknown in vCard processing. It typically happens
+         when the file is given outside the Contacts app. [CHAR LIMIT=30] -->
   <string name="vcard_unknown_filename">په‌یوه‌ندی</string>
+  <!-- The message shown when vCard importer is caching files to be imported into local temporary
+         data storage. [CHAR LIMIT=NONE] -->
   <string name="caching_vcard_message">گرتنی vCard بۆ بیرگه‌ی ناوه‌کی. له‌ ڕاستیدا دێته‌ ناوی به‌ زویی.</string>
+  <!-- Message used when vCard import has failed. [CHAR LIMIT=40] -->
   <string name="vcard_import_failed">نه‌توانرا vCard تێبکرێت.</string>
+  <!-- The failure message shown when the system could not find any vCard file.
+         (with extension ".vcf" in (USB) storage.)
+         [CHAR LIMIT=128] -->
   <string name="import_failure_no_vcard_file" product="nosdcard">هیچ vCard ـێک نه‌دۆزرایه‌وه‌.</string>
+  <!-- The failure message shown when the system could not find any vCard file.
+         (with extension ".vcf" in SDCard.)
+         [CHAR LIMIT=128] -->
   <string name="import_failure_no_vcard_file" product="default">هیچ vCard نه‌دۆزرایه‌وه‌ له‌سه‌ر بیرگه‌.</string>
+  <!-- The "file name" displayed for vCards received directly via NFC [CHAR LIMIT=16] -->
   <string name="nfc_vcard_file_name">وه‌رگری په‌یوه‌ندی له‌لایه‌ن NFC</string>
+  <!-- Dialog title shown when a user confirms whether he/she export Contact data. [CHAR LIMIT=32] -->
   <string name="confirm_export_title">ناردنی په‌یوه‌ندییه‌کان؟</string>
+  <!-- The title shown when vCard importer is caching files to be imported into local temporary
+         data storage.  [CHAR LIMIT=40] -->
   <string name="caching_vcard_title">حه‌شارگه‌کردن</string>
+  <!-- Dialog message shown when searching VCard data failed.
+         An exact reason for the failure should [CHAR LIMIT=NONE] -->
   <string name="scanning_sdcard_failed_message" product="nosdcard">بیرگه‌که‌ نه‌توانرا بپشکنرێ. (هۆکار: \"\"<xliff:g id="fail_reason">%s</xliff:g>\")</string>
+  <!-- Dialog message shown when searching VCard data failed.
+         An exact reason for the failure should [CHAR LIMIT=NONE] -->
   <string name="scanning_sdcard_failed_message" product="default">بیرگه‌که‌ نه‌توانرا بپشکنرێ. (هۆکار: \"\"<xliff:g id="fail_reason">%s</xliff:g>\")</string>
+  <!-- The message shown while importing vCard(s).
+         First argument is current index of contacts to be imported.
+         Second argument is the total number of contacts.
+         Third argument is the name of a contact which is being read.
+         [CHAR LIMIT=20] -->
   <string name="progress_notifier_message">هاورده‌کردنی  <xliff:g id="current_number">%s</xliff:g>/<xliff:g id="total_number">%s</xliff:g>: <xliff:g id="name" example="Joe Due">%s</xliff:g></string>
+  <!-- Action that exports all contacts to a user selected destination. [CHAR LIMIT=25] -->
+  <!-- Contact preferences related strings -->
+  <!-- Label of the "sort by" display option -->
+  <!-- An allowable value for the "sort list by" contact display option  -->
+  <!-- An allowable value for the "sort list by" contact display option  -->
+  <!-- Label of the "name format" display option [CHAR LIMIT=64]-->
+  <!-- An allowable value for the "view names as" contact display option  -->
+  <!-- An allowable value for the "view names as" contact display option  -->
+  <!-- Action that shares visible contacts -->
   <string name="share_visible_contacts">به‌شداریپێکردنی په‌یوه‌ندییه‌ دیاره‌کان</string>
+  <!-- A framework exception (ie, transaction too large) can be thrown while attempting to share all visible contacts. If so, show this toast. -->
+  <!-- Dialog title when selecting the bulk operation to perform from a list. [CHAR LIMIT=36] -->
   <string name="dialog_import_export">هاورده‌کردن/ناردنی په‌یوه‌ندی</string>
+  <!-- Dialog title when importing contacts from an external source. [CHAR LIMIT=36] -->
   <string name="dialog_import">هاوردنی ناوەکان</string>
+  <!-- Toast indicating that sharing a contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="share_error">ئه‌م په‌یوه‌ندییه‌ ناتوانرێ به‌شداریپێبکرێت.</string>
+  <!-- Menu item to search contacts -->
   <string name="menu_search">گه‌ڕان</string>
+  <!-- The menu item to filter the list of contacts displayed -->
   <string name="menu_contacts_filter">په‌یوه‌ندی شایه‌ن نیشاندان</string>
+  <!-- Title of the activity that allows the uesr to filter the list of contacts displayed according to account [CHAR LIMIT=25] -->
   <string name="activity_title_contacts_filter">ناوەکان بۆ پیشاندان</string>
+  <!-- Title of the activity that allows the user to customize filtering of contact list [CHAR LIMIT=128] -->
   <string name="custom_list_filter">شایه‌نی بینینی خوازراو</string>
+  <!-- Query hint displayed inside the search field [CHAR LIMIT=64] -->
   <string name="hint_findContacts">دۆزینه‌وه‌ی په‌یوه‌ندی</string>
+  <!-- The description text for the favorites tab.
+
+         Note: AccessibilityServices use this attribute to announce what the view represents.
+         This is especially valuable for views without textual representation like ImageView.
+
+         [CHAR LIMIT=NONE] -->
   <string name="contactsFavoritesLabel">دڵخوازه‌کان</string>
+  <!-- Displayed at the top of the contacts showing the zero total number of contacts visible when "All contacts" is selected  [CHAR LIMIT=64]-->
   <string name="listTotalAllContactsZero">ناو نییە.</string>
+  <!-- Displayed at the top of the contacts showing the zero total number of contacts visible when "Custom" is selected  [CHAR LIMIT=64]-->
   <string name="listTotalAllContactsZeroCustom">هیچ په‌یوه‌ندییه‌کی دیار نییه‌.</string>
+  <!-- Displayed at the top of the contacts showing the zero total number of contacts visible when starred contact list is selected  [CHAR LIMIT=64]-->
   <string name="listTotalAllContactsZeroStarred">هیچ دڵخوازێک نییه‌.</string>
+  <!-- Displayed at the top of the contacts showing the zero total number of contacts visible when a group or account is selected  [CHAR LIMIT=64]-->
   <string name="listTotalAllContactsZeroGroup">هیچ په‌یوه‌ندییه‌ک نییه‌ له‌ <xliff:g id="name" example="Friends">%s</xliff:g></string>
+  <!--  The menu item to clear frequents [CHAR LIMIT=30] -->
   <string name="menu_clear_frequents">پاککردنه‌وه‌ی زوو-زووه‌ په‌یوه‌ندییه‌کان</string>
+  <!-- Menu item to select SIM card -->
+  <!-- The menu item to open the list of accounts -->
   <string name="menu_accounts">هه‌ژماره‌کان</string>
+  <!-- The menu item to bulk import or bulk export contacts from SIM card or SD card.  [CHAR LIMIT=30]-->
   <string name="menu_import_export">هاورده‌کردن/ناردن</string>
+  <!-- The font-family to use for tab text.
+         Do not translate. -->
+  <!-- Attribution of a contact status update, when the time of update is unknown -->
   <string name="contact_status_update_attribution">له‌لایه‌ن <xliff:g id="source" example="Google Talk">%1$s</xliff:g></string>
+  <!-- Attribution of a contact status update, when the time of update is known -->
   <string name="contact_status_update_attribution_with_date"><xliff:g id="date" example="3 hours ago">%1$s</xliff:g> له‌ڕێگه‌ی <xliff:g id="source" example="Google Talk">%2$s</xliff:g></string>
+  <!-- Font family used when drawing letters for letter tile avatars.
+         Do not translate. -->
+  <!-- Content description for the fake action menu up button as used
+     inside search. [CHAR LIMIT=NONE] -->
+  <!--  String describing the icon used to clear the search field -->
+  <!-- The font-family to use for the text inside the searchbox.
+         Do not translate. -->
+  <!-- The title of the preference section that allows users to configure how they want their
+         contacts to be displayed. [CHAR LIMIT=128] -->
+  <!-- Title for Select Account Dialog [CHAR LIMIT=30] -->
+  <!-- Label for the check box to toggle default sim card setting [CHAR LIMIT=35]-->
+  <!-- Title for dialog to select Phone Account for outgoing call.  [CHAR LIMIT=40] -->
+  <!-- String used for actions in the dialer call log and the quick contact card to initiate
+         a call to an individual.  The user is prompted to enter a note which is sent along with
+         the call (e.g. a call subject). [CHAR LIMIT=40] -->
+  <!-- Hint text shown in the call subject dialog. [CHAR LIMIT=255] -->
+  <!-- Button used to start a new call with the user entered subject. [CHAR LIMIT=32] -->
+  <!-- String used to represent the total number of characters entered for a call subject,
+         compared to the character limit.  Example: 2 / 64 -->
+  <!-- String used to build a phone number bype and phone number string.
+         Example: Mobile • 650-555-1212  -->
 </resources>

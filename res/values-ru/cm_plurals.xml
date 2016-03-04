@@ -17,18 +17,18 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <plurals name="export_to_sim_failed">
-    <item quantity="one">Экспорт не удался. Экспортирован <xliff:g id="insertCount">%d </xliff:g> контакт</item>
-    <item quantity="few">Экспорт не удался. Экспортировано <xliff:g id="insertCount">%d</xliff:g> контакта</item>
-    <item quantity="other">Экспорт не удался. Экспортировано <xliff:g id="insertCount">%d</xliff:g> контактов</item>
+    <item quantity="one">Произошел сбой. Удалось экспортировать <xliff:g id="insertCount">%d </xliff:g> контакт</item>
+    <item quantity="few">Произошел сбой. Удалось экспортировать <xliff:g id="insertCount">%d </xliff:g> контакта</item>
+    <item quantity="other">Произошел сбой. Удалось экспортировать <xliff:g id="insertCount">%d </xliff:g> контактов</item>
   </plurals>
   <plurals name="export_sim_card_full">
     <item quantity="one">SIM-карта заполнена. Экспортирован <xliff:g id="insertCount">%d </xliff:g> контакт</item>
-    <item quantity="few">SIM-карта заполнена. Экспортировано <xliff:g id="insertCount">%d </xliff:g> контакта</item>
-    <item quantity="other">SIM-карта заполнена. Экспортировано <xliff:g id="insertCount">%d </xliff:g> контактов</item>
+    <item quantity="few">SIM-карта заполнена. Экспортированы <xliff:g id="insertCount">%d </xliff:g> контакта</item>
+    <item quantity="other">SIM-карта заполнена. Экспортированы <xliff:g id="insertCount">%d </xliff:g> контактов</item>
   </plurals>
   <plurals name="export_cancelled">
-    <item quantity="one">Экспорт отменен. Экспортирован <xliff:g id="insertCount">%d </xliff:g> контакт</item>
-    <item quantity="few">Экспорт отменен. Экспортировано <xliff:g id="insertCount">%d </xliff:g> контакта</item>
-    <item quantity="other">Экспорт отменен. Экспортировано <xliff:g id="insertCount">%d </xliff:g> контактов</item>
+    <item quantity="one">Экспорт отменен. Экспортирован <xliff:g id="insertCount">%d</xliff:g> контакт</item>
+    <item quantity="few">Экспорт отменен. Экспортированы <xliff:g id="insertCount">%d</xliff:g> контакта</item>
+    <item quantity="other">Экспорт отменен. Экспортированы <xliff:g id="insertCount">%d</xliff:g> контактов</item>
   </plurals>
 </resources>

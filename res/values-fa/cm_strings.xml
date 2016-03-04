@@ -16,11 +16,18 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">حساب محلی تبلت</string>
   <string name="local_storage_account" product="default">حساب محلی گوشی</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">صدور به سیم کارت</string>
+  <!-- Action string for selecting a SIM subscription for exporting contacts -->
+  <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="label_groups">گروه</string>
   <string name="exporting">صدور\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> از <xliff:g id="total_number">%2$s</xliff:g> فایل</string>
   <string name="export_finished">صدور تمام شد</string>
   <string name="tag_too_long">نام مخاطب بسیار طولانی است</string>
@@ -30,6 +37,7 @@
   <string name="copy_done">مخاطب با موفقیت کپی شد</string>
   <string name="copy_failure">کپی مخاطب ناموفق بود</string>
   <string name="card_no_space">نمی‌توان مخاطب را کپی کرد، سیم کارت پر است</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot">تماس IP از طریق <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">بدون شماره IP</string>
   <string name="no_ip_number_on_sim_card">شماره IPی در سیم کارت وجود ندارد</string>

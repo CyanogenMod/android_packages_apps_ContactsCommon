@@ -16,11 +16,18 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">هەژماری ناوخۆی تاتەبژمێر</string>
   <string name="local_storage_account" product="default">هەژماری ناوخۆی تەلەفۆن</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">ناردنی ناو بۆ سیماکارت</string>
+  <!-- Action string for selecting a SIM subscription for exporting contacts -->
+  <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="label_groups">کۆمەڵ</string>
   <string name="exporting">دەرهێنان\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> ی <xliff:g id="total_number">%2$s</xliff:g> فایلەکان</string>
   <string name="export_finished">هەناردن تەواو بوو</string>
   <string name="tag_too_long">ناو زۆر درێژە</string>
@@ -30,6 +37,7 @@
   <string name="copy_done">ناوەکان بەسەرکەوتووی لەبەریگیرایەوە</string>
   <string name="copy_failure">لەبەرگرتنەوەی ناوەکان سەرکەوتونەبوو</string>
   <string name="card_no_space">لەبەرگرتنەوەی ناوەکان سەرکەوتونەبو. سیمکارتەکە پڕە</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot">پەیوەندی تایبەتی لەگەڵ <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">ژمارەی IP نییە</string>
   <string name="no_ip_number_on_sim_card">ژمارەی IP لە ناو سیمکارتدا نییە</string>

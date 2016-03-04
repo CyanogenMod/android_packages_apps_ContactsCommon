@@ -16,14 +16,21 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">Lokal tablet konto</string>
   <string name="local_storage_account" product="default">Lokal mobilkonto</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">Eksportere til SIM-kortet</string>
+  <!-- Action string for selecting a SIM subscription for exporting contacts -->
   <string name="export_to_sim_summary">Eksportere til SIM <xliff:g id="sim_name"> ^ 1 </xliff:g>-<xliff:g id="sim_number"> ^ 2 </xliff:g></string>
+  <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
   <string name="export_to_sim_summary_no_number">Eksportere til SIM <xliff:g id="sim_name">%1$s </xliff:g></string>
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="share_failed">For mange kontakter, deling mislyktes</string>
   <string name="label_groups">Gruppe</string>
   <string name="exporting">Eksporterer\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> <xliff:g id="total_number">%2$s</xliff:g> filer</string>
   <string name="export_finished">Eksporten er ferdig</string>
   <string name="tag_too_long">Navn på kontakt er for langt</string>
@@ -33,6 +40,7 @@
   <string name="copy_done">Kontakten ble vellykket kopiert</string>
   <string name="copy_failure">Kopiering av kontakten mislyktes</string>
   <string name="card_no_space">Kopiering av kontakten mislyktes, SIM-kortet er fullt</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot">IP-samtale med <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Ingen IP-nummer</string>
   <string name="no_ip_number_on_sim_card">Ingen IP-nummeret på SIM-kortet</string>

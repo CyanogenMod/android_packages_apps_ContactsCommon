@@ -16,11 +16,18 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">ಸ್ಥಳೀಯ ಟ್ಯಾಬ್ಲೆಟ್ ಖಾತೆ</string>
   <string name="local_storage_account" product="default">ಸ್ಥಳೀಯ ಫೋನ್ ಖಾತೆ</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">ಸಿಮ್ ಕಾರ್ಡ್‍ಗೆ ರಫ್ತುಮಾಡಿ</string>
+  <!-- Action string for selecting a SIM subscription for exporting contacts -->
+  <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="label_groups">ಗುಂಪು</string>
   <string name="exporting">ರಫ್ತುಮಾಡಲಾಗುತ್ತಿದೆ\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files"><xliff:g id="total_number">%2$s</xliff:g> ರಲ್ಲಿ <xliff:g id="current_number">%1$s</xliff:g> ಕಡತಗಳು</string>
   <string name="export_finished">ರಫ್ತು ಮುಗಿದಿದೆ</string>
   <string name="tag_too_long">ಸಂಪರ್ಕ ಹೆಸರು ಬಹಳಾ ಉದ್ದವಾಯಿತು</string>
@@ -30,6 +37,7 @@
   <string name="copy_done">ಸಂಪರ್ಕವನ್ನು ಯಶಸ್ವಿಯಾಗಿ ನಕಲಿಸಲಾಗಿದೆ</string>
   <string name="copy_failure">ಸಂಪರ್ಕವನ್ನು ನಕಲಿಸುವಲ್ಲಿ ವಿಫಲವಾಗಿದೆ</string>
   <string name="card_no_space">ಸಂಪರ್ಕವನ್ನು ನಕಲಿಸುವಲ್ಲಿ ವಿಫಲವಾಗಿದೆ, ಸಿಮ್ ಕಾರ್ಡ್ ಭರ್ತಿಯಾಗಿದೆ</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot"><xliff:g id="subName">%s</xliff:g> ಮೂಲಕ IP ಕರೆ</string>
   <string name="no_ip_number">IP ಸಂಖ್ಯೆ ಇಲ್ಲ</string>
   <string name="no_ip_number_on_sim_card">ಸಿಮ್ ಕಾರ್ಡ್‍ನಲ್ಲಿ ಯಾವುದೇ IP ಸಂಖ್ಯೆ ಇಲ್ಲ</string>
