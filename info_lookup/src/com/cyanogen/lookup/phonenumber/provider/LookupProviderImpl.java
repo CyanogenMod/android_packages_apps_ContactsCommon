@@ -133,10 +133,14 @@ public class LookupProviderImpl implements LookupProvider {
 
     @Override
     public void disable() {
+        // most of the fields are initialized only if the provider is enabled
+        // check the validity of the fields before attempting clean-up
         if(mAmbientClient != null) {
             AmbientConnectionManager.discardClient();
         }
-        mContext.getContentResolver().unregisterContentObserver(mProviderObserver);
+        if (mProviderObserver != null) {
+            mContext.getContentResolver().unregisterContentObserver(mProviderObserver);
+        }
     }
 
     @Override
