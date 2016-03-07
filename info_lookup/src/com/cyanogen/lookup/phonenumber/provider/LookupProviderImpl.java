@@ -32,6 +32,7 @@ import com.cyanogen.ambient.callerinfo.util.CallerInfoHelper;
 import com.cyanogen.ambient.callerinfo.util.ProviderInfo;
 import com.cyanogen.ambient.common.CyanogenAmbientUtil;
 import com.cyanogen.ambient.common.api.AmbientApiClient;
+import com.cyanogen.ambient.common.api.CommonStatusCodes;
 import com.cyanogen.ambient.common.api.PendingResult;
 import com.cyanogen.ambient.common.api.Result;
 import com.cyanogen.ambient.common.api.ResultCallback;
@@ -39,9 +40,12 @@ import com.cyanogen.ambient.common.api.Status;
 import com.cyanogen.lookup.phonenumber.contract.LookupProvider;
 import com.cyanogen.lookup.phonenumber.request.LookupRequest;
 import com.cyanogen.lookup.phonenumber.response.LookupResponse;
+import com.cyanogen.lookup.phonenumber.response.StatusCode;
+
+import java.util.concurrent.TimeUnit;
 
 /**
- * @author Rohit Yengisetty
+ * Implementation of {@link LookupProvider} that delegates calls to Ambient
  */
 public class LookupProviderImpl implements LookupProvider {
 
@@ -105,6 +109,31 @@ public class LookupProviderImpl implements LookupProvider {
 
     @Override
     public void fetchInfo(final LookupRequest request) {
+        PendingResult<LookupByNumberResult> pendingResult = issueAmbientRequest(request);
+        if (pendingResult != null) {
+            pendingResult.setResultCallback(new ResultCallback<LookupByNumberResult>() {
+                @Override
+                public void onResult(LookupByNumberResult lookupByNumberResult) {
+                    LookupResponse lookupResponse = createLookupResponse(lookupByNumberResult);
+                    request.mCallback.onNewInfo(request, lookupResponse);
+                }
+            });
+        }
+    }
+
+    @Override
+    public LookupResponse blockingFetchInfo(final LookupRequest request) {
+        PendingResult<LookupByNumberResult> pendingResult = issueAmbientRequest(request);
+        if (pendingResult != null) {
+            LookupByNumberResult lookupResult = pendingResult.await(5L, TimeUnit.SECONDS);
+            LookupResponse lookupResponse = createLookupResponse(lookupResult);
+            return lookupResponse;
+        }
+
+        return null;
+    }
+
+    private PendingResult<LookupByNumberResult> issueAmbientRequest(LookupRequest request) {
         String number = request.mPhoneNumber;
         if (!TextUtils.isEmpty(number) && mAmbientClient != null &&
                 (mAmbientClient.isConnecting() || mAmbientClient.isConnected())) {
@@ -128,42 +157,45 @@ public class LookupProviderImpl implements LookupProvider {
                     break;
             }
             com.cyanogen.ambient.callerinfo.extension.LookupRequest ambientRequest =
-                    new com.cyanogen.ambient.callerinfo.extension.LookupRequest(number, originCode);
+                    new com.cyanogen.ambient.callerinfo.extension.LookupRequest(number,
+                            com.cyanogen.ambient.callerinfo.extension.LookupRequest.ORIGIN_CODE_HISTORY);
             PendingResult<LookupByNumberResult> result = CallerInfoServices.CallerInfoApi.
                     lookupByNumber(mAmbientClient, ambientRequest);
 
-            result.setResultCallback(new ResultCallback<LookupByNumberResult>() {
-                @Override
-                public void onResult(LookupByNumberResult lookupByNumberResult) {
-                    synchronized (LookupProviderImpl.this) {
-                        if (mProviderInfo  == null) {
-                            // lookup provider has been inactivated
-                            return;
-                        }
-
-                        if (!lookupByNumberResult.getStatus().isSuccess()) {
-                            return;
-                        }
-
-                        CallerInfo callerInfo = lookupByNumberResult.getCallerInfo();
-                        if (!hasUsableInfo(callerInfo)) {
-                            return;
-                        }
-
-                        // map caller info to LookupResponse
-                        LookupResponse lookupResponse = new LookupResponse();
-                        lookupResponse.mProviderName = mProviderInfo.getTitle();
-                        lookupResponse.mName = callerInfo.getName();
-                        lookupResponse.mNumber = callerInfo.getNumber();
-                        lookupResponse.mAddress = callerInfo.getAddress();
-                        lookupResponse.mPhotoUrl = callerInfo.getPhotoUrl();
-                        lookupResponse.mAttributionLogo = mProviderInfo.getBadgeLogo();
-                        lookupResponse.mSpamCount = callerInfo.getSpamCount();
-                        request.mCallback.onNewInfo(request, lookupResponse);
-                    }
-                }
-            });
+            return result;
         }
+
+        return null;
+    }
+
+    private LookupResponse createLookupResponse(LookupByNumberResult lookupByNumberResult) {
+        LookupResponse lookupResponse = new LookupResponse();
+        CallerInfo callerInfo = lookupByNumberResult.getCallerInfo();
+        int lookupStatusCode = lookupByNumberResult.getStatus().getStatusCode();
+
+        // always include Provider information
+        lookupResponse.mProviderName = mProviderInfo.getTitle();
+        lookupResponse.mAttributionLogo = mProviderInfo.getBadgeLogo();
+
+        if (lookupStatusCode == CommonStatusCodes.RESOLUTION_REQUIRED) {
+            lookupResponse.mStatusCode = StatusCode.CONFIG_ERROR;
+        }
+        else if (!lookupByNumberResult.getStatus().isSuccess()) {
+            lookupResponse.mStatusCode = StatusCode.FAIL;
+        } else if (!hasUsableInfo(callerInfo)) {
+            lookupResponse.mStatusCode = StatusCode.NO_RESULT;
+        } else {
+            lookupResponse.mStatusCode = StatusCode.SUCCESS;
+            // map CallerInfo to LookupResponse
+            lookupResponse.mName = callerInfo.getName();
+            lookupResponse.mNumber = callerInfo.getNumber();
+            lookupResponse.mAddress = callerInfo.getAddress();
+            lookupResponse.mPhotoUrl = callerInfo.getPhotoUrl();
+            lookupResponse.mSpamCount = callerInfo.getSpamCount();
+            lookupResponse.mIsSpam = callerInfo.isSpam();
+        }
+
+        return lookupResponse;
     }
 
     private boolean hasUsableInfo(CallerInfo callerInfo) {
