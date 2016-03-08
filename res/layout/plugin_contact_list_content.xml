@@ -65,7 +65,8 @@
             android:layout_height="match_parent">
             <ImageView
                 android:id="@+id/plugin_login_icon"
-                android:layout_width="@dimen/plugin_login_icon_width"
+                android:maxWidth="@dimen/plugin_login_icon_max_width"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/plugin_login_icon_height"
                 android:layout_above="@+id/plugin_login_msg"
                 android:layout_marginBottom="@dimen/plugin_login_icon_margin_bottom"

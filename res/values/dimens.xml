@@ -161,13 +161,4 @@
     <dimen name="call_subject_dialog_secondary_text_size">14sp</dimen>
     <!-- Row padding for call subject history items. -->
     <dimen name="call_subject_history_item_padding">15dp</dimen>
-
-    <!-- Dimensions for plugin login screen -->
-    <dimen name="plugin_login_icon_width">134dp</dimen>
-    <dimen name="plugin_login_icon_height">59dp</dimen>
-    <dimen name="plugin_login_icon_margin_bottom">17dp</dimen>
-    <dimen name="plugin_login_msg_width">196dp</dimen>
-    <dimen name="plugin_login_msg_text_size">14sp</dimen>
-    <dimen name="plugin_login_button_margin_top">40dp</dimen>
-    <dimen name="plugin_login_button_title_size">14sp</dimen>
 </resources>
