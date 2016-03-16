@@ -57,5 +57,13 @@ public interface LookupProvider {
      */
     String getDisplayName();
 
+    /**
+     * Unique identifier for this provider
+     *
+     * The identifier could be the package name or a service name for the purpose of uniquely
+     * identifying this provider.
+     */
+    String getUniqueIdentifier();
+
 }
 
