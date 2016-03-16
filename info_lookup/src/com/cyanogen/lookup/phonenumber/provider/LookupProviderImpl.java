@@ -107,9 +107,26 @@ public class LookupProviderImpl implements LookupProvider {
         if (!TextUtils.isEmpty(number) && mAmbientClient != null &&
                 (mAmbientClient.isConnecting() || mAmbientClient.isConnected())) {
 
+            int originCode;
+            switch(request.mRequestOrigin) {
+                case INCOMING_CALL:
+                    originCode = com.cyanogen.ambient.callerinfo.extension.LookupRequest.ORIGIN_CODE_INCOMING_CALL;
+                    break;
+                case OUTGOING_CALL:
+                    originCode = com.cyanogen.ambient.callerinfo.extension.LookupRequest.ORIGIN_CODE_OUTGOING_CALL;
+                    break;
+                case INCOMING_SMS:
+                    originCode = com.cyanogen.ambient.callerinfo.extension.LookupRequest.ORIGIN_CODE_INCOMING_SMS;
+                    break;
+                case OUTGOING_SMS:
+                    originCode = com.cyanogen.ambient.callerinfo.extension.LookupRequest.ORIGIN_CODE_OUTGOING_SMS;
+                    break;
+                default:
+                    originCode = com.cyanogen.ambient.callerinfo.extension.LookupRequest.ORIGIN_CODE_HISTORY;
+                    break;
+            }
             com.cyanogen.ambient.callerinfo.extension.LookupRequest ambientRequest =
-                    new com.cyanogen.ambient.callerinfo.extension.LookupRequest(number,
-                    com.cyanogen.ambient.callerinfo.extension.LookupRequest.ORIGIN_CODE_HISTORY);
+                    new com.cyanogen.ambient.callerinfo.extension.LookupRequest(number, originCode);
             PendingResult<LookupByNumberResult> result = CallerInfoServices.CallerInfoApi.
                     lookupByNumber(mAmbientClient, ambientRequest);
 
