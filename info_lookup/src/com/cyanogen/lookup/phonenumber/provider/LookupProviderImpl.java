@@ -168,7 +168,12 @@ public class LookupProviderImpl implements LookupProvider {
         return null;
     }
 
-    private LookupResponse createLookupResponse(LookupByNumberResult lookupByNumberResult) {
+    private synchronized LookupResponse createLookupResponse(
+            LookupByNumberResult lookupByNumberResult) {
+        if (mProviderInfo == null) {
+            // lookup provider has been inactivated
+            return null;
+        }
         LookupResponse lookupResponse = new LookupResponse();
         CallerInfo callerInfo = lookupByNumberResult.getCallerInfo();
         int lookupStatusCode = lookupByNumberResult.getStatus().getStatusCode();
