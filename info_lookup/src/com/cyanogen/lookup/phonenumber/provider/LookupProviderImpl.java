@@ -83,7 +83,9 @@ public class LookupProviderImpl implements LookupProvider {
                 @Override
                 public void onChange(boolean selfChange, Uri uri) {
                     if (uri != null) {
-                        mProviderInfo = CallerInfoHelper.getActiveProviderInfo(mContext);
+                        synchronized (LookupProviderImpl.this) {
+                            mProviderInfo = CallerInfoHelper.getActiveProviderInfo(mContext);
+                        }
                     }
                 }
             };
@@ -133,27 +135,32 @@ public class LookupProviderImpl implements LookupProvider {
             result.setResultCallback(new ResultCallback<LookupByNumberResult>() {
                 @Override
                 public void onResult(LookupByNumberResult lookupByNumberResult) {
+                    synchronized (LookupProviderImpl.this) {
+                        if (mProviderInfo  == null) {
+                            // lookup provider has been inactivated
+                            return;
+                        }
 
-                    if (!lookupByNumberResult.getStatus().isSuccess()) {
-                        return;
+                        if (!lookupByNumberResult.getStatus().isSuccess()) {
+                            return;
+                        }
+
+                        CallerInfo callerInfo = lookupByNumberResult.getCallerInfo();
+                        if (!hasUsableInfo(callerInfo)) {
+                            return;
+                        }
+
+                        // map caller info to LookupResponse
+                        LookupResponse lookupResponse = new LookupResponse();
+                        lookupResponse.mProviderName = mProviderInfo.getTitle();
+                        lookupResponse.mName = callerInfo.getName();
+                        lookupResponse.mNumber = callerInfo.getNumber();
+                        lookupResponse.mAddress = callerInfo.getAddress();
+                        lookupResponse.mPhotoUrl = callerInfo.getPhotoUrl();
+                        lookupResponse.mAttributionLogo = mProviderInfo.getBadgeLogo();
+                        lookupResponse.mSpamCount = callerInfo.getSpamCount();
+                        request.mCallback.onNewInfo(request, lookupResponse);
                     }
-                    CallerInfo callerInfo = lookupByNumberResult.getCallerInfo();
-
-                    if (!hasUsableInfo(callerInfo)) {
-                        return;
-                    }
-
-                    // map caller info to LookupResponse
-                    LookupResponse lookupResponse = new LookupResponse();
-                    lookupResponse.mProviderName = mProviderInfo.getTitle();
-                    lookupResponse.mName = callerInfo.getName();
-                    lookupResponse.mNumber = callerInfo.getNumber();
-                    lookupResponse.mAddress = callerInfo.getAddress();
-                    lookupResponse.mPhotoUrl = callerInfo.getPhotoUrl();
-                    lookupResponse.mAttributionLogo = mProviderInfo.getBadgeLogo();
-                    lookupResponse.mSpamCount = callerInfo.getSpamCount();
-
-                    request.mCallback.onNewInfo(request, lookupResponse);
                 }
             });
         }
@@ -245,7 +252,7 @@ public class LookupProviderImpl implements LookupProvider {
     }
 
     @Override
-    public String getUniqueIdentifier() {
+    public synchronized String getUniqueIdentifier() {
         if (mProviderInfo != null) {
             return mProviderInfo.getPackageName();
         }
