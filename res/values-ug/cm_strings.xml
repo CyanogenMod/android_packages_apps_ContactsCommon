@@ -22,8 +22,11 @@
   <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">SIM كارتىغا چىقار</string>
   <!-- Action string for selecting a SIM subscription for exporting contacts -->
+  <string name="export_to_sim_summary">SIM كارتا <xliff:g id="sim_name">^1</xliff:g> - <xliff:g id="sim_number">^2</xliff:g> غا چىقىرىش</string>
   <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
+  <string name="export_to_sim_summary_no_number">SIM كارتا <xliff:g id="sim_name">%1$s</xliff:g> غا چىقىرىش</string>
   <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
+  <string name="share_failed">ئالاقىداش بەك كۆپ، ھەمبەھىرلەش مەغلۇب بولدى</string>
   <string name="label_groups">گۇرۇپپا</string>
   <string name="exporting">چىقىرىۋاتىدۇ\u2026</string>
   <!-- Message while reading multiple vCard files "(current number) of (total number) files"
@@ -44,4 +47,14 @@
   <string name="set_ip_number">IP نومۇر تەڭشەك</string>
   <string name="ipcall_dialog_title">IP چاقىرىش تەڭشەكلىرى</string>
   <string name="ipcall_dialog_edit_hint">IP ئالدى قوشۇلغۇچىسىنى كىرگۈزۈڭ</string>
+  <string name="menu_block_contact">توسىۋېلىش</string>
+  <string name="menu_unblock_contact">توسماڭ</string>
+  <string name="block_dialog_title">بۇ ئالاقىداشنى توسامسىز؟</string>
+  <string name="unblock_dialog_title">بۇ ئالاقىداشنى قارا تىزىملىكتىن چىقىرۋېتەمسىز؟</string>
+  <string name="block_dialog_positive">توسۋېلىش</string>
+  <string name="unblock_dialog_positive">توسماڭ</string>
+  <string name="block_dialog_negative">ۋاز كېچىش</string>
+  <string name="block_dialog_description">بۇنىڭدىن كىيىن بۇ ئالاقىداشتىن تېلېفون ۋە ئۇچۇر قۇبۇل قىلمايسىز.</string>
+  <string name="block_dialog_report_spam">بۇ <xliff:g id="provider">%s</xliff:g> نى ئەخلەت ئېلخەت قىلىپ دوكىلات قىلىش</string>
+  <string name="block_dialog_report_nonspam">بۇ <xliff:g id="provider">%s</xliff:g> نى ئەخلەت چاقىرىش ئەمەس دەپ دوكىلات قىلىش</string>
 </resources>
