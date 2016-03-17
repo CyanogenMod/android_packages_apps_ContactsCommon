@@ -17,11 +17,44 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Virtual local storage account name -->
+  <string name="local_storage_account" product="tablet">உள்ளூர் டேப்ளட் கணக்கு</string>
+  <string name="local_storage_account" product="default">உள்ளூர் தொலைப்பேசி கணக்கு</string>
   <!-- Action that exports all contacts to SIM -->
+  <string name="export_to_sim">SIM அட்டைக்கு ஏற்றுமதிசெய்</string>
   <!-- Action string for selecting a SIM subscription for exporting contacts -->
+  <string name="export_to_sim_summary"><xliff:g id="sim_name">^1</xliff:g> - <xliff:g id="sim_number">^2</xliff:g>க்கு ஏற்றுமதிசெய்</string>
   <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
+  <string name="export_to_sim_summary_no_number">SIM <xliff:g id="sim_name">%1$s</xliff:g>க்கு ஏற்றுமதிசெய்</string>
   <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
+  <string name="share_failed">மிக அதிக தொடர்புகள், பகிர்வு தோல்வியுற்றது</string>
+  <string name="label_groups">குழு</string>
+  <string name="exporting">ஏற்றுமதிசெய்கிறது\u2026</string>
   <!-- Message while reading multiple vCard files "(current number) of (total number) files"
           The order of "current number" and "total number" cannot be changed -->
+  <string name="reading_vcard_files"><xliff:g id="current_number">%2$s</xliff:g> கோப்புகளில் <xliff:g id="total_number">%1$s</xliff:g></string>
+  <string name="export_finished">ஏற்றுமதி முடிந்தது</string>
+  <string name="tag_too_long">தொடர்பு பெயர் மிக நீளம்</string>
+  <string name="sim_contacts_not_loaded">SIM தொடர்புகளை லோட் செய்ய முடியவில்லை</string>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> இடம் தொலைபேசி எண் அல்லது மின்னஞ்சல் முகவரி இல்லை</string>
+  <string name="import_from_sim_select">இறக்குமதிசெய்ய அட்டையை தேர்ந்தெடுக்கவும்</string>
+  <string name="copy_done">தொடர்பு வெற்றிகரமாக நகல்செய்யப்பட்டது</string>
+  <string name="copy_failure">தொடர்பை நகல்செய்தல் தோல்வியுற்றது</string>
+  <string name="card_no_space">தொடர்பை நகல்செய்தல் தோல்வியுற்றது, Sim கார்டு நிரம்பியுள்ளது</string>
   <!-- Menu item used to initiate ip call -->
+  <string name="ip_call_by_slot"><xliff:g id="subName">%s</xliff:g> வழியாக IP அழைப்பு</string>
+  <string name="no_ip_number">IP எண் இல்லை</string>
+  <string name="no_ip_number_on_sim_card">SIM கார்டில் IP எண் இல்லை</string>
+  <string name="set_ip_number">IP எண்னை அமை</string>
+  <string name="ipcall_dialog_title">IP அழைப்பு அமைப்புகள்</string>
+  <string name="ipcall_dialog_edit_hint">தயவுசெய்து IP முன்னெழுத்தை உள்ளிடுக</string>
+  <string name="menu_block_contact">தடு</string>
+  <string name="menu_unblock_contact">தடைநீக்கு</string>
+  <string name="block_dialog_title">இந்த தொடர்பை தடுக்கவா?</string>
+  <string name="unblock_dialog_title">இந்த தொடர்பை தடைநீக்கவா?</string>
+  <string name="block_dialog_positive">தடு</string>
+  <string name="unblock_dialog_positive">தடைநீக்கு</string>
+  <string name="block_dialog_negative">ரத்துசெய்</string>
+  <string name="block_dialog_description">இந்த நபரிடம் இருந்து இனி அழைப்புகள் அல்லது செய்திகளை பெறமாட்டீர்கள்.</string>
+  <string name="block_dialog_report_spam">ஸ்பேமை <xliff:g id="provider">%s</xliff:g>க்கு புகாரளிக்கவும்</string>
+  <string name="block_dialog_report_nonspam"><xliff:g id="provider">%s</xliff:g>க்கு வேண்டாத மின்னஞ்சல் இல்லை என்று புகாரளி</string>
 </resources>

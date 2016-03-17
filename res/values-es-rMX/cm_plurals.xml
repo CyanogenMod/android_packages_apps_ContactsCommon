@@ -21,8 +21,8 @@
     <item quantity="other">Error en la exportación, se exportaron <xliff:g id="insertCount">%d</xliff:g> artículos</item>
   </plurals>
   <plurals name="export_sim_card_full">
-    <item quantity="one">La tarjeta SIM está llena, se exportó <xliff:g id="insertCount">%d </xliff:g> artículo</item>
-    <item quantity="other">La tarjeta SIM está llena, se exportaron <xliff:g id="insertCount">%d </xliff:g> artículos</item>
+    <item quantity="one">La tarjeta SIM está llena, <xliff:g id="insertCount">%d </xliff:g> artículo fue exportado</item>
+    <item quantity="other">La tarjeta SIM está llena, <xliff:g id="insertCount">%d </xliff:g> artículos fueron exportados</item>
   </plurals>
   <plurals name="export_cancelled">
     <item quantity="one">Exportación cancelada, se exportó <xliff:g id="insertCount">%d</xliff:g> artículo</item>

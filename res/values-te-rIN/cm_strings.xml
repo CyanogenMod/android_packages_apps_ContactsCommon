@@ -17,11 +17,44 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Virtual local storage account name -->
+  <string name="local_storage_account" product="tablet">స్థానిక టాబ్లెట్ ఖాతా</string>
+  <string name="local_storage_account" product="default">స్థానిక ఫోన్ ఖాతా</string>
   <!-- Action that exports all contacts to SIM -->
+  <string name="export_to_sim">SIM కార్డుకు ఎగుమతి చేయండి</string>
   <!-- Action string for selecting a SIM subscription for exporting contacts -->
+  <string name="export_to_sim_summary">SIM <xliff:g id="sim_name">^1</xliff:g> - <xliff:g id="sim_number">^2</xliff:g>కు ఎగుమతి చేయండి</string>
   <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
+  <string name="export_to_sim_summary_no_number">SIM <xliff:g id="sim_name">%1$s</xliff:g>కు ఎగుమతి చేయండి</string>
   <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
+  <string name="share_failed">మరీ ఎక్కువ పరిచయాలు, పంచుకోవడం విఫలమైంది</string>
+  <string name="label_groups">సమూహం</string>
+  <string name="exporting">ఎగుమతి జరుగుతోంది\u2026</string>
   <!-- Message while reading multiple vCard files "(current number) of (total number) files"
           The order of "current number" and "total number" cannot be changed -->
+  <string name="reading_vcard_files"><xliff:g id="current_number">%2$s</xliff:g> ఫైళ్ళ యొక్క <xliff:g id="total_number">%1$s</xliff:g></string>
+  <string name="export_finished">ఎగుమతి పూర్తయింది</string>
+  <string name="tag_too_long">పరిచయం పేరు చాలా పెద్దదిగా ఉంది</string>
+  <string name="sim_contacts_not_loaded">SIM పరిచయాలను లోడ్ చేయడం సాధ్యపడలేదు</string>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g>కు ఫోన్ నంబర్ లేదా ఇమెయిల్ చిరునామా లేదు</string>
+  <string name="import_from_sim_select">దిగుమతి చేసేందుకు కార్డును ఎంచుకొనుము</string>
+  <string name="copy_done">పరిచయం విజయవంతంగా కాపీ చేయబడింది</string>
+  <string name="copy_failure">పరిచయాన్ని కాపీ చేయడం విఫలమయింది</string>
+  <string name="card_no_space">పరిచయాన్ని కాపీ చేయడం విఫలమయింది, SIM కార్డ్ నిండిపోయింది</string>
   <!-- Menu item used to initiate ip call -->
+  <string name="ip_call_by_slot"><xliff:g id="subName">%s</xliff:g> ద్వారా IP కాల్</string>
+  <string name="no_ip_number">IP నంబర్ లేదు</string>
+  <string name="no_ip_number_on_sim_card">SIM కార్డులో IP నంబర్ లేదు</string>
+  <string name="set_ip_number">IP నంబరును సెట్ చేయి</string>
+  <string name="ipcall_dialog_title">IP కాల్ సెట్టింగులు</string>
+  <string name="ipcall_dialog_edit_hint">దయచేసి IP ఆదిప్రత్యయాన్ని (ప్రిఫిక్స్) ప్రవేశపెట్టండి</string>
+  <string name="menu_block_contact">బ్లాక్ చేయి</string>
+  <string name="menu_unblock_contact">బ్లాక్ చేయవద్దు</string>
+  <string name="block_dialog_title">ఈ పరిచయాన్ని బ్లాక్ చేయాలా?</string>
+  <string name="unblock_dialog_title">ఈ పరిచయాన్ని బ్లాక్ చేయవద్దా?</string>
+  <string name="block_dialog_positive">బ్లాక్ చేయి</string>
+  <string name="unblock_dialog_positive">బ్లాక్ చేయవద్దు</string>
+  <string name="block_dialog_negative">రద్దు చేయి</string>
+  <string name="block_dialog_description">ఇకమీదట మీరు ఈ వక్తి నుండి కాల్స్ లేదా సందేశాలను అందుకోరు.</string>
+  <string name="block_dialog_report_spam"><xliff:g id="provider">%s</xliff:g> కు స్పామ్ గా నివేదిక పంపుము</string>
+  <string name="block_dialog_report_nonspam"><xliff:g id="provider">%s</xliff:g> కు స్పామ్ గా నివేదిక పంపుము</string>
 </resources>

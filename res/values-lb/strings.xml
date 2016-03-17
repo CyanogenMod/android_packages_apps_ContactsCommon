@@ -136,6 +136,10 @@
          (also in contacts) -->
   <string name="listFoundAllContactsZero">Keng Kontakter</string>
   <!-- Displayed at the top of the contacts showing the total number of contacts found when typing search query -->
+  <plurals name="searchFoundContacts">
+    <item quantity="one">1 fonnt</item>
+    <item quantity="other"><xliff:g id="count">%d</xliff:g> fonnt</item>
+  </plurals>
   <!-- String describing the text for photo of a contact in a contacts list.
 
         Note: AccessibilityServices use this attribute to announce what the view represents.

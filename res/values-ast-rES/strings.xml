@@ -137,6 +137,10 @@
          (also in contacts) -->
   <string name="listFoundAllContactsZero">Nengún contautu</string>
   <!-- Displayed at the top of the contacts showing the total number of contacts found when typing search query -->
+  <plurals name="searchFoundContacts">
+    <item quantity="one">1 contautu alcontráu</item>
+    <item quantity="other"><xliff:g id="COUNT">%d</xliff:g> contautos alcontraos\"</item>
+  </plurals>
   <!-- String describing the text for photo of a contact in a contacts list.
 
         Note: AccessibilityServices use this attribute to announce what the view represents.

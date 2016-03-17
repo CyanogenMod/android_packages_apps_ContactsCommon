@@ -22,7 +22,9 @@
   <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">Eksportér til SIM-kortet</string>
   <!-- Action string for selecting a SIM subscription for exporting contacts -->
+  <string name="export_to_sim_summary">Eksportér til SIM <xliff:g id="sim_name">^1</xliff:g> - <xliff:g id="sim_number">^2</xliff:g></string>
   <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
+  <string name="export_to_sim_summary_no_number">Eksportér til SIM <xliff:g id="sim_name">%1$s</xliff:g></string>
   <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="share_failed">For mange kontakter, deling mislykket</string>
   <string name="label_groups">Gruppe</string>
