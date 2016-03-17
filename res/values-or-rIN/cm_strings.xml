@@ -17,11 +17,44 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Virtual local storage account name -->
+  <string name="local_storage_account" product="tablet">ଲୋକାଲ୍‍ ଟାବ୍‍ଲେଟ୍‍ ଆକାଉଣ୍ଟ</string>
+  <string name="local_storage_account" product="default">ଲୋକାଲ୍‍ ଫୋନ୍‍ ଆକାଉଣ୍ଟ</string>
   <!-- Action that exports all contacts to SIM -->
+  <string name="export_to_sim">SIM କାର୍ଡ୍‍କୁ ରପ୍ତାନୀ କରନ୍ତୁ</string>
   <!-- Action string for selecting a SIM subscription for exporting contacts -->
+  <string name="export_to_sim_summary">SIM <xliff:g id="sim_name">^1</xliff:g> - <xliff:g id="sim_number">^2</xliff:g>କୁ ରପ୍ତାନୀ କରନ୍ତୁ</string>
   <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
+  <string name="export_to_sim_summary_no_number">SIM <xliff:g id="sim_name">%1$s</xliff:g>କୁ ରପ୍ତାନୀ କରନ୍ତୁ</string>
   <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
+  <string name="share_failed">ବହୁତ ଅଧିକ ସମ୍ପର୍କ ହୋଇଯାଉଛି, ଅଂଶୀଦାର ବିଫଳ ହୋଇଛି</string>
+  <string name="label_groups">ଗୋଷଠୀ</string>
+  <string name="exporting">ରପ୍ତାନୀ କରନ୍ତୁ\u2026</string>
   <!-- Message while reading multiple vCard files "(current number) of (total number) files"
           The order of "current number" and "total number" cannot be changed -->
+  <string name="reading_vcard_files"><xliff:g id="total_number">%2$s</xliff:g> ରୁ <xliff:g id="current_number">%1$s</xliff:g> ଫାଇଲ୍‍</string>
+  <string name="export_finished">ରପ୍ତାନୀ ସ୍ମାପ୍ତ ହୋଇଛି</string>
+  <string name="tag_too_long">ସସମ୍ପର୍କ ନାମ ଅଧିକ ଲମ୍ବା ହୋଇଯାଉଛି</string>
+  <string name="sim_contacts_not_loaded">SIM ସମ୍ପର୍କଗୁଡିକ ଲୋଡ୍‍ କରିବାରେ ଅଷ୍ମ</string>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> ଙ୍କର କୌଣସି ଫୋନ୍‍ ନମ୍ବର ବା ଇମେଲ୍‍ ଠିକଣା ନାହିଁ</string>
+  <string name="import_from_sim_select">ଆମଦାନି କରିବା ପାଇଁ କାର୍ଡ ଚୟନ କରନ୍ତୁ</string>
+  <string name="copy_done">ସମ୍ପର୍କ ସଫଳତାର ସହିତ କପି ହୋଇଯାଇଛି</string>
+  <string name="copy_failure">ସମ୍ପର୍କ କପି କରିବା ବିଫଳ ହୋଇଛି</string>
+  <string name="card_no_space">ସମ୍ପର୍କ କପି କରିବା ବିଫଳ ହୋଇଛି, SIM କାର୍ଡ ପୂର୍ଣ୍ଣ ଅଛି</string>
   <!-- Menu item used to initiate ip call -->
+  <string name="ip_call_by_slot"><xliff:g id="subName">%s</xliff:g> ମାଧ୍ୟମରେ IP କଲ୍‍ କରନ୍ତୁ</string>
+  <string name="no_ip_number">କୌଣସି IP ନମ୍ବର ନାହିଁ</string>
+  <string name="no_ip_number_on_sim_card">SIM କାର୍ଡ୍‍ରେ କୌଣସି IP ନମ୍ବର ନାହିଁ</string>
+  <string name="set_ip_number">IP ନମ୍ବର ସେଟ୍‍ କରନ୍ତୁ</string>
+  <string name="ipcall_dialog_title">IP କଲ୍‍ ସେଟିଂସ୍‍</string>
+  <string name="ipcall_dialog_edit_hint">IP ପ୍ରିଫିକ୍ସ ଇନ୍‍ପୁଟ୍‍ କରନ୍ତୁ</string>
+  <string name="menu_block_contact">ଅବରୋଧ</string>
+  <string name="menu_unblock_contact">ଅନାବରୋଧ</string>
+  <string name="block_dialog_title">ଏହି ସମ୍ପର୍କ ଅବରୋଧ କରିବେ କି?</string>
+  <string name="unblock_dialog_title">ଏହି ସମ୍ପର୍କ ଅନ୍‍ବ୍ଲକ୍‍ କରିବେ କି?</string>
+  <string name="block_dialog_positive">ଅବରୋଧ</string>
+  <string name="unblock_dialog_positive">ଅନାବରୋଧ</string>
+  <string name="block_dialog_negative">ବାତିଲ</string>
+  <string name="block_dialog_description">ଆପଣ ଏହି ବ୍ୟକ୍ତିଙ୍କ ଠାରୁ ଆଗକୁ କଲ୍‍ ବା ସନ୍ଦେଶ ପ୍ରାପ୍ତ କରିବେ ନାହିଁ।</string>
+  <string name="block_dialog_report_spam">ସ୍ପାମ୍‍ ଭାବେ <xliff:g id="provider">%s</xliff:g>କୁ ରିପୋର୍ଟ କରନ୍ତୁ</string>
+  <string name="block_dialog_report_nonspam">ନନ୍‍-ସ୍ପାମ୍‍ ଭାବେ ରିପୋର୍ଟ କରନ୍ତୁ <xliff:g id="provider">%s</xliff:g>କୁ</string>
 </resources>

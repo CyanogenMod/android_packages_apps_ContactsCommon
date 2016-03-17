@@ -18,7 +18,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">חשבון טאבלט מקומי</string>
-  <string name="local_storage_account" product="default">חשבון מכשיר מקומי</string>
+  <string name="local_storage_account" product="default">חשבון טלפון מקומי</string>
   <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">ייצא לכרטיס SIM</string>
   <!-- Action string for selecting a SIM subscription for exporting contacts -->
