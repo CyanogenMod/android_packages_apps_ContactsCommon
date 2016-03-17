@@ -143,6 +143,10 @@
          (also in contacts) -->
   <string name="listFoundAllContactsZero">ناو نییە</string>
   <!-- Displayed at the top of the contacts showing the total number of contacts found when typing search query -->
+  <plurals name="searchFoundContacts">
+    <item quantity="one">١ دانە دۆزرایەوە</item>
+    <item quantity="other"><xliff:g id="count">%d</xliff:g> دانە دۆزرایەوە</item>
+  </plurals>
   <!-- String describing the text for photo of a contact in a contacts list.
 
         Note: AccessibilityServices use this attribute to announce what the view represents.

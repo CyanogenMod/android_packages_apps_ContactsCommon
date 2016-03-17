@@ -17,15 +17,12 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <plurals name="export_to_sim_failed">
-    <item quantity="one">Error en la exportación, se exportó <xliff:g id="insertCount">%d</xliff:g> artículo</item>
-    <item quantity="other">Error en la exportación, se exportaron <xliff:g id="insertCount">%d</xliff:g> artículos</item>
+    <item quantity="other">Xuất ra không thành công, đã xuất <xliff:g id="insertCount">%d </xliff:g> mục</item>
   </plurals>
   <plurals name="export_sim_card_full">
-    <item quantity="one">La tarjeta SIM está llena, se exportó <xliff:g id="insertCount">%d </xliff:g> artículo</item>
-    <item quantity="other">La tarjeta SIM está llena, se exportaron <xliff:g id="insertCount">%d </xliff:g> artículos</item>
+    <item quantity="other">Thẻ SIM đầy, đã xuất <xliff:g id="insertCount">%d</xliff:g> mục</item>
   </plurals>
   <plurals name="export_cancelled">
-    <item quantity="one">Exportación cancelada, se exportó <xliff:g id="insertCount">%d</xliff:g> artículo</item>
-    <item quantity="other">Exportación cancelada, se exportaron <xliff:g id="insertCount">%d</xliff:g> artículos</item>
+    <item quantity="other">Quá trình xuất bị huỷ, đã xuất <xliff:g id="insertCount">%d</xliff:g></item>
   </plurals>
 </resources>

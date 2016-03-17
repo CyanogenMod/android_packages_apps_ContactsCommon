@@ -47,4 +47,14 @@
   <string name="set_ip_number">กำหนดหมายเลข IP</string>
   <string name="ipcall_dialog_title">ตั้งค่าการโทรผ่าน IP</string>
   <string name="ipcall_dialog_edit_hint">กรุณากรอกเลขนำหน้า IP</string>
+  <string name="menu_block_contact">บล็อค</string>
+  <string name="menu_unblock_contact">ปลดบล็อค</string>
+  <string name="block_dialog_title">บล็อคผู้ติดต่อนี้หรือไม่</string>
+  <string name="unblock_dialog_title">ปลดบล็อคผู้ติดต่อนี้หรือไม่</string>
+  <string name="block_dialog_positive">บล็อค</string>
+  <string name="unblock_dialog_positive">ปลดบล็อค</string>
+  <string name="block_dialog_negative">ยกเลิก</string>
+  <string name="block_dialog_description">คุณจะไม่ได้รับการโทรหรือข้อความจากบุคคลนี้อีกต่อไป</string>
+  <string name="block_dialog_report_spam">แจ้งว่าเป็นสแปมไปยัง <xliff:g id="provider">%s</xliff:g></string>
+  <string name="block_dialog_report_nonspam">แจ้งว่าเป็นไม่เป็นสแปมไปยัง <xliff:g id="provider">%s</xliff:g></string>
 </resources>

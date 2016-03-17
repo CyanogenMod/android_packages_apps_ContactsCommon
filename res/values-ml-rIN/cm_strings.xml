@@ -17,11 +17,44 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Virtual local storage account name -->
+  <string name="local_storage_account" product="tablet">ലോക്കല്‍ ടാബ്ലെറ്റ് അക്കൗണ്ട്</string>
+  <string name="local_storage_account" product="default">ലോക്കല്‍ ഫോൺ അക്കൗണ്ട്</string>
   <!-- Action that exports all contacts to SIM -->
+  <string name="export_to_sim">SIM കാർഡിലേക്ക് എക്സ്പോര്‍ട്ട്‌ ചെയ്യുക</string>
   <!-- Action string for selecting a SIM subscription for exporting contacts -->
+  <string name="export_to_sim_summary">SIMലേക്ക് പകര്ത്തി <xliff:g id="sim_name">^1</xliff:g> -<xliff:g id="sim_number">^2</xliff:g></string>
   <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
+  <string name="export_to_sim_summary_no_number">SIMലേക്ക് പകർത്തു<xliff:g id="sim_name">%1$s</xliff:g></string>
   <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
+  <string name="share_failed">വളരെയധികം ബന്ധങ്ങൾ, നീക്കുന്നത് പരാജയപ്പെട്ടു</string>
+  <string name="label_groups">ഗ്രൂപ്പ്</string>
+  <string name="exporting">എക്സ്പോർട്ട് ചെയ്യുന്നു\u2026</string>
   <!-- Message while reading multiple vCard files "(current number) of (total number) files"
           The order of "current number" and "total number" cannot be changed -->
+  <string name="reading_vcard_files"><xliff:g id="current_number">%2$s</xliff:g> ല്‍ <xliff:g id="total_number">%1$s</xliff:g> ഫയലുകള്‍</string>
+  <string name="export_finished">എക്സ്പോർട്ട് പൂർത്തിയായി</string>
+  <string name="tag_too_long">കോണ്‍ടാക്റ്റ് നാമം ദൈർഘ്യമേറിയതാണ്</string>
+  <string name="sim_contacts_not_loaded">SIM കോണ്‍ടാക്റ്റുകള്‍ ലോഡ് ചെയ്യാന്‍ കഴിഞ്ഞില്ല</string>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> ന് ഒരു ഫോൺ നമ്പറോ അല്ലെങ്കില്‍ ഇമെയിൽ വിലാസമോ ഇല്ല</string>
+  <string name="import_from_sim_select">ഇറക്കുമതി ചെയ്യേണ്ട കാർഡ് തിരഞ്ഞെടുക്കുക</string>
+  <string name="copy_done">കോണ്‍ടാക്റ്റ് വിജയകരമായി പകർത്തി</string>
+  <string name="copy_failure">കോൺടാക്റ്റ് പകർത്തുന്നത് പരാജയപ്പെട്ടു</string>
+  <string name="card_no_space">കോൺടാക്റ്റ് പകർത്തുന്നത് പരാജയപ്പെട്ടു, SIM കാർഡ് നിറഞ്ഞു</string>
   <!-- Menu item used to initiate ip call -->
+  <string name="ip_call_by_slot"><xliff:g id="subName">%s</xliff:g> വഴിയുള്ള IP കോൾ</string>
+  <string name="no_ip_number">IP നമ്പർ ഇല്ല</string>
+  <string name="no_ip_number_on_sim_card">IP നമ്പർ അല്ലെങ്കില്‍ SIM കാർഡ് ഇല്ല</string>
+  <string name="set_ip_number">IP നമ്പർ സജ്ജമാക്കുക</string>
+  <string name="ipcall_dialog_title">IP കോൾ ക്രമീകരണങ്ങൾ</string>
+  <string name="ipcall_dialog_edit_hint">IP പ്രിഫിക്സ് ദയവായി ഇന്‍പുട്ട് ചെയ്യുക</string>
+  <string name="menu_block_contact">തടയുക</string>
+  <string name="menu_unblock_contact">തടയൽ മാറ്റുക</string>
+  <string name="block_dialog_title">ഈ കോൺടാക്റ്റ് തടയുക?</string>
+  <string name="unblock_dialog_title">ഈ കോൺടാക്റ്റ് തടയൽ മാറ്റുക?</string>
+  <string name="block_dialog_positive">തടയുക</string>
+  <string name="unblock_dialog_positive">തടയൽ മാറ്റുക</string>
+  <string name="block_dialog_negative">റദ്ദാക്കുക</string>
+  <string name="block_dialog_description">ഈ വ്യക്തിയിൽ നിന്നുള്ള കോളുകൾ സന്ദേശങ്ങളോ ലഭിക്കില്ല.</string>
+  <string name="block_dialog_report_spam"><xliff:g id="provider">%s</xliff:g>ൽ സ്പാം ആയി റിപ്പോർട്ട് ചെയ്യുക</string>
+  <string name="block_dialog_report_nonspam"><xliff:g id="provider">%s</xliff:g>ൽ സ്പാം അല്ലെന്ന് റിപ്പോർട്ട് ചെയ്യുക</string>
 </resources>
