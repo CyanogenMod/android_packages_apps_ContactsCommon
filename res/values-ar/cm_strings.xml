@@ -20,10 +20,13 @@
   <string name="local_storage_account" product="tablet">حساب الجهاز اللوحي المحلي</string>
   <string name="local_storage_account" product="default">حساب الهاتف المحلي</string>
   <!-- Action that exports all contacts to SIM -->
-  <string name="export_to_sim">التصدير إلى شريحة SIM</string>
+  <string name="export_to_sim">تصدير إلى بطاقة SIM</string>
   <!-- Action string for selecting a SIM subscription for exporting contacts -->
+  <string name="export_to_sim_summary">تصدير إلى SIM <xliff:g id="sim_name">^1</xliff:g> - <xliff:g id="sim_number">^2</xliff:g></string>
   <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
+  <string name="export_to_sim_summary_no_number">تصدير إلى SIM <xliff:g id="sim_name">%1$s</xliff:g></string>
   <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
+  <string name="share_failed">يوجد العديد من جهات الاتصال، فشلت المشاركة</string>
   <string name="label_groups">المجموعة</string>
   <string name="exporting">جاري التصدير\u2026</string>
   <!-- Message while reading multiple vCard files "(current number) of (total number) files"
@@ -44,4 +47,14 @@
   <string name="set_ip_number">تعيين رقم IP</string>
   <string name="ipcall_dialog_title">إعدادات مكالمات IP</string>
   <string name="ipcall_dialog_edit_hint">الرجاء إدخال بادئة IP</string>
+  <string name="menu_block_contact">حظر</string>
+  <string name="menu_unblock_contact">إلغاء الحظر</string>
+  <string name="block_dialog_title">حظر جهة الاتصال هذه؟</string>
+  <string name="unblock_dialog_title">حظر جهة الاتصال هذه؟</string>
+  <string name="block_dialog_positive">حظر</string>
+  <string name="unblock_dialog_positive">إلغاء الحظر</string>
+  <string name="block_dialog_negative">إلغاء</string>
+  <string name="block_dialog_description">لن تصبح قادراً على تلقي المكالمات أو الرسائل من هذا الشخص بعد الآن.</string>
+  <string name="block_dialog_report_spam">الإبلاغ عن المكالمات باعتبارها عشوائية إلى <xliff:g id="provider">%s</xliff:g></string>
+  <string name="block_dialog_report_nonspam">الإبلاغ عن المكالمات باعتبارها عشوائية إلى <xliff:g id="provider">%s</xliff:g></string>
 </resources>

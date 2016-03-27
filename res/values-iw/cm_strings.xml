@@ -26,7 +26,7 @@
   <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
   <string name="export_to_sim_summary_no_number">ייצוא ל־SIM ‏<xliff:g id="sim_name">%1$s</xliff:g></string>
   <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
-  <string name="share_failed">לא ניתן לשתף, מספר אנשי הקשר גדול מדי</string>
+  <string name="share_failed">השיתוף נכשל, מספר אנשי הקשר גדול מדי</string>
   <string name="label_groups">קבוצה</string>
   <string name="exporting">מייצא\u2026</string>
   <!-- Message while reading multiple vCard files "(current number) of (total number) files"
@@ -47,14 +47,14 @@
   <string name="set_ip_number">הגדר מספר IP</string>
   <string name="ipcall_dialog_title">הגדרות שיחת IP</string>
   <string name="ipcall_dialog_edit_hint">אנא הזן את קידומת ה-IP</string>
-  <string name="menu_block_contact">חסימה</string>
+  <string name="menu_block_contact">חסום</string>
   <string name="menu_unblock_contact">ביטול חסימה</string>
-  <string name="block_dialog_title">לחסום את איש הקשר הזה?</string>
+  <string name="block_dialog_title">לחסום איש קשר זה?</string>
   <string name="unblock_dialog_title">לבטל חסימת איש קשר זה?</string>
   <string name="block_dialog_positive">חסום</string>
   <string name="unblock_dialog_positive">בטל חסימה</string>
   <string name="block_dialog_negative">ביטול</string>
   <string name="block_dialog_description">לא יתקבלו יותר שיחות או הודעות מאדם זה.</string>
-  <string name="block_dialog_report_spam">דווח כספאם ל-<xliff:g id="provider">%s</xliff:g></string>
-  <string name="block_dialog_report_nonspam">דווח כלא ספאם אל <xliff:g id="provider">%s</xliff:g></string>
+  <string name="block_dialog_report_spam">דווח כזבל ל-<xliff:g id="provider">%s</xliff:g></string>
+  <string name="block_dialog_report_nonspam">דווח שלא כזבל אל <xliff:g id="provider">%s</xliff:g></string>
 </resources>

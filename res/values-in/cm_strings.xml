@@ -17,31 +17,11 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Virtual local storage account name -->
-  <string name="local_storage_account" product="tablet">Akun lokal tablet</string>
-  <string name="local_storage_account" product="default">Akun lokal telepon</string>
   <!-- Action that exports all contacts to SIM -->
-  <string name="export_to_sim">Ekspor ke kartu SIM</string>
   <!-- Action string for selecting a SIM subscription for exporting contacts -->
   <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
   <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
-  <string name="label_groups">Grup</string>
-  <string name="exporting">Mengekspor\u2026</string>
   <!-- Message while reading multiple vCard files "(current number) of (total number) files"
           The order of "current number" and "total number" cannot be changed -->
-  <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> dari <xliff:g id="total_number">%2$s</xliff:g> berkas</string>
-  <string name="export_finished">Ekspor selesai</string>
-  <string name="tag_too_long">Nama kontak terlalu panjang</string>
-  <string name="sim_contacts_not_loaded">Tidak dapat memuat kontak SIM</string>
-  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> tidak memiliki nomor telepon atau alamat email</string>
-  <string name="import_from_sim_select">Pilih kartu untuk mengimpor</string>
-  <string name="copy_done">Kontak berhasil disalin</string>
-  <string name="copy_failure">Menyalin kontak gagal</string>
-  <string name="card_no_space">Menyalin kontak gagal, kartu SIM penuh</string>
   <!-- Menu item used to initiate ip call -->
-  <string name="ip_call_by_slot">Panggilan IP melalui <xliff:g id="subName">%s</xliff:g></string>
-  <string name="no_ip_number">Tidak ada Nomor IP</string>
-  <string name="no_ip_number_on_sim_card">Tidak ada Nomor IP pada kartu SIM</string>
-  <string name="set_ip_number">Atur nomor IP</string>
-  <string name="ipcall_dialog_title">Pengaturan panggilan IP</string>
-  <string name="ipcall_dialog_edit_hint">Silahkan memasukkan awalan IP</string>
 </resources>

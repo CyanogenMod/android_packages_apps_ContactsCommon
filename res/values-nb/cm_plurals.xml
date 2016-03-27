@@ -16,8 +16,16 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <plurals name="export_to_sim_failed">
+    <item quantity="one">Eksportere mislyktes, <xliff:g id="insertCount">%d </xliff:g> element ble eksportert</item>
+    <item quantity="other">Eksportere mislyktes, <xliff:g id="insertCount">%d </xliff:g> elementer ble eksportert</item>
+  </plurals>
   <plurals name="export_sim_card_full">
     <item quantity="one">SIM-kortet er fullt, <xliff:g id="insertCount">%d </xliff:g> elementet ble eksportert</item>
     <item quantity="other">SIM-kortet er fullt, <xliff:g id="insertCount">%d </xliff:g> elementer ble eksportert</item>
+  </plurals>
+  <plurals name="export_cancelled">
+    <item quantity="one">Eksporten ble avbrutt, <xliff:g id="insertCount">%d </xliff:g> element ble eksportert</item>
+    <item quantity="other">Eksporten ble avbrutt, <xliff:g id="insertCount">%d </xliff:g> elementer ble eksportert</item>
   </plurals>
 </resources>

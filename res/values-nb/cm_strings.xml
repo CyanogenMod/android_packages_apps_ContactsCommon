@@ -49,7 +49,12 @@
   <string name="ipcall_dialog_edit_hint">Skriv inn IP prefiks</string>
   <string name="menu_block_contact">Blokker</string>
   <string name="menu_unblock_contact">Opphev blokkering</string>
+  <string name="block_dialog_title">Blokker denne kontakten?</string>
+  <string name="unblock_dialog_title">Fjerne blokkeringen av denne kontakten?</string>
   <string name="block_dialog_positive">Blokker</string>
   <string name="unblock_dialog_positive">Opphev blokkering</string>
   <string name="block_dialog_negative">Avbryt</string>
+  <string name="block_dialog_description">Du vil ikke lenger motta samtaler eller meldinger fra denne personen.</string>
+  <string name="block_dialog_report_spam">Rapporter som ikke-spam til <xliff:g id="provider">%s </xliff:g></string>
+  <string name="block_dialog_report_nonspam">Rapporter som ikke-spam til <xliff:g id="provider">%s </xliff:g></string>
 </resources>
