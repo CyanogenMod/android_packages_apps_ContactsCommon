@@ -47,4 +47,14 @@
   <string name="set_ip_number">IP numarasını ayarla</string>
   <string name="ipcall_dialog_title">IP arama ayarları</string>
   <string name="ipcall_dialog_edit_hint">Lütfen IP önekini girin</string>
+  <string name="menu_block_contact">Engelle</string>
+  <string name="menu_unblock_contact">Engeli kaldır</string>
+  <string name="block_dialog_title">Bu kişi engellensin mi?</string>
+  <string name="unblock_dialog_title">Bu kişinin engeli kaldırılsın mı?</string>
+  <string name="block_dialog_positive">Engelle</string>
+  <string name="unblock_dialog_positive">Engeli kaldır</string>
+  <string name="block_dialog_negative">İptal</string>
+  <string name="block_dialog_description">Artık bu kişiden çağrı ya da mesaj almayacaksınız.</string>
+  <string name="block_dialog_report_spam"><xliff:g id="provider">%s</xliff:g> sağlayıcısına spam olarak bildir</string>
+  <string name="block_dialog_report_nonspam">Spam olmadığını bildirin <xliff:g id="provider">%s</xliff:g></string>
 </resources>
