@@ -17,15 +17,11 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <plurals name="export_to_sim_failed">
-    <item quantity="one">הייצוא נכשל, פריט <xliff:g id="insertCount">%d</xliff:g> יוצא</item>
-    <item quantity="other">הייצוא נכשל, <xliff:g id="insertCount">%d</xliff:g> פריטים יוצאו</item>
-  </plurals>
-  <plurals name="export_sim_card_full">
-    <item quantity="one">כרטיס ה-SIM מלא, פריט <xliff:g id="insertCount">%d</xliff:g> ייוצא</item>
-    <item quantity="other">כרטיס ה-SIM מלא, <xliff:g id="insertCount">%d</xliff:g> פריטים ייוצאו</item>
-  </plurals>
-  <plurals name="export_cancelled">
-    <item quantity="one">הייצוא בוטל, פריט <xliff:g id="insertCount">%d</xliff:g> ייוצא</item>
-    <item quantity="other">הייצוא בוטל, <xliff:g id="insertCount">%d</xliff:g> פריטים ייוצאו</item>
+    <item quantity="zero">فشل التصدير، تم تصدير العنصر <xliff:g id="insertCount">%d</xliff:g></item>
+    <item quantity="one">فشل التصدير، تم تصدير <xliff:g id="insertCount">%d</xliff:g> عناصر</item>
+    <item quantity="two">فشل التصدير، تم تصدير <xliff:g id="insertCount">%d</xliff:g> عناصر</item>
+    <item quantity="few">فشل التصدير، تم تصدير <xliff:g id="insertCount">%d</xliff:g> عناصر</item>
+    <item quantity="many">فشل التصدير، تم تصدير <xliff:g id="insertCount">%d</xliff:g> عناصر</item>
+    <item quantity="other">فشل التصدير، تم تصدير <xliff:g id="insertCount">%d</xliff:g> عناصر</item>
   </plurals>
 </resources>
