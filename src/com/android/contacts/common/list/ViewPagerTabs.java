@@ -21,6 +21,7 @@ import android.content.res.TypedArray;
 import android.graphics.Outline;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -34,6 +35,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.contacts.common.R;
+
+import java.util.Locale;
 
 /**
  * Lightweight implementation of ViewPager tabs. This looks similar to traditional actionBar tabs,
@@ -264,10 +267,19 @@ public class ViewPagerTabs extends HorizontalScrollView implements ViewPager.OnP
     }
 
     private int getRtlPosition(int position) {
-        if (getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
-            return mTabStrip.getChildCount() - 1 - position;
+        boolean isRtl;
+        // This function may be called before this View is attached to a parent. During this
+        // window in time, View.getLayoutDirection() may not return the right layout direction so
+        // this check is needed
+        if (canResolveLayoutDirection()) {
+            isRtl = getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
+        } else {
+            // cannot resolve layout direction from view (usually during on configuration change),
+            // fall back to using locale
+            final Locale locale = Locale.getDefault();
+            isRtl = TextUtils.getLayoutDirectionFromLocale(locale) == View.LAYOUT_DIRECTION_RTL;
         }
-        return position;
+        return isRtl ? (mTabStrip.getChildCount() - 1 - position) : position;
     }
 }
 
