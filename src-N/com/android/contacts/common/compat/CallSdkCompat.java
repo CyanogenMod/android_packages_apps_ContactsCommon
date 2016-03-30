@@ -20,8 +20,14 @@ import android.telecom.Call;
 
 public class CallSdkCompat {
     public static class Details {
+        public static final int PROPERTY_IS_EXTERNAL_CALL = Call.Details.PROPERTY_IS_EXTERNAL_CALL;
         public static final int PROPERTY_WORK_CALL = Call.Details.PROPERTY_WORK_CALL;
+        public static final int CAPABILITY_CAN_PULL_CALL = Call.Details.CAPABILITY_CAN_PULL_CALL;
         public static final int CAPABILITY_CANNOT_DOWNGRADE_VIDEO_TO_AUDIO =
                 Call.Details.CAPABILITY_CANNOT_DOWNGRADE_VIDEO_TO_AUDIO;
+    }
+
+    public static void pullExternalCall(android.telecom.Call call) {
+        call.pullExternalCall();
     }
 }
