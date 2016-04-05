@@ -46,7 +46,7 @@
   <string name="no_ip_number_on_sim_card">אין מספר IP בכרטיס ה-SIM</string>
   <string name="set_ip_number">הגדר מספר IP</string>
   <string name="ipcall_dialog_title">הגדרות שיחת IP</string>
-  <string name="ipcall_dialog_edit_hint">אנא הזן את קידומת ה-IP</string>
+  <string name="ipcall_dialog_edit_hint">הזן את קידומת ה-IP</string>
   <string name="menu_block_contact">חסום</string>
   <string name="menu_unblock_contact">ביטול חסימה</string>
   <string name="block_dialog_title">לחסום איש קשר זה?</string>
