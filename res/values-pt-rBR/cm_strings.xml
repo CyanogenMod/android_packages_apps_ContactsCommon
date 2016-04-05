@@ -34,14 +34,14 @@
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> de <xliff:g id="total_number">%2$s</xliff:g> arquivos</string>
   <string name="export_finished">Exportação concluída</string>
   <string name="tag_too_long">O nome do contato é muito longo</string>
-  <string name="sim_contacts_not_loaded">Não é possível carregar os contatos do cartão SIM</string>
+  <string name="sim_contacts_not_loaded">Impossível carregar contatos do cartão SIM</string>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> não tem um número de telefone ou endereço de e-mail</string>
   <string name="import_from_sim_select">Escolha o cartão para importar</string>
-  <string name="copy_done">Contato foi copiado com sucesso</string>
+  <string name="copy_done">Contato copiado</string>
   <string name="copy_failure">Falha ao copiar o contato</string>
   <string name="card_no_space">Falha ao copiar o contato, o cartão SIM está cheio</string>
   <!-- Menu item used to initiate ip call -->
-  <string name="ip_call_by_slot">Chamada IP por <xliff:g id="subName">%s</xliff:g></string>
+  <string name="ip_call_by_slot">Chamada IP via <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Nenhum número IP</string>
   <string name="no_ip_number_on_sim_card">Nenhum número IP no cartão SIM</string>
   <string name="set_ip_number">Definir número IP</string>
