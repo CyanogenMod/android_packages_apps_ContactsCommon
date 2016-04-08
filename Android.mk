@@ -29,7 +29,7 @@ LOCAL_AAPT_FLAGS := \
     --extra-packages com.android.phone.common
 
 LOCAL_STATIC_JAVA_AAR_LIBRARIES += \
-	ambientsdk-internal
+	ambientsdk
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
     com.android.vcard \
