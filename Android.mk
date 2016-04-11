@@ -23,7 +23,9 @@ res_dirs := res $(phone_common_dir)/res
 
 LOCAL_SRC_FILES := $(call all-java-files-under, $(src_dirs))
 LOCAL_RESOURCE_DIR := $(addprefix $(LOCAL_PATH)/, $(res_dirs))
-LOCAL_JAVA_LIBRARIES := telephony-common
+LOCAL_JAVA_LIBRARIES := telephony-common \
+    ims-common
+
 LOCAL_AAPT_FLAGS := \
     --auto-add-overlay \
     --extra-packages com.android.phone.common
@@ -41,6 +43,10 @@ LOCAL_PACKAGE_NAME := com.android.contacts.common
 
 # LOCAL_PROGUARD_ENABLED := disabled
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
+
+# utilize ContactsCommon's phone-number-based contact-info lookup
+CONTACTS_COMMON_LOOKUP_PROVIDER ?= $(LOCAL_PATH)/info_lookup
+include $(CONTACTS_COMMON_LOOKUP_PROVIDER)/phonenumber_lookup_provider.mk
 
 include $(BUILD_PACKAGE)
 
