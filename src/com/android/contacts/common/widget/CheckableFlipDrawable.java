@@ -70,10 +70,6 @@ public class CheckableFlipDrawable extends FlipDrawable implements
         invalidateSelf();
     }
 
-    public void scaleFrontDrawableToBounds(boolean fitBounds) {
-        mFrontDrawable.scaleDrawableToBounds(fitBounds);
-    }
-
     public void setCheckMarkBackgroundColor(int color) {
         mCheckmarkDrawable.setBackgroundColor(color);
         invalidateSelf();
@@ -129,8 +125,6 @@ public class CheckableFlipDrawable extends FlipDrawable implements
 
     private static class FrontDrawable extends Drawable implements Drawable.Callback {
         private Drawable mDrawable;
-        private boolean mScaleDrawableToBounds = false; // only applies to drawables with intrinsic
-                                                        // height and width
 
         public FrontDrawable(Drawable d) {
             mDrawable = d;
@@ -147,10 +141,6 @@ public class CheckableFlipDrawable extends FlipDrawable implements
             mDrawable.setCallback(this);
             assignDrawableBounds(getBounds());
             invalidateSelf();
-        }
-
-        public void scaleDrawableToBounds(boolean fitBounds) {
-            mScaleDrawableToBounds = fitBounds;
         }
 
         @Override
@@ -197,16 +187,12 @@ public class CheckableFlipDrawable extends FlipDrawable implements
             if (w <= 0 || h <= 0) {
                 mDrawable.draw(canvas);
             } else {
+                final float widthScale = (float) bounds.width() / (float) w;
+                final float heightScale = (float) bounds.height() / (float) h;
+                final float scale = Math.max(widthScale, heightScale);
                 canvas.save();
-                if (mScaleDrawableToBounds) {
-                    final float widthScale = (float) bounds.width() / (float) w;
-                    final float heightScale = (float) bounds.height() / (float) h;
-                    final float scale = Math.max(widthScale, heightScale);
-                    canvas.scale(scale, scale);
-                    canvas.translate(bounds.left, bounds.top);
-                } else {
-                    canvas.translate(bounds.centerX() - (w/2f), bounds.centerY() - (h/2f));
-                }
+                canvas.scale(scale, scale);
+                canvas.translate(bounds.left, bounds.top);
                 mDrawable.draw(canvas);
                 canvas.restore();
             }
