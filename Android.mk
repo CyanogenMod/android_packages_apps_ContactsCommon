@@ -30,9 +30,6 @@ LOCAL_AAPT_FLAGS := \
     --auto-add-overlay \
     --extra-packages com.android.phone.common
 
-LOCAL_STATIC_JAVA_AAR_LIBRARIES += \
-	ambientsdk
-
 LOCAL_STATIC_JAVA_LIBRARIES := \
     com.android.vcard \
     guava \
