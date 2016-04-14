@@ -112,6 +112,11 @@ public class BlockContactHelper {
         return mIsBlacklisted;
     }
 
+    public boolean canBlockContact(Context context) {
+        boolean isBlacklistEnabled = BlacklistUtils.isBlacklistEnabled(context);
+        return isBlacklistEnabled && mBlockRequest != null && mBlockRequest != BlockRequest.EMPTY;
+    }
+
     public String getLookupProviderName() {
         if (mIsProviderInitialized) {
             return mLookupProvider.getDisplayName();
