@@ -302,7 +302,6 @@ public abstract class BaseAccountType extends AccountType {
         kind.typeList.add(buildEmailType(Email.TYPE_HOME));
         kind.typeList.add(buildEmailType(Email.TYPE_WORK));
         kind.typeList.add(buildEmailType(Email.TYPE_OTHER));
-        kind.typeList.add(buildEmailType(Email.TYPE_MOBILE));
         kind.typeList.add(
                 buildEmailType(Email.TYPE_CUSTOM).setSecondary(true).setCustomColumn(Email.LABEL));
 
