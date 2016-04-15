@@ -29,6 +29,8 @@ import com.android.contacts.common.R;
 import com.android.contacts.common.model.AccountTypeManager;
 import com.android.contacts.common.model.account.AccountType;
 import com.android.contacts.common.model.account.AccountWithDataSet;
+import com.android.contacts.common.model.account.PhoneAccountType;
+import com.android.contacts.common.model.account.SimAccountType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +51,8 @@ public final class AccountsListAdapter extends BaseAdapter {
     public enum AccountListFilter {
         ALL_ACCOUNTS,                   // All read-only and writable accounts
         ACCOUNTS_CONTACT_WRITABLE,      // Only where the account type is contact writable
-        ACCOUNTS_GROUP_WRITABLE         // Only accounts where the account type is group writable
+        ACCOUNTS_GROUP_WRITABLE,        // Only accounts where the account type is group writable
+        ACCOUNTS_CONTACT_WRITABLE_WITHOUT_SIM
     }
 
     public AccountsListAdapter(Context context, AccountListFilter accountListFilter) {
@@ -76,10 +79,22 @@ public final class AccountsListAdapter extends BaseAdapter {
 
     private List<AccountWithDataSet> getAccounts(AccountListFilter accountListFilter) {
         if (accountListFilter == AccountListFilter.ACCOUNTS_GROUP_WRITABLE) {
-            return new ArrayList<AccountWithDataSet>(mAccountTypes.getGroupWritableAccounts());
+            return new ArrayList<AccountWithDataSet>(mAccountTypes.getAccounts(true,
+                    AccountTypeManager.FLAG_ALL_ACCOUNTS_WITHOUT_LOCAL));
         }
-        return new ArrayList<AccountWithDataSet>(mAccountTypes.getAccounts(
-                accountListFilter == AccountListFilter.ACCOUNTS_CONTACT_WRITABLE));
+        final List<AccountWithDataSet> writableAccountList = mAccountTypes
+                .getAccounts(accountListFilter == AccountListFilter.ACCOUNTS_CONTACT_WRITABLE
+                || accountListFilter == AccountListFilter.ACCOUNTS_CONTACT_WRITABLE_WITHOUT_SIM);
+        List<AccountWithDataSet> deletedList = new ArrayList<AccountWithDataSet>();
+
+        if (accountListFilter == AccountListFilter.ACCOUNTS_CONTACT_WRITABLE_WITHOUT_SIM) {
+            for (AccountWithDataSet account : writableAccountList) {
+                if (SimAccountType.ACCOUNT_TYPE.equals(account.type))
+                    deletedList.add(account);
+            }
+            writableAccountList.removeAll(deletedList);
+        }
+        return writableAccountList;
     }
 
     public void setCustomLayout(int customLayout) {

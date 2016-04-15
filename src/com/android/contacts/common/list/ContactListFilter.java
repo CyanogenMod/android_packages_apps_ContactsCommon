@@ -45,6 +45,7 @@ public final class ContactListFilter implements Comparable<ContactListFilter>, P
      * TODO: "group" filter and relevant variables are all obsolete. Remove them.
      */
     private static final int FILTER_TYPE_GROUP = 1;
+    public static final int FILTER_TYPE_ALL_WITHOUT_SIM = 2;
 
     private static final String KEY_FILTER_TYPE = "filter.type";
     private static final String KEY_ACCOUNT_NAME = "filter.accountName";

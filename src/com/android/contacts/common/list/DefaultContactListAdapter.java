@@ -26,15 +26,19 @@ import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.Directory;
+import android.provider.ContactsContract.RawContacts;
 import android.provider.ContactsContract.SearchSnippets;
 import android.support.annotation.VisibleForTesting;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.android.contacts.common.model.account.SimAccountType;
 import com.android.contacts.common.Experiments;
 import com.android.contacts.common.compat.ContactsCompat;
 import com.android.contacts.common.preference.ContactsPreferences;
 import com.android.contacts.commonbind.experiments.Flags;
+import com.android.contacts.common.SimContactsConstants;
+import com.android.contacts.common.MoreContactUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +83,21 @@ public class DefaultContactListAdapter extends ContactListAdapter {
         super(context);
     }
 
+    /** append Uri QueryParameter to filter contacts in SIM card */
+    private void appendUriQueryParameterWithoutSim(CursorLoader loader,
+            String key, String value) {
+        if (null == loader || null == key || null == value) {
+            return;
+        }
+
+        Uri uri = loader.getUri();
+        if (null != uri) {
+            uri = uri.buildUpon().appendQueryParameter(key, value)
+                    .appendQueryParameter(SimContactsConstants.WITHOUT_SIM_FLAG, "true").build();
+            loader.setUri(uri);
+        }
+    }
+
     @Override
     public void configureLoader(CursorLoader loader, long directoryId) {
         if (loader instanceof ProfileAndContactsLoader) {
@@ -105,6 +124,13 @@ public class DefaultContactListAdapter extends ContactListAdapter {
                 if (flags.getBoolean(Experiments.FLAG_SEARCH_STREQUENTS_FIRST, false)) {
                     sortOrder = STREQUENT_SORT;
                 }
+            }
+            final ContactListFilter filter = getFilter();
+
+            if (null != filter
+                    && filter.filterType == ContactListFilter.FILTER_TYPE_ALL_WITHOUT_SIM) {
+                appendUriQueryParameterWithoutSim(loader,
+                        RawContacts.ACCOUNT_TYPE, SimAccountType.ACCOUNT_TYPE);
             }
         } else {
             final ContactListFilter filter = getFilter();
@@ -208,10 +234,16 @@ public class DefaultContactListAdapter extends ContactListAdapter {
                 if (isCustomFilterForPhoneNumbersOnly()) {
                     selection.append(" AND " + Contacts.HAS_PHONE_NUMBER + "=1");
                 }
+                // Do not show contacts in SIM card when airplane mode is on
                 break;
             }
             case ContactListFilter.FILTER_TYPE_ACCOUNT: {
                 // We use query parameters for account filter, so no selection to add here.
+                break;
+            }
+            case ContactListFilter.FILTER_TYPE_ALL_WITHOUT_SIM: {
+                appendUriQueryParameterWithoutSim(loader, RawContacts.ACCOUNT_TYPE,
+                     SimAccountType.ACCOUNT_TYPE);
                 break;
             }
         }

@@ -39,6 +39,7 @@ import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.Groups;
 import android.provider.ContactsContract.Settings;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -349,7 +350,11 @@ public class CustomContactListFilterActivity extends Activity
                 final Integer titleRes = getAsInteger(Groups.TITLE_RES);
                 if (titleRes != null) {
                     final String packageName = getAsString(Groups.RES_PACKAGE);
-                    return context.getPackageManager().getText(packageName, titleRes, null);
+                    if (!TextUtils.isEmpty(packageName)) {
+                        return context.getPackageManager().getText(packageName, titleRes, null);
+                    } else {
+                        return getAsString(Groups.TITLE);
+                    }
                 } else {
                     return getAsString(Groups.TITLE);
                 }

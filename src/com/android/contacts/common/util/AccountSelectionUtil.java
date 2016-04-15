@@ -57,7 +57,7 @@ public class AccountSelectionUtil {
         final private int mResId;
         final private int mSubscriptionId;
 
-        final protected List<AccountWithDataSet> mAccountList;
+        protected List<AccountWithDataSet> mAccountList;
 
         public AccountSelectedListener(Context context, List<AccountWithDataSet> accountList,
                 int resId, int subscriptionId) {
@@ -81,6 +81,15 @@ public class AccountSelectionUtil {
             dialog.dismiss();
             doImport(mContext, mResId, mAccountList.get(which), mSubscriptionId);
         }
+        /**
+         * Reset the account list for this listener, to make sure the selected
+         * items reflect the displayed items.
+         *
+         * @param accountList The reset account list.
+         */
+        void setAccountList(List<AccountWithDataSet> accountList) {
+            mAccountList = accountList;
+        }
     }
 
     public static Dialog getSelectAccountDialog(Context context, int resId) {
@@ -92,15 +101,28 @@ public class AccountSelectionUtil {
         return getSelectAccountDialog(context, resId, onClickListener, null);
     }
 
+    public static Dialog getSelectAccountDialog(Context context, int resId,
+            DialogInterface.OnClickListener onClickListener,
+            DialogInterface.OnCancelListener onCancelListener) {
+        return getSelectAccountDialog(context, resId, onClickListener,
+            onCancelListener, true);
+    }
+
     /**
      * When OnClickListener or OnCancelListener is null, uses a default listener.
      * The default OnCancelListener just closes itself with {@link Dialog#dismiss()}.
      */
     public static Dialog getSelectAccountDialog(Context context, int resId,
             DialogInterface.OnClickListener onClickListener,
-            DialogInterface.OnCancelListener onCancelListener) {
+            DialogInterface.OnCancelListener onCancelListener, boolean includeSIM) {
         final AccountTypeManager accountTypes = AccountTypeManager.getInstance(context);
-        final List<AccountWithDataSet> writableAccountList = accountTypes.getAccounts(true);
+        List<AccountWithDataSet> writableAccountList = accountTypes.getAccounts(true);
+        if (includeSIM) {
+            writableAccountList = accountTypes.getAccounts(true);
+        } else {
+            writableAccountList = accountTypes.getAccounts(true,
+                AccountTypeManager.FLAG_ALL_ACCOUNTS_WITHOUT_SIM);
+        }
 
         Log.i(LOG_TAG, "The number of available accounts: " + writableAccountList.size());
 
@@ -143,6 +165,13 @@ public class AccountSelectionUtil {
             AccountSelectedListener accountSelectedListener =
                 new AccountSelectedListener(context, writableAccountList, resId);
             onClickListener = accountSelectedListener;
+        } else if (onClickListener instanceof AccountSelectedListener) {
+            // Because the writableAccountList is different if includeSIM or not, so
+            // should reset the account list for the AccountSelectedListener which
+            // is initialized with FLAG_ALL_ACCOUNTS.
+            // Reset the account list to make sure the selected account is contained
+            // in these display accounts.
+            ((AccountSelectedListener) onClickListener).setAccountList(writableAccountList);
         }
         if (onCancelListener == null) {
             onCancelListener = new DialogInterface.OnCancelListener() {
