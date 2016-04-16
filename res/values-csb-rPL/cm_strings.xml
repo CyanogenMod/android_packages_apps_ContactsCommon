@@ -16,16 +16,12 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <plurals name="export_to_sim_failed">
-    <item quantity="other">导出失败，<xliff:g id="insertCount">%d</xliff:g> 个项目已经被导出</item>
-  </plurals>
-  <plurals name="export_sim_card_full">
-    <item quantity="other">SIM 卡已满， <xliff:g id="insertCount">%d</xliff:g> 个项目已经被导出</item>
-  </plurals>
-  <plurals name="export_cancelled">
-    <item quantity="other">导出已被取消，<xliff:g id="insertCount">%d</xliff:g> 个项目已被导出</item>
-  </plurals>
-  <plurals name="spam_count_text">
-    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> 位将其标记为垃圾</item>
-  </plurals>
+  <!-- Virtual local storage account name -->
+  <!-- Action that exports all contacts to SIM -->
+  <!-- Action string for selecting a SIM subscription for exporting contacts -->
+  <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
+  <!-- Menu item used to initiate ip call -->
 </resources>

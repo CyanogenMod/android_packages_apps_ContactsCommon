@@ -57,4 +57,9 @@
   <string name="block_dialog_description">Ez duzu pertsona honen deirik edo mezurik jasoko aurrerantzean.</string>
   <string name="block_dialog_report_spam">Spam dela adierazi <xliff:g id="provider">%s</xliff:g>ri</string>
   <string name="block_dialog_report_nonspam">Spam ez dela adierazi <xliff:g id="provider">%s</xliff:g>(r)i</string>
+  <string name="plugin_login_msg">Hasi <xliff:g id="plugin_name">%1$s</xliff:g> zure
+ <xliff:g id="plugin_name">%1$s</xliff:g> kontaktuak hemen ikusteko</string>
+  <string name="plugin_login_button_title">Hasi saioa</string>
+  <string name="plugin_empty_list_text">Ez duzu <xliff:g id="plugin_name">%s</xliff:g> kontakturik,\n</string>
+  <string name="plugin_empty_list_action_text">gehitu jendea</string>
 </resources>

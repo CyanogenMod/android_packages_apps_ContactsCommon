@@ -57,4 +57,8 @@
   <string name="block_dialog_description">Δε θα λαμβάνετε πλέον κλήσεις ή μηνύματα από αυτό το άτομο.</string>
   <string name="block_dialog_report_spam">Αναφορά ως ανεπιθύμητη στο <xliff:g id="provider">%s</xliff:g></string>
   <string name="block_dialog_report_nonspam">Αναφορά ως μη ανεπιθύμητη στο <xliff:g id="provider">%s</xliff:g></string>
+  <string name="plugin_login_msg">Συνδεθείτε στο <xliff:g id="plugin_name">%1$s</xliff:g> για να δείτε τις <xliff:g id="plugin_name">%1$s</xliff:g> επαφές σας εδώ</string>
+  <string name="plugin_login_button_title">Είσοδος</string>
+  <string name="plugin_empty_list_text">Δεν έχετε επαφές <xliff:g id="plugin_name">%s</xliff:g>,\n</string>
+  <string name="plugin_empty_list_action_text">προσθέστε άτομα</string>
 </resources>

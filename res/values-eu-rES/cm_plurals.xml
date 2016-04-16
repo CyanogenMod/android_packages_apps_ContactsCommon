@@ -28,4 +28,8 @@
     <item quantity="one">Esportazioa eten da, elementu <xliff:g id="insertCount">%d</xliff:g> esportatu da</item>
     <item quantity="other">Esportazioa eten da, <xliff:g id="insertCount">%d</xliff:g> elementu esportatu dira</item>
   </plurals>
+  <plurals name="spam_count_text">
+    <item quantity="one">Pertsona <xliff:g id="spamCount">%d</xliff:g>ek hau spam gisa markatu du</item>
+    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> pertsonek hau spam gisa markatu dute</item>
+  </plurals>
 </resources>

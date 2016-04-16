@@ -57,4 +57,6 @@
   <string name="block_dialog_description">您将不会再收到此人的来电或信息。</string>
   <string name="block_dialog_report_spam">报告垃圾呼叫到 <xliff:g id="provider">%s</xliff:g></string>
   <string name="block_dialog_report_nonspam">报告非垃圾呼叫到 <xliff:g id="provider">%s</xliff:g></string>
+  <string name="plugin_login_button_title">登录</string>
+  <string name="plugin_empty_list_action_text">添加联系人</string>
 </resources>

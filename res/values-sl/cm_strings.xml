@@ -57,4 +57,8 @@
   <string name="block_dialog_description">Od te osebe ne boste več prejemali klicev ali sporočil.</string>
   <string name="block_dialog_report_spam">Prijavi kot nezaželeno na <xliff:g id="provider">%s</xliff:g></string>
   <string name="block_dialog_report_nonspam">Prijavi kot želeno na <xliff:g id="provider">%s</xliff:g></string>
+  <string name="plugin_login_msg">Vpišite se v <xliff:g id="plugin_name">%1$s</xliff:g> za ogled svojih <xliff:g id="plugin_name">%1$s</xliff:g> stikov tukaj</string>
+  <string name="plugin_login_button_title">Vpis</string>
+  <string name="plugin_empty_list_text">Nimate stikov <xliff:g id="plugin_name">%s</xliff:g>,\n</string>
+  <string name="plugin_empty_list_action_text">dodaj osebe</string>
 </resources>
