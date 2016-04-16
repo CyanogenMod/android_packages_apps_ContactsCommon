@@ -57,4 +57,8 @@
   <string name="block_dialog_description">Você não receberá mais chamadas ou mensagens desta pessoa.</string>
   <string name="block_dialog_report_spam">Reportar como spam para <xliff:g id="provider">%s</xliff:g></string>
   <string name="block_dialog_report_nonspam">Reportar como não-spam para <xliff:g id="provider">%s</xliff:g></string>
+  <string name="plugin_login_msg">Entre em <xliff:g id="plugin_name">%1$s</xliff:g> para ver seus contatos de <xliff:g id="plugin_name">%1$s</xliff:g> aqui</string>
+  <string name="plugin_login_button_title">Entrar</string>
+  <string name="plugin_empty_list_text">Você não tem contatos de <xliff:g id="plugin_name">%s</xliff:g>,\n</string>
+  <string name="plugin_empty_list_action_text">adicionar pessoas</string>
 </resources>

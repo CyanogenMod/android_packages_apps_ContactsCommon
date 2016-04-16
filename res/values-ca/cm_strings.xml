@@ -57,4 +57,8 @@
   <string name="block_dialog_description">Ja no rebràs més trucades o missatges d\'aquesta persona.</string>
   <string name="block_dialog_report_spam">Informa com a no desitjat a <xliff:g id="provider">%s</xliff:g></string>
   <string name="block_dialog_report_nonspam">Informa com a desitjat a <xliff:g id="provider">%s</xliff:g></string>
+  <string name="plugin_login_msg">Inicia la sessió a <xliff:g id="plugin_name">%1$s</xliff:g> per veure els teus contactes de <xliff:g id="plugin_name">%1$s</xliff:g> aquí</string>
+  <string name="plugin_login_button_title">Inicia la sessió</string>
+  <string name="plugin_empty_list_text">No tens contactes de <xliff:g id="plugin_name">%s</xliff:g>,\n</string>
+  <string name="plugin_empty_list_action_text">afegeix gent</string>
 </resources>

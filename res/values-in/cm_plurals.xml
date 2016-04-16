@@ -17,15 +17,12 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <plurals name="export_to_sim_failed">
-    <item quantity="other">导出失败，<xliff:g id="insertCount">%d</xliff:g> 个项目已经被导出</item>
+    <item quantity="other">Ekspor gagal, <xliff:g id="insertCount">%d</xliff:g> item telah diekspor</item>
   </plurals>
   <plurals name="export_sim_card_full">
-    <item quantity="other">SIM 卡已满， <xliff:g id="insertCount">%d</xliff:g> 个项目已经被导出</item>
+    <item quantity="other">Kartu SIM telah penuh, <xliff:g id="insertCount">%d</xliff:g> item telah dikeluarkan</item>
   </plurals>
   <plurals name="export_cancelled">
-    <item quantity="other">导出已被取消，<xliff:g id="insertCount">%d</xliff:g> 个项目已被导出</item>
-  </plurals>
-  <plurals name="spam_count_text">
-    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> 位将其标记为垃圾</item>
+    <item quantity="other">Proses pengeluaran dibatalkan, <xliff:g id="insertCount">%d</xliff:g> item telah dikeluarkan</item>
   </plurals>
 </resources>

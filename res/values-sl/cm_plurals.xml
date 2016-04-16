@@ -34,4 +34,10 @@
     <item quantity="few">Izvoz je bil preklican, izvoženi so bili <xliff:g id="insertCount">%d</xliff:g> predmeti</item>
     <item quantity="other">Izvoz je bil preklican, izvoženih je bilo <xliff:g id="insertCount">%d</xliff:g> predmetov</item>
   </plurals>
+  <plurals name="spam_count_text">
+    <item quantity="one"><xliff:g id="spamCount">%d</xliff:g> oseba je to označila kot neželeno</item>
+    <item quantity="two"><xliff:g id="spamCount">%d</xliff:g> osebi sta to označili kot neželeno</item>
+    <item quantity="few"><xliff:g id="spamCount">%d</xliff:g> osebe so to označile kot neželeno</item>
+    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> oseb je to označilo kot neželeno</item>
+  </plurals>
 </resources>

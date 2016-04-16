@@ -31,4 +31,9 @@
     <item quantity="few">Export byl zrušen, <xliff:g id="insertCount">%d</xliff:g> položky byly exportovány</item>
     <item quantity="other">Export byl zrušen, <xliff:g id="insertCount">%d</xliff:g> položek bylo exportováno</item>
   </plurals>
+  <plurals name="spam_count_text">
+    <item quantity="one"><xliff:g id="spamCount">%d</xliff:g> osoba označila toto jako spam</item>
+    <item quantity="few"><xliff:g id="spamCount">%d</xliff:g> osoby označily toto jako spam</item>
+    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> osob označilo toto jako spam</item>
+  </plurals>
 </resources>

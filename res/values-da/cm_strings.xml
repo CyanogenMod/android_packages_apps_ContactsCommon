@@ -57,4 +57,5 @@
   <string name="block_dialog_description">Du vil ikke længere modtage opkald eller beskeder fra denne person.</string>
   <string name="block_dialog_report_spam">Rapporter som spam til <xliff:g id="provider">%s</xliff:g></string>
   <string name="block_dialog_report_nonspam">Rapporter som ikke-spam til <xliff:g id="provider">%s</xliff:g></string>
+  <string name="plugin_empty_list_action_text">tilføj personer</string>
 </resources>

@@ -28,4 +28,8 @@
     <item quantity="one">S\'ha cancel·lat l\'exportació, s\'ha exportat <xliff:g id="insertCount">%d</xliff:g> article</item>
     <item quantity="other">S\'ha cancel·lat l\'exportació, s\'han exportat <xliff:g id="insertCount">%d</xliff:g> articles</item>
   </plurals>
+  <plurals name="spam_count_text">
+    <item quantity="one"><xliff:g id="spamCount">%d</xliff:g> persona ha marcat això com a brossa</item>
+    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> persones han marcat això a brossa</item>
+  </plurals>
 </resources>

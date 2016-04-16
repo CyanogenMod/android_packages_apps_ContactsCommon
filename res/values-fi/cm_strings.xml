@@ -57,4 +57,8 @@
   <string name="block_dialog_description">Et saa enään puheluita tai viestejä tältä henkilöltä.</string>
   <string name="block_dialog_report_spam">Ilmoita spam-puheluista palveluun <xliff:g id="provider">%s</xliff:g></string>
   <string name="block_dialog_report_nonspam">Ilmoita ei-spam-puhelusta palveluun <xliff:g id="provider">%s</xliff:g></string>
+  <string name="plugin_login_msg">Kirjaudu palveluun <xliff:g id="plugin_name">%1$s</xliff:g> nähdäksesi <xliff:g id="plugin_name">%1$s</xliff:g>-yhteystietosi täällä</string>
+  <string name="plugin_login_button_title">Kirjaudu sisään</string>
+  <string name="plugin_empty_list_text">Sinulla ei ole <xliff:g id="plugin_name">%s</xliff:g>-yhteystietoja.\n</string>
+  <string name="plugin_empty_list_action_text">lisää henkilöitä</string>
 </resources>
