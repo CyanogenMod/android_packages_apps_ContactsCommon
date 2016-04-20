@@ -16,15 +16,24 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">Helyi táblagép fiók</string>
   <string name="local_storage_account" product="default">Helyi telefon fiók</string>
+  <!-- CMCC -->
   <string name="import_contacts_sim">Importálja a névjegyeket a SIM-kártyáról?</string>
+  <!-- CAF -->
+  <!-- Action string for managing SIM contacts -->
   <string name="manage_sim_contacts">SIM-kártya névjegyek kezelése</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">Exportálás SIM kártyára</string>
+  <!--The failed reason shown when importing a vCard file -->
   <string name="fail_reason_import_vcard">\"<xliff:g id="name">%s</xliff:g>\" I/O hiba miatt nem lehetett importálni</string>
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="contact_share_failed_toast"><xliff:g id="count">%d</xliff:g> névjegynél több nem osztható meg</string>
   <string name="label_groups">Csoport</string>
   <string name="exporting">Exportálás\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> / <xliff:g id="total_number">%2$s</xliff:g> fájl</string>
   <string name="export_failed">Exportálás sikertelen</string>
   <string name="sim_card_full">SIM-kártya megtelt</string>
@@ -37,14 +46,21 @@
   </plurals>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> nem rendelkezik telefonszámmal, vagy e-mail címmel</string>
   <string name="import_from_sim_select">Kártya kiválasztása importáláshoz</string>
+  <!-- Dialog title shown when (USB) storage does not exist [CHAR LIMIT=25] -->
   <string name="no_sdcard_title" product="nosdcard">A tárhely nem érhető el</string>
+  <!-- Dialog title shown when SD Card does not exist -->
   <string name="no_sdcard_title" product="default">Nincs SD kártya</string>
+  <!-- Confirmation dialog title after users selects to delete a contact. [CHAR LIMIT=25]-->
   <string name="deleteConfirmation_title">Törli a névjegyet?</string>
+  <!-- Confirmation dialog contents after users selects to delete a Writable contact. -->
   <string name="deleteConfirmation">Ez a névjegy törlésre kerül.</string>
   <string name="copy_done">A névjegy másolása sikeres</string>
   <string name="copy_failure">A névjegy másolása sikertelen</string>
   <string name="card_no_space">A névjegy másolása sikertelen, a SIM-kártya megtelt</string>
+  <!-- Detailed description of the preference section that allows users to configure how they
+         want their contacts to be displayed. [CHAR LIMIT=128] -->
   <string name="settings_contact_display_options_description">Névjegy megjelenítési lehetőségei.</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot">IP hívás a következővel: <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Nincs IP szám</string>
   <string name="no_ip_number_on_sim_card">Nincs IP szám a SIM kártyán</string>

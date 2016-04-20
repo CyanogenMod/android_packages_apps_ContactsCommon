@@ -16,15 +16,24 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">Plaaslike tablet rekening</string>
   <string name="local_storage_account" product="default">Plaaslike telefoon rekening</string>
+  <!-- CMCC -->
   <string name="import_contacts_sim">Voer kontakte in van SIM kaart?</string>
+  <!-- CAF -->
+  <!-- Action string for managing SIM contacts -->
   <string name="manage_sim_contacts">Bestuur SIM kaart kontakte</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">Uitvoer na SIM-kaart</string>
+  <!--The failed reason shown when importing a vCard file -->
   <string name="fail_reason_import_vcard">\'<xliff:g id="name">%s</xliff:g>\' kon nie ingevoer word nie a.g.v. \'n I/U fout</string>
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="contact_share_failed_toast">Nie meer as <xliff:g id="count">%d</xliff:g> kontakte kan gedeel word nie</string>
   <string name="label_groups">Groepe</string>
   <string name="exporting">Uitvoering\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> van <xliff:g id="total_number">%2$s</xliff:g> lêers</string>
   <string name="export_failed">Uitvoer het misluk</string>
   <string name="sim_card_full">SIM kaart is vol</string>
@@ -37,14 +46,21 @@
   </plurals>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> het nie \'n telefoonnommer of epos adres nie</string>
   <string name="import_from_sim_select">Kies kaart om in te voer</string>
+  <!-- Dialog title shown when (USB) storage does not exist [CHAR LIMIT=25] -->
   <string name="no_sdcard_title" product="nosdcard">Spasie onbeskikbaar</string>
+  <!-- Dialog title shown when SD Card does not exist -->
   <string name="no_sdcard_title" product="default">Geen SD kaart</string>
+  <!-- Confirmation dialog title after users selects to delete a contact. [CHAR LIMIT=25]-->
   <string name="deleteConfirmation_title">Verwyder kontak?</string>
+  <!-- Confirmation dialog contents after users selects to delete a Writable contact. -->
   <string name="deleteConfirmation">Hierdie kontak sal verwyder word.</string>
   <string name="copy_done">Kontak suksesvol gekopieer</string>
   <string name="copy_failure">Kopiëring van die kontak het misluk</string>
   <string name="card_no_space">Kopiëring van die kontak het misluk, die SIM-kaart is vol</string>
+  <!-- Detailed description of the preference section that allows users to configure how they
+         want their contacts to be displayed. [CHAR LIMIT=128] -->
   <string name="settings_contact_display_options_description">Stel hoe jou kontakte vertoon en gesorteer sal word.</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot">IP oproep via <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Geen IP nommer</string>
   <string name="no_ip_number_on_sim_card">Geen IP nommer op SIM-kaart</string>

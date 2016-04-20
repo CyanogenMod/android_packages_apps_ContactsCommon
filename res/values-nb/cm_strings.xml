@@ -16,15 +16,24 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">Lokal tablet konto</string>
   <string name="local_storage_account" product="default">Lokal mobilkonto</string>
+  <!-- CMCC -->
   <string name="import_contacts_sim">Importere kontakter fra SIM-kortet?</string>
+  <!-- CAF -->
+  <!-- Action string for managing SIM contacts -->
   <string name="manage_sim_contacts">Administrere SIM-kortkontakter</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">Eksportere til SIM-kortet</string>
+  <!--The failed reason shown when importing a vCard file -->
   <string name="fail_reason_import_vcard">\' <xliff:g id="name">%s\' </xliff:g> kan ikke importeres pga I/O feil</string>
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="contact_share_failed_toast">Ikke mer enn <xliff:g id="count">%d</xliff:g> kontakter kan bli delt</string>
   <string name="label_groups">Gruppe</string>
   <string name="exporting">Eksporterer\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> <xliff:g id="total_number">%2$s</xliff:g> filer</string>
   <string name="export_failed">Eksporteringen mislyktes</string>
   <string name="sim_card_full">SIM-kortet er fullt</string>
@@ -37,14 +46,21 @@
   </plurals>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> har ikke ett telefonnummer eller e-postadresse</string>
   <string name="import_from_sim_select">Velg kort å importere</string>
+  <!-- Dialog title shown when (USB) storage does not exist [CHAR LIMIT=25] -->
   <string name="no_sdcard_title" product="nosdcard">Lagring utilgjengelig</string>
+  <!-- Dialog title shown when SD Card does not exist -->
   <string name="no_sdcard_title" product="default">Ingen SD-kort</string>
+  <!-- Confirmation dialog title after users selects to delete a contact. [CHAR LIMIT=25]-->
   <string name="deleteConfirmation_title">Slette kontakt?</string>
+  <!-- Confirmation dialog contents after users selects to delete a Writable contact. -->
   <string name="deleteConfirmation">Denne kontakten vil bli slettet.</string>
   <string name="copy_done">Kontakten ble vellykket kopiert</string>
   <string name="copy_failure">Kopiering av kontakten mislyktes</string>
   <string name="card_no_space">Kopiering av kontakten mislyktes, SIM-kortet er fullt</string>
+  <!-- Detailed description of the preference section that allows users to configure how they
+         want their contacts to be displayed. [CHAR LIMIT=128] -->
   <string name="settings_contact_display_options_description">Konfigurer hvordan kontaktene skal vises og sorteres.</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot">IP-samtale med <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Ingen IP-nummer</string>
   <string name="no_ip_number_on_sim_card">Ingen IP-nummeret på SIM-kortet</string>

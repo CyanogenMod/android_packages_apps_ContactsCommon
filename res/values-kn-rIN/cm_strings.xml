@@ -16,15 +16,24 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">ಸ್ಥಳೀಯ ಟ್ಯಾಬ್ಲೆಟ್ ಖಾತೆ</string>
   <string name="local_storage_account" product="default">ಸ್ಥಳೀಯ ಫೋನ್ ಖಾತೆ</string>
+  <!-- CMCC -->
   <string name="import_contacts_sim">ಸಿಮ್ ಕಾರ್ಡ್‍ನಿಂದ ಸಂಪರ್ಕಗಳನ್ನು ಆಮದುಮಾಡು?</string>
+  <!-- CAF -->
+  <!-- Action string for managing SIM contacts -->
   <string name="manage_sim_contacts">ಸಿಮ್ ಕಾರ್ಡ್ ಸಂಪರ್ಕಗಳನ್ನು ನಿರ್ವಹಿಸಿ</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">ಸಿಮ್ ಕಾರ್ಡ್‍ಗೆ ರಫ್ತುಮಾಡಿ</string>
+  <!--The failed reason shown when importing a vCard file -->
   <string name="fail_reason_import_vcard">\'<xliff:g id="name">%s</xliff:g>\'ನ್ನು ಒಂದು I/O ದೋಷದಿಂದಾಗಿ ಆಮದುಮಾಡಲಾಗಲಿಲ್ಲ</string>
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="contact_share_failed_toast"><xliff:g id="count">%d</xliff:g>ಕ್ಕಿಂತ ಹೆಚ್ಚು ಸಂಪರ್ಕಗಳನ್ನು ಹಂಚಲು ಸಾಧ್ಯವಿಲ್ಲ</string>
   <string name="label_groups">ಗುಂಪು</string>
   <string name="exporting">ರಫ್ತುಮಾಡಲಾಗುತ್ತಿದೆ\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files"><xliff:g id="total_number">%2$s</xliff:g> ರಲ್ಲಿ <xliff:g id="current_number">%1$s</xliff:g> ಕಡತಗಳು</string>
   <string name="export_failed">ರಫ್ತು ವಿಫಲವಾಗಿದೆ</string>
   <string name="sim_card_full">ಸಿಮ್ ಕಾರ್ಡ್ ಭರ್ತಿಯಾಗಿದೆ</string>
@@ -37,14 +46,21 @@
   </plurals>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> ದೂರವಾಣಿ ಸಂಖ್ಯೆ ಅಥವಾ ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ಹೊಂದಿಲ್ಲ</string>
   <string name="import_from_sim_select">ಆಮದುಮಾಡಲು ಕಾರ್ಡ್ ಆರಿಸಿ</string>
+  <!-- Dialog title shown when (USB) storage does not exist [CHAR LIMIT=25] -->
   <string name="no_sdcard_title" product="nosdcard">ಸಂಗ್ರಹಣೆ ಲಭ್ಯವಿಲ್ಲ</string>
+  <!-- Dialog title shown when SD Card does not exist -->
   <string name="no_sdcard_title" product="default">SD ಕಾರ್ಡ್ ಇಲ್ಲ</string>
+  <!-- Confirmation dialog title after users selects to delete a contact. [CHAR LIMIT=25]-->
   <string name="deleteConfirmation_title">ಸಂಪರ್ಕವನ್ನು ಅಳಿಸು?</string>
+  <!-- Confirmation dialog contents after users selects to delete a Writable contact. -->
   <string name="deleteConfirmation">ಈ ಸಂಪರ್ಕವನ್ನು ಅಳಿಸಲಾಗುವುದು.</string>
   <string name="copy_done">ಸಂಪರ್ಕವನ್ನು ಯಶಸ್ವಿಯಾಗಿ ನಕಲಿಸಲಾಗಿದೆ</string>
   <string name="copy_failure">ಸಂಪರ್ಕವನ್ನು ನಕಲಿಸುವಲ್ಲಿ ವಿಫಲವಾಗಿದೆ</string>
   <string name="card_no_space">ಸಂಪರ್ಕವನ್ನು ನಕಲಿಸುವಲ್ಲಿ ವಿಫಲವಾಗಿದೆ, ಸಿಮ್ ಕಾರ್ಡ್ ಭರ್ತಿಯಾಗಿದೆ</string>
+  <!-- Detailed description of the preference section that allows users to configure how they
+         want their contacts to be displayed. [CHAR LIMIT=128] -->
   <string name="settings_contact_display_options_description">ನಿಮ್ಮ ಸಂಪರ್ಕಗಳು ಹೇಗೆ ಪ್ರದರ್ಶಿತವಾಗಬೇಕು ಮತ್ತು ಶೋಧಿತವಾಗಬೇಕೆಂಬುದನ್ನು ಕಾನ್ಫಿಗರ್‍ಮಾಡಿ.</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot"><xliff:g id="subName">%s</xliff:g> ಮೂಲಕ IP ಕರೆ</string>
   <string name="no_ip_number">IP ಸಂಖ್ಯೆ ಇಲ್ಲ</string>
   <string name="no_ip_number_on_sim_card">ಸಿಮ್ ಕಾರ್ಡ್‍ನಲ್ಲಿ ಯಾವುದೇ IP ಸಂಖ್ಯೆ ಇಲ್ಲ</string>

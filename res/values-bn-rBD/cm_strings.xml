@@ -16,7 +16,23 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">স্থানীয় ট্যাবলেট একাউন্ট</string>
+  <!-- CMCC -->
+  <!-- CAF -->
+  <!-- Action string for managing SIM contacts -->
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">সিম কার্ডে রপ্তানি করুন</string>
+  <!--The failed reason shown when importing a vCard file -->
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
+  <!-- Dialog title shown when (USB) storage does not exist [CHAR LIMIT=25] -->
+  <!-- Dialog title shown when SD Card does not exist -->
+  <!-- Confirmation dialog title after users selects to delete a contact. [CHAR LIMIT=25]-->
+  <!-- Confirmation dialog contents after users selects to delete a Writable contact. -->
+  <!-- Detailed description of the preference section that allows users to configure how they
+         want their contacts to be displayed. [CHAR LIMIT=128] -->
+  <!-- Menu item used to initiate ip call -->
   <string name="select_sim">সিম নির্বাচন</string>
 </resources>

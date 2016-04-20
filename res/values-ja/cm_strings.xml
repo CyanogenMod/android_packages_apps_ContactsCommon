@@ -16,15 +16,24 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">タブレットのローカルアカウント</string>
   <string name="local_storage_account" product="default">携帯電話のローカルアカウント</string>
+  <!-- CMCC -->
   <string name="import_contacts_sim">SIMカードから連絡先をインポートしますか？</string>
+  <!-- CAF -->
+  <!-- Action string for managing SIM contacts -->
   <string name="manage_sim_contacts">SIMカードの連絡先を管理</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">SIMカードにエクスポート</string>
-  <string name="fail_reason_import_vcard">「<xliff:g id="name">%s</xliff:g>」はI/0エラーによりインポートできませんでした</string>
+  <!--The failed reason shown when importing a vCard file -->
+  <string name="fail_reason_import_vcard">[<xliff:g id="name">%s</xliff:g>]はI/0エラーによってインポートできませんでした</string>
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="contact_share_failed_toast"><xliff:g id="count">%d</xliff:g>件以上の連絡先は共有できません</string>
   <string name="label_groups">グループ</string>
   <string name="exporting">エクスポート中\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files"><xliff:g id="total_number">%2$s</xliff:g>個のうち<xliff:g id="current_number">%1$s</xliff:g>個のファイル</string>
   <string name="export_failed">エクスポートできませんでした</string>
   <string name="sim_card_full">SIMカードがいっぱいです</string>
@@ -36,14 +45,21 @@
   </plurals>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g>には電話番号またはメールアドレスがありません</string>
   <string name="import_from_sim_select">インポートするカードを選択</string>
+  <!-- Dialog title shown when (USB) storage does not exist [CHAR LIMIT=25] -->
   <string name="no_sdcard_title" product="nosdcard">ストレージが利用できません</string>
+  <!-- Dialog title shown when SD Card does not exist -->
   <string name="no_sdcard_title" product="default">SDカードがありません</string>
+  <!-- Confirmation dialog title after users selects to delete a contact. [CHAR LIMIT=25]-->
   <string name="deleteConfirmation_title">連絡先を削除しますか？</string>
+  <!-- Confirmation dialog contents after users selects to delete a Writable contact. -->
   <string name="deleteConfirmation">この連絡先は削除されます。</string>
   <string name="copy_done">連絡先のコピーが完了しました</string>
   <string name="copy_failure">連絡先をコピーできませんでした</string>
   <string name="card_no_space">連絡先をコピーできませんでした、SIMカードがいっぱいです</string>
+  <!-- Detailed description of the preference section that allows users to configure how they
+         want their contacts to be displayed. [CHAR LIMIT=128] -->
   <string name="settings_contact_display_options_description">連絡先の表示と並び順を設定する</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot"><xliff:g id="subName">%s</xliff:g>経由でIP電話で発信</string>
   <string name="no_ip_number">IP番号がありません</string>
   <string name="no_ip_number_on_sim_card">SIMカードにIP番号がありません</string>

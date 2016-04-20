@@ -16,15 +16,24 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">로컬 태블릿 계정</string>
   <string name="local_storage_account" product="default">로컬 휴대전화 계정</string>
+  <!-- CMCC -->
   <string name="import_contacts_sim">SIM 카드에서 연락처를 가져올까요?</string>
+  <!-- CAF -->
+  <!-- Action string for managing SIM contacts -->
   <string name="manage_sim_contacts">SIM 카드 연락처 관리</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">SIM 카드로 내보내기</string>
+  <!--The failed reason shown when importing a vCard file -->
   <string name="fail_reason_import_vcard">I/O 오류로 인해 \'<xliff:g id="name">%s</xliff:g>\'을(를) 가져올 수 없었습니다</string>
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="contact_share_failed_toast"><xliff:g id="count">%d</xliff:g>건보다 많은 수의 연락처는 공유할 수 없습니다</string>
   <string name="label_groups">그룹</string>
   <string name="exporting">내보내는 중\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files"><xliff:g id="total_number">%2$s</xliff:g>개 중 <xliff:g id="current_number">%1$s</xliff:g>번째 파일</string>
   <string name="export_failed">내보내기 실패</string>
   <string name="sim_card_full">SIM 카드가 가득 찼습니다</string>
@@ -36,14 +45,21 @@
   </plurals>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g>에 전화번호 또는 이메일 주소가 필요합니다</string>
   <string name="import_from_sim_select">가져올 SIM 카드 선택</string>
+  <!-- Dialog title shown when (USB) storage does not exist [CHAR LIMIT=25] -->
   <string name="no_sdcard_title" product="nosdcard">저장소를 사용할 수 없음</string>
+  <!-- Dialog title shown when SD Card does not exist -->
   <string name="no_sdcard_title" product="default">SD 카드 없음</string>
+  <!-- Confirmation dialog title after users selects to delete a contact. [CHAR LIMIT=25]-->
   <string name="deleteConfirmation_title">연락처를 삭제할까요?</string>
+  <!-- Confirmation dialog contents after users selects to delete a Writable contact. -->
   <string name="deleteConfirmation">이 연락처가 삭제될 것입니다.</string>
   <string name="copy_done">연락처가 성공적으로 복사되었습니다</string>
   <string name="copy_failure">연락처를 복사하지 못했습니다</string>
   <string name="card_no_space">SIM 카드가 가득 차 있어 연락처를 복사하지 못했습니다</string>
+  <!-- Detailed description of the preference section that allows users to configure how they
+         want their contacts to be displayed. [CHAR LIMIT=128] -->
   <string name="settings_contact_display_options_description">연락처가 표시 및 정렬되는 방식을 구성합니다.</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot"><xliff:g id="subName">%s</xliff:g>(으)로 IP 통화</string>
   <string name="no_ip_number">IP 번호 없음</string>
   <string name="no_ip_number_on_sim_card">SIM 카드에 IP 번호 없음</string>
