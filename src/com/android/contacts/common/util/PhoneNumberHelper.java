@@ -201,4 +201,30 @@ public class PhoneNumberHelper {
         }
         return number.substring(0, delimiterIndex);
     }
+
+    /**
+     * Determine whether a phone number matches a valid phone number pattern for a specified region.
+     *
+     * @param context application context
+     * @param phoneNumber The number to be formatted.
+     * @param defaultCountryIso The ISO 3166-1 two letters country code whose convention will
+     * be used if the given number doesn't have the country code.
+     * @return boolean representing whether valid phone number or not.
+     */
+    public static boolean isValidNumber(Context context, String phoneNumber,
+            String defaultCountryIso) {
+        final String iso = TextUtils.isEmpty(defaultCountryIso) ?
+                GeoUtil.getCurrentCountryIso(context) : defaultCountryIso;
+        final PhoneNumberUtil util = PhoneNumberUtil.getInstance();
+        boolean result = false;
+
+        try {
+            PhoneNumber pn = util.parseAndKeepRawInput(phoneNumber, iso);
+            result = util.isValidNumber(pn);
+        } catch (NumberParseException e) {
+            Log.w(LOG_TAG, "Number could not be parsed with the given country code!", e);
+        }
+
+        return result;
+    }
 }

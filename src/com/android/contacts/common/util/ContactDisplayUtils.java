@@ -22,6 +22,7 @@ import android.content.Context;
 import android.telephony.PhoneNumberUtils;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.text.style.TtsSpan;
 import android.util.Log;
 import android.util.Patterns;
@@ -81,6 +82,34 @@ public class ContactDisplayUtils {
 
             return context.getResources().getText(resId);
         }
+    }
+
+    /**
+     * Gets a display label for a given phone type.
+     *
+     * @param context The application context.
+     * @param number The number associated with this label query
+     * @param type The type of number.
+     * @param customLabel A custom label to use if the phone is determined to be of custom type
+     * determined by {@link #isCustomPhoneType(Integer))}
+     * @param inCallApiPluginName If number being called is an InCallApi plugin contact, use the
+     * plugin name instead of the custom label.
+     * @return An appropriate string label
+     */
+    public static String getLabelForCall(Context context, String number, Integer type,
+            CharSequence customLabel, String inCallApiPluginName) {
+        Preconditions.checkNotNull(context);
+
+        String label = null;
+        if (isCustomPhoneType(type) && !PhoneNumberUtils.isGlobalPhoneNumber(number)) {
+            label = inCallApiPluginName;
+        }
+
+        if (TextUtils.isEmpty(label)) {
+            label = Phone.getTypeLabel(context.getResources(), type, customLabel).toString();
+        }
+
+        return label;
     }
 
     /**
