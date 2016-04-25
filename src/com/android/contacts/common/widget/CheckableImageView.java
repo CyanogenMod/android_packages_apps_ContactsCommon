@@ -78,6 +78,7 @@ public class CheckableImageView extends ImageView implements Checkable {
             if (mDrawable == null) {
                 mDrawable = new CheckableFlipDrawable(d, getResources(),
                         mCheckMarkBackgroundColor, 150);
+                mDrawable.scaleFrontDrawableToBounds(false);
                 applyCheckState(false);
             } else {
                 mDrawable.setFront(d);
