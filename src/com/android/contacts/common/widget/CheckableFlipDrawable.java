@@ -129,7 +129,7 @@ public class CheckableFlipDrawable extends FlipDrawable implements
 
     private static class FrontDrawable extends Drawable implements Drawable.Callback {
         private Drawable mDrawable;
-        private boolean mScaleDrawableToBounds = false; // only applies to drawables with intrinsic
+        private boolean mScaleDrawableToBounds = true; // only applies to drawables with intrinsic
                                                         // height and width
 
         public FrontDrawable(Drawable d) {
