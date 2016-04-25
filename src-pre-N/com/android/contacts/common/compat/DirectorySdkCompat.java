@@ -30,7 +30,7 @@ public class DirectorySdkCompat {
     public static final long ENTERPRISE_LOCAL_DEFAULT = 1000000000L + Directory.DEFAULT;
     public static final long ENTERPRISE_LOCAL_INVISIBLE = 1000000000L + Directory.LOCAL_INVISIBLE;
 
-    public static boolean isRemoteDirectory(long directoryId) {
+    public static boolean isRemoteDirectoryId(long directoryId) {
         Log.wtf(TAG, "Not Implemented");
         return false;
     }
