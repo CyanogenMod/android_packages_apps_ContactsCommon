@@ -26,6 +26,7 @@ import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.DrawableWrapper;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.Contacts;
@@ -1523,8 +1524,7 @@ public class ContactListItemView extends ViewGroup
      */
     public void setDrawableResource(int drawableId) {
         ImageView photo = getPhotoView();
-        photo.setScaleType(ImageView.ScaleType.CENTER);
-        photo.setImageDrawable(getContext().getDrawable(drawableId));
+        photo.setImageDrawable(new UnscaledDrawableWrapper(getContext().getDrawable(drawableId)));
         photo.setImageTintList(ColorStateList.valueOf(
                 getContext().getColor(R.color.search_shortcut_icon_color)));
     }
@@ -1556,5 +1556,39 @@ public class ContactListItemView extends ViewGroup
     private final boolean pointIsInView(float localX, float localY) {
         return localX >= mLeftOffset && localX < mRightOffset
                 && localY >= 0 && localY < (getBottom() - getTop());
+    }
+
+    private static class UnscaledDrawableWrapper extends DrawableWrapper {
+        private Rect mTmpRect = new Rect();
+
+        public UnscaledDrawableWrapper(Drawable drawable) {
+            super(drawable);
+        }
+
+        @Override
+        public int getIntrinsicWidth() {
+            return -1;
+        }
+
+        @Override
+        public int getIntrinsicHeight() {
+            return -1;
+        }
+
+        @Override
+        protected void onBoundsChange(Rect bounds) {
+            final Drawable d = getDrawable();
+            final Rect r = mTmpRect;
+
+            int w = d.getIntrinsicWidth();
+            int h = d.getIntrinsicHeight();
+
+            if (w <= 0 || h <= 0) {
+                d.setBounds(bounds);
+            } else {
+                Gravity.apply(Gravity.CENTER, w, h, bounds, r, getLayoutDirection());
+                d.setBounds(r.left, r.top, r.right, r.bottom);
+            }
+        }
     }
 }
