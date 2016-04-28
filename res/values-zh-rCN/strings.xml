@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
+<!--
   ~ Copyright (C) 2012 The Android Open Source Project
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -164,7 +164,8 @@
     <string name="listAllContactsInAccount" msgid="755499980092808715">"<xliff:g id="NAME">%s</xliff:g> 中的联系人"</string>
     <string name="listCustomView" msgid="1915154113477432033">"自定义视图中的联系人"</string>
     <string name="listSingleContact" msgid="8525131203887307088">"单个联系人"</string>
-    <string name="dialog_new_contact_account" msgid="32435918254518570">"将导入的联系人保存到："</string>
+    <string name="dialog_new_contact_account" msgid="4107520273478326011">"在以下帐户中创建联系人："</string>
+    <string name="export_to_sim">"导出到 SIM 卡"</string>
     <string name="import_from_sim" msgid="4749894687871835873">"从 SIM 卡导入"</string>
     <string name="import_from_sim_summary" msgid="2306434118233541675">"从 SIM 卡“<xliff:g id="SIM_NAME">^1</xliff:g>” - <xliff:g id="SIM_NUMBER">^2</xliff:g> 导入"</string>
     <string name="import_from_sim_summary_no_number" msgid="8498561004799710237">"从 SIM 卡“<xliff:g id="SIM_NAME">%1$s</xliff:g>”导入"</string>

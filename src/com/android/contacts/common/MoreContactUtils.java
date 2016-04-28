@@ -22,11 +22,21 @@ import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 
 import android.content.Context;
+import android.content.ContentProviderOperation;
+import android.content.ContentProviderResult;
+import android.content.ContentValues;
+import android.content.OperationApplicationException;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteException;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.net.Uri;
+import android.os.RemoteException;
 import android.provider.ContactsContract;
+import android.provider.ContactsContract.CommonDataKinds.Email;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.provider.ContactsContract.CommonDataKinds.StructuredName;
+import android.provider.ContactsContract.Data;
 import android.provider.ContactsContract.RawContacts;
 import android.provider.Settings;
 import android.telephony.SubscriptionManager;
@@ -41,6 +51,8 @@ import android.util.Log;
 import com.android.contacts.common.model.account.AccountType;
 import com.android.contacts.common.SimContactsConstants;
 
+import java.util.ArrayList;
+import java.util.List;
 /**
  * Shared static contact utility methods.
  */
@@ -49,6 +61,14 @@ public class MoreContactUtils {
     private static final String WAIT_SYMBOL_AS_STRING = String.valueOf(PhoneNumberUtils.WAIT);
     private static final boolean DBG = true;
     private static final String TAG = "MoreContactUtils";
+    public static final int MAX_LENGTH_NAME_IN_SIM = 14;
+    public static final int MAX_LENGTH_NAME_WITH_CHINESE_IN_SIM = 6;
+    public static final int MAX_LENGTH_NUMBER_IN_SIM = 20;
+    public static final int MAX_LENGTH_EMAIL_IN_SIM = 40;
+    private static final int NAME_POS = 0;
+    private static final int NUMBER_POS = 1;
+    private static final int EMAIL_POS = 2;
+    private static final int ANR_POS = 3;
     /**
      * Returns true if two data with mimetypes which represent values in contact entries are
      * considered equal for collapsing in the GUI. For caller-id, use
@@ -504,5 +524,164 @@ public class MoreContactUtils {
         if (subInfoRecord != null)
             return subInfoRecord.getSimSlotIndex();
         return SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+    }
+
+    private static boolean hasChinese(String name) {
+        return name != null && name.getBytes().length > name.length();
+    }
+
+    public static boolean insertToPhone(String[] values, Context c, int sub) {
+        Account account = getAcount(c, sub);
+        final String name = values[NAME_POS];
+        final String phoneNumber = values[NUMBER_POS];
+        final String emailAddresses = values[EMAIL_POS];
+        final String anrs = values[ANR_POS];
+
+        final String[] emailAddressArray;
+        final String[] anrArray;
+        boolean success = true;
+        if (!TextUtils.isEmpty(emailAddresses)) {
+            emailAddressArray = emailAddresses.split(",");
+        } else {
+            emailAddressArray = null;
+        }
+        if (!TextUtils.isEmpty(anrs)) {
+            anrArray = anrs.split(SimContactsConstants.ANR_SEP);
+        } else {
+            anrArray = null;
+        }
+        if (DBG) {
+            Log.d(TAG, "insertToPhone: name= " + name + ", phoneNumber= " + phoneNumber
+                    + ", emails= " + emailAddresses + ", anrs= " + anrs + ", account= " + account);
+        }
+        final ArrayList<ContentProviderOperation> operationList =
+                new ArrayList<ContentProviderOperation>();
+        ContentProviderOperation.Builder builder = ContentProviderOperation
+                .newInsert(RawContacts.CONTENT_URI);
+        builder.withValue(RawContacts.AGGREGATION_MODE, RawContacts.AGGREGATION_MODE_DISABLED);
+
+        if (account != null) {
+            builder.withValue(RawContacts.ACCOUNT_NAME, account.name);
+            builder.withValue(RawContacts.ACCOUNT_TYPE, account.type);
+        }
+        operationList.add(builder.build());
+
+        // do not allow empty value insert into database.
+        if (!TextUtils.isEmpty(name)) {
+            builder = ContentProviderOperation.newInsert(Data.CONTENT_URI);
+            builder.withValueBackReference(StructuredName.RAW_CONTACT_ID, 0);
+            builder.withValue(Data.MIMETYPE, StructuredName.CONTENT_ITEM_TYPE);
+            builder.withValue(StructuredName.DISPLAY_NAME, name);
+            operationList.add(builder.build());
+        }
+
+        if (!TextUtils.isEmpty(phoneNumber)) {
+            builder = ContentProviderOperation.newInsert(Data.CONTENT_URI);
+            builder.withValueBackReference(Phone.RAW_CONTACT_ID, 0);
+            builder.withValue(Data.MIMETYPE, Phone.CONTENT_ITEM_TYPE);
+            builder.withValue(Phone.TYPE, Phone.TYPE_MOBILE);
+            builder.withValue(Phone.NUMBER, phoneNumber);
+            builder.withValue(Data.IS_PRIMARY, 1);
+            operationList.add(builder.build());
+        }
+
+        if (anrArray != null) {
+            for (String anr : anrArray) {
+                if (!TextUtils.isEmpty(anr)) {
+                    builder = ContentProviderOperation.newInsert(Data.CONTENT_URI);
+                    builder.withValueBackReference(Phone.RAW_CONTACT_ID, 0);
+                    builder.withValue(Data.MIMETYPE, Phone.CONTENT_ITEM_TYPE);
+                    builder.withValue(Phone.TYPE, Phone.TYPE_HOME);
+                    builder.withValue(Phone.NUMBER, anr);
+                    operationList.add(builder.build());
+                }
+            }
+        }
+
+        if (emailAddressArray != null) {
+            for (String emailAddress : emailAddressArray) {
+                if (!TextUtils.isEmpty(emailAddress)) {
+                    builder = ContentProviderOperation.newInsert(Data.CONTENT_URI);
+                    builder.withValueBackReference(Email.RAW_CONTACT_ID, 0);
+                    builder.withValue(Data.MIMETYPE, Email.CONTENT_ITEM_TYPE);
+                    builder.withValue(Email.TYPE, Email.TYPE_MOBILE);
+                    builder.withValue(Email.ADDRESS, emailAddress);
+                    operationList.add(builder.build());
+                }
+            }
+        }
+
+        try {
+            ContentProviderResult[] results =
+                    c.getContentResolver().applyBatch(ContactsContract.AUTHORITY, operationList);
+            for (ContentProviderResult result: results) {
+                if (result.uri == null) {
+                    success = false;
+                    break;
+                }
+            }
+            return success;
+        } catch (RemoteException e) {
+            Log.e(TAG, String.format("%s: %s", e.toString(), e.getMessage()));
+            return false;
+        } catch (OperationApplicationException e) {
+            Log.e(TAG, String.format("%s: %s", e.toString(), e.getMessage()));
+            return false;
+        } catch (SQLiteException e) {
+            Log.e(TAG, String.format("%s: %s", e.toString(), e.getMessage()));
+            return false;
+        }
+    }
+
+    public static Uri insertToCard(Context context, String name, String number, String emails,
+            String anrNumber, int subscription) {
+        return insertToCard(context, name, number, emails, anrNumber,subscription, true);
+    }
+
+    public static Uri insertToCard(Context context, String name, String number, String emails,
+            String anrNumber, int subscription, boolean insertToPhone) {
+        // add the max count limit of Chinese code or not
+        if (!TextUtils.isEmpty(name)) {
+            final int maxLen = hasChinese(name) ? MAX_LENGTH_NAME_WITH_CHINESE_IN_SIM
+                    : MAX_LENGTH_NAME_IN_SIM;
+            if (name.length() > maxLen) {
+                name = name.substring(0, maxLen);
+            }
+        }
+        Uri result;
+        ContentValues mValues = new ContentValues();
+        mValues.clear();
+        mValues.put(SimContactsConstants.STR_TAG, name);
+        if (!TextUtils.isEmpty(number)) {
+            number = PhoneNumberUtils.stripSeparators(number);
+            if (number.length() > MAX_LENGTH_NUMBER_IN_SIM) {
+                number = number.substring(0, MAX_LENGTH_NUMBER_IN_SIM);
+            }
+
+            mValues.put(SimContactsConstants.STR_NUMBER, number);
+        }
+        if (!TextUtils.isEmpty(emails)) {
+            mValues.put(SimContactsConstants.STR_EMAILS, emails);
+        }
+        if (!TextUtils.isEmpty(anrNumber)) {
+            anrNumber = anrNumber.replaceAll("[^0123456789PWN\\,\\;\\*\\#\\+\\:]", "");
+            mValues.put(SimContactsConstants.STR_ANRS, anrNumber);
+        }
+
+        SimContactsOperation mSimContactsOperation = new SimContactsOperation(context);
+        result = mSimContactsOperation.insert(mValues, subscription);
+
+        if (result != null) {
+            if (insertToPhone) {
+                // we should import the contact to the sim account at the same
+                // time.
+                String[] value = new String[] { name, number, emails, anrNumber };
+                insertToPhone(value, context, subscription);
+            }
+        } else {
+            Log.e(TAG, "export contact: [" + name + ", " + number + ", " + emails + "] to slot "
+                    + subscription + " failed");
+        }
+        return result;
     }
 }

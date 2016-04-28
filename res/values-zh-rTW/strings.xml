@@ -164,7 +164,8 @@
     <string name="listAllContactsInAccount" msgid="755499980092808715">"<xliff:g id="NAME">%s</xliff:g> 中的聯絡人"</string>
     <string name="listCustomView" msgid="1915154113477432033">"聯絡人自訂檢視"</string>
     <string name="listSingleContact" msgid="8525131203887307088">"單一聯絡人"</string>
-    <string name="dialog_new_contact_account" msgid="32435918254518570">"將匯入的聯絡人儲存到："</string>
+    <string name="dialog_new_contact_account" msgid="4107520273478326011">"在帳戶下建立聯絡人"</string>
+    <string name="export_to_sim">"導出到 SIM 卡"</string>
     <string name="import_from_sim" msgid="4749894687871835873">"從 SIM 卡匯入"</string>
     <string name="import_from_sim_summary" msgid="2306434118233541675">"從 SIM 卡 <xliff:g id="SIM_NAME">^1</xliff:g> - <xliff:g id="SIM_NUMBER">^2</xliff:g> 匯入"</string>
     <string name="import_from_sim_summary_no_number" msgid="8498561004799710237">"從 SIM 卡 <xliff:g id="SIM_NAME">%1$s</xliff:g> 匯入"</string>
@@ -256,6 +257,24 @@
     <string name="action_menu_back_from_search" msgid="1138551123844019647">"停止搜尋"</string>
     <string name="description_clear_search" msgid="3893511425518852086">"清除搜尋"</string>
     <string name="settings_contact_display_options_title" msgid="1020420603072835628">"聯絡人顯示選項"</string>
+    <string name="settings_contact_display_options_description" msgid="4130259058302284077">"設定聯絡人的顯示和排序方式。"</string>
+    <string name="exporting">"正在導出"</string>
+    <string name="reading_vcard_files">讀取Vcard文件</string>
+    <string name="export_to_sim_failed">"導出失敗，<xliff:g id="insertCount">%d</xliff:g>條成功導出"</string>
+    <string name="export_sim_card_full">"SIM卡已滿，<xliff:g id="insertCount">%d</xliff:g>條成功導出"</string>
+    <string name="export_finished">"導出結束"</string>
+    <string name="export_no_phone_or_email">導出失敗, <xliff:g id="name">%s</xliff:g>沒有電話號碼或者郵箱地址</string>
+    <string name="tag_too_long">"發生錯誤，聯絡人姓名過長。"</string>
+    <string name="import_from_sim_select">"選擇SIM卡進行導入"</string>
+    <string name="no_sdcard_title" product="nosdcard">"無存儲設備"</string>
+    <string name="no_sdcard_title" product="default">"無 SD 卡"</string>
+    <string name="deleteConfirmation_title">"要刪除聯絡人嗎？"</string>
+    <string name="ContactMultiDeleteConfirmation">"將會刪除這些聯絡人。"</string>
+    <string name="slot_name">"卡"</string>
+
+    <string name="copy_done">複制成功！</string>
+    <string name="copy_failure">複制失敗！</string>
+    <string name="card_no_space">卡記錄已滿，部分信息未複制</string>
     <string name="select_account_dialog_title" msgid="5509088895267310568">"帳戶"</string>
     <string name="set_default_account" msgid="3865970860434642695">"一律使用這張 SIM 卡通話"</string>
     <string name="select_phone_account_for_calls" msgid="933905607702811164">"選擇通話帳戶"</string>
