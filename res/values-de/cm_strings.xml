@@ -57,6 +57,8 @@
   <string name="block_dialog_description">Sie werden von dieser Person keine Anrufe oder Nachrichten mehr empfangen.</string>
   <string name="block_dialog_report_spam">An <xliff:g id="provider">%s</xliff:g> als Spam melden</string>
   <string name="block_dialog_report_nonspam">An <xliff:g id="provider">%s</xliff:g> als vertrauenswürdig melden</string>
+  <string name="plugin_login_msg">Melden Sie sich an <xliff:g id="plugin_name">%1$s </xliff:g> an, um Ihre <xliff:g id="plugin_name"> %1$s </xliff:g>-Kontakte hier zu sehen</string>
   <string name="plugin_login_button_title">Anmelden</string>
+  <string name="plugin_empty_list_text">Sie haben keine <xliff:g id="plugin_name">%s</xliff:g>-Kontakte,\n</string>
   <string name="plugin_empty_list_action_text">Personen hinzufügen</string>
 </resources>

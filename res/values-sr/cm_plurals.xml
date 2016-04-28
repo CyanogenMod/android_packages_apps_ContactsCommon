@@ -31,4 +31,9 @@
     <item quantity="few">Извоз је отказан, <xliff:g id="insertCount">%d</xliff:g> ставки је извезено</item>
     <item quantity="other">Извоз је отказан, <xliff:g id="insertCount">%d</xliff:g> ставки је извезено</item>
   </plurals>
+  <plurals name="spam_count_text">
+    <item quantity="one"><xliff:g id="spamCount">%d</xliff:g> особа је ово означила као нежељено</item>
+    <item quantity="few"><xliff:g id="spamCount">%d</xliff:g> особа је ово означила као нежељено</item>
+    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> особе су ово означиле као нежељено</item>
+  </plurals>
 </resources>

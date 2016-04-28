@@ -57,5 +57,8 @@
   <string name="block_dialog_description">Od této osoby již nebudete přijímat hovory a zprávy.</string>
   <string name="block_dialog_report_spam">Nahlásit jako spam operátoru <xliff:g id="provider">%s</xliff:g></string>
   <string name="block_dialog_report_nonspam">Nahlásit že není spam operátoru <xliff:g id="provider">%s</xliff:g></string>
+  <string name="plugin_login_msg">Pro zobrazení <xliff:g id="plugin_name">%1$s</xliff:g> kontaktů se prosím přihlaste do <xliff:g id="plugin_name">%1$s</xliff:g></string>
+  <string name="plugin_login_button_title">Přihlásit se</string>
+  <string name="plugin_empty_list_text">Nemáte žádné kontakty v <xliff:g id="plugin_name">%s</xliff:g>,\n</string>
   <string name="plugin_empty_list_action_text">přidat kontakt</string>
 </resources>

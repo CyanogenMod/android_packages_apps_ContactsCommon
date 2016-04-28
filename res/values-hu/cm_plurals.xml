@@ -28,4 +28,8 @@
     <item quantity="one">Exportálás megszakítva, <xliff:g id="insertCount">%d</xliff:g> elem került exportálásra</item>
     <item quantity="other">Exportálás megszakítva, <xliff:g id="insertCount">%d</xliff:g> elem került exportálásra</item>
   </plurals>
+  <plurals name="spam_count_text">
+    <item quantity="one">Ezt <xliff:g id="spamCount">%d</xliff:g> személy megjelölte spamként</item>
+    <item quantity="other">Ezt <xliff:g id="spamCount">%d</xliff:g> személy megjelölte spamként</item>
+  </plurals>
 </resources>

@@ -28,4 +28,8 @@
     <item quantity="one">Vienti peruutettiin, <xliff:g id="insertCount">%d</xliff:g> yhteystieto vietiin</item>
     <item quantity="other">Vienti peruutettiin, <xliff:g id="insertCount">%d</xliff:g> yhteystietoa vietiin</item>
   </plurals>
+  <plurals name="spam_count_text">
+    <item quantity="one"><xliff:g id="spamCount">%d</xliff:g> henkilö on merkannut tämän spam-puheluksi</item>
+    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> henkilöä on merkannut tämän spam-puheluksi</item>
+  </plurals>
 </resources>
