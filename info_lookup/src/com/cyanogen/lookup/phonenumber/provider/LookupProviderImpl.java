@@ -20,6 +20,7 @@ import android.content.Context;
 import android.os.Handler;
 import com.cyanogen.lookup.phonenumber.contract.LookupProvider;
 import com.cyanogen.lookup.phonenumber.request.LookupRequest;
+import com.cyanogen.lookup.phonenumber.response.LookupResponse;
 
 /**
  * Shell implementation of a phonenumber LookupProvider
@@ -39,6 +40,11 @@ public class LookupProviderImpl implements LookupProvider {
     @Override
     public void fetchInfo(final LookupRequest request) {
         /* NOT IMPLEMENTED */
+    }
+
+    @Override
+    public LookupResponse blockingFetchInfo(LookupRequest lookupRequest) {
+        return null;
     }
 
     @Override
