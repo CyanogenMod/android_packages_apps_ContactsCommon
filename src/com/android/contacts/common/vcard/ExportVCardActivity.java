@@ -113,6 +113,7 @@ public class ExportVCardActivity extends Activity implements ServiceConnection,
                 if (DEBUG) Log.d(LOG_TAG, "exporting to " + mTargetFileName);
                 final ExportRequest request = new ExportRequest(mTargetFileName);
                 // The connection object will call finish().
+                mService.setSelExport(selExport);
                 mService.handleExportRequest(request, new NotificationImportExportListener(
                         ExportVCardActivity.this));
             } else if (DEBUG) {
