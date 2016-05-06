@@ -28,8 +28,8 @@ public class DirectorySdkCompat {
     public static final long ENTERPRISE_LOCAL_DEFAULT = Directory.ENTERPRISE_DEFAULT;
     public static final long ENTERPRISE_LOCAL_INVISIBLE = Directory.ENTERPRISE_LOCAL_INVISIBLE;
 
-    public static boolean isRemoteDirectory(long directoryId) {
-        return Directory.isRemoteDirectory(directoryId);
+    public static boolean isRemoteDirectoryId(long directoryId) {
+        return Directory.isRemoteDirectoryId(directoryId);
     }
 
     public static boolean isEnterpriseDirectoryId(long directoryId) {
