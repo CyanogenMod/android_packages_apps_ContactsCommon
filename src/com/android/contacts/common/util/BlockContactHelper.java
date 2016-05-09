@@ -42,7 +42,6 @@ public class BlockContactHelper {
     private BlockRequest mBlockRequest;
     private LookupProvider mLookupProvider;
     private volatile boolean mIsBlacklisted;
-    private volatile boolean mIsProviderInitialized;
     private boolean mBackgroundTaskCompleted;
     private StatusCallbacks mListener;
 
@@ -51,9 +50,9 @@ public class BlockContactHelper {
         UNBLOCK
     }
 
-    public BlockContactHelper(Context context, LookupProvider lookupProvider) {
+    public BlockContactHelper(Context context) {
         mContext = context;
-        mLookupProvider = lookupProvider;
+        mLookupProvider = LookupProviderImpl.INSTANCE.get(context);
     }
 
     public void setContactInfo(Contact contact) {
@@ -102,10 +101,6 @@ public class BlockContactHelper {
                 break;
             }
         }
-
-        if (mLookupProvider.initialize()) {
-            mIsProviderInitialized = true;
-        }
     }
 
     public boolean isContactBlacklisted() {
@@ -118,7 +113,7 @@ public class BlockContactHelper {
     }
 
     public String getLookupProviderName() {
-        if (mIsProviderInitialized) {
+        if (mLookupProvider.isEnabled()) {
             return mLookupProvider.getDisplayName();
         } else {
             return null;
@@ -163,7 +158,7 @@ public class BlockContactHelper {
         for (String phoneNumber : mBlockRequest.phoneNumbers) {
             toggleBlacklistStatus(phoneNumber, true /*block contact*/);
 
-            if (notifyLookupProvider && mIsProviderInitialized &&
+            if (notifyLookupProvider && mLookupProvider.isEnabled() &&
                     mLookupProvider.supportsSpamReporting()) {
                 mLookupProvider.markAsSpam(phoneNumber);
             }
@@ -184,7 +179,7 @@ public class BlockContactHelper {
         for (String phoneNumber : mBlockRequest.phoneNumbers) {
             toggleBlacklistStatus(phoneNumber, false /*unblock contact*/);
 
-            if (notifyLookupProvider && mIsProviderInitialized &&
+            if (notifyLookupProvider && mLookupProvider.isEnabled() &&
                     mLookupProvider.supportsSpamReporting()) {
                 mLookupProvider.unmarkAsSpam(phoneNumber);
             }
@@ -238,7 +233,7 @@ public class BlockContactHelper {
         if (mBackgroundTask != null) {
             mBackgroundTask.cancel(true /*interrupt*/);
         }
-        mLookupProvider.disable();
+        LookupProviderImpl.INSTANCE.release();
     }
 
     public interface StatusCallbacks {
