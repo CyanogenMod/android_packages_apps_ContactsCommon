@@ -41,14 +41,13 @@ public class LookupHandlerThread extends HandlerThread implements Handler.Callba
         if (mInitialized) {
             return true;
         }
-
-        mInitialized = mLookupProvider.initialize();
+        mInitialized = mLookupProvider.isEnabled();
         if (mInitialized) {
             mSubmittedRequests = new HashSet<>();
             start();
             mHandler = new Handler(getLooper(), this);
         } else {
-            Log.w(TAG, "Failed to initialize!");
+            Log.e(TAG, "Failed to initialize!");
         }
 
         return mInitialized;
@@ -61,7 +60,6 @@ public class LookupHandlerThread extends HandlerThread implements Handler.Callba
     public void tearDown() {
         if (mInitialized) {
             quit();
-            mLookupProvider.disable();
             mInitialized = false;
         }
     }

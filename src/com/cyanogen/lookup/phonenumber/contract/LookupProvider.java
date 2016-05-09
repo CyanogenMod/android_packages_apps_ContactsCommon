@@ -1,3 +1,17 @@
+/*
+ * Copyright (C) 2016 The CyanogenMod Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
 package com.cyanogen.lookup.phonenumber.contract;
 
 import com.cyanogen.lookup.phonenumber.request.LookupRequest;
@@ -9,13 +23,28 @@ import com.cyanogen.lookup.phonenumber.response.LookupResponse;
 public interface LookupProvider {
 
     /**
-     * Explicit call to the provider to initialize itself. Decoupling it from provider construction
-     * to enable explicit setup and tear down based on resource constraints.
+     * Callback for clients that are interested in changes to the Provider's status
      */
-    boolean initialize();
+    interface StatusCallback {
+        void onStatusChanged(boolean isEnabled);
+    }
 
     /**
-     * Returns true if the provider is installed and enabled
+     * Register a callback to be notified when the provider's status changes
+     *
+     * @param callback listener to be called if provider is changed
+     */
+    void registerStatusCallback(StatusCallback callback);
+
+    /**
+     * Unregister a previously registered callback
+     *
+     * @param callback listener that was previously registered
+     */
+    void unregisterStatusCallback(StatusCallback callback);
+
+    /**
+     * Returns true if the provider is installed and enabled.
      */
     boolean isEnabled();
 
@@ -30,11 +59,6 @@ public interface LookupProvider {
      * the request completes.
      */
     LookupResponse blockingFetchInfo(LookupRequest lookupRequest);
-
-    /**
-     * Explicit call to disable provider and free resources
-     */
-    void disable();
 
     /**
      * flag a phone number as spam
