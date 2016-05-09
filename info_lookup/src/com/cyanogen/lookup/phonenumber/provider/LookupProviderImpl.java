@@ -19,17 +19,18 @@ package com.cyanogen.lookup.phonenumber.provider;
 import android.content.Context;
 
 import android.database.ContentObserver;
-import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
-import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
+import com.android.contacts.common.util.SingletonHolder;
 import com.cyanogen.ambient.callerinfo.CallerInfoServices;
 import com.cyanogen.ambient.callerinfo.extension.CallerInfo;
 import com.cyanogen.ambient.callerinfo.results.LookupByNumberResult;
 import com.cyanogen.ambient.callerinfo.util.CallerInfoHelper;
+import com.cyanogen.ambient.callerinfo.util.PluginStatus;
 import com.cyanogen.ambient.callerinfo.util.ProviderInfo;
+import com.cyanogen.ambient.callerinfo.util.ProviderUpdateListener;
 import com.cyanogen.ambient.common.CyanogenAmbientUtil;
 import com.cyanogen.ambient.common.api.AmbientApiClient;
 import com.cyanogen.ambient.common.api.CommonStatusCodes;
@@ -42,6 +43,7 @@ import com.cyanogen.lookup.phonenumber.request.LookupRequest;
 import com.cyanogen.lookup.phonenumber.response.LookupResponse;
 import com.cyanogen.lookup.phonenumber.response.StatusCode;
 
+import java.util.HashSet;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -49,62 +51,77 @@ import java.util.concurrent.TimeUnit;
  */
 public class LookupProviderImpl implements LookupProvider {
 
-    private static final String PROVIDER_KEY = "ambient_callerinfo_provider_name";
+    public static final SingletonHolder.RefCountedSingletonHolder<LookupProviderImpl, Context>
+            INSTANCE =
+                new SingletonHolder.RefCountedSingletonHolder<LookupProviderImpl, Context>() {
+                    @Override
+                    protected LookupProviderImpl create(Context context) {
+                        return new LookupProviderImpl(context.getApplicationContext());
+                    }
+
+                    @Override
+                    protected void destroy(LookupProviderImpl instance) {
+                        instance.disable();
+                    }
+                };
+
     private static final String TAG = LookupProviderImpl.class.getSimpleName();
 
-    private Context mContext;
+    private final Context mContext;
+    private final Handler mMainHandler;
+    private final HashSet<StatusCallback> mStatusChangeCallbacks;
+
     private AmbientApiClient mAmbientClient;
     private ProviderInfo mProviderInfo;
     private ContentObserver mProviderObserver;
-    private Handler mHandler;
-    private String mCurrentProviderName;
+    private ProviderUpdateListener mProviderUpdateListener;
+    private Object mLock = new Object();
 
-    public LookupProviderImpl(Context context) {
+    private LookupProviderImpl(Context context) {
         mContext = context;
-        mHandler = new Handler(Looper.getMainLooper());
+        mMainHandler = new Handler(Looper.getMainLooper());
+        mStatusChangeCallbacks = new HashSet<StatusCallback>();
+
+        if (AmbientConnectionManager.isAvailable(mContext)) {
+            mAmbientClient = AmbientConnectionManager.requestClient(mContext);
+            mProviderInfo = CallerInfoHelper.getActiveProviderInfo2(mContext);
+            mProviderUpdateListener = new ProviderUpdateListener(mContext,
+                    new ProviderUpdateListener.Callback() {
+                        @Override
+                        public void onProviderChanged(ProviderInfo providerInfo) {
+                            boolean isProviderEnabled;
+                            if (providerInfo != null &&
+                                    providerInfo.getStatus() == PluginStatus.ACTIVE) {
+                                mProviderInfo = providerInfo;
+                                isProviderEnabled = true;
+                            } else {
+                                isProviderEnabled = false;
+                            }
+                            // notify callbacks
+                            for (StatusCallback callback : mStatusChangeCallbacks) {
+                                callback.onStatusChanged(isProviderEnabled);
+                            }
+                        }
+                    });
+        }
     }
 
     @Override
-    public boolean initialize() {
-        if (isEnabled()) {
-            mAmbientClient = AmbientConnectionManager.requestClient(mContext);
-            mProviderInfo = CallerInfoHelper.getActiveProviderInfo(mContext);
-            mCurrentProviderName = Settings.Secure.getString(mContext.getContentResolver(),
-                    PROVIDER_KEY);
+    public void registerStatusCallback(StatusCallback callback) {
+        if (callback != null) {
+            mStatusChangeCallbacks.add(callback);
 
-            // update provider info on caller info provider changes
-            mProviderObserver = new ContentObserver(mHandler) {
-                @Override
-                public boolean deliverSelfNotifications() {
-                    return false;
-                }
-
-                @Override
-                public void onChange(boolean selfChange) {
-                    onChange(selfChange, null);
-                }
-
-                @Override
-                public void onChange(boolean selfChange, Uri uri) {
-                    if (uri != null) {
-                        synchronized (LookupProviderImpl.this) {
-                            mProviderInfo = CallerInfoHelper.getActiveProviderInfo(mContext);
-                        }
-                    }
-                }
-            };
-            Uri providerInfoUri = Settings.Secure.getUriFor(PROVIDER_KEY);
-            mContext.getContentResolver().registerContentObserver(providerInfoUri, false,
-                    mProviderObserver);
-            return true;
         }
+    }
 
-        return false;
+    @Override
+    public void unregisterStatusCallback(StatusCallback callback) {
+        mStatusChangeCallbacks.remove(callback);
     }
 
     @Override
     public boolean isEnabled() {
-        return AmbientConnectionManager.isAvailable(mContext);
+        return mProviderInfo != null;
     }
 
     @Override
@@ -126,8 +143,7 @@ public class LookupProviderImpl implements LookupProvider {
         PendingResult<LookupByNumberResult> pendingResult = issueAmbientRequest(request);
         if (pendingResult != null) {
             LookupByNumberResult lookupResult = pendingResult.await(5L, TimeUnit.SECONDS);
-            LookupResponse lookupResponse = createLookupResponse(lookupResult);
-            return lookupResponse;
+            return createLookupResponse(lookupResult);
         }
 
         return null;
@@ -168,39 +184,40 @@ public class LookupProviderImpl implements LookupProvider {
         return null;
     }
 
-    private synchronized LookupResponse createLookupResponse(
+    private LookupResponse createLookupResponse(
             LookupByNumberResult lookupByNumberResult) {
-        if (mProviderInfo == null) {
-            // lookup provider has been inactivated
-            return null;
-        }
-        LookupResponse lookupResponse = new LookupResponse();
-        CallerInfo callerInfo = lookupByNumberResult.getCallerInfo();
-        int lookupStatusCode = lookupByNumberResult.getStatus().getStatusCode();
+        synchronized (mLock) {
+            if (mProviderInfo == null) {
+                // lookup provider has been inactivated
+                return null;
+            }
+            LookupResponse lookupResponse = new LookupResponse();
+            CallerInfo callerInfo = lookupByNumberResult.getCallerInfo();
+            int lookupStatusCode = lookupByNumberResult.getStatus().getStatusCode();
 
-        // always include Provider information
-        lookupResponse.mProviderName = mProviderInfo.getTitle();
-        lookupResponse.mAttributionLogo = mProviderInfo.getBadgeLogo();
+            // always include Provider information
+            lookupResponse.mProviderName = mProviderInfo.getTitle();
+            lookupResponse.mAttributionLogo = mProviderInfo.getBadgeLogo();
 
-        if (lookupStatusCode == CommonStatusCodes.RESOLUTION_REQUIRED) {
-            lookupResponse.mStatusCode = StatusCode.CONFIG_ERROR;
-        }
-        else if (!lookupByNumberResult.getStatus().isSuccess()) {
-            lookupResponse.mStatusCode = StatusCode.FAIL;
-        } else if (!hasUsableInfo(callerInfo)) {
-            lookupResponse.mStatusCode = StatusCode.NO_RESULT;
-        } else {
-            lookupResponse.mStatusCode = StatusCode.SUCCESS;
-            // map CallerInfo to LookupResponse
-            lookupResponse.mName = callerInfo.getName();
-            lookupResponse.mNumber = callerInfo.getNumber();
-            lookupResponse.mAddress = callerInfo.getAddress();
-            lookupResponse.mPhotoUrl = callerInfo.getPhotoUrl();
-            lookupResponse.mSpamCount = callerInfo.getSpamCount();
-            lookupResponse.mIsSpam = callerInfo.isSpam();
-        }
+            if (lookupStatusCode == CommonStatusCodes.RESOLUTION_REQUIRED) {
+                lookupResponse.mStatusCode = StatusCode.CONFIG_ERROR;
+            } else if (!lookupByNumberResult.getStatus().isSuccess()) {
+                lookupResponse.mStatusCode = StatusCode.FAIL;
+            } else if (!hasUsableInfo(callerInfo)) {
+                lookupResponse.mStatusCode = StatusCode.NO_RESULT;
+            } else {
+                lookupResponse.mStatusCode = StatusCode.SUCCESS;
+                // map CallerInfo to LookupResponse
+                lookupResponse.mName = callerInfo.getName();
+                lookupResponse.mNumber = callerInfo.getNumber();
+                lookupResponse.mAddress = callerInfo.getAddress();
+                lookupResponse.mPhotoUrl = callerInfo.getPhotoUrl();
+                lookupResponse.mSpamCount = callerInfo.getSpamCount();
+                lookupResponse.mIsSpam = callerInfo.isSpam();
+            }
 
-        return lookupResponse;
+            return lookupResponse;
+        }
     }
 
     private boolean hasUsableInfo(CallerInfo callerInfo) {
@@ -208,15 +225,14 @@ public class LookupProviderImpl implements LookupProvider {
                 (!TextUtils.isEmpty(callerInfo.getName()) || callerInfo.getSpamCount() > 0));
     }
 
-    @Override
-    public void disable() {
+    private void disable() {
         // most of the fields are initialized only if the provider is enabled
         // check the validity of the fields before attempting clean-up
         if(mAmbientClient != null) {
             AmbientConnectionManager.discardClient();
         }
-        if (mProviderObserver != null) {
-            mContext.getContentResolver().unregisterContentObserver(mProviderObserver);
+        if (mProviderUpdateListener != null) {
+            mProviderUpdateListener.destroy();
         }
     }
 
@@ -237,8 +253,7 @@ public class LookupProviderImpl implements LookupProvider {
                 public void onResult(Result result) {
                     Status status = result.getStatus();
                     if (Log.isLoggable(TAG, Log.DEBUG)) {
-                        Log.d(LookupProviderImpl.class.getSimpleName(),
-                                "Status: " + status.getStatusMessage());
+                        Log.d(TAG, "Status: " + status.getStatusMessage());
                     }
                 }
             });
@@ -262,8 +277,7 @@ public class LookupProviderImpl implements LookupProvider {
                 public void onResult(Result result) {
                     Status status = result.getStatus();
                     if (Log.isLoggable(TAG, Log.DEBUG)) {
-                        Log.d(LookupProviderImpl.class.getSimpleName(),
-                                "Status: " + status.getStatusMessage());
+                        Log.d(TAG, "Status: " + status.getStatusMessage());
                     }
                 }
             });
@@ -272,28 +286,33 @@ public class LookupProviderImpl implements LookupProvider {
 
     @Override
     public boolean supportsSpamReporting() {
-        ProviderInfo providerInfo = CallerInfoHelper.getActiveProviderInfo(mContext);
-        return providerInfo != null &&
-                providerInfo.hasProperty(ProviderInfo.PROPERTY_SUPPORTS_SPAM);
+        synchronized (mLock) {
+            if (mProviderInfo != null) {
+                return mProviderInfo.hasProperty(ProviderInfo.PROPERTY_SUPPORTS_SPAM);
+            } else {
+                return false;
+            }
+        }
     }
 
     @Override
     public String getDisplayName() {
-        String provider = null;
-        ProviderInfo providerInfo = CallerInfoHelper.getActiveProviderInfo(mContext);
-        if (CyanogenAmbientUtil.isCyanogenAmbientAvailable(mContext) == CyanogenAmbientUtil
-                .SUCCESS && providerInfo != null) {
-            provider = providerInfo.getTitle();
+        synchronized (mLock) {
+            if (mProviderInfo != null) {
+                return mProviderInfo.getTitle();
+            } else {
+                return null;
+            }
         }
-        return provider;
     }
-
     @Override
-    public synchronized String getUniqueIdentifier() {
-        if (mProviderInfo != null) {
-            return mProviderInfo.getPackageName();
+    public String getUniqueIdentifier() {
+        synchronized (mLock) {
+            if (mProviderInfo != null) {
+                return mProviderInfo.getPackageName();
+            }
+            return null;
         }
-        return null;
     }
 
 }

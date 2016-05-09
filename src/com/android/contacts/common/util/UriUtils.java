@@ -75,6 +75,25 @@ public class UriUtils {
     }
 
     /**
+     * @return true if this uri represents a local contact, false otherwise.
+     */
+    public static boolean isLocalContactUri(Uri uri) {
+        if (uri == null) {
+            return false;
+        }
+
+        if (isEncodedContactUri(uri)) {
+            return false;
+        }
+
+        if (!uri.getScheme().equals(ContactsContract.AUTHORITY)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
      * Parses the given URI to determine the original lookup key of the contact.
      */
     public static String getLookupKeyFromUri(Uri lookupUri) {
