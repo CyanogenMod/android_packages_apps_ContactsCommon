@@ -57,4 +57,8 @@
   <string name="block_dialog_description">Bạn sẽ không còn nhận các cuộc gọi hoặc tin nhắn từ người này.</string>
   <string name="block_dialog_report_spam">Báo cáo là tin rác cho <xliff:g id="provider">%s</xliff:g></string>
   <string name="block_dialog_report_nonspam">Báo cáo không phải tin rác cho <xliff:g id="provider">%s</xliff:g></string>
+  <string name="plugin_login_msg">Đăng nhập vào <xliff:g id="plugin_name">%1$s</xliff:g> để xem <xliff:g id="plugin_name">%1$s</xliff:g> số liên hệ của bạn tại đây</string>
+  <string name="plugin_login_button_title">Đăng nhập</string>
+  <string name="plugin_empty_list_text">Bạn không có <xliff:g id="plugin_name">%s</xliff:g> số liên hệ,\n</string>
+  <string name="plugin_empty_list_action_text">thêm người</string>
 </resources>

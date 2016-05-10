@@ -28,4 +28,8 @@
     <item quantity="one">Dışarı aktarma iptal edildi, <xliff:g id="insertCount">%d</xliff:g> parça dışa aktarıldı</item>
     <item quantity="other">Dışarı aktarma iptal edildi, <xliff:g id="insertCount">%d</xliff:g> parça dışa aktarıldı</item>
   </plurals>
+  <plurals name="spam_count_text">
+    <item quantity="one"><xliff:g id="spamCount">%d</xliff:g> kişi bunu spam olarak işaretledi</item>
+    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> kişi bunu spam olarak işaretledi</item>
+  </plurals>
 </resources>

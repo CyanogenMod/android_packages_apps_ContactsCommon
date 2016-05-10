@@ -17,15 +17,19 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <plurals name="export_to_sim_failed">
-    <item quantity="other">Ekspor gagal, <xliff:g id="insertCount">%d</xliff:g> item telah diekspor</item>
+    <item quantity="one">Falló la esportación, esportóse <xliff:g id="insertCount">%d</xliff:g> elementu</item>
+    <item quantity="other">Falló la esportación, esportáronse <xliff:g id="insertCount">%d</xliff:g> elementos</item>
   </plurals>
   <plurals name="export_sim_card_full">
-    <item quantity="other">Kartu SIM telah penuh, <xliff:g id="insertCount">%d</xliff:g> item telah dikeluarkan</item>
+    <item quantity="one">La tarxeta SIM ta enllena, esportóse <xliff:g id="insertCount">%d</xliff:g> elementu</item>
+    <item quantity="other">La tarxeta SIM ta enllena, esportáronse <xliff:g id="insertCount">%d</xliff:g> elementos</item>
   </plurals>
   <plurals name="export_cancelled">
-    <item quantity="other">Proses pengeluaran dibatalkan, <xliff:g id="insertCount">%d</xliff:g> item telah dikeluarkan</item>
+    <item quantity="one">Encaboxóse la esportación, esportóse <xliff:g id="insertCount">%d</xliff:g> elementu</item>
+    <item quantity="other">Encaboxóse la esportación, esportáronse <xliff:g id="insertCount">%d</xliff:g> elementos</item>
   </plurals>
   <plurals name="spam_count_text">
-    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> orang menandai ini sebagai spam</item>
+    <item quantity="one"><xliff:g id="spamCount">%d</xliff:g> persona conseñó esto como spam</item>
+    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> persones conseñaron esto como spam</item>
   </plurals>
 </resources>

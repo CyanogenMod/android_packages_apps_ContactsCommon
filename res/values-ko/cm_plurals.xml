@@ -23,6 +23,9 @@
     <item quantity="other">SIM 카드가 가득 찼습니다. <xliff:g id="insertCount">%d</xliff:g>건의 연락처가 내보내졌습니다</item>
   </plurals>
   <plurals name="export_cancelled">
-    <item quantity="other">내보내기가 취소되었으며, <xliff:g id="insertCount">%d</xliff:g>건의 연락처가 내보내졌습니다</item>
+    <item quantity="other">내보내기가 취소되었습니다. <xliff:g id="insertCount">%d</xliff:g>건의 연락처가 내보내졌습니다</item>
+  </plurals>
+  <plurals name="spam_count_text">
+    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g>명이 이 번호를 스팸으로 표시했습니다</item>
   </plurals>
 </resources>

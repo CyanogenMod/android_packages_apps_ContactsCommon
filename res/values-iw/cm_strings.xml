@@ -57,4 +57,8 @@
   <string name="block_dialog_description">לא יתקבלו יותר שיחות או הודעות מאדם זה.</string>
   <string name="block_dialog_report_spam">דווח כזבל ל-<xliff:g id="provider">%s</xliff:g></string>
   <string name="block_dialog_report_nonspam">דווח שלא כזבל אל <xliff:g id="provider">%s</xliff:g></string>
+  <string name="plugin_login_msg">התחבר אל <xliff:g id="plugin_name">%1$s</xliff:g> כדי לראות את אנשי הקשר שלך ב- <xliff:g id="plugin_name">%1$s</xliff:g> כאן</string>
+  <string name="plugin_login_button_title">התחבר</string>
+  <string name="plugin_empty_list_text">אין לך אנשי קשר ב-<xliff:g id="plugin_name">%s</xliff:g>,\n</string>
+  <string name="plugin_empty_list_action_text">הוסף אנשים</string>
 </resources>

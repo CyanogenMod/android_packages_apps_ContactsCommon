@@ -31,4 +31,9 @@
     <item quantity="few">Экспорт отменен. Экспортированы <xliff:g id="insertCount">%d</xliff:g> контакта</item>
     <item quantity="other">Экспорт отменен. Экспортированы <xliff:g id="insertCount">%d</xliff:g> контактов</item>
   </plurals>
+  <plurals name="spam_count_text">
+    <item quantity="one"><xliff:g id="spamCount">%d</xliff:g> человек пометил это как спам</item>
+    <item quantity="few"><xliff:g id="spamCount">%d</xliff:g> человека пометили это как спам</item>
+    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> человек пометили это как спам</item>
+  </plurals>
 </resources>

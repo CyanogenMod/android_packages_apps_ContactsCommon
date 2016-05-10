@@ -25,4 +25,7 @@
   <plurals name="export_cancelled">
     <item quantity="other">Quá trình xuất bị huỷ, đã xuất <xliff:g id="insertCount">%d</xliff:g></item>
   </plurals>
+  <plurals name="spam_count_text">
+    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> người đã đánh dấu thư này là thư rác</item>
+  </plurals>
 </resources>

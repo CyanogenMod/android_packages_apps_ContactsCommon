@@ -57,4 +57,8 @@
   <string name="block_dialog_description">Anda tidak akan menerima panggilan atau pesan dari oknum ini.</string>
   <string name="block_dialog_report_spam">Laporan spam ke <xliff:g id="provider">%s </xliff:g></string>
   <string name="block_dialog_report_nonspam">Laporkan sebagai bukan spam ke <xliff:g id="provider">%s</xliff:g></string>
+  <string name="plugin_login_msg">Masuk ke <xliff:g id="plugin_name">%1$s</xliff:g> untuk melihat kontak <xliff:g id="plugin_name">%1$s</xliff:g> Anda di sini</string>
+  <string name="plugin_login_button_title">Masuk</string>
+  <string name="plugin_empty_list_text">Anda tidak memiliki kontak <xliff:g id="plugin_name">%s</xliff:g>,\n</string>
+  <string name="plugin_empty_list_action_text">tambahkan orang</string>
 </resources>

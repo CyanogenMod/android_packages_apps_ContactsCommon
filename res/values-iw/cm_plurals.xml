@@ -28,4 +28,8 @@
     <item quantity="one">הייצוא בוטל, פריט <xliff:g id="insertCount">%d</xliff:g> ייוצא</item>
     <item quantity="other">הייצוא בוטל, <xliff:g id="insertCount">%d</xliff:g> פריטים ייוצאו</item>
   </plurals>
+  <plurals name="spam_count_text">
+    <item quantity="one">אדם אחד סימן זאת כדואר זבל</item>
+    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> אנשים סימנו זאת כדואר זבל</item>
+  </plurals>
 </resources>
