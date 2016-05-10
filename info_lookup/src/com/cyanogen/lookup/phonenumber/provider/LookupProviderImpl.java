@@ -89,17 +89,20 @@ public class LookupProviderImpl implements LookupProvider {
                     new ProviderUpdateListener.Callback() {
                         @Override
                         public void onProviderChanged(ProviderInfo providerInfo) {
-                            boolean isProviderEnabled;
-                            if (providerInfo != null &&
-                                    providerInfo.getStatus() == PluginStatus.ACTIVE) {
-                                mProviderInfo = providerInfo;
-                                isProviderEnabled = true;
-                            } else {
-                                isProviderEnabled = false;
-                            }
-                            // notify callbacks
-                            for (StatusCallback callback : mStatusChangeCallbacks) {
-                                callback.onStatusChanged(isProviderEnabled);
+                            synchronized (mLock) {
+                                boolean isProviderEnabled;
+                                if (providerInfo != null &&
+                                        providerInfo.getStatus() == PluginStatus.ACTIVE) {
+                                    mProviderInfo = providerInfo;
+                                    isProviderEnabled = true;
+                                } else {
+                                    mProviderInfo = null;
+                                    isProviderEnabled = false;
+                                }
+                                // notify callbacks
+                                for (StatusCallback callback : mStatusChangeCallbacks) {
+                                    callback.onStatusChanged(isProviderEnabled);
+                                }
                             }
                         }
                     });
@@ -121,7 +124,9 @@ public class LookupProviderImpl implements LookupProvider {
 
     @Override
     public boolean isEnabled() {
-        return mProviderInfo != null;
+        synchronized (mLock) {
+            return mProviderInfo != null;
+        }
     }
 
     @Override
@@ -151,37 +156,39 @@ public class LookupProviderImpl implements LookupProvider {
 
     private PendingResult<LookupByNumberResult> issueAmbientRequest(LookupRequest request) {
         String number = request.mPhoneNumber;
-        if (!TextUtils.isEmpty(number) && mAmbientClient != null &&
-                (mAmbientClient.isConnecting() || mAmbientClient.isConnected())) {
+        synchronized (mLock) {
+            if (mProviderInfo != null && !TextUtils.isEmpty(number) && mAmbientClient != null &&
+                    (mAmbientClient.isConnecting() || mAmbientClient.isConnected())) {
 
-            int originCode;
-            switch(request.mRequestOrigin) {
-                case INCOMING_CALL:
-                    originCode = com.cyanogen.ambient.callerinfo.extension.LookupRequest.ORIGIN_CODE_INCOMING_CALL;
-                    break;
-                case OUTGOING_CALL:
-                    originCode = com.cyanogen.ambient.callerinfo.extension.LookupRequest.ORIGIN_CODE_OUTGOING_CALL;
-                    break;
-                case INCOMING_SMS:
-                    originCode = com.cyanogen.ambient.callerinfo.extension.LookupRequest.ORIGIN_CODE_INCOMING_SMS;
-                    break;
-                case OUTGOING_SMS:
-                    originCode = com.cyanogen.ambient.callerinfo.extension.LookupRequest.ORIGIN_CODE_OUTGOING_SMS;
-                    break;
-                default:
-                    originCode = com.cyanogen.ambient.callerinfo.extension.LookupRequest.ORIGIN_CODE_HISTORY;
-                    break;
+                int originCode;
+                switch (request.mRequestOrigin) {
+                    case INCOMING_CALL:
+                        originCode = com.cyanogen.ambient.callerinfo.extension.LookupRequest.ORIGIN_CODE_INCOMING_CALL;
+                        break;
+                    case OUTGOING_CALL:
+                        originCode = com.cyanogen.ambient.callerinfo.extension.LookupRequest.ORIGIN_CODE_OUTGOING_CALL;
+                        break;
+                    case INCOMING_SMS:
+                        originCode = com.cyanogen.ambient.callerinfo.extension.LookupRequest.ORIGIN_CODE_INCOMING_SMS;
+                        break;
+                    case OUTGOING_SMS:
+                        originCode = com.cyanogen.ambient.callerinfo.extension.LookupRequest.ORIGIN_CODE_OUTGOING_SMS;
+                        break;
+                    default:
+                        originCode = com.cyanogen.ambient.callerinfo.extension.LookupRequest.ORIGIN_CODE_HISTORY;
+                        break;
+                }
+                com.cyanogen.ambient.callerinfo.extension.LookupRequest ambientRequest =
+                        new com.cyanogen.ambient.callerinfo.extension.LookupRequest(number,
+                                com.cyanogen.ambient.callerinfo.extension.LookupRequest.ORIGIN_CODE_HISTORY);
+                PendingResult<LookupByNumberResult> result = CallerInfoServices.CallerInfoApi.
+                        lookupByNumber(mAmbientClient, ambientRequest);
+
+                return result;
             }
-            com.cyanogen.ambient.callerinfo.extension.LookupRequest ambientRequest =
-                    new com.cyanogen.ambient.callerinfo.extension.LookupRequest(number,
-                            com.cyanogen.ambient.callerinfo.extension.LookupRequest.ORIGIN_CODE_HISTORY);
-            PendingResult<LookupByNumberResult> result = CallerInfoServices.CallerInfoApi.
-                    lookupByNumber(mAmbientClient, ambientRequest);
 
-            return result;
+            return null;
         }
-
-        return null;
     }
 
     private LookupResponse createLookupResponse(
