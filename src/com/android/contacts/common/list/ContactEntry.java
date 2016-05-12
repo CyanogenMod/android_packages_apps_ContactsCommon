@@ -16,6 +16,7 @@
 
 package com.android.contacts.common.list;
 
+import android.accounts.Account;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.ContactsContract.PinnedPositions;
@@ -55,6 +56,7 @@ public class ContactEntry {
     public int pinned = PinnedPositions.UNPINNED;
     public boolean isFavorite = false;
     public boolean isDefaultNumber = false;
+    public Account account;
 
     public static final ContactEntry BLANK_ENTRY = new ContactEntry();
 

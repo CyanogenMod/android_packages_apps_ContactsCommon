@@ -15,6 +15,7 @@
  */
 package com.android.contacts.common.list;
 
+import android.accounts.Account;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.res.Resources;
@@ -67,6 +68,8 @@ public class ContactTileAdapter extends BaseAdapter {
     protected int mNameIndex;
     protected int mPresenceIndex;
     protected int mStatusIndex;
+    private int mAccountTypeIndex;
+    private int mAccountNameIndex;
 
     private boolean mIsQuickContactEnabled = false;
     private final int mPaddingInPixels;
@@ -149,6 +152,8 @@ public class ContactTileAdapter extends BaseAdapter {
         mStarredIndex = ContactTileLoaderFactory.STARRED;
         mPresenceIndex = ContactTileLoaderFactory.CONTACT_PRESENCE;
         mStatusIndex = ContactTileLoaderFactory.CONTACT_STATUS;
+        mAccountTypeIndex = ContactTileLoaderFactory.ACCOUNT_TYPE;
+        mAccountNameIndex = ContactTileLoaderFactory.ACCOUNT_NAME;
     }
 
     private static boolean cursorIsValid(Cursor cursor) {
@@ -187,6 +192,9 @@ public class ContactTileAdapter extends BaseAdapter {
      * Else use {@link ContactTileLoaderFactory}
      */
     public void setContactCursor(Cursor cursor) {
+        if (cursor == null || cursor.isClosed()) {
+            return;
+        }
         mContactCursor = cursor;
         mDividerPosition = getDividerPosition(cursor);
 
@@ -271,6 +279,13 @@ public class ContactTileAdapter extends BaseAdapter {
         }
         contact.status = statusMessage;
 
+        if (!cursor.isNull(mAccountTypeIndex) && !cursor.isNull(mAccountTypeIndex)) {
+            final String accountType = cursor.getString(mAccountTypeIndex);
+            final String accountName = cursor.getString(mAccountNameIndex);
+            contact.account = new Account(accountName, accountType);
+        } else {
+            contact.account = null;
+        }
         return contact;
     }
 
