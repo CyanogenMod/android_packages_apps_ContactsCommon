@@ -17,15 +17,15 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <plurals name="export_to_sim_failed">
-    <item quantity="one">Export fehlgeschlagen, <xliff:g id="insertCount">%d</xliff:g> Element wurde exportiert</item>
-    <item quantity="other">Export fehlgeschlagen, <xliff:g id="insertCount">%d</xliff:g> Elemente wurden exportiert</item>
+    <item quantity="one">Falló la esportación, esportóse <xliff:g id="insertCount">%d</xliff:g> elementu</item>
+    <item quantity="other">Falló la esportación, esportáronse <xliff:g id="insertCount">%d</xliff:g> elementos</item>
   </plurals>
   <plurals name="export_sim_card_full">
-    <item quantity="one">SIM-Karte voll, <xliff:g id="insertCount">%d</xliff:g> Element wurde exportiert</item>
-    <item quantity="other">SIM-Karte voll, <xliff:g id="insertCount">%d</xliff:g> Elemente wurden exportiert</item>
+    <item quantity="one">La tarxeta SIM ta enllena, esportóse <xliff:g id="insertCount">%d</xliff:g> elementu</item>
+    <item quantity="other">La tarxeta SIM ta enllena, esportáronse <xliff:g id="insertCount">%d</xliff:g> elementos</item>
   </plurals>
   <plurals name="export_cancelled">
-    <item quantity="one">Export abgebrochen, <xliff:g id="insertCount">%d</xliff:g> Element wurde exportiert</item>
-    <item quantity="other">Export abgebrochen, <xliff:g id="insertCount">%d</xliff:g> Elemente wurden exportiert</item>
+    <item quantity="one">Encaboxóse la esportación, esportóse <xliff:g id="insertCount">%d</xliff:g> elementu</item>
+    <item quantity="other">Encaboxóse la esportación, esportáronse <xliff:g id="insertCount">%d</xliff:g> elementos</item>
   </plurals>
 </resources>
