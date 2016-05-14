@@ -57,4 +57,9 @@
   <string name="block_dialog_description">Ettől a személytől többet nem fog hívást vagy üzenetet kapni.</string>
   <string name="block_dialog_report_spam">Spamként jelent: <xliff:g id="provider">%s</xliff:g></string>
   <string name="block_dialog_report_nonspam">Nem spamként jelent: <xliff:g id="provider">%s</xliff:g></string>
+  <string name="plugin_login_msg">Bejelentkezés a(z) <xliff:g id="plugin_name">%1$s</xliff:g>plugin-nal, hogy megtekinthesse
+a(z) <xliff:g id="plugin_name">%1$s</xliff:g> névjegyeit</string>
+  <string name="plugin_login_button_title">Bejelentkezés</string>
+  <string name="plugin_empty_list_text">Nincsenek <xliff:g id="plugin_name">%s</xliff:g> névjegyei,\n</string>
+  <string name="plugin_empty_list_action_text">emberek hozzáadása</string>
 </resources>

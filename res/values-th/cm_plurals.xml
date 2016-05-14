@@ -25,4 +25,7 @@
   <plurals name="export_cancelled">
     <item quantity="other">การส่งออกถูกยกเลิก <xliff:g id="insertCount">%d</xliff:g> รายการถูกส่งออก</item>
   </plurals>
+  <plurals name="spam_count_text">
+    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> ผู้ใช้กำหนดว่านี่เป็นสแปม</item>
+  </plurals>
 </resources>

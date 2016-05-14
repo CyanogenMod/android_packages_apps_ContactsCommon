@@ -28,4 +28,8 @@
     <item quantity="one">Uitvoer was gekanselleer, <xliff:g id="insertCount">%d</xliff:g> item was uitgevoer</item>
     <item quantity="other">Uitvoer was gekanselleer, <xliff:g id="insertCount">%d</xliff:g> items was uitgevoer</item>
   </plurals>
+  <plurals name="spam_count_text">
+    <item quantity="one"><xliff:g id="spamCount">%d</xliff:g> persoon het dit gemerk as gemorspos</item>
+    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> persone het dit gemerk as gemorspos</item>
+  </plurals>
 </resources>

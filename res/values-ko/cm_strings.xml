@@ -57,4 +57,8 @@
   <string name="block_dialog_description">더 이상 이 사람이 보내는 전화나 메시지를 받지 않게 됩니다.</string>
   <string name="block_dialog_report_spam"><xliff:g id="provider">%s</xliff:g>에 스팸으로 신고</string>
   <string name="block_dialog_report_nonspam"><xliff:g id="provider">%s</xliff:g>에 스팸이 아니라고 신고</string>
+  <string name="plugin_login_msg"><xliff:g id="plugin_name">%1$s</xliff:g>에 로그인하여 <xliff:g id="plugin_name">%1$s</xliff:g>의 연락처를 확인하세요</string>
+  <string name="plugin_login_button_title">로그인</string>
+  <string name="plugin_empty_list_text"><xliff:g id="plugin_name">%s</xliff:g> 연락처가 없습니다,\n</string>
+  <string name="plugin_empty_list_action_text">사람 추가</string>
 </resources>

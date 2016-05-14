@@ -57,4 +57,8 @@
   <string name="block_dialog_description">Artık bu kişiden çağrı ya da mesaj almayacaksınız.</string>
   <string name="block_dialog_report_spam"><xliff:g id="provider">%s</xliff:g> sağlayıcısına spam olarak bildir</string>
   <string name="block_dialog_report_nonspam">Spam olmadığını bildirin <xliff:g id="provider">%s</xliff:g></string>
+  <string name="plugin_login_msg">Buradaki <xliff:g id="plugin_name">%1$s</xliff:g> kişinizi görmek için <xliff:g id="plugin_name">%1$s</xliff:g> ile giriş yapın</string>
+  <string name="plugin_login_button_title">Oturum açın</string>
+  <string name="plugin_empty_list_text"><xliff:g id="plugin_name">%s</xliff:g> kişiniz yok,\n</string>
+  <string name="plugin_empty_list_action_text">kişi ekle</string>
 </resources>

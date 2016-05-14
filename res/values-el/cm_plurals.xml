@@ -28,4 +28,8 @@
     <item quantity="one">Η εξαγωγή ακυρώθηκε, εξήχθη <xliff:g id="insertCount">%d</xliff:g> στοιχείο</item>
     <item quantity="other">Η εξαγωγή ακυρώθηκε, εξήχθησαν <xliff:g id="insertCount">%d</xliff:g> στοιχεία</item>
   </plurals>
+  <plurals name="spam_count_text">
+    <item quantity="one"><xliff:g id="spamCount">%d</xliff:g> άτομο το επισήμανε ως ανεπιθύμητο</item>
+    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> άτομα το επισήμαναν ως ανεπιθύμητο</item>
+  </plurals>
 </resources>

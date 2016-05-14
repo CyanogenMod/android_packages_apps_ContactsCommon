@@ -57,4 +57,8 @@
   <string name="block_dialog_description">คุณจะไม่ได้รับการโทรหรือข้อความจากบุคคลนี้อีกต่อไป</string>
   <string name="block_dialog_report_spam">แจ้งว่าเป็นสแปมไปยัง <xliff:g id="provider">%s</xliff:g></string>
   <string name="block_dialog_report_nonspam">แจ้งว่าเป็นไม่เป็นสแปมไปยัง <xliff:g id="provider">%s</xliff:g></string>
+  <string name="plugin_login_msg">เข้าสู่ระบบ <xliff:g id="plugin_name">%1$s</xliff:g> เพื่อดูรายชื่อผู้ติดต่อ <xliff:g id="plugin_name">%1$s</xliff:g> ที่นี่</string>
+  <string name="plugin_login_button_title">เข้าสู่ระบบ</string>
+  <string name="plugin_empty_list_text">คุณไม่มี <xliff:g id="plugin_name">%s</xliff:g> ผู้ติดต่อ\n</string>
+  <string name="plugin_empty_list_action_text">เพิ่มผู้ใช้งาน</string>
 </resources>

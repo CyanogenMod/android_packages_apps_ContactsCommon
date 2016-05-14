@@ -57,4 +57,8 @@
   <string name="block_dialog_description">Нећеш више примати позиве или поруке од те особе.</string>
   <string name="block_dialog_report_spam">Пријави спам у <xliff:g id="provider">%s</xliff:g></string>
   <string name="block_dialog_report_nonspam">Пријави да није спам у <xliff:g id="provider">%s</xliff:g></string>
+  <string name="plugin_login_msg">Пријави се у <xliff:g id="plugin_name">%1$s</xliff:g> да видиш своје <xliff:g id="plugin_name">%1$s</xliff:g> контакте овде</string>
+  <string name="plugin_login_button_title">Пријави се</string>
+  <string name="plugin_empty_list_text">Немаш <xliff:g id="plugin_name">%s</xliff:g> контакте,\n</string>
+  <string name="plugin_empty_list_action_text">додај особе</string>
 </resources>

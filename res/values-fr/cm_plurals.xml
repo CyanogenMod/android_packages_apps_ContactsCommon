@@ -28,4 +28,8 @@
     <item quantity="one">Exportation annulée, <xliff:g id="insertCount">%d</xliff:g> objet a été exporté</item>
     <item quantity="other">Exportation annulée, <xliff:g id="insertCount">%d</xliff:g> objets ont été exportés</item>
   </plurals>
+  <plurals name="spam_count_text">
+    <item quantity="one"><xliff:g id="spamCount">%d</xliff:g> personne a marqué cela comme indésirable</item>
+    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> personnes ont marqué cela comme indésirable</item>
+  </plurals>
 </resources>

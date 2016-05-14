@@ -28,4 +28,8 @@
     <item quantity="one">Експортирането прекратено, <xliff:g id="insertCount">%d</xliff:g> елемента е експортиран</item>
     <item quantity="other">Експортирането прекратено, <xliff:g id="insertCount">%d</xliff:g> елемента експортирани</item>
   </plurals>
+  <plurals name="spam_count_text">
+    <item quantity="one"><xliff:g id="spamCount">%d </xliff:g> този човек е маркиран, като спам</item>
+    <item quantity="other"><xliff:g id="spamCount">%d </xliff:g> този хора са маркирани, като спам</item>
+  </plurals>
 </resources>

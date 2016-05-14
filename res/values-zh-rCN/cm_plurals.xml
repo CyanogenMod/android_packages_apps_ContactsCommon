@@ -25,4 +25,7 @@
   <plurals name="export_cancelled">
     <item quantity="other">导出已被取消，<xliff:g id="insertCount">%d</xliff:g> 个项目已被导出</item>
   </plurals>
+  <plurals name="spam_count_text">
+    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> 位将其标记为垃圾</item>
+  </plurals>
 </resources>

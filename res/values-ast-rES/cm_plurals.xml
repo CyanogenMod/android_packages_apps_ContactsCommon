@@ -17,19 +17,19 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <plurals name="export_to_sim_failed">
-    <item quantity="one">Exportálás sikertelen, <xliff:g id="insertCount">%d</xliff:g> elem került exportálásra</item>
-    <item quantity="other">Exportálás sikertelen, <xliff:g id="insertCount">%d</xliff:g> elem került exportálásra</item>
+    <item quantity="one">Falló la esportación, esportóse <xliff:g id="insertCount">%d</xliff:g> elementu</item>
+    <item quantity="other">Falló la esportación, esportáronse <xliff:g id="insertCount">%d</xliff:g> elementos</item>
   </plurals>
   <plurals name="export_sim_card_full">
-    <item quantity="one">SIM-kártya megtelt, <xliff:g id="insertCount">%d</xliff:g> elem került exportálásra</item>
-    <item quantity="other">SIM-kártya megtelt, <xliff:g id="insertCount">%d</xliff:g> elem került exportálásra</item>
+    <item quantity="one">La tarxeta SIM ta enllena, esportóse <xliff:g id="insertCount">%d</xliff:g> elementu</item>
+    <item quantity="other">La tarxeta SIM ta enllena, esportáronse <xliff:g id="insertCount">%d</xliff:g> elementos</item>
   </plurals>
   <plurals name="export_cancelled">
-    <item quantity="one">Exportálás megszakítva, <xliff:g id="insertCount">%d</xliff:g> elem került exportálásra</item>
-    <item quantity="other">Exportálás megszakítva, <xliff:g id="insertCount">%d</xliff:g> elem került exportálásra</item>
+    <item quantity="one">Encaboxóse la esportación, esportóse <xliff:g id="insertCount">%d</xliff:g> elementu</item>
+    <item quantity="other">Encaboxóse la esportación, esportáronse <xliff:g id="insertCount">%d</xliff:g> elementos</item>
   </plurals>
   <plurals name="spam_count_text">
-    <item quantity="one">Ezt <xliff:g id="spamCount">%d</xliff:g> személy megjelölte spamként</item>
-    <item quantity="other">Ezt <xliff:g id="spamCount">%d</xliff:g> személy megjelölte spamként</item>
+    <item quantity="one"><xliff:g id="spamCount">%d</xliff:g> persona conseñó esto como spam</item>
+    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> persones conseñaron esto como spam</item>
   </plurals>
 </resources>
