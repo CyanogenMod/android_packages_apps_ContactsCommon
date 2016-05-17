@@ -17,7 +17,9 @@
   -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Toast shown when text is copied to the clipboard [CHAR LIMIT=64] -->
+  <string name="toast_text_copied">Тэкст скапіяваны</string>
   <!-- Option displayed in context menu to copy long pressed item to clipboard [CHAR LIMIT=64] -->
+  <string name="copy_text">Скапіяваць у буфэр абмену</string>
   <!-- Action string for calling a custom phone number -->
   <!-- Action string for calling a home phone number -->
   <!-- Action string for calling a mobile phone number -->
@@ -193,9 +195,11 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
   <!-- Displayed at the top of the contacts showing single contact. [CHAR LIMIT=64] -->
   <!-- Displayed at the top of the contacts showing single contact. [CHAR LIMIT=64] -->
   <!-- Action string for selecting SIM for importing contacts -->
+  <string name="import_from_sim">Захаваць нумары на SIM-картку</string>
   <!-- Action string for selecting a SIM subscription for importing contacts -->
   <!-- Action string for selecting a SIM subscription for importing contacts, without a phone number -->
   <!-- Action string for selecting a .vcf file to import contacts from [CHAR LIMIT=30] -->
+  <string name="import_from_vcf_file" product="default">Захаваць у выглядзе .vcf файлу</string>
   <!-- Message shown in a Dialog confirming a user's cancel request toward existing vCard import.
          The argument is file name for the vCard import the user wants to cancel.
          [CHAR LIMIT=128] -->
@@ -305,6 +309,7 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
          Third argument is the name of a contact which is being read.
          [CHAR LIMIT=20] -->
   <!-- Action that exports all contacts to a user selected destination. [CHAR LIMIT=25] -->
+  <string name="export_to_vcf_file" product="default">Выцягнуць з .vcf файлу</string>
   <!-- Contact preferences related strings -->
   <!-- Label of the "sort by" display option -->
   <!-- An allowable value for the "sort list by" contact display option  -->
@@ -313,8 +318,11 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
   <!-- An allowable value for the "view names as" contact display option  -->
   <!-- An allowable value for the "view names as" contact display option  -->
   <!-- Action that shares visible contacts -->
+  <string name="share_visible_contacts">Падзяліцца нумарамі</string>
   <!-- A framework exception (ie, transaction too large) can be thrown while attempting to share all visible contacts. If so, show this toast. -->
+  <string name="share_visible_contacts_failure">Памылка падчас перадачы.</string>
   <!-- Dialog title when selecting the bulk operation to perform from a list. [CHAR LIMIT=36] -->
+  <string name="dialog_import_export">Імпартаваць/экспартаваць нумары</string>
   <!-- Dialog title when importing contacts from an external source. [CHAR LIMIT=36] -->
   <!-- Toast indicating that sharing a contact has failed. [CHAR LIMIT=NONE]  -->
   <!-- Menu item to search contacts -->
@@ -336,6 +344,7 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
   <!-- Menu item to select SIM card -->
   <!-- The menu item to open the list of accounts -->
   <!-- The menu item to bulk import or bulk export contacts from SIM card or SD card.  [CHAR LIMIT=30]-->
+  <string name="menu_import_export">Імпарт / Экспарт</string>
   <!-- The font-family to use for tab text.
          Do not translate. -->
   <!-- Attribution of a contact status update, when the time of update is unknown -->
