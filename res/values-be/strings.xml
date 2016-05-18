@@ -17,6 +17,7 @@
   -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Toast shown when text is copied to the clipboard [CHAR LIMIT=64] -->
+  <string name="toast_text_copied">Тэкст скапіяваны</string>
   <!-- Action string for calling a custom phone number -->
   <!-- Action string for calling a home phone number -->
   <!-- Action string for calling a mobile phone number -->
@@ -192,6 +193,7 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
   <!-- Displayed at the top of the contacts showing single contact. [CHAR LIMIT=64] -->
   <!-- Displayed at the top of the contacts showing single contact. [CHAR LIMIT=64] -->
   <!-- Action string for selecting SIM for importing contacts -->
+  <string name="import_from_sim">Захаваць нумары на SIM-картку</string>
   <!-- Action string for selecting a SIM subscription for importing contacts -->
   <!-- Action string for selecting a SIM subscription for importing contacts, without a phone number -->
   <!-- Action string for selecting (USB) storage for importing contacts [CHAR LIMIT=30] -->
@@ -323,7 +325,9 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
   <!-- An allowable value for the "view names as" contact display option  -->
   <!-- An allowable value for the "view names as" contact display option  -->
   <!-- Action that shares visible contacts -->
+  <string name="share_visible_contacts">Падзяліцца нумарамі</string>
   <!-- Dialog title when selecting the bulk operation to perform from a list. [CHAR LIMIT=36] -->
+  <string name="dialog_import_export">Імпартаваць/экспартаваць нумары</string>
   <!-- Dialog title when importing contacts from an external source. [CHAR LIMIT=36] -->
   <!-- Toast indicating that sharing a contact has failed. [CHAR LIMIT=NONE]  -->
   <!-- Menu item to search contacts -->
@@ -345,6 +349,7 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
   <!-- Menu item to select SIM card -->
   <!-- The menu item to open the list of accounts -->
   <!-- The menu item to bulk import or bulk export contacts from SIM card or SD card.  [CHAR LIMIT=30]-->
+  <string name="menu_import_export">Імпарт / Экспарт</string>
   <!-- The font-family to use for tab text.
          Do not translate. -->
   <!-- Attribution of a contact status update, when the time of update is unknown -->
