@@ -221,6 +221,8 @@ public class LookupProviderImpl implements LookupProvider {
                 lookupResponse.mPhotoUrl = callerInfo.getPhotoUrl();
                 lookupResponse.mSpamCount = callerInfo.getSpamCount();
                 lookupResponse.mIsSpam = callerInfo.isSpam();
+                lookupResponse.mCity = callerInfo.getCity();
+                lookupResponse.mCountry = callerInfo.getCountry();
             }
 
             return lookupResponse;
