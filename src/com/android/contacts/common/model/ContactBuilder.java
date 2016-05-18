@@ -80,6 +80,7 @@ public class ContactBuilder {
     private boolean mIsBusiness;
 
     private int mSpamCount;
+    private boolean mIsSpam;
     private String mInfoProviderName;
     private String mSuccinctLocation;
 
@@ -154,7 +155,7 @@ public class ContactBuilder {
                     String number = mPhoneNumbers.get(0).number;
                     mLookupKey = PhoneNumberUtils.normalizeNumber(number);
                 }
-
+                mIsSpam = contact.optBoolean(CallerMetaData.IS_SPAM, false);
                 mSpamCount = contact.optInt(CallerMetaData.SPAM_COUNT, 0);
                 mInfoProviderName = contact.optString(CallerMetaData.INFO_PROVIDER, null);
                 mSuccinctLocation = contact.optString(CallerMetaData.SUCCINCT_LOCATION, null);
@@ -174,6 +175,14 @@ public class ContactBuilder {
 
     public int getSpamCount() {
         return mSpamCount;
+    }
+
+    public boolean isSpam() {
+        return mIsSpam;
+    }
+
+    public void setIsSpam(boolean isSpam) {
+        mIsSpam = isSpam;
     }
 
     public void setInfoProviderName(String infoProviderName) {
@@ -355,6 +364,7 @@ public class ContactBuilder {
             }
 
             // add spam count and attribution
+            contact.put(CallerMetaData.IS_SPAM, isSpam());
             contact.put(CallerMetaData.SPAM_COUNT, getSpamCount());
             contact.put(CallerMetaData.INFO_PROVIDER, getInfoProviderName());
             contact.put(CallerMetaData.SUCCINCT_LOCATION, getSuccinctLocation());
@@ -439,6 +449,7 @@ public class ContactBuilder {
                     .build());
 
             contactToReturn.setSpamCount(getSpamCount());
+            contactToReturn.setIsSpam(isSpam());
             contactToReturn.setProviderName(getInfoProviderName());
 
             return contactToReturn;

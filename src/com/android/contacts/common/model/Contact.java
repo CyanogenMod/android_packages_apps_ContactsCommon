@@ -101,6 +101,7 @@ public class Contact {
 
     private String mProviderName;
     private int mSpamCount = 0;
+    private boolean mIsSpam;
 
     /**
      * Constructor for special results, namely "no contact found" and "error".
@@ -509,6 +510,14 @@ public class Contact {
 
     public String getProviderName() {
         return mProviderName;
+    }
+
+    public void setIsSpam(boolean isSpam) {
+        mIsSpam = isSpam;
+    }
+
+    public boolean isSpam() {
+        return mIsSpam;
     }
 
     public void setProviderName(String providerName) {

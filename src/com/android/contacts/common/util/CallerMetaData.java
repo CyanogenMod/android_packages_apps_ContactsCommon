@@ -10,8 +10,9 @@ public class CallerMetaData {
     public static final String SUCCINCT_LOCATION = "CALLER_META_DATA_SUCCINCT_LOCATION";
     public static final String INFO_PROVIDER = "CALLER_META_DATA_INFO_PROVIDER";
     public static final String PHOTO_URL = "CALLER_META_DATA_PHOTO_URL";
+    public static final String IS_SPAM = "CALLER_META_DATA_IS_SPAM";
 
     // mimetype for the name of service that helped identify the caller
     public static final String MIMETYPE_SERVICE_IDENTIFIER =
-            "com.cyanogen/callerinfoservice/identifier";
+            "com.cyanogen.ambient/callerinfoservice/identifier";
 }
