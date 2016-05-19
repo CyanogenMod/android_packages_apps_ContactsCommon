@@ -168,11 +168,8 @@ public class LookupProviderImpl implements LookupProvider {
                     case OUTGOING_CALL:
                         originCode = com.cyanogen.ambient.callerinfo.extension.LookupRequest.ORIGIN_CODE_OUTGOING_CALL;
                         break;
-                    case INCOMING_SMS:
-                        originCode = com.cyanogen.ambient.callerinfo.extension.LookupRequest.ORIGIN_CODE_INCOMING_SMS;
-                        break;
-                    case OUTGOING_SMS:
-                        originCode = com.cyanogen.ambient.callerinfo.extension.LookupRequest.ORIGIN_CODE_OUTGOING_SMS;
+                    case SMS:
+                        originCode = com.cyanogen.ambient.callerinfo.extension.LookupRequest.ORIGIN_CODE_SMS;
                         break;
                     default:
                         originCode = com.cyanogen.ambient.callerinfo.extension.LookupRequest.ORIGIN_CODE_HISTORY;
