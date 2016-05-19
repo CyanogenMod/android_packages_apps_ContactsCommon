@@ -13,8 +13,7 @@ public class LookupRequest {
         UNSPECIFIED,
         INCOMING_CALL,
         OUTGOING_CALL,
-        INCOMING_SMS,
-        OUTGOING_SMS,
+        SMS,
         OTHER
     }
 
