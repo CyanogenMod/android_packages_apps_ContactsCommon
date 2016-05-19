@@ -20,7 +20,7 @@ import android.telecom.Call;
 
 public class CallSdkCompat {
     public static class Details {
-        public static final int PROPERTY_WORK_CALL = Call.Details.PROPERTY_WORK_CALL;
+        public static final int PROPERTY_ENTERPRISE_CALL = Call.Details.PROPERTY_ENTERPRISE_CALL;
         public static final int CAPABILITY_CANNOT_DOWNGRADE_VIDEO_TO_AUDIO =
                 Call.Details.CAPABILITY_CANNOT_DOWNGRADE_VIDEO_TO_AUDIO;
     }
