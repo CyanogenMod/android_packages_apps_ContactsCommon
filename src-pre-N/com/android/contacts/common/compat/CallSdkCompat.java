@@ -19,7 +19,7 @@ package com.android.contacts.common.compat;
 public class CallSdkCompat {
     public static class Details {
         public static final int PROPERTY_IS_EXTERNAL_CALL = 0x00000040;
-        public static final int PROPERTY_WORK_CALL = 0x00000020;
+        public static final int PROPERTY_ENTERPRISE_CALL = 0x00000020;
         public static final int CAPABILITY_CAN_PULL_CALL = 0x00800000;
         public static final int CAPABILITY_CANNOT_DOWNGRADE_VIDEO_TO_AUDIO = 0x00400000;
     }
