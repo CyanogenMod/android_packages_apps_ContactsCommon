@@ -16,15 +16,24 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">Akun lokal tablet</string>
-  <string name="local_storage_account" product="default">Akun lokal telepon</string>
+  <string name="local_storage_account" product="default">Akun telepon lokal</string>
+  <!-- CMCC -->
   <string name="import_contacts_sim">Impor kontak dari kartu SIM?</string>
+  <!-- CAF -->
+  <!-- Action string for managing SIM contacts -->
   <string name="manage_sim_contacts">Kelola kontak kartu SIM</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">Ekspor ke kartu SIM</string>
-  <string name="fail_reason_import_vcard">\'<xliff:g id="name">%s</xliff:g>\' tidak dapat diimpor karena kesalahan I/O</string>
+  <!--The failed reason shown when importing a vCard file -->
+  <string name="fail_reason_import_vcard">\'<xliff:g id="name">%s</xliff:g>\' tidak dapat diimpor karena galat I/O</string>
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="contact_share_failed_toast">Tidak lebih dari <xliff:g id="count">%d</xliff:g> kontak dapat ditambahkan</string>
   <string name="label_groups">Grup</string>
   <string name="exporting">Mengekspor\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> dari <xliff:g id="total_number">%2$s</xliff:g> berkas</string>
   <string name="export_failed">Ekspor gagal</string>
   <string name="sim_card_full">Kartu SIM penuh</string>
@@ -34,23 +43,30 @@
   <plurals name="export_cancelled">
     <item quantity="other">Ekspor dibatalkan, %d item telah diekspor</item>
   </plurals>
-  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> tidak memiliki nomor telepon atau alamat email</string>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> tidak memiliki nomor telepon atau alamat surel</string>
   <string name="import_from_sim_select">Pilih kartu untuk mengimpor</string>
+  <!-- Dialog title shown when (USB) storage does not exist [CHAR LIMIT=25] -->
   <string name="no_sdcard_title" product="nosdcard">Penyimpanan tidak tersedia</string>
+  <!-- Dialog title shown when SD Card does not exist -->
   <string name="no_sdcard_title" product="default">Tidak ada kartu SD</string>
+  <!-- Confirmation dialog title after users selects to delete a contact. [CHAR LIMIT=25]-->
   <string name="deleteConfirmation_title">Hapus kontak?</string>
+  <!-- Confirmation dialog contents after users selects to delete a Writable contact. -->
   <string name="deleteConfirmation">Kontak ini akan dihapus.</string>
   <string name="copy_done">Kontak berhasil disalin</string>
   <string name="copy_failure">Menyalin kontak gagal</string>
   <string name="card_no_space">Menyalin kontak gagal, kartu SIM penuh</string>
+  <!-- Detailed description of the preference section that allows users to configure how they
+         want their contacts to be displayed. [CHAR LIMIT=128] -->
   <string name="settings_contact_display_options_description">Konfigurasi bagaimana kontak Anda ditampilkan dan diurutkan.</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot">Panggilan IP melalui <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Tidak ada Nomor IP</string>
   <string name="no_ip_number_on_sim_card">Tidak ada Nomor IP pada kartu SIM</string>
   <string name="set_ip_number">Atur nomor IP</string>
   <string name="ipcall_dialog_title">Pengaturan panggilan IP</string>
-  <string name="ipcall_dialog_edit_hint">Silahkan memasukkan awalan IP</string>
+  <string name="ipcall_dialog_edit_hint">Silakan memasukkan awalan IP</string>
   <string name="import_contacts_from_all_cards">Impor kontak dari semua kartu SIM</string>
-  <string name="select_path">Pilih path</string>
+  <string name="select_path">Pilih alur</string>
   <string name="select_sim">Pilih SIM</string>
 </resources>

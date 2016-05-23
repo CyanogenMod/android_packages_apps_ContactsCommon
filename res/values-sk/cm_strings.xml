@@ -16,15 +16,24 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">Miestny účet tabletu</string>
   <string name="local_storage_account" product="default">Miestny účet telefónu</string>
+  <!-- CMCC -->
   <string name="import_contacts_sim">Importovať kontakty z karty SIM?</string>
+  <!-- CAF -->
+  <!-- Action string for managing SIM contacts -->
   <string name="manage_sim_contacts">Spravovať kontakty na karte SIM</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">Exportovať na kartu SIM</string>
+  <!--The failed reason shown when importing a vCard file -->
   <string name="fail_reason_import_vcard">\'<xliff:g id="name">%s</xliff:g>\' nie je možné importovať kvôli vstupno-výstupnej chybe</string>
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="contact_share_failed_toast">Nie viac ako  <xliff:g id="count">%d</xliff:g> kontaktov môže byť zdieľaných</string>
   <string name="label_groups">Skupina</string>
   <string name="exporting">Exportovanie\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> z <xliff:g id="total_number">%2$s</xliff:g> súborov</string>
   <string name="export_failed">Export zlyhal</string>
   <string name="sim_card_full">Karta SIM je plná</string>
@@ -38,14 +47,21 @@
   </plurals>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> nemá svoje telefónne číslo alebo e-mailovú adresu</string>
   <string name="import_from_sim_select">Vyberte kartu na importovanie</string>
+  <!-- Dialog title shown when (USB) storage does not exist [CHAR LIMIT=25] -->
   <string name="no_sdcard_title" product="nosdcard">Nedostupné úložisko</string>
+  <!-- Dialog title shown when SD Card does not exist -->
   <string name="no_sdcard_title" product="default">Žiadna karta SD</string>
+  <!-- Confirmation dialog title after users selects to delete a contact. [CHAR LIMIT=25]-->
   <string name="deleteConfirmation_title">Vymazať kontakt?</string>
+  <!-- Confirmation dialog contents after users selects to delete a Writable contact. -->
   <string name="deleteConfirmation">Tento kontakt sa odstráni.</string>
   <string name="copy_done">Kontakt bol úspešne skopírovaný</string>
   <string name="copy_failure">Kopírovanie kontaktu zlyhalo</string>
   <string name="card_no_space">Kopírovanie kontaktu zlyhalo, karta SIM je plná</string>
+  <!-- Detailed description of the preference section that allows users to configure how they
+         want their contacts to be displayed. [CHAR LIMIT=128] -->
   <string name="settings_contact_display_options_description">Nastaviť, ako sa majú kontakty zobrazovať a zoraďovať.</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot">IP hovor cez <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Žiadne IP číslo</string>
   <string name="no_ip_number_on_sim_card">Žiadne IP číslo na karte SIM</string>

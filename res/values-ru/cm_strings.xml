@@ -16,15 +16,24 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">Локальный аккаунт планшета</string>
   <string name="local_storage_account" product="default">Локальный аккаунт телефона</string>
+  <!-- CMCC -->
   <string name="import_contacts_sim">Импортировать контакты с SIM-карты?</string>
+  <!-- CAF -->
+  <!-- Action string for managing SIM contacts -->
   <string name="manage_sim_contacts">Управление контактами SIM-карты</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">Экспорт на SIM-карту</string>
+  <!--The failed reason shown when importing a vCard file -->
   <string name="fail_reason_import_vcard">Не удалось импортировать файл «<xliff:g id="name">%s</xliff:g>» из-за ошибки ввода-вывода</string>
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="contact_share_failed_toast">Можно отправить не более <xliff:g id="count">%d</xliff:g> контактов</string>
   <string name="label_groups">Группа</string>
   <string name="exporting">Экспорт\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files">Обработка: <xliff:g id="current_number">%1$s</xliff:g> из <xliff:g id="total_number">%2$s</xliff:g></string>
   <string name="export_failed">Не удалось экспортировать</string>
   <string name="sim_card_full">SIM-карта заполнена</string>
@@ -38,14 +47,21 @@
   </plurals>
   <string name="export_no_phone_or_email">У контакта «<xliff:g id="name">%s</xliff:g>» нет номера телефона или адреса электронной почты</string>
   <string name="import_from_sim_select">Выберите карту для импорта</string>
+  <!-- Dialog title shown when (USB) storage does not exist [CHAR LIMIT=25] -->
   <string name="no_sdcard_title" product="nosdcard">Внешний накопитель недоступен</string>
+  <!-- Dialog title shown when SD Card does not exist -->
   <string name="no_sdcard_title" product="default">SD-карта не подключена</string>
+  <!-- Confirmation dialog title after users selects to delete a contact. [CHAR LIMIT=25]-->
   <string name="deleteConfirmation_title">Удалить контакт?</string>
+  <!-- Confirmation dialog contents after users selects to delete a Writable contact. -->
   <string name="deleteConfirmation">Этот контакт будет удалён.</string>
   <string name="copy_done">Контакт скопирован</string>
   <string name="copy_failure">Не удалось скопировать контакт</string>
   <string name="card_no_space">Не удалось скопировать контакт, SIM-карта заполнена</string>
+  <!-- Detailed description of the preference section that allows users to configure how they
+         want their contacts to be displayed. [CHAR LIMIT=128] -->
   <string name="settings_contact_display_options_description">Настройка параметров отображения и сортировки контактов.</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot">IP-вызов через <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Нет IP-номера</string>
   <string name="no_ip_number_on_sim_card">На SIM-карте нет IP-номера</string>

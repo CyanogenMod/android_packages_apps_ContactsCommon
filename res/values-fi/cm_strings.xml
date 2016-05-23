@@ -16,15 +16,24 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">Paikallinen tablet-tili</string>
   <string name="local_storage_account" product="default">Paikallinen puhelin-tili</string>
+  <!-- CMCC -->
   <string name="import_contacts_sim">Tuo yhteystiedot SIM-kortilta?</string>
+  <!-- CAF -->
+  <!-- Action string for managing SIM contacts -->
   <string name="manage_sim_contacts">Hallitse SIM-kortin yhteystietoja</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">Vie SIM-kortille</string>
+  <!--The failed reason shown when importing a vCard file -->
   <string name="fail_reason_import_vcard">Yhteystietoa \'<xliff:g id="name">%s</xliff:g>\' ei voitu tuoda I/O-virheen takia</string>
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="contact_share_failed_toast">Enintään <xliff:g id="count">%d</xliff:g> yhteystietoa voidaan jakaa</string>
   <string name="label_groups">Ryhmä</string>
   <string name="exporting">Viedään\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g>/<xliff:g id="total_number">%2$s</xliff:g> tiedostoa</string>
   <string name="export_failed">Vienti epäonnistui</string>
   <string name="sim_card_full">SIM-kortti on täynnä</string>
@@ -37,14 +46,21 @@
   </plurals>
   <string name="export_no_phone_or_email">Yhteystiedolla <xliff:g id="name">%s</xliff:g> ei ole puhelinnumeroa tai sähköpostiosoitetta</string>
   <string name="import_from_sim_select">Valitse kortti josta tuodaan</string>
+  <!-- Dialog title shown when (USB) storage does not exist [CHAR LIMIT=25] -->
   <string name="no_sdcard_title" product="nosdcard">Tallennustila ei saatavilla</string>
+  <!-- Dialog title shown when SD Card does not exist -->
   <string name="no_sdcard_title" product="default">Ei SD-korttia</string>
+  <!-- Confirmation dialog title after users selects to delete a contact. [CHAR LIMIT=25]-->
   <string name="deleteConfirmation_title">Poista yhteystieto?</string>
+  <!-- Confirmation dialog contents after users selects to delete a Writable contact. -->
   <string name="deleteConfirmation">Tämä yhteystieto poistetaan.</string>
   <string name="copy_done">Yhteystieto kopioitu onnistuneesti</string>
   <string name="copy_failure">Yhteystiedon kopioiminen epäonnistui</string>
   <string name="card_no_space">Yhteystiedon kopioiminen epäonnistui, SIM-kortti on täynnä</string>
+  <!-- Detailed description of the preference section that allows users to configure how they
+         want their contacts to be displayed. [CHAR LIMIT=128] -->
   <string name="settings_contact_display_options_description">Määritä, kuinka yhteystiedot näytetään ja lajitellaan.</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot">IP-puhelu <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Ei IP-numeroa</string>
   <string name="no_ip_number_on_sim_card">Ei IP-numeroa SIM-kortilla</string>

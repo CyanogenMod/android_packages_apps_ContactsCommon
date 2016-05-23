@@ -16,15 +16,24 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">حساب محلی تبلت</string>
   <string name="local_storage_account" product="default">حساب محلی گوشی</string>
+  <!-- CMCC -->
   <string name="import_contacts_sim">مخاطبین از سیم کارت وارد شوند؟</string>
+  <!-- CAF -->
+  <!-- Action string for managing SIM contacts -->
   <string name="manage_sim_contacts">مدیریت مخاطبین سیم کارت</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">صدور به سیم کارت</string>
+  <!--The failed reason shown when importing a vCard file -->
   <string name="fail_reason_import_vcard">\' <xliff:g id="name">%s\' </xliff:g> به دلیل خطای ورودی/خروجی نمی‌توان وارد کرد</string>
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="contact_share_failed_toast">نمی‌توان بیش از <xliff:g id="count">%d</xliff:g> مخاطب را به اشتراک گذاشت</string>
   <string name="label_groups">گروه</string>
   <string name="exporting">صدور\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> از <xliff:g id="total_number">%2$s</xliff:g> فایل</string>
   <string name="export_failed">صدور ناموفق بود</string>
   <string name="sim_card_full">سیم کارت پر است</string>
@@ -36,14 +45,21 @@
   </plurals>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> شماره تلفن یا آدرس ایمیلی ندارد</string>
   <string name="import_from_sim_select">انتخاب سیم کارت برای وارد کردن</string>
+  <!-- Dialog title shown when (USB) storage does not exist [CHAR LIMIT=25] -->
   <string name="no_sdcard_title" product="nosdcard">حافظه در دسترس نیست</string>
+  <!-- Dialog title shown when SD Card does not exist -->
   <string name="no_sdcard_title" product="default">بدون کارت حافظه</string>
+  <!-- Confirmation dialog title after users selects to delete a contact. [CHAR LIMIT=25]-->
   <string name="deleteConfirmation_title">مخاطب حذف شود؟</string>
+  <!-- Confirmation dialog contents after users selects to delete a Writable contact. -->
   <string name="deleteConfirmation">این مخاطب حذف خواهد شد.</string>
   <string name="copy_done">مخاطب با موفقیت کپی شد</string>
   <string name="copy_failure">کپی مخاطب ناموفق بود</string>
   <string name="card_no_space">نمی‌توان مخاطب را کپی کرد، سیم کارت پر است</string>
+  <!-- Detailed description of the preference section that allows users to configure how they
+         want their contacts to be displayed. [CHAR LIMIT=128] -->
   <string name="settings_contact_display_options_description">تعیین کنید مخاطبین چگونه مرتب شده و نمایش داده شوند.</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot">تماس IP از طریق <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">بدون شماره IP</string>
   <string name="no_ip_number_on_sim_card">شماره IPی در سیم کارت وجود ندارد</string>

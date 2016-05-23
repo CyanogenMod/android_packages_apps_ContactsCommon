@@ -16,15 +16,24 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">บัญชีภายในแท็บเล็ต</string>
   <string name="local_storage_account" product="default">บัญชีภายในโทรศัพท์</string>
+  <!-- CMCC -->
   <string name="import_contacts_sim">ต้องการนำเข้ารายชื่อติดต่อจากซิมการ์ดหรือไม่</string>
+  <!-- CAF -->
+  <!-- Action string for managing SIM contacts -->
   <string name="manage_sim_contacts">จัดการรายชื่อติดต่อในซิมการ์ด</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">ส่งออกไปยังซิมการ์ด</string>
+  <!--The failed reason shown when importing a vCard file -->
   <string name="fail_reason_import_vcard">ไม่สามารถนำเข้า \'<xliff:g id="name">%s</xliff:g>\' เนื่องมาจากข้อผิดพลาดของ I/O</string>
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="contact_share_failed_toast">สามารถแบ่งปันรายชื่อผู้ติดต่อได้ไม่เกิน <xliff:g id="count">%d</xliff:g> ชื่อ</string>
   <string name="label_groups">กลุ่ม</string>
   <string name="exporting">กำลังส่งออก\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> จาก <xliff:g id="total_number">%2$s</xliff:g> ไฟล์</string>
   <string name="export_failed">ส่งออกล้มเหลว</string>
   <string name="sim_card_full">ซิมการ์ดเต็ม</string>
@@ -36,14 +45,21 @@
   </plurals>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> ไม่มีหมายเลขโทรศัพท์หรือที่อยู่อีเมล</string>
   <string name="import_from_sim_select">เลือกการ์ดที่จะนำเข้า</string>
+  <!-- Dialog title shown when (USB) storage does not exist [CHAR LIMIT=25] -->
   <string name="no_sdcard_title" product="nosdcard">ไม่มีพื้นที่เก็บข้อมูล</string>
+  <!-- Dialog title shown when SD Card does not exist -->
   <string name="no_sdcard_title" product="default">ไม่มี SD การ์ด</string>
+  <!-- Confirmation dialog title after users selects to delete a contact. [CHAR LIMIT=25]-->
   <string name="deleteConfirmation_title">ลบ​ราย​ชื่อติดต่อหรือไม่</string>
+  <!-- Confirmation dialog contents after users selects to delete a Writable contact. -->
   <string name="deleteConfirmation">ราย​ชื่อ​นี้​จะ​ถูกลบ​ออก</string>
   <string name="copy_done">คัดลอกรายชื่อติดต่อเสร็จสมบูรณ์</string>
   <string name="copy_failure">คัดลอกรายชื่อล้มเหลว</string>
   <string name="card_no_space">คัดลอกรายชื่อล้มเหลว ซิมการ์ดเต็ม</string>
+  <!-- Detailed description of the preference section that allows users to configure how they
+         want their contacts to be displayed. [CHAR LIMIT=128] -->
   <string name="settings_contact_display_options_description">กำหนดวิธีแสดงและจำแนกรายชื่อติดต่อ</string>
+  <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot">โทรผ่าน IP โดย <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">ไม่มีหมายเลข IP</string>
   <string name="no_ip_number_on_sim_card">ไม่มีหมายเลข IP ในซิมการ์ด</string>
