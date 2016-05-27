@@ -28,4 +28,8 @@
     <item quantity="one">Exporten avbröts, <xliff:g id="insertCount">%d </xliff:g> objekt exporterades</item>
     <item quantity="other">Exporten avbröts, <xliff:g id="insertCount">%d </xliff:g> objekt exporterades</item>
   </plurals>
+  <plurals name="spam_count_text">
+    <item quantity="one"><xliff:g id="spamCount">%d</xliff:g> person markerade det här som skräppost</item>
+    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> personer markerade det här som skräppost</item>
+  </plurals>
 </resources>
