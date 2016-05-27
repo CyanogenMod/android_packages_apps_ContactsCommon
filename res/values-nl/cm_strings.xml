@@ -57,6 +57,8 @@
   <string name="block_dialog_description">U ontvangt geen oproepen of berichten meer van deze persoon.</string>
   <string name="block_dialog_report_spam">Rapporteren als ongewenst aan <xliff:g id="provider">%s</xliff:g></string>
   <string name="block_dialog_report_nonspam">Rapporteren als niet-ongewenst aan <xliff:g id="provider">%s</xliff:g></string>
+  <string name="plugin_login_msg">Meld u aan bij <xliff:g id="plugin_name">%1$s</xliff:g> om uw <xliff:g id="plugin_name">%1$s</xliff:g>-contacten hier te zien</string>
   <string name="plugin_login_button_title">Aanmelden</string>
+  <string name="plugin_empty_list_text">U heeft geen <xliff:g id="plugin_name">%s</xliff:g>-contacten,\n</string>
   <string name="plugin_empty_list_action_text">personen toevoegen</string>
 </resources>
