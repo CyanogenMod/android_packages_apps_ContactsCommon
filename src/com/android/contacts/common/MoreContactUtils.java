@@ -51,6 +51,7 @@ import android.util.Log;
 import com.android.contacts.common.model.account.AccountType;
 import com.android.contacts.common.SimContactsConstants;
 
+import org.codeaurora.wrapper.UiccPhoneBookController_Wrapper;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -69,6 +70,13 @@ public class MoreContactUtils {
     private static final int NUMBER_POS = 1;
     private static final int EMAIL_POS = 2;
     private static final int ANR_POS = 3;
+    private static final int ADN_COUNT_POS = 0;
+    private static final int ADN_USED_POS = 1;
+    private static final int EMAIL_COUNT_POS = 2;
+    private static final int EMAIL_USED_POS = 3;
+    private static final int ANR_COUNT_POS = 4;
+    private static final int ANR_USED_POS = 5;
+
     public static final String PREFERRED_SIM_ICON_INDEX = "preferred_sim_icon_index";
     public final static int[] IC_SIM_PICTURE = {
         R.drawable.ic_contact_picture_sim_1,
@@ -308,103 +316,82 @@ public class MoreContactUtils {
         return subscription;
     }
 
-    public static int getAnrCount(int slot) {
-        int anrCount = 0;
-        /*int[] subId = SubscriptionManager.getSubId(slot);
+    public static int getAnrCount(Context c, int slot) {
+        int anrCount[];
+        int subId = getActiveSubId(c, slot);
         try {
-            IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(
-                ServiceManager.getService("simphonebook"));
+            anrCount = UiccPhoneBookController_Wrapper
+                    .getAdnRecordsCapacityForSubscriber(subId);
+            if (anrCount != null)
+                return anrCount[ANR_COUNT_POS];
 
-            if (iccIpb != null) {
-                if (subId != null
-                        && TelephonyManager.getDefault().isMultiSimEnabled()) {
-                    anrCount = iccIpb.getAnrCountUsingSubId(subId[0]);
-                } else {
-                    anrCount = iccIpb.getAnrCount();
-                }
-            }
-        } catch (RemoteException ex) {
+        } catch (Exception ex) {
+            Log.d(TAG, ex.toString());
             // ignore it
-        }*/
-
-        return anrCount;
+        }
+        return 0;
     }
-    public static int getAdnCount(int slot) {
-        int adnCount = 500;
-        /*int[] subId = SubscriptionManager.getSubId(slot);
-                try {
-            IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(
-                ServiceManager.getService("simphonebook"));
-            if (iccIpb != null) {
-                if (subId != null
-                        && TelephonyManager.getDefault().isMultiSimEnabled()) {
-                    adnCount = iccIpb.getAdnCountUsingSubId(subId[0]);
-                } else {
-                    adnCount = iccIpb.getAdnCount();
-                }
-            }
-        } catch (RemoteException ex) {
-            // ignore it
-        }*/
-        return adnCount;
+
+    public static int getAdnCount(Context c, int slot) {
+        int adnCount[];
+        int subId = getActiveSubId(c, slot);
+        try {
+            adnCount = UiccPhoneBookController_Wrapper
+                    .getAdnRecordsCapacityForSubscriber(subId);
+            if (adnCount != null)
+                return adnCount[ADN_COUNT_POS];
+        } catch (Exception ex) {
+            Log.d(TAG, ex.toString());
+        }
+        return 0;
     }
-    public static int getEmailCount(int slot) {
-        int emailCount = 0;
-        /*int[] subId = SubscriptionManager.getSubId(slot);
-                try {
-            IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(
-                ServiceManager.getService("simphonebook"));
 
-            if (iccIpb != null) {
-                if (subId != null
-                        && TelephonyManager.getDefault().isMultiSimEnabled()) {
-                    emailCount = iccIpb.getEmailCountUsingSubId(subId[0]);
-                } else {
-                    emailCount = iccIpb.getEmailCount();
-                }
-            }
-        } catch (RemoteException ex) {
-            // ignore it
-        }*/
-
-        return emailCount;
+    public static int getEmailCount(Context c, int slot) {
+        int emailCount[];
+        int subId = getActiveSubId(c, slot);
+        try {
+            emailCount = UiccPhoneBookController_Wrapper
+                    .getAdnRecordsCapacityForSubscriber(subId);
+            if (emailCount != null)
+                return emailCount[EMAIL_COUNT_POS];
+        } catch (Exception ex) {
+            Log.d(TAG, ex.toString());
+        }
+        return 0;
     }
     /**
      * Returns the subscription's card can save anr or not.
      */
-    public static boolean canSaveAnr(int subscription) {
-        return false;
-        //return getAnrCount(subscription) > 0 ? true : false;
+    public static boolean canSaveAnr(Context c, int subscription) {
+        return getAnrCount(c, subscription) > 0 ? true : false;
     }
 
     /**
      * Returns the subscription's card can save email or not.
      */
-    public static boolean canSaveEmail(int subscription) {
-        return false;
-        //return getEmailCount(subscription) > 0 ? true : false;
+    public static boolean canSaveEmail(Context c, int subscription) {
+        return getEmailCount(c, subscription) > 0 ? true : false;
     }
 
-    public static int getOneSimAnrCount(int sub) {
+    public static int getOneSimAnrCount(Context c, int slot) {
         int count = 0;
-        /*int anrCount = getAnrCount(sub);
-        int adnCount = getAdnCount(sub);
+        int anrCount = getAnrCount(c, slot);
+        int adnCount = getAdnCount(c, slot);
         if (adnCount > 0) {
             count = anrCount % adnCount != 0 ? (anrCount / adnCount + 1)
                     : (anrCount / adnCount);
-        }*/
+        }
         return count;
     }
 
-    public static int getOneSimEmailCount(int sub) {
+    public static int getOneSimEmailCount(Context c, int slot) {
         int count = 0;
-        /*int emailCount = getEmailCount(sub);
-        int adnCount = getAdnCount(sub);
+        int emailCount = getEmailCount(c, slot);
+        int adnCount = getAdnCount(c, slot);
         if (adnCount > 0) {
-            count = emailCount % adnCount != 0 ? (emailCount
-                    / adnCount + 1)
+            count = emailCount % adnCount != 0 ? (emailCount / adnCount + 1)
                     : (emailCount / adnCount);
-        }*/
+        }
         return count;
     }
 
@@ -455,64 +442,51 @@ public class MoreContactUtils {
                 queryCursor.close();
             }
         }
-        return getAdnCount(slot) - count;
+        return getAdnCount(context, slot) - count;
     }
-    public static int getSpareAnrCount(int sub) {
-        int anrCount = 0;
-        /*int[] subId=SubscriptionManager.getSubId(sub);
-         try {
-                IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(ServiceManager
-                        .getService(PHONEBOOK));
-                 if (iccIpb != null) {
-                   if (subId != null
-                        && TelephonyManager.getDefault().isMultiSimEnabled()) {
-                    anrCount = iccIpb.getSpareAnrCountUsingSubId(subId[0]);
-                } else {
-                   anrCount = iccIpb.getSpareAnrCount();
-                 }
-            }
-            } catch (RemoteException ex) {
-                // ignore it
-            } catch (SecurityException ex) {
-                Log.i(TAG, ex.toString());
-            } catch (Exception ex) {
-        }*/
-        if (DBG) {
-            Log.d(TAG, "getSpareAnrCount(" + sub + ") = " + anrCount);
-        }
-        return anrCount;
-    }
-    public static int getSpareEmailCount(int sub) {
-        int emailCount = 0;
-        /*int[] subId=SubscriptionManager.getSubId(sub);
+
+    public static int getSpareAnrCount(Context c, int slot) {
+        int anrCount[];
+        int spareCount = 0;
+        int subId = getActiveSubId(c, slot);
         try {
-                IIccPhoneBook iccIpb = IIccPhoneBook.Stub.asInterface(ServiceManager
-                        .getService(PHONEBOOK));
-                 if (iccIpb != null) {
-                if (subId != null
-                        && TelephonyManager.getDefault().isMultiSimEnabled()) {
-                    emailCount = iccIpb.getSpareEmailCountUsingSubId(subId[0]);
-                } else {
-                    emailCount = iccIpb.getSpareEmailCount();
-                 }
-                 }
-            } catch (RemoteException ex) {
-                // ignore it
-            } catch (SecurityException ex) {
-                Log.i(TAG, ex.toString());
-            } catch (Exception ex) {
-        }*/
-        if (DBG) {
-            Log.d(TAG, "getSpareEmailCount(" + sub + ") = " + emailCount);
+            anrCount = UiccPhoneBookController_Wrapper
+                    .getAdnRecordsCapacityForSubscriber(subId);
+            if (anrCount != null)
+                spareCount = anrCount[ANR_COUNT_POS] - anrCount[ANR_USED_POS];
+        } catch (Exception ex) {
+            Log.d(TAG, ex.toString());
         }
-        return emailCount;
+        if (DBG) {
+            Log.d(TAG, "getSpareAnrCount(" + slot + ") = " + spareCount);
+        }
+        return spareCount;
+    }
+
+    public static int getSpareEmailCount(Context c, int slot) {
+        int emailCount[];
+        int spareCount = 0;
+        int subId = getActiveSubId(c, slot);
+        try {
+            emailCount = UiccPhoneBookController_Wrapper
+                    .getAdnRecordsCapacityForSubscriber(subId);
+            if (emailCount != null)
+                spareCount = emailCount[EMAIL_COUNT_POS]
+                        - emailCount[EMAIL_USED_POS];
+        } catch (Exception ex) {
+            Log.d(TAG, ex.toString());
+        }
+        if (DBG) {
+            Log.d(TAG, "getSpareEmailCount(" + slot + ") = " + spareCount);
+        }
+        return spareCount;
     }
 
     public static int getActiveSubId(Context c , int slot) {
-        SubscriptionManager sm = SubscriptionManager.from(c);
         SubscriptionInfo subInfoRecord = null;
         try {
-            subInfoRecord =  sm.getActiveSubscriptionInfoForSimSlotIndex(slot);
+            SubscriptionManager sm = SubscriptionManager.from(c);
+            subInfoRecord = sm.getActiveSubscriptionInfoForSimSlotIndex(slot);
         } catch (Exception e) {
 
         }
@@ -522,10 +496,10 @@ public class MoreContactUtils {
     }
 
     public static int getActiveSlotId(Context c , int subId) {
-        SubscriptionManager sm = SubscriptionManager.from(c);
         SubscriptionInfo subInfoRecord = null;
         try {
-            subInfoRecord = sm.getActiveSubscriptionInfo(subId) ;
+            SubscriptionManager sm = SubscriptionManager.from(c);
+            subInfoRecord = sm.getActiveSubscriptionInfo(subId);
         } catch (Exception e) {
 
         }
@@ -716,4 +690,5 @@ public class MoreContactUtils {
             return Integer.parseInt(indexs[subscription]);
         }
     }
+
 }

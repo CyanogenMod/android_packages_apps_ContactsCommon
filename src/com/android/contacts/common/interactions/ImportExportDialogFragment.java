@@ -529,16 +529,17 @@ public class ImportExportDialogFragment extends DialogFragment
             mSimContactsOperation = new SimContactsOperation(mPeople);
             Cursor cr = null;
 
-            freeSimCount = MoreContactUtils.getSimFreeCount(mPeople,subscription);
-            int AdnCount = MoreContactUtils.getAdnCount(subscription);
-            boolean canSaveAnr = MoreContactUtils.canSaveAnr(subscription);
-            boolean canSaveEmail = MoreContactUtils.canSaveEmail(subscription);
+            freeSimCount = MoreContactUtils.getSimFreeCount(mPeople, subscription);
+            int AdnCount = MoreContactUtils.getAdnCount(mPeople, subscription);
+            boolean canSaveAnr = MoreContactUtils.canSaveAnr(mPeople, subscription);
+            boolean canSaveEmail = MoreContactUtils.canSaveEmail(mPeople, subscription);
             int emailCountInOneSimContact = MoreContactUtils
-                    .getOneSimEmailCount(subscription);
-            int phoneCountInOneSimContact = MoreContactUtils.getOneSimAnrCount(subscription) +1;
-            int emptyAnr = MoreContactUtils.getSpareAnrCount(subscription);
+                    .getOneSimEmailCount(mPeople, subscription);
+            int phoneCountInOneSimContact = MoreContactUtils.getOneSimAnrCount(
+                    mPeople, subscription) + 1;
+            int emptyAnr = MoreContactUtils.getSpareAnrCount(mPeople, subscription);
             int emptyEmail = MoreContactUtils
-                    .getSpareEmailCount(subscription);
+                    .getSpareEmailCount(mPeople, subscription);
             int emptyNumber = freeSimCount + emptyAnr;
 
             Log.d(TAG, "freeSimCount = " + freeSimCount);
