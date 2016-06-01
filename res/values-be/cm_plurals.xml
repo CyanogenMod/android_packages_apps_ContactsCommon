@@ -31,4 +31,9 @@
     <item quantity="few">Экспарт сказаваны, <xliff:g id="insertCount">%d</xliff:g> былі экспартаваны</item>
     <item quantity="other">Экспарт сказаваны, <xliff:g id="insertCount">%d</xliff:g> элементаў экспартавана</item>
   </plurals>
+  <plurals name="spam_count_text">
+    <item quantity="one"><xliff:g id="spamCount">%d</xliff:g> адзначыў як спам</item>
+    <item quantity="few"><xliff:g id="spamCount">%d</xliff:g> адзначыла як спам</item>
+    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> адзначылі як спам</item>
+  </plurals>
 </resources>

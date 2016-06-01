@@ -18,18 +18,26 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <plurals name="export_to_sim_failed">
     <item quantity="one">הייצוא נכשל, פריט <xliff:g id="insertCount">%d</xliff:g> יוצא</item>
+    <item quantity="two">הייצוא נכשל, <xliff:g id="insertCount">%d</xliff:g> פריטים יוצאו</item>
+    <item quantity="many">הייצוא נכשל, <xliff:g id="insertCount">%d</xliff:g> פריטים יוצאו</item>
     <item quantity="other">הייצוא נכשל, <xliff:g id="insertCount">%d</xliff:g> פריטים יוצאו</item>
   </plurals>
   <plurals name="export_sim_card_full">
     <item quantity="one">כרטיס ה-SIM מלא, פריט <xliff:g id="insertCount">%d</xliff:g> ייוצא</item>
+    <item quantity="two">כרטיס ה-SIM מלא, <xliff:g id="insertCount">%d</xliff:g> פריטים ייוצאו</item>
+    <item quantity="many">כרטיס ה-SIM מלא, <xliff:g id="insertCount">%d</xliff:g> פריטים ייוצאו</item>
     <item quantity="other">כרטיס ה-SIM מלא, <xliff:g id="insertCount">%d</xliff:g> פריטים ייוצאו</item>
   </plurals>
   <plurals name="export_cancelled">
     <item quantity="one">הייצוא בוטל, פריט <xliff:g id="insertCount">%d</xliff:g> ייוצא</item>
+    <item quantity="two">הייצוא בוטל, <xliff:g id="insertCount">%d</xliff:g> פריטים ייוצאו</item>
+    <item quantity="many">הייצוא בוטל, <xliff:g id="insertCount">%d</xliff:g> פריטים ייוצאו</item>
     <item quantity="other">הייצוא בוטל, <xliff:g id="insertCount">%d</xliff:g> פריטים ייוצאו</item>
   </plurals>
   <plurals name="spam_count_text">
     <item quantity="one">אדם אחד סימן זאת כדואר זבל</item>
+    <item quantity="two"><xliff:g id="spamCount">%d</xliff:g> אנשים סימנו זאת כדואר זבל</item>
+    <item quantity="many"><xliff:g id="spamCount">%d</xliff:g> אנשים סימנו זאת כדואר זבל</item>
     <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> אנשים סימנו זאת כדואר זבל</item>
   </plurals>
 </resources>
