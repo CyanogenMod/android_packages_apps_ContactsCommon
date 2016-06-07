@@ -33,6 +33,8 @@ import com.android.contacts.common.R;
 import com.android.contacts.common.compat.ContactsCompat;
 import com.android.contacts.common.preference.ContactsPreferences;
 
+import java.util.TreeSet;
+
 /**
  * A cursor adapter for the {@link ContactsContract.Contacts#CONTENT_TYPE} content type.
  * Also includes support for including the {@link ContactsContract.Profile} record in the
@@ -354,6 +356,25 @@ public abstract class ContactListAdapter extends ContactEntryListAdapter {
             position++;
         }
         return position;
+    }
+
+    public TreeSet<Long> getAllVisibleContactIds() {
+        TreeSet<Long> contactIds = new TreeSet<Long>();
+        Cursor cursor = null;
+        int partitionCount = getPartitionCount();
+        for (int i = 0; i < partitionCount; i++) {
+            DirectoryPartition partition = (DirectoryPartition) getPartition(i);
+            if (partition.isLoading()) {
+                continue;
+            }
+            cursor = getCursor(i);
+            if (cursor == null) continue;
+            if (!cursor.moveToFirst()) continue;
+            do {
+                contactIds.add(cursor.getLong(ContactQuery.CONTACT_ID));
+            } while(cursor.moveToNext());
+        }
+        return contactIds;
     }
 
     public boolean hasValidSelection() {

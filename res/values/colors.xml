@@ -168,4 +168,7 @@
     <!-- Background color for the call subject history view. -->
     <color name="call_subject_history_background">#ffffff</color>
     <color name="search_video_call_icon_tint">@color/searchbox_hint_text_color</color>
+
+    <!-- The selected photo color -->
+    <color name="photo_selected_color">#1789ce</color>
 </resources>

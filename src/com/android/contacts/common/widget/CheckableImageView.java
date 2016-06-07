@@ -36,10 +36,7 @@ public class CheckableImageView extends ImageView implements Checkable {
     }
 
     private void init(Context context) {
-        TypedArray a = context.obtainStyledAttributes(android.R.styleable.Theme);
-        setCheckMarkBackgroundColor(a.getColor(android.R.styleable.Theme_colorPrimary,
-                context.getResources().getColor(R.color.people_app_theme_color)));
-        a.recycle();
+        setCheckMarkBackgroundColor(context.getResources().getColor(R.color.photo_selected_color));
     }
 
     public void setCheckMarkBackgroundColor(int color) {
@@ -69,15 +66,7 @@ public class CheckableImageView extends ImageView implements Checkable {
         }
 
         mChecked = checked;
-
-        Drawable d = getDrawable();
-        if (d instanceof CheckableFlipDrawable) {
-            CheckableFlipDrawable cfd = (CheckableFlipDrawable) d;
-            cfd.flipTo(!mChecked);
-            if (!animate) {
-                cfd.reset();
-            }
-        }
+        applyCheckState(animate);
     }
 
     @Override
@@ -86,18 +75,19 @@ public class CheckableImageView extends ImageView implements Checkable {
             if (mDrawable == null) {
                 mDrawable = new CheckableFlipDrawable(d, getResources(),
                         mCheckMarkBackgroundColor, 150);
+                applyCheckState(false);
             } else {
-                int oldWidth = mDrawable.getIntrinsicWidth();
-                int oldHeight = mDrawable.getIntrinsicHeight();
                 mDrawable.setFront(d);
-                if (oldWidth != mDrawable.getIntrinsicWidth()
-                        || oldHeight != mDrawable.getIntrinsicHeight()) {
-                    // enforce drawable size update + layout
-                    super.setImageDrawable(null);
-                }
             }
             d = mDrawable;
         }
         super.setImageDrawable(d);
+    }
+
+    private void applyCheckState(boolean animate) {
+        mDrawable.flipTo(!mChecked);
+        if (!animate) {
+            mDrawable.reset();
+        }
     }
 }

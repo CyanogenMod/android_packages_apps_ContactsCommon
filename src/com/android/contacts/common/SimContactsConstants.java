@@ -61,6 +61,8 @@ public interface SimContactsConstants {
     public static final String WITHOUT_SIM_FLAG ="no_sim";
     public static final String IS_CONTACT = "is_contact";
     public static final String RESULT_KEY = "result";
+    public static final String RESULT_KEY_ONLY_NUMBER = "result_only_number";
+    public static final String MODE = "mode";
     public static final String ACTION_MULTI_PICK =
             "com.android.contacts.action.MULTI_PICK";
     public static final String ACTION_MULTI_PICK_EMAIL =

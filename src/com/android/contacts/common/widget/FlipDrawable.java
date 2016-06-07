@@ -17,8 +17,10 @@ package com.android.contacts.common.widget;
 
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.res.ColorStateList;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 
@@ -112,16 +114,6 @@ public class FlipDrawable extends Drawable implements Drawable.Callback {
         });
 
         reset();
-    }
-
-    @Override
-    public int getIntrinsicWidth() {
-        return mFront.getIntrinsicWidth();
-    }
-
-    @Override
-    public int getIntrinsicHeight() {
-        return mFront.getIntrinsicHeight();
     }
 
     @Override
@@ -272,5 +264,27 @@ public class FlipDrawable extends Drawable implements Drawable.Callback {
      */
     public boolean isFlipping() {
         return mFlipAnimator.isStarted();
+    }
+
+    @Override
+    public boolean isStateful() {
+        return mFront.isStateful() || mBack.isStateful();
+    }
+
+    @Override
+    public boolean setState(int[] stateSet) {
+        return mFront.setState(stateSet) || mBack.setState(stateSet);
+    }
+
+    @Override
+    public void setTintMode(PorterDuff.Mode tintMode) {
+        mFront.setTintMode(tintMode);
+        mBack.setTintMode(tintMode);
+    }
+
+    @Override
+    public void setTintList(ColorStateList tint) {
+        mFront.setTintList(tint);
+        mBack.setTintList(tint);
     }
 }
