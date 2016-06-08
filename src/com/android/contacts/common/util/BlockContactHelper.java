@@ -109,7 +109,8 @@ public class BlockContactHelper {
 
     public boolean canBlockContact(Context context) {
         boolean isBlacklistEnabled = BlacklistUtils.isBlacklistEnabled(context);
-        return isBlacklistEnabled && mBlockRequest != null && mBlockRequest != BlockRequest.EMPTY;
+        return isBlacklistEnabled && mBlockRequest != null && mBlockRequest != BlockRequest.EMPTY
+                && containValidNumbers(context);
     }
 
     public String getLookupProviderName() {
@@ -251,5 +252,14 @@ public class BlockContactHelper {
          * Callback indicating that unblock action has completed
          */
         void onUnblockCompleted();
+    }
+
+    private boolean containValidNumbers(Context context) {
+        for (String number : mBlockRequest.phoneNumbers) {
+            if (!PhoneNumberHelper.isValidNumber(context, number, "")) {
+                return false;
+            }
+        }
+        return true;
     }
 }
