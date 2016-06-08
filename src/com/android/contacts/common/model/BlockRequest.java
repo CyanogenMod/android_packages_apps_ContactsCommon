@@ -59,7 +59,8 @@ public class BlockRequest {
     }
 
     public static BlockRequest createFrom(Context context, String phoneNumber) {
-        if (TextUtils.isEmpty(phoneNumber)) {
+        if (TextUtils.isEmpty(phoneNumber) || !PhoneNumberHelper.isValidNumber(context,
+                phoneNumber, null)) {
             return EMPTY;
         }
 
