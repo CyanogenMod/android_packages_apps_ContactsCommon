@@ -16,18 +16,34 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">ස්ථානීය ටැබ්ලට් ගිණුම</string>
   <string name="local_storage_account" product="default">ස්ථානීය දුරකථන ගිණුම</string>
+  <!-- CMCC -->
+  <!-- CAF -->
+  <!-- Action string for managing SIM contacts -->
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">සිම් කාඩ්පතට නිර්යාත කරන්න</string>
+  <!--The failed reason shown when importing a vCard file -->
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="label_groups">කාණ්ඩය</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files">ගොනු <xliff:g id="total_number">%2$s</xliff:g> න් <xliff:g id="current_number">%1$s</xliff:g></string>
   <string name="export_failed">නිර්යාතය අසමත්විය</string>
   <string name="export_finished">නිර්යාතය නිමාවුනි</string>
   <string name="import_from_sim_select">ආයාත කිරීමට කාඩ්පත තෝරන්න</string>
+  <!-- Dialog title shown when (USB) storage does not exist [CHAR LIMIT=25] -->
   <string name="no_sdcard_title" product="nosdcard">ආචයනය ලබාගත නොහැක</string>
+  <!-- Dialog title shown when SD Card does not exist -->
   <string name="no_sdcard_title" product="default">SD කාඩ්පතක් නොමැත</string>
+  <!-- Confirmation dialog title after users selects to delete a contact. [CHAR LIMIT=25]-->
   <string name="deleteConfirmation_title">සම්බන්ධතාව මකන්නද?</string>
+  <!-- Confirmation dialog contents after users selects to delete a Writable contact. -->
   <string name="deleteConfirmation">මෙම සම්බන්ධතාව මකා දැමෙනු ඇත.</string>
+  <!-- Detailed description of the preference section that allows users to configure how they
+         want their contacts to be displayed. [CHAR LIMIT=128] -->
+  <!-- Menu item used to initiate ip call -->
   <string name="no_ip_number">IP අංකයක් නැත</string>
   <string name="no_ip_number_on_sim_card">සිම් පතෙහි IP අංකයක් නැත</string>
   <string name="ipcall_dialog_edit_hint">කරුණාකර IP උපසර්ගය ආදානය කරන්න</string>

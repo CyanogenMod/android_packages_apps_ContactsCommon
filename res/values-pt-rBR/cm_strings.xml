@@ -16,36 +16,52 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Virtual local storage account name -->
   <string name="local_storage_account" product="tablet">Conta local de tablet</string>
   <string name="local_storage_account" product="default">Conta local de telefone</string>
+  <!-- CMCC -->
   <string name="import_contacts_sim">Importar contatos do cartão SIM?</string>
+  <!-- CAF -->
+  <!-- Action string for managing SIM contacts -->
   <string name="manage_sim_contacts">Gerenciar contatos do cartão SIM</string>
+  <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">Exportar para o cartão SIM</string>
-  <string name="fail_reason_import_vcard">\'<xliff:g id="name">%s</xliff:g>\' não pôde ser importado devido a um erro</string>
+  <!--The failed reason shown when importing a vCard file -->
+  <string name="fail_reason_import_vcard">\'<xliff:g id="name">%s</xliff:g>\' não pôde ser importado devido a um erro de I/O</string>
+  <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="contact_share_failed_toast">Não podem ser compartilhados mais que <xliff:g id="count">%d</xliff:g> contatos</string>
   <string name="label_groups">Grupo</string>
   <string name="exporting">Exportando\u2026</string>
+  <!-- Message while reading multiple vCard files "(current number) of (total number) files"
+          The order of "current number" and "total number" cannot be changed -->
   <string name="reading_vcard_files"><xliff:g id="current_number">%1$s</xliff:g> de <xliff:g id="total_number">%2$s</xliff:g> arquivos</string>
   <string name="export_failed">Falha na exportação</string>
   <string name="sim_card_full">O cartão SIM está cheio</string>
   <string name="export_finished">Exportação concluída</string>
   <string name="tag_too_long">O nome do contato é muito longo</string>
-  <string name="sim_contacts_not_loaded">Não é possível carregar os contatos do cartão SIM</string>
+  <string name="sim_contacts_not_loaded">Impossível carregar contatos do cartão SIM</string>
   <plurals name="export_cancelled">
-    <item quantity="one">A exportação foi cancelada, %d item foi exportado</item>
-    <item quantity="other">A exportação foi cancelada, %d itens foram exportados</item>
+    <item quantity="one">Exportação cancelada, %d item exportado</item>
+    <item quantity="other">Exportação cancelada, %d itens exportados</item>
   </plurals>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> não tem um número de telefone ou endereço de e-mail</string>
   <string name="import_from_sim_select">Escolha o cartão para importar</string>
-  <string name="no_sdcard_title" product="nosdcard">Cartão SD indisponível</string>
+  <!-- Dialog title shown when (USB) storage does not exist [CHAR LIMIT=25] -->
+  <string name="no_sdcard_title" product="nosdcard">Armazenamento indisponível</string>
+  <!-- Dialog title shown when SD Card does not exist -->
   <string name="no_sdcard_title" product="default">Nenhum cartão SD</string>
+  <!-- Confirmation dialog title after users selects to delete a contact. [CHAR LIMIT=25]-->
   <string name="deleteConfirmation_title">Apagar contato?</string>
+  <!-- Confirmation dialog contents after users selects to delete a Writable contact. -->
   <string name="deleteConfirmation">Este contato será apagado.</string>
-  <string name="copy_done">Contato foi copiado com sucesso</string>
+  <string name="copy_done">Contato copiado</string>
   <string name="copy_failure">Falha ao copiar o contato</string>
   <string name="card_no_space">Falha ao copiar o contato, o cartão SIM está cheio</string>
+  <!-- Detailed description of the preference section that allows users to configure how they
+         want their contacts to be displayed. [CHAR LIMIT=128] -->
   <string name="settings_contact_display_options_description">Defina como os seus contatos são exibidos e classificados.</string>
-  <string name="ip_call_by_slot">Chamada IP por <xliff:g id="subName">%s</xliff:g></string>
+  <!-- Menu item used to initiate ip call -->
+  <string name="ip_call_by_slot">Chamada IP via <xliff:g id="subName">%s</xliff:g></string>
   <string name="no_ip_number">Nenhum número IP</string>
   <string name="no_ip_number_on_sim_card">Nenhum número IP no cartão SIM</string>
   <string name="set_ip_number">Definir número IP</string>
