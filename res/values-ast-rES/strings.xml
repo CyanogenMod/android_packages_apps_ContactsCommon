@@ -19,6 +19,7 @@
   <!-- Toast shown when text is copied to the clipboard [CHAR LIMIT=64] -->
   <string name="toast_text_copied">Testu copiáu</string>
   <!-- Option displayed in context menu to copy long pressed item to clipboard [CHAR LIMIT=64] -->
+  <string name="copy_text">Copiar al cartafueyu</string>
   <!-- Action string for calling a custom phone number -->
   <string name="call_custom">Llamar a <xliff:g id="CUSTOM">%s</xliff:g>
   </string>
@@ -109,6 +110,10 @@
   <!-- Title of the confirmation dialog for clearing frequents. [CHAR LIMIT=37] -->
   <string name="clearFrequentsConfirmation_title">¿Llimpiar contautos frecuentes?</string>
   <!-- Confirmation dialog for clearing frequents. [CHAR LIMIT=NONE] -->
+  <string name="clearFrequentsConfirmation">Vas desaniciar la llista de persones coles que tas en
+        contautu nes apps de Contautos y Teléfonu. Arriendes, les tos apps de corréu van tener d\'afitar les tos preferencies dende
+        cero.
+    </string>
   <!-- Title of the "Clearing frequently contacted" progress-dialog [CHAR LIMIT=35] -->
   <string name="clearFrequentsProgress_title">Llimpiando contautos frecuentes…</string>
   <!--  Used to display as default status when the contact is available for chat [CHAR LIMIT=19] -->
@@ -340,6 +345,7 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
   <!-- Action string for selecting a SIM subscription for importing contacts -->
   <!-- Action string for selecting a SIM subscription for importing contacts, without a phone number -->
   <!-- Action string for selecting a .vcf file to import contacts from [CHAR LIMIT=30] -->
+  <string name="import_from_vcf_file" product="default">Importar dende ficheru .vcf</string>
   <!-- Message shown in a Dialog confirming a user's cancel request toward existing vCard import.
          The argument is file name for the vCard import the user wants to cancel.
          [CHAR LIMIT=128] -->
@@ -364,6 +370,7 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
   <string name="fail_reason_no_exportable_contact">Nun hai contautos qu\'esportar.</string>
   <!-- The user doesn't have all permissions required to use the current screen. So
          close the current screen and show the user this message. -->
+  <string name="missing_required_permission">Deshabilitesti un permisu riquíu.</string>
   <!-- The failed reason shown when some error happend during contacts export.
          Some exact reason must follow this. [CHAR LIMIT=NONE] -->
   <string name="fail_reason_error_occurred_during_export">Hebo un fallu al esportar (\"<xliff:g id="EXACT_REASON">%s</xliff:g>\").</string>
@@ -398,6 +405,7 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
   <!-- The title shown when exporting vCard is successfuly finished [CHAR LIMIT=40] -->
   <string name="exporting_vcard_finished_title">Esportación de <xliff:g id="FILENAME">%s</xliff:g> finada</string>
   <!-- The title shown when exporting vCard has finished successfully but the destination filename could not be resolved. [CHAR LIMIT=NONE] -->
+  <string name="exporting_vcard_finished_title_fallback">Finó la esportación de contautos.</string>
   <!-- The title shown when exporting vCard is canceled (probably by a user)
          The argument is file name the user canceled importing.
          [CHAR LIMIT=40] -->
@@ -459,6 +467,7 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
          [CHAR LIMIT=40] -->
   <string name="vcard_export_will_start_message"><xliff:g id="FILENAME">%s</xliff:g> va esportase darréu.</string>
   <!-- The message shown when a vCard export request is accepted but the destination filename could not be resolved. [CHAR LIMIT=NONE] -->
+  <string name="vcard_export_will_start_message_fallback">El ficheru esportaráse ceo.</string>
   <!-- The message shown when a given vCard export request is rejected by the system. [CHAR LIMIT=NONE] -->
   <string name="vcard_export_request_rejected_message">Refugóse la solicitú d\'esportación de vCard. Inténtalo de nueves más tarde.</string>
   <!-- Used when file name is unknown in vCard processing. It typically happens
@@ -497,6 +506,7 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
          [CHAR LIMIT=20] -->
   <string name="progress_notifier_message">Importando <xliff:g id="CURRENT_NUMBER">%s</xliff:g>/<xliff:g id="TOTAL_NUMBER">%s</xliff:g>: <xliff:g id="NAME">%s</xliff:g></string>
   <!-- Action that exports all contacts to a user selected destination. [CHAR LIMIT=25] -->
+  <string name="export_to_vcf_file" product="default">Esportar a ficheru .vcf</string>
   <!-- Contact preferences related strings -->
   <!-- Label of the "sort by" display option -->
   <string name="display_options_sort_list_by">Ordenar por</string>
@@ -513,6 +523,7 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
   <!-- Action that shares visible contacts -->
   <string name="share_visible_contacts">Compartir contautos visibles</string>
   <!-- A framework exception (ie, transaction too large) can be thrown while attempting to share all visible contacts. If so, show this toast. -->
+  <string name="share_visible_contacts_failure">Fallu al compartir contautos visibles.</string>
   <!-- Dialog title when selecting the bulk operation to perform from a list. [CHAR LIMIT=36] -->
   <string name="dialog_import_export">Importar/esportar contautos</string>
   <!-- Dialog title when importing contacts from an external source. [CHAR LIMIT=36] -->
@@ -560,6 +571,7 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
   <string name="contact_status_update_attribution_with_date"><xliff:g id="date" example="3 hours ago">%1$s</xliff:g> per aciu de <xliff:g id="source" example="Google Talk">%2$s</xliff:g></string>
   <!-- Font family used when drawing letters for letter tile avatars.
          Do not translate. -->
+  <string name="letter_tile_letter_font_family">sans-serif-medium</string>
   <!-- Content description for the fake action menu up button as used
      inside search. [CHAR LIMIT=NONE] -->
   <string name="action_menu_back_from_search">Parar la gueta</string>
@@ -576,10 +588,15 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
   <!-- String used for actions in the dialer call log and the quick contact card to initiate
          a call to an individual.  The user is prompted to enter a note which is sent along with
          the call (e.g. a call subject). [CHAR LIMIT=40] -->
+  <string name="call_with_a_note">Llamar con una nota</string>
   <!-- Hint text shown in the call subject dialog. [CHAR LIMIT=255] -->
+  <string name="call_subject_hint">Teclexa una nota pa unviar cola llamada...</string>
   <!-- Button used to start a new call with the user entered subject. [CHAR LIMIT=32] -->
+  <string name="send_and_call_button">UNVIAR Y LLAMAR</string>
   <!-- String used to represent the total number of characters entered for a call subject,
          compared to the character limit.  Example: 2 / 64 -->
+  <string name="call_subject_limit"><xliff:g id="count" example="4">%1$s</xliff:g>/<xliff:g id="limit" example="64">%2$s</xliff:g></string>
   <!-- String used to build a phone number bype and phone number string.
          Example: Mobile • 650-555-1212  -->
+  <string name="call_subject_type_and_number"><xliff:g id="type" example="Mobile">%1$s</xliff:g> • <xliff:g id="number" example="(650) 555-1212">%2$s</xliff:g></string>
 </resources>
