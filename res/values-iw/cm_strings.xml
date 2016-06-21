@@ -42,6 +42,8 @@
   <string name="sim_contacts_not_loaded">לא ניתן לטעון אנשי קשר מה-SIM</string>
   <plurals name="export_cancelled">
     <item quantity="one">הייצוא בוטל, פריט %d יוצא</item>
+    <item quantity="two">הייצוא בוטל, %d פריטים יוצאו</item>
+    <item quantity="many">הייצוא בוטל, %d פריטים יוצאו</item>
     <item quantity="other">הייצוא בוטל, %d פריטים יוצאו</item>
   </plurals>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> לא כולל מספר טלפון או כתובת דוא\"ל</string>

@@ -41,6 +41,7 @@
   <string name="tag_too_long">نام مخاطب بسیار طولانی است</string>
   <string name="sim_contacts_not_loaded">نمی‌توان مخاطبین سیم کارت را بارگذاری کرد</string>
   <plurals name="export_cancelled">
+    <item quantity="one">صدور لغو شد، %d مورد صادر شد</item>
     <item quantity="other">صدور لغو شد، %d مورد صادر شد</item>
   </plurals>
   <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> شماره تلفن یا آدرس ایمیلی ندارد</string>
