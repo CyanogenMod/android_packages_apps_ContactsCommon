@@ -152,7 +152,14 @@ public class DataItem implements Collapser.Collapsible<DataItem> {
      *      video calling, {@code 0} otherwise.
      */
     public int getCarrierPresence() {
-        return mContentValues.getAsInteger(Data.CARRIER_PRESENCE);
+        if (hasCarrierPresence())
+            return mContentValues.getAsInteger(Data.CARRIER_PRESENCE);
+        return 0;
+    }
+
+    private boolean hasCarrierPresence() {
+        return mContentValues.containsKey(Data.CARRIER_PRESENCE)
+                && mContentValues.getAsInteger(Data.CARRIER_PRESENCE) != null;
     }
 
     /**
