@@ -11,25 +11,21 @@
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
- * limitations under the License.
+ * limitations under the License
  */
-
-
 package com.android.contacts.common.compat;
 
-import android.test.AndroidTestCase;
-import android.test.suitebuilder.annotation.SmallTest;
+import android.content.Intent;
+import android.telecom.TelecomManager;
 
-// @formatter:off
 /**
- * Run test with
- * adb shell am instrument -e class com.android.dialer.SdkSelectionUtilsTest -w com.google.android.dialer.tests/android.test.InstrumentationTestRunner
+ * Utility class for TelecomManager
  */
-// @formatter:on
-@SmallTest
-public class SdkSelectionUtilsTest extends AndroidTestCase {
-
-    public void testTargetNSdk_True() {
-        assertTrue(SdkSelectionUtils.TARGET_N_SDK);
+public class TelecomManagerUtil {
+    /**
+     * Creates {@link Intent} to launch the activity to manage blocked numbers.
+     */
+    public static Intent createManageBlockedNumbersIntent(TelecomManager tm) {
+        return CompatUtils.isNCompatible() ? tm.createManageBlockedNumbersIntent() : null;
     }
 }

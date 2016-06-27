@@ -16,13 +16,8 @@
 
 package com.android.contacts.common.compat;
 
-import android.app.Activity;
+import android.provider.ContactsContract;
 
-public class MultiWindowCompat {
-    /**
-     * Always returns false as multi-window mode is not available on pre-N.
-     */
-    public static boolean isInMultiWindowMode(Activity activity) {
-        return false;
-    }
+public class PhoneLookupSdkCompat {
+    public static final String CONTACT_ID = ContactsContract.PhoneLookup.CONTACT_ID;
 }

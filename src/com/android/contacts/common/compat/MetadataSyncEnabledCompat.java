@@ -21,8 +21,9 @@ import android.provider.Settings;
 
 public class MetadataSyncEnabledCompat {
     public static boolean isMetadataSyncEnabled(Context context) {
-        return android.provider.Settings.Global.getInt(
-                context.getContentResolver(),
-                Settings.Global.CONTACT_METADATA_SYNC_ENABLED, 0) == 1;
+        return CompatUtils.isNCompatible()
+                ? (Settings.Global.getInt(context.getContentResolver(),
+                        Settings.Global.CONTACT_METADATA_SYNC_ENABLED, 0) == 1)
+                : false;
     }
 }

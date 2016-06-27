@@ -11,21 +11,18 @@
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
- * limitations under the License
+ * limitations under the License.
  */
+
 package com.android.contacts.common.compat;
 
-import android.content.Intent;
-import android.telecom.TelecomManager;
+import android.app.Activity;
 
-/**
- * Utility class for TelecomManager
- */
-public class TelecomManagerUtil {
+public class MultiWindowCompat {
     /**
-     * Creates {@link Intent} to launch the activity to manage blocked numbers.
+     * Returns true if the activity is currently in multi-window mode.
      */
-    public static Intent createManageBlockedNumbersIntent(TelecomManager tm) {
-        return tm.createManageBlockedNumbersIntent();
+    public static boolean isInMultiWindowMode(Activity activity) {
+        return CompatUtils.isNCompatible() ? activity.isInMultiWindowMode() : false;
     }
 }

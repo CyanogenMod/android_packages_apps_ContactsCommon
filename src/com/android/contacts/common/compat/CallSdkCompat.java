@@ -18,6 +18,9 @@ package com.android.contacts.common.compat;
 
 import android.telecom.Call;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 public class CallSdkCompat {
     public static class Details {
         public static final int PROPERTY_IS_EXTERNAL_CALL = Call.Details.PROPERTY_IS_EXTERNAL_CALL;
@@ -27,7 +30,24 @@ public class CallSdkCompat {
                 Call.Details.CAPABILITY_CANNOT_DOWNGRADE_VIDEO_TO_AUDIO;
     }
 
-    public static void pullExternalCall(android.telecom.Call call) {
-        call.pullExternalCall();
+    /**
+     * TODO: This API is hidden in the N release; replace the implementation with a call to the
+     * actual once it is made public.
+     */
+    public static void pullExternalCall(Call call) {
+        if (!CompatUtils.isNCompatible()) {
+            return;
+        }
+        Class<?> callClass = Call.class;
+        try {
+            Method pullExternalCallMethod = callClass.getDeclaredMethod("pullExternalCall");
+            pullExternalCallMethod.invoke(call);
+        } catch (NoSuchMethodException e) {
+            // Ignore requests to pull call if there is a problem.
+        } catch (InvocationTargetException e) {
+            // Ignore requests to pull call if there is a problem.
+        } catch (IllegalAccessException e) {
+            // Ignore requests to pull call if there is a problem.
+        }
     }
 }

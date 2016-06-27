@@ -17,7 +17,6 @@
 package com.android.contacts.common.compat;
 
 import android.net.Uri;
-import android.provider.ContactsContract;
 import android.provider.ContactsContract.Directory;
 
 public class DirectorySdkCompat {
@@ -29,10 +28,10 @@ public class DirectorySdkCompat {
     public static final long ENTERPRISE_LOCAL_INVISIBLE = Directory.ENTERPRISE_LOCAL_INVISIBLE;
 
     public static boolean isRemoteDirectoryId(long directoryId) {
-        return Directory.isRemoteDirectoryId(directoryId);
+        return CompatUtils.isNCompatible() ? Directory.isRemoteDirectoryId(directoryId) : false;
     }
 
     public static boolean isEnterpriseDirectoryId(long directoryId) {
-        return Directory.isEnterpriseDirectoryId(directoryId);
+        return CompatUtils.isNCompatible() ? Directory.isEnterpriseDirectoryId(directoryId) : false;
     }
 }

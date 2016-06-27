@@ -26,11 +26,13 @@ import android.telephony.TelephonyManager;
 public class TelephonyManagerSdkCompat {
     public static Uri getVoicemailRingtoneUri(TelephonyManager telephonyManager,
             PhoneAccountHandle accountHandle) {
-        return telephonyManager.getVoicemailRingtoneUri(accountHandle);
+        return CompatUtils.isNCompatible()
+                ? telephonyManager.getVoicemailRingtoneUri(accountHandle) : null;
     }
 
     public static boolean isVoicemailVibrationEnabled(TelephonyManager telephonyManager,
             PhoneAccountHandle accountHandle) {
-        return telephonyManager.isVoicemailVibrationEnabled(accountHandle);
+        return CompatUtils.isNCompatible()
+                ? telephonyManager.isVoicemailVibrationEnabled(accountHandle) : false;
     }
 }

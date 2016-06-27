@@ -18,21 +18,20 @@ package com.android.contacts.common.compat;
 
 import android.os.Bundle;
 import android.telecom.PhoneAccount;
-import android.util.Log;
 
 public class PhoneAccountSdkCompat {
 
     private static final String TAG = "PhoneAccountSdkCompat";
 
     public static final String EXTRA_CALL_SUBJECT_MAX_LENGTH =
-            "android.telecom.extra.CALL_SUBJECT_MAX_LENGTH";
-
+            PhoneAccount.EXTRA_CALL_SUBJECT_MAX_LENGTH;
     public static final String EXTRA_CALL_SUBJECT_CHARACTER_ENCODING =
-            "android.telecom.extra.CALL_SUBJECT_CHARACTER_ENCODING";
+            PhoneAccount.EXTRA_CALL_SUBJECT_CHARACTER_ENCODING;
 
-    public static final int CAPABILITY_VIDEO_CALLING_RELIES_ON_PRESENCE = 256;
+    public static final int CAPABILITY_VIDEO_CALLING_RELIES_ON_PRESENCE =
+            PhoneAccount.CAPABILITY_VIDEO_CALLING_RELIES_ON_PRESENCE;
 
     public static Bundle getExtras(PhoneAccount account) {
-        return null;
+        return CompatUtils.isNCompatible() ? account.getExtras() : null;
     }
 }
