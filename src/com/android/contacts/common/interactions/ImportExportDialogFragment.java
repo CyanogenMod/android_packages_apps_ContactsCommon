@@ -892,7 +892,7 @@ public class ImportExportDialogFragment extends DialogFragment
                     String[] contactInfos = (String[]) msg.obj;
                     if (contactInfos != null && contactInfos.length == 3) {
                         String toastS = mPeople.getString(
-                                R.string.export_to_sim_failed,
+                                R.string.sim_contact_export_failed,
                                 contactInfos[0] == null ? "" : contactInfos[0],
                                 contactInfos[1] == null ? "" : contactInfos[1],
                                 contactInfos[2] == null ? "" : contactInfos[2]);
