@@ -123,14 +123,14 @@ public class BlockContactDialogFragment extends DialogFragment
     }
 
     @Override
-    public void onCancel(DialogInterface dialog) {}
+    public void onCancel(DialogInterface dialog) {
+        Callbacks callback = getCallback();
+        if (callback != null) {
+            callback.onBlockCancelled();
+        }
+    }
 
-    @Override
-    public void onClick(DialogInterface dialog, int which) {
-        boolean mCheckboxStatus = mNotifyProviderCheckBox.isChecked();
-        // determine if a Callback is present
-        // priority is given to a TargetFragment if one is set
-        // otherwise the host activity is chosen, if it adheres to the Callbacks interface
+    public Callbacks getCallback() {
         Callbacks callback = null;
         Fragment targetFragment = getTargetFragment();
         if (targetFragment != null) {
@@ -143,7 +143,16 @@ public class BlockContactDialogFragment extends DialogFragment
                 callback = (Callbacks) parentActivity;
             }
         }
+        return callback;
+    }
 
+    @Override
+    public void onClick(DialogInterface dialog, int which) {
+        boolean mCheckboxStatus = mNotifyProviderCheckBox.isChecked();
+        // determine if a Callback is present
+        // priority is given to a TargetFragment if one is set
+        // otherwise the host activity is chosen, if it adheres to the Callbacks interface
+        Callbacks callback = getCallback();
         if (callback != null) {
             if (mLaunchMode == BLOCK_MODE) {
                 callback.onBlockSelected(mCheckboxStatus);
@@ -169,5 +178,10 @@ public class BlockContactDialogFragment extends DialogFragment
          *                             LookupProvider of the unblock
          */
         void onUnblockSelected(boolean notifyLookupProvider);
+
+        /**
+         * Callback noting that the user cancelled the blocking of the contact
+         */
+        void onBlockCancelled();
     }
 }
