@@ -167,4 +167,9 @@
     <dimen name="call_subject_dialog_secondary_text_size">14sp</dimen>
     <!-- Row padding for call subject history items. -->
     <dimen name="call_subject_history_item_padding">15dp</dimen>
+
+    <dimen name="video_calling_dialoglayout_margin">30dp</dimen>
+    <dimen name="video_calling_dialoglayout_checkbox_marginleft">10dp</dimen>
+    <dimen name="video_calling_dialoglayout_checkbox_marginbottom">24dp</dimen>
+    <dimen name="video_calling_dialoglayout_text_size">18sp</dimen>
 </resources>
