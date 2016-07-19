@@ -35,6 +35,7 @@ public final class ContactListFilter implements Comparable<ContactListFilter>, P
     public static final int FILTER_TYPE_STARRED = -4;
     public static final int FILTER_TYPE_WITH_PHONE_NUMBERS_ONLY = -5;
     public static final int FILTER_TYPE_SINGLE_CONTACT = -6;
+    public static final int FILTER_TYPE_CAN_SAVE_EMAIL = -7;
 
     public static final int FILTER_TYPE_ACCOUNT = 0;
 

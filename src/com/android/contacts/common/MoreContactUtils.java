@@ -729,4 +729,19 @@ public class MoreContactUtils {
         }
     }
 
+    /** get disabled SIM card's name */
+    public static String getSimFilter(Context c) {
+        TelephonyManager tm = (TelephonyManager) c
+                .getSystemService(Context.TELEPHONY_SERVICE);
+        int count = tm.getPhoneCount();
+        StringBuilder simFilter = new StringBuilder("");
+
+        for (int i = 0; i < count; i++) {
+            if (!canSaveEmail(c, i)) {
+                simFilter.append(getSimAccountName(c, i) + ',');
+            }
+        }
+
+        return simFilter.toString();
+    }
 }

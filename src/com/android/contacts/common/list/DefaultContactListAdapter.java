@@ -50,6 +50,7 @@ public class DefaultContactListAdapter extends ContactListAdapter {
 
     public static final char SNIPPET_START_MATCH = '[';
     public static final char SNIPPET_END_MATCH = ']';
+    private Context mContext;
 
     // Contacts contacted within the last 3 days (in seconds)
     private static final long LAST_TIME_USED_3_DAYS_SEC = 3L * 24 * 60 * 60;
@@ -81,6 +82,7 @@ public class DefaultContactListAdapter extends ContactListAdapter {
 
     public DefaultContactListAdapter(Context context) {
         super(context);
+        mContext = context;
     }
 
     /** append Uri QueryParameter to filter contacts in SIM card */
@@ -244,6 +246,14 @@ public class DefaultContactListAdapter extends ContactListAdapter {
             case ContactListFilter.FILTER_TYPE_ALL_WITHOUT_SIM: {
                 appendUriQueryParameterWithoutSim(loader, RawContacts.ACCOUNT_TYPE,
                      SimAccountType.ACCOUNT_TYPE);
+                break;
+            }
+            case ContactListFilter.FILTER_TYPE_CAN_SAVE_EMAIL: {
+                String emailFilter = MoreContactUtils.getSimFilter(mContext);
+                if (!TextUtils.isEmpty(emailFilter)) {
+                    appendUriQueryParameterWithoutSim(
+                            loader, RawContacts.ACCOUNT_NAME, emailFilter);
+                }
                 break;
             }
         }
