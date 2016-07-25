@@ -667,14 +667,7 @@ public class MoreContactUtils {
 
     public static Uri insertToCard(Context context, String name, String number, String emails,
             String anrNumber, int subscription, boolean insertToPhone) {
-        // add the max count limit of Chinese code or not
-        if (!TextUtils.isEmpty(name)) {
-            final int maxLen = hasChinese(name) ? MAX_LENGTH_NAME_WITH_CHINESE_IN_SIM
-                    : MAX_LENGTH_NAME_IN_SIM;
-            if (name.length() > maxLen) {
-                name = name.substring(0, maxLen);
-            }
-        }
+
         Uri result;
         ContentValues mValues = new ContentValues();
         mValues.clear();
