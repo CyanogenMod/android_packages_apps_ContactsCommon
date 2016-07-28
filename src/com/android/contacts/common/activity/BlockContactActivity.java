@@ -60,13 +60,20 @@ public class BlockContactActivity extends Activity implements BlockContactDialog
     }
 
     @Override
+    public void onBlockCancelled() {
+        finish();
+    }
+
+    @Override
     public void onBlockSelected(boolean notifyLookupProvider) {
         mBlockContactHelper.blockContactAsync(notifyLookupProvider);
+        finish();
     }
 
     @Override
     public void onUnblockSelected(boolean notifyLookupProvider) {
         mBlockContactHelper.unblockContactAsync(notifyLookupProvider);
+        finish();
     }
 
     @Override
