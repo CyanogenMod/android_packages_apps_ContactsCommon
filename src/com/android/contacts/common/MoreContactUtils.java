@@ -66,7 +66,7 @@ public class MoreContactUtils {
     private static final String TAG = "MoreContactUtils";
     public static final int MAX_LENGTH_NAME_IN_SIM = 14;
     public static final int MAX_LENGTH_NAME_WITH_CHINESE_IN_SIM = 6;
-    public static final int MAX_LENGTH_NUMBER_IN_SIM = 20;
+    public static final int MAX_LENGTH_NUMBER_IN_SIM = 40;
     public static final int MAX_LENGTH_EMAIL_IN_SIM = 40;
     private static final int NAME_POS = 0;
     private static final int NUMBER_POS = 1;
