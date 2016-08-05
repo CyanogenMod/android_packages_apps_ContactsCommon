@@ -43,7 +43,7 @@
   <!-- Menu item used to initiate ip call -->
   <string name="ip_call_by_slot">IP обаждане чрез <xliff:g id="subName">%s </xliff:g></string>
   <string name="no_ip_number">Няма IP номер</string>
-  <string name="no_ip_number_on_sim_card">Няма IP номер в СИМ картата</string>
+  <string name="no_ip_number_on_sim_card">Няма IP номер в SIM картата</string>
   <string name="set_ip_number">Задаване на IP номер</string>
   <string name="ipcall_dialog_title">Настройки за IP обаждания</string>
   <string name="ipcall_dialog_edit_hint">Моля, въведете IP префикс</string>
