@@ -129,6 +129,7 @@ public class CustomContactListFilterActivity extends Activity
             final ContentResolver resolver = context.getContentResolver();
 
             final AccountSet accounts = new AccountSet();
+            final String selection = Groups.DELETED + "!=1";
             for (AccountWithDataSet account : accountTypes.getAccounts(false)) {
                 final AccountType accountType = accountTypes.getAccountTypeForAccount(account);
                 if (accountType.isExtension() && !account.hasData(context)) {
@@ -145,7 +146,8 @@ public class CustomContactListFilterActivity extends Activity
                 if (account.dataSet != null) {
                     groupsUri.appendQueryParameter(Groups.DATA_SET, account.dataSet).build();
                 }
-                final Cursor cursor = resolver.query(groupsUri.build(), null, null, null, null);
+                final Cursor cursor = resolver.query(groupsUri.build(), null,
+                        selection, null, null);
                 if (cursor == null) {
                     continue;
                 }
