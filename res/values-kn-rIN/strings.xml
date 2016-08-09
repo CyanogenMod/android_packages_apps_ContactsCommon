@@ -87,8 +87,8 @@
     <string name="description_view_contact_detail" msgid="2756753096193839285">"ಸಂಪರ್ಕವನ್ನು ವೀಕ್ಷಿಸಿ"</string>
     <string name="list_filter_phones" msgid="3692815632088465422">"ಫೋನ್‌ ಸಂಖ್ಯೆಗಳೊಂದಿಗೆ ಎಲ್ಲ ಸಂಪರ್ಕಗಳು"</string>
     <string name="view_updates_from_group" msgid="3310864388165884352">"ನವೀಕರಣಗಳನ್ನು ವೀಕ್ಷಿಸಿ"</string>
-    <string name="account_phone" product="tablet" msgid="1143884271396601338">"ಟ್ಯಾಬ್ಲೆಟ್‌ ಮಾತ್ರ, ಅನ್‌ಸಿಂಕ್‌ ಮಾಡಲಾಗಿದೆ"</string>
-    <string name="account_phone" product="default" msgid="6104157990869081962">"ಫೋನ್‌ ಮಾತ್ರ, ಅನ್‌ಸಿಂಕ್‌‌ ಮಾಡಲಾಗಿದೆ"</string>
+    <string name="account_phone" product="tablet" msgid="1143884271396601338">"ಟ್ಯಾಬ್ಲೆಟ್‌ ಮಾತ್ರ, ಅನ್‌ಸಿಂಕ್‌ ಮಾಡಲಾದ"</string>
+    <string name="account_phone" product="default" msgid="6104157990869081962">"ಫೋನ್‌ ಮಾತ್ರ, ಅನ್‌ಸಿಂಕ್‌‌ ಮಾಡಲಾದ"</string>
     <string name="nameLabelsGroup" msgid="1817502703362057154">"ಹೆಸರು"</string>
     <string name="nicknameLabelsGroup" msgid="6312795212164843246">"ಅಡ್ಡಹೆಸರು"</string>
     <string name="full_name" msgid="885420216812981202">"ಹೆಸರು"</string>
@@ -229,8 +229,8 @@
     <string name="dialog_import" msgid="5177004290082451296">"ಸಂಪರ್ಕಗಳನ್ನು ಆಮದು ಮಾಡಿ"</string>
     <string name="share_error" msgid="665756457151793108">"ಈ ಸಂಪರ್ಕವನ್ನು ಹಂಚಿಕೊಳ್ಳಲು ಸಾಧ್ಯವಿಲ್ಲ."</string>
     <string name="menu_search" msgid="7464453023659824700">"ಹುಡುಕು"</string>
-    <string name="menu_contacts_filter" msgid="586356478145511794">"ಪ್ರದರ್ಶಿಸಲು ಸಂಪರ್ಕಗಳು"</string>
-    <string name="activity_title_contacts_filter" msgid="7689519428197855166">"ಪ್ರದರ್ಶಿಸಲು ಸಂಪರ್ಕಗಳು"</string>
+    <string name="menu_contacts_filter" msgid="586356478145511794">"ಪ್ರದರ್ಶನ ಸಂಪರ್ಕಗಳು"</string>
+    <string name="activity_title_contacts_filter" msgid="7689519428197855166">"ಪ್ರದರ್ಶನ ಸಂಪರ್ಕಗಳು"</string>
     <string name="custom_list_filter" msgid="582616656313514803">"ಕಸ್ಟಮ್ ವೀಕ್ಷಣೆ ವಿವರಿಸಿ"</string>
     <string name="hint_findContacts" msgid="28151707326753522">"ಸಂಪರ್ಕಗಳನ್ನು ಹುಡುಕಿ"</string>
     <string name="contactsFavoritesLabel" msgid="1222038757062409949">"ಮೆಚ್ಚಿನವುಗಳು"</string>
