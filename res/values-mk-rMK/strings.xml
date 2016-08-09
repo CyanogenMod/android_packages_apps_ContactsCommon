@@ -88,7 +88,7 @@
     <string name="list_filter_phones" msgid="3692815632088465422">"Сите контакти со телефонски броеви"</string>
     <string name="view_updates_from_group" msgid="3310864388165884352">"Прикажи ажурирања"</string>
     <string name="account_phone" product="tablet" msgid="1143884271396601338">"Само таблет, несинхронизиран"</string>
-    <string name="account_phone" product="default" msgid="6104157990869081962">"Само телефон, несинхрнизиран"</string>
+    <string name="account_phone" product="default" msgid="6104157990869081962">"Само на телефон, несинхронизиран"</string>
     <string name="nameLabelsGroup" msgid="1817502703362057154">"Име"</string>
     <string name="nicknameLabelsGroup" msgid="6312795212164843246">"Прекар"</string>
     <string name="full_name" msgid="885420216812981202">"Име"</string>
@@ -113,7 +113,7 @@
     <string name="ghostData_company" msgid="22470841482615409">"Компанија"</string>
     <string name="ghostData_title" msgid="6221293237772204604">"Име"</string>
     <string name="label_notes" msgid="3997277594846722699">"Белешки"</string>
-    <string name="label_sip_address" msgid="3754551597798479318">"СИП"</string>
+    <string name="label_sip_address" msgid="3754551597798479318">"SIP"</string>
     <string name="websiteLabelsGroup" msgid="8620657380165071493">"Веб-сајт"</string>
     <string name="groupsLabel" msgid="3574316547053047551">"Групи"</string>
     <string name="email_home" msgid="2230967805906450693">"Домашна е-пошта"</string>

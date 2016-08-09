@@ -87,8 +87,8 @@
     <string name="description_view_contact_detail" msgid="2756753096193839285">"Visualizza contatto"</string>
     <string name="list_filter_phones" msgid="3692815632088465422">"Tutti i contatti con numeri di telefono"</string>
     <string name="view_updates_from_group" msgid="3310864388165884352">"Visualizza aggiornamenti"</string>
-    <string name="account_phone" product="tablet" msgid="1143884271396601338">"Solo su tablet, non sincronizzato"</string>
-    <string name="account_phone" product="default" msgid="6104157990869081962">"Solo su telefono, non sincronizzato"</string>
+    <string name="account_phone" product="tablet" msgid="1143884271396601338">"solo su tablet, non sincronizzato"</string>
+    <string name="account_phone" product="default" msgid="6104157990869081962">"solo su telefono, non sincronizzato"</string>
     <string name="nameLabelsGroup" msgid="1817502703362057154">"Nome"</string>
     <string name="nicknameLabelsGroup" msgid="6312795212164843246">"Nickname"</string>
     <string name="full_name" msgid="885420216812981202">"Nome"</string>
@@ -216,7 +216,7 @@
     <string name="scanning_sdcard_failed_message" product="nosdcard" msgid="8442457519490864500">"Scansione dell\'archivio non riuscita. Motivo: \"<xliff:g id="FAIL_REASON">%s</xliff:g>\""</string>
     <string name="scanning_sdcard_failed_message" product="default" msgid="1409798274361146091">"Scansione della scheda SD non riuscita. Motivo: \"<xliff:g id="FAIL_REASON">%s</xliff:g>\""</string>
     <string name="progress_notifier_message" msgid="359931715339778107">"Importazione di <xliff:g id="CURRENT_NUMBER">%s</xliff:g>/<xliff:g id="TOTAL_NUMBER">%s</xliff:g>: <xliff:g id="NAME">%s</xliff:g>"</string>
-    <string name="export_to_vcf_file" product="default" msgid="4142192068495589925">"Esporta  in file .vcf"</string>
+    <string name="export_to_vcf_file" product="default" msgid="4142192068495589925">"Esporta in file .vcf"</string>
     <string name="display_options_sort_list_by" msgid="8635268562263708102">"Ordina per"</string>
     <string name="display_options_sort_by_given_name" msgid="7775798046001047995">"Nome"</string>
     <string name="display_options_sort_by_family_name" msgid="8196947856299225342">"Cognome"</string>
