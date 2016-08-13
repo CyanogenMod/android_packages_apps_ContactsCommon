@@ -235,17 +235,19 @@ public class TelecomManagerCompat {
         if (telecomManager == null || TextUtils.isEmpty(dialString)) {
             return false;
         }
-        if (CompatUtils.isMarshmallowCompatible()) {
-            return telecomManager.handleMmi(dialString, accountHandle);
-        }
+        if (accountHandle != null) {
+            if (CompatUtils.isMarshmallowCompatible()) {
+                return telecomManager.handleMmi(dialString, accountHandle);
+            }
 
-        Object handleMmiResult = CompatUtils.invokeMethod(
-                telecomManager,
-                "handleMmi",
-                new Class<?>[] {PhoneAccountHandle.class, String.class},
-                new Object[] {accountHandle, dialString});
-        if (handleMmiResult != null) {
-            return (boolean) handleMmiResult;
+            Object handleMmiResult = CompatUtils.invokeMethod(
+                    telecomManager,
+                    "handleMmi",
+                    new Class<?>[] {PhoneAccountHandle.class, String.class},
+                    new Object[] {accountHandle, dialString});
+            if (handleMmiResult != null) {
+                return (boolean) handleMmiResult;
+            }
         }
 
         return telecomManager.handleMmi(dialString);
