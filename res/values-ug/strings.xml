@@ -19,6 +19,7 @@
   <!-- Toast shown when text is copied to the clipboard [CHAR LIMIT=64] -->
   <string name="toast_text_copied">تېكىست كۆچۈرۈلدى</string>
   <!-- Option displayed in context menu to copy long pressed item to clipboard [CHAR LIMIT=64] -->
+  <string name="copy_text">چاپلاش تاختىسىغا كۆچۈرۇڭ</string>
   <!-- Action string for calling a custom phone number -->
   <string name="call_custom"><xliff:g id="CUSTOM">%s</xliff:g> نى چاقىر</string>
   <!-- Action string for calling a home phone number -->
