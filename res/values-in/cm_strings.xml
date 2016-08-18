@@ -27,7 +27,7 @@
   <string name="export_to_sim_summary_no_number">Ekspor ke SIM <xliff:g id="sim_name">%1$s</xliff:g></string>
   <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="share_failed">Terlalu banyak kontak, gagal untuk berbagi</string>
-  <string name="label_groups">Grup</string>
+  <string name="label_groups">Kelompok</string>
   <string name="exporting">Mengekspor\u2026</string>
   <!-- Message while reading multiple vCard files "(current number) of (total number) files"
           The order of "current number" and "total number" cannot be changed -->
@@ -35,7 +35,7 @@
   <string name="export_finished">Ekspor selesai</string>
   <string name="tag_too_long">Nama kontak terlalu panjang</string>
   <string name="sim_contacts_not_loaded">Tidak dapat memuat kontak SIM</string>
-  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> tidak memiliki nomor telepon atau alamat surel</string>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> tidak memiliki nomor telepon atau alamat email</string>
   <string name="import_from_sim_select">Pilih kartu untuk mengimpor</string>
   <string name="copy_done">Kontak berhasil disalin</string>
   <string name="copy_failure">Menyalin kontak gagal</string>
