@@ -73,7 +73,7 @@ public class MoreContactUtils {
     private static final int EMAIL_POS = 2;
     private static final int ANR_POS = 3;
     private static final int ADN_COUNT_POS = 0;
-    private static final int ADN_USED_POS = 1;
+    public static final int ADN_USED_POS = 1;
     private static final int EMAIL_COUNT_POS = 2;
     private static final int EMAIL_USED_POS = 3;
     private static final int ANR_COUNT_POS = 4;
