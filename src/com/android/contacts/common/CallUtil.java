@@ -200,9 +200,20 @@ public class CallUtil {
     public static boolean isVideoEnabled(Context context) {
         boolean hasVideoCap =  ((getVideoCallingAvailability(context) &
                 VIDEO_CALLING_ENABLED) != 0);
-        Settings.System.putInt(context.getContentResolver(),
-                CONFIG_VIDEO_CALLING,hasVideoCap?ENABLE_VIDEO_CALLING:DISABLE_VIDEO_CALLING);
+        saveVideoCallConfig(context,hasVideoCap);
         return  hasVideoCap;
+    }
+
+    /**
+     * save the value of video call config.
+     *
+     * @param context The context, enable.
+     */
+    public static void saveVideoCallConfig(Context context, boolean enable) {
+        if(Settings.System.canWrite(context)) {
+            Settings.System.putInt(context.getContentResolver(),
+                    CONFIG_VIDEO_CALLING,enable?ENABLE_VIDEO_CALLING:DISABLE_VIDEO_CALLING);
+        }
     }
 
     /**
@@ -295,8 +306,11 @@ public class CallUtil {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView,
                         boolean isChecked) {
-                    Settings.System.putInt(context.getContentResolver(),
-                        DIALOG_VIDEO_CALLING,isChecked?ENABLE_VIDEO_CALLING:DISABLE_VIDEO_CALLING);
+                    if(Settings.System.canWrite(context)) {
+                        Settings.System.putInt(context.getContentResolver(),
+                                DIALOG_VIDEO_CALLING,isChecked?
+                                        ENABLE_VIDEO_CALLING:DISABLE_VIDEO_CALLING);
+                    }
                 }
             });
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
