@@ -80,6 +80,9 @@ public class CallUtil {
     public static final String DIALOG_VIDEO_CALLING = "display_video_call_dialog";
     private static AlertDialog mAlertDialog = null;
     private static final int MAX_PHONE_NUM = 7;
+    /* The below definition should match with the one in PhoneAccount.java file
+       present in frameworks/base git */
+    private static final int CAPABILITY_EMERGENCY_VIDEO_CALLING = 0x200;
 
     /**
      * Return an Intent for making a phone call. Scheme (e.g. tel, sip) will be determined
@@ -168,7 +171,8 @@ public class CallUtil {
         for (PhoneAccountHandle accountHandle : accountHandles) {
             PhoneAccount account = telecommMgr.getPhoneAccount(accountHandle);
             if (account != null) {
-                if (account.hasCapabilities(PhoneAccount.CAPABILITY_VIDEO_CALLING)) {
+                if (account.hasCapabilities(PhoneAccount.CAPABILITY_VIDEO_CALLING) ||
+                        account.hasCapabilities(CAPABILITY_EMERGENCY_VIDEO_CALLING)) {
                     // Builds prior to N do not have presence support.
                     if (!CompatUtils.isVideoPresenceCompatible()) {
                         return VIDEO_CALLING_ENABLED;
