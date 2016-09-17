@@ -121,6 +121,7 @@
          an email address for a contact [CHAR LIMIT=20] -->
   <!-- Header that expands to list all of the types of postal addresses when editing or creating
          an postal address for a contact [CHAR LIMIT=20] -->
+  <string name="postalLabelsGroup">Adreso</string>
   <!-- Header that expands to list all of the types of IM account when editing or creating an IM
          account for a contact [CHAR LIMIT=20] -->
   <!-- Header that expands to list all organization types when editing an organization of a
