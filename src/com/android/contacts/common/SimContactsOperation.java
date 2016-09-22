@@ -98,6 +98,8 @@ public class SimContactsOperation {
     public Uri insert(ContentValues values, int subscription) {
 
         Uri uri = getContentUri(subscription);
+        if (uri == null)
+            return null;
         String number = values.getAsString(SimContactsConstants.STR_NUMBER);
         String anrs = values.getAsString(SimContactsConstants.STR_ANRS);
         if (!TextUtils.isEmpty(anrs)) {
@@ -116,7 +118,9 @@ public class SimContactsOperation {
     public int update(ContentValues values,int subscription) {
         Uri uri = getContentUri(subscription);
 
-        int result;
+        int result = 0;
+        if (uri == null)
+            return result;
         String oldNumber = values.getAsString(SimContactsConstants.STR_NUMBER);
         String newNumber = values.getAsString(SimContactsConstants.STR_NEW_NUMBER);
         String oldAnrs = values.getAsString(SimContactsConstants.STR_ANRS);
@@ -138,7 +142,11 @@ public class SimContactsOperation {
     }
 
     public int delete(ContentValues values, int subscription) {
-        int result;
+        Uri uri = getContentUri(subscription);
+
+        int result = 0;
+        if (uri == null)
+            return result;
         StringBuilder buf = new StringBuilder();
         String num = null;
         String name = values.getAsString(SimContactsConstants.STR_TAG);
@@ -149,7 +157,7 @@ public class SimContactsOperation {
             num = PhoneNumberUtils.stripSeparators(number);
         if (anrs != null)
             anrs = anrs.replaceAll("[^0123456789PWN\\,\\;\\*\\#\\+\\:]", "");
-        Uri uri = getContentUri(subscription);
+
 
 
         if (!TextUtils.isEmpty(name)) {
@@ -192,8 +200,6 @@ public class SimContactsOperation {
         if (subInfoRecord != null) {
             uri = Uri.parse(SimContactsConstants.SIM_SUB_URI
                     + subInfoRecord.getSubscriptionId());
-        } else {
-            uri = Uri.parse(SimContactsConstants.SIM_URI);
         }
         return uri;
     }
