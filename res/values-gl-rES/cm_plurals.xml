@@ -20,4 +20,16 @@
     <item quantity="one">Fallou a exportación, <xliff:g id="insertCount">%d</xliff:g> elemento exportado</item>
     <item quantity="other">Fallou a exportación, <xliff:g id="insertCount">%d</xliff:g> elementos exportados</item>
   </plurals>
+  <plurals name="export_sim_card_full">
+    <item quantity="one">Tarxeta SIM chea, <xliff:g id="insertCount">%d</xliff:g> elemento exportado</item>
+    <item quantity="other">Tarxeta SIM chea, <xliff:g id="insertCount">%d</xliff:g> elementos exportados</item>
+  </plurals>
+  <plurals name="export_cancelled">
+    <item quantity="one">Exportación cancelada, <xliff:g id="insertCount">%d</xliff:g> elemento exportado</item>
+    <item quantity="other">Exportación cancelada, <xliff:g id="insertCount">%d</xliff:g> elementos exportados</item>
+  </plurals>
+  <plurals name="spam_count_text">
+    <item quantity="one"><xliff:g id="spamCount">%d</xliff:g> persona marcou isto como spam</item>
+    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g> persona marcou isto como spam</item>
+  </plurals>
 </resources>

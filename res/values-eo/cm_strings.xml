@@ -17,7 +17,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Virtual local storage account name -->
-  <string name="local_storage_account" product="tablet">Tabula loka konto</string>
   <string name="local_storage_account" product="default">Telefona loka konto</string>
   <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">Eksporti al SIM-karto</string>

@@ -68,11 +68,14 @@
   <!--  Used to display as default status when the contact is away or idle for chat [CHAR LIMIT=19] -->
   <!--  Used to display as default status when the contact is busy or Do not disturb for chat [CHAR LIMIT=19] -->
   <!-- Directory partition name (also exists in contacts) -->
+  <string name="contactsList">Kontaktoj</string>
   <!-- The name of the invisible local contact directory -->
   <!-- The label in section header in the contact list for a contact directory [CHAR LIMIT=128] -->
   <!-- The label in section header in the contact list for a local contacts [CHAR LIMIT=128] -->
+  <string name="local_search_label">Ĉiuj kontaktoj</string>
   <!-- String describing the text on the header of the profile contact in the contacts list
          This may be programatically capitalized. [CHAR LIMIT=20] -->
+  <string name="user_profile_contacts_list_header" msgid="9154761216179882405">Mi</string>
   <!-- Title shown in the search result activity of contacts app while searching.  [CHAR LIMIT=20]
          (also in contacts) -->
   <!-- Displayed at the top of search results indicating that more contacts were found than shown [CHAR LIMIT=64] -->
@@ -121,6 +124,7 @@
          an email address for a contact [CHAR LIMIT=20] -->
   <!-- Header that expands to list all of the types of postal addresses when editing or creating
          an postal address for a contact [CHAR LIMIT=20] -->
+  <string name="postalLabelsGroup">Adreso</string>
   <!-- Header that expands to list all of the types of IM account when editing or creating an IM
          account for a contact [CHAR LIMIT=20] -->
   <!-- Header that expands to list all organization types when editing an organization of a
@@ -131,6 +135,7 @@
   <!-- Generic action string for text messaging a contact. Used by AccessibilityService to
          announce the purpose of the view. [CHAR LIMIT=NONE] -->
   <!-- Field title for the full postal address of a contact [CHAR LIMIT=64]-->
+  <string name="postal_address">Adreso</string>
   <!-- Hint text for the organization name when editing -->
   <!-- Hint text for the organization title when editing -->
   <!-- The label describing the Notes field of a contact. This field allows free form text entry
@@ -171,6 +176,7 @@
 
          [CHAR LIMIT=NONE]
     -->
+  <string name="description_minus_button">forigi</string>
   <!-- Content description for the expand or collapse name fields button.
          Clicking this button causes the name editor to toggle between showing
          a single field where the entire name is edited at once, or multiple
@@ -184,6 +190,7 @@
   <!-- List title for a special contacts group that covers all contacts. [CHAR LIMIT=25] -->
   <!-- List title for a special contacts group that covers all contacts that
 a        ren't members of any other group. [CHAR LIMIT=25] -->
+  <string name="display_all_contacts">Ĉiuj kontaktoj</string>
   <!-- Warning message given to users just before they remove a currently syncing
          group that would also cause all ungrouped contacts to stop syncing.  [CHAR LIMIT=NONE] -->
   <!-- Displayed in a spinner dialog as user changes to display options are saved -->
@@ -315,7 +322,9 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
   <!-- Action that shares visible contacts -->
   <!-- A framework exception (ie, transaction too large) can be thrown while attempting to share all visible contacts. If so, show this toast. -->
   <!-- Dialog title when selecting the bulk operation to perform from a list. [CHAR LIMIT=36] -->
+  <string name="dialog_import_export">Enporti/elporti kontaktojn</string>
   <!-- Dialog title when importing contacts from an external source. [CHAR LIMIT=36] -->
+  <string name="dialog_import">Enporti kontaktojn</string>
   <!-- Toast indicating that sharing a contact has failed. [CHAR LIMIT=NONE]  -->
   <!-- Menu item to search contacts -->
   <!-- The menu item to filter the list of contacts displayed -->
@@ -336,6 +345,7 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
   <!-- Menu item to select SIM card -->
   <!-- The menu item to open the list of accounts -->
   <!-- The menu item to bulk import or bulk export contacts from SIM card or SD card.  [CHAR LIMIT=30]-->
+  <string name="menu_import_export">Enporti/elporti</string>
   <!-- The font-family to use for tab text.
          Do not translate. -->
   <!-- Attribution of a contact status update, when the time of update is unknown -->
