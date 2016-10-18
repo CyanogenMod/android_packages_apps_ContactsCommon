@@ -118,8 +118,10 @@ public class PhoneNumberHelper {
      * is made public.
      */
     public static String formatNumber(String phoneNumber, String defaultCountryIso) {
-        // Do not attempt to format numbers that start with a hash or star symbol.
-        if (phoneNumber.startsWith("#") || phoneNumber.startsWith("*")) {
+        // Do not attempt to format numbers that are empty or start with a hash
+        // or star symbol.
+        if (TextUtils.isEmpty(phoneNumber) || phoneNumber.startsWith("#") ||
+                phoneNumber.startsWith("*")) {
             return phoneNumber;
         }
 
