@@ -25,4 +25,7 @@
   <plurals name="export_cancelled">
     <item quantity="other">エクスポートはキャンセルされました、<xliff:g id="insertCount">%d</xliff:g>個のアイテムがエクスポートされました</item>
   </plurals>
+  <plurals name="spam_count_text">
+    <item quantity="other"><xliff:g id="spamCount">%d</xliff:g>人をスパムにしました</item>
+  </plurals>
 </resources>

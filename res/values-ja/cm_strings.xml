@@ -57,4 +57,8 @@
   <string name="block_dialog_description">この人物からの着信やメッセージを受け取らないようになりました。</string>
   <string name="block_dialog_report_spam">迷惑電話として<xliff:g id="provider">%s</xliff:g>に報告</string>
   <string name="block_dialog_report_nonspam">迷惑電話ではないとして<xliff:g id="provider">%s</xliff:g>に報告</string>
+  <string name="plugin_login_msg">ここに<xliff:g id="plugin_name">%1$s</xliff:g>の連絡先を表示するには、<xliff:g id="plugin_name">%1$s</xliff:g>にログインしてください</string>
+  <string name="plugin_login_button_title">ログイン</string>
+  <string name="plugin_empty_list_text"><xliff:g id="plugin_name">%s</xliff:g>の連絡先がありません、\n</string>
+  <string name="plugin_empty_list_action_text">人物を追加してください</string>
 </resources>
