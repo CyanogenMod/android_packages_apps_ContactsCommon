@@ -35,7 +35,7 @@
   <string name="export_finished">Esportazioa burutu da</string>
   <string name="tag_too_long">Kontaktuaren izena luzeegia da</string>
   <string name="sim_contacts_not_loaded">Ez izan dira SIM txarteleko kontaktuak kargatu</string>
-  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g>(e)k ez du telefono zenbakirik edo eposta helbiderik</string>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g>(e)k ez du telefono zenbakirik edo e-posta helbiderik</string>
   <string name="import_from_sim_select">Hautatu inportatuko den txartela</string>
   <string name="copy_done">Kontaktua ondo kopiatu da</string>
   <string name="copy_failure">Kontaktuaren kopiak huts egin du</string>
