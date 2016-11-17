@@ -40,7 +40,6 @@
   <!-- Action string for calling an assistant phone number -->
   <!-- Action string for calling a MMS phone number -->
   <!-- Action string for calling a contact by shortcut -->
-  <string name="call_by_shortcut"><xliff:g id="CONTACT_NAME">%s</xliff:g> (Poziv)</string>
   <!-- Action string for sending an SMS to a custom phone number -->
   <!-- Action string for sending an SMS to a home phone number -->
   <!-- Action string for sending an SMS to a mobile phone number -->
@@ -63,7 +62,6 @@
   <!-- Action string for sending an SMS to an assistant phone number -->
   <!-- Action string for sending an SMS to a MMS phone number -->
   <!-- Action string for sending an SMS to a contact by shortcut -->
-  <string name="sms_by_shortcut"><xliff:g id="CONTACT_NAME">%s</xliff:g> (Poruka)</string>
   <!-- Description string for an action button to initiate a video call. -->
   <!-- Title of the confirmation dialog for clearing frequents. [CHAR LIMIT=37] -->
   <!-- Confirmation dialog for clearing frequents. [CHAR LIMIT=NONE] -->
@@ -75,7 +73,6 @@
   <!-- The name of the invisible local contact directory -->
   <!-- The label in section header in the contact list for a contact directory [CHAR LIMIT=128] -->
   <!-- The label in section header in the contact list for a work contact directory [CHAR LIMIT=128] -->
-  <string name="directory_search_label_work">Poslovni imenik</string>
   <!-- The label in section header in the contact list for a local contacts [CHAR LIMIT=128] -->
   <!-- String describing the text on the header of the profile contact in the contacts list
          This may be programatically capitalized. [CHAR LIMIT=20] -->
@@ -101,7 +98,6 @@
     -->
   <!-- Contact list filter selection indicating that the list shows all contacts with phone numbers [CHAR LIMIT=64] -->
   <!-- Contact list filter selection indicating that the list shows all work contacts with phone numbers [CHAR LIMIT=64] -->
-  <string name="list_filter_phones_work">Kontakti radnog profila</string>
   <!-- Button to view the updates from the current group on the group detail page [CHAR LIMIT=25] -->
   <!-- Title for data source when creating or editing a contact that doesn't
          belong to a specific account.  This contact will only exist on the phone
@@ -133,7 +129,6 @@
   <!-- Header for the list of all relationships for a contact [CHAR LIMIT=20] -->
   <!-- Header that expands to list all event types when editing an event of a contact
          [CHAR LIMIT=20] -->
-  <string name="eventLabelsGroup">Posebni datum</string>
   <!-- Generic action string for text messaging a contact. Used by AccessibilityService to
          announce the purpose of the view. [CHAR LIMIT=NONE] -->
   <!-- Field title for the full postal address of a contact [CHAR LIMIT=64]-->
@@ -184,7 +179,6 @@
          Middle Name, Last Name, Name Suffix).
          [CHAR LIMIT=NONE] -->
   <!-- Content description for the expand or collapse phonetic name fields button. [CHAR LIMIT=100] -->
-  <string name="expand_collapse_phonetic_name_fields_description">Proširi ili skupi polja za fonetska imena</string>
   <!-- Contact list filter label indicating that the list is showing all available accounts [CHAR LIMIT=64] -->
   <!-- Contact list filter label indicating that the list is showing all starred contacts [CHAR LIMIT=64] -->
   <!-- Contact list filter selection indicating that the list shows groups chosen by the user [CHAR LIMIT=64] -->
@@ -201,7 +195,6 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
   <!-- Displayed at the top of the contacts showing single contact. [CHAR LIMIT=64] -->
   <!-- Displayed at the top of the contacts showing single contact. [CHAR LIMIT=64] -->
   <!-- Message asking user to select an account to save contacts imported from vcard or SIM card [CHAR LIMIT=64] -->
-  <string name="dialog_new_contact_account">Sačuvaj uvezene kontakte na karticu:</string>
   <!-- Action string for selecting SIM for importing contacts -->
   <!-- Action that exports all contacts to SIM -->
   <!-- Action string for selecting SIM for importing contacts -->
@@ -246,15 +239,12 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
   <!-- The title shown when exporting vCard is successfuly finished [CHAR LIMIT=40] -->
   <!-- The title shown when exporting vCard has finished successfully but the destination filename could not be resolved. [CHAR LIMIT=NONE] -->
   <!-- The toast message shown when exporting vCard has finished and vCards are ready to be shared [CHAR LIMIT=150]-->
-  <string name="exporting_vcard_finished_toast">Izvoz kontakata je završen. Kliknite obavještenje da podijelite kontakte.</string>
   <!-- The message on notification shown when exporting vCard has finished and vCards are ready to be shared [CHAR LIMIT=60]-->
-  <string name="touch_to_share_contacts">Dodirnite da podijelite kontakte.</string>
   <!-- The title shown when exporting vCard is canceled (probably by a user)
          The argument is file name the user canceled importing.
          [CHAR LIMIT=40] -->
   <!-- Dialog title shown when the application is exporting contact data outside. [CHAR LIMIT=NONE] -->
   <!-- Message shown when the application is exporting contact data outside -->
-  <string name="exporting_contact_list_message">Podaci kontakta se izvoze.</string>
   <!-- The error reason the vCard composer "may" emit when database is corrupted or
          something is going wrong. Usually users should not see this text. [CHAR LIMIT=NONE] -->
   <!-- This error message shown when the user actually have no contact
@@ -291,7 +281,6 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
          [CHAR LIMIT=40] -->
   <!-- The message shown when a vCard export request is accepted but the destination filename could not be resolved. [CHAR LIMIT=NONE] -->
   <!-- The message shown when a vCard export request is accepted and contacts will be exported shortly. [CHAR LIMIT=70]-->
-  <string name="contacts_export_will_start_message">Kontakti će uskoro biti izvezeni.</string>
   <!-- The message shown when a given vCard export request is rejected by the system. [CHAR LIMIT=NONE] -->
   <!-- Used when file name is unknown in vCard processing. It typically happens
          when the file is given outside the Contacts app. [CHAR LIMIT=30] -->
@@ -317,28 +306,19 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
   <!-- An allowable value for the "view names as" contact display option  -->
   <!-- An allowable value for the "view names as" contact display option  -->
   <!--Label of the "default account" setting option to set default editor account. [CHAR LIMIT=80]-->
-  <string name="default_editor_account">Zadani račun za nove kontakte</string>
   <!--Label of the "Sync contact metadata" setting option to set sync account for Lychee. [CHAR LIMIT=80]-->
-  <string name="sync_contact_metadata_title">Sinhroniziraj metapodatke kontakata [DOGFOOD]</string>
   <!--Label of the "Sync contact metadata" setting dialog to set sync account for Lychee. [CHAR LIMIT=80]-->
-  <string name="sync_contact_metadata_dialog_title">Sinhroniziraj metapodatke kontakata</string>
   <!-- Label of the "About" setting -->
-  <string name="setting_about">O Kontaktima</string>
   <!-- Title of the settings activity [CHAR LIMIT=64] -->
-  <string name="activity_title_settings">Postavke</string>
   <!-- Action that shares visible contacts -->
   <!-- A framework exception (ie, transaction too large) can be thrown while attempting to share all visible contacts. If so, show this toast. -->
   <!-- Action that shares favorite contacts [CHAR LIMIT=40]-->
-  <string name="share_favorite_contacts">Dijeli omiljene kontakte</string>
   <!-- Action that shares contacts [CHAR LIMIT=30]-->
-  <string name="share_contacts">Dijeli sve kontakte</string>
   <!-- A framework exception can be thrown while attempting to share all contacts. If so, show this toast. [CHAR LIMIT=40]-->
-  <string name="share_contacts_failure">Dijeljenje kontakata nije uspjelo.</string>
   <!-- Dialog title when selecting the bulk operation to perform from a list. [CHAR LIMIT=36] -->
   <!-- Dialog title when importing contacts from an external source. [CHAR LIMIT=36] -->
   <!-- Toast indicating that sharing a contact has failed. [CHAR LIMIT=NONE]  -->
   <!-- Toast indicating that no visible contact to share [CHAR LIMIT=NONE]  -->
-  <string name="no_contact_to_share">Nema kontakata za dijeljenje.</string>
   <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <!-- Menu item to search contacts -->
   <!-- The menu item to filter the list of contacts displayed -->
@@ -354,12 +334,10 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
   <!-- Displayed at the top of the contacts showing the zero total number of contacts visible when "All contacts" is selected  [CHAR LIMIT=64]-->
   <!-- Displayed at the top of the contacts showing the zero total number of contacts visible when "Custom" is selected  [CHAR LIMIT=64]-->
   <!-- Displayed at the top of the contacts showing the zero total number of contacts visible when starred contact list is selected  [CHAR LIMIT=64]-->
-  <string name="listTotalAllContactsZeroStarred">Nema favorita</string>
   <!-- Displayed at the top of the contacts showing the zero total number of contacts visible when a group or account is selected  [CHAR LIMIT=64]-->
   <!--  The menu item to clear frequents [CHAR LIMIT=30] -->
   <!-- Menu item to select SIM card -->
   <!-- The menu item to open the list of accounts. [CHAR LIMIT=60]-->
-  <string name="menu_accounts">Upravljaj računima</string>
   <!-- The menu item to bulk import or bulk export contacts from SIM card or SD card.  [CHAR LIMIT=30]-->
   <!-- The font-family to use for tab text.
          Do not translate. -->
@@ -398,35 +376,20 @@ a        ren't members of any other group. [CHAR LIMIT=25] -->
         Note: AccessibilityServices use this attribute to announce what the view represents.
               This is especially valuable for views without textual representation like ImageView.
     -->
-  <plurals name="tab_title_with_unread_items">
-    <item quantity="one"> <xliff:g id="TITLE_2">%1$s</xliff:g>. <xliff:g id="COUNT_3">%2$d</xliff:g> nepročitana stavka. </item>
-    <item quantity="few"> <xliff:g id="TITLE_2">%1$s</xliff:g>. <xliff:g id="COUNT_3">%2$d</xliff:g> nepročitane stavke. </item>
-    <item quantity="other"> <xliff:g id="TITLE_2">%1$s</xliff:g>. <xliff:g id="COUNT_3">%2$d</xliff:g> nepročitanih stavki. </item>
-  </plurals>
   <!-- Build version title in About preference. [CHAR LIMIT=40]-->
-  <string name="about_build_version">Međuverzija aplikacije</string>
   <!-- Open source licenses title in About preference. [CHAR LIMIT=60] -->
-  <string name="about_open_source_licenses">Licence otvorenog koda</string>
   <!-- Open source licenses summary in About preference. [CHAR LIMIT=NONE] -->
-  <string name="about_open_source_licenses_summary">Detalji o licenci za Open source softver</string>
   <!-- Privacy policy title in About preference. [CHAR LIMIT=40]-->
-  <string name="about_privacy_policy">Pravila o privatnosti</string>
   <!-- Terms of service title in about preference. [CHAR LIMIT=60]-->
-  <string name="about_terms_of_service">Uslovi pružanja usluge</string>
   <!-- Title for the activity that displays licenses for open source libraries. [CHAR LIMIT=100]-->
-  <string name="activity_title_licenses">Licence otvorenog koda</string>
   <!-- Toast message showing when failed to open the url. [CHAR LIMIT=100]-->
-  <string name="url_open_error_toast">Otvaranje URL-a nije uspjelo.</string>
   <!-- Content description of entries (including that radio button is checked) in contact
          accounts list filter. For example: Google abc@gmail.com checked, etc [CHAR LIMIT=30]-->
-  <string name="account_filter_view_checked"><xliff:g id="ACCOUNT_INFO">%s</xliff:g> je označen</string>
   <!-- Content description of entries (including that the radio button is not checked) in contact
          accounts list filter. For example: Google abc@gmail.com not checked, etc [CHAR LIMIT=30]-->
-  <string name="account_filter_view_not_checked"><xliff:g id="ACCOUNT_INFO">%s</xliff:g> nije označen</string>
   <!-- Description string for an action button to initiate a video call from search results.
          Note: AccessibilityServices use this attribute to announce what the view represents.
          This is especially valuable for views without textual representation like ImageView.
 
          [CHAR LIMIT=NONE]-->
-  <string name="description_search_video_call">Uputi videopoziv</string>
 </resources>
