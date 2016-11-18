@@ -37,6 +37,8 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     android-support-v13 \
     android-support-v4 \
     libphonenumber \
+    libgeocoding \
+    libSudaPinYin \
     contacts-picaso
 
 LOCAL_PACKAGE_NAME := com.android.contacts.common
