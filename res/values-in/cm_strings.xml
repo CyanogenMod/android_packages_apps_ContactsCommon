@@ -27,10 +27,10 @@
   <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">Ekspor ke kartu SIM</string>
   <!--The failed reason shown when importing a vCard file -->
-  <string name="fail_reason_import_vcard">\'<xliff:g id="name">%s</xliff:g>\' tidak dapat diimpor karena galat I/O</string>
+  <string name="fail_reason_import_vcard">\'<xliff:g id="name">%s</xliff:g>\' tidak dapat diimpor karena kesalahan I/O</string>
   <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
   <string name="contact_share_failed_toast">Tidak lebih dari <xliff:g id="count">%d</xliff:g> kontak dapat ditambahkan</string>
-  <string name="label_groups">Grup</string>
+  <string name="label_groups">Kelompok</string>
   <string name="exporting">Mengekspor\u2026</string>
   <!-- Message while reading multiple vCard files "(current number) of (total number) files"
           The order of "current number" and "total number" cannot be changed -->
@@ -43,7 +43,7 @@
   <plurals name="export_cancelled">
     <item quantity="other">Ekspor dibatalkan, %d item telah diekspor</item>
   </plurals>
-  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> tidak memiliki nomor telepon atau alamat surel</string>
+  <string name="export_no_phone_or_email"><xliff:g id="name">%s</xliff:g> tidak memiliki nomor telepon atau alamat email</string>
   <string name="import_from_sim_select">Pilih kartu untuk mengimpor</string>
   <!-- Dialog title shown when (USB) storage does not exist [CHAR LIMIT=25] -->
   <string name="no_sdcard_title" product="nosdcard">Penyimpanan tidak tersedia</string>
