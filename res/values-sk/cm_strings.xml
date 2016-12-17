@@ -22,8 +22,11 @@
   <!-- Action that exports all contacts to SIM -->
   <string name="export_to_sim">Exportovať na kartu SIM</string>
   <!-- Action string for selecting a SIM subscription for exporting contacts -->
+  <string name="export_to_sim_summary">Exportovať na SIM <xliff:g id="sim_name">^1</xliff:g> - <xliff:g id="sim_number">^2</xliff:g></string>
   <!-- Action string for selecting a SIM subscription for exporting contacts, without a phone number -->
+  <string name="export_to_sim_summary_no_number">Exportovať na SIM <xliff:g id="sim_name">%1$s</xliff:g></string>
   <!-- Toast indicating that sharing too many contact has failed. [CHAR LIMIT=NONE]  -->
+  <string name="share_failed">Priveľa kontaktov, zdieľanie zlyhalo</string>
   <string name="label_groups">Skupina</string>
   <string name="exporting">Exportovanie\u2026</string>
   <!-- Message while reading multiple vCard files "(current number) of (total number) files"
@@ -44,4 +47,18 @@
   <string name="set_ip_number">Nastaviť IP číslo</string>
   <string name="ipcall_dialog_title">Nastavenia IP hovoru</string>
   <string name="ipcall_dialog_edit_hint">Prosím, zadajte predčíslie IP</string>
+  <string name="menu_block_contact">Zablokovať</string>
+  <string name="menu_unblock_contact">Odblokovať</string>
+  <string name="block_dialog_title">Zablokovať tento kontakt?</string>
+  <string name="unblock_dialog_title">Odblokovať tento kontakt?</string>
+  <string name="block_dialog_positive">Zablokovať</string>
+  <string name="unblock_dialog_positive">Odblokovať</string>
+  <string name="block_dialog_negative">Zrušiť</string>
+  <string name="block_dialog_description">Už nebudete prijímať hovory alebo správy od tejto osoby.</string>
+  <string name="block_dialog_report_spam">Nahlásiť ako spam do <xliff:g id="provider">%s </xliff:g></string>
+  <string name="block_dialog_report_nonspam">Nahlásiť ako nie-spam do <xliff:g id="provider">%s</xliff:g></string>
+  <string name="plugin_login_msg">Prihláste sa do <xliff:g id="plugin_name">%1$s </xliff:g> aby ste videli <xliff:g id="plugin_name"> %1$s </xliff:g> vaše kontakty</string>
+  <string name="plugin_login_button_title">Prihlásiť sa</string>
+  <string name="plugin_empty_list_text">Nemáte žiadne kontakty <xliff:g id="plugin_name">%s </xliff:g>,\n</string>
+  <string name="plugin_empty_list_action_text">pridať ľudí</string>
 </resources>
