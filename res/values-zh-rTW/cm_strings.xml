@@ -20,7 +20,7 @@
   <string name="local_storage_account" product="tablet">本機平板電腦帳戶</string>
   <string name="local_storage_account" product="default">本機手機帳戶</string>
   <!-- CMCC -->
-  <string name="import_contacts_sim">從 SIM 卡匯入聯絡人嗎？</string>
+  <string name="import_contacts_sim">是否從 SIM 卡匯入聯絡人？</string>
   <!-- CAF -->
   <!-- Action string for managing SIM contacts -->
   <string name="manage_sim_contacts">管理 SIM 卡聯絡人</string>
@@ -50,7 +50,7 @@
   <!-- Dialog title shown when SD Card does not exist -->
   <string name="no_sdcard_title" product="default">沒有 SD 卡</string>
   <!-- Confirmation dialog title after users selects to delete a contact. [CHAR LIMIT=25]-->
-  <string name="deleteConfirmation_title">刪除聯絡人？</string>
+  <string name="deleteConfirmation_title">是否刪除聯絡人？</string>
   <!-- Confirmation dialog contents after users selects to delete a Writable contact. -->
   <string name="deleteConfirmation">此聯絡人將被刪除。</string>
   <string name="copy_done">已成功複製聯絡人</string>
