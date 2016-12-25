@@ -15,4 +15,25 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"></resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <plurals name="export_to_sim_failed">
+    <item quantity="one">Export zlyhal, <xliff:g id="insertCount">%d</xliff:g> položka bola exportovaná</item>
+    <item quantity="few">Export zlyhal, <xliff:g id="insertCount">%d</xliff:g> položky boli exportované</item>
+    <item quantity="other">Export zlyhal, <xliff:g id="insertCount">%d</xliff:g> položiek bolo exportovaných</item>
+  </plurals>
+  <plurals name="export_sim_card_full">
+    <item quantity="one">SIM karta je plná, <xliff:g id="insertCount">%d</xliff:g> položka bola exportovaná</item>
+    <item quantity="few">SIM karta je plná, <xliff:g id="insertCount">%d</xliff:g> položky bola exportované</item>
+    <item quantity="other">SIM karta je plná, <xliff:g id="insertCount">%d</xliff:g> položiek bolo exportovaných</item>
+  </plurals>
+  <plurals name="export_cancelled">
+    <item quantity="one">Export bol zrušený, <xliff:g id="insertCount">%d</xliff:g> položka bola exportovaná</item>
+    <item quantity="few">Export bol zrušený, <xliff:g id="insertCount">%d</xliff:g> položky boli exportované</item>
+    <item quantity="other">Export bol zrušený, <xliff:g id="insertCount">%d</xliff:g> položiek bolo exportovaných</item>
+  </plurals>
+  <plurals name="spam_count_text">
+    <item quantity="one"><xliff:g id="spamCount">%d </xliff:g> osoba to označila ako spam</item>
+    <item quantity="few"><xliff:g id="spamCount">%d </xliff:g> osoby to označili ako spam</item>
+    <item quantity="other"><xliff:g id="spamCount">%d </xliff:g> osôb to označilo ako spam</item>
+  </plurals>
+</resources>
